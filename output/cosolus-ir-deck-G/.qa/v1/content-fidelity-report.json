@@ -1,0 +1,58 @@
+{
+  "status": "fail",
+  "scope": [
+    1
+  ],
+  "slides": {
+    "1": {
+      "issues": [
+        {
+          "type": "ungrounded_explicit_fact",
+          "kind": "entity",
+          "value": "COSOLUS CI \n     We"
+        },
+        {
+          "type": "ungrounded_explicit_fact",
+          "kind": "entity",
+          "value": "TECHNOLOGY"
+        },
+        {
+          "type": "required_evidence_partially_missing",
+          "evidence": "\"폐배터리팩을 파쇄·소각하여 블랙매스를 생산한다.\" (confirmed_text, direct_evidence) + img1(EV 배터리팩 실사)·img2(배터리 셀 실사)·img3(파쇄/소각 아이콘)·img4(블랙매스 실사)",
+          "missing_atoms": [
+            "폐배터리팩을 파쇄·소각하여 블랙매스를 생산한다.",
+            "img2"
+          ]
+        },
+        {
+          "type": "required_evidence_partially_missing",
+          "evidence": "\"기존 1세대 공정에서는 블랙매스를 용매추출하여 MnSO4, NiSO4, CoSO4, Li2CO3를 회수하며 폐흑연이 부산물로 발생한다.\" + img5(용매추출 설비 도해) + img6~img9(회수 화합물 4종 분말 실사, 화합물별 1:1 매칭 uncertain) + img10(폐흑연 실사)",
+          "missing_atoms": [
+            "기존 1세대 공정에서는 블랙매스를 용매추출하여 MnSO4, NiSO4, CoSO4, Li2CO3를 회수하며 폐흑연이 부산물로 발생한다."
+          ]
+        },
+        {
+          "type": "required_evidence_partially_missing",
+          "evidence": "\"COSOLUS 2세대 공정에서는 블랙매스를 부유선별하여 양극재용 블랙매스와 음극재용 블랙매스로 분리한다. 양극재용 블랙매스는 건식환원을 통해 Co·Ni를 회수하고, 음극재용 블랙매스는 유도가열을 통해 고순도 정제흑연을 생산한다.\" + img11(부유선별 설비 도해) + img12(양극재용 블랙매스, NCM 조성 이미지) + img13(음극재용 블랙매스, 금속 알갱이 박힌 흑연 이미지) + img14(건식환원 반응 이미지) + img15(유도가열 3단계 이미지) + img16(코발트) + img17(니켈) + img18(고순도 정제흑연)",
+          "missing_atoms": [
+            "COSOLUS 2세대 공정에서는 블랙매스를 부유선별하여 양극재용 블랙매스와 음극재용 블랙매스로 분리한다. 양극재용 블랙매스는 건식환원을 통해 Co·Ni를 회수하고, 음극재용 블랙매스는 유도가열을 통해 고순도 정제흑연을 생산한다."
+          ]
+        },
+        {
+          "type": "data_pending_marker_missing"
+        }
+      ],
+      "unchecked": [
+        {
+          "type": "uncertain_usage_not_traceable_without_provenance",
+          "known_refs": [
+            "CG01-direct_evidence-img6",
+            "CG01-direct_evidence-img7",
+            "CG01-direct_evidence-img8",
+            "CG01-direct_evidence-img9"
+          ]
+        }
+      ]
+    }
+  }
+}

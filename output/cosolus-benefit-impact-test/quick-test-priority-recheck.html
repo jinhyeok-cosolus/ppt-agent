@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>디자인 QA 재검증 — Benefit + Impact, Layout Catalog 적용 우선순위 변경 반영 확인</title>
+<!-- 재검증 메모(2026-08-14): 적용 우선순위가 Hard Rule > Slide-specific Design Rule >
+     Layout Catalog/Selected Layout Reference > Visual Style > Content Visualization
+     Freedom 순으로 변경됨. 본 레이아웃은 구조(Header Gap §3/§4, Vertical Divider §5 등)를
+     benefit-impact.md(Slide-specific Design Rule/Layout Reference)에서, 색상·타이포그래피만
+     Hard Rule/Visual Style에서 가져오는 구조라 두 우선순위 순서 사이에 충돌 지점이 없다.
+     기존 확정 콘텐츠·구조를 그대로 재사용해 1장 재생성했으며 아래 마크업/스타일은
+     확정본(v7)과 동일함(우선순위 변경으로 인한 수정 없음). -->
+
+<style>
+  :root {
+    --slide-width: 1280px;
+    --slide-height: 720px;
+    --c-teal: #0F655B;
+    --c-deep-pine: #06342F;
+    --c-sea-teal: #1AAC82;
+    --c-mint: #7FC8BE;
+    --c-amber: #C8801F;
+    --c-ink: #162B1F;
+    --c-slate: #5A6664;
+    --c-gray: #8C9694;
+    --c-line: #E1E7E5;
+    --c-mist: #F3F6F5;
+    --c-white: #FFFFFF;
+    /* Hard Rule §10 Content Comparison Header tokens */
+    --h10-fill: #F4FAFA;
+    --h10-divider: #478689;
+    --h10-text: #0F1E1F;
+    /* Hard Rule §11 Vertical Content Divider */
+    --h11-core: #294F51;
+    --font-base: "Pretendard", "Malgun Gothic", "맑은 고딕", sans-serif;
+    --margin-x: 64px;
+    --header-safe-y: 135px; /* Hard Rule §9 갱신: 177px -> 135px (Main Title 1줄 고정 기준 재계산) */
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #333; font-family: var(--font-base); color: var(--c-ink); }
+  .slide {
+    width: var(--slide-width);
+    height: var(--slide-height);
+    margin: 24px auto;
+    background: var(--c-white);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* ---------- 공통 Header System (Hard Rule §9, 변경 없음) ---------- */
+  .deck-logo { position: absolute; top: 25px; left: var(--margin-x); height: 20px; width: auto; object-fit: contain; }
+  .deck-tagline {
+    position: absolute; top: 25px; right: var(--margin-x);
+    font-weight: 500; font-size: 18.7px; line-height: 20px;
+    letter-spacing: 0.02em; color: var(--c-teal);
+  }
+  .deck-divider { position: absolute; top: 56px; left: var(--margin-x); right: var(--margin-x); height: 1px; background: var(--c-teal); }
+  .deck-page { position: absolute; bottom: 28px; right: var(--margin-x); font-weight: 300; font-size: 12px; color: var(--c-gray); }
+  .section-label {
+    position: absolute; left: 68px; top: 62px; margin: 0;
+    font-size: 16px; font-weight: 300; line-height: 20px;
+    letter-spacing: 0.06em; text-transform: uppercase; color: var(--c-gray);
+  }
+  .slide-title {
+    position: absolute; left: var(--margin-x); right: var(--margin-x); top: 83px; margin: 0;
+    font-size: 37.3px; /* Hard Rule §9 갱신: 24pt -> 28pt(=37.3px) */
+    font-weight: 800; line-height: 1.25; color: var(--c-deep-pine);
+  }
+
+  /* ---------- Body Box (Hard Rule §9 Safe Area: X 64~1216px, Y 135~656px) ---------- */
+  .body-box {
+    position: absolute;
+    left: 64px;
+    top: var(--header-safe-y); /* 135px */
+    width: 1152px;   /* 1216 - 64 */
+    height: 521px;   /* 656 - 135, benefit-impact.md §3 갱신값과 일치 */
+  }
+
+  /* ---------- Benefit Area Header ×2 (benefit-impact.md §4 / Hard Rule §10) ----------
+     좌우 동일 스타일로 통일: #F4FAFA Fill 변형 (Before/After식 대립 스타일 차등 금지) */
+  .benefit-header {
+    position: absolute;
+    top: 0;
+    height: 0.561in; /* Hard Rule §10 고정 Height, 96dpi ≈ 54px */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    background: var(--h10-fill);
+    border-top: 1px solid var(--h10-divider);   /* §10: 상단 Divider 0.75pt */
+    border-bottom: 1px solid var(--h10-divider); /* §10: 하단 Divider 0.5pt */
+    border-radius: 0; /* Sharp Corner, Rounded 금지 */
+    font-size: 26.7px; /* 20pt */
+    font-weight: 600;  /* SemiBold */
+    letter-spacing: -0.4px; /* -0.3pt */
+    color: var(--h10-text);
+  }
+  /* benefit-impact.md §3/§4 갱신(Header Gap 신설): 맞닿은 두 Bar에 경계선만 긋는 방식은
+     금지되었으므로, 실제 Gap(G)으로 물리적으로 분리된 독립 Bar 2개로 렌더링한다.
+     G=16px(Body Box 1152px 기준 약 1.4%, 문서 권장 1~2% 범위 내), 안쪽 경계만 G/2=8px씩
+     D=622px(54%)에서 물러나고 바깥쪽 경계(X=0 / X=1152)는 Benefit Area와 동일하게 유지. */
+  .benefit-header--left  { left: 0; width: 614px; }   /* 0 ~ (D-G/2) = 0~614px */
+  .benefit-header--right { left: 630px; width: 522px; } /* (D+G/2) ~ 100% = 630~1152px */
+
+  /* ---------- Vertical Divider (benefit-impact.md §5 / Hard Rule §11) ----------
+     §5: "Divider는 Header 영역에 바로 붙여서 시작하지 않는다 ... Content Area 상하단에서 각각
+     Content Area 높이의 약 8%씩 inset한 구간(전체의 약 84%), 세로 중심은 Content Area 중심과 일치".
+     Content Area(Header 54px, Footnote 40px 제외) = 521 - 54 - 40 = 427px → 8% inset ≈ 34px.
+     기존 코드는 top:54px(Header 바로 아래)/bottom:40px(inset 없음, 100% 커버)로 이 규칙을
+     반영하지 않고 있었음 → top:88px(54+34), bottom:74px(40+34)로 수정. */
+  .benefit-divider {
+    position: absolute;
+    left: 622px;
+    top: 88px;
+    bottom: 74px;
+    width: 1px; /* 0.5pt 렌더링 최소 단위 */
+    background: linear-gradient(
+      to bottom,
+      rgba(41, 79, 81, 0) 0%,
+      var(--h11-core) 53%,
+      rgba(41, 79, 81, 0) 100%
+    );
+  }
+
+  /* ---------- Benefit Area (좌/우) ---------- */
+  .benefit-area {
+    position: absolute;
+    top: 54px;
+    bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+  /* benefit-impact.md §6/§11 갱신: Center Align 위해 좌우 padding을 대칭으로 통일
+     (기존 비대칭 padding은 Content Group 실제 중심과 어긋나므로 제거).
+     align-items는 기본값(stretch) 유지 — Evidence Visual(width:100%)이 padded box
+     전체를 계속 채우도록 하고, 텍스트 요소는 text-align:center로 중심 정렬한다. */
+  .benefit-area--left  { left: 0;      width: 622px; padding: 16px 32px 0 32px; }
+  .benefit-area--right { left: 622px;  width: 530px; padding: 16px 32px 0 32px; }
+
+  /* benefit-impact.md §6에는 Benefit Label 티어가 별도 정의되어 있지 않으므로,
+     §16 Typography 표의 가장 보조적인 티어(Footnote/Source 12pt Light)로 매핑 */
+  .impact-benefit-label {
+    flex: 0 0 auto;
+    font-size: 16px; /* 12pt */
+    font-weight: 300; /* Light */
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--c-gray);
+    margin: 0 0 6px;
+    text-align: center; /* benefit-impact.md §6/§11: Content Group 기준 Center Align */
+  }
+
+  /* Benefit Message = §16 "Content Header / 핵심 메시지" 티어: 20pt SemiBold */
+  .impact-headline {
+    flex: 0 0 auto;
+    font-size: 26.7px; /* 20pt */
+    font-weight: 600; /* SemiBold */
+    color: var(--c-sea-teal);
+    margin: 0 0 12px;
+    line-height: 1.2;
+    text-align: center; /* benefit-impact.md §6/§11: Content Group 기준 Center Align */
+  }
+  /* Hard Rule §5 / Design System Chart-Graph Color Usage 갱신: 핵심 수치 강조에
+     Orange/Amber 사용 금지 → Font Weight(ExtraBold) 우선 + Main Color(Cosolus Teal)로 대체 */
+  .impact-headline span { color: var(--c-teal); font-weight: 800; }
+
+  /* Evidence Visual: 영역 가용 폭·높이의 약 55~70% (benefit-impact.md §7) */
+  .impact-evidence {
+    flex: 1 1 auto;
+    min-height: 0;
+    display: flex;
+    align-items: stretch;
+    margin-bottom: 12px;
+  }
+
+  /* Supporting Text = §16 "Body / Supporting Text" 티어: 16pt Light
+     benefit-impact.md §6 "Supporting Text 작성 규칙": 블록 자체의 수평 위치는
+     Content Group 기준 Center Align(align-self:center + width:fit-content로
+     블록을 중앙에 배치)을 유지하되, 여러 줄로 구성된 문장은 자연스러운 흐름을
+     위해 블록 내부 줄 정렬은 Left Align을 허용한다(text-align:left). */
+  .impact-support {
+    flex: 0 0 auto;
+    align-self: center;   /* 블록 자체는 Content Group 중심에 배치 */
+    width: fit-content;
+    max-width: 100%;
+    margin: 0;
+    font-size: 21.3px; /* 16pt */
+    font-weight: 300; /* Light */
+    color: var(--c-slate);
+    line-height: 1.5;
+    text-align: left; /* 블록 내부 줄 정렬: 의미 단위 줄바꿈에 맞춘 Left Align */
+  }
+
+  /* Evidence: Bar Chart (좌측 — OPEX 절감) — 수치/카테고리 라벨은 §16 "Chart·Table Label" 티어: 14pt SemiBold */
+  .bar-chart { display: flex; align-items: flex-end; justify-content: center; gap: 40px; width: 100%; height: 100%; }
+  .bar-col { display: flex; flex-direction: column; align-items: center; justify-content: flex-end; flex: 0 0 104px; height: 100%; }
+  .bar-value { font-size: 18.7px; font-weight: 600; color: var(--c-slate); margin-bottom: 6px; }
+  .bar { width: 76px; border-radius: 8px 8px 0 0; }
+  .bar--before { height: 66%; background: var(--c-line); }
+  .bar--after { height: 45%; background: var(--c-teal); }
+  .bar--after + .bar-value,
+  .bar--after .bar-value { color: var(--c-teal); }
+  /* Design System Chart/Graph Color Usage: Chart Title(카테고리 라벨) 기존=Black/Dark+SemiBold,
+     COSOLUS/자사=Main Color+ExtraBold로 구분 (기존에는 좌우 동일 Gray로 미구분 — 갱신) */
+  .bar-col .bar-label { margin-top: 8px; font-size: 18.7px; }
+  .bar-label--before { font-weight: 600; color: var(--c-ink); }
+  .bar-label--after  { font-weight: 800; color: var(--c-teal); }
+  /* 화살표(Difference/Guide 보조 연결선)는 Design System Chart/Graph Color Usage에 따라
+     연한 Orange 계열을 제한적으로만 사용 — 기존 진한 Amber(#C8801F) 전체 채도 사용은 과사용이므로
+     저채도 처리(opacity)로 축소. §16 표 대상 아닌 흐름 표시 아이콘 글리프. */
+  .bar-chart-arrow { display: flex; align-items: center; justify-content: center; height: 100%; color: var(--c-amber); opacity: 0.55; font-size: 22px; font-weight: 700; }
+
+  /* Evidence: Comparison Bar (우측 — 수율 향상) */
+  .compare-bars {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 16px;
+    width: 100%;
+    height: 100%;
+  }
+  .compare-bar-row { display: flex; align-items: center; gap: 12px; }
+  /* Chart Title 구분(위 .bar-label--before/after와 동일 원칙): 기존=Black/Dark+SemiBold,
+     신공정(자사)=Main Color+ExtraBold */
+  .compare-bar-row .cb-label { flex: 0 0 64px; font-size: 18.7px; font-weight: 600; color: var(--c-ink); }
+  .compare-bar-row--after .cb-label { font-weight: 800; color: var(--c-teal); }
+  .compare-bar-row .cb-track {
+    flex: 1; height: 26px; border-radius: 6px; background: var(--c-mist);
+    overflow: hidden; position: relative;
+  }
+  .compare-bar-row .cb-fill { height: 100%; border-radius: 6px; background: var(--c-line); }
+  .compare-bar-row--after .cb-fill { background: var(--c-teal); }
+  .compare-bar-row .cb-value { flex: 0 0 54px; text-align: right; font-size: 18.7px; font-weight: 600; color: var(--c-slate); }
+  .compare-bar-row--after .cb-value { color: var(--c-teal); }
+  .compare-delta {
+    align-self: flex-end;
+    margin-top: -2px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    background: rgba(15, 101, 91, 0.1);
+    color: var(--c-teal);
+    font-size: 18.7px;
+    font-weight: 600;
+  }
+
+  /* ---------- Shared Footnote (슬라이드 전체 공통 디스클레이머) ---------- */
+  .shared-footnote {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    font-size: 16px; /* 12pt, §16 Footnote/Source */
+    font-weight: 300; /* Light */
+    color: var(--c-gray);
+  }
+</style>
+</head>
+<body>
+
+<!--
+  1장짜리 디자인 QA 테스트 (정식 [1]~[9] 워크플로우 아님, Fast Iteration Mode 재생성).
+  콘텐츠(문구·수치)는 이전 라운드와 100% 동일 — 이번 라운드는 Color Usage/강조 위계 검증 목적.
+
+  ===== 이번 라운드(v5) 변경 사항 — Hard Rule §5 Color Usage + Design System
+  Chart/Graph Color Usage(2026-08-14 신설) 반영 =====
+
+  1) .impact-headline span(핵심 수치 "32%", "94% → 99%"): Amber(#C8801F) → Cosolus Teal
+     + font-weight 800(ExtraBold)로 교체. "Orange/Amber는 핵심 수치 강조에 사용 금지" +
+     "강조 우선순위는 Font Weight → Main Color" 규칙 반영.
+
+  2) 좌측 Bar Chart 카테고리 라벨("기존 공정"/"신공정")과 우측 Comparison Bar 라벨
+     ("기존"/"신공정")을 기존 동일 Gray 단일 색상에서, Chart Title 규칙("기존/비교 대상=
+     Black/Dark+SemiBold, COSOLUS/자사=Main Color+ExtraBold")에 따라 분리 —
+     기존 계열: Ink(#162B1F)+SemiBold(600) / 신공정(자사) 계열: Cosolus Teal+ExtraBold(800).
+
+  3) Bar Chart 중앙 Transition Arrow(→): Difference/Guide 보조 연결선으로 분류해 Amber를
+     유지하되(신설 Chart/Graph Color Usage가 허용하는 유일한 Orange 용도), 채도를
+     opacity 0.55로 낮춰 "연한 Orange 계열을 제한적으로 사용" 요건에 맞춤(기존은 진한 원색).
+
+  4) 그 외 요소(Header 분할 폭 D≈54%, Body Box Y=135~656px, §10/§11 Divider, Main Title
+     28pt, Bar Value·Compare Bar Fill의 기존=Gray/자사=Main Color 배색)는 이미 확정 규칙과
+     일치해 변경하지 않음 — 이번 라운드에서 규칙 준수 여부만 재확인.
+
+  Impact Headline 문구/수치, Evidence Visual 수치(100→68, 94%→99%), Supporting Text 문구,
+  Footnote 문구는 전혀 변경하지 않고 그대로 재사용.
+
+  수치는 레이아웃/컬러 검증용 더미 값이며 실제 사업 데이터가 아님.
+
+  ===== 이번 라운드(v6) 변경 사항 — benefit-impact.md §4/§5 구조 규칙이 렌더링에
+  반영되지 않던 코드 원인 수정 (문서는 이미 정확했음, 코드만 갱신) =====
+
+  1) Header 분할(§4): .benefit-header--left/right는 이전부터 2개 div로 분리돼 있었으나,
+     동일 Fill(#F4FAFA)·동일 상하 Divider(#478689)로 맞닿아(gap 없음) 시각적으로 하나의
+     통합 바처럼 렌더링되던 것이 실제 원인. 폭·위치는 그대로 두고(D=54%, Benefit Area와
+     동일 폭 유지), 두 Header가 이미 쓰는 h10-divider 색으로 경계선(border-right)만 추가해
+     분할 Header 2개가 시각적으로도 명확히 구분되도록 수정.
+
+  2) Vertical Divider(§5): top:54px(Header 바로 아래 시작)/bottom:40px(inset 없이 Content
+     Area 100% 커버)로 되어 있어 "Header와 분리, Content Area 상하 8% inset(≈84% 커버)"
+     요건이 코드에 반영되지 않았던 것이 원인. Content Area(427px) 기준 8%≈34px inset을
+     적용해 top:88px/bottom:74px로 수정 — Divider 세로 중심은 Content Area 중심(267.5px)과
+     그대로 일치.
+
+  ===== 이번 라운드(v7) 변경 사항 — benefit-impact.md §3/§4 Header Gap 신설 반영 =====
+
+  v6은 좌/우 Header를 여전히 Gap 없이 맞닿여 두고 그 경계에 h10-divider 색 세로선
+  (border-right)만 그어 "분할된 것처럼" 보이게 한 임시 처리였음 — 문서 갱신 후 추가된
+  Avoid 항목("Gap 없이 맞닿은 Bar에 경계선만 긋는 방식 금지")에 해당하는 방식이라 이번에
+  실제 Header Gap(G)으로 물리적으로 분리된 독립 Bar 2개로 교체: G=16px(Body Box 1152px
+  기준 약 1.4%, 문서 권장 1~2% 범위 내), 안쪽 경계만 G/2=8px씩 D=622px(54%)에서 물러나고
+  바깥쪽 경계(X=0 / X=1152)는 그대로 유지해 아래 Benefit Area와 폭·중심축 일치를 보존
+  (.benefit-header--left: 0~614px, .benefit-header--right: 630~1152px). Vertical
+  Divider(left:622px)는 변경 없음 — 원래도 D=622px였고 이는 Header Gap(614~630px)의
+  정중앙과 동일 좌표이므로 별도 조정이 필요 없었음.
+-->
+
+<section class="slide">
+  <img class="deck-logo" src="assets/images/cosolus-ci-2.png" alt="COSOLUS">
+  <span class="deck-tagline">We promise tomorrow</span>
+  <span class="deck-divider"></span>
+
+  <p class="section-label">TECHNOLOGY</p>
+  <h1 class="slide-title">저온 촉매 정제 기술의 공정·경제적 효과</h1>
+
+  <div class="body-box">
+
+    <!-- Benefit Area Header ×2 (Hard Rule §10, 좌우 동일 스타일 통일) -->
+    <div class="benefit-header benefit-header--left">OPEX 절감</div>
+    <div class="benefit-header benefit-header--right">수율 향상</div>
+
+    <!-- Vertical Divider (Hard Rule §11) -->
+    <div class="benefit-divider"></div>
+
+    <!-- Left Benefit Area: OPEX 절감 -->
+    <div class="benefit-area benefit-area--left">
+      <p class="impact-benefit-label">Business Impact</p>
+      <h2 class="impact-headline">OPEX <span>32%</span> 절감</h2>
+      <div class="impact-evidence">
+        <div class="bar-chart">
+          <div class="bar-col">
+            <span class="bar-value">100</span>
+            <div class="bar bar--before"></div>
+            <span class="bar-label bar-label--before">기존 공정</span>
+          </div>
+          <div class="bar-chart-arrow">&rarr;</div>
+          <div class="bar-col">
+            <span class="bar-value">68</span>
+            <div class="bar bar--after"></div>
+            <span class="bar-label bar-label--after">신공정</span>
+          </div>
+        </div>
+      </div>
+      <p class="impact-support">고온 열처리 단계 제거로 단위 생산당 에너지 사용량 감소,<br>지수 100 기준 상대 비교</p>
+    </div>
+
+    <!-- Right Benefit Area: 수율 향상 -->
+    <div class="benefit-area benefit-area--right">
+      <p class="impact-benefit-label">Process Impact</p>
+      <h2 class="impact-headline">수율 <span>94% → 99%</span></h2>
+      <div class="impact-evidence">
+        <div class="compare-bars">
+          <div class="compare-bar-row">
+            <span class="cb-label">기존</span>
+            <div class="cb-track"><div class="cb-fill" style="width:94%"></div></div>
+            <span class="cb-value">94%</span>
+          </div>
+          <div class="compare-bar-row compare-bar-row--after">
+            <span class="cb-label">신공정</span>
+            <div class="cb-track"><div class="cb-fill" style="width:99%"></div></div>
+            <span class="cb-value">99%</span>
+          </div>
+          <span class="compare-delta">+5%p 향상</span>
+        </div>
+      </div>
+      <p class="impact-support">불순물 잔류율 감소로 후속 공정 손실 최소화,<br>동일 원료 투입량 기준 산출 비교</p>
+    </div>
+
+    <p class="shared-footnote">※ 상기 수치는 Benefit + Impact Layout 디자인 검증용 예시 값이며 실제 데이터가 아님</p>
+  </div>
+
+  <span class="deck-page">1</span>
+</section>
+
+</body>
+</html>

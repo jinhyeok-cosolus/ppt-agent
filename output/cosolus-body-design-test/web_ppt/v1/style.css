@@ -1,0 +1,355 @@
+/*
+  COSOLUS 웹PPT 스타일 — 본문 디자인 QA 테스트 (v1)
+  근거 문서:
+  - Hard Rule: docs/design-hard-rules/2026.08.12_design_hard-rules_V2.md (1순위)
+  - Claude PPT Design System: docs/design-system/Claude_PPT_Design_System.md (2순위, Hard Rule 범위 내)
+  컬러 Hex는 Hard Rule §5 Brand Color 표를 유일한 값으로 사용한다(Design System §2의 다른 hex 토큰 미사용).
+  폰트는 Pretendard 단일 서체만 사용한다(Hard Rule §2).
+*/
+
+:root {
+  /* 16:9, 1280x720px 캔버스 (템플릿 기준) */
+  --slide-width: 1280px;
+  --slide-height: 720px;
+
+  /* Hard Rule §5 Primary Colors */
+  --c-teal: #0F655B;       /* Cosolus Teal: 기본 브랜드 컬러 */
+  --c-deep-pine: #06342F;  /* 제목/강한 대비/무게감 */
+  --c-sea-teal: #1AAC82;   /* 데이터/핵심 정보 강조 */
+  --c-mint: #7FC8BE;       /* 보조 데이터/영역 구분/약한 강조 */
+
+  /* Hard Rule §5 Secondary / Neutral Colors */
+  --c-ocean-blue: #1A6A8C;
+  --c-moss: #6E9B3F;
+  --c-amber: #C8801F;      /* Accent, 핵심 수치 등 국소적 사용만 */
+  --c-ink: #162B1F;
+  --c-slate: #5A6664;
+  --c-gray: #8C9694;
+  --c-line: #E1E7E5;
+  --c-mist: #F3F6F5;
+
+  --c-white: #FFFFFF;
+
+  --font-base: "Pretendard", "Malgun Gothic", "맑은 고딕", sans-serif;
+
+  /* Grid/Spacing (Design System §5, 좌우 최소 64px) */
+  --margin-x: 64px;
+  --safe-top: 92px;    /* 공통 Deck Element(로고/태그라인) 안전영역 */
+  --safe-bottom: 64px; /* 공통 Deck Element(페이지 번호) 안전영역 */
+  --card-radius: 14px;
+  --card-gap: 24px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: #333;
+  font-family: var(--font-base);
+  color: var(--c-ink);
+}
+
+#deck { position: relative; }
+
+/* ---------- 슬라이드 공통 ---------- */
+
+.slide {
+  width: var(--slide-width);
+  height: var(--slide-height);
+  margin: 24px auto;
+  background: var(--c-white);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.25); /* 브라우저 프리뷰용, 슬라이드 내부 요소 아님 */
+  padding: 0 var(--margin-x);
+  display: none;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.slide.is-active { display: flex; }
+
+/* ---------- 공통 Deck Element (Hard Rule §9) ---------- */
+/* 좌측 상단: 로고 / 우측 상단: 태그라인 / 우측 하단: 페이지 번호
+   3개 슬라이드에서 완전히 동일한 위치·크기·스타일을 유지한다. */
+
+.deck-logo {
+  position: absolute;
+  top: 32px;
+  left: var(--margin-x);
+  height: 26px;
+  width: auto;
+  object-fit: contain; /* 비율 왜곡 금지 */
+}
+
+.deck-tagline {
+  position: absolute;
+  top: 32px;
+  right: var(--margin-x);
+  font-family: var(--font-base);
+  font-weight: 500; /* Medium */
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  color: var(--c-slate);
+}
+
+.deck-page {
+  position: absolute;
+  bottom: 28px;
+  right: var(--margin-x);
+  font-family: var(--font-base);
+  font-weight: 300; /* Light */
+  font-size: 12px;
+  color: var(--c-gray);
+}
+
+/* ---------- 타이틀 존 / 콘텐츠 존 (Design System §5 골격) ---------- */
+
+.slide-title-zone {
+  padding-top: var(--safe-top);
+  flex-shrink: 0;
+}
+
+.kicker {
+  margin: 0 0 6px;
+  font-size: 13px;
+  font-weight: 600; /* SemiBold */
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--c-sea-teal);
+}
+
+.slide-title {
+  /* H1: Pretendard ExtraBold 28-30pt */
+  margin: 0;
+  font-size: 30px;
+  font-weight: 800; /* ExtraBold */
+  color: var(--c-deep-pine);
+}
+
+.slide-subtitle {
+  /* H2: Pretendard SemiBold 20-24pt */
+  margin: 10px 0 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--c-slate);
+}
+
+.slide-content-zone {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: var(--safe-bottom);
+  min-height: 0;
+}
+
+/* ---------- 공통 텍스트 요소 ---------- */
+
+.headline {
+  /* 슬라이드당 1차 강조 요소: 가장 굵고 큰 텍스트 */
+  margin: 0 0 20px;
+  font-size: 36px;
+  font-weight: 800; /* ExtraBold */
+  line-height: 1.35;
+  color: var(--c-teal);
+  max-width: 900px;
+}
+
+.body-text {
+  /* Body: Regular/Medium 14-16pt */
+  margin: 0 0 32px;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--c-slate);
+  max-width: 760px;
+}
+
+.caption {
+  font-size: 12px;
+  font-weight: 300; /* Light */
+  color: var(--c-gray);
+}
+
+/* ---------- RoundRect Card (Design System §6) ---------- */
+/* 그림자 없음, 좌측 컬러 바 등 장식 accent border 없음, 균등 gap 그리드 */
+
+.card-grid {
+  display: grid;
+  gap: var(--card-gap);
+}
+
+.info-card,
+.competence-card {
+  background: var(--c-mist);
+  border: 1px solid var(--c-line);
+  border-radius: var(--card-radius);
+  box-shadow: none;
+  padding: 22px 20px;
+}
+
+/* 슬라이드 1: 회사 소개 — 핵심 정보 카드 4개 */
+.info-grid {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.info-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.info-value {
+  /* Stat Number: ExtraBold 24-30pt, 슬라이드 1차 강조(headline)보다 작게 유지 */
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--c-sea-teal);
+  line-height: 1.2;
+}
+
+.info-label {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--c-slate);
+}
+
+/* 슬라이드 2: 제품 소개 — 이미지 + 정보 컬럼 */
+.product-layout {
+  display: flex;
+  gap: 48px;
+  align-items: stretch;
+  height: 100%;
+}
+
+.product-image-col {
+  flex: 0 0 52%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+}
+
+.product-image {
+  position: relative;
+  border-radius: var(--card-radius);
+  overflow: hidden;
+  background: var(--c-mist);
+  aspect-ratio: 4 / 3;
+}
+
+.product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  /* 현장/설비 사진: 채도를 낮추고 브랜드 틸 톤으로 틴트해 팔레트에 흡수 */
+  filter: grayscale(35%) saturate(60%) brightness(0.98);
+}
+
+.product-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--c-teal);
+  opacity: 0.16;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+
+.product-info-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 18px;
+}
+
+.product-name {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600; /* H2 SemiBold */
+  color: var(--c-deep-pine);
+}
+
+.product-tagline {
+  margin: -10px 0 0;
+  font-size: 15px;
+  color: var(--c-slate);
+  line-height: 1.6;
+}
+
+.spec-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-top: 1px solid var(--c-line);
+}
+
+.spec-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--c-line);
+}
+
+.spec-label {
+  font-size: 13px;
+  color: var(--c-gray);
+}
+
+.spec-value {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--c-ink);
+}
+
+/* 슬라이드 3: 핵심 경쟁력 — 카드 4개 그리드 */
+.competence-grid {
+  grid-template-columns: repeat(4, 1fr);
+  height: 100%;
+  align-content: center;
+}
+
+.competence-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  justify-content: flex-start;
+}
+
+.competence-number {
+  font-size: 30px;
+  font-weight: 800; /* ExtraBold, Stat Number 역할 */
+  color: var(--c-sea-teal);
+  line-height: 1;
+}
+
+.competence-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600; /* H2 SemiBold */
+  color: var(--c-deep-pine);
+}
+
+.competence-desc {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--c-slate);
+}
+
+#nav-hint {
+  position: fixed;
+  bottom: 12px;
+  right: 16px;
+  font-size: 12px;
+  color: #999;
+}
+
+@media print {
+  body { background: #fff; }
+  .slide { box-shadow: none; margin: 0; display: flex !important; page-break-after: always; }
+  #nav-hint { display: none; }
+}

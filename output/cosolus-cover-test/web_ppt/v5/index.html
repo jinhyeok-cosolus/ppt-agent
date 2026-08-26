@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>COSOLUS 표지 테스트 - 난연 마스터배치</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!--
+  테스트용 표지 1장짜리 웹PPT (v5 — 01_cover_design_V2.md Brand Block Sub Message
+  개정 반영판).
+  레이아웃 근거: docs/slide-design-rules/01_cover_design_V2.md
+  (표지 슬라이드는 4순위 범용 Layout Reference L01~L33보다 이 문서를 우선 적용)
+
+  v4 -> v5 변경 (Brand Block Sub Message만 수정, 배경 이미지/Overlay/Main Title/
+  그 외 Composition은 v4와 동일, 새 디자인 규칙 추가 없음 — 상세 근거는 style.css
+  상단 주석 참고):
+  1. Sub Message 문구를 "Small action, BIG DIFFERENCE"로 축소.
+  2. Sub Message 색상을 CI 로고와 동일한 White로 변경.
+  3. CI 로고를 명시적 폭(231.68px)으로 고정하고 Sub Message도 동일 폭 +
+     text-align-last:justify로 좌·우 끝점을 일치.
+  4. 위계(CI > Sub Message)는 크기 차이로 유지.
+  5. 세로 간격(gap 8px)은 v4와 동일.
+-->
+<div id="deck">
+
+  <section class="slide slide--cover" data-index="1">
+    <img class="cover-bg-image" src="assets/images/cover-background.png" alt="" aria-hidden="true">
+    <div class="cover-overlay" aria-hidden="true"></div>
+
+    <div class="cover-brand">
+      <p class="cover-brand-sub">Small action, BIG DIFFERENCE</p>
+      <img class="cover-brand-logo" src="assets/images/logo-white.png" alt="COSOLUS">
+    </div>
+
+    <div class="cover-title-block">
+      <h1 class="cover-title">난연 마스터배치</h1>
+    </div>
+  </section>
+
+  <!-- SLIDES:INSERT (이번 테스트는 표지 1장만 생성 — 본문 슬라이드 없음) -->
+
+</div>
+
+<div id="nav-hint" aria-hidden="true">← → 키로 슬라이드 이동</div>
+
+<script src="assets/vendor/chart.min.js"></script>
+<script>
+  // 슬라이드 간 이동(브라우저 프레젠테이션 모드 대체용 최소 스크립트)
+  const slides = Array.from(document.querySelectorAll(".slide"));
+  let current = 0;
+  function show(i) {
+    slides.forEach((s, idx) => s.classList.toggle("is-active", idx === i));
+  }
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowRight" && current < slides.length - 1) { current++; show(current); }
+    if (e.key === "ArrowLeft" && current > 0) { current--; show(current); }
+  });
+  if (slides.length <= 1) {
+    const hint = document.getElementById("nav-hint");
+    if (hint) hint.style.display = "none";
+  }
+  show(0);
+</script>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>디자인 QA 테스트 — Three-Column Insight Layout 적용 검증 (v3, Reference 비율 반영)</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!--
+  1장짜리 디자인 QA 테스트 웹PPT (정식 [1]~[9] 워크플로우 아님, material_analysis/slide_outline 없음).
+  목적: docs/slide-design-rules/three-column/three-column.md(Reference pptx 분석 기반으로
+  §3~§7 비율·간격 보완된 최신판)가 실제 슬라이드 생성 시 올바르게 반영되는지 확인.
+  주의: 문서 지시대로 같은 폴더의 "3 column_reference.pptx"는 열어보지 않았고, three-column.md
+  텍스트만 근거로 삼았다. Reference의 좌측 세로 브랜드 스트라이프는 문서가 반영 대상에서 제외한
+  Reference 고유 장식이므로 추가하지 않았다.
+
+  레이아웃 선택 판단(v1과 동일, 재검토 없음): 3개 Column(환경 규제 강화 / 친환경 소재 시장 성장 /
+  공급망 다변화)은 "친환경 소재 산업의 주요 변화"라는 동일 주제 아래 서로 독립적이며 위계가 동일한
+  변화 요인 3가지를 병렬 제시하는 구조 — Use When("산업적 요인 3가지", "시장·기술·환경 변화 요인
+  3가지") 조건에 해당하여 채택.
+
+  v2 -> v3 변경 범위: three-column.md의 §3~§7 비율/간격 개정(Reference 분석 기반)을 CSS 레이아웃에만
+  반영. Key Message 문구/밑줄 강조, Main Visual 표현(KPI/비교막대/인용구)은 v2와 동일 유지. Hard
+  Rule 공통 Header System(CI/Sub Message/구분선/Section Label/Main Title/페이지 번호) 좌표는 v1부터
+  지금까지 변경 없음.
+  - Header Bar: Column 경계까지 여백 없이(edge-to-edge) 채움, 높이는 Column 콘텐츠 전체 높이의
+    약 10%(48px)로 슬림화, 텍스트 크기를 Design System H2(서브타이틀) 위계로 확대.
+  - Key Message: Header Bar와의 간격을 Header Bar 높이의 약 1/3(16px)로 좁힘, Column 폭 전체가
+    아니라 약 78%로 좌우 여백을 둔 좁은 배치로 변경(기존 ExtraBold/18pt/Main Color/밑줄/1~2줄 유지).
+  - Main Visual: Key Message와 거의 붙도록 간격 최소화, flex:1로 Header Bar·Key Message를 제외한
+    영역의 대부분(Supporting Evidence 포함해도 다수 비중 유지)을 차지하도록 확대.
+  - Alignment: Column 사이 별도 gutter 제거, Vertical Divider(1px)는 Header Bar 바로 아래부터
+    Main Visual/Supporting Evidence 마지막 요소까지만 표시(.col-body에만 적용, Header Bar 구간과
+    하단 출처 여백 구간은 제외)하도록 DOM에 .col-body 래퍼를 추가.
+-->
+<div id="deck">
+
+  <section class="slide slide--content" data-index="1">
+    <img class="deck-logo" src="assets/images/cosolus-ci-2.png" alt="COSOLUS">
+    <span class="deck-tagline">We promise tomorrow</span>
+    <span class="deck-divider"></span>
+
+    <div class="slide-title-zone">
+      <p class="section-label">BACKGROUND</p>
+      <h1 class="slide-title">친환경 소재 산업의 주요 변화</h1>
+    </div>
+
+    <div class="slide-content-zone">
+      <div class="three-col">
+
+        <!-- Column 1: 환경 규제 강화 (Message-focused: Header Bar -> Key Message -> Large Number -> Supporting Statement) -->
+        <div class="col">
+          <div class="col-header-bar">환경 규제 강화</div>
+          <div class="col-body">
+            <div class="col-key-box"><p class="col-key">글로벌 <span class="km-em">탄소중립</span> 확산</p></div>
+            <div class="col-visual col-visual--kpi">
+              <p class="kpi-number">40<span class="kpi-unit">%</span></p>
+              <p class="kpi-caption">2030년까지 탄소배출 감축 목표</p>
+            </div>
+            <p class="col-evidence">친환경·재활용 소재 수요 동반 증가</p>
+          </div>
+        </div>
+
+        <!-- Column 2: 친환경 소재 시장 성장 (Data-focused: Header Bar -> Key Message -> Chart -> Source/Supporting Data) -->
+        <div class="col">
+          <div class="col-header-bar">친환경 소재 시장 성장</div>
+          <div class="col-body">
+            <div class="col-key-box"><p class="col-key">자동차·배터리 <span class="km-em">수요 확대</span></p></div>
+            <div class="col-visual col-visual--chart">
+              <div class="bar-chart">
+                <div class="bar-item">
+                  <span class="bar-value">120억 달러</span>
+                  <span class="bar bar--2024" style="height:90px;"></span>
+                  <span class="bar-axis">2024</span>
+                </div>
+                <div class="bar-item">
+                  <span class="bar-value">280억 달러</span>
+                  <span class="bar bar--2030" style="height:210px;"></span>
+                  <span class="bar-axis">2030</span>
+                </div>
+              </div>
+            </div>
+            <p class="col-evidence">연평균 성장률 약 15%</p>
+          </div>
+        </div>
+
+        <!-- Column 3: 공급망 다변화 (Message-focused: Header Bar -> Key Message -> Quote -> Supporting Statement) -->
+        <div class="col">
+          <div class="col-header-bar">공급망 다변화</div>
+          <div class="col-body">
+            <div class="col-key-box"><p class="col-key">원료 <span class="km-em">의존도 완화</span> 필요</p></div>
+            <div class="col-visual col-visual--quote">
+              <span class="quote-mark">&ldquo;</span>
+              <p class="quote-text">안정적인 소재 공급망 확보가<br>새로운 경쟁력</p>
+            </div>
+            <p class="col-evidence">안정적인 원료 확보가 기업 경쟁력의 핵심 요소로 부상</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <span class="deck-page">1</span>
+  </section>
+
+</div>
+
+<div id="nav-hint" aria-hidden="true">← → 키로 슬라이드 이동</div>
+
+<script src="assets/vendor/chart.min.js"></script>
+<script>
+  // 슬라이드 간 이동(브라우저 프레젠테이션 모드 대체용 최소 스크립트)
+  const slides = Array.from(document.querySelectorAll(".slide"));
+  let current = 0;
+  function show(i) {
+    slides.forEach((s, idx) => s.classList.toggle("is-active", idx === i));
+  }
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowRight" && current < slides.length - 1) { current++; show(current); }
+    if (e.key === "ArrowLeft" && current > 0) { current--; show(current); }
+  });
+  show(0);
+</script>
+</body>
+</html>

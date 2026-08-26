@@ -1,0 +1,104 @@
+<!--
+  Flow Diagram 재사용 구현 골격 — HTML (web-ppt-generator 2단계 최적화, 2026-08-24)
+  같은 폴더 flow-diagram.css와 함께 사용한다.
+
+  이 파일은 새 구조 규칙을 만들지 않는다 — flow-diagram-rules.md와
+  flow-diagram-implementation-reference.md가 이미 정한 구조·좌표를 매 프로젝트마다
+  반복 타이핑하지 않도록 뼈대만 옮겨 담았다.
+
+  사용 방법:
+  1. 아래 <div class="flow-field">...</div> 전체를 슬라이드의 Region B 자리에 복사한다.
+  2. Node/Process/Branch/Output Group의 개수·분기 구조는 이 파일이 정하지 않는다 —
+     아래 각 블록은 "이런 구조의 예시 1개"일 뿐이며, 슬라이드의 실제 Flow Graph(선해석
+     결과)에 맞게 블록을 늘리거나 줄인다.
+  3. 모든 좌표(SVG path의 M/L 좌표, 각 요소의 style="left:...px; top:...px;")는 이
+     파일이 정의하지 않는다 — flow-diagram-implementation-reference.md의 실측값(단순
+     분기는 Slide 26, 재분기가 있으면 Slide 25 절)을 적용해 계산한 실제 px 값으로
+     교체한다. 아래 {} 표시는 그 자리에 실제 계산값을 넣으라는 뜻이며 하드코딩된
+     예시 수치가 아니다.
+  4. Connector 개수(marker/path)도 Flow Graph의 분기 수만큼 늘어난다 — 아래는
+     "공통 시작 → 1차 Branch Point → Lane 2개"의 최소 예시이며, 2차 재분기가 있으면
+     flow-diagram-implementation-reference.md의 Slide 25 절 패턴(Branch Point 수직
+     브래킷 → Lane 세그먼트 → Node 자리 → Lane 세그먼트 반복)을 그대로 이어 붙인다.
+  5. Material/Intermediate/Output Node는 Connector를 분절하고, Process는 Connector
+     위에 떠서 연속 통과시킨다 — 이 구분은 이 골격이 아니라 flow-diagram-rules.md
+     "Node와 Connector 완전 비중첩"의 규칙이며, 골격은 그 구분을 두 개의 다른 컴포넌트
+     (.flow-node vs .flow-process)로 이미 구조화해 둔 것뿐이다.
+-->
+
+<div class="flow-field">
+
+  <svg class="flow-connectors" viewBox="0 0 {fieldWidth} {fieldHeight}" width="{fieldWidth}" height="{fieldHeight}">
+    <defs>
+      <!-- Connector 색상 수만큼 marker를 추가한다(색상은 flow-diagram.css의 modifier와 1:1로 맞춘다) -->
+      <marker id="arrow-common" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse">
+        <path d="M0,0 L9,4 L0,8 Z" fill="var(--color-slate)"/>
+      </marker>
+      <marker id="arrow-lane-a" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse">
+        <path d="M0,0 L9,4 L0,8 Z" fill="var(--color-gray)"/>
+      </marker>
+      <marker id="arrow-lane-b" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse">
+        <path d="M0,0 L9,4 L0,8 Z" fill="var(--color-primary)"/>
+      </marker>
+    </defs>
+
+    <!-- 공통 시작 구간(Trunk) — Implementation Reference Slide 26 "Trunk 세그먼트 1/2" 패턴 -->
+    <path d="M{trunkStart},{trunkY} L{node1Start},{trunkY}" class="flow-connector-line flow-connector-line--common" marker-end="url(#arrow-common)"/>
+    <path d="M{node1End},{trunkY} L{branchX},{trunkY}" class="flow-connector-line flow-connector-line--common" marker-end="url(#arrow-common)"/>
+
+    <!-- 1차 Branch Point(수직 브래킷) — Implementation Reference "Branch Point" 값 그대로 사용 -->
+    <path d="M{branchX},{laneATop} L{branchX},{laneBBottom}" class="flow-connector-line flow-connector-line--lane-a"/>
+
+    <!-- Lane A: Branch Point → (Process 있으면 그 앞뒤 두 구간) → Node/Output -->
+    <path d="M{branchX},{laneAY} L{laneAEnd},{laneAY}" class="flow-connector-line flow-connector-line--lane-a" marker-end="url(#arrow-lane-a)"/>
+
+    <!-- Lane B: Branch Point → Node/Output (2차 재분기가 있으면 Slide 25 절의
+         "2차 Branch Point 수직 브래킷 → 상단/하단 서브레인" 패턴을 이 구간에 이어 붙인다) -->
+    <path d="M{branchX},{laneBY} L{laneBEnd},{laneBY}" class="flow-connector-line flow-connector-line--lane-b" marker-end="url(#arrow-lane-b)"/>
+  </svg>
+
+  <!-- 공통 시작 Node(Material) -->
+  <div class="flow-node flow-node--start" style="left:{x}px; top:{y}px;">
+    <img src="assets/images/{img}.png" alt="{alt}">
+    <span class="flow-node-label">{라벨}</span>
+  </div>
+
+  <!-- Process(공정) — Connector 위에 뜨는 공정명+이미지, Connector를 끊지 않는다 -->
+  <div class="flow-process" style="left:{x}px; top:{y}px;">
+    <span class="flow-process-label">{공정명}</span>
+    <img src="assets/images/{img}.png" alt="{alt}">
+  </div>
+
+  <!-- 중간 Material Node -->
+  <div class="flow-node flow-node--mid" style="left:{x}px; top:{y}px;">
+    <img src="assets/images/{img}.png" alt="{alt}">
+    <span class="flow-node-label">{라벨}</span>
+  </div>
+
+  <!-- 카테고리 라벨(Lane을 설명하는 라벨 박스, 필요한 만큼 반복) -->
+  <div class="flow-category-label flow-category-label--lane-a" style="left:{x}px; top:{y}px;">{Lane A 라벨}</div>
+  <div class="flow-category-label flow-category-label--lane-b" style="left:{x}px; top:{y}px;">{Lane B 라벨}</div>
+
+  <!-- Lane 내 단일 결과물 Node -->
+  <div class="flow-node flow-node--output" style="left:{x}px; top:{y}px;">
+    <img src="assets/images/{img}.png" alt="{alt}">
+    <span class="flow-node-label">{라벨}<span class="sub">{보조 텍스트}</span></span>
+  </div>
+
+  <!-- Output Group — 동일 카테고리 복수 결과물을 하나의 Node처럼 묶을 때만 사용
+       (Sibling Outputs Branch로 판별된 경우는 위 flow-node--output을 결과물 수만큼
+       반복하고 Branch Point에서 각각 Connector를 분기한다 — 이 Output Group과는
+       다른 구조이므로 혼용하지 않는다. 판별 기준은 flow-diagram-rules.md 참조) -->
+  <div class="flow-output-group" style="left:{x}px; top:{y}px;">
+    <div class="og-images">
+      <img src="assets/images/{img1}.png" alt="{alt1}">
+      <img src="assets/images/{img2}.png" alt="{alt2}">
+      <!-- 이미지 개수만큼 반복 -->
+    </div>
+    <span class="flow-node-label">{그룹 라벨}<span class="sub">{보조 텍스트}</span></span>
+  </div>
+
+  <!-- 구간 구분선(카테고리 사이를 가로로 나눌 때만 사용) -->
+  <div class="flow-section-divider" style="left:{x}px; width:{w}px; top:{y}px;"></div>
+
+</div>

@@ -1,0 +1,2 @@
+paragraph 23 | txbx text: '그림 2그림 2'
+paragraph 56 | txbx text: '“Historically, it typically takes 10 to 20 years to move a material from initial discovery to market.” White House Office of Science and Technology Policy“Historically, it typically takes 10 to 20 yea'

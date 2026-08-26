@@ -1,0 +1,418 @@
+/*
+  cosolus-ir-deck-D v3 — style.css
+  Hard Rule(§1-12) > Claude PPT Design System > Content Visualization Freedom > Layout Reference 순으로 구현.
+  좌표 기준: 16:9, 1280x720px 캔버스. pt->px 환산은 1pt = 1.3333px.
+*/
+
+:root {
+  --slide-w: 1280px;
+  --slide-h: 720px;
+
+  /* Brand Color — Hard Rule §5 */
+  --c-primary: #067875;      /* Cosolus Teal */
+  --c-dark: #034443;         /* Deep Pine — 제목/무게감 */
+  --c-secondary: #349887;    /* Sea Teal — 데이터/핵심정보 강조 */
+  --c-light: #AFE2E3;        /* Mint — 보조데이터/구분 */
+  --c-ocean: #1A6A8C;
+  --c-moss: #6E9B3F;
+  --c-amber: #C8801F;
+  --c-ink: #162B1F;
+  --c-slate: #5A6664;
+  --c-gray: #8C9694;
+  --c-line: #E1E7E5;
+  --c-mist: #F3F6F5;
+  --c-tint-lightest: #F4FAFA;
+  --c-header-text: #0F1E1F;  /* Hard Rule §10 Header Bar 전용 */
+  --c-submessage: #478689;   /* Hard Rule §9 Sub Message / 상단 구분선 고정색 */
+  --c-white: #FFFFFF;
+
+  --font-base: "Pretendard", "Malgun Gothic", "맑은 고딕", sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #555;
+  font-family: var(--font-base);
+  color: var(--c-ink);
+  word-break: keep-all;
+}
+
+#deck { display: flex; flex-direction: column; align-items: center; gap: 24px; padding: 24px 0; }
+
+/* ============ Slide Base ============ */
+.slide {
+  position: relative;
+  width: var(--slide-w);
+  height: var(--slide-h);
+  background: var(--c-white);
+  overflow: hidden;
+  flex: none;
+}
+
+/* ============ Common Header System (Hard Rule §9, 표지 제외) ============ */
+.hdr-ci { position: absolute; left: 64px; top: 25px; height: 20px; }
+.hdr-ci img { height: 20px; width: auto; display: block; }
+
+.hdr-submessage {
+  position: absolute; right: 64px; top: 25px;
+  font: 500 14pt/20px var(--font-base);
+  color: var(--c-submessage);
+  white-space: nowrap;
+}
+
+.hdr-divider {
+  position: absolute; left: 64px; top: 56px; width: 1152px; height: 1px;
+  background: var(--c-submessage);
+}
+
+.hdr-section-label {
+  position: absolute; left: 68px; top: 62px;
+  font: 300 12pt var(--font-base);
+  color: var(--c-gray);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.hdr-main-title {
+  position: absolute; left: 64px; top: 83px; width: 1152px;
+  font: 800 28pt/1.25 var(--font-base);
+  color: var(--c-dark);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hdr-page-number {
+  position: absolute; right: 44px; bottom: 24px;
+  font: 300 14pt var(--font-base);
+  color: var(--c-gray);
+}
+
+.hdr-support-message {
+  position: absolute; left: 64px; top: 136px; width: 1152px;
+  font: 600 20pt/1.3 var(--font-base);
+  color: var(--c-ink);
+}
+
+/* Body Box — Hard Rule §9/§12 Safe Area */
+.body-box {
+  position: absolute; left: 64px; top: 135px; width: 1152px; height: 521px;
+}
+.body-box.with-support {
+  top: 178px; height: 478px;
+}
+
+/* ============ Typography Tiers (Claude PPT Design System §3) ============ */
+.t-content-header { font: 600 20pt/1.3 var(--font-base); color: var(--c-ink); }
+.t-explanation     { font: 500 18pt/1.4 var(--font-base); color: var(--c-ink); }
+.t-body            { font: 400 16pt/1.5 var(--font-base); color: var(--c-ink); }
+.t-caption         { font: 300 14pt/1.4 var(--font-base); color: var(--c-slate); }
+.t-footnote        { font: 300 12pt/1.4 var(--font-base); color: var(--c-gray); }
+.t-stat            { font: 800 28pt/1.1 var(--font-base); color: var(--c-primary); }
+
+/* ============ Content Comparison Header (Hard Rule §10) ============ */
+.comp-header {
+  height: 54px;
+  display: flex; align-items: center; justify-content: center;
+  font: 600 20pt var(--font-base);
+  color: var(--c-header-text);
+  letter-spacing: -0.4px;
+  border-radius: 0;
+}
+.comp-header--existing {
+  background: transparent;
+  border-top: 1px solid var(--c-line);
+  border-bottom: 1px solid var(--c-line);
+}
+.comp-header--improved {
+  background: var(--c-tint-lightest);
+  border-top: 1px solid var(--c-primary);
+  border-bottom: 1px solid var(--c-primary);
+}
+
+/* ============ Vertical Content Divider (Hard Rule §11) ============ */
+.v-divider {
+  position: absolute;
+  width: 1px;
+  background: linear-gradient(180deg, rgba(3,68,67,0) 0%, #034443 53%, rgba(3,68,67,0) 100%);
+}
+
+/* ============ Table Style (Design System §8) ============ */
+table.data-table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+table.data-table th {
+  background: var(--c-primary); color: var(--c-white);
+  font: 700 14pt var(--font-base);
+  text-align: center; vertical-align: middle;
+  padding: 10px 8px;
+  border: none;
+}
+table.data-table td {
+  background: var(--c-white); color: var(--c-ink);
+  font: 400 16pt var(--font-base);
+  text-align: center; vertical-align: middle;
+  padding: 10px 8px;
+  border-bottom: 1px solid var(--c-line);
+}
+table.data-table td.dim { color: var(--c-slate); }
+table.data-table td.hl { color: var(--c-primary); font-weight: 700; }
+table.data-table .crit-col { text-align: left; font: 600 14pt var(--font-base); }
+
+/* ============ Shared small components ============ */
+.tag-label {
+  display: inline-block;
+  font: 600 14pt var(--font-base);
+  color: var(--c-primary);
+  letter-spacing: 0.02em;
+}
+.bullet-list { list-style: none; }
+.bullet-list li {
+  position: relative; padding-left: 18px; font: 400 16pt/1.5 var(--font-base); color: var(--c-ink);
+}
+.bullet-list li::before {
+  content: ""; position: absolute; left: 0; top: 0.65em;
+  width: 6px; height: 6px; background: var(--c-primary); border-radius: 50%;
+}
+.footnote-block { font: 300 12pt/1.5 var(--font-base); color: var(--c-gray); }
+
+.stat-block .num { font: 800 28pt var(--font-base); color: var(--c-primary); }
+.stat-block .label { font: 400 14pt var(--font-base); color: var(--c-slate); }
+
+/* ======================================================================
+   Slide 1 — Cover (01_cover_design_V2.md)
+   ====================================================================== */
+.s-cover { background: #06312f; }
+.cover-bg {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center;
+}
+.cover-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(160deg, rgba(26,106,140,0.55) 0%, rgba(127,200,190,0.30) 50%, rgba(15,101,91,0.50) 100%);
+}
+.cover-brand {
+  position: absolute; left: 64px; top: 56px; z-index: 2;
+  display: flex; flex-direction: column; gap: 6px;
+}
+.cover-submsg { font: 500 16px var(--font-base); color: #fff; }
+.cover-logo { height: 36px; width: auto; display: block; }
+.cover-title {
+  position: absolute; left: 50%; top: 58%; transform: translate(-50%, -50%);
+  z-index: 2; width: 960px; text-align: center;
+}
+.cover-title h1 { font: 700 48px/1.35 var(--font-base); color: #fff; }
+
+/* ======================================================================
+   Slide 2 — Company Introduction (02_instruction_design_V1.md)
+   ====================================================================== */
+.intro-grid { display: flex; gap: 48px; }
+.intro-info { flex: 1.35; display: flex; flex-direction: column; justify-content: center; gap: 18px; }
+.intro-fact-row { display: flex; gap: 20px; align-items: baseline; padding-bottom: 14px; border-bottom: 1px solid var(--c-line); }
+.intro-fact-row--vision { align-items: flex-start; }
+.intro-fact-label { width: 84px; flex: none; font: 600 16pt var(--font-base); color: var(--c-primary); }
+.intro-fact-value { flex: 1; font: 400 16pt/1.5 var(--font-base); color: var(--c-ink); }
+.intro-image { flex: 1; overflow: hidden; background: var(--c-mist); }
+.intro-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* ======================================================================
+   Slides 3 / 4 / 11 — Visual + Insight Layout
+   ====================================================================== */
+.vi-grid { display: flex; gap: 40px; }
+.vi-main-visual { flex: 0 0 54%; display: flex; flex-direction: column; gap: 10px; }
+.vi-main-visual img { width: 100%; height: 400px; object-fit: cover; background: var(--c-mist); }
+.vi-insight { flex: 1; display: flex; flex-direction: column; gap: 18px; justify-content: center; }
+.vi-evidence-group { border-left: 3px solid var(--c-primary); padding-left: 16px; }
+.vi-evidence-group--b { border-left-color: var(--c-secondary); }
+.vi-evidence-group-header { font: 600 14pt var(--font-base); color: var(--c-primary); margin-bottom: 10px; letter-spacing: 0.02em; }
+.vi-evidence-group--b .vi-evidence-group-header { color: var(--c-secondary); }
+.vi-stat-row { display: flex; gap: 24px; }
+.vi-stat-row--single { flex-direction: column; gap: 8px; align-items: flex-start; }
+.vi-secondary-text { color: var(--c-ink); }
+
+.s4-grid { display: flex; gap: 40px; align-items: center; }
+.s4-main { flex: 0 0 46%; position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; }
+.s4-ring {
+  width: 240px; height: 240px; border-radius: 50%;
+  background: var(--c-primary);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+}
+.s4-cagr-num { font: 800 28pt var(--font-base); color: #fff; line-height: 1.1; }
+.s4-ring-label { font: 600 14pt var(--font-base); color: var(--c-light); letter-spacing: 0.08em; margin-top: 4px; }
+.s4-cagr-caption { color: var(--c-ink); }
+.s4-graphic { width: 140px; height: auto; opacity: 0.45; }
+.s4-insight { flex: 1; display: flex; flex-direction: column; gap: 16px; justify-content: center; }
+.s4-insight p { max-width: 480px; }
+
+.s11-grid { display: flex; gap: 0; }
+.s11-claim { flex: 0 0 34%; display: flex; flex-direction: column; justify-content: center; gap: 6px; padding-right: 32px; }
+.s11-claim-label { margin-bottom: 6px; }
+.s11-claim-num { font: 800 28pt var(--font-base); color: var(--c-primary); line-height: 1.1; }
+.s11-claim-num--sm { margin-top: 14px; }
+.s11-claim-sub { color: var(--c-slate); margin-bottom: 4px; }
+.s11-divider { left: auto; margin: 0 32px; height: 420px; align-self: center; position: relative; }
+.s11-evidence { flex: 1; display: flex; flex-direction: column; gap: 16px; padding-left: 0; justify-content: center; }
+.contrib-row { display: flex; align-items: center; gap: 14px; }
+.contrib-label { width: 150px; flex: none; }
+.contrib-bar { position: relative; flex: 1; height: 16px; background: var(--c-mist); border-radius: 0; overflow: hidden; }
+.contrib-bar-base { position: absolute; left: 0; top: 0; bottom: 0; background: var(--c-line); }
+.contrib-bar-fill { position: absolute; left: 0; top: 0; bottom: 0; background: var(--c-primary); }
+.contrib-bar-fill--secondary { background: var(--c-secondary); }
+.contrib-value { width: 130px; flex: none; font: 600 14pt var(--font-base); color: var(--c-ink); text-align: right; }
+.s11-mechanism { display: flex; align-items: center; gap: 14px; margin-top: 4px; }
+.s11-mechanism img { height: 90px; width: auto; }
+.s11-advantages { margin-top: 6px; column-count: 2; column-gap: 24px; }
+.s11-advantages li { font-size: 14pt; }
+
+/* ======================================================================
+   Slide 5 — Three-Column Insight Layout
+   ====================================================================== */
+.tc-grid { display: flex; gap: 24px; }
+.tc-col { flex: 1; display: flex; flex-direction: column; }
+.tc-col-body { flex: 1; display: flex; flex-direction: column; align-items: center; text-align: center; padding: 22px 12px 0; gap: 14px; }
+.tc-key-message { font: 800 18pt/1.35 var(--font-base); color: var(--c-primary); }
+.tc-key-message u { text-decoration-color: var(--c-primary); }
+.tc-visual { flex: 1; display: flex; align-items: center; justify-content: center; min-height: 180px; }
+.tc-icon { width: 150px; height: 150px; }
+.tc-cycle { width: 260px; height: 128px; }
+.tc-cycle-label { font: 600 18.7px var(--font-base); fill: var(--c-ink); }
+.tc-support { color: var(--c-slate); max-width: 300px; }
+
+/* ======================================================================
+   Slide 6 — Before + After (Variant A, text panels)
+   ====================================================================== */
+.ba-wrap { display: flex; flex-direction: column; }
+.ba-grid { display: flex; align-items: stretch; gap: 0; flex: 1; }
+.ba-col { flex: 1; display: flex; flex-direction: column; }
+.ba-col-body { flex: 1; padding: 28px 28px 0; display: flex; flex-direction: column; gap: 20px; }
+.ba-sub { color: var(--c-slate); }
+.ba-list li { font-size: 18pt; padding-left: 22px; margin-bottom: 14px; }
+.ba-list li::before { width: 8px; height: 8px; top: 0.55em; }
+.ba-highlight { color: var(--c-ink); }
+.ba-arrow { flex: 0 0 90px; display: flex; align-items: center; justify-content: center; }
+.ba-arrow svg { width: 56px; height: 40px; }
+.ba-conclusion {
+  margin-top: 20px; text-align: center; background: var(--c-tint-lightest);
+  border-top: 1px solid var(--c-primary); border-bottom: 1px solid var(--c-primary);
+  padding: 16px; color: var(--c-dark); font-weight: 600;
+}
+
+/* ======================================================================
+   Slide 7 — Comparison Matrix
+   ====================================================================== */
+.cm-wrap { display: flex; flex-direction: column; gap: 16px; justify-content: center; }
+.cm-highlight-th { position: relative; }
+.cm-table td.cm-highlight-td { color: var(--c-primary); font-weight: 700; }
+.cm-table th:nth-child(2), .cm-table td:nth-child(2) { outline: 2px solid var(--c-primary); outline-offset: -2px; }
+
+/* ======================================================================
+   Slide 8 — Benefit + Impact
+   ====================================================================== */
+.bi-wrap { display: flex; flex-direction: column; gap: 14px; }
+.bi-headers { display: flex; gap: 17px; }
+.bi-header-left, .bi-header-right { flex: 1; }
+.bi-body { display: flex; align-items: stretch; position: relative; flex: 1; padding-top: 18px; }
+.bi-area { flex: 1; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px; padding: 0 28px; }
+.bi-divider { position: relative; left: auto; align-self: center; height: 82%; }
+.bi-message { color: var(--c-dark); font-weight: 600; }
+.bi-evidence { width: 100%; max-width: 380px; }
+.bi-evidence--calc { display: flex; flex-direction: column; gap: 10px; align-items: center; padding: 18px 0; }
+.bi-calc-line { font: 500 16pt var(--font-base); color: var(--c-ink); }
+.bi-calc-result { font: 800 28pt var(--font-base); color: var(--c-primary); }
+.bi-support { max-width: 340px; color: var(--c-slate); }
+
+/* ======================================================================
+   Slide 9 — Process + Comparison
+   ====================================================================== */
+.pc-wrap { display: flex; flex-direction: column; gap: 28px; }
+.pc-process { display: flex; align-items: center; justify-content: space-between; }
+.pc-stage-box {
+  width: 100px; height: 68px; display: flex; align-items: center; justify-content: center;
+  text-align: center; background: var(--c-mist); border: 1px solid var(--c-line);
+  font: 600 14pt/1.2 var(--font-base); color: var(--c-ink);
+}
+.pc-stage-box--num { background: var(--c-tint-lightest); border-color: var(--c-primary); color: var(--c-primary); font-weight: 800; }
+.pc-arrow { color: var(--c-primary); font-size: 20px; flex: none; }
+.pc-compare { display: flex; gap: 24px; flex: 1; }
+.pc-compare-col { flex: 1; display: flex; flex-direction: column; }
+.pc-compare-body { flex: 1; padding: 24px 24px 0; display: flex; flex-direction: column; gap: 18px; }
+.pc-compare-images { display: flex; gap: 12px; }
+.pc-compare-images img { flex: 1; height: 240px; object-fit: cover; }
+.pc-compare-body .t-body { font-size: 18pt; line-height: 1.5; }
+.pc-compare-body--improved { align-items: center; text-align: center; }
+.pc-integrated-badge {
+  width: 100%; padding: 36px 20px; background: var(--c-tint-lightest); border: 1px solid var(--c-primary);
+  display: flex; flex-direction: column; align-items: center; gap: 10px;
+}
+.pc-integrated-num { font: 800 28pt var(--font-base); color: var(--c-primary); }
+.pc-integrated-sub { font: 600 16pt var(--font-base); color: var(--c-ink); letter-spacing: 0.05em; }
+
+/* ======================================================================
+   Slide 10 — Table Comparison
+   ====================================================================== */
+.tbl-wrap { display: flex; flex-direction: column; gap: 16px; justify-content: center; }
+.tbl-comparison td { line-height: 1.45; padding: 22px 14px; }
+.tbl-comparison th { font-size: 14pt; padding: 16px 8px; }
+
+/* ======================================================================
+   Slide 12 — Process / System Architecture (Layout A)
+   ====================================================================== */
+.psa-wrap { display: flex; flex-direction: column; padding-top: 12px; }
+.psa-title { margin-bottom: 32px; }
+.psa-components { display: flex; align-items: flex-start; gap: 0; }
+.psa-comp { flex: 1; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px; padding: 0 14px; }
+.psa-comp-box {
+  width: 100%; height: 88px; display: flex; align-items: center; justify-content: center;
+  background: var(--c-mist); border: 1px solid var(--c-line);
+  font: 600 18pt/1.3 var(--font-base); color: var(--c-ink);
+}
+.psa-comp-role { color: var(--c-ink); font-size: 18pt; }
+.psa-comp-detail { color: var(--c-slate); }
+.psa-arrow { flex: 0 0 32px; display: flex; align-items: center; justify-content: center; color: var(--c-primary); font-size: 24px; height: 88px; }
+.psa-insight {
+  margin-top: 64px; align-self: center; width: 84%; text-align: center;
+  background: var(--c-tint-lightest); border: 1px solid var(--c-primary);
+  padding: 32px 36px; font: 500 18pt/1.6 var(--font-base); color: var(--c-ink);
+}
+.psa-insight b { color: var(--c-primary); }
+
+/* ======================================================================
+   Slide 13 — Before + After (Variant B, table)
+   ====================================================================== */
+.s13-wrap { display: flex; flex-direction: column; gap: 16px; justify-content: center; }
+.s13-table td { font-size: 15pt; }
+.s13-shared { display: flex; gap: 32px; align-items: center; margin-top: 8px; }
+.s13-shared-text { flex: 1; }
+.s13-shared-photos { flex: 0 0 380px; display: flex; flex-direction: column; gap: 8px; }
+.s13-shared-photos-row, .s13-shared-photos { }
+.s13-shared-photos img { width: 100%; height: 110px; object-fit: cover; }
+.s13-shared-photos { display: grid; grid-template-columns: 1fr 1fr; grid-auto-rows: 110px; gap: 8px; }
+.s13-shared-photos .t-caption { grid-column: 1 / -1; }
+
+/* ======================================================================
+   Slide 14 — 4-Region Grid (L18 변형)
+   ====================================================================== */
+.s14-grid { display: grid; grid-template-columns: 1fr 1fr; grid-auto-rows: min-content; row-gap: 48px; column-gap: 48px; align-content: center; }
+.s14-region { border-top: 2px solid var(--c-primary); padding-top: 14px; display: flex; flex-direction: column; gap: 12px; }
+.s14-region-header { font: 700 18pt var(--font-base); color: var(--c-primary); }
+.s14-track { font: 400 16pt/1.6 var(--font-base); color: var(--c-ink); }
+.s14-region .bullet-list li { font-size: 16pt; margin-bottom: 4px; }
+.s14-region--hero { align-items: center; justify-content: center; text-align: center; border-top-color: var(--c-dark); gap: 8px; padding-bottom: 6px; }
+.s14-hero-num { font: 800 28pt var(--font-base); color: var(--c-dark); margin-top: 4px; }
+.s14-hero-sub { font: 500 16pt var(--font-base); color: var(--c-ink); }
+
+/* ======================================================================
+   Slide 15 — Symmetric Two-Split
+   ====================================================================== */
+.s15-grid { display: flex; gap: 0; }
+.s15-col { flex: 1; display: flex; flex-direction: column; }
+.s15-col-body { flex: 1; padding: 40px 40px 0; display: flex; flex-direction: column; gap: 32px; }
+.s15-logos { display: flex; flex-wrap: wrap; gap: 32px; align-items: center; padding: 28px 8px; background: var(--c-mist); }
+.s15-logos img { height: 52px; width: auto; max-width: 160px; object-fit: contain; }
+.s15-divider { position: relative; left: auto; align-self: center; height: 70%; }
+
+/* print */
+@media print {
+  body { background: #fff; }
+  #deck { gap: 0; padding: 0; }
+  .slide { page-break-after: always; }
+}

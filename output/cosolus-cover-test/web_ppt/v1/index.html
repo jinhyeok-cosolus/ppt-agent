@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>COSOLUS 표지 테스트 - 난연 마스터배치</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!--
+  테스트용 표지 1장짜리 웹PPT.
+  레이아웃 참고: docs/layout-reference/2026.08.13_layout-catalog_V1.md L01
+  (FULL-BLEED IMAGE / BRAND VISUAL — PRESENTATION TITLE) 구조를
+  Hard Rule(Dark Background 허용, Brand Color, Pretendard)로 재해석.
+  실제 회사 사진/로고 파일이 등록되어 있지 않아(/docs/brand-assets/ 미등록)
+  이미지를 임의로 만들지 않고 Deep Pine 단색 배경 + 텍스트 워드마크로 대체함.
+-->
+<div id="deck">
+
+  <section class="slide slide--cover" data-index="1">
+    <div class="cover-title-block">
+      <span class="cover-accent" aria-hidden="true"></span>
+      <h1 class="cover-title">난연 마스터배치</h1>
+    </div>
+    <div class="cover-wordmark">COSOLUS</div>
+    <div class="cover-page-number">01</div>
+  </section>
+
+  <!-- SLIDES:INSERT (이번 테스트는 표지 1장만 생성 — 본문 슬라이드 없음) -->
+
+</div>
+
+<div id="nav-hint" aria-hidden="true">← → 키로 슬라이드 이동</div>
+
+<script src="assets/vendor/chart.min.js"></script>
+<script>
+  // 슬라이드 간 이동(브라우저 프레젠테이션 모드 대체용 최소 스크립트)
+  const slides = Array.from(document.querySelectorAll(".slide"));
+  let current = 0;
+  function show(i) {
+    slides.forEach((s, idx) => s.classList.toggle("is-active", idx === i));
+  }
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowRight" && current < slides.length - 1) { current++; show(current); }
+    if (e.key === "ArrowLeft" && current > 0) { current--; show(current); }
+  });
+  if (slides.length <= 1) {
+    const hint = document.getElementById("nav-hint");
+    if (hint) hint.style.display = "none";
+  }
+  show(0);
+</script>
+</body>
+</html>

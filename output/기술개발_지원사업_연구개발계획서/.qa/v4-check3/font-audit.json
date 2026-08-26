@@ -1,0 +1,236 @@
+{
+  "slide_18": [
+    {
+      "tag": "div",
+      "class": "hdr-submsg",
+      "text": "We promise tomorrow",
+      "font_weight": "400",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "hdr-section-label",
+      "text": "COMPETITIVENESS",
+      "font_weight": "300",
+      "font_size_px": 16,
+      "font_size_pt": 12.0
+    },
+    {
+      "tag": "h1",
+      "class": "hdr-title",
+      "text": "선행개발 실적",
+      "font_weight": "800",
+      "font_size_px": 37.33,
+      "font_size_pt": 28.0
+    },
+    {
+      "tag": "div",
+      "class": "region-header rh-parallel",
+      "text": "고객사 평가 및 확인 결과",
+      "font_weight": "600",
+      "font_size_px": 26.67,
+      "font_size_pt": 20.0
+    },
+    {
+      "tag": "div",
+      "class": "ms-badge",
+      "text": "01",
+      "font_weight": "700",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "ms-text",
+      "text": "고객 수요 확인 — 열경화 공정 문제 및 UV 전환 요구",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "b",
+      "class": "",
+      "text": "고객 수요 확인",
+      "font_weight": "600",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "ms-badge",
+      "text": "02",
+      "font_weight": "700",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "ms-text",
+      "text": "시제품 평가 — 1차 시제품 5종 고객평가",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "b",
+      "class": "",
+      "text": "시제품 평가",
+      "font_weight": "600",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "ms-badge",
+      "text": "03",
+      "font_weight": "700",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "ms-text",
+      "text": "개선제품 평가 — Edge Mura 개선제품 6종 추가 발송",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "b",
+      "class": "",
+      "text": "개선제품 평가",
+      "font_weight": "600",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "p",
+      "class": "ms-result-highlight",
+      "text": "장기신뢰성 평가결과: 60℃/1000h 중 240h fail → 기준 미충족",
+      "font_weight": "600",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "p",
+      "class": "ms-result-line",
+      "text": "주요현상: Edge Mura 및 표시소자 변색 발생",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "p",
+      "class": "ms-result-line",
+      "text": "적용 가능성은 확인했으나 장기 신뢰성 개선 필요",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "region-header rh-parallel",
+      "text": "본 과제의 개선 방향",
+      "font_weight": "600",
+      "font_size_px": 26.67,
+      "font_size_pt": 20.0
+    },
+    {
+      "tag": "div",
+      "class": "t-explanation",
+      "text": "장기 신뢰성을 결정하는 핵심 물성을 동시에 개선",
+      "font_weight": "600",
+      "font_size_px": 24,
+      "font_size_pt": 18.0
+    },
+    {
+      "tag": "div",
+      "class": "p-num",
+      "text": "01",
+      "font_weight": "800",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "p-ttl",
+      "text": "계면 접착력 향상",
+      "font_weight": "600",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "li",
+      "class": "",
+      "text": "Glass·PET용 고접착 우레탄 아크릴레이트 개발",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "li",
+      "class": "",
+      "text": "기판과의 이차결합 및 가교구조 강화",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "li",
+      "class": "",
+      "text": "Edge 부위의 수분 침투와 박리 억제",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "p-num",
+      "text": "02",
+      "font_weight": "800",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "p-ttl",
+      "text": "조성·공정 최적화",
+      "font_weight": "600",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "li",
+      "class": "",
+      "text": "소재 간 상용성과 분산성 개선",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "li",
+      "class": "",
+      "text": "UV 경화조건, 점도 및 수축률 최적화",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "li",
+      "class": "",
+      "text": "장기 신뢰성 1,000시간 통과 목표",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "page-number",
+      "text": "18",
+      "font_weight": "400",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    }
+  ]
+}

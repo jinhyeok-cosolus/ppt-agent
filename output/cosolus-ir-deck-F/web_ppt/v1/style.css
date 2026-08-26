@@ -1,0 +1,434 @@
+/*
+  cosolus-ir-deck-F — web PPT 공통 스타일
+  기준 문서: docs/design-hard-rules/2026.08.12_design_hard-rules_V2.md (Hard Rule, 1순위)
+            docs/design-system/Claude_PPT_Design_System.md (Design System, 2순위)
+            docs/slide-design-rules/*.md (Layout Reference, 4순위)
+  캔버스: 1280x720px (16:9, 96dpi). font-size는 pt 단위를 그대로 사용한다(브라우저가 net px로 환산).
+*/
+
+:root {
+  --slide-width: 1280px;
+  --slide-height: 720px;
+
+  /* Hard Rule §5 Brand Color */
+  --c-primary: #067875;       /* Cosolus Teal */
+  --c-dark: #034443;          /* Deep Pine */
+  --c-secondary: #349887;     /* Sea Teal */
+  --c-light: #AFE2E3;         /* Mint */
+  --c-ocean: #1A6A8C;
+  --c-moss: #6E9B3F;
+  --c-amber: #C8801F;
+  --c-ink: #162B1F;
+  --c-slate: #5A6664;
+  --c-gray: #8C9694;
+  --c-line: #E1E7E5;
+  --c-mist: #F3F6F5;
+  --c-tint-50: #F4FAFA;
+
+  /* Hard Rule §9 고정 색상(Brand Color 변경과 무관) */
+  --c-header-fixed: #478689;
+  --c-header-bar-text: #0F1E1F;
+
+  --font-base: "Pretendard", "Malgun Gothic", "맑은 고딕", "Apple SD Gothic Neo", sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  background: #33383a;
+  font-family: var(--font-base);
+  color: var(--c-ink);
+  word-break: keep-all;
+}
+
+#deck { position: relative; }
+
+/* ===================== Slide base ===================== */
+.slide {
+  width: var(--slide-width);
+  height: var(--slide-height);
+  margin: 24px auto;
+  background: #ffffff;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+  position: relative;
+  overflow: hidden;
+  display: none;
+}
+.slide.is-active { display: block; }
+
+@media print {
+  html, body { background: #fff; }
+  .slide { box-shadow: none; margin: 0; display: block !important; page-break-after: always; }
+  #nav-hint { display: none; }
+}
+
+/* ===================== Hard Rule §9 공통 Header System (표지 제외) ===================== */
+.header-ci {
+  position: absolute; left: 64px; top: 25px; height: 20px; z-index: 5;
+}
+.header-ci img { height: 20px; width: auto; display: block; }
+
+.header-submessage {
+  position: absolute; right: 64px; top: 25px; z-index: 5;
+  font: 400 14pt var(--font-base);
+  color: var(--c-header-fixed);
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.header-divider {
+  position: absolute; left: 64px; top: 56px; width: 1152px; height: 1px;
+  background: var(--c-header-fixed); z-index: 5;
+}
+
+.header-section-label {
+  position: absolute; left: 68px; top: 62px; z-index: 5;
+  font: 300 12pt var(--font-base);
+  color: var(--c-gray);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  line-height: 20px;
+}
+
+.header-main-title {
+  position: absolute; left: 64px; top: 83px; width: auto; max-width: 1000px; z-index: 5;
+  font: 800 28pt var(--font-base);
+  color: var(--c-header-bar-text);
+  line-height: 1.25;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.header-page-number {
+  position: absolute; right: 64px; bottom: 16px; z-index: 5;
+  font: 400 14pt var(--font-base);
+  color: var(--c-gray);
+}
+
+/* Hard Rule §12 Main Title Supporting Message */
+.supporting-message {
+  position: absolute; left: 64px; top: 138px; width: 1152px; z-index: 5;
+  font: 500 20pt var(--font-base);
+  color: var(--c-ink);
+  line-height: 1.35;
+}
+
+/* Body Box: 본문 Safe Area */
+.body-box {
+  position: absolute; left: 64px; top: 135px; width: 1152px; height: 521px;
+}
+.body-box.with-support {
+  top: 178px; height: 478px;
+}
+
+/* ===================== Hard Rule §10 Content Region Header ===================== */
+.content-header-bar {
+  height: 0.561in; /* ≈54px */
+  display: flex; align-items: center; justify-content: center;
+  font: 600 20pt var(--font-base);
+  color: var(--c-header-bar-text);
+  letter-spacing: -0.3pt;
+  text-align: center;
+  padding: 0;
+  box-sizing: border-box;
+  border-top-width: 1px; border-top-style: solid;
+  border-bottom-width: 1px; border-bottom-style: solid;
+}
+.content-header-bar.variant-parallel {
+  background: var(--c-tint-50);
+  border-top-color: var(--c-primary);
+  border-bottom-color: var(--c-primary);
+}
+.content-header-bar.variant-contrast-before {
+  background: transparent;
+  border-top-color: var(--c-line);
+  border-bottom-color: var(--c-line);
+  color: var(--c-slate);
+}
+.content-header-bar.variant-contrast-after {
+  background: var(--c-tint-50);
+  border-top-color: var(--c-primary);
+  border-bottom-color: var(--c-primary);
+  color: var(--c-primary);
+  font-weight: 700;
+}
+
+/* ===================== Hard Rule §11 Vertical Content Divider ===================== */
+.v-divider {
+  position: absolute; width: 1px;
+  background: linear-gradient(to bottom,
+    rgba(3,68,67,0) 0%,
+    rgba(3,68,67,0.85) 53%,
+    rgba(3,68,67,0) 100%);
+}
+.v-divider.dashed {
+  background: none;
+  border-left: 1px dashed rgba(3,68,67,0.85);
+  width: 0;
+}
+
+/* ===================== Hard Rule §10B Table Header Row / 공통 Table 스타일 ===================== */
+table.data-table {
+  border-collapse: collapse;
+  width: 100%;
+  table-layout: fixed;
+}
+table.data-table th, table.data-table td {
+  border: 1px solid var(--c-line);
+  padding: 8px 6px;
+  text-align: center;
+  vertical-align: middle;
+  font: 400 16pt var(--font-base);
+  color: var(--c-ink);
+}
+table.data-table thead th {
+  background: var(--c-primary);
+  color: #ffffff;
+  font: 600 14pt var(--font-base);
+  border-color: var(--c-primary);
+}
+table.data-table td.criteria-cell, table.data-table th.criteria-cell {
+  font: 600 14pt var(--font-base);
+  color: var(--c-ink);
+}
+table.data-table td.emphasis-text {
+  color: var(--c-primary);
+  font-weight: 700;
+}
+.table-footnote {
+  font: 300 12pt var(--font-base);
+  color: var(--c-gray);
+}
+
+/* 019 Competitive Advantage Highlight — Layout-specific Solid Fill 강조(Table Comparison 전용) */
+table.data-table th.col-highlight, table.data-table td.col-highlight {
+  background: var(--c-secondary);
+  color: #ffffff;
+  border-color: var(--c-secondary);
+}
+table.data-table td.col-highlight { font-weight: 600; }
+
+/* ===================== Typography utility ===================== */
+.role-body { font: 400 16pt var(--font-base); color: var(--c-ink); line-height: 1.45; }
+.role-explanation { font: 600 18pt var(--font-base); color: var(--c-ink); line-height: 1.4; }
+.role-caption { font: 300 14pt var(--font-base); color: var(--c-slate); line-height: 1.4; }
+.role-footnote { font: 300 12pt var(--font-base); color: var(--c-gray); line-height: 1.4; }
+.role-stat { font: 800 28pt var(--font-base); color: var(--c-primary); }
+.role-keymessage { font: 800 18pt var(--font-base); color: var(--c-primary); }
+
+.text-primary { color: var(--c-primary); }
+.text-ink { color: var(--c-ink); }
+.text-gray { color: var(--c-gray); }
+.text-slate { color: var(--c-slate); }
+
+/* ===================== Cover (01_cover_design_V2.md) ===================== */
+.slide--cover {
+  background-size: cover; background-position: center;
+}
+.cover-bg {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+}
+.cover-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(160deg,
+    rgba(26,106,140,0.55) 0%,
+    rgba(127,200,190,0.30) 50%,
+    rgba(15,101,91,0.50) 100%);
+}
+.cover-brand-block {
+  position: absolute; left: 64px; top: 40px; z-index: 3;
+  display: flex; flex-direction: column; align-items: flex-start; gap: 4px;
+}
+.cover-brand-block .cover-submessage {
+  font: 500 16px var(--font-base); color: #ffffff; letter-spacing: normal;
+}
+.cover-brand-block .cover-ci { height: 36px; width: auto; display: block; }
+.cover-title-block {
+  position: absolute; left: 50%; top: 54%; transform: translate(-50%, -50%);
+  z-index: 3; max-width: 960px; text-align: center;
+}
+.cover-title-block h1 {
+  font: 700 48px var(--font-base); color: #ffffff; margin: 0; line-height: 1.35;
+}
+
+/* ===================== Section Divider (L02) ===================== */
+.slide--section {
+  background: var(--c-dark);
+}
+.section-title-block {
+  position: absolute; left: 64px; top: 50%; transform: translateY(-50%);
+  z-index: 3; max-width: 1100px;
+}
+.section-title-block .section-eyebrow {
+  font: 300 14pt var(--font-base); color: var(--c-light); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px;
+}
+.section-title-block h1 {
+  font: 800 40pt var(--font-base); color: #ffffff; margin: 0; line-height: 1.3;
+}
+
+/* ===================== Three-Column Layout ===================== */
+.three-col-wrap { width: 100%; height: 100%; display: flex; }
+.three-col { flex: 1 1 0; display: flex; flex-direction: column; min-width: 0; }
+.three-col .col-header { width: 100%; }
+.three-col .col-body { flex: 1; padding: 14px 18px 8px; display: flex; flex-direction: column; min-height: 0; }
+.three-col .col-keymsg { font: 800 18pt var(--font-base); color: var(--c-primary); line-height: 1.35; margin: 0 0 10px; }
+.three-col .col-keymsg u { text-decoration-color: var(--c-primary); }
+.three-col .col-visual { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 0; }
+.three-col .col-evidence { font: 400 14pt var(--font-base); color: var(--c-slate); margin-top: 8px; line-height: 1.4; }
+.three-col-gap { width: 28px; flex: 0 0 auto; position: relative; }
+.three-col-gap .v-divider { left: 50%; top: 70px; bottom: 20px; height: auto; }
+
+/* ===================== Process + Comparison Layout ===================== */
+.pc-stack { display: flex; flex-direction: column; height: 100%; }
+.pc-upper { flex: 0 0 58%; min-height: 0; }
+.pc-lower { flex: 1 1 auto; min-height: 0; margin-top: 14px; position: relative; }
+.process-flow { display: flex; align-items: flex-start; justify-content: space-between; }
+.process-stage { display: flex; flex-direction: column; align-items: center; text-align: center; flex: 1; min-width: 0; padding: 0 6px; }
+.process-arrow { flex: 0 0 auto; display: flex; align-items: center; justify-content: center; padding-top: 40px; }
+.process-arrow svg { width: 22px; height: 18px; }
+.process-stage img { max-width: 100%; object-fit: contain; }
+.process-stage .stage-label { font: 600 14pt var(--font-base); color: var(--c-ink); margin-top: 6px; }
+.process-stage .stage-sub { font: 300 14pt var(--font-base); color: var(--c-gray); margin-top: 2px; }
+
+/* ===================== Comparison Matrix ===================== */
+.cm-wrap { width: 100%; border-collapse: collapse; table-layout: fixed; }
+.cm-wrap th, .cm-wrap td { border: 0; padding: 0; }
+.cm-wrap .cm-criteria-cell { font: 600 14pt var(--font-base); color: var(--c-ink); vertical-align: middle; padding: 8px 10px; border-bottom: 1px solid var(--c-line); }
+.cm-wrap .cm-header-cell { background: var(--c-primary); color: #fff; font: 700 16pt var(--font-base); text-align: center; padding: 10px 4px; }
+.cm-wrap .cm-cell { border-bottom: 1px solid var(--c-line); border-left: 1px solid var(--c-line); text-align: center; vertical-align: middle; padding: 8px 8px; }
+.cm-wrap .cm-cell.emphasis-outline { outline: 2px solid var(--c-primary); outline-offset: -2px; }
+
+/* ===================== Before/After Variant A ===================== */
+.ba-frame { width: 100%; height: 100%; display: flex; }
+.ba-col { flex: 0 0 44%; display: flex; flex-direction: column; min-width: 0; }
+.ba-center { flex: 0 0 12%; display: flex; align-items: center; justify-content: center; }
+.ba-col .ba-flowlabel { text-align: center; font: 400 16pt var(--font-base); color: var(--c-ink); margin: 10px 0; }
+.ba-step-seq { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 10px; position: relative; padding-top: 6px; }
+.ba-step-box { width: 78%; text-align: center; padding: 10px 8px; font: 400 16pt var(--font-base); color: var(--c-ink); background: var(--c-tint-50); border: 1px solid var(--c-line); z-index: 2; position: relative; }
+.ba-step-box.improved { border-color: var(--c-primary); }
+.ba-connector { width: 1px; height: 16px; background: var(--c-gray); }
+.ba-branch-row { display: flex; width: 100%; gap: 8px; justify-content: center; }
+.ba-branch-col { flex: 0 0 46%; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.ba-arrow-chevron { font: 800 34pt var(--font-base); color: var(--c-primary); line-height: 1; }
+.ba-arrow-wrap { position: relative; width: 46px; height: 54px; }
+.ba-arrow-img { position: absolute; width: auto; object-fit: contain; }
+.ba-arrow-back { left: 14px; top: 2px; height: 48px; }
+.ba-arrow-front { left: 0; top: 8px; height: 42px; }
+.ba-shared-support { display: flex; gap: 16px; justify-content: center; align-items: center; margin-top: 10px; }
+.ba-shared-support img { height: 84px; width: auto; object-fit: contain; }
+
+/* Before/After Variant B (table) */
+.ba-table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+.ba-table th, .ba-table td { border: 1px solid var(--c-line); text-align: center; vertical-align: middle; padding: 10px 8px; font: 400 16pt var(--font-base); color: var(--c-ink); }
+.ba-table thead th { background: var(--c-primary); color: #fff; font: 700 16pt var(--font-base); }
+.ba-table td.criteria { font: 600 14pt var(--font-base); text-align: left; padding-left: 16px; }
+.ba-table td.improved-col { color: var(--c-primary); font-weight: 700; }
+
+/* ===================== Benefit + Impact ===================== */
+.bi-headerbar-split { display: flex; }
+.bi-headerbar-split .content-header-bar { flex: 1; }
+.bi-header-gap { width: 20px; }
+.bi-areas { display: flex; }
+.bi-area { flex: 1; display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 20px; min-width: 0; }
+.bi-benefit-message { font: 600 18pt var(--font-base); color: var(--c-ink); margin: 14px 0 10px; }
+.bi-evidence { flex: 1; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 0; }
+.bi-support { font: 400 16pt var(--font-base); color: var(--c-slate); margin-top: 10px; text-align: left; }
+.bi-divider-wrap { position: relative; width: 0; }
+
+/* ===================== Radar / Multi-Radar ===================== */
+.radar-row { display: flex; }
+.radar-cell { flex: 1; display: flex; flex-direction: column; align-items: center; min-width: 0; }
+.radar-cell .radar-label { font: 700 16pt var(--font-base); color: var(--c-ink); margin-top: 4px; }
+.radar-cell .radar-label.is-primary { color: var(--c-primary); }
+
+/* ===================== Organization Chart ===================== */
+.org-field { position: absolute; inset: 0; }
+.org-portrait-ring {
+  position: absolute; border-radius: 50%;
+  background: linear-gradient(315deg, #C1E9E8 0%, #339387 90%);
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+.org-portrait-ring img { width: 92%; height: 92%; object-fit: cover; border-radius: 50%; }
+.org-node-dot { position: absolute; width: 20px; height: 20px; border-radius: 50%; background: var(--c-primary); transform: translate(-50%,-50%); }
+.org-role-label { position: absolute; font: 600 18pt var(--font-base); color: var(--c-secondary); text-align: center; }
+.org-name-label { position: absolute; font: 600 20pt var(--font-base); color: var(--c-ink); letter-spacing: -0.3px; text-align: center; }
+.org-org-label { position: absolute; font: 600 18pt var(--font-base); color: var(--c-secondary); text-align: center; }
+.org-career-block { position: absolute; font: 300 11pt var(--font-base); color: #1E3C3E; line-height: 1.55; }
+.org-career-block .heading { font: 600 18pt var(--font-base); color: var(--c-ink); margin-bottom: 6px; display:block; }
+.org-team-item { font: 600 14pt var(--font-base); color: var(--c-secondary); }
+.org-team-dot { display:inline-block; width:8px; height:8px; border-radius:50%; background:var(--c-secondary); margin-right:6px; }
+.org-footnote { font: 300 13pt var(--font-base); color: #1E3C3E; }
+.org-conn-line { position: absolute; height: 1px; background: var(--c-primary); }
+.org-conn-vline { position: absolute; width: 1px; background: var(--c-primary); }
+
+/* ===================== Timeline / Milestone ===================== */
+.timeline-track { position: absolute; height: 2px; background: var(--c-line); }
+.timeline-marker { position: absolute; transform: translate(-50%,-50%); text-align: center; }
+.timeline-marker .marker-badge { width: 68px; height: 68px; border-radius: 50%; background: var(--c-dark); color: #fff; display:flex; align-items:center; justify-content:center; font: 700 14pt var(--font-base); letter-spacing: -0.3px; margin: 0 auto; }
+.timeline-point { position: absolute; width: 12px; height: 12px; border-radius: 50%; background: var(--c-primary); transform: translate(-50%,-50%); }
+.timeline-content { position: absolute; width: 190px; text-align: center; }
+.timeline-content .ms-year { font: 700 14pt var(--font-base); color: var(--c-primary); }
+.timeline-content .ms-title { font: 600 16pt var(--font-base); color: var(--c-ink); margin: 4px 0; }
+.timeline-content .ms-desc { font: 400 14pt var(--font-base); color: var(--c-slate); line-height: 1.4; }
+.timeline-connector { position: absolute; width: 1px; background: var(--c-gray); }
+
+/* ===================== Flow Diagram (Slide 16) ===================== */
+/* L25(pptx 슬라이드 25~26) 실측 기준 — docs/slide-design-rules/flow-diagram-implementation-reference.md 참조.
+   Connector는 전부 직선(Line)이며, Node(Material/Process/Output 공통)는 실측된 도형(채워진 둥근 사각형)을
+   그대로 따라 Connector 위에 얹지 않고 Connector 자체를 Node 앞뒤에서 끊는 방식으로 배치한다. */
+.flow-field { position: absolute; inset: 0; }
+.flow-connector-line { stroke-width: 2.2; vector-effect: non-scaling-stroke; }
+.flow-connector-line.lane-a { stroke: var(--c-primary); }
+.flow-connector-line.lane-b { stroke: var(--c-secondary); }
+.flow-connector-line.trunk { stroke: var(--c-ink); }
+.flow-node-box { position: absolute; padding: 5px 6px; font: 600 14pt var(--font-base); color: var(--c-ink); background: var(--c-tint-50); border: 1px solid var(--c-line); text-align: center; line-height: 1.2; }
+.flow-node-box.trunk { border-color: var(--c-gray); }
+.flow-node-box.lane-a { border-color: var(--c-primary); }
+.flow-node-box.lane-b { border-color: var(--c-secondary); background: #F0FAF7; }
+.flow-node-box .flow-node-sub { display: block; font: 400 12pt var(--font-base); color: var(--c-slate); margin-top: 2px; }
+
+/* ===================== Company Introduction ===================== */
+.ci-wrap { display: flex; }
+.ci-left { flex: 0 0 46%; padding-right: 24px; }
+.ci-right { flex: 1; display: flex; }
+.ci-right img { width: 100%; height: 100%; object-fit: cover; }
+.ci-fact-row { display: flex; padding: 12px 0; border-bottom: 1px solid var(--c-line); }
+.ci-fact-row:first-child { border-top: 1px solid var(--c-line); }
+.ci-fact-label { flex: 0 0 110px; font: 600 16pt var(--font-base); color: var(--c-primary); }
+.ci-fact-value { flex: 1; font: 400 16pt var(--font-base); color: var(--c-ink); line-height: 1.4; }
+
+/* ===================== Executive Summary (L18 two-column) ===================== */
+.es-cols { display: flex; }
+.es-col { flex: 1; padding: 0 24px; }
+.es-col:first-child { padding-left: 0; }
+.es-col:last-child { padding-right: 0; }
+.es-col .es-heading { font: 700 20pt var(--font-base); color: var(--c-primary); margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid var(--c-primary); }
+.es-bullet-block { margin-bottom: 14px; }
+.es-bullet-block .es-sub { font: 600 16pt var(--font-base); color: var(--c-ink); margin-bottom: 6px; }
+.es-bullet-block ul { margin: 0; padding-left: 18px; }
+.es-bullet-block li { font: 400 16pt var(--font-base); color: var(--c-ink); line-height: 1.5; margin-bottom: 4px; }
+
+/* ===================== Closing (L22) ===================== */
+.slide--closing { background: var(--c-dark); }
+.closing-content { position: absolute; left: 64px; top: 50%; transform: translateY(-50%); max-width: 640px; z-index: 3; }
+.closing-content .closing-message { font: 500 20pt var(--font-base); color: #fff; line-height: 1.6; margin-bottom: 28px; }
+.closing-content .closing-thanks { font: 800 44pt var(--font-base); color: #fff; }
+.closing-image { position: absolute; right: 0; top: 0; width: 55%; height: 100%; object-fit: cover; }
+.closing-image-overlay { position: absolute; right: 0; top: 0; width: 55%; height: 100%; background: linear-gradient(90deg, rgba(3,68,67,0.85) 0%, rgba(3,68,67,0.15) 60%); }
+
+/* generic helpers */
+.flex { display: flex; }
+.flex-col { display: flex; flex-direction: column; }
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.w-full { width: 100%; }
+.h-full { height: 100%; }
+img.contain { object-fit: contain; }
+img.cover { object-fit: cover; }
+
+#nav-hint {
+  position: fixed; top: 2px; left: 2px; font-size: 10px; color: #bbb; z-index: 50;
+  pointer-events: none;
+}

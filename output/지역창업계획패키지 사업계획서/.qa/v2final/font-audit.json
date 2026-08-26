@@ -1,0 +1,1936 @@
+{
+  "slide_3": [
+    {
+      "tag": "div",
+      "class": "hdr-submsg",
+      "text": "We promise tomorrow",
+      "font_weight": "400",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "hdr-section-label",
+      "text": "OVERVIEW",
+      "font_weight": "300",
+      "font_size_px": 16,
+      "font_size_pt": 12.0
+    },
+    {
+      "tag": "h1",
+      "class": "hdr-title",
+      "text": "창업아이템 개요",
+      "font_weight": "800",
+      "font_size_px": 37.33,
+      "font_size_pt": 28.0
+    },
+    {
+      "tag": "p",
+      "class": "support-msg",
+      "text": "사용 후 배터리 블랙매스에서 흑연 음극재를 선택적으로 분리·정제해 고순도 정제흑연으로 재자원화한다",
+      "font_weight": "600",
+      "font_size_px": 26.67,
+      "font_size_pt": 20.0
+    },
+    {
+      "tag": "div",
+      "class": "cap",
+      "text": "자료: 코솔러스 — 음극재 흑연 재활용 및 고부가 소재화 모식도",
+      "font_weight": "300",
+      "font_size_px": 16,
+      "font_size_pt": 12.0
+    },
+    {
+      "tag": "div",
+      "class": "proc-insight",
+      "text": "고순도 정제흑연 → 배터리 음극재용 흑연 · 전도성 첨가제 · 방열 첨가제로 재자원화",
+      "font_weight": "600",
+      "font_size_px": 24,
+      "font_size_pt": 18.0
+    },
+    {
+      "tag": "b",
+      "class": "",
+      "text": "배터리 음극재용 흑연",
+      "font_weight": "900",
+      "font_size_px": 24,
+      "font_size_pt": 18.0
+    },
+    {
+      "tag": "b",
+      "class": "",
+      "text": "전도성 첨가제",
+      "font_weight": "900",
+      "font_size_px": 24,
+      "font_size_pt": 18.0
+    },
+    {
+      "tag": "b",
+      "class": "",
+      "text": "방열 첨가제",
+      "font_weight": "900",
+      "font_size_px": 24,
+      "font_size_pt": 18.0
+    },
+    {
+      "tag": "div",
+      "class": "support-header",
+      "text": "코솔러스 소개",
+      "font_weight": "600",
+      "font_size_px": 26.67,
+      "font_size_pt": 20.0
+    },
+    {
+      "tag": "div",
+      "class": "key-message",
+      "text": "초격차 기술 기반 이차전지 재활용 친환경·에너지 기업",
+      "font_weight": "600",
+      "font_size_px": 24,
+      "font_size_pt": 18.0
+    },
+    {
+      "tag": "div",
+      "class": "explain",
+      "text": "사용 후 배터리 양극재 재활용(추출제) 및 음극재 재활용(고순도 정제흑연) 기술개발·사업화를 수행하며, 첨단",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "span",
+      "class": "",
+      "text": "첨단기술기업 지정",
+      "font_weight": "400",
+      "font_size_px": 16,
+      "font_size_pt": 12.0
+    },
+    {
+      "tag": "span",
+      "class": "",
+      "text": "첨단기술제품 확인",
+      "font_weight": "400",
+      "font_size_px": 16,
+      "font_size_pt": 12.0
+    },
+    {
+      "tag": "span",
+      "class": "",
+      "text": "환경부장관 표창",
+      "font_weight": "400",
+      "font_size_px": 16,
+      "font_size_pt": 12.0
+    },
+    {
+      "tag": "span",
+      "class": "",
+      "text": "이노비즈 확인",
+      "font_weight": "400",
+      "font_size_px": 16,
+      "font_size_pt": 12.0
+    },
+    {
+      "tag": "span",
+      "class": "",
+      "text": "초격차 스타트업",
+      "font_weight": "400",
+      "font_size_px": 16,
+      "font_size_pt": 12.0
+    },
+    {
+      "tag": "span",
+      "class": "",
+      "text": "창업기업 확인",
+      "font_weight": "400",
+      "font_size_px": 16,
+      "font_size_pt": 12.0
+    },
+    {
+      "tag": "div",
+      "class": "page-number",
+      "text": "3",
+      "font_weight": "400",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    }
+  ],
+  "slide_4": [
+    {
+      "tag": "div",
+      "class": "hdr-submsg",
+      "text": "We promise tomorrow",
+      "font_weight": "400",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "hdr-section-label",
+      "text": "BACKGROUND",
+      "font_weight": "300",
+      "font_size_px": 16,
+      "font_size_pt": 12.0
+    },
+    {
+      "tag": "h1",
+      "class": "hdr-title",
+      "text": "개발동기 ① 사용 후 배터리 재활용 시장 유망",
+      "font_weight": "800",
+      "font_size_px": 37.33,
+      "font_size_pt": 28.0
+    },
+    {
+      "tag": "p",
+      "class": "support-msg",
+      "text": "전기차·ESS 보급 확대에 따라 사용 후 배터리 재활용 시장은 탄소중립을 실현하는 유망 신산업으로 성장하고 ",
+      "font_weight": "600",
+      "font_size_px": 26.67,
+      "font_size_pt": 20.0
+    },
+    {
+      "tag": "div",
+      "class": "cap",
+      "text": "자료: 연합뉴스(2023.02), SNE리서치",
+      "font_weight": "300",
+      "font_size_px": 16,
+      "font_size_pt": 12.0
+    },
+    {
+      "tag": "div",
+      "class": "support-header",
+      "text": "시사점",
+      "font_weight": "600",
+      "font_size_px": 26.67,
+      "font_size_pt": 20.0
+    },
+    {
+      "tag": "div",
+      "class": "key-message",
+      "text": "배터리 재활용은 배터리 순환경제의 핵심",
+      "font_weight": "600",
+      "font_size_px": 24,
+      "font_size_pt": 18.0
+    },
+    {
+      "tag": "div",
+      "class": "explain",
+      "text": "배터리 재활용은 채굴 대비 탄소발자국·폐수 발생 감소가 적어 탄소중립을 실현하는 핵심기술로 주목받고 있습니다",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "b",
+      "class": "",
+      "text": "14%",
+      "font_weight": "700",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "b",
+      "class": "",
+      "text": "36%",
+      "font_weight": "700",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "cap",
+      "text": "채굴 대비 온실가스 80%↓·폐수 50%↓ (기후에너지환경부, 2025.05)",
+      "font_weight": "300",
+      "font_size_px": 16,
+      "font_size_pt": 12.0
+    },
+    {
+      "tag": "div",
+      "class": "cap",
+      "text": "2050년 글로벌 사용 후 배터리 재활용 시장 600조원 (The JoongAng, SNE리서치)",
+      "font_weight": "300",
+      "font_size_px": 16,
+      "font_size_pt": 12.0
+    },
+    {
+      "tag": "div",
+      "class": "page-number",
+      "text": "4",
+      "font_weight": "400",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    }
+  ],
+  "slide_5": [
+    {
+      "tag": "div",
+      "class": "hdr-submsg",
+      "text": "We promise tomorrow",
+      "font_weight": "400",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "hdr-section-label",
+      "text": "BACKGROUND",
+      "font_weight": "300",
+      "font_size_px": 16,
+      "font_size_pt": 12.0
+    },
+    {
+      "tag": "h1",
+      "class": "hdr-title",
+      "text": "개발동기 ② 흑연 음극재 재활용 필요",
+      "font_weight": "800",
+      "font_size_px": 37.33,
+      "font_size_pt": 28.0
+    },
+    {
+      "tag": "p",
+      "class": "support-msg",
+      "text": "배터리의 28wt%를 차지하는 흑연 음극재는 경제성·정제기술 부족으로 재자원화율이 0%에 머물러 있다",
+      "font_weight": "600",
+      "font_size_px": 26.67,
+      "font_size_pt": 20.0
+    },
+    {
+      "tag": "div",
+      "class": "num",
+      "text": "28wt%",
+      "font_weight": "800",
+      "font_size_px": 40,
+      "font_size_pt": 30.0
+    },
+    {
+      "tag": "div",
+      "class": "label",
+      "text": "배터리 1대당 흑연 음극재 비중 — 현재 재활용은 양극재 회수에 집중, 흑연은 경제성·정제기술 부족으로 폐기",
+      "font_weight": "400",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "note",
+      "text": "출처: The Key Minerals in an EV Battery(2022, Visual Capitalis",
+      "font_weight": "300",
+      "font_size_px": 16,
+      "font_size_pt": 12.0
+    },
+    {
+      "tag": "div",
+      "class": "label",
+      "text": "2040년 글로벌 흑연 음극재 수요 16,023kt — 전기차·ESS 보급 증가에 따라 지속 증가 예상(’2",
+      "font_weight": "400",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "b",
+      "class": "",
+      "text": "16,023kt",
+      "font_weight": "700",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "note",
+      "text": "출처: The Role of Critical Minerals in Clean Energy Transition",
+      "font_weight": "300",
+      "font_size_px": 16,
+      "font_size_pt": 12.0
+    },
+    {
+      "tag": "div",
+      "class": "num",
+      "text": "0%",
+      "font_weight": "800",
+      "font_size_px": 40,
+      "font_size_pt": 30.0
+    },
+    {
+      "tag": "div",
+      "class": "label",
+      "text": "2024년 대한민국 흑연 음극재 재자원화율(리튬 3.12%) — 정부는 2030년 10대 전략 핵심광물 재자",
+      "font_weight": "400",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "note",
+      "text": "출처: 2025년 국정감사 자료(한국광해광업공단 기반)",
+      "font_weight": "300",
+      "font_size_px": 16,
+      "font_size_pt": 12.0
+    },
+    {
+      "tag": "div",
+      "class": "page-number",
+      "text": "5",
+      "font_weight": "400",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    }
+  ],
+  "slide_7": [
+    {
+      "tag": "div",
+      "class": "hdr-submsg",
+      "text": "We promise tomorrow",
+      "font_weight": "400",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "hdr-section-label",
+      "text": "TECHNOLOGY",
+      "font_weight": "300",
+      "font_size_px": 16,
+      "font_size_pt": 12.0
+    },
+    {
+      "tag": "h1",
+      "class": "hdr-title",
+      "text": "흑연 음극재 재활용 공정 기술",
+      "font_weight": "800",
+      "font_size_px": 37.33,
+      "font_size_pt": 28.0
+    },
+    {
+      "tag": "p",
+      "class": "support-msg",
+      "text": "블랙매스에서 흑연을 선택 분리·정제해 고순도 정제흑연을 제조하고, 이를 고부가 소재로 재자원화한다",
+      "font_weight": "600",
+      "font_size_px": 26.67,
+      "font_size_pt": 20.0
+    },
+    {
+      "tag": "div",
+      "class": "proc-title",
+      "text": "흑연 음극재 재활용 공정",
+      "font_weight": "600",
+      "font_size_px": 26.67,
+      "font_size_pt": 20.0
+    },
+    {
+      "tag": "div",
+      "class": "proc-box",
+      "text": "① 블랙매스투입",
+      "font_weight": "600",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "proc-func",
+      "text": "사용 후 배터리 유래",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "proc-detail",
+      "text": "전처리 블랙매스",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "flow-arrow",
+      "text": "→",
+      "font_weight": "700",
+      "font_size_px": 22,
+      "font_size_pt": 16.5
+    },
+    {
+      "tag": "div",
+      "class": "proc-box",
+      "text": "② 흑연선택적 분리",
+      "font_weight": "600",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "proc-func",
+      "text": "타 소재와 분리",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "proc-detail",
+      "text": "부유선별 공정",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "flow-arrow",
+      "text": "→",
+      "font_weight": "700",
+      "font_size_px": 22,
+      "font_size_pt": 16.5
+    },
+    {
+      "tag": "div",
+      "class": "proc-box",
+      "text": "③ 유도가열정제",
+      "font_weight": "600",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "proc-func",
+      "text": "1,000℃ · 1분 이내",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "proc-detail",
+      "text": "순도 99% 이상 확보",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "flow-arrow",
+      "text": "→",
+      "font_weight": "700",
+      "font_size_px": 22,
+      "font_size_pt": 16.5
+    },
+    {
+      "tag": "div",
+      "class": "proc-box",
+      "text": "④ 고순도정제흑연",
+      "font_weight": "600",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "proc-func",
+      "text": "후가공(분쇄·분급)",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "proc-detail",
+      "text": "고부가 소재 원료화",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "",
+      "text": "고순도 정제흑연을 배터리 음극재용 흑연(실리콘-흑연 복합 음극재 전구체 사용 가능) · 전도성 첨가제 · 방",
+      "font_weight": "600",
+      "font_size_px": 24,
+      "font_size_pt": 18.0
+    },
+    {
+      "tag": "b",
+      "class": "",
+      "text": "배터리 음극재용 흑연",
+      "font_weight": "900",
+      "font_size_px": 24,
+      "font_size_pt": 18.0
+    },
+    {
+      "tag": "b",
+      "class": "",
+      "text": "전도성 첨가제",
+      "font_weight": "900",
+      "font_size_px": 24,
+      "font_size_pt": 18.0
+    },
+    {
+      "tag": "b",
+      "class": "",
+      "text": "방열 첨가제",
+      "font_weight": "900",
+      "font_size_px": 24,
+      "font_size_pt": 18.0
+    },
+    {
+      "tag": "div",
+      "class": "page-number",
+      "text": "7",
+      "font_weight": "400",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    }
+  ],
+  "slide_8": [
+    {
+      "tag": "div",
+      "class": "hdr-submsg",
+      "text": "We promise tomorrow",
+      "font_weight": "400",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "hdr-section-label",
+      "text": "TECHNOLOGY",
+      "font_weight": "300",
+      "font_size_px": 16,
+      "font_size_pt": 12.0
+    },
+    {
+      "tag": "h1",
+      "class": "hdr-title",
+      "text": "제품화 가능성 — TRL 6, 파일롯 설비 구축 중",
+      "font_weight": "800",
+      "font_size_px": 37.33,
+      "font_size_pt": 28.0
+    },
+    {
+      "tag": "p",
+      "class": "support-msg",
+      "text": "유도가열 기술은 저에너지·친환경 두 가지 개선 효과를 동시에 확보하며 TRL 6 단계에 도달했다",
+      "font_weight": "600",
+      "font_size_px": 26.67,
+      "font_size_pt": 20.0
+    },
+    {
+      "tag": "div",
+      "class": "bi-header region-header rh-parallel",
+      "text": "저에너지 — 공정비용 경제성",
+      "font_weight": "600",
+      "font_size_px": 26.67,
+      "font_size_pt": 20.0
+    },
+    {
+      "tag": "div",
+      "class": "bi-header region-header rh-parallel",
+      "text": "친환경 — 무유해물질 공정",
+      "font_weight": "600",
+      "font_size_px": 26.67,
+      "font_size_pt": 20.0
+    },
+    {
+      "tag": "div",
+      "class": "benefit-msg",
+      "text": "초고온 열처리 대비 에너지 투입량 64% 절감",
+      "font_weight": "600",
+      "font_size_px": 24,
+      "font_size_pt": 18.0
+    },
+    {
+      "tag": "div",
+      "class": "t-source",
+      "text": "코솔러스 유도가열 실측 — 30초 만에 945℃ 도달",
+      "font_weight": "300",
+      "font_size_px": 16,
+      "font_size_pt": 12.0
+    },
+    {
+      "tag": "div",
+      "class": "t-source",
+      "text": "코솔러스 유도가열 정제설비",
+      "font_weight": "300",
+      "font_size_px": 16,
+      "font_size_pt": 12.0
+    },
+    {
+      "tag": "div",
+      "class": "support-text",
+      "text": "유도가열 방식으로 1,000℃까지 1분 이내 도달, 해당 온도에서 99% 이상 순도의 흑연으로 정제 가능합니",
+      "font_weight": "300",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "benefit-msg",
+      "text": "강산(HF) 등 유해물질 미사용 친환경 정제",
+      "font_weight": "600",
+      "font_size_px": 24,
+      "font_size_pt": 18.0
+    },
+    {
+      "tag": "div",
+      "class": "num t-stat",
+      "text": "기존 공정",
+      "font_weight": "800",
+      "font_size_px": 32,
+      "font_size_pt": 24.0
+    },
+    {
+      "tag": "div",
+      "class": "t-caption",
+      "text": "강산(HF) 등유해물질 사용",
+      "font_weight": "300",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "flow-arrow",
+      "text": "→",
+      "font_weight": "700",
+      "font_size_px": 30,
+      "font_size_pt": 22.5
+    },
+    {
+      "tag": "div",
+      "class": "num t-stat",
+      "text": "코솔러스 공정",
+      "font_weight": "800",
+      "font_size_px": 32,
+      "font_size_pt": 24.0
+    },
+    {
+      "tag": "div",
+      "class": "t-caption",
+      "text": "강산 미사용친환경 검증 완료",
+      "font_weight": "300",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "support-text",
+      "text": "정제 과정에서 강산(HF) 등의 유해물질을 사용하지 않는 사용 후 배터리 유래 회수 흑연 고순도화 친환경 정",
+      "font_weight": "300",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "page-number",
+      "text": "8",
+      "font_weight": "400",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    }
+  ],
+  "slide_12": [
+    {
+      "tag": "div",
+      "class": "hdr-submsg",
+      "text": "We promise tomorrow",
+      "font_weight": "400",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "hdr-section-label",
+      "text": "MARKET",
+      "font_weight": "300",
+      "font_size_px": 16,
+      "font_size_pt": 12.0
+    },
+    {
+      "tag": "h1",
+      "class": "hdr-title",
+      "text": "목표시장 — 흑연 음극재 시장 규모",
+      "font_weight": "800",
+      "font_size_px": 37.33,
+      "font_size_pt": 28.0
+    },
+    {
+      "tag": "p",
+      "class": "support-msg",
+      "text": "글로벌 음극재 시장은 2035년 17.2조원, 흑연 음극재 재활용 시장은 태동 단계에서 연 9.1%씩 성장할",
+      "font_weight": "600",
+      "font_size_px": 26.67,
+      "font_size_pt": 20.0
+    },
+    {
+      "tag": "div",
+      "class": "sym-title",
+      "text": "글로벌 음극재 시장",
+      "font_weight": "700",
+      "font_size_px": 24,
+      "font_size_pt": 18.0
+    },
+    {
+      "tag": "div",
+      "class": "t-source",
+      "text": "출처: Lithium-Ion Battery Anode Market(2026–2034), Fortune Bus",
+      "font_weight": "300",
+      "font_size_px": 16,
+      "font_size_pt": 12.0
+    },
+    {
+      "tag": "div",
+      "class": "sym-title",
+      "text": "흑연 음극재 재활용 시장 (태동 단계)",
+      "font_weight": "700",
+      "font_size_px": 24,
+      "font_size_pt": 18.0
+    },
+    {
+      "tag": "span",
+      "class": "t-caption",
+      "text": "(태동 단계)",
+      "font_weight": "300",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "val",
+      "text": "710억원",
+      "font_weight": "800",
+      "font_size_px": 24,
+      "font_size_pt": 18.0
+    },
+    {
+      "tag": "div",
+      "class": "yr",
+      "text": "2023년 (5,390만 달러)",
+      "font_weight": "400",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "trend-arrow",
+      "text": "→",
+      "font_weight": "400",
+      "font_size_px": 22,
+      "font_size_pt": 16.5
+    },
+    {
+      "tag": "div",
+      "class": "val",
+      "text": "1,680억원",
+      "font_weight": "800",
+      "font_size_px": 24,
+      "font_size_pt": 18.0
+    },
+    {
+      "tag": "div",
+      "class": "yr",
+      "text": "2033년 (1억 2,730만 달러)",
+      "font_weight": "400",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "t-body",
+      "text": "연평균 성장률(CAGR) 9.1% — 전기차·ESS 재활용 흑연 수요, AI 방열소재 수요, 정부 정책 지원",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "b",
+      "class": "",
+      "text": "9.1%",
+      "font_weight": "700",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "t-source",
+      "text": "출처: Graphite Recycling Market(2023–2033), Allied Market Rese",
+      "font_weight": "300",
+      "font_size_px": 16,
+      "font_size_pt": 12.0
+    },
+    {
+      "tag": "div",
+      "class": "page-number",
+      "text": "12",
+      "font_weight": "400",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    }
+  ],
+  "slide_14": [
+    {
+      "tag": "div",
+      "class": "hdr-submsg",
+      "text": "We promise tomorrow",
+      "font_weight": "400",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "hdr-section-label",
+      "text": "MARKET",
+      "font_weight": "300",
+      "font_size_px": 16,
+      "font_size_pt": 12.0
+    },
+    {
+      "tag": "h1",
+      "class": "hdr-title",
+      "text": "사업화 방안 및 시장 진출 실적",
+      "font_weight": "800",
+      "font_size_px": 37.33,
+      "font_size_pt": 28.0
+    },
+    {
+      "tag": "p",
+      "class": "support-msg",
+      "text": "정제비용 경쟁력과 고부가 소재화 전략으로 이미 4개 고객사에서 누적 28.5억원의 매출을 창출했다",
+      "font_weight": "600",
+      "font_size_px": 26.67,
+      "font_size_pt": 20.0
+    },
+    {
+      "tag": "div",
+      "class": "support-header",
+      "text": "비즈니스 모델",
+      "font_weight": "600",
+      "font_size_px": 26.67,
+      "font_size_pt": 20.0
+    },
+    {
+      "tag": "div",
+      "class": "key-message",
+      "text": "정제비용 경쟁력(USD 2$/kg) 확보 + 고부가 소재화로 초기매출 확보",
+      "font_weight": "600",
+      "font_size_px": 24,
+      "font_size_pt": 18.0
+    },
+    {
+      "tag": "div",
+      "class": "explain",
+      "text": "고순도 정제흑연을 음극재 외 전도성 첨가제·방열 첨가제로 제품화해 판매 — 국내 스마트폰 부품 제조사와 전도",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "t-content-header",
+      "text": "사업화 전략 — 가치 단계",
+      "font_weight": "600",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "t-content-header",
+      "text": "시장 진출 실적",
+      "font_weight": "600",
+      "font_size_px": 26.67,
+      "font_size_pt": 20.0
+    },
+    {
+      "tag": "th",
+      "class": "",
+      "text": "구분",
+      "font_weight": "600",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "th",
+      "class": "",
+      "text": "주요 고객사",
+      "font_weight": "600",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "th",
+      "class": "",
+      "text": "거래 개요",
+      "font_weight": "600",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "th",
+      "class": "",
+      "text": "거래 시기",
+      "font_weight": "600",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "th",
+      "class": "",
+      "text": "매출 규모",
+      "font_weight": "600",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "td",
+      "class": "",
+      "text": "국내",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "td",
+      "class": "",
+      "text": "제이케이시냅스 외 2사",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "td",
+      "class": "",
+      "text": "재활용 음극재 및 관련 소재",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "td",
+      "class": "caption-cell",
+      "text": "’21.01~현재",
+      "font_weight": "400",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "td",
+      "class": "",
+      "text": "187백만원",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "td",
+      "class": "",
+      "text": "국내",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "td",
+      "class": "",
+      "text": "아이로보틱스 외 3사",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "td",
+      "class": "",
+      "text": "기능성 플라스틱 첨가제",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "td",
+      "class": "caption-cell",
+      "text": "’22.06~현재",
+      "font_weight": "400",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "td",
+      "class": "",
+      "text": "1,807백만원",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "td",
+      "class": "",
+      "text": "국내",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "td",
+      "class": "",
+      "text": "삼성중공업 외 2사",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "td",
+      "class": "",
+      "text": "기능성 플라스틱 필름",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "td",
+      "class": "caption-cell",
+      "text": "’23.05~현재",
+      "font_weight": "400",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "td",
+      "class": "",
+      "text": "636백만원",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "td",
+      "class": "",
+      "text": "국내",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "td",
+      "class": "",
+      "text": "성일하이텍 외 3사",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "td",
+      "class": "",
+      "text": "양극재 재활용 소재",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "td",
+      "class": "caption-cell",
+      "text": "’24.09~현재",
+      "font_weight": "400",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "td",
+      "class": "",
+      "text": "225백만원",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "td",
+      "class": "emphasis",
+      "text": "합계",
+      "font_weight": "700",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "td",
+      "class": "emphasis",
+      "text": "2,854백만원",
+      "font_weight": "700",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "page-number",
+      "text": "14",
+      "font_weight": "400",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    }
+  ],
+  "slide_16": [
+    {
+      "tag": "div",
+      "class": "hdr-submsg",
+      "text": "We promise tomorrow",
+      "font_weight": "400",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "hdr-section-label",
+      "text": "STRATEGY",
+      "font_weight": "300",
+      "font_size_px": 16,
+      "font_size_pt": 12.0
+    },
+    {
+      "tag": "h1",
+      "class": "hdr-title",
+      "text": "경쟁사 대비 기술적 우수성",
+      "font_weight": "800",
+      "font_size_px": 37.33,
+      "font_size_pt": 28.0
+    },
+    {
+      "tag": "p",
+      "class": "support-msg",
+      "text": "유도가열 기술은 글로벌 경쟁사의 간접가열 방식 대비 낮은 에너지 소비량과 압도적으로 짧은 처리시간을 확보했다",
+      "font_weight": "600",
+      "font_size_px": 26.67,
+      "font_size_pt": 20.0
+    },
+    {
+      "tag": "th",
+      "class": "",
+      "text": "BTR",
+      "font_weight": "700",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "th",
+      "class": "",
+      "text": "Vianode",
+      "font_weight": "700",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "td",
+      "class": "row-label",
+      "text": "국가",
+      "font_weight": "400",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "td",
+      "class": "own-col",
+      "text": "🇰🇷한국",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "span",
+      "class": "flag",
+      "text": "🇰🇷",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "td",
+      "class": "",
+      "text": "🇨🇳중국",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "span",
+      "class": "flag",
+      "text": "🇨🇳",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "td",
+      "class": "",
+      "text": "🇳🇴노르웨이",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "span",
+      "class": "flag",
+      "text": "🇳🇴",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "td",
+      "class": "row-label",
+      "text": "기술",
+      "font_weight": "400",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "td",
+      "class": "own-col",
+      "text": "유도가열 (~950℃)",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "td",
+      "class": "",
+      "text": "오픈형 간접가열 (3,000℃)",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "td",
+      "class": "",
+      "text": "폐쇄형 간접가열 (3,000℃)",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "td",
+      "class": "row-label",
+      "text": "처리시간",
+      "font_weight": "400",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "td",
+      "class": "own-col",
+      "text": "1분 이내",
+      "font_weight": "700",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "td",
+      "class": "",
+      "text": "~24시간",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "td",
+      "class": "",
+      "text": "~48시간",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "td",
+      "class": "row-label",
+      "text": "특징",
+      "font_weight": "400",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "td",
+      "class": "own-col",
+      "text": "낮은 에너지 소비량",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "td",
+      "class": "",
+      "text": "높은 에너지 소비량",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "td",
+      "class": "",
+      "text": "보통 수준의 에너지 소비량",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "cap",
+      "text": "5개 기준(에너지·안전성·양산성·공정비용·환경성) 종합 비교 — 코솔러스 유도가열이 전 기준에서 우위",
+      "font_weight": "300",
+      "font_size_px": 16,
+      "font_size_pt": 12.0
+    },
+    {
+      "tag": "div",
+      "class": "page-number",
+      "text": "16",
+      "font_weight": "400",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    }
+  ],
+  "slide_17": [
+    {
+      "tag": "div",
+      "class": "hdr-submsg",
+      "text": "We promise tomorrow",
+      "font_weight": "400",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "hdr-section-label",
+      "text": "STRATEGY",
+      "font_weight": "300",
+      "font_size_px": 16,
+      "font_size_pt": 12.0
+    },
+    {
+      "tag": "h1",
+      "class": "hdr-title",
+      "text": "시장 확대 방안 — 고부가 업사이클 제품 확장",
+      "font_weight": "800",
+      "font_size_px": 37.33,
+      "font_size_pt": 28.0
+    },
+    {
+      "tag": "p",
+      "class": "support-msg",
+      "text": "고순도 정제흑연은 음극재를 넘어 전도성 첨가제·방열 첨가제·그래핀 원료 등으로 확장 적용이 가능하다",
+      "font_weight": "600",
+      "font_size_px": 26.67,
+      "font_size_pt": 20.0
+    },
+    {
+      "tag": "div",
+      "class": "h-name",
+      "text": "고순도정제흑연",
+      "font_weight": "700",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "n-name",
+      "text": "배터리음극재",
+      "font_weight": "700",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "ttl",
+      "text": "음극재 원료",
+      "font_weight": "600",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "desc",
+      "text": "실리콘-흑연 복합 전구체",
+      "font_weight": "400",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "n-name",
+      "text": "전도성첨가제",
+      "font_weight": "700",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "ttl",
+      "text": "전도성 잉크",
+      "font_weight": "600",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "desc",
+      "text": "디스플레이용 전도성 코팅액",
+      "font_weight": "400",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "n-name",
+      "text": "방열첨가제",
+      "font_weight": "700",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "ttl",
+      "text": "방열 소재",
+      "font_weight": "600",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "desc",
+      "text": "방열시트 · 방열레진",
+      "font_weight": "400",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "n-name",
+      "text": "그래핀원료",
+      "font_weight": "700",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "ttl",
+      "text": "차세대 소재",
+      "font_weight": "600",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "desc",
+      "text": "그래핀 원재료 활용성 모색",
+      "font_weight": "400",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "t-content-header",
+      "text": "시장 확대 계획 — 합계 1,600백만원",
+      "font_weight": "600",
+      "font_size_px": 26.67,
+      "font_size_pt": 20.0
+    },
+    {
+      "tag": "span",
+      "class": "",
+      "text": "1,600백만원",
+      "font_weight": "600",
+      "font_size_px": 26.67,
+      "font_size_pt": 20.0
+    },
+    {
+      "tag": "div",
+      "class": "t-body",
+      "text": "1,000백만원 XX하이테크 — 방열 백커버 공동개발(업사이클 고순도 정제흑연 적용 검토) · ’27년 1분",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "span",
+      "class": "pill",
+      "text": "1,000백만원",
+      "font_weight": "400",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "t-body",
+      "text": "500백만원 XX시냅스 — 전도성 잉크 공동개발 · ’27년 1분기",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "span",
+      "class": "pill",
+      "text": "500백만원",
+      "font_weight": "400",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "t-body",
+      "text": "100백만원 XX쎄미켐 — 고순도 정제흑연 공동개발 · ’28년 1분기",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "span",
+      "class": "pill",
+      "text": "100백만원",
+      "font_weight": "400",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "cap",
+      "text": "방열시트 시장 CAGR 6.8%",
+      "font_weight": "300",
+      "font_size_px": 16,
+      "font_size_pt": 12.0
+    },
+    {
+      "tag": "div",
+      "class": "cap",
+      "text": "BM 시장 CAGR 5%",
+      "font_weight": "300",
+      "font_size_px": 16,
+      "font_size_pt": 12.0
+    },
+    {
+      "tag": "div",
+      "class": "page-number",
+      "text": "17",
+      "font_weight": "400",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    }
+  ],
+  "slide_23": [
+    {
+      "tag": "div",
+      "class": "hdr-submsg",
+      "text": "We promise tomorrow",
+      "font_weight": "400",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "hdr-section-label",
+      "text": "LOCALIZATION",
+      "font_weight": "300",
+      "font_size_px": 16,
+      "font_size_pt": 12.0
+    },
+    {
+      "tag": "h1",
+      "class": "hdr-title",
+      "text": "지역 내 기술사업화 현황 및 계획",
+      "font_weight": "800",
+      "font_size_px": 37.33,
+      "font_size_pt": 28.0
+    },
+    {
+      "tag": "p",
+      "class": "support-msg",
+      "text": "한국에너지기술연구원(울산)과 음극재 재활용 공동기술개발을 이미 진행 중이며, 파일롯 라인 구축으로 사업화를 ",
+      "font_weight": "600",
+      "font_size_px": 26.67,
+      "font_size_pt": 20.0
+    },
+    {
+      "tag": "div",
+      "class": "sym-title",
+      "text": "현황",
+      "font_weight": "700",
+      "font_size_px": 24,
+      "font_size_pt": 18.0
+    },
+    {
+      "tag": "th",
+      "class": "",
+      "text": "대상",
+      "font_weight": "600",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "th",
+      "class": "",
+      "text": "주요 내용",
+      "font_weight": "600",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "th",
+      "class": "",
+      "text": "시기",
+      "font_weight": "600",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "td",
+      "class": "caption-cell",
+      "text": "한국에너지기술연구원(울산)",
+      "font_weight": "400",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "td",
+      "class": "caption-cell",
+      "text": "음극재 재활용 기술개발(R&D)",
+      "font_weight": "400",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "td",
+      "class": "caption-cell",
+      "text": "’25년~계속",
+      "font_weight": "400",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "sym-title",
+      "text": "계획",
+      "font_weight": "700",
+      "font_size_px": 24,
+      "font_size_pt": 18.0
+    },
+    {
+      "tag": "th",
+      "class": "",
+      "text": "대상",
+      "font_weight": "600",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "th",
+      "class": "",
+      "text": "주요 내용",
+      "font_weight": "600",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "th",
+      "class": "",
+      "text": "시기 / 규모",
+      "font_weight": "600",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "td",
+      "class": "caption-cell",
+      "text": "한국에너지기술연구원(울산)",
+      "font_weight": "400",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "td",
+      "class": "caption-cell",
+      "text": "음극재 재활용 기술개발(R&D)",
+      "font_weight": "400",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "td",
+      "class": "caption-cell",
+      "text": "’26~’27, 150백만원",
+      "font_weight": "400",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "td",
+      "class": "caption-cell",
+      "text": "울산소재 대학(UNIST, 울산대 등)",
+      "font_weight": "400",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "td",
+      "class": "caption-cell",
+      "text": "사용 후 배터리 재활용 공동 기술개발",
+      "font_weight": "400",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "td",
+      "class": "caption-cell",
+      "text": "’26년~계속",
+      "font_weight": "400",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "proc-insight",
+      "text": "파일롯 라인 = 부유선별 설비 + 유도가열 설비 + 분쇄·분급 설비 · 연 15~20톤 규모 구축, 시장 수",
+      "font_weight": "600",
+      "font_size_px": 24,
+      "font_size_pt": 18.0
+    },
+    {
+      "tag": "b",
+      "class": "",
+      "text": "15~20톤",
+      "font_weight": "900",
+      "font_size_px": 24,
+      "font_size_pt": 18.0
+    },
+    {
+      "tag": "div",
+      "class": "cap",
+      "text": "울산 이차전지 산업단지 및 협력 R&D 기관(한국에너지기술연구원·UNIST·울산대 등)",
+      "font_weight": "300",
+      "font_size_px": 16,
+      "font_size_pt": 12.0
+    },
+    {
+      "tag": "div",
+      "class": "page-number",
+      "text": "23",
+      "font_weight": "400",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    }
+  ],
+  "slide_25": [
+    {
+      "tag": "div",
+      "class": "hdr-submsg",
+      "text": "We promise tomorrow",
+      "font_weight": "400",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "hdr-section-label",
+      "text": "RELOCATION",
+      "font_weight": "300",
+      "font_size_px": 16,
+      "font_size_pt": 12.0
+    },
+    {
+      "tag": "h1",
+      "class": "hdr-title",
+      "text": "지역이전 계획",
+      "font_weight": "800",
+      "font_size_px": 37.33,
+      "font_size_pt": 28.0
+    },
+    {
+      "tag": "p",
+      "class": "support-msg",
+      "text": "2026년 말 울산 이차전지 특화단지로 본사를 이전, 2명으로 시작해 10명 규모의 파일롯·연구조직을 구축한",
+      "font_weight": "600",
+      "font_size_px": 26.67,
+      "font_size_pt": 20.0
+    },
+    {
+      "tag": "div",
+      "class": "thumb",
+      "text": "사진",
+      "font_weight": "400",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "name",
+      "text": "울산 (이전 예정지)",
+      "font_weight": "700",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "addr",
+      "text": "울산광역시 이차전지 특화단지",
+      "font_weight": "400",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "num",
+      "text": "2026년 말",
+      "font_weight": "800",
+      "font_size_px": 32,
+      "font_size_pt": 24.0
+    },
+    {
+      "tag": "div",
+      "class": "label",
+      "text": "이전 시기 — 본사 이전부터 시작",
+      "font_weight": "400",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "num",
+      "text": "2명 → 10명",
+      "font_weight": "800",
+      "font_size_px": 32,
+      "font_size_pt": 24.0
+    },
+    {
+      "tag": "div",
+      "class": "label",
+      "text": "이전 규모 — 2026년 파일롯·연구인력",
+      "font_weight": "400",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "t-explanation",
+      "text": "이전배경",
+      "font_weight": "600",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "t-body",
+      "text": "친환경 흑연 음극재 정제기술이 울산 주요 산업(이차전지)과 부합, 한국에너지기술연구원(울산) 기술이전으로 기",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "t-explanation",
+      "text": "이전목적",
+      "font_weight": "600",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "t-body",
+      "text": "기술이전 및 공동개발(본사 이전·부설연구소·파일롯 공장 설립), 울산 창업·사업화 인프라 활용(석박사 연 1",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "page-number",
+      "text": "25",
+      "font_weight": "400",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    }
+  ]
+}

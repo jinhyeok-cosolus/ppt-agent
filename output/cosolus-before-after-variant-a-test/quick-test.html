@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>디자인 QA 테스트 — Before/After Variant A(Process Transformation) 개정판(§4 전면 개정) 검증</title>
+<style>
+  :root {
+    --slide-width: 1280px;
+    --slide-height: 720px;
+    --c-teal: #0F655B;
+    --c-deep-pine: #06342F;
+    --c-sea-teal: #1AAC82;
+    --c-mint: #7FC8BE;
+    --c-amber: #C8801F;
+    --c-ink: #162B1F;
+    --c-slate: #5A6664;
+    --c-gray: #8C9694;
+    --c-line: #E1E7E5;
+    --c-mist: #F3F6F5;
+    --c-white: #FFFFFF;
+    --font-base: "Pretendard", "Malgun Gothic", "맑은 고딕", sans-serif;
+    --margin-x: 64px;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #333; font-family: var(--font-base); color: var(--c-ink); word-break: keep-all; }
+  .slide {
+    width: var(--slide-width);
+    height: var(--slide-height);
+    margin: 24px auto;
+    background: var(--c-white);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+    padding: 0 var(--margin-x);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* ---------- 공통 Header System (Hard Rule §9, 수정 없이 그대로 재사용) ---------- */
+  .deck-logo { position: absolute; top: 25px; left: var(--margin-x); height: 20px; width: auto; object-fit: contain; }
+  .deck-tagline {
+    position: absolute; top: 25px; right: var(--margin-x);
+    font-weight: 500; font-size: 18.7px; line-height: 20px;
+    letter-spacing: 0.02em; color: var(--c-teal);
+  }
+  .deck-divider { position: absolute; top: 56px; left: var(--margin-x); right: var(--margin-x); height: 1px; background: var(--c-teal); }
+  .deck-page { position: absolute; bottom: 28px; right: var(--margin-x); font-weight: 300; font-size: 12px; color: var(--c-gray); }
+  .section-label {
+    position: absolute; left: 68px; top: 62px; margin: 0;
+    font-size: 16px; font-weight: 300; line-height: 20px;
+    letter-spacing: 0.06em; text-transform: uppercase; color: var(--c-gray);
+  }
+  .slide-title {
+    position: absolute; left: var(--margin-x); right: var(--margin-x); top: 83px; margin: 0;
+    font-size: 32px; font-weight: 800; line-height: 1.25; color: var(--c-deep-pine);
+  }
+
+  /* ---------- Body Box (Hard Rule §9 Header Safe Area 하단 Y=182px, 1152×474px) ---------- */
+  .body-box {
+    position: absolute;
+    left: var(--margin-x);
+    top: 182px;
+    width: 1152px;
+    height: 474px;
+  }
+
+  /* ======================================================================
+     §4.1 Overall Region Map
+     Existing 0~44% / Transformation 44~54%(10%) / Improved 54~98%(우측 2% 여백)
+     좌우 Column은 대칭이며 본문 전체 폭을 사용한다(중앙에 작게 몰리는 배치 금지).
+     ====================================================================== */
+  .col { position: absolute; top: 0; height: 100%; }
+  .col-existing { left: 0%; width: 44%; }
+  .col-transform { left: 44%; width: 10%; }
+  .col-improved { left: 54%; width: 44%; }
+
+  /* ---------- §4.2 Zone Label — Existing/Improved Header(Hard Rule §10 Content
+       Comparison Header 적용, 2026-08-14) + 하위 Name/Caption 메타.
+       Header 54px(0.561in 고정) + 메타(Name+Caption) 40px = 94px, 그 아래 §4.4
+       Branch Connector Clearance 16px을 더해 Process Visual Area 시작 Y를 110px로
+       조정(기존 13%=61.62px에서 확대 — §10 Header 규격을 그대로 적용하면 기존
+       여백을 초과해 Process Visual Area 시작 Y를 부득이 이동, 그 외 내부 비율은
+       그대로 유지) ---------- */
+  .zone-row {
+    position: absolute; left: 0; top: 0; width: 100%; height: 94px;
+    display: flex; flex-direction: column;
+  }
+  .zone-header {
+    width: 100%; height: 54px; box-sizing: border-box;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-base); font-weight: 600; font-size: 26.7px;
+    letter-spacing: -0.4px; color: #0F1E1F; text-align: center;
+    padding: 0; margin: 0; border-radius: 0;
+  }
+  .zone-header.existing {
+    background: transparent;
+    border-top: 0.75pt solid #E1E7E5;
+    border-bottom: 0.5pt solid #E1E7E5;
+  }
+  .zone-header.improved {
+    background: #F4FAFA;
+    border-top: 0.75pt solid #478689;
+    border-bottom: 0.5pt solid #478689;
+  }
+  .zone-meta { padding-top: 8px; display: flex; flex-direction: column; gap: 4px; }
+  .zone-name { font-size: 12.5px; font-weight: 700; color: var(--c-ink); }
+  .zone-caption { font-size: 9.5px; font-weight: 500; color: var(--c-gray); line-height: 1.4; }
+
+  /* ---------- §4.1 Process Visual Area — 시작 Y를 새 Header(54px)+메타(40px)+
+       Branch Connector Clearance(16px, §4.4)에 맞춰 110px로 조정. 내부 Pitch
+       클래스(.pitch-0/2/4/6)는 process-area 자기 자신 높이 기준 상대(%)이므로
+       이 조정에 영향받지 않고 그대로 동작한다. ---------- */
+  .process-area { position: absolute; left: 0; top: 110px; width: 100%; height: calc(100% - 110px); }
+
+  /* ======================================================================
+     §4.3 공통 Pitch 규칙
+     기준 Pitch = 84%p ÷ max(Existing Step수, Improved 최장 경로 Step수) = 84%p ÷ 4 = 21%p
+     (Process Visual Area 로컬 좌표계 기준으로는 100% ÷ 4 = 25%(local))
+     Box 높이 = Pitch × 0.7 = 17.5%(local), Connector = Pitch × 0.3 = 7.5%(local)
+     → Existing 4 Step / Improved Path B(4 Step) 모두 동일한 Pitch·Box 높이 적용.
+     Improved Path A(2 Step)는 Step수가 적어도 동일 Pitch·Box 높이를 그대로 사용하고,
+     남는 공간(3번째 Pitch Slot)은 §4.3-2 "실제로 제공된 Result/Output Visual"로 채운다.
+     ====================================================================== */
+
+  /* Step Box — Column 폭의 65~80% 차지(§4.2). 그림자·큰 라운드·넉넉한 Padding의
+     Web UI Card가 아니라 얇은 Border + Number Badge + Connector의 PPT형 Process Box(§4.7). */
+  .pstep {
+    position: absolute;
+    background: var(--c-white);
+    border-radius: 3px;
+    display: flex; align-items: center;
+    padding: 0 10px;
+  }
+  .pstep .step-name { font-size: 12px; line-height: 1.3; color: var(--c-ink); }
+  .pstep .step-sub { display: block; margin-top: 2px; font-size: 9.5px; font-weight: 400; color: var(--c-slate); }
+
+  /* Existing: Neutral Gray 계열, SemiBold(§4.6) */
+  .pstep.existing { left: 10%; width: 75%; border: 1px solid var(--c-slate); }
+  .pstep.existing .step-name { font-weight: 600; }
+
+  /* Improved: Cosolus Teal 계열, Bold — 크기가 아닌 색상/굵기로만 강조(§4.6)
+     Path 폭이 Existing Column보다 좁아(42% vs 100%) 좌측 10% 여백만으로는 Number
+     Badge(20px)가 들어갈 공간이 부족해 Box 밖으로 밀려나므로, 좌측 여백을 15%로
+     넓혀 Badge가 Box 테두리와 겹치지 않게 한다(Box 폭은 65~80% 가이드 내 67%로 유지). */
+  .pstep.improved { left: 15%; width: 67%; border: 1px solid var(--c-teal); background: rgba(15,101,91,0.04); }
+  .pstep.improved .step-name { font-weight: 700; color: var(--c-teal); }
+
+  .pitch-0 { top: 0%; height: 17.5%; }
+  .pitch-2 { top: 25%; height: 17.5%; }
+  .pitch-4 { top: 50%; height: 17.5%; }
+  .pitch-6 { top: 75%; height: 17.5%; }
+
+  .conn { position: absolute; width: 1px; background: var(--c-line); }
+  .conn.improved { background: var(--c-mint); left: calc(15% + 6px); }
+  .conn-1 { left: calc(10% + 6px); top: 17.5%; height: 7.5%; }
+  .conn-2 { left: calc(10% + 6px); top: 42.5%; height: 7.5%; }
+  .conn-3 { left: calc(10% + 6px); top: 67.5%; height: 7.5%; }
+
+  /* Number Badge — Box 좌측 여백(8~12%) 안쪽에 겹치도록 배치 */
+  .step-num {
+    position: absolute; width: 20px; height: 20px;
+    border-radius: 50%; color: var(--c-white);
+    font-size: 9.5px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .step-num.existing { left: calc(10% - 26px); background: var(--c-slate); }
+  .step-num.improved { left: calc(15% - 26px); background: var(--c-teal); }
+  .num-0 { top: calc(17.5% / 2 - 10px); }
+  .num-2 { top: calc(25% + 17.5% / 2 - 10px); }
+  .num-4 { top: calc(50% + 17.5% / 2 - 10px); }
+  .num-6 { top: calc(75% + 17.5% / 2 - 10px); }
+
+  /* Step Count Tag — Process Box 시퀀스 바로 옆에 배치해 즉시 비교되도록 함(§4.8) */
+  .count-tag {
+    position: absolute; left: 87%; width: 13%; top: 2%; height: 8%;
+    display: flex; align-items: center; justify-content: center;
+    text-align: center;
+  }
+  .count-tag span {
+    font-size: 10.5px; font-weight: 800; line-height: 1.25;
+  }
+  .count-tag.existing span { color: var(--c-slate); }
+  /* Improved은 Path 폭(Column의 42%)이 Existing Column보다 훨씬 좁아 기존 13% 폭
+     Count Tag 안에 "Path A"가 한 줄로 들어가지 못하고 단어가 한 글자씩 줄바꿈되던
+     문제(item 2/3)가 있었다. Box 우측 여백(82~100%)을 최대한 활용해 폭을 넓히고,
+     줄바꿈 지점을 "Path/A/2 Step" 3줄로 명시해 정돈했다. */
+  .count-tag.improved { left: 84%; width: 27%; }
+  .count-tag.improved span { color: var(--c-teal); }
+
+  /* ======================================================================
+     §4.4 Branching Process — Improved 내부에서 원료 등급에 따라 2개 경로로 분리
+     Path A(고순도 등급, 2 Step) / Path B(범용 등급, 4 Step)
+     각 경로는 §4.3의 공통 Pitch·Box 높이를 동일하게 사용하며, 경로당 최소
+     Column 폭의 28~35%를 유지(본 구현은 42%로 여유 있게 확보).
+     ====================================================================== */
+  /* Process Visual Area 진입 직전, 그 예산(84%p)을 침범하지 않는 좁은 밴드(16px)에
+     배치. 원래 버전은 top 계산이 Process Visual Area 자체 높이 기준으로 잘못
+     계산되어(13%가 process-area의 13%로 해석) 밴드가 음수가 아닌 양수 위치로
+     내려가 Pitch-0 Step Box·Count Tag와 겹치는 버그가 있었다 — 고정 음수 offset(-16px)으로
+     교체해 밴드가 Process Visual Area 상단(0)에 정확히 맞닿고 넘어가지 않게 한다.
+     캡션 텍스트(구 버전 "원료 등급 판별 후 분기")는 Zone Caption에 이미 동일 정보
+     ("원료 등급에 따라 자동 분기")가 있어 중복이므로 제거해 좁은 밴드 안에서
+     Zone Caption 텍스트와도 겹치지 않게 한다. Drop 위치는 8%/92%(임의 위치)가 아니라
+     Path A/B의 실제 Step Box 좌우 중심(Box left 15%+width 67%의 중앙 = Path 폭의
+     48.5% 지점, Column 전체 기준 약 20%/78%)에 맞춰 분기선이 각 경로의 Step Box
+     정중앙 위로 떨어지도록 정렬했다. */
+  .branch-connector { position: absolute; left: 0; top: -16px; width: 100%; height: 16px; }
+  .branch-bar { position: absolute; left: 20%; width: 58%; top: 4px; height: 1px; background: var(--c-teal); }
+  .branch-node {
+    position: absolute; left: 50%; top: 0px; width: 8px; height: 8px;
+    margin-left: -4px; border-radius: 50%; background: var(--c-teal);
+  }
+  .branch-drop { position: absolute; top: 4px; width: 1px; height: 12px; background: var(--c-teal); }
+  .branch-drop.a { left: 20%; }
+  .branch-drop.b { left: 78%; }
+
+  .path { position: absolute; top: 0; height: 100%; }
+  .path-a { left: 0%; width: 42%; }
+  .path-b { left: 58%; width: 42%; }
+
+  /* Path A(2 Step)의 남는 Pitch Slot(3번째 Slot) — 실제 제공된 Result/Output
+     Visual(텍스트·수치 기반 요약)로 채운다. Placeholder 이미지는 사용하지 않는다(§4.9). */
+  .result-card {
+    position: absolute; left: 15%; width: 67%; top: 50%; height: 17.5%;
+    background: var(--c-mist); border: 1px solid var(--c-mint); border-radius: 3px;
+    display: flex; flex-direction: column; justify-content: center; padding: 0 10px;
+  }
+  .result-card .result-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.03em; color: var(--c-amber); text-transform: uppercase;
+  }
+  .result-card .result-value { margin-top: 2px; font-size: 11.5px; font-weight: 700; color: var(--c-teal); line-height: 1.3; }
+
+  /* ======================================================================
+     §4.5 Transformation Area(Center Column) — 본문 높이의 25~40%(본 구현 32%),
+     Process Visual Area 수직 중앙(Y 13~97%의 중앙=55%) 배치. 좌우 Step Box보다
+     얇고 가벼운 형태, 본문 전체를 채우는 거대한 세로 Bar 금지.
+     ====================================================================== */
+  .arrow-wrap {
+    position: absolute; left: 17.5%; width: 65%; top: 39%; height: 32%;
+  }
+  .arrow-img {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    object-fit: contain; object-position: center;
+  }
+  .arrow-caption {
+    position: absolute; left: 0; width: 100%; top: calc(39% + 32% + 6px);
+    text-align: center; font-size: 11px; font-weight: 700; color: var(--c-slate);
+  }
+
+  .qa-footnote {
+    position: absolute; left: var(--margin-x); right: var(--margin-x); bottom: 26px;
+    font-size: 9.5px; font-weight: 400; color: var(--c-gray);
+  }
+</style>
+</head>
+<body>
+
+<!--
+  1장짜리 디자인 QA 테스트(정식 [1]~[9] 워크플로우 아님, state.json 등 정식 산출물 불필요).
+  목적: docs/slide-design-rules/before-after/before-after.md §4 Variant A(Process
+  Transformation)의 전면 개정 내용이 실제 좌표·비율로 정확히 반영되는지 검증.
+  이전 결과물(구 quick-test.html)의 구조는 재활용하지 않고 §4를 처음부터 다시 정독해
+  새로 구성함.
+
+  반영한 개정 규칙 대조:
+  - §4.1: Existing 0~44% / Transformation 44~54%(10%) / Improved 54~98%(우측 2% 여백).
+    .col-existing/.col-transform/.col-improved로 구현, 좌우 대칭 44:10:44,
+    본문 좌우 폭을 적극적으로 사용(중앙에 작게 모여 뜨는 구성 아님).
+  - §4.2: Existing/Improved 완전히 동일한 내부 구조(Zone Label → Input → Step
+    시퀀스 → Result) 공유. Input은 §4.2상 선택 요소이므로 Zone Label 캡션에 병기해
+    §4.3 Pitch 계산이 별도 밴드로 희석되지 않게 함(아래 자기검증 메모 참조).
+    Step Box는 Column/경로 폭의 70~75%로 크게 배치(.pstep.existing 75%, 레인 내
+    .pstep.improved 70%) — 기존 15~20%의 작은 Box 금지 규칙 반영.
+  - §4.3: Step수가 더 많은 쪽(Existing 4 / Improved 최장 경로 Path B 4) 기준
+    공통 Pitch(로컬 25%=Process Visual Area 84%p의 1/4) 및 Box:Connector=7:3(17.5%:7.5%)를
+    Existing·Path A·Path B 모두 동일 적용(.pitch-0/2/4/6 공통 클래스). Step수가 적은
+    Path A(2 Step)도 Box를 확대하지 않고 동일 Pitch를 사용하며, 남는 3번째 Slot은
+    거대한 색상 Box가 아니라 Step Box와 동일 크기의 Result Card로만 채움.
+  - §4.4(신규): Improved 내부에서 원료 등급에 따라 Path A(고순도, 2 Step)/Path
+    B(범용, 4 Step)로 분기. 분기점은 Improved Column 상단(Process Visual Area
+    진입 직전, Process Visual Area 예산을 소비하지 않는 16px 밴드)에 배치.
+    각 경로 폭 42%(§4.4 최소 28~35% 기준 대비 여유 확보), 두 경로 모두 동일
+    Pitch·Box 높이 사용. Existing 대비 총 공정 효율 개선 메시지는 Result Card의
+    처리시간·수율 수치로 명시. (2차 QA 수정 — 아래 "QA 수정 이력" 참조)
+  - §4.5: 중앙 Arrow는 본문 높이의 32%(25~40% 범위 내), Process Visual Area
+    수직 중앙(Y 39~71%, 중심 55%)에 배치. 이전 버전의 "높이 11~12% 작은 아이콘"
+    규칙은 폐기 반영. 텍스트는 "재설계" 한 단어로 최소화. Arrow 자체는 Reference
+    PPT에서 실제 사용된 2겹 Chevron 이미지 Asset(assets/images/reference-arrow-main.png
+    / -accent.png)을 그대로 재사용(2차 QA 수정 — 아래 참조).
+  - §4.6: Improved 강조는 Box 크기가 아니라 Brand Color(Existing=Slate 계열 Neutral
+    Gray, Improved=Cosolus Teal)와 Typography Weight(600→700)로만 처리, Box
+    크기·Padding은 동일 로직(Pitch 기반) 유지.
+  - §4.7: Step Box는 그림자·큰 라운드·넉넉한 Padding의 Web UI Card가 아니라
+    얇은 1px Border + Number Badge + 얇은 Connector의 PPT형 Process Box로 구성.
+  - §4.9: Result Visual은 실제 자산이 없으므로 사진이 아닌 텍스트/수치 기반 요약
+    (처리시간·수율의 가정 수치)만 사용. Placeholder 이미지·예시 사진은 전혀 사용하지
+    않음(구 버전의 evidence-photo 그라디언트 박스 완전 제거).
+
+  자기검증 메모(§4.2 Input 처리): §4.2는 Input을 "(선택)" 요소로 명시한다. 별도
+  Input 박스를 Process Visual Area 안에 두면 §4.3의 "Pitch = 84%p ÷ Step수" 계산이
+  Input 밴드만큼 희석되어 Existing·Improved(특히 Path B) 4 Step 시퀀스가 84%p를
+  정확히 채우지 못하게 된다. 따라서 Input 정보는 Zone Label 영역(Y 0~13%) 내
+  캡션으로 병기하고, Process Visual Area 84%p 전체를 Step 시퀀스 Pitch 계산에
+  그대로 사용했다. Branch 분기 표시(§4.4)도 동일한 이유로 Process Visual Area
+  진입 직전의 별도 16px 밴드에 배치해 Pitch 계산을 침범하지 않도록 함.
+
+  QA 수정 이력(2차, 렌더링 겹침/잘림/정렬 점검 후 수정 — 구조·색상 위계·콘텐츠는
+  변경하지 않고 아래 항목만 수정):
+  1) 중앙 Arrow: CSS clip-path로 그리던 .arrow-shape를 제거하고, Reference PPT의
+     실제 2겹 Chevron 이미지 Asset(reference-arrow-main.png 진한 Teal 위 레이어 +
+     reference-arrow-accent.png 연한 Teal을 5px/7px 우하단으로 offset한 뒷레이어)을
+     <img>로 겹쳐 depth를 표현하도록 교체.
+  2) Branch 분기 밴드(§4.4) 버그 수정: 최초 구현이 top 계산을 Process Visual Area
+     "자기 자신" 높이 기준 13%로 계산해(24px 밴드가 음수가 아닌 양수 위치로 내려감)
+     Pitch-0 Step Box·Count Tag와 겹치던 문제를 top:-16px 고정 offset으로 교체해
+     해결. 중복 정보였던 branch-caption 텍스트("원료 등급 판별 후 분기", Zone
+     Caption과 내용 중복)는 제거해 좁은 밴드 안에서 Zone Caption과도 겹치지 않게 함.
+     Drop 위치도 임의 8%/92%에서 Path A/B Step Box 실제 중심선(20%/78%)으로 재정렬.
+  3) Zone Row(Zone Label+Input Caption) 정렬을 justify-content:center에서
+     flex-start로 변경해 Row 하단에 Branch 밴드가 들어갈 여백을 확보(겹침 재발 방지).
+  4) Improved Step Box(.pstep.improved) 좌측 여백을 10%→15%로 확대(Box 폭
+     70%→67%, 65~80% 가이드 내 유지)해 Number Badge(A1~B4)가 Path 폭이 좁아
+     Box 밖 음수 위치로 밀려나던 문제를 해결. Connector·Result Card 위치도 동일하게
+     15%/67% 기준으로 재정렬.
+  5) Count Tag(Path A/B · Step수) 폭을 13%→27%로 확대·재배치(84~111%, Path
+     자체 경계 밖의 실사용 여백까지 활용하되 Safe Area X1216 안쪽으로 검증)해
+     "Path A"가 한 글자씩 4줄로 줄바꿈되던 문제와 Step Box 테두리와 겹치던 문제를
+     해결. 텍스트 자체는 변경하지 않음.
+  6) body에 word-break:keep-all 추가 — 괄호 안 단어("(가정)")가 "(가/정)"처럼
+     중간에서 줄바꿈되던 문제를 방지(폰트 크기는 변경하지 않음).
+  각 수정은 Chrome Headless 스크린샷으로 실제 렌더링을 재확인해 겹침·잘림이
+  해소되었는지 검증했으며, 폰트 크기 축소 없이 간격·영역 크기 조정만으로 해결함.
+
+  콘텐츠: Reference PPT(before-after.pptx, DLE 리튬 추출 4단계→1단계 사례)의 공정명·
+  수치를 복제하지 않고 Cosolus 도메인에 맞는 별도 예시로 새로 구성함. Existing은
+  기존과 동일하게 습식 정제 4 Step 유지. Improved는 하나의 공정이 원료 등급(목적)에
+  따라 Path A(고순도, 2 Step)/Path B(범용, 4 Step)로 분리되는 Branching Process로
+  재구성. 구체적 물질명·수치(처리시간, 수율 등)는 §4 Layout 검증용으로 임의 설정한
+  가정값이며 실제 사업/실험 데이터가 아님. 실제 제공된 사진/자산이 없으므로 Result는
+  전부 텍스트·수치 요약으로 처리하고 Placeholder 이미지는 사용하지 않음.
+
+  색상/폰트/장식은 before-after.md의 Reference 예시가 아니라 Hard Rule
+  (docs/design-hard-rules/2026.08.12_design_hard-rules_V2.md §5 Brand Color,
+  §9 공통 Header System) 및 Claude PPT Design System을 적용해 재해석함. 두 문서는
+  이번 개정에서 수정하지 않고 그대로 재사용함.
+-->
+
+<section class="slide">
+  <img class="deck-logo" src="assets/images/cosolus-ci-2.png" alt="COSOLUS">
+  <span class="deck-tagline">We promise tomorrow</span>
+  <span class="deck-divider"></span>
+
+  <p class="section-label">TECHNOLOGY</p>
+  <h1 class="slide-title">폐배터리 금속 회수 공정, 원료 등급별 최적 경로로 재구성</h1>
+
+  <div class="body-box">
+
+    <!-- ===================== Existing Column (0~44%) ===================== -->
+    <div class="col col-existing">
+      <div class="zone-row">
+        <div class="zone-header existing">현재 공정</div>
+        <div class="zone-meta">
+          <span class="zone-name">습식 정제 4 Step</span>
+          <span class="zone-caption">Input: 폐배터리 스크랩(Black Mass) · 총 처리시간 약 18h(가정)</span>
+        </div>
+      </div>
+
+      <div class="process-area">
+        <div class="pstep existing pitch-0">
+          <span class="step-name">파쇄·분쇄<span class="step-sub">Black Mass 물리적 분쇄</span></span>
+        </div>
+        <div class="step-num existing num-0">1</div>
+
+        <div class="conn conn-1"></div>
+
+        <div class="pstep existing pitch-2">
+          <span class="step-name">소성<span class="step-sub">약 900℃ 열처리(가정)</span></span>
+        </div>
+        <div class="step-num existing num-2">2</div>
+
+        <div class="conn conn-2"></div>
+
+        <div class="pstep existing pitch-4">
+          <span class="step-name">황산 침출<span class="step-sub">금속 성분 용해(가정)</span></span>
+        </div>
+        <div class="step-num existing num-4">3</div>
+
+        <div class="conn conn-3"></div>
+
+        <div class="pstep existing pitch-6">
+          <span class="step-name">다단계 용매추출<span class="step-sub">Ni·Co 순차 분리(가정)</span></span>
+        </div>
+        <div class="step-num existing num-6">4</div>
+
+        <div class="count-tag existing"><span>4<br>Step</span></div>
+      </div>
+    </div>
+
+    <!-- ===================== Transformation Column (44~54%) ===================== -->
+    <div class="col col-transform">
+      <div class="arrow-wrap">
+        <img class="arrow-img" src="assets/images/brand-transformation-arrow.png" alt="">
+      </div>
+      <div class="arrow-caption">재설계</div>
+    </div>
+
+    <!-- ===================== Improved Column (54~98%) ===================== -->
+    <div class="col col-improved">
+      <div class="zone-row">
+        <div class="zone-header improved">개선 공정 (COSOLUS)</div>
+        <div class="zone-meta">
+          <span class="zone-name">원료 등급별 2개 경로로 분기</span>
+          <span class="zone-caption">Input: 폐배터리 스크랩(동일 원료) · 원료 등급에 따라 자동 분기(가정)</span>
+        </div>
+      </div>
+
+      <div class="process-area">
+
+        <!-- Branch Point(§4.4) — Process Visual Area 예산을 소비하지 않는 상단 밴드 -->
+        <div class="branch-connector">
+          <span class="branch-bar"></span>
+          <span class="branch-node"></span>
+          <span class="branch-drop a"></span>
+          <span class="branch-drop b"></span>
+        </div>
+
+        <!-- Path A — 고순도 등급, 2 Step -->
+        <div class="path path-a">
+          <div class="pstep improved pitch-0">
+            <span class="step-name">저온 촉매 침출<span class="step-sub">60℃ 상압, Ni·Co 동시 용해(가정)</span></span>
+          </div>
+          <div class="step-num improved num-0">A1</div>
+
+          <div class="conn improved conn-1"></div>
+
+          <div class="pstep improved pitch-2">
+            <span class="step-name">선택적 결정화<span class="step-sub">고순도 결정 회수(가정)</span></span>
+          </div>
+          <div class="step-num improved num-2">A2</div>
+
+          <div class="conn improved conn-2"></div>
+
+          <div class="result-card">
+            <span class="result-label">Result(가정)</span>
+            <span class="result-value">처리시간 6h · 수율 92%</span>
+          </div>
+
+          <div class="count-tag improved"><span>Path A<br>2 Step</span></div>
+        </div>
+
+        <!-- Path B — 범용 등급, 4 Step (Existing과 동일한 공통 Pitch 사용) -->
+        <div class="path path-b">
+          <div class="pstep improved pitch-0">
+            <span class="step-name">예비 침출<span class="step-sub">저농도 산 처리(가정)</span></span>
+          </div>
+          <div class="step-num improved num-0">B1</div>
+
+          <div class="conn improved conn-1"></div>
+
+          <div class="pstep improved pitch-2">
+            <span class="step-name">불순물 정제<span class="step-sub">부산물 분리(가정)</span></span>
+          </div>
+          <div class="step-num improved num-2">B2</div>
+
+          <div class="conn improved conn-2"></div>
+
+          <div class="pstep improved pitch-4">
+            <span class="step-name">농축<span class="step-sub">금속 농도 향상(가정)</span></span>
+          </div>
+          <div class="step-num improved num-4">B3</div>
+
+          <div class="conn improved conn-3"></div>
+
+          <div class="pstep improved pitch-6">
+            <span class="step-name">회수 결정화<span class="step-sub">Ni·Co 회수, 수율 85%(가정)</span></span>
+          </div>
+          <div class="step-num improved num-6">B4</div>
+
+          <div class="count-tag improved"><span>Path B<br>4 Step</span></div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <p class="qa-footnote">※ 상기 공정 단계·수치는 Before/After Variant A(Process Transformation, §4 개정판) Layout 디자인 검증용 예시이며 실제 사업/실험 데이터가 아님</p>
+
+  <span class="deck-page">1</span>
+</section>
+
+</body>
+</html>

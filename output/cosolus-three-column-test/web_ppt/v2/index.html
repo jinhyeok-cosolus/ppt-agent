@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>디자인 QA 테스트 — Three-Column Insight Layout 적용 검증 (v2, Header Bar 개정 반영)</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!--
+  1장짜리 디자인 QA 테스트 웹PPT (정식 [1]~[9] 워크플로우 아님, material_analysis/slide_outline 없음).
+  목적: 신규 등록된 Layout Reference docs/slide-design-rules/three-column.md가
+  실제 슬라이드 생성 시 올바르게 선택·적용되는지 확인.
+
+  레이아웃 선택 판단(v1과 동일, 재검토 없음): 3개 Column(환경 규제 강화 / 친환경 소재 시장 성장 /
+  공급망 다변화)은 "친환경 소재 산업의 주요 변화"라는 동일 주제 아래 서로 독립적이며 위계가 동일한
+  변화 요인 3가지를 병렬 제시하는 구조 — three-column.md Use When("산업적 요인 3가지", "시장·기술·
+  환경 변화 요인 3가지") 조건에 해당하여 채택.
+
+  v2 변경 범위: three-column.md 개정(Header Bar 명문화 §3, Key Message 신설 §4, Main Visual 확대
+  §5, 정보 밀도 §7)을 반영. Hard Rule 공통 Header System(CI/Sub Message/구분선/Section Label/
+  Main Title/페이지 번호) 좌표는 v1과 완전히 동일, 변경 없음.
+  - Column Header -> Header Bar(옅은 Tint 배경의 가로 바, 3개 동일 위치/폭/높이/배경색)로 교체.
+  - Header Bar 바로 아래 Key Message 신설: Pretendard ExtraBold 18pt(=24px), 컬러는 Hard Rule
+    §5 Primary 중 회사 Main Color인 Cosolus Teal(#0F655B). 원본 불릿 내용을 압축한 신규 요약
+    문장이며 사실·수치는 변경하지 않음. 핵심 키워드 1개에 동일 색상 밑줄 강조.
+  - Main Visual(KPI 큰 숫자 / 비교 막대 / 인용구, v1과 동일한 표현 방식 유지)을 Column 내부에서
+    가장 넓은 영역을 차지하도록 확대.
+  - Column 내부 상하 간격을 축소해 정보 밀도를 높임. Supporting Evidence는 Main Visual을
+    보조하는 한 줄 수준으로 축소(§2 "필요한 경우에만" + §5 "Main Visual 면적을 잠식하지 않는다").
+  - 모든 수치·사실은 브리핑 원문 그대로 유지(40%, 120억->280억 달러, 15%, 인용구 문장 등),
+    Key Message만 압축 요약 목적의 신규 문구.
+-->
+<div id="deck">
+
+  <section class="slide slide--content" data-index="1">
+    <img class="deck-logo" src="assets/images/cosolus-ci-2.png" alt="COSOLUS">
+    <span class="deck-tagline">We promise tomorrow</span>
+    <span class="deck-divider"></span>
+
+    <div class="slide-title-zone">
+      <p class="section-label">BACKGROUND</p>
+      <h1 class="slide-title">친환경 소재 산업의 주요 변화</h1>
+    </div>
+
+    <div class="slide-content-zone">
+      <div class="three-col">
+
+        <!-- Column 1: 환경 규제 강화 (Message-focused: Header Bar -> Key Message -> Large Number -> Supporting Statement) -->
+        <div class="col">
+          <div class="col-header-bar">환경 규제 강화</div>
+          <div class="col-key-box"><p class="col-key">글로벌 <span class="km-em">탄소중립</span> 확산</p></div>
+          <div class="col-visual col-visual--kpi">
+            <p class="kpi-number">40<span class="kpi-unit">%</span></p>
+            <p class="kpi-caption">2030년까지 탄소배출 감축 목표</p>
+          </div>
+          <p class="col-evidence">친환경·재활용 소재 수요 동반 증가</p>
+        </div>
+
+        <!-- Column 2: 친환경 소재 시장 성장 (Data-focused: Header Bar -> Key Message -> Chart -> Source/Supporting Data) -->
+        <div class="col">
+          <div class="col-header-bar">친환경 소재 시장 성장</div>
+          <div class="col-key-box"><p class="col-key">자동차·배터리 <span class="km-em">수요 확대</span></p></div>
+          <div class="col-visual col-visual--chart">
+            <div class="bar-chart">
+              <div class="bar-item">
+                <span class="bar-value">120억 달러</span>
+                <span class="bar bar--2024" style="height:90px;"></span>
+                <span class="bar-axis">2024</span>
+              </div>
+              <div class="bar-item">
+                <span class="bar-value">280억 달러</span>
+                <span class="bar bar--2030" style="height:210px;"></span>
+                <span class="bar-axis">2030</span>
+              </div>
+            </div>
+          </div>
+          <p class="col-evidence">연평균 성장률 약 15%</p>
+        </div>
+
+        <!-- Column 3: 공급망 다변화 (Message-focused: Header Bar -> Key Message -> Quote -> Supporting Statement) -->
+        <div class="col">
+          <div class="col-header-bar">공급망 다변화</div>
+          <div class="col-key-box"><p class="col-key">원료 <span class="km-em">의존도 완화</span> 필요</p></div>
+          <div class="col-visual col-visual--quote">
+            <span class="quote-mark">&ldquo;</span>
+            <p class="quote-text">안정적인 소재 공급망 확보가<br>새로운 경쟁력</p>
+          </div>
+          <p class="col-evidence">안정적인 원료 확보가 기업 경쟁력의 핵심 요소로 부상</p>
+        </div>
+
+      </div>
+    </div>
+
+    <span class="deck-page">1</span>
+  </section>
+
+</div>
+
+<div id="nav-hint" aria-hidden="true">← → 키로 슬라이드 이동</div>
+
+<script src="assets/vendor/chart.min.js"></script>
+<script>
+  // 슬라이드 간 이동(브라우저 프레젠테이션 모드 대체용 최소 스크립트)
+  const slides = Array.from(document.querySelectorAll(".slide"));
+  let current = 0;
+  function show(i) {
+    slides.forEach((s, idx) => s.classList.toggle("is-active", idx === i));
+  }
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowRight" && current < slides.length - 1) { current++; show(current); }
+    if (e.key === "ArrowLeft" && current > 0) { current--; show(current); }
+  });
+  show(0);
+</script>
+</body>
+</html>

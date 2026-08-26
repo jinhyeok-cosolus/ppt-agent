@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>15p 3차 재테스트(v3) — [솔루션2] 개요 (1세대/2세대 공정 비교, 고밀도/임팩트)</title>
+<!--
+  input/15, 16p 테스트용_3.docx 15페이지 제작 지시서만을 기준으로 독립적으로
+  새로 구성한 3차 테스트(정식 [1]~[9] 워크플로우 아님, Subagent 미사용,
+  Material Analysis/전체 QA 생략, 1·2차 HTML/CSS 미참조·미재사용 — 클래스명도
+  전부 새로 작성).
+
+  _3 지시서가 _2 대비 추가/강화한 항목을 그대로 반영:
+  1) 색상 최우선 규칙(예외 없음) — 1세대 구간(용매추출~폐흑연) 화살표·연결선·
+     분기선은 전부 #C0392B, 2세대 구간(부유선별~고순도정제흑연)은 전부
+     #005151. 공유 Intake(배터리팩~블랙매스) 구간은 색상 규칙 적용 범위 밖이라
+     중립색(Ink) 유지.
+  2) 분기 브래킷 자체를 위(빨강)/아래(다크그린) 절반씩 색 분할.
+  3) 밀도/크기 규칙 — 여백 최소화, 가로 폭을 꽉 채움(연결선을 flex:1로 늘려
+     Body Box 폭 전체를 사용), 아이콘을 여백 대비 크게, 라벨은 Bold + 큰
+     크기로 "꽉 차고 임팩트 있는" 인상을 우선.
+
+  이미지는 _3.docx에서 새로 추출한 원본 이미지를 그대로 사용(신규 생성 없음).
+  강조 텍스트(경제성/친환경성/양산성)는 지시서상 COSOLUS 라벨 박스 바로 아래
+  도식 내부에 위치가 명시되어 있어 Header Supporting Message는 생략했다
+  (Hard Rule §12 예외 ②, 밀도 규칙상 본문 공간을 최대로 확보하기 위함이기도 함).
+-->
+<style>
+  :root {
+    --c-dark: #034443;
+    --c-ink: #162B1F;
+    --c-slate: #5A6664;
+    --c-gray: #8C9694;
+    --c-submessage: #478689;
+    --c-white: #FFFFFF;
+    --c-r: #C0392B;
+    --c-g: #005151;
+    --font-base: "Pretendard", "Malgun Gothic", "맑은 고딕", sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #555; font-family: var(--font-base); color: var(--c-ink); word-break: keep-all; }
+  #deck { display: flex; padding: 24px; }
+  .slide { position: relative; width: 1280px; height: 720px; background: var(--c-white); overflow: hidden; }
+
+  /* ---------- 공통 Header System (Hard Rule §9, 그대로 유지) ---------- */
+  .hdr-ci { position: absolute; left: 64px; top: 25px; height: 20px; }
+  .hdr-ci img { height: 20px; width: auto; display: block; }
+  .hdr-submessage { position: absolute; right: 64px; top: 25px; font: 500 14pt/20px var(--font-base); color: var(--c-submessage); white-space: nowrap; }
+  .hdr-divider { position: absolute; left: 64px; top: 56px; width: 1152px; height: 1px; background: var(--c-submessage); }
+  .hdr-section-label { position: absolute; left: 68px; top: 62px; font: 300 12pt var(--font-base); color: var(--c-gray); letter-spacing: 0.06em; text-transform: uppercase; }
+  .hdr-main-title { position: absolute; left: 64px; top: 83px; width: 1152px; font: 800 28pt/1.25 var(--font-base); color: var(--c-dark); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .hdr-page-number { position: absolute; right: 44px; bottom: 24px; font: 300 14pt var(--font-base); color: var(--c-gray); }
+
+  .body-box { position: absolute; left: 64px; top: 135px; width: 1152px; height: 521px; }
+
+  /* ================= 고밀도 Flow (px3, 신규 구조) ================= */
+  .px3-stage { display: flex; width: 100%; height: 100%; gap: 6px; }
+
+  .px3-left { flex: 0 0 172px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; }
+  .px3-intake { display: flex; align-items: center; width: 100%; }
+  .px3-node { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+  .px3-node.label-top { flex-direction: column-reverse; }
+  .px3-node img { height: 42px; width: auto; max-width: 72px; object-fit: contain; }
+  .px3-node .lbl { font: 800 10.5pt/1.15 var(--font-base); text-align: center; color: var(--c-ink); }
+  .lbl.underline { text-decoration: underline; }
+  .px3-mini-conn { flex: 1 1 auto; height: 2px; background: var(--c-slate); margin: 0 2px; min-width: 8px; }
+
+  .px3-tags { display: flex; flex-direction: column; align-items: stretch; gap: 6px; width: 100%; margin-top: 4px; }
+  .px3-tag { text-align: center; padding: 7px 6px; border-radius: 2px; font: 800 12pt var(--font-base); color: #fff; }
+  .px3-tag.r { background: var(--c-r); }
+  .px3-tag.g { background: var(--c-g); }
+  .px3-emph { text-align: center; font: 800 10.5pt/1.5 var(--font-base); color: var(--c-g); text-decoration: underline; margin-top: -2px; }
+
+  /* -------- 분기 브래킷: 상단 절반 빨강 / 하단 절반 다크그린 -------- */
+  .px3-right { position: relative; flex: 1; display: flex; flex-direction: column; padding-left: 22px; }
+  .px3-bracket-v {
+    position: absolute; left: 0; top: 22%; height: 56%; width: 3px;
+    background: linear-gradient(to bottom, var(--c-r) 0%, var(--c-r) 50%, var(--c-g) 50%, var(--c-g) 100%);
+  }
+  .px3-bracket-h { position: absolute; left: 0; width: 20px; height: 3px; }
+  .px3-bracket-h.r { top: 22%; background: var(--c-r); }
+  .px3-bracket-h.g { top: 76%; background: var(--c-g); }
+
+  .px3-lane { flex: 1; display: flex; align-items: center; padding-left: 22px; gap: 10px; }
+  .px3-divider-dashed { height: 0; border-top: 2px dashed var(--c-slate); margin: 0 30px; }
+
+  /* 큰 연결 화살표(늘어나 폭을 채움) — 화살촉은 border triangle */
+  .px3-conn { flex: 1 1 auto; min-width: 24px; height: 3px; position: relative; }
+  .px3-conn.r { background: var(--c-r); }
+  .px3-conn.g { background: var(--c-g); }
+  .px3-conn::after {
+    content: ""; position: absolute; right: -1px; top: 50%; transform: translateY(-50%);
+    border-top: 6px solid transparent; border-bottom: 6px solid transparent; border-left: 9px solid;
+  }
+  .px3-conn.r::after { border-left-color: var(--c-r); }
+  .px3-conn.g::after { border-left-color: var(--c-g); }
+
+  /* -------- 1세대 결과물 -------- */
+  .px3-result-block { display: flex; flex-direction: column; align-items: center; gap: 4px; flex: 0 0 auto; }
+  .px3-powrow { display: flex; gap: 7px; }
+  .px3-powrow img { width: 40px; height: 34px; object-fit: contain; border: 1px solid var(--c-r); }
+  .px3-result-label { font: 800 11.5pt var(--font-base); color: var(--c-ink); }
+  .px3-bend { color: var(--c-r); font-size: 16px; line-height: 1; font-weight: 800; margin-top: 2px; }
+  .px3-byproduct { display: flex; align-items: center; gap: 8px; margin-top: 2px; }
+  .px3-byproduct img { height: 30px; width: auto; object-fit: contain; }
+  .px3-byproduct span { font: 700 10.5pt var(--font-base); color: var(--c-slate); }
+
+  /* -------- 2세대 재분기 -------- */
+  .px3-subbranch { position: relative; flex: 1; display: flex; flex-direction: column; gap: 8px; padding-left: 18px; }
+  .px3-subbranch-v { position: absolute; left: 0; top: 18%; height: 64%; width: 2.5px; background: var(--c-g); }
+  .px3-subrow { position: relative; display: flex; align-items: center; gap: 10px; padding-left: 16px; }
+  .px3-subrow::before { content: ""; position: absolute; left: 0; top: 50%; width: 14px; height: 2.5px; background: var(--c-g); }
+
+  .px3-resultpair { display: flex; flex-direction: column; align-items: center; gap: 4px; flex: 0 0 auto; }
+  .px3-resultpair .imgs { display: flex; gap: 10px; }
+  .px3-resultpair img { height: 42px; width: auto; object-fit: contain; }
+</style>
+</head>
+<body>
+<div id="deck">
+<section class="slide">
+  <div class="hdr-ci"><img src="assets/images/ci-color.png" alt="COSOLUS"></div>
+  <div class="hdr-submessage">We promise tomorrow</div>
+  <div class="hdr-divider"></div>
+  <div class="hdr-section-label">TECHNOLOGY</div>
+  <div class="hdr-main-title">[솔루션2] 개요 – 친환경 차세대 배터리 재활용 공정기술 (2세대)</div>
+
+  <div class="body-box">
+    <div class="px3-stage">
+
+      <!-- 좌측: 공유 Intake + 세대 라벨 -->
+      <div class="px3-left">
+        <div class="px3-intake">
+          <div class="px3-node"><img src="assets/images/start-battery.png" alt="전기차 배터리팩"><span class="lbl">전기차<br>배터리팩</span></div>
+          <div class="px3-mini-conn"></div>
+          <div class="px3-node"><img src="assets/images/pretreat-icon.png" alt="전처리"><span class="lbl">전처리</span></div>
+          <div class="px3-mini-conn"></div>
+          <div class="px3-node"><img src="assets/images/blackmass.png" alt="블랙매스"><span class="lbl">블랙매스</span></div>
+        </div>
+        <div class="px3-tags">
+          <div class="px3-tag r">기존공정 (1세대)</div>
+          <div class="px3-tag g">COSOLUS (2세대)</div>
+          <div class="px3-emph">경제성<br>친환경성<br>양산성 확보</div>
+        </div>
+      </div>
+
+      <!-- 우측: 상/하 분할 브래킷 + 두 세대 Lane -->
+      <div class="px3-right">
+        <span class="px3-bracket-v"></span>
+        <span class="px3-bracket-h r"></span>
+        <span class="px3-bracket-h g"></span>
+
+        <!-- 1세대 Lane (위, 전부 빨강) -->
+        <div class="px3-lane">
+          <div class="px3-node label-top"><span class="lbl">용매추출</span><img src="assets/images/gen1-extraction-equip.png" alt="용매추출"></div>
+          <div class="px3-conn r"></div>
+          <div class="px3-result-block">
+            <div class="px3-powrow">
+              <img src="assets/images/gen1-mnso4.png" alt="MnSO4">
+              <img src="assets/images/gen1-niso4.png" alt="NiSO4">
+              <img src="assets/images/gen1-coso4.png" alt="CoSO4">
+              <img src="assets/images/gen1-li2co3.png" alt="Li2CO3">
+            </div>
+            <div class="px3-result-label">재활용 양극재</div>
+            <div class="px3-bend">↓</div>
+            <div class="px3-byproduct"><img src="assets/images/gen1-waste-graphite.jpeg" alt="폐흑연"><span>폐흑연</span></div>
+          </div>
+        </div>
+
+        <div class="px3-divider-dashed"></div>
+
+        <!-- 2세대 Lane (아래, 전부 다크그린) -->
+        <div class="px3-lane">
+          <div class="px3-node label-top"><span class="lbl underline">부유선별</span><img src="assets/images/gen2-flotation-equip.png" alt="부유선별"></div>
+          <div class="px3-conn g"></div>
+
+          <div class="px3-subbranch">
+            <span class="px3-subbranch-v"></span>
+
+            <div class="px3-subrow">
+              <div class="px3-node"><img src="assets/images/gen2-cathode-blackmass.png" alt="양극재용 블랙매스"><span class="lbl">양극재용<br>블랙매스</span></div>
+              <div class="px3-conn g"></div>
+              <div class="px3-node label-top"><span class="lbl underline">건식환원</span><img src="assets/images/gen2-dryreduction.png" alt="건식환원"></div>
+              <div class="px3-conn g"></div>
+              <div class="px3-resultpair">
+                <div class="imgs">
+                  <img src="assets/images/gen2-cobalt.png" alt="코발트">
+                  <img src="assets/images/gen2-nickel.png" alt="니켈">
+                </div>
+                <div class="px3-result-label">재활용 양극재</div>
+              </div>
+            </div>
+
+            <div class="px3-subrow">
+              <div class="px3-node"><img src="assets/images/gen2-anode-blackmass.png" alt="음극재용 블랙매스"><span class="lbl">음극재용<br>블랙매스</span></div>
+              <div class="px3-conn g"></div>
+              <div class="px3-node label-top"><span class="lbl underline">유도가열</span><img src="assets/images/gen2-induction-heat.png" alt="유도가열"></div>
+              <div class="px3-conn g"></div>
+              <div class="px3-node"><img src="assets/images/gen2-graphite-refined.png" alt="고순도 정제흑연"><span class="lbl">고순도<br>정제흑연</span></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="hdr-page-number">15</div>
+</section>
+</div>
+</body>
+</html>

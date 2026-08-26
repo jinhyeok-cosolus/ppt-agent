@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>15p 4차 재테스트(v4) — [솔루션2] 개요 (1세대/2세대 공정 비교, 꺾인 화살표)</title>
+<!--
+  input/15, 16p 테스트용_4.docx 15페이지 제작 지시서만을 기준으로 독립적으로
+  새로 구성한 4차 테스트(정식 [1]~[9] 워크플로우 아님, Subagent 미사용,
+  Material Analysis/전체 QA 생략, 1~3차 HTML/CSS 미참조·미재사용 — 클래스명도
+  전부 새로 작성: px4- 접두사).
+
+  _4 지시서가 _3 대비 추가한 항목만 새로 반영(나머지 구조·색상·밀도 규칙은
+  _3와 동일하게 유지):
+  1) 화살표 형태 규칙 — 용매추출→재활용양극재(1세대), 부유선별→분기점(2세대)
+     구간은 직선이 아니라 중간에서 한 번 꺾이는 직각(ㄱ자) 화살표로 표현.
+     SVG polyline로 정확한 직각 경로를 그림(CSS 근사가 아님).
+  2) 위 두 구간은 아이콘-결과물 사이 여백을 줄여 화살표 길이 자체를 짧게
+     — _3의 "가로 폭을 꽉 채움" 밀도 규칙보다 이 구체적 지시가 우선 적용
+     (그 외 구간의 연결선은 기존처럼 폭을 채우는 flex 연결선 유지).
+  3) 재활용 양극재 4종(MnSO4·NiSO4·CoSO4·Li2CO3) 아이콘은 사각 테두리 박스
+     없이 이미지만 배치(v3까지 있던 border 제거).
+
+  색상 최우선 규칙(1세대 구간 전부 #C0392B, 2세대 구간 전부 #005151, 분기
+  브래킷 상/하 절반 색 분할)과 밀도/크기 규칙(아이콘 확대, 라벨 Bold)은 _3와
+  동일하게 유지. 이미지는 _4.docx에서 새로 추출한 원본을 그대로 사용(신규
+  생성 없음). Header는 Hard Rule §9 그대로, Supporting Message는 이전과
+  동일한 사유(§12 예외 ②, 강조문구가 도식 내부에 이미 위치)로 생략.
+-->
+<style>
+  :root {
+    --c-dark: #034443;
+    --c-ink: #162B1F;
+    --c-slate: #5A6664;
+    --c-gray: #8C9694;
+    --c-submessage: #478689;
+    --c-white: #FFFFFF;
+    --c-r: #C0392B;
+    --c-g: #005151;
+    --font-base: "Pretendard", "Malgun Gothic", "맑은 고딕", sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #555; font-family: var(--font-base); color: var(--c-ink); word-break: keep-all; }
+  #deck { display: flex; padding: 24px; }
+  .slide { position: relative; width: 1280px; height: 720px; background: var(--c-white); overflow: hidden; }
+
+  /* ---------- 공통 Header System (Hard Rule §9, 그대로 유지) ---------- */
+  .hdr-ci { position: absolute; left: 64px; top: 25px; height: 20px; }
+  .hdr-ci img { height: 20px; width: auto; display: block; }
+  .hdr-submessage { position: absolute; right: 64px; top: 25px; font: 500 14pt/20px var(--font-base); color: var(--c-submessage); white-space: nowrap; }
+  .hdr-divider { position: absolute; left: 64px; top: 56px; width: 1152px; height: 1px; background: var(--c-submessage); }
+  .hdr-section-label { position: absolute; left: 68px; top: 62px; font: 300 12pt var(--font-base); color: var(--c-gray); letter-spacing: 0.06em; text-transform: uppercase; }
+  .hdr-main-title { position: absolute; left: 64px; top: 83px; width: 1152px; font: 800 28pt/1.25 var(--font-base); color: var(--c-dark); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .hdr-page-number { position: absolute; right: 44px; bottom: 24px; font: 300 14pt var(--font-base); color: var(--c-gray); }
+
+  .body-box { position: absolute; left: 64px; top: 135px; width: 1152px; height: 521px; }
+
+  /* ================= px4 Flow ================= */
+  .px4-stage { display: flex; width: 100%; height: 100%; gap: 6px; }
+
+  .px4-left { flex: 0 0 172px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; }
+  .px4-intake { display: flex; align-items: center; width: 100%; }
+  .px4-node { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+  .px4-node.label-top { flex-direction: column-reverse; }
+  .px4-node img { height: 42px; width: auto; max-width: 72px; object-fit: contain; }
+  .px4-node .lbl { font: 800 10.5pt/1.15 var(--font-base); text-align: center; color: var(--c-ink); }
+  .lbl.underline { text-decoration: underline; }
+  .px4-mini-conn { flex: 1 1 auto; height: 2px; background: var(--c-slate); margin: 0 2px; min-width: 8px; }
+
+  .px4-tags { display: flex; flex-direction: column; align-items: stretch; gap: 6px; width: 100%; margin-top: 4px; }
+  .px4-tag { text-align: center; padding: 7px 6px; border-radius: 2px; font: 800 12pt var(--font-base); color: #fff; }
+  .px4-tag.r { background: var(--c-r); }
+  .px4-tag.g { background: var(--c-g); }
+  .px4-emph { text-align: center; font: 800 10.5pt/1.5 var(--font-base); color: var(--c-g); text-decoration: underline; margin-top: -2px; }
+
+  /* -------- 분기 브래킷: 상단 절반 빨강 / 하단 절반 다크그린 -------- */
+  .px4-right { position: relative; flex: 1; display: flex; flex-direction: column; padding-left: 22px; }
+  .px4-bracket-v {
+    position: absolute; left: 0; top: 22%; height: 56%; width: 3px;
+    background: linear-gradient(to bottom, var(--c-r) 0%, var(--c-r) 50%, var(--c-g) 50%, var(--c-g) 100%);
+  }
+  .px4-bracket-h { position: absolute; left: 0; width: 20px; height: 3px; }
+  .px4-bracket-h.r { top: 22%; background: var(--c-r); }
+  .px4-bracket-h.g { top: 76%; background: var(--c-g); }
+
+  .px4-lane { flex: 1; display: flex; align-items: center; padding-left: 22px; gap: 8px; }
+  .px4-divider-dashed { height: 0; border-top: 2px dashed var(--c-slate); margin: 0 30px; }
+
+  /* 폭을 채우는 일반 연결 화살표(재분기 내부 구간용) */
+  .px4-conn { flex: 1 1 auto; min-width: 24px; height: 3px; position: relative; }
+  .px4-conn.g { background: var(--c-g); }
+  .px4-conn::after {
+    content: ""; position: absolute; right: -1px; top: 50%; transform: translateY(-50%);
+    border-top: 6px solid transparent; border-bottom: 6px solid transparent; border-left: 9px solid;
+  }
+  .px4-conn.g::after { border-left-color: var(--c-g); }
+
+  /* 짧게+한번 꺾인 Elbow 연결(SVG) — 여백 최소화를 위해 flex 대신 고정 폭 */
+  .px4-elbow { flex: 0 0 92px; height: 100%; min-height: 60px; }
+  .px4-elbow svg { width: 100%; height: 100%; display: block; }
+
+  /* -------- 1세대 결과물 (테두리 박스 없이 이미지만) -------- */
+  .px4-result-block { display: flex; flex-direction: column; align-items: center; gap: 4px; flex: 0 0 auto; }
+  .px4-powrow { display: flex; gap: 8px; }
+  .px4-powrow img { width: 40px; height: 34px; object-fit: contain; }
+  .px4-result-label { font: 800 11.5pt var(--font-base); color: var(--c-ink); }
+  .px4-bend { color: var(--c-r); font-size: 16px; line-height: 1; font-weight: 800; margin-top: 2px; }
+  .px4-byproduct { display: flex; align-items: center; gap: 8px; margin-top: 2px; }
+  .px4-byproduct img { height: 30px; width: auto; object-fit: contain; }
+  .px4-byproduct span { font: 700 10.5pt var(--font-base); color: var(--c-slate); }
+
+  /* -------- 2세대 재분기 -------- */
+  .px4-subbranch { position: relative; flex: 1; display: flex; flex-direction: column; gap: 8px; padding-left: 18px; }
+  .px4-subbranch-v { position: absolute; left: 0; top: 18%; height: 64%; width: 2.5px; background: var(--c-g); }
+  .px4-subrow { position: relative; display: flex; align-items: center; gap: 10px; padding-left: 16px; }
+  .px4-subrow::before { content: ""; position: absolute; left: 0; top: 50%; width: 14px; height: 2.5px; background: var(--c-g); }
+
+  .px4-resultpair { display: flex; flex-direction: column; align-items: center; gap: 4px; flex: 0 0 auto; }
+  .px4-resultpair .imgs { display: flex; gap: 10px; }
+  .px4-resultpair img { height: 42px; width: auto; object-fit: contain; }
+</style>
+</head>
+<body>
+<div id="deck">
+<section class="slide">
+  <div class="hdr-ci"><img src="assets/images/ci-color.png" alt="COSOLUS"></div>
+  <div class="hdr-submessage">We promise tomorrow</div>
+  <div class="hdr-divider"></div>
+  <div class="hdr-section-label">TECHNOLOGY</div>
+  <div class="hdr-main-title">[솔루션2] 개요 – 친환경 차세대 배터리 재활용 공정기술 (2세대)</div>
+
+  <div class="body-box">
+    <div class="px4-stage">
+
+      <!-- 좌측: 공유 Intake + 세대 라벨 -->
+      <div class="px4-left">
+        <div class="px4-intake">
+          <div class="px4-node"><img src="assets/images/start-battery.png" alt="전기차 배터리팩"><span class="lbl">전기차<br>배터리팩</span></div>
+          <div class="px4-mini-conn"></div>
+          <div class="px4-node"><img src="assets/images/pretreat-icon.png" alt="전처리"><span class="lbl">전처리</span></div>
+          <div class="px4-mini-conn"></div>
+          <div class="px4-node"><img src="assets/images/blackmass.png" alt="블랙매스"><span class="lbl">블랙매스</span></div>
+        </div>
+        <div class="px4-tags">
+          <div class="px4-tag r">기존공정 (1세대)</div>
+          <div class="px4-tag g">COSOLUS (2세대)</div>
+          <div class="px4-emph">경제성<br>친환경성<br>양산성 확보</div>
+        </div>
+      </div>
+
+      <!-- 우측: 상/하 분할 브래킷 + 두 세대 Lane -->
+      <div class="px4-right">
+        <span class="px4-bracket-v"></span>
+        <span class="px4-bracket-h r"></span>
+        <span class="px4-bracket-h g"></span>
+
+        <!-- 1세대 Lane (위, 전부 빨강) -->
+        <div class="px4-lane">
+          <div class="px4-node label-top"><span class="lbl">용매추출</span><img src="assets/images/gen1-extraction-equip.png" alt="용매추출"></div>
+
+          <!-- 용매추출 → 재활용양극재: 짧고 한번 꺾인(ㄱ자) 화살표 -->
+          <div class="px4-elbow">
+            <svg viewBox="0 0 100 100" preserveAspectRatio="none">
+              <polyline points="0,42 45,42 45,58 100,58" fill="none" stroke="#C0392B" stroke-width="3.4" vector-effect="non-scaling-stroke"/>
+              <polygon points="100,58 88,52 88,64" fill="#C0392B"/>
+            </svg>
+          </div>
+
+          <div class="px4-result-block">
+            <div class="px4-powrow">
+              <img src="assets/images/gen1-mnso4.png" alt="MnSO4">
+              <img src="assets/images/gen1-niso4.png" alt="NiSO4">
+              <img src="assets/images/gen1-coso4.png" alt="CoSO4">
+              <img src="assets/images/gen1-li2co3.png" alt="Li2CO3">
+            </div>
+            <div class="px4-result-label">재활용 양극재</div>
+            <div class="px4-bend">↓</div>
+            <div class="px4-byproduct"><img src="assets/images/gen1-waste-graphite.jpeg" alt="폐흑연"><span>폐흑연</span></div>
+          </div>
+        </div>
+
+        <div class="px4-divider-dashed"></div>
+
+        <!-- 2세대 Lane (아래, 전부 다크그린) -->
+        <div class="px4-lane">
+          <div class="px4-node label-top"><span class="lbl underline">부유선별</span><img src="assets/images/gen2-flotation-equip.png" alt="부유선별"></div>
+
+          <!-- 부유선별 → 분기점: 짧고 한번 꺾인(ㄱ자) 화살표 -->
+          <div class="px4-elbow">
+            <svg viewBox="0 0 100 100" preserveAspectRatio="none">
+              <polyline points="0,58 45,58 45,50 100,50" fill="none" stroke="#005151" stroke-width="3.4" vector-effect="non-scaling-stroke"/>
+              <polygon points="100,50 88,44 88,56" fill="#005151"/>
+            </svg>
+          </div>
+
+          <div class="px4-subbranch">
+            <span class="px4-subbranch-v"></span>
+
+            <div class="px4-subrow">
+              <div class="px4-node"><img src="assets/images/gen2-cathode-blackmass.png" alt="양극재용 블랙매스"><span class="lbl">양극재용<br>블랙매스</span></div>
+              <div class="px4-conn g"></div>
+              <div class="px4-node label-top"><span class="lbl underline">건식환원</span><img src="assets/images/gen2-dryreduction.png" alt="건식환원"></div>
+              <div class="px4-conn g"></div>
+              <div class="px4-resultpair">
+                <div class="imgs">
+                  <img src="assets/images/gen2-cobalt.png" alt="코발트">
+                  <img src="assets/images/gen2-nickel.png" alt="니켈">
+                </div>
+                <div class="px4-result-label">재활용 양극재</div>
+              </div>
+            </div>
+
+            <div class="px4-subrow">
+              <div class="px4-node"><img src="assets/images/gen2-anode-blackmass.png" alt="음극재용 블랙매스"><span class="lbl">음극재용<br>블랙매스</span></div>
+              <div class="px4-conn g"></div>
+              <div class="px4-node label-top"><span class="lbl underline">유도가열</span><img src="assets/images/gen2-induction-heat.png" alt="유도가열"></div>
+              <div class="px4-conn g"></div>
+              <div class="px4-node"><img src="assets/images/gen2-graphite-refined.png" alt="고순도 정제흑연"><span class="lbl">고순도<br>정제흑연</span></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="hdr-page-number">15</div>
+</section>
+</div>
+</body>
+</html>

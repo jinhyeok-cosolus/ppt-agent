@@ -1,0 +1,237 @@
+{
+  "sources": [
+    {
+      "file": "input\\15p 지시문 최소화 버전.docx",
+      "type": "docx",
+      "structure_signal": "none_detected",
+      "content_groups": [],
+      "unstructured_text_blocks": [
+        {
+          "text": "[슬라이드 제목]\n\"[솔루션2] 개요 - 친환경 차세대 배터리 재활용 공정기술 (2세대)\"",
+          "order": 1,
+          "style": "Normal"
+        },
+        {
+          "text": "[내용]",
+          "order": 2,
+          "style": "Normal"
+        },
+        {
+          "text": "폐배터리팩을 파쇄·소각하여 블랙매스를 생산한다.",
+          "order": 3,
+          "style": "Normal"
+        },
+        {
+          "text": "기존 1세대 공정에서는 블랙매스를 용매추출하여 MnSO4, NiSO4, CoSO4, Li2CO3를 회수하며 폐흑연이 부산물로 발생한다.",
+          "order": 4,
+          "style": "Normal"
+        },
+        {
+          "text": "COSOLUS 2세대 공정에서는 블랙매스를 부유선별하여 양극재용 블랙매스와 음극재용 블랙매스로 분리한다. 양극재용 블랙매스는 건식환원을 통해 Co·Ni를 회수하고, 음극재용 블랙매스는 유도가열을 통해 고순도 정제흑연을 생산한다.",
+          "order": 5,
+          "style": "Normal"
+        },
+        {
+          "text": "[강조 내용]",
+          "order": 6,
+          "style": "Normal"
+        },
+        {
+          "text": "COSOLUS 2세대 공정: 경제성 / 친환경성 / 양산성 확보",
+          "order": 7,
+          "style": "Normal"
+        },
+        {
+          "text": "시작: 전기차 배터리팩",
+          "order": 8,
+          "style": "Normal"
+        },
+        {
+          "text": "1단계: 전처리 공정",
+          "order": 11,
+          "style": "Normal"
+        },
+        {
+          "text": "결과물: 블랙매스",
+          "order": 13,
+          "style": "Normal"
+        },
+        {
+          "text": "용매 추출",
+          "order": 15,
+          "style": "Normal"
+        },
+        {
+          "text": "MnSO4",
+          "order": 17,
+          "style": null,
+          "source_type": "text_box"
+        },
+        {
+          "text": "NiSO4",
+          "order": 18,
+          "style": null,
+          "source_type": "text_box"
+        },
+        {
+          "text": "CoSO4",
+          "order": 19,
+          "style": null,
+          "source_type": "text_box"
+        },
+        {
+          "text": "Li2CO3",
+          "order": 20,
+          "style": null,
+          "source_type": "text_box"
+        },
+        {
+          "text": "폐흑연",
+          "order": 25,
+          "style": "Normal"
+        },
+        {
+          "text": "부유선별",
+          "order": 27,
+          "style": "Normal"
+        },
+        {
+          "text": "양극재용 블랙매스",
+          "order": 29,
+          "style": "Normal"
+        },
+        {
+          "text": "음극재용 블랙매스",
+          "order": 31,
+          "style": "Normal"
+        },
+        {
+          "text": "건식환원",
+          "order": 33,
+          "style": "Normal"
+        },
+        {
+          "text": "유도가열",
+          "order": 35,
+          "style": "Normal"
+        },
+        {
+          "text": "코발트",
+          "order": 37,
+          "style": "Normal"
+        },
+        {
+          "text": "니켈",
+          "order": 39,
+          "style": "Normal"
+        },
+        {
+          "text": "고순도 정제흑연",
+          "order": 41,
+          "style": "Normal"
+        }
+      ],
+      "unstructured_tables": [],
+      "unstructured_images": [
+        {
+          "path": "output\\cosolus-ir-deck-G\\extracted_images\\15p 지시문 최소화 버전_img1.png",
+          "order": 9,
+          "adjacent_text": null
+        },
+        {
+          "path": "output\\cosolus-ir-deck-G\\extracted_images\\15p 지시문 최소화 버전_img2.png",
+          "order": 10,
+          "adjacent_text": null
+        },
+        {
+          "path": "output\\cosolus-ir-deck-G\\extracted_images\\15p 지시문 최소화 버전_img3.png",
+          "order": 12,
+          "adjacent_text": "1단계: 전처리 공정"
+        },
+        {
+          "path": "output\\cosolus-ir-deck-G\\extracted_images\\15p 지시문 최소화 버전_img4.png",
+          "order": 14,
+          "adjacent_text": "결과물: 블랙매스"
+        },
+        {
+          "path": "output\\cosolus-ir-deck-G\\extracted_images\\15p 지시문 최소화 버전_img5.png",
+          "order": 16,
+          "adjacent_text": null
+        },
+        {
+          "path": "output\\cosolus-ir-deck-G\\extracted_images\\15p 지시문 최소화 버전_img6.png",
+          "order": 21,
+          "adjacent_text": null
+        },
+        {
+          "path": "output\\cosolus-ir-deck-G\\extracted_images\\15p 지시문 최소화 버전_img7.png",
+          "order": 22,
+          "adjacent_text": null
+        },
+        {
+          "path": "output\\cosolus-ir-deck-G\\extracted_images\\15p 지시문 최소화 버전_img8.png",
+          "order": 23,
+          "adjacent_text": null
+        },
+        {
+          "path": "output\\cosolus-ir-deck-G\\extracted_images\\15p 지시문 최소화 버전_img9.png",
+          "order": 24,
+          "adjacent_text": null
+        },
+        {
+          "path": "output\\cosolus-ir-deck-G\\extracted_images\\15p 지시문 최소화 버전_img10.jpeg",
+          "order": 26,
+          "adjacent_text": null
+        },
+        {
+          "path": "output\\cosolus-ir-deck-G\\extracted_images\\15p 지시문 최소화 버전_img11.png",
+          "order": 28,
+          "adjacent_text": null
+        },
+        {
+          "path": "output\\cosolus-ir-deck-G\\extracted_images\\15p 지시문 최소화 버전_img12.png",
+          "order": 30,
+          "adjacent_text": null
+        },
+        {
+          "path": "output\\cosolus-ir-deck-G\\extracted_images\\15p 지시문 최소화 버전_img13.png",
+          "order": 32,
+          "adjacent_text": null
+        },
+        {
+          "path": "output\\cosolus-ir-deck-G\\extracted_images\\15p 지시문 최소화 버전_img14.png",
+          "order": 34,
+          "adjacent_text": null
+        },
+        {
+          "path": "output\\cosolus-ir-deck-G\\extracted_images\\15p 지시문 최소화 버전_img15.png",
+          "order": 36,
+          "adjacent_text": null
+        },
+        {
+          "path": "output\\cosolus-ir-deck-G\\extracted_images\\15p 지시문 최소화 버전_img16.png",
+          "order": 38,
+          "adjacent_text": null
+        },
+        {
+          "path": "output\\cosolus-ir-deck-G\\extracted_images\\15p 지시문 최소화 버전_img17.png",
+          "order": 40,
+          "adjacent_text": null
+        },
+        {
+          "path": "output\\cosolus-ir-deck-G\\extracted_images\\15p 지시문 최소화 버전_img18.png",
+          "order": 42,
+          "adjacent_text": null
+        }
+      ],
+      "needs_manual_review": false
+    }
+  ],
+  "escalations": [],
+  "needs_confirmation": [
+    {
+      "detail": "이 파일에서 제목/소제목 등 구조 신호를 찾지 못해 Content Group 계층을 만들지 못했습니다. 이후 [3] 단계에서 슬라이드 분할·주제 그룹핑을 수동 판단 근거 없이 진행하게 됩니다.",
+      "source": "input\\15p 지시문 최소화 버전.docx"
+    }
+  ]
+}

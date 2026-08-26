@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>디자인 QA 재검증 — Before/After Variant A, before-after.md 규칙 개정 반영 확인(Reference 동일 콘텐츠)</title>
+<!--
+  1장짜리 디자인 QA 테스트(정식 [1]~[9] 워크플로우 아님).
+  목적: docs/slide-design-rules/before-after/before-after.md 개정(Header Bar
+  역할/Hard Rule §10 참조 명확화, 동일 요소 Y축 정렬 규칙 신설, Number
+  Badge/Bracket 선택 적용 범위 규칙 신설, Comparison Frame/Main Visual
+  분리)이 실제 좌표로 정확히 반영되는지 검증.
+
+  콘텐츠는 이번 요청에 따라 Fast Iteration Mode의 "기존 테스트 콘텐츠 재사용"
+  원칙의 예외로, 실제 Reference PPT(before-after.pptx, DLE 리튬 추출 4단계→
+  1단계 전환 사례)와 동일한 공정명·구조를 그대로 사용해 개정 전/후를 1:1로
+  비교할 수 있게 했다(사용자가 "기존에 제공한 Before/After 레퍼런스와 동일한
+  콘텐츠를 사용"하라고 명시적으로 요청). 색상/폰트/Divider 등은 Hard Rule 및
+  Claude PPT Design System을 그대로 재사용하며 이번 세션에서 수정하지 않았다.
+
+  이번 4차 개정(2026-08-18, 3차의 Bracket 정렬 시도를 되돌림)으로 반영한 항목:
+  9)  Step Box 내부 중앙 정렬(§4.7) — .pstep에 justify-content:center
+      유지. Step Box를 하나의 Process Node로 인식되도록 함(Design
+      System §5 일반 좌측 정렬 기본값의 Layout-specific 예외).
+  10) Badge/Bracket/Label Overlap 방지(§4.8) — Path B "1단계" Label을
+      Box(57~89%) 바깥 외부 Comparison Marker 영역(left:90~98%)에
+      배치해 Box 텍스트와 겹치지 않게 함(유지).
+  11) [3차에서 되돌림] Comparison Marker Pair — "Bracket 시각적 중심을
+      맞춰야 4→1 비교가 즉시 읽힌다"는 3차 가정을 Reference 실측
+      (Existing Bracket 중심 y=501, Path B Bracket 중심 y=450, 51px
+      차이 — 애초에 정렬돼 있지 않음)으로 반증하고 규칙에서 제거함에
+      따라, Path A·B를 Bracket 정렬 목적으로 재배치하지 않는다.
+  12) [3차에서 되돌림] 공통 Step Y축 정렬 — Bracket 비교를 이유로
+      Y축 정렬을 완화하던 규칙을 제거. Path B의 "침출"·"불순물 제거"를
+      다시 Existing의 Slot 0·1과 동일한 Y(Pitch-0, Pitch-1)로 복원.
+  13) [3차에서 되돌림] Main Visual Balance — "Visual Balance를 위해
+      Process Group을 재배치"하던 규칙을 제거하고 "분기 원점 공유 +
+      자연스러운 Flow 우선"으로 대체. Path A·B 모두 분기점(Input Box)
+      직후인 Pitch-0부터 다시 시작하도록 복원(branch-drop 길이도
+      34px로 원복). Improved 하단의 빈 공간은 실제 근거 있는 보완
+      콘텐츠가 없으므로 인위적으로 채우지 않고 그대로 둔다(§4.11) —
+      이 비대칭은 버그가 아니라 "4단계→1단계로 실제 공정이 줄었다"는
+      메시지를 정직하게 보여주는 결과다.
+
+  1차 개정 항목(유지):
+  1) Header Bar — Hard Rule §10 Content Comparison Header 참조(값 변경 없음, 유지).
+  2) 동일 요소 Y축 정렬(§4.12) — Existing과 Improved 긴 경로(Path B)의
+     "침출"·"불순물 제거"가 동일 Pitch Slot(0,1)에서 완전히 같은 Y좌표를
+     가지도록 유지.
+  3) Number Badge/Point Color/Bracket 선택 적용(§4.8 개정) — 공통 단계
+     (침출·불순물 제거 등)에는 적용하지 않고, 변경 단계(Existing: Mn·Co·
+     Ni·역추출, Improved: Li 추출)에만 선택 적용. Bracket은 Step 개별이
+     아니라 변경 단계 전체 구간을 하나로 묶고, "4단계"/"1단계" 라벨을
+     그 Bracket 범위에 바로 붙여 시각적으로 연결.
+  4) Comparison Frame(§4.1 Region Map, §4.5 중앙 Arrow) — 값 변경 없음, 유지.
+  5) Connector Line(§4.13 신설) — 세로 Connector를 각 Step Box의 중앙축
+     기준으로 Box 중앙~다음 Box 중앙을 잇는 선으로 재구현하고, z-index로
+     Box보다 뒤에 배치해 Box가 Connector 위에 얹힌 것처럼 보이도록 함.
+  6) Branch Connector(§4.13) — Improved의 Input Box(부모) → Branch Bar/Node
+     → 각 경로 첫 Step Box 중앙까지 Drop 선을 연장해 "부모 → Branch → 하위
+     경로"가 하나의 연결된 구조로 보이도록 함(Drop도 Box보다 뒤에 배치).
+  7) Outcome/Result 영역 분리(§4.9 개정) — Existing의 결과값
+     ("증발 농축 기반 Li 회수")을 일반 Step Box와 다른 스타일(테두리
+     Box 없음, 상단 구분선 추가)로 분리해 "또 하나의 Step"처럼 보이지
+     않게 함. Improved는 실제 자산이 없어 여전히 채우지 않음(§4.9).
+  8) 중앙 Arrow 추가 정보 최소화(§4.5 개정) — "DLE 전환" 한 단어 유지,
+     전환 관계 외 추가 정보(수치 등)를 넣지 않음(기존과 동일, 재확인).
+
+  Reference와 다르게 이 문서가 규정하지 않는 부분(레퍼런스의 특정 사진·
+  캡션 등)은 복제하지 않았다. Improved의 Outcome/Result는 실제 제공된
+  자산이 없으므로(§4.9, content-visualization-freedom.md) Placeholder를
+  만들지 않고 빈 여백으로 남겼다 — 이 여백은 버그가 아니라 "4단계→1단계"
+  단순화로 실제 공정 점유 공간이 줄었다는 것을 그대로 보여주는 정직한 결과다.
+
+  HTML만 생성했으며 PPTX 변환은 진행하지 않았고, before-after.md 외 Hard
+  Rule/Design System 등 다른 규칙 파일은 이번 검증 작업 중 수정하지 않았다.
+-->
+
+<style>
+  :root {
+    --slide-width: 1280px;
+    --slide-height: 720px;
+    --c-teal: #0F655B;
+    --c-deep-pine: #06342F;
+    --c-sea-teal: #1AAC82;
+    --c-mint: #7FC8BE;
+    --c-ink: #162B1F;
+    --c-slate: #5A6664;
+    --c-gray: #8C9694;
+    --c-line: #E1E7E5;
+    --c-white: #FFFFFF;
+    --font-base: "Pretendard", "Malgun Gothic", "맑은 고딕", sans-serif;
+    --margin-x: 64px;
+    --content-top: 106px; /* 두 Column 공통: Header Bar(54px) + 하위 Input/Branch 영역 */
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #333; font-family: var(--font-base); color: var(--c-ink); word-break: keep-all; }
+  .slide {
+    width: var(--slide-width);
+    height: var(--slide-height);
+    margin: 24px auto;
+    background: var(--c-white);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+    padding: 0 var(--margin-x);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* ---------- 공통 Header System (Hard Rule §9, 수정 없이 그대로 재사용) ---------- */
+  .deck-logo { position: absolute; top: 25px; left: var(--margin-x); height: 20px; width: auto; object-fit: contain; }
+  .deck-tagline {
+    position: absolute; top: 25px; right: var(--margin-x);
+    font-weight: 500; font-size: 18.7px; line-height: 20px;
+    letter-spacing: 0.02em; color: var(--c-teal);
+  }
+  .deck-divider { position: absolute; top: 56px; left: var(--margin-x); right: var(--margin-x); height: 1px; background: var(--c-teal); }
+  .deck-page { position: absolute; bottom: 28px; right: var(--margin-x); font-weight: 300; font-size: 12px; color: var(--c-gray); }
+  .section-label {
+    position: absolute; left: 68px; top: 62px; margin: 0;
+    font-size: 16px; font-weight: 300; line-height: 20px;
+    letter-spacing: 0.06em; text-transform: uppercase; color: var(--c-gray);
+  }
+  .slide-title {
+    position: absolute; left: var(--margin-x); right: var(--margin-x); top: 83px; margin: 0;
+    font-size: 32px; font-weight: 800; line-height: 1.25; color: var(--c-deep-pine);
+  }
+
+  /* ---------- Body Box (Hard Rule §9 Header Safe Area 하단 Y=182px, 1152×474px) ---------- */
+  .body-box { position: absolute; left: var(--margin-x); top: 182px; width: 1152px; height: 474px; }
+
+  /* ======================================================================
+     before-after.md §4.1 Overall Region Map (Comparison Frame, 변경 없음)
+     Existing 0~44% / Transformation 44~54%(10%) / Improved 54~98%
+     ====================================================================== */
+  .col { position: absolute; top: 0; height: 100%; }
+  .col-existing { left: 0%; width: 44%; }
+  .col-transform { left: 44%; width: 10%; }
+  .col-improved { left: 54%; width: 44%; }
+
+  /* ======================================================================
+     Header Bar(Zone Label) — before-after.md §4.2 개정: 이 문서는 역할·배치
+     (Column 폭 전체, Y 0~13%, 독립된 Bar로 인식)만 정의하고, 시각 스펙은
+     Hard Rule §10 Content Comparison Header를 그대로 참조한다. 아래 값
+     (Height 54px=0.561in, Pretendard SemiBold 20pt, #0F1E1F, 중앙정렬,
+     Existing=Fill 없음+#E1E7E5 Divider / Improved=#F4FAFA+#478689 Divider)은
+     Hard Rule §10 원 스펙을 그대로 옮긴 것이며 이 MD가 새로 만든 값이 아니다.
+     ====================================================================== */
+  .zone-header {
+    position: absolute; left: 0; top: 0; width: 100%; height: 54px; box-sizing: border-box;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-base); font-weight: 600; font-size: 26.7px;
+    letter-spacing: -0.4px; color: #0F1E1F; text-align: center;
+    padding: 0; margin: 0; border-radius: 0;
+  }
+  .zone-header.existing {
+    background: transparent;
+    border-top: 0.75pt solid #E1E7E5;
+    border-bottom: 0.5pt solid #E1E7E5;
+  }
+  .zone-header.improved {
+    background: #F4FAFA;
+    border-top: 0.75pt solid #478689;
+    border-bottom: 0.5pt solid #478689;
+  }
+
+  /* ---------- Existing: Header 아래 Input(비교 대상 아님 → Box/Badge 없이 Plain Text) ---------- */
+  .existing-input {
+    position: absolute; left: 0; top: 54px; width: 100%; height: calc(var(--content-top) - 54px);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 500; color: var(--c-slate);
+  }
+
+  /* ---------- Improved: Header 아래 Input(Box, 분기 시작점을 겸함) + Branch 밴드 ---------- */
+  .improved-input-wrap {
+    position: absolute; left: 0; top: 54px; width: 100%; height: calc(var(--content-top) - 54px);
+  }
+  .improved-input-box {
+    position: absolute; left: 18%; width: 64%; top: 6px; height: 26px;
+    border: 1px solid var(--c-teal); border-radius: 3px; background: rgba(15,101,91,0.04);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 700; color: var(--c-teal);
+  }
+  /* §4.13 Branch Connector — 부모(Input Box) → Branch Bar/Node → 각 경로 첫
+     Step Box 중앙까지 하나의 연결된 구조로 이어지도록 Drop을 process-area
+     첫 Step Box 중앙까지 연장(52px 아래 Box 중앙까지 총 34px)하고, z-index로
+     Box보다 뒤에 배치해 Box가 선 위에 얹힌 것처럼 보이게 한다. */
+  .branch-bar { position: absolute; left: 20%; width: 58%; top: 40px; height: 1px; background: var(--c-teal); z-index: 0; }
+  .branch-node { position: absolute; left: 50%; top: 37px; width: 6px; height: 6px; margin-left: -3px; border-radius: 50%; background: var(--c-teal); z-index: 0; }
+  /* §4.11: Process/Branch는 분기 원점(Input Box)을 공유하며 분기 직후
+     자연스럽게 시작한다 — branch-drop은 process-area 첫 Box 중앙까지만
+     닿는 짧은 길이로 유지(Box보다 뒤에 배치되어 겹치는 구간은 가려짐). */
+  .branch-drop { position: absolute; top: 40px; width: 1px; background: var(--c-teal); z-index: 0; }
+  .branch-drop.a { left: 20%; height: 34px; }
+  .branch-drop.b { left: 78%; height: 34px; }
+
+  /* ---------- Process Visual Area — 두 Column 공통 top(§4.12 Y축 정렬의 전제조건) ---------- */
+  .process-area { position: absolute; left: 0; top: var(--content-top); width: 100%; height: calc(100% - var(--content-top)); }
+
+  /* ======================================================================
+     §4.3 공통 Pitch 규칙 — 두 Column 중 더 많은 Step 수(Existing 6: 침출·
+     불순물 제거·Mn·Co·Ni·역추출) 기준으로 Pitch 산정, Improved 두 경로에도
+     동일 Pitch 적용(§4.4). 6 Slot × Pitch 16.667% = 100%.
+     Box = Pitch × 0.7(11.667%), Connector = Pitch × 0.3(5%).
+     ====================================================================== */
+  /* §4.7 개정: Step Box는 Process Node 컴포넌트이므로 가로·세로 중앙
+     정렬이 기본(Design System §5 일반 좌측 정렬 기본값의 예외). */
+  .pstep {
+    position: absolute; z-index: 1; background: var(--c-white); border-radius: 3px;
+    display: flex; align-items: center; justify-content: center; padding: 0 10px;
+  }
+  .pstep .step-name { font-size: 11.5px; line-height: 1.3; color: var(--c-ink); font-weight: 600; text-align: center; }
+
+  .pstep.existing { left: 10%; width: 75%; border: 1px solid var(--c-slate); }
+  .pstep.improved { left: 15%; width: 67%; border: 1px solid var(--c-teal); }
+  .pstep.improved.highlight { background: rgba(15,101,91,0.08); }
+  .pstep.improved .step-name { color: var(--c-teal); font-weight: 700; }
+
+  .pitch-0 { top: 0%;       height: 11.6667%; }
+  .pitch-1 { top: 16.6667%; height: 11.6667%; }
+  .pitch-2 { top: 33.3333%; height: 11.6667%; }
+  .pitch-3 { top: 50%;      height: 11.6667%; }
+  .pitch-4 { top: 66.6667%; height: 11.6667%; }
+  .pitch-5 { top: 83.3333%; height: 11.6667%; }
+
+  /* §4.13 Connector Line — Box 좌측이 아닌 중앙축을 기준으로, 이전 Box
+     중앙(center_i)에서 다음 Box 중앙(center_i+1)까지 한 Pitch(16.6667%)
+     전체를 잇는다. z-index:0으로 Box(z-index:1, 불투명 배경)보다 뒤에
+     배치되어 Box와 겹치는 구간은 Box 아래로 가려지고, Box 사이 간격에서만
+     선이 보인다 — "Box가 Connector 위에 얹힌" 형태. */
+  .conn { position: absolute; z-index: 0; width: 1px; background: var(--c-line); }
+  .conn.improved { background: var(--c-mint); }
+  .conn.existing { left: calc(10% + 6px); }
+  .conn.improved { left: calc(15% + 6px); }
+  .c-1 { top: 5.8333%;  height: 16.6667%; }
+  .c-2 { top: 22.5%;    height: 16.6667%; }
+  .c-3 { top: 39.1667%; height: 16.6667%; }
+  .c-4 { top: 55.8333%; height: 16.6667%; }
+  .c-5 { top: 72.5%;    height: 16.6667%; }
+
+  /* Number Badge — before-after.md §4.8 개정: 변경 단계 Step Group에만 선택 적용 */
+  .step-num {
+    position: absolute; z-index: 2; width: 20px; height: 20px; border-radius: 50%; color: var(--c-white);
+    font-size: 9.5px; font-weight: 700; display: flex; align-items: center; justify-content: center;
+  }
+  .step-num.existing { left: calc(10% - 26px); background: var(--c-slate); }
+  .step-num.improved { left: calc(15% - 26px); background: var(--c-teal); }
+  .n-0 { top: calc(5.8333% - 10px); }
+  .n-1 { top: calc(22.5% - 10px); }
+  .n-2 { top: calc(39.1667% - 10px); }
+  .n-3 { top: calc(55.8333% - 10px); }
+  .n-4 { top: calc(72.5% - 10px); }
+  .n-5 { top: calc(89.1667% - 10px); }
+
+  /* Side Bracket + 인접 라벨 — §4.8: Bracket이 감싸는 Step 범위와 라벨이 정확히 일치 */
+  .bracket { position: absolute; width: 2px; }
+  .bracket.existing { left: calc(10% - 34px); background: var(--c-ink); }
+  .bracket.improved { left: calc(15% - 34px); background: var(--c-teal); }
+
+  .count-label {
+    position: absolute; display: flex; align-items: center; justify-content: center; text-align: center;
+  }
+  .count-label span { font-size: 10.5px; font-weight: 800; line-height: 1.3; }
+  .count-label.existing { left: 87%; width: 13%; color: var(--c-slate); }
+  /* §4.8 개정: Path B Box(57~89%) 바깥 외부 Marker 영역(90~98%)에 배치해
+     Box 텍스트와 겹치지 않게 함(기존 left:74%가 Box와 겹치던 버그 수정). */
+  .count-label.improved { left: 90%; width: 8%; color: var(--c-teal); }
+  .count-label.improved span { font-size: 9.5px; }
+
+  /* ======================================================================
+     §4.5 Transformation Area — 변경 없음(brand-transformation-arrow.png 재사용)
+     ====================================================================== */
+  .arrow-wrap { position: absolute; left: 17.5%; width: 65%; top: 39%; height: 32%; }
+  .arrow-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; object-position: center; }
+  .arrow-caption { position: absolute; left: 0; width: 100%; top: calc(39% + 32% + 6px); text-align: center; font-size: 11px; font-weight: 700; color: var(--c-slate); }
+
+  /* §4.9 Outcome/Result 영역 — 일반 Step Box와 혼합하지 않고 별도 영역으로 분리.
+     Step Box 스타일(Border Box)을 반복하지 않고, 상단 구분선 + Box 없는
+     텍스트로 "흐름의 한 단계가 아니라 결과값"임을 구분한다. 실제 제공된
+     자산이 없으므로 Existing만 텍스트 요약, Improved는 채우지 않는다(§4.9). */
+  .output-line {
+    position: absolute; z-index: 1; left: 10%; width: 75%; top: 95%; height: 5%;
+    border-top: 1px solid var(--c-line); padding-top: 4px;
+    display: flex; align-items: center; justify-content: center; text-align: center;
+    font-size: 10.5px; font-weight: 700; color: var(--c-deep-pine); text-decoration: underline;
+  }
+
+  .qa-footnote { position: absolute; left: var(--margin-x); right: var(--margin-x); bottom: 26px; font-size: 9.5px; font-weight: 400; color: var(--c-gray); }
+</style>
+</head>
+<body>
+
+<section class="slide">
+  <img class="deck-logo" src="assets/images/cosolus-ci-2.png" alt="COSOLUS">
+  <span class="deck-tagline">We promise tomorrow</span>
+  <span class="deck-divider"></span>
+
+  <p class="section-label">TECHNOLOGY</p>
+  <h1 class="slide-title">[솔루션1-2] 직접 리튬 추출 (DLE, Direct Lithium Extraction)</h1>
+
+  <div class="body-box">
+
+    <!-- ===================== Existing Column (0~44%) ===================== -->
+    <div class="col col-existing">
+      <div class="zone-header existing">현재 Li 재활용</div>
+      <div class="existing-input">NCM 스크랩</div>
+
+      <div class="process-area">
+        <div class="pstep existing pitch-0"><span class="step-name">침출</span></div>
+        <div class="conn existing c-1"></div>
+
+        <div class="pstep existing pitch-1"><span class="step-name">불순물 제거</span></div>
+        <div class="conn existing c-2"></div>
+
+        <div class="pstep existing pitch-2"><span class="step-name">Mn 추출</span></div>
+        <div class="step-num existing n-2">1</div>
+        <div class="conn existing c-3"></div>
+
+        <div class="pstep existing pitch-3"><span class="step-name">Co 추출</span></div>
+        <div class="step-num existing n-3">2</div>
+        <div class="conn existing c-4"></div>
+
+        <div class="pstep existing pitch-4"><span class="step-name">Ni 추출</span></div>
+        <div class="step-num existing n-4">3</div>
+        <div class="conn existing c-5"></div>
+
+        <div class="pstep existing pitch-5"><span class="step-name">역추출</span></div>
+        <div class="step-num existing n-5">4</div>
+
+        <!-- 비교 대상(Mn·Co·Ni·역추출) 4개 Step에만 선택 적용되는 Bracket + 라벨 -->
+        <div class="bracket existing" style="top:33.3333%; height:61.6667%;"></div>
+        <div class="count-label existing" style="top:60.1667%; height:8%;"><span>4단계</span></div>
+
+        <div class="output-line">증발 농축 기반 Li 회수(3.12%)</div>
+      </div>
+    </div>
+
+    <!-- ===================== Transformation Column (44~54%) ===================== -->
+    <div class="col col-transform">
+      <div class="arrow-wrap"><img class="arrow-img" src="assets/images/brand-transformation-arrow.png" alt=""></div>
+      <div class="arrow-caption">DLE 전환</div>
+    </div>
+
+    <!-- ===================== Improved Column (54~98%) ===================== -->
+    <div class="col col-improved">
+      <div class="zone-header improved">COSOLUS DLE 기반 Li 재활용</div>
+
+      <div class="improved-input-wrap">
+        <div class="improved-input-box">NCM or LFP 스크랩</div>
+        <span class="branch-bar"></span>
+        <span class="branch-node"></span>
+        <span class="branch-drop a"></span>
+        <span class="branch-drop b"></span>
+      </div>
+
+      <div class="process-area">
+
+        <!-- Path A(왼쪽, 짧은 경로) — 분기 원점(Input Box) 직후 Pitch-0부터
+             자연스럽게 시작(§4.11: Visual Balance를 이유로 재배치하지 않음) -->
+        <div class="pstep improved highlight pitch-0" style="left:15%; width:32%;"><span class="step-name">Li 추출</span></div>
+        <div class="step-num improved n-0" style="left:calc(15% - 26px);">1</div>
+        <div class="bracket improved" style="left:calc(15% - 34px); top:0%; height:11.6667%;"></div>
+        <div class="conn improved c-1" style="left:calc(15% + 6px);"></div>
+
+        <div class="pstep improved pitch-1" style="left:15%; width:32%;"><span class="step-name">침출 후 재활용</span></div>
+
+        <!-- Path B(오른쪽, 긴 경로) — 동일하게 분기 원점 직후 Pitch-0부터
+             시작해 Existing의 Slot 0·1(침출·불순물 제거)과 동일 Y축을
+             유지한다(§4.12 공통 Step 정렬, Bracket 정렬을 이유로 한 완화는
+             제거됨) -->
+        <div class="pstep improved pitch-0" style="left:57%; width:32%;"><span class="step-name">침출</span></div>
+        <div class="conn improved c-1" style="left:calc(57% + 6px);"></div>
+
+        <div class="pstep improved pitch-1" style="left:57%; width:32%;"><span class="step-name">불순물 제거</span></div>
+        <div class="conn improved c-2" style="left:calc(57% + 6px);"></div>
+
+        <div class="pstep improved highlight pitch-2" style="left:57%; width:32%;"><span class="step-name">Li 추출</span></div>
+        <div class="step-num improved n-2" style="left:calc(57% - 26px);">1</div>
+        <div class="bracket improved" style="left:calc(57% - 34px); top:33.3333%; height:11.6667%;"></div>
+        <div class="count-label improved" style="top:33.3333%; height:11.6667%;"><span>1단계</span></div>
+        <div class="conn improved c-3" style="left:calc(57% + 6px);"></div>
+
+        <div class="pstep improved pitch-3" style="left:57%; width:32%;"><span class="step-name">추출 후 재활용</span></div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <p class="qa-footnote">※ 상기 공정 단계·수치는 Before/After Variant A(§4 규칙 개정판) 검증을 위해 Reference PPT(before-after.pptx)와 동일한 구조로 재구성한 QA 예시이며, 실제 배포용 콘텐츠가 아님</p>
+
+  <span class="deck-page">1</span>
+</section>
+
+</body>
+</html>

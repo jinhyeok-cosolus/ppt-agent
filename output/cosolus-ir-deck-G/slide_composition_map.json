@@ -1,0 +1,47 @@
+{
+  "project": "cosolus-ir-deck-G",
+  "slides": [
+    {
+      "slide_number": 1,
+      "working_title": "[솔루션2] 개요 - 친환경 차세대 배터리 재활용 공정기술 (2세대)",
+      "source_material": [
+        {"id": "CG01", "scope": "entire"}
+      ],
+      "decision": "keep",
+      "rationale": "material_analysis.json에는 Content Group이 CG01 하나뿐이며(원본에 Word 헤딩 스타일이 없어 구조 신호 none_detected, 문서 전체를 단일 그룹으로 재구성) Subtopic도 존재하지 않는다. CG01 내부 콘텐츠(제목/본문 3문장/강조 헤드라인/공정 흐름도 18개 이미지)는 '하나의 상위 메시지를 공동으로 구성'하는 단일 의미 단위다 — 배터리팩 투입부터 1세대·2세대 공정을 거쳐 최종 회수물질(코발트·니켈·고순도 정제흑연 등)에 이르는 하나의 연속된 공정 스토리이며, 어느 한 부분만 떼어내면 공정의 인과관계(전처리→블랙매스→[1세대: 용매추출 / 2세대: 부유선별]→각 경로의 산출물)가 끊어져 핵심 메시지가 불명확해진다(분리 후보 신호 '한 슬라이드에 합치면 핵심 메시지가 불명확해짐'의 역이 성립 — 즉 분리하면 불명확해지므로 병합/유지). 병합·분할을 검토할 다른 Content Group이 애초에 존재하지 않으므로 비교 대상 없이 '유지(keep, 전체)'로 판단했다. 목표 슬라이드 수(1장) 제약과도 원본 분량이 자연스럽게 일치해 요약·부록 이관이 필요하지 않았다.",
+      "production_directive_applied": [],
+      "cross_group_ref_resolved": [],
+      "uncertain_evidence_carried": [
+        "CG01-direct_evidence-img6",
+        "CG01-direct_evidence-img7",
+        "CG01-direct_evidence-img8",
+        "CG01-direct_evidence-img9"
+      ],
+      "data_pending_carried": []
+    }
+  ],
+  "coverage_check": {
+    "unassigned_content_groups": [],
+    "unassigned_subtopics": [],
+    "evidence_reconciliation": [
+      {"source_id": "CG01-direct_evidence-confirmed_text", "source_count": 22, "mapped_count": 22, "match": true},
+      {"source_id": "CG01-direct_evidence-metrics", "source_count": 0, "mapped_count": 0, "match": true},
+      {"source_id": "CG01-direct_evidence-tables", "source_count": 0, "mapped_count": 0, "match": true},
+      {"source_id": "CG01-direct_evidence-images_available", "source_count": 18, "mapped_count": 18, "match": true}
+    ],
+    "cross_group_ref_trace_complete": true,
+    "uncertain_evidence_flagged": [
+      "img6 (MnSO4/NiSO4/CoSO4/Li2CO3 회수 화합물 4종 중 어느 것에 대응하는지 개별 캡션 없어 uncertain — material_analysis.json needs_confirmation NC-02 참조)",
+      "img7 (동일 사유)",
+      "img8 (동일 사유)",
+      "img9 (동일 사유)"
+    ],
+    "data_pending_flagged": [],
+    "unresolved_production_directives": [],
+    "issues_found": [
+      "material_analysis.json needs_confirmation NC-01: 원본에 헤딩 스타일이 없어 Content Group 경계 자체가 LLM 재구성 결과다 — 슬라이드 1장 구성과 목표 슬라이드 수(1장)가 우연히 일치하지만, 이는 [3] 시점에 비교·분할할 다른 Content Group이 없었기 때문이지 병합 판단을 거쳐 도출된 결과가 아니다. 후속 단계(slide-content-structuring)에서 이 CG01 내부를 Content Role/Region 기준으로 더 세분화할 수 있다.",
+      "img6~img9(회수 화합물 4종 시각자료)의 화합물-이미지 1:1 매핑이 확정되지 않은 채(uncertain) 슬라이드 1에 그대로 이월됨 — 핵심 정량 주장이 아닌 부가 시각자료이므로 진행에는 지장 없으나, slide-content-structuring/web-ppt-generator 단계에서 개별 화합물별 색상 매칭 대신 '회수 화합물 4종' 묶음 표현을 권장(needs_confirmation NC-02와 동일 권고)."
+    ],
+    "status": "issues_resolved"
+  }
+}

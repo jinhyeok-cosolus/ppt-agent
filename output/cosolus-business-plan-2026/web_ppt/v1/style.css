@@ -1,0 +1,533 @@
+/*
+  cosolus-business-plan-2026 v1 — style.css
+  Hard Rule(2026.08.12_design_hard-rules_V2) > Claude PPT Design System > Content Visualization
+  Freedom > Layout Reference 순으로 구현. 좌표 기준: 16:9, 1280x720px 캔버스. pt->px 환산은
+  1pt = 1.3333px. 공통 Header/Typography/Table/Divider 구현은 검증된 선행 프로젝트
+  (cosolus-ir-deck-E v1, QA 통과)와 동일한 값을 재사용한다.
+*/
+
+:root {
+  --slide-w: 1280px;
+  --slide-h: 720px;
+
+  /* Brand Color — Hard Rule §5 */
+  --c-primary: #067875;      /* Primary / Cosolus Teal */
+  --c-dark: #034443;         /* Dark/Main / Deep Pine */
+  --c-secondary: #349887;    /* Secondary / Sea Teal */
+  --c-light: #AFE2E3;        /* Light / Mint */
+  --c-ocean: #1A6A8C;
+  --c-moss: #6E9B3F;
+  --c-amber: #C8801F;
+  --c-ink: #162B1F;
+  --c-slate: #5A6664;
+  --c-gray: #8C9694;
+  --c-line: #E1E7E5;
+  --c-mist: #F3F6F5;
+  --c-tint-lightest: #F4FAFA;
+  --c-header-text: #0F1E1F;
+  --c-submessage: #478689;   /* Sub Message / 상단 구분선 고정색, Hard Rule §9 */
+  --c-white: #FFFFFF;
+
+  --font-base: "Pretendard", "Malgun Gothic", "맑은 고딕", sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #555;
+  font-family: var(--font-base);
+  color: var(--c-ink);
+  word-break: keep-all;
+}
+
+#deck { display: flex; flex-direction: column; align-items: center; gap: 24px; padding: 24px 0; }
+
+/* ============ Slide Base ============ */
+.slide {
+  position: relative;
+  width: var(--slide-w);
+  height: var(--slide-h);
+  background: var(--c-white);
+  overflow: hidden;
+  flex: none;
+}
+
+/* ============ Common Header System (Hard Rule §9, 표지 제외) ============ */
+.hdr-ci { position: absolute; left: 64px; top: 25px; height: 20px; z-index: 2; }
+.hdr-ci img { height: 20px; width: auto; display: block; }
+
+.hdr-submessage {
+  position: absolute; right: 64px; top: 25px;
+  font: 500 14pt/20px var(--font-base);
+  color: var(--c-submessage);
+  white-space: nowrap;
+}
+
+.hdr-divider {
+  position: absolute; left: 64px; top: 56px; width: 1152px; height: 1px;
+  background: var(--c-submessage);
+}
+
+.hdr-section-label {
+  position: absolute; left: 68px; top: 62px;
+  font: 300 12pt var(--font-base);
+  color: var(--c-gray);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.hdr-main-title {
+  position: absolute; left: 64px; top: 83px; width: 1152px;
+  font: 800 28pt/1.25 var(--font-base);
+  color: var(--c-dark);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hdr-page-number {
+  position: absolute; right: 44px; bottom: 24px;
+  font: 300 14pt var(--font-base);
+  color: var(--c-gray);
+}
+
+/* Main Title Supporting Message — Hard Rule §12 */
+.hdr-support-message {
+  position: absolute; left: 64px; top: 136px; width: 1152px;
+  font: 600 20pt/1.3 var(--font-base);
+  color: var(--c-ink);
+}
+
+/* Body Box — Safe Area */
+.body-box {
+  position: absolute; left: 64px; top: 135px; width: 1152px; height: 521px;
+}
+.body-box.with-support {
+  top: 178px; height: 478px;
+}
+
+/* ============ Typography Tiers (Design System §3) ============ */
+.t-content-header { font: 600 20pt/1.3 var(--font-base); color: var(--c-ink); }
+.t-explanation     { font: 500 18pt/1.4 var(--font-base); color: var(--c-ink); }
+.t-body            { font: 400 16pt/1.5 var(--font-base); color: var(--c-ink); }
+.t-caption         { font: 300 14pt/1.4 var(--font-base); color: var(--c-slate); }
+.t-footnote        { font: 300 12pt/1.4 var(--font-base); color: var(--c-gray); }
+.t-stat            { font: 800 28pt/1.1 var(--font-base); color: var(--c-primary); }
+
+/* ============ Shared Component — Insight / Conclusion / Key Message Box
+   (Design System §6 RoundRect Card/Tag: 라운드 radius 소–중, White/Tint 배경,
+   테두리 없음 또는 1px Neutral, 좌측 컬러 바 등 accent border 금지) ============ */
+.insight-box {
+  background: var(--c-tint-lightest);
+  border: 1px solid var(--c-line);
+  border-radius: 8px;
+  padding: 14px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.insight-box-label {
+  font: 600 12pt var(--font-base);
+  color: var(--c-primary);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.insight-box-text { font: 500 16pt/1.5 var(--font-base); color: var(--c-ink); }
+
+/* ============ Content Comparison / Region Header (Hard Rule §10) ============ */
+.comp-header {
+  height: 54px;
+  display: flex; align-items: center; justify-content: center;
+  font: 600 20pt var(--font-base);
+  color: var(--c-header-text);
+  letter-spacing: -0.3pt;
+  border-radius: 0;
+}
+/* Parallel Variant — 대등·독립 N개 병렬 Region (Three-Column 등) */
+.comp-header--parallel {
+  background: var(--c-tint-lightest);
+  border-top: 0.75pt solid var(--c-primary);
+  border-bottom: 0.5pt solid var(--c-primary);
+}
+/* ============ Vertical Content Divider (Hard Rule §11) ============ */
+.v-divider {
+  position: absolute;
+  width: 1px;
+  background: linear-gradient(180deg, rgba(3,68,67,0) 0%, #034443 53%, rgba(3,68,67,0) 100%);
+}
+
+/* ============ Table Style (Hard Rule §10B / Design System §8) ============ */
+table.data-table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+table.data-table th {
+  background: var(--c-primary); color: var(--c-white);
+  font: 700 14pt var(--font-base);
+  text-align: center; vertical-align: middle;
+  padding: 10px 8px;
+  border: none;
+}
+table.data-table td {
+  background: var(--c-white); color: var(--c-ink);
+  font: 400 16pt var(--font-base);
+  text-align: center; vertical-align: middle;
+  padding: 10px 8px;
+  border-bottom: 1px solid var(--c-line);
+}
+table.data-table td.dim { color: var(--c-slate); }
+table.data-table td.hl { color: var(--c-primary); font-weight: 700; }
+table.data-table .crit-col { text-align: left; font: 600 14pt var(--font-base); }
+
+/* ============ Shared small components ============ */
+.tag-label {
+  display: inline-block;
+  font: 600 14pt var(--font-base);
+  color: var(--c-primary);
+  letter-spacing: 0.02em;
+}
+.bullet-list { list-style: none; }
+.bullet-list li {
+  position: relative; padding-left: 18px; font: 400 16pt/1.5 var(--font-base); color: var(--c-ink);
+}
+.bullet-list li::before {
+  content: ""; position: absolute; left: 0; top: 0.65em;
+  width: 6px; height: 6px; background: var(--c-primary); border-radius: 50%;
+}
+.footnote-block { font: 300 12pt/1.5 var(--font-base); color: var(--c-gray); }
+
+.stat-block .num { font: 800 28pt var(--font-base); color: var(--c-primary); }
+.stat-block .label { font: 400 14pt var(--font-base); color: var(--c-slate); }
+
+/* ======================================================================
+   Slide 1 — Cover (01_cover_design_V2.md)
+   ====================================================================== */
+.s-cover { background: #06312f; }
+.cover-bg {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center;
+}
+.cover-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(160deg, rgba(26,106,140,0.55) 0%, rgba(127,200,190,0.30) 50%, rgba(15,101,91,0.50) 100%);
+}
+.cover-brand {
+  position: absolute; left: 64px; top: 56px; z-index: 2;
+  display: flex; flex-direction: column; gap: 6px;
+}
+.cover-submsg { font: 500 16px var(--font-base); color: #fff; }
+.cover-logo { height: 36px; width: auto; display: block; }
+.cover-title {
+  position: absolute; left: 50%; top: 58%; transform: translate(-50%, -50%);
+  z-index: 2; width: 960px; text-align: center;
+}
+.cover-title h1 { font: 700 48px/1.35 var(--font-base); color: #fff; }
+.cover-title .cover-org {
+  margin-top: 18px; font: 500 14pt/1.5 var(--font-base); color: rgba(255,255,255,0.92);
+}
+
+/* ======================================================================
+   Slide 2 — 과제 개요 (프로젝트 프로필 Fact List, L18 계열)
+   ====================================================================== */
+.s2-wrap { display: flex; flex-direction: column; height: 100%; justify-content: center; gap: 22px; }
+.s2-lead { font: 600 20pt/1.4 var(--font-base); color: var(--c-dark); max-width: 1000px; }
+.s2-facts { display: flex; flex-direction: column; }
+.s2-fact-row { display: flex; gap: 28px; align-items: flex-start; padding: 16px 0; border-bottom: 1px solid var(--c-line); }
+.s2-fact-row:first-child { border-top: 1px solid var(--c-line); }
+.s2-fact-label { width: 140px; flex: none; font: 600 16pt var(--font-base); color: var(--c-primary); }
+.s2-fact-value { flex: 1; font: 400 16pt/1.5 var(--font-base); color: var(--c-ink); }
+
+/* ======================================================================
+   Slide 3 — 시장 및 산업 배경 (L07 Market/Problem)
+   ====================================================================== */
+/* 2026-08-26: 슬라이드3 HTML이 팀원본(teammate-version) 병합으로 교체되며 아래 .s3-* 규칙은
+   더 이상 참조되지 않는다(다른 슬라이드도 미참조) — 롤백 대비 최소 변경 원칙에 따라 삭제하지
+   않고 그대로 둔다. 실제 사용 중인 규칙은 이 파일 하단 "팀원본 병합" 섹션(.slide-3 .sym-wrap 등) 참조. */
+/* Visual Composition 재구성(2026-08-25): s3-wrap = 세로 flex(상단 2-Column 본문 + 하단 공통
+   Footnote/Source 영역). s3-cols = 좌(Visual Content Group)·우(Text) 2-Column, L07 원본 Reference와
+   좌우 방향 일치. */
+.s3-wrap { display: flex; flex-direction: column; gap: 14px; height: 100%; }
+.s3-cols { display: flex; gap: 32px; flex: 1; min-height: 0; align-items: center; }
+/* 좌측 Column = Primary Visual(그림2, 시장 규모 차트) + Supporting Visual(그림1, ESL 시스템 구조도)을
+   하나의 Content Group으로 묶어 위·아래 배치(간격 좁게), 좌측 정렬축을 공유. 폭 비율(95%/68%)로
+   Primary/Supporting 위계 차이는 유지하되 과도한 크기 격차는 완화 — Design System Content
+   Density/Content Group 원칙 적용. 우측 Text는 정보량이 적어 Column 폭 비율을 좌:우 = 0.9:1.1로
+   재배분(2026-08-25 미세조정) — Column 자체 폭도 이미지 실제 크기에 맞춰 줄여 두 Column 사이
+   불필요한 여백을 없앤다. align-self: flex-start로 Row 상단 기준선에 고정해, 두 이미지 합산
+   높이가 Row 높이를 넘더라도 상단 제목 쪽으로 겹치지 않고 하단으로만 여유를 소비하게 한다. */
+.s3-left { flex: 0.9; display: flex; flex-direction: column; gap: 10px; align-items: flex-start; align-self: flex-start; }
+.s3-chart-img { width: 95%; border: 1px solid var(--c-line); }
+.s3-chart-img img { width: 100%; display: block; }
+.s3-support-img { width: 68%; border: 1px solid var(--c-line); }
+.s3-support-img img { width: 100%; display: block; }
+/* 우측 Column = Text 중심(핵심 메시지 + Bullet) — Visual과 역할 분리. */
+.s3-right { flex: 1.1; display: flex; flex-direction: column; gap: 16px; justify-content: center; }
+.s3-lead { font: 600 18pt/1.4 var(--font-base); color: var(--c-dark); }
+/* 하단 공통 Footnote/Source 영역 — 캡션(그림1)·출처(그림2) 두 Annotation을 세미콜론으로 구분하되
+   동일한 낮은 위계(footnote-block, 12pt Light)로 통일. */
+.s3-footnote { flex: none; }
+
+/* ======================================================================
+   Slide 4 — 제품 적용 구조 (L09 Technology/Principle)
+   ====================================================================== */
+/* 그림4(제품사진) 제거 후 s4-wrap을 세로 2단(상단 Main Row + 하단 Full-Width Insight)으로 재구성.
+   CORE TECHNICAL ADVANTAGE는 좌우 두 Region을 종합하는 결론이므로 Integrated Conclusion 원칙에 따라
+   하단 전체 폭에 배치(2026-08-25 재조정). */
+.s4-wrap { display: flex; flex-direction: column; height: 100%; justify-content: center; gap: 22px; }
+.s4-main { display: flex; gap: 40px; align-items: center; }
+.s4-left { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+/* 제품사진 제거로 s4-left가 단면도 단독 Region이 되어 480px보다 키워 Primary Visual 비중을 확대. */
+.s4-diagram { width: 100%; max-width: 520px; border: 1px solid var(--c-line); }
+.s4-diagram img { width: 100%; display: block; }
+.s4-right { flex: 1; display: flex; flex-direction: column; gap: 16px; justify-content: center; }
+.s4-func-list li { margin-bottom: 8px; }
+.s4-insight-full { width: 100%; }
+
+/* ======================================================================
+   Slide 5 — 기존 기술의 문제 (Symmetric Two-Split, L25 — 2개 병렬 문제 그룹,
+   좌측 Panel 내부에만 소규모 인과 fork 포함. Flow Diagram 공유-시작점 분기
+   패턴이 아니므로 flow-diagram-rules.md 표현 규칙은 적용하지 않는다.)
+   ====================================================================== */
+.s5-wrap { display: flex; flex-direction: column; height: 100%; justify-content: center; gap: 28px; }
+.s5-lead { font: 600 20pt/1.4 var(--font-base); color: var(--c-dark); max-width: 1050px; }
+.s5-split { display: flex; align-items: stretch; gap: 32px; }
+.s5-panel { flex: 1; background: var(--c-mist); border-radius: 8px; padding: 24px 26px; display: flex; flex-direction: column; gap: 18px; }
+.s5-panel-header { font: 600 16pt var(--font-base); color: var(--c-primary); }
+
+/* 좌측 Panel — 원인(1개) → 결과(2개) 소규모 causal fork */
+.s5-fork { display: flex; align-items: center; gap: 18px; }
+.s5-fork-cause { flex: none; width: 150px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 4px; }
+.s5-fork-cause .s5-num { font: 800 26pt var(--font-base); color: var(--c-primary); }
+.s5-fork-cause .s5-num-label { font: 400 13pt/1.3 var(--font-base); color: var(--c-slate); }
+.s5-fork-arrow { flex: none; color: var(--c-primary); font-size: 20px; }
+.s5-fork-effects { flex: 1; display: flex; flex-direction: column; gap: 10px; }
+.s5-effect { font: 500 16pt/1.4 var(--font-base); color: var(--c-ink); background: var(--c-white); border: 1px solid var(--c-line); border-radius: 6px; padding: 10px 14px; }
+
+/* 우측 Panel — 관련은 있으나 명시적 인과 연결어가 없는 병렬 사실 2개(화살표로 연결하지 않음) */
+.s5-parallel-facts { flex: 1; display: flex; flex-direction: column; gap: 14px; justify-content: center; }
+.s5-fact { font: 500 16pt/1.4 var(--font-base); color: var(--c-ink); background: var(--c-white); border: 1px solid var(--c-line); border-radius: 6px; padding: 14px 16px; }
+
+/* ======================================================================
+   Slides 6 / 8 / 11 / 16 — Three-Column Insight Layout (three-column.md)
+   ====================================================================== */
+.tc-grid { display: flex; flex-direction: column; height: 100%; }
+/* Header row: 3개 Header Bar를 Hard Rule §10 Header Gap(24px)으로만 분리 — Body와는
+   별도 트랙이므로 Header Gap 값이 Body Divider 배치에 영향을 주지 않는다. */
+.tc-header-row { display: flex; gap: 24px; flex: 0 0 auto; }
+.tc-header-row .comp-header { flex: 1; }
+/* Body row: Header Bar와 비접촉(margin-top으로 분리, 약 Header 높이의 1/3), Column은
+   gutter 없이 edge-to-edge 배치하고 그 경계에 Vertical Divider(Hard Rule §11)를 별도
+   DOM 요소로 삽입한다. */
+.tc-body-row { display: flex; align-items: stretch; flex: 1; margin-top: 18px; min-height: 0; }
+.tc-col-body { flex: 1; display: flex; flex-direction: column; padding: 0 16px; gap: 12px; min-width: 0; }
+/* v-divider(Hard Rule §11 스펙)를 flex 흐름 안에서 상하단 여백을 둔 채 자연스럽게
+   늘어나도록 override — Slide 5의 .ba-divider와 동일한 패턴. */
+.tc-divider { position: relative; left: auto; align-self: stretch; height: auto; flex: 0 0 1px; margin: 10px 0; }
+.tc-col-title { font: 700 16pt/1.3 var(--font-base); color: var(--c-primary); text-align: center; }
+.tc-col-body .bullet-list { display: flex; flex-direction: column; gap: 8px; }
+.tc-col-body .bullet-list li { font-size: 15pt; }
+.tc-support { color: var(--c-slate); font: 400 14pt/1.4 var(--font-base); text-align: center; }
+
+/* ======================================================================
+   Slide 11 — 수행역량 (2026-08-25 재구성: 새 독립 Layout 대신 기존 Three-Column
+   골격(tc-grid, 위 공용 정의 재사용) + 하단 공통 Full-Width Visual Region 조합.
+   상단 3개 기관 Column은 tc-grid 높이를 100%에서 auto로만 override, 나머지
+   Header/Body/Divider 규칙은 그대로 재사용 — 새 컴포넌트 없음.
+   ====================================================================== */
+.s11-wrap { display: flex; flex-direction: column; height: 100%; gap: 20px; }
+.s11-tc-grid { flex: 0 0 auto; height: auto; }
+/* Visual Region Utilization(SKILL.md) 적용 — 회색 배경 wrapper·균등 강제 박스 없이 이미지
+   자체를 원본 비율대로 가용 공간 최대까지 표시. 각 이미지는 Region 폭 절반을 넘지 않는
+   한도 안에서 자기 비율대로 최대 크기를 갖고(강제 동일 폭 아님), 전체 Region 높이를 채운다. */
+.s11-visual-full { flex: 1; display: flex; align-items: center; justify-content: center; gap: 16px; min-height: 0; }
+.s11-visual-full img { max-width: calc(50% - 8px); max-height: 100%; width: auto; height: auto; object-fit: contain; border: 1px solid var(--c-line); }
+
+/* ======================================================================
+   Slide 7 — Before + After, Criteria/BEFORE/AFTER 3-Column Table
+   (before-after.md §5 Region Map 비율 + table.data-table(Hard Rule §10B)
+   재사용). 사용자 지시로 Vertical Divider 없이 최소 Horizontal Line만
+   사용하는 깔끔한 Table 형태로 재구성 — AFTER 열만 은은한 Tint 배경 +
+   Main Color 강조를 추가하는 것이 §10B의 "Header Row 전체 동일 Fill"
+   기본값과는 다른 부분 강조이므로, 이 슬라이드에 한해 scoped(.s7-table)
+   override로 처리하고 다른 슬라이드의 table.data-table 기본 스타일은
+   변경하지 않는다. 그림5·Caption은 제거 상태 유지.
+   ====================================================================== */
+.ba-divider { position: relative; left: auto; align-self: stretch; height: auto; }
+
+.s7-wrap { display: flex; flex-direction: column; height: 100%; padding-top: 6px; }
+table.s7-table th { background: var(--c-white); color: var(--c-ink); border-bottom: 1px solid var(--c-line); font: 700 19pt var(--font-base); padding: 30px 20px; }
+table.s7-table td { padding: 34px 20px; font-size: 17pt; }
+.s7-table th:last-child { background: var(--c-tint-lightest); color: var(--c-primary); border-bottom: 2px solid var(--c-primary); }
+.s7-table td:last-child { background: var(--c-tint-lightest); }
+table.s7-table th:not(:last-child), table.s7-table td:not(:last-child) { border-right: 1px solid var(--c-line); }
+table.s7-table .crit-col { font-size: 16pt; }
+.s7-table-tag { font-weight: 400; font-size: 0.65em; margin-left: 6px; opacity: 0.7; }
+
+/* ======================================================================
+   Slide 9 — 정량적 개발 목표 (L17 Table / Matrix)
+   ====================================================================== */
+.s9-wrap { display: flex; flex-direction: column; height: 100%; justify-content: center; gap: 16px; }
+.s9-groups { display: flex; gap: 24px; }
+.s9-group { flex: 1; display: flex; flex-direction: column; }
+.s9-group-title { text-align: center; }
+.s9-group table.data-table td { padding: 8px 6px; }
+.s9-group table.data-table th { font-size: 14pt; padding: 8px 6px; }
+
+/* ======================================================================
+   Slide 10 — 선행개발 실적 (L13 Validation/Performance — 순차 프로세스)
+   ====================================================================== */
+.s10-wrap { display: flex; flex-direction: column; height: 100%; justify-content: center; gap: 30px; }
+.s10-steps { display: flex; align-items: stretch; gap: 0; }
+.s10-step { flex: 1; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 8px; padding: 0 10px; }
+.s10-step-num { width: 30px; height: 30px; border-radius: 50%; background: var(--c-primary); color: #fff; font: 700 14pt var(--font-base); display: flex; align-items: center; justify-content: center; }
+.s10-step-label { font: 500 14pt/1.35 var(--font-base); color: var(--c-ink); }
+.s10-step-highlight .s10-step-num { background: var(--c-dark); }
+.s10-step-highlight .s10-step-label { color: var(--c-dark); font-weight: 700; }
+.s10-arrow { flex: 0 0 26px; color: var(--c-primary); font-size: 16pt; display: flex; align-items: center; justify-content: center; }
+.s10-conclusion { text-align: center; background: var(--c-tint-lightest); border-top: 3px solid var(--c-primary); padding: 18px; }
+/* 위 .s10-* 규칙은 2026-08-26 팀원본 병합으로 슬라이드10 HTML이 교체되며 더 이상
+   참조되지 않는다(다른 슬라이드도 미참조) — 롤백 대비 최소 변경 원칙에 따라 삭제하지
+   않고 그대로 둔다. */
+
+/* ======================================================================
+   2026-08-26 팀원본 병합(teammate-version/review_5_18_shared.html) — 슬라이드3
+   (시장 및 산업 배경)·슬라이드10(선행개발 실적) 2개만 팀원 HTML/CSS를 그대로 이식.
+   기존 프로젝트 공용 CSS는 건드리지 않고, 팀원 전용 클래스만 각 슬라이드에
+   scoped(.slide-3/.slide-10 prefix)로 추가한다. 값은 팀원 파일의 정의를 그대로
+   가져온 것이며 재설계하지 않았다. .v-divider/.t-body/.t-explanation/.stat-block
+   .num·.label은 이미 본 프로젝트에 동일 개념으로 정의돼 있어 재사용(중복 추가 없음).
+   ====================================================================== */
+.slide-3 .sym-wrap, .slide-10 .sym-wrap { display: flex; height: 100%; gap: 0; }
+.slide-3 .sym-col, .slide-10 .sym-col { flex: 1 1 0; padding: 0 24px; display: flex; flex-direction: column; }
+.slide-3 .sym-col:first-child, .slide-10 .sym-col:first-child { padding-left: 0; }
+.slide-3 .sym-col:last-child, .slide-10 .sym-col:last-child { padding-right: 0; }
+.slide-3 .region-header, .slide-10 .region-header {
+  height: 0.561in; display: flex; align-items: center; justify-content: center;
+  font: 600 20pt/1 var(--font-base); color: #0F1E1F; letter-spacing: -0.3pt;
+  text-align: center; padding: 0; border-radius: 0;
+}
+.slide-3 .region-header.rh-parallel, .slide-10 .region-header.rh-parallel {
+  background: #F4FAFA; border-top: 0.75pt solid var(--c-primary); border-bottom: 0.5pt solid var(--c-primary);
+}
+.slide-3 .proof-list { list-style: none; margin: 14px 0 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.slide-3 .proof-list li { font: 400 16pt/1.45 var(--font-base); color: var(--c-ink); padding-left: 18px; position: relative; }
+.slide-3 .proof-list li::before {
+  content: ""; position: absolute; left: 0; top: 0.6em; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--c-primary);
+}
+.slide-3 .img-evidence { display: block; }
+.slide-3 .img-evidence img { display: block; width: 100%; }
+.slide-3 .img-evidence .cap { font: 300 14pt/1.35 var(--font-base); color: var(--c-gray); margin-top: 6px; text-align: center; }
+.slide-3 .flow-arrow { display: flex; align-items: center; justify-content: center; color: var(--c-primary); font-size: 22px; font-weight: 700; }
+
+.slide-10 .ms-list { display: flex; flex-direction: column; gap: 28px; }
+.slide-10 .ms-item { display: flex; align-items: flex-start; gap: 12px; }
+.slide-10 .ms-badge {
+  flex: 0 0 auto; width: 27px; height: 27px; border-radius: 50%;
+  background: var(--c-primary); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font: 700 14pt/1 var(--font-base);
+}
+.slide-10 .ms-text { flex: 1 1 auto; font: 400 16pt/1.32 var(--font-base); color: var(--c-ink); padding-top: 1px; }
+.slide-10 .ms-text b { font-weight: 600; }
+.slide-10 .ms-connector { width: 27px; height: 24px; margin: 0; display: flex; align-items: center; justify-content: center; }
+.slide-10 .ms-connector::before { content: "↓\FE0E"; font: 700 20pt/1 var(--font-base); color: var(--c-primary); }
+.slide-10 .ms-result-block { margin-top: 26px; display: flex; flex-direction: column; gap: 5px; }
+.slide-10 .ms-result-block p { margin: 0; font: 400 16pt/1.3 var(--font-base); color: var(--c-ink); }
+.slide-10 .ms-result-block p.ms-result-highlight { font-weight: 600; color: var(--c-primary); }
+.slide-10 .imp-item { margin-bottom: 20px; }
+.slide-10 .imp-item:last-child { margin-bottom: 0; }
+.slide-10 .imp-item .p-num { font: 800 16pt var(--font-base); color: var(--c-primary); }
+.slide-10 .imp-item .p-ttl { font: 600 16pt/1.3 var(--font-base); color: var(--c-ink); margin-top: 2px; }
+.slide-10 .imp-item .tc-body-list { margin-top: 8px; gap: 8px; }
+.slide-10 .tc-body-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.slide-10 .tc-body-list li { font: 400 16pt/1.4 var(--font-base); color: var(--c-slate); padding-left: 14px; position: relative; }
+.slide-10 .tc-body-list li::before {
+  content: ""; position: absolute; left: 0; top: 0.65em; width: 5px; height: 5px; border-radius: 50%;
+  background: var(--c-secondary);
+}
+
+/* ======================================================================
+   Slide 12 — 기관별 역할 및 협력 구조 (Process/System Architecture, 순환)
+   ====================================================================== */
+.psa-wrap { display: flex; flex-direction: column; height: 100%; justify-content: center; gap: 22px; }
+.psa-header { width: 70%; align-self: center; }
+.psa-flow { display: flex; align-items: stretch; gap: 0; }
+.psa-node { flex: 1; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 8px; padding: 0 8px; }
+.psa-node-box {
+  width: 100%; min-height: 192px; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  background: var(--c-mist); border: 1px solid var(--c-line); padding: 24px 18px; gap: 8px;
+}
+.psa-node-box.hl { background: var(--c-tint-lightest); border-color: var(--c-primary); }
+.psa-node-title { font: 700 16pt var(--font-base); color: var(--c-primary); }
+.psa-node-sub { font: 400 14pt/1.35 var(--font-base); color: var(--c-ink); }
+.psa-arrow-h { flex: 0 0 30px; color: var(--c-primary); font-size: 22px; display: flex; align-items: center; justify-content: center; }
+
+/* ======================================================================
+   Slides 13~17 — 5개년 개발 로드맵, 연차별 개별 슬라이드 (2026-08-25 분할)
+   1개 Timeline 슬라이드(82px 원본이미지 썸네일, Image Legibility 위반)를
+   연차별 슬라이드 5개로 분리. 상단 3개 기관 핵심계획은 tc-col-body/tc-divider
+   (Three-Column 공용 컴포넌트) 재사용, 하단은 해당 연차 원본 Visual을 크게 배치.
+   ====================================================================== */
+.s13y-wrap { display: flex; flex-direction: column; height: 100%; gap: 24px; }
+.s13y-orgs { flex: 0 0 auto; margin-top: 0; }
+.s13y-org-name { font: 700 16pt var(--font-base); color: var(--c-primary); display: block; margin-bottom: 6px; }
+.s13y-visual { flex: 1; display: flex; align-items: center; justify-content: center; min-height: 0; }
+.s13y-visual img { max-width: 100%; max-height: 100%; object-fit: contain; border: 1px solid var(--c-line); }
+
+/* Slide 13 (1차년도) — 좌측 Large Visual + 우측 3기관 Vertical Stack */
+.s13y-hero { display: flex; height: 100%; gap: 32px; }
+.s13y-hero-visual { flex: 1.7; display: flex; align-items: center; justify-content: center; min-width: 0; }
+.s13y-hero-visual img { max-width: 100%; max-height: 100%; object-fit: contain; }
+.s13y-hero-orgs { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 20px; min-width: 0; }
+.s13y-hero-org {
+  flex: 0 0 auto; display: flex; flex-direction: column; gap: 6px;
+  background: var(--c-white); border: 1px solid var(--c-line); border-radius: 8px;
+  padding: 14px 18px;
+}
+
+/* Slide 17 (5차년도) — img12는 가로로 넓은 종횡비라 Visual 폭을 소폭 확대 */
+.slide-13y5 .s13y-hero-visual { flex: 2.3; }
+
+/* ======================================================================
+   Slide 18 — 사업화 전략 (2026-08-25 재구성: 하단 원본 흐름도가 Main Visual로서
+   이미 단계·연결 관계를 표현하므로, 상단은 번호 원형·화살표 없이 공용
+   Three-Column 골격(tc-grid/comp-header--parallel/tc-col-body/tc-divider,
+   위 Slide 6/8/11/16 공용 정의 그대로 재사용)만 배치해 Process 구조 중복 제거.
+   tc-grid는 원래 body-box 전체(height:100%)를 채우는 단독 사용을 기본으로 하므로,
+   이 슬라이드에서는 상단 3-Column이 하단 Visual과 세로로 함께 배치되도록
+   height만 auto로 override — Header/Body/Divider 규칙은 그대로 재사용) */
+.s14-wrap { display: flex; flex-direction: column; height: 100%; gap: 22px; }
+.s14-top { flex: 0 0 auto; height: auto; }
+.s14-diagram { flex: 1; display: flex; align-items: center; justify-content: center; min-height: 0; }
+.s14-diagram img { max-width: 100%; max-height: 100%; object-fit: contain; }
+
+/* ======================================================================
+   Slide 19 — 시장성 및 기대효과 (2026-08-25 재구성: 좌우 절반분할이 정보량
+   [핵심 수치 2개 + 보조 3개]에 비해 과도한 공백을 남겨, 중앙집중형 강조
+   구조로 단순화 — 핵심 수치를 상단에 크게, 보조 내용을 하단에 배치)
+   ====================================================================== */
+.s15-wrap { display: flex; flex-direction: column; height: 100%; justify-content: center; gap: 40px; }
+.s15-stats { display: flex; align-items: stretch; justify-content: center; gap: 56px; }
+.s15-stat { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 8px; }
+.s15-stat .num { font: 800 36pt var(--font-base); color: var(--c-primary); }
+.s15-stat .label { font: 400 16pt/1.4 var(--font-base); color: var(--c-slate); max-width: 360px; }
+.s15-stat-divider { position: relative; left: auto; align-self: stretch; height: auto; }
+.s15-support { display: flex; justify-content: center; }
+.s15-support .bullet-list { display: flex; flex-direction: column; gap: 10px; }
+.s15-support .bullet-list li { font-size: 16pt; }
+
+/* ======================================================================
+   Slide 17 — Closing (L22, Cover와 대칭되는 Dark Brand Closing)
+   ====================================================================== */
+.s-closing { background: var(--c-dark); }
+.closing-grid { position: relative; height: 100%; display: flex; align-items: center; justify-content: center; }
+.closing-text { display: flex; flex-direction: column; gap: 22px; align-items: center; text-align: center; }
+.closing-text p { font: 500 22px/1.6 var(--font-base); color: #fff; max-width: 720px; }
+.closing-thanks { font: 800 40px var(--font-base); color: var(--c-light); }
+.closing-brand { position: absolute; left: 64px; top: 32px; display: flex; align-items: center; gap: 10px; }
+.closing-brand img { height: 22px; width: auto; }
+
+/* print */
+@media print {
+  body { background: #fff; }
+  #deck { gap: 0; padding: 0; }
+  .slide { page-break-after: always; }
+}

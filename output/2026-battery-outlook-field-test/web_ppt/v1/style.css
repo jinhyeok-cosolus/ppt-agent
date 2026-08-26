@@ -1,0 +1,340 @@
+/*
+  2026 이차전지 전망 — Field Test 웹PPT
+  원본 자료: 2026 이차전지 전망.pdf (NH투자증권 리서치본부, 2026.5.26, Analyst 주민우)
+  적용 규칙: docs/design-hard-rules/2026.08.12_design_hard-rules_V2.md (1순위)
+            docs/design-system/Claude_PPT_Design_System.md (2순위)
+            docs/design-system/content-visualization-freedom.md (3순위)
+            docs/layout-reference 및 docs/slide-design-rules/*.md (4순위, three-column.md 등)
+            표지: docs/slide-design-rules/01_cover_design_V2.md
+*/
+
+:root {
+  --slide-width: 1280px;
+  --slide-height: 720px;
+
+  /* Hard Rule §5 Brand Color (2026.08.12 V2 최신 Hex) */
+  --c-primary: #067875;   /* Primary(Cosolus Teal) */
+  --c-dark: #034443;      /* Dark/Main(Deep Pine) */
+  --c-secondary: #349887; /* Secondary(Sea Teal) */
+  --c-light: #AFE2E3;     /* Light(Mint) */
+  --c-ocean: #1A6A8C;
+  --c-moss: #6E9B3F;
+  --c-amber: #C8801F;
+  --c-ink: #162B1F;
+  --c-slate: #5A6664;
+  --c-gray: #8C9694;
+  --c-line: #E1E7E5;
+  --c-mist: #F3F6F5;
+  --c-white: #FFFFFF;
+
+  /* Hard Rule §9 고정색(Sub Message / 상단 구분선) */
+  --c-submsg: #478689;
+  /* Hard Rule §10 Header Bar 고정 토큰 */
+  --c-header-fill: #F4FAFA;
+  --c-header-text: #0F1E1F;
+  /* Hard Rule §11 Vertical Content Divider 중앙 핵심색 */
+  --c-divider-core: #034443;
+
+  --font-base: "Pretendard", "Malgun Gothic", "맑은 고딕", sans-serif;
+  --margin-x: 64px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: #333;
+  font-family: var(--font-base);
+  color: var(--c-ink);
+  word-break: keep-all;
+}
+
+#deck { position: relative; }
+
+.slide {
+  width: var(--slide-width);
+  height: var(--slide-height);
+  margin: 24px auto;
+  background: var(--c-white);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+  position: relative;
+  overflow: hidden;
+  display: none;
+}
+.slide.is-active { display: block; }
+
+/* ================= 공통 Header System (Hard Rule §9) ================= */
+.deck-logo { position: absolute; top: 25px; left: var(--margin-x); height: 20px; width: auto; object-fit: contain; }
+.deck-tagline {
+  position: absolute; top: 25px; right: var(--margin-x);
+  font-weight: 500; font-size: 18.7px; line-height: 20px;
+  letter-spacing: 0.02em; color: var(--c-submsg);
+}
+.deck-divider { position: absolute; top: 56px; left: var(--margin-x); right: var(--margin-x); height: 1px; background: var(--c-submsg); }
+.deck-page { position: absolute; bottom: 28px; right: var(--margin-x); font-weight: 300; font-size: 12px; color: var(--c-gray); }
+.section-label {
+  position: absolute; left: 68px; top: 62px; margin: 0;
+  font-size: 16px; font-weight: 300; line-height: 20px;
+  letter-spacing: 0.06em; text-transform: uppercase; color: var(--c-gray);
+}
+.slide-title {
+  position: absolute; left: var(--margin-x); right: var(--margin-x); top: 83px; margin: 0;
+  font-size: 37.3px; /* Hard Rule §9: 28pt */
+  font-weight: 800; line-height: 1.25; color: var(--c-dark);
+}
+
+/* Body Safe Area: X 64~1216px, Y 135~656px (Hard Rule §9) */
+.body-box {
+  position: absolute;
+  left: 64px; top: 135px;
+  width: 1152px; height: 521px;
+}
+
+/* ================= Cover (01_cover_design_V2.md) ================= */
+.slide--cover {
+  background: var(--c-dark);
+  color: #fff;
+}
+.cover-bg-image {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; object-position: center 30%; z-index: 0;
+}
+.cover-overlay {
+  position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(160deg,
+    rgba(26,106,140,0.55) 0%,
+    rgba(127,200,190,0.30) 50%,
+    rgba(15,101,91,0.50) 100%);
+}
+.cover-brand {
+  position: absolute; left: 64px; top: 48px; z-index: 2;
+  display: flex; flex-direction: column; align-items: flex-start; gap: 8px;
+}
+.cover-brand-sub {
+  margin: 0; font-weight: 500; font-size: 16px; line-height: 1.3;
+  color: #fff; white-space: nowrap;
+}
+.cover-brand-logo { display: block; height: 36px; width: auto; }
+.cover-title-block {
+  position: absolute; left: 50%; top: 54%; transform: translate(-50%, -50%);
+  z-index: 2; max-width: 960px; padding: 0 40px; text-align: center;
+}
+.cover-kicker {
+  margin: 0 0 14px; font-size: 16px; font-weight: 300; letter-spacing: 0.18em;
+  text-transform: uppercase; color: rgba(255,255,255,0.78);
+}
+.cover-title { margin: 0; font-weight: 700; font-size: 48px; line-height: 1.32; color: #fff; }
+.cover-sub {
+  margin: 22px 0 0; font-size: 18px; font-weight: 300; line-height: 1.6;
+  color: rgba(255,255,255,0.85);
+}
+.cover-meta {
+  position: absolute; left: 64px; bottom: 40px; z-index: 2;
+  font-size: 14px; font-weight: 300; color: rgba(255,255,255,0.75);
+}
+
+/* ================= Hard Rule §11 Vertical Content Divider ================= */
+.v-divider {
+  position: absolute; width: 1px;
+  background: linear-gradient(to bottom,
+    rgba(3,68,67,0) 0%, var(--c-divider-core) 53%, rgba(3,68,67,0) 100%);
+}
+
+/* ================= Executive Summary (slide 2) ================= */
+.exec-lede {
+  position: absolute; left: 0; top: 0; width: 100%; height: 54px;
+  display: flex; align-items: center;
+  font-size: 19px; font-weight: 500; color: var(--c-slate); line-height: 1.4;
+}
+.exec-lede b { color: var(--c-dark); font-weight: 700; }
+
+.exec-grid {
+  position: absolute; left: 0; top: 78px; width: 100%; height: 288px;
+  display: grid; grid-template-columns: repeat(4, 1fr);
+}
+.exec-col { position: relative; padding: 0 28px 0 26px; display: flex; flex-direction: column; justify-content: center; }
+.exec-col:first-child { padding-left: 2px; }
+.exec-num {
+  font-size: 30px; font-weight: 800; color: var(--c-primary);
+  letter-spacing: -0.02em; margin: 0 0 10px;
+}
+.exec-title { font-size: 19px; font-weight: 700; color: var(--c-ink); margin: 0 0 10px; line-height: 1.3; }
+.exec-desc { font-size: 15px; font-weight: 300; color: var(--c-slate); line-height: 1.55; margin: 0; }
+
+.exec-picks {
+  position: absolute; left: 0; top: 398px; width: 100%; height: 123px;
+  background: var(--c-header-fill);
+  border-top: 1px solid var(--c-primary);
+  display: flex; align-items: stretch;
+}
+.exec-picks-label {
+  flex: 0 0 168px; display: flex; align-items: center; justify-content: center;
+  font-size: 15px; font-weight: 700; color: var(--c-dark); text-align: center;
+  border-right: 1px solid var(--c-line);
+}
+.exec-pick-item {
+  flex: 1; display: flex; flex-direction: column; align-items: flex-start; justify-content: center;
+  padding: 0 30px; border-right: 1px solid var(--c-line);
+}
+.exec-pick-item:last-child { border-right: none; }
+.exec-pick-name { font-size: 17px; font-weight: 700; color: var(--c-primary); margin: 0 0 4px; }
+.exec-pick-note { font-size: 14px; font-weight: 300; color: var(--c-slate); margin: 0; line-height: 1.4; }
+.exec-pick-target { font-size: 13px; font-weight: 600; color: var(--c-ink); margin-top: 6px; }
+
+/* ================= Three-Column Insight Layout (slide 3) ================= */
+.tc-grid {
+  position: absolute; inset: 0;
+  display: grid; grid-template-columns: repeat(3, 1fr);
+}
+.tc-col { position: relative; display: flex; flex-direction: column; align-items: center; }
+.tc-header {
+  width: 100%; height: 0.561in; /* Hard Rule §10 고정 Height */
+  display: flex; align-items: center; justify-content: center;
+  /* Hard Rule §10 갱신: N개 병렬 Header Bar 기본값 = #F4FAFA Fill + Primary Divider */
+  background: var(--c-header-fill);
+  border-top: 0.75pt solid var(--c-primary);
+  border-bottom: 0.5pt solid var(--c-primary);
+  font-size: 26.7px; font-weight: 600; letter-spacing: -0.4px; color: var(--c-header-text);
+}
+/* three-column.md §3 갱신: Header Bar 3개는 Hard Rule §10 Gap 규정에 따라 서로 맞닿지
+   않도록 배치한다(G=16px, benefit-impact.md 기존 Gap 관례와 동일 비율 재사용). 서로
+   마주보는 안쪽 경계만 G/2=8px씩 물러나고, 바깥쪽 경계(첫/마지막 Column)는 Column 경계와
+   그대로 일치시켜 아래 Content 영역과 폭을 맞춘다. */
+.tc-col:first-child .tc-header { width: calc(100% - 8px); align-self: flex-start; }
+.tc-col:nth-child(2) .tc-header { width: calc(100% - 16px); }
+.tc-col:last-child .tc-header { width: calc(100% - 8px); align-self: flex-end; }
+/* Content Density / Content Group 원칙(Design System §5): Key Message → Main Visual(압축형) →
+   Supporting Text를 하나의 Content Group으로 묶어 내부 간격은 좁게 유지하고, 그룹 전체를
+   Header 아래 남는 공간 안에서 하나의 단위로 배치한다(개별 요소를 flex:1로 따로 늘려 벌리지 않음). */
+.tc-body {
+  flex: 1; width: 100%; min-height: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+}
+.tc-key {
+  width: 78%; margin: 0 0 14px; text-align: center;
+  font-size: 24px; font-weight: 800; color: var(--c-primary); line-height: 1.35;
+}
+.tc-key u { text-decoration-color: var(--c-primary); text-underline-offset: 4px; }
+.tc-visual { width: 100%; display: flex; flex-direction: column; align-items: center; }
+.tc-stat { font-size: 54px; font-weight: 800; color: var(--c-dark); line-height: 1; }
+.tc-stat-sub { margin-top: 10px; font-size: 15px; font-weight: 500; color: var(--c-gray); text-align: center; }
+.tc-support {
+  width: 82%; margin: 14px 0 0; text-align: center;
+  font-size: 15px; font-weight: 300; color: var(--c-slate); line-height: 1.55;
+}
+/* three-column.md §7 갱신: 별도 Divider 스타일을 두지 않고 Hard Rule §11 공통
+   Vertical Content Divider(.v-divider)를 그대로 참조한다. 위치만 이 Layout이 결정
+   (Header Bar 바로 아래 top:0.561in부터 bottom:0까지, Header 영역은 침범하지 않음). */
+
+/* ================= Two-Panel Comparison (slide 4, EV 회복 초입) ================= */
+.ev-grid {
+  position: absolute; inset: 0;
+  display: grid; grid-template-columns: 1fr 1fr;
+  column-gap: 0;
+}
+.ev-panel { position: relative; height: 100%; padding: 0 34px 0 0; display: flex; flex-direction: column; }
+.ev-panel + .ev-panel { padding: 0 0 0 42px; }
+.ev-label {
+  font-size: 20px; font-weight: 700; color: var(--c-dark); margin: 0 0 4px;
+}
+.ev-label span { color: var(--c-primary); }
+.ev-caption { font-size: 14px; font-weight: 300; color: var(--c-slate); margin: 0 0 14px; }
+.ev-body { flex: 1; display: flex; flex-direction: column; justify-content: center; min-height: 0; }
+.ev-chart-box { height: 250px; }
+.ev-note { margin: 14px 0 0; padding: 10px 14px; background: var(--c-mist); font-size: 14px; font-weight: 500; color: var(--c-ink); line-height: 1.5; }
+.ev-bullets { list-style: none; margin: 0; padding: 0; }
+.ev-bullets li {
+  position: relative; padding: 0 0 14px 18px; font-size: 15px; font-weight: 400;
+  color: var(--c-ink); line-height: 1.55;
+}
+.ev-bullets li::before {
+  content: ""; position: absolute; left: 0; top: 8px; width: 6px; height: 6px;
+  background: var(--c-primary); border-radius: 50%;
+}
+.ev-bullets b { color: var(--c-dark); font-weight: 700; }
+.ev-bullets .num { color: var(--c-primary); font-weight: 700; }
+
+/* ================= Table Comparison (Variant A 기반, slide 5/6/7 공용) ================= */
+.tbl-title { font-size: 20px; font-weight: 600; color: var(--c-dark); margin: 0 0 12px; }
+.data-table { width: 100%; border-collapse: collapse; }
+.data-table th, .data-table td {
+  border-bottom: 1px solid var(--c-line);
+  border-right: 1px solid var(--c-line);
+  padding: 10px 12px; text-align: center; font-size: 15px;
+}
+.data-table th:last-child, .data-table td:last-child { border-right: none; }
+.data-table thead th {
+  background: var(--c-primary); color: #fff; font-weight: 700; font-size: 15px;
+}
+.data-table tbody th {
+  text-align: left; font-weight: 600; color: var(--c-ink); background: var(--c-white);
+}
+.data-table tbody td { font-weight: 300; color: var(--c-slate); }
+.data-table tr.hl th { color: var(--c-primary); font-weight: 700; }
+.data-table tr.hl td { color: var(--c-primary); font-weight: 700; }
+.data-table tr.total th, .data-table tr.total td { border-top: 1px solid var(--c-ink); font-weight: 700; color: var(--c-ink); }
+.data-table td.indent { padding-left: 22px; }
+.data-table tbody .hl-col { background: rgba(6,120,117,0.07); }
+
+/* ================= ESS slide (5) 전용 배치 ================= */
+.ess-bullets { position: absolute; left: 0; top: 0; width: 100%; }
+.ess-bullets ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 28px; }
+.ess-bullets li {
+  flex: 1; position: relative; padding-left: 16px; font-size: 14.5px; font-weight: 400;
+  color: var(--c-ink); line-height: 1.55;
+}
+.ess-bullets li::before {
+  content: ""; position: absolute; left: 0; top: 7px; width: 6px; height: 6px;
+  background: var(--c-primary); border-radius: 50%;
+}
+.ess-bullets b { color: var(--c-dark); font-weight: 700; }
+.ess-table-wrap { position: absolute; left: 0; top: 130px; width: 100%; }
+.ess-footnote { position: absolute; left: 0; bottom: 0; font-size: 12px; font-weight: 300; color: var(--c-gray); }
+
+/* ================= Investment Pick slides (6, 7) ================= */
+.pick-grid {
+  position: absolute; inset: 0;
+  display: grid; grid-template-columns: 1.02fr 1fr;
+  column-gap: 40px;
+}
+.pick-left { position: relative; height: 100%; display: flex; flex-direction: column; justify-content: center; }
+.pick-right { position: relative; height: 100%; display: flex; flex-direction: column; justify-content: center; }
+.pick-chart-box { height: 200px; margin-top: 6px; }
+.pick-thesis { margin-top: 16px; }
+.pick-thesis-title { font-size: 15px; font-weight: 700; color: var(--c-dark); margin: 0 0 8px; }
+.pick-thesis ul { list-style: none; margin: 0; padding: 0; }
+.pick-thesis li {
+  position: relative; padding: 0 0 9px 16px; font-size: 14px; font-weight: 400;
+  color: var(--c-ink); line-height: 1.5;
+}
+.pick-thesis li::before {
+  content: ""; position: absolute; left: 0; top: 7px; width: 5px; height: 5px;
+  background: var(--c-primary); border-radius: 50%;
+}
+.pick-target {
+  display: flex; align-items: center; gap: 14px;
+  margin-top: 12px; padding: 12px 18px;
+  background: var(--c-header-fill); border-top: 0.75pt solid var(--c-primary); border-bottom: 0.5pt solid var(--c-primary);
+}
+.pick-target .tp-label { font-size: 13px; font-weight: 500; color: var(--c-slate); }
+.pick-target .tp-value { font-size: 24px; font-weight: 800; color: var(--c-primary); }
+.pick-target .tp-opinion {
+  margin-left: auto; font-size: 13px; font-weight: 700; color: #fff;
+  background: var(--c-dark); padding: 4px 12px; border-radius: 2px;
+}
+.pick-scenario-title { font-size: 14px; font-weight: 700; color: var(--c-dark); margin: 18px 0 8px; }
+.pick-small-table th, .pick-small-table td { font-size: 12.5px; padding: 6px 8px; }
+.pick-small-table thead th { font-size: 12.5px; }
+
+.qa-footnote {
+  position: absolute; left: var(--margin-x); right: var(--margin-x); bottom: 18px;
+  font-size: 11px; font-weight: 400; color: var(--c-gray);
+}
+
+#nav-hint { position: fixed; bottom: 12px; right: 16px; font-size: 12px; color: #ccc; }
+
+@media print {
+  body { background: #fff; }
+  .slide { box-shadow: none; margin: 0; display: block !important; page-break-after: always; }
+  #nav-hint { display: none; }
+}

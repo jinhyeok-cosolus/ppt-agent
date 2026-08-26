@@ -1,0 +1,19 @@
+{
+  "project_name": "cosolus-cover-test",
+  "stage": "5",
+  "audience": "고객사/외부 청중",
+  "language": "ko",
+  "presentation_time_min": null,
+  "target_slide_count": 1,
+  "web_ppt_version": "v6",
+  "pptx_generated": false,
+  "note": "테스트용 표지 슬라이드 1장만 제작 (정식 [1]~[9] 워크플로우 아님, material-analysis/slide_outline 생략). 등록된 디자인 규칙만 그대로 적용, 새 가변 규칙 제안 없음.",
+  "history": [
+    {"stage": "5", "note": "표지 1장 테스트 웹PPT v1 생성 (당시 표지 전용 규칙 없음, L01 범용 레이아웃 참고)", "at": "2026-08-13"},
+    {"stage": "7", "note": "표지 전용 규칙(docs/slide-design-rules/01_cover_design_V2.md) 신규 등록에 따라 v1 -> v2 재구성: 브랜드 워드마크 좌측 상단 이동, 제목 중앙 배치, 페이지 번호/강조선 제거, 배경은 실제 이미지 자산 미등록으로 Deep Pine 단색 유지", "at": "2026-08-13"},
+    {"stage": "7", "note": "docs/brand-assets/cover-images/에 배경 이미지 3장 정식 등록됨에 따라 v2 -> v3 재구성: 배경을 Deep Pine 단색에서 실제 이미지(이미지_3.png, 컴파운딩/마스터배치 제조 설비 사진, docs/brand-assets/README.md 권장 주제 기준 선택)로 교체하고 Cover Rule에 따른 COSOLUS 브랜드 컬러(Deep Pine/Cosolus Teal) 그라디언트 오버레이 추가. 로고를 텍스트 워드마크에서 등록된 White/Reversed 로고 이미지(docs/brand-assets/CI/cosolus CI.png)로 교체(Hard Rule §7 '로고 텍스트 임의 재현 금지' 정합성 확보). Brand Block에 Sub Message(회사 Motto)를 추가해 Cover Rule의 'Sub Message + 워드마크' 2단 구조를 완성. 레이아웃 구조(Full Background, Brand Block 좌측 상단, 제목 중앙, 페이지 번호 없음)는 v2와 동일 유지, 새 디자인 규칙 추가 없음. 이미지 자산은 web_ppt/v3/assets/images/에 복사본 배치.", "at": "2026-08-13"},
+    {"stage": "7", "note": "01_cover_design_V2.md Reference 비교 기반 최소 개정(4건) 반영해 v3 -> v4 재구성: (1) Brand Block 좌측 정렬 유지(로고 좌측 여백 0px 픽셀 검증, 구조 변경 없음), (2) 로고 크기 height 24px -> 36px 확대, (3) 오버레이 톤을 Deep Pine 중심 어두운 그라디언트(알파 0.72~0.90)에서 Ocean Blue/Mint/Cosolus Teal 기반 밝고 저채도 톤(알파 0.30~0.55)로 전환, (4) 제목 영역 max-width 780px -> 960px 확대. 배경 이미지·로고 파일·레이아웃 골격은 v3와 동일, 새 디자인 규칙 추가 없음.", "at": "2026-08-13"},
+    {"stage": "7", "note": "01_cover_design_V2.md Brand Block Sub Message 개정(5건) 반영해 v4 -> v5 재구성: (1) Sub Message 문구를 'COSOLUS, small actions, BIG DIFFERENCE'(전체 Motto)에서 'Small action, BIG DIFFERENCE'로 축소, (2) 색상을 Mint에서 CI 로고와 동일한 White로 변경, (3) CI 로고를 명시적 폭 231.68px(height 36px * 원본비율 399/62)로 고정하고 Sub Message도 동일 폭 + text-align-last:justify로 좌·우 끝점 일치, (4) 위계(CI 36px > Sub Message 13px)는 크기 차이로 유지, (5) 세로 간격(gap 8px) 동일 유지. 배경 이미지·Overlay·Main Title·그 외 Composition은 v4와 완전히 동일, 새 디자인 규칙 추가 없음.", "at": "2026-08-13"},
+    {"stage": "7", "note": "v5의 Sub Message width:231.68px 고정 + text-align-last:justify 강제 폭 일치가 word-spacing을 부자연스럽게 벌리는 문제로 01_cover_design_V2.md Brand Block 규칙 재개정, v5 -> v6 재구성: width/text-align/text-align-last 제거하고 좌측 시작점만 기존 align-items:flex-start로 CI와 일치(우측 폭은 '비슷한 수준'으로 완화, 강제 채움 없음). font-size 13px -> 16px로 확대, letter-spacing은 normal 유지(넓히지 않음). 위계(CI 36px 로고 > Sub Message 16px 텍스트)는 유지. 배경 이미지·Overlay·Main Title·색상(White) 등 v5의 나머지는 변경 없음.", "at": "2026-08-13"}
+  ]
+}

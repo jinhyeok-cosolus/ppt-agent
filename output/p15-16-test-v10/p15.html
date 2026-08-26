@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>15p Material 라벨 비관통 수정 재테스트(v10)</title>
+<!--
+  input/15, 16p 테스트용_7.docx와 동일 콘텐츠·이미지. v9의 HTML/CSS 구현은
+  재사용하지 않고 새로 작성했다(px10- 접두사). flow-diagram-rules.md에
+  최근 추가된 "Material/Intermediate/Output Node 라벨 배치 규칙(Connector
+  비관통)"을 이번에 처음 실제 좌표로 구현해, v9에서 발견된 버그(전기차
+  배터리팩/블랙매스/양극재용·음극재용 블랙매스 라벨이 자신을 관통하는
+  Connector 선과 겹치던 문제)를 해결한다.
+
+  핵심 수정: v9는 Material 노드의 "이미지+라벨 블록 전체"의 중심을
+  Connector Y선에 맞췄다(translate(-50%,-50%) on 전체 블록) — 이 경우
+  라벨이 2줄이면 텍스트 절반이 선과 겹쳤다. v10은 **이미지만** 별도
+  요소로 Connector 선에 중심 정렬하고, 라벨은 이미지 아래 고정 px
+  오프셋(이미지 half-height + gap)에 별도로 배치해 몇 줄이 되든 선을
+  다시 침범하지 않도록 구조를 분리했다.
+
+  Process 수직 배치 규칙(전처리/용매추출/부유선별/건식환원/유도가열 —
+  라벨→이미지가 Connector 위쪽에 뜨고 Connector는 아래로 연속), Sibling
+  Outputs 분기 규칙(용매추출→재활용양극재/폐흑연, 건식환원→코발트/니켈이
+  각각 공통 Branch Point에서 분기), Region Map(1차 분기 X=35%, 재분기
+  X=52%, 결과물 영역 X≥70%, Lane 경계 Y=47%), 색상(#C0392B/#034443)·
+  Connector 화살표·Typography(14pt Bold 이상)·아이콘 무테두리·점선
+  구분선 규칙은 v9와 동일하게 유지(이번에 변경되지 않음 — 새로 고친 것은
+  Material 노드 라벨 배치뿐). 이미지는 v7과 동일 원본 재사용. Header는
+  Hard Rule §9 그대로.
+-->
+<style>
+  :root {
+    --c-dark: #034443; --c-ink: #162B1F; --c-slate: #5A6664; --c-gray: #8C9694;
+    --c-submessage: #478689; --c-white: #FFFFFF; --c-r: #C0392B; --c-g: #034443;
+    --font-base: "Pretendard", "Malgun Gothic", "맑은 고딕", sans-serif;
+    --branch-x: 35%; --subbranch-x: 52%; --result-x: 70%; --lane-y: 47%;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #555; font-family: var(--font-base); color: var(--c-ink); word-break: keep-all; }
+  #deck { display: flex; padding: 24px; }
+  .slide { position: relative; width: 1280px; height: 720px; background: var(--c-white); overflow: hidden; }
+
+  .hdr-ci { position: absolute; left: 64px; top: 25px; height: 20px; }
+  .hdr-ci img { height: 20px; width: auto; display: block; }
+  .hdr-submessage { position: absolute; right: 64px; top: 25px; font: 500 14pt/20px var(--font-base); color: var(--c-submessage); white-space: nowrap; }
+  .hdr-divider { position: absolute; left: 64px; top: 56px; width: 1152px; height: 1px; background: var(--c-submessage); }
+  .hdr-section-label { position: absolute; left: 68px; top: 62px; font: 300 12pt var(--font-base); color: var(--c-gray); letter-spacing: 0.06em; text-transform: uppercase; }
+  .hdr-main-title { position: absolute; left: 64px; top: 83px; width: 1152px; font: 800 28pt/1.25 var(--font-base); color: var(--c-dark); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .hdr-page-number { position: absolute; right: 44px; bottom: 24px; font: 300 14pt var(--font-base); color: var(--c-gray); }
+
+  .body-box { position: absolute; left: 64px; top: 135px; width: 1152px; height: 521px; }
+
+  /* ---- Process Node: 라벨→이미지가 Connector 위쪽에 뜬다(선 비접촉) ---- */
+  .px10-proc { position: absolute; display: flex; flex-direction: column-reverse; align-items: center; gap: 4px; transform: translate(-50%, 0); }
+  .px10-proc img { height: 40px; width: auto; max-width: 60px; object-fit: contain; }
+  .px10-proc .lbl { font: 700 14pt/1.15 var(--font-base); text-align: center; color: var(--c-ink); white-space: nowrap; }
+
+  /* ---- Material/Intermediate/Output Node: 이미지만 Connector 중심에, 라벨은 고정 px Gap 아래 별도 배치(선 비관통) ---- */
+  .px10-mat-icon { position: absolute; transform: translate(-50%, -50%); height: 40px; width: auto; max-width: 60px; object-fit: contain; }
+  .px10-mat-label { position: absolute; transform: translate(-50%, 0); font: 700 14pt/1.15 var(--font-base); text-align: center; color: var(--c-ink); white-space: nowrap; }
+  /* 이미지 half-height(20px) + Gap(8px) = 28px 고정 오프셋 — 라벨 줄 수와 무관하게 선을 다시 침범하지 않음 */
+  .px10-mat-label.below { margin-top: 28px; }
+
+  .lbl.underline { text-decoration: underline; }
+
+  .px10-line { position: absolute; height: 3px; }
+  .px10-line.neutral { background: var(--c-slate); }
+  .px10-line.r { background: var(--c-r); }
+  .px10-line.g { background: var(--c-g); }
+  .px10-arrowhead { position: absolute; width: 0; height: 0; border-top: 6px solid transparent; border-bottom: 6px solid transparent; border-left: 9px solid; transform: translateY(-50%); }
+  .px10-arrowhead.neutral { border-left-color: var(--c-slate); }
+  .px10-arrowhead.r { border-left-color: var(--c-r); }
+  .px10-arrowhead.g { border-left-color: var(--c-g); }
+
+  .px10-bracket-v {
+    position: absolute; left: var(--branch-x); top: 20%; height: 53%; width: 3px;
+    background: linear-gradient(to bottom, var(--c-r) 0%, var(--c-r) 50%, var(--c-g) 50%, var(--c-g) 100%);
+  }
+  .px10-subbracket-v { position: absolute; left: var(--subbranch-x); top: 60%; height: 26%; width: 2.5px; background: var(--c-g); }
+
+  .px10-fork-v { position: absolute; width: 2.5px; }
+  .px10-fork-v.r { background: var(--c-r); }
+  .px10-fork-v.g { background: var(--c-g); }
+  .px10-fork-dot { position: absolute; width: 6px; height: 6px; border-radius: 50%; transform: translate(-50%, -50%); }
+  .px10-fork-dot.r { background: var(--c-r); }
+  .px10-fork-dot.g { background: var(--c-g); }
+
+  .px10-result-label { position: absolute; font: 700 14pt var(--font-base); color: var(--c-ink); white-space: nowrap; transform: translate(-50%, 0); }
+  .px10-powrow { position: absolute; display: flex; gap: 8px; transform: translate(-50%, 0); }
+  .px10-powrow img { width: 34px; height: 28px; object-fit: contain; }
+
+  .px10-divider-dashed { position: absolute; left: var(--branch-x); right: 2%; top: var(--lane-y); height: 0; border-top: 2px dashed var(--c-slate); }
+</style>
+</head>
+<body>
+<div id="deck">
+<section class="slide">
+  <div class="hdr-ci"><img src="assets/images/ci-color.png" alt="COSOLUS"></div>
+  <div class="hdr-submessage">We promise tomorrow</div>
+  <div class="hdr-divider"></div>
+  <div class="hdr-section-label">TECHNOLOGY</div>
+  <div class="hdr-main-title">[솔루션2] 개요 – 친환경 차세대 배터리 재활용 공정기술 (2세대)</div>
+
+  <div class="body-box">
+
+    <!-- ================= 공통 시작 영역 (X 0~35%, Trunk Y=47%) ================= -->
+    <div class="px10-line neutral" style="left:3%; width:32%; top:47%;"></div>
+
+    <!-- 전기차배터리팩: Material Node — 이미지만 선 중심, 라벨은 아래 28px Gap -->
+    <img class="px10-mat-icon" style="left:4%; top:47%;" src="assets/images/start-ev-battery.png" alt="전기차 배터리팩">
+    <div class="px10-mat-label below" style="left:4%; top:47%;">전기차<br>배터리팩</div>
+
+    <!-- 전처리: Process Node — 라벨→이미지가 선(47%) 위쪽 -->
+    <div class="px10-proc" style="left:17%; top:33%;">
+      <img src="assets/images/pretreat-icon.png" alt="전처리"><span class="lbl">전처리</span>
+    </div>
+
+    <!-- 블랙매스: Material Node -->
+    <img class="px10-mat-icon" style="left:30%; top:47%;" src="assets/images/blackmass.png" alt="블랙매스">
+    <div class="px10-mat-label below" style="left:30%; top:47%;">블랙매스</div>
+    <div class="px10-arrowhead neutral" style="left:calc(35% - 6px); top:47%;"></div>
+
+    <!-- ================= 1차 분기점: X=35% ================= -->
+    <span class="px10-bracket-v"></span>
+
+    <!-- ================= 상단 Lane(1세대, Trunk Y=20%, 전부 빨강) ================= -->
+    <div class="px10-line r" style="left:35%; width:9%; top:20%;"></div>
+    <div class="px10-proc" style="left:44%; top:9%;">
+      <img src="assets/images/gen1-extraction-equip.png" alt="용매추출"><span class="lbl">용매추출</span>
+    </div>
+    <div class="px10-line r" style="left:44%; width:20%; top:20%;"></div>
+    <div class="px10-arrowhead r" style="left:calc(64% - 6px); top:20%;"></div>
+
+    <!-- Sibling Outputs 분기점(용매추출 결과물 2종): X=64%, Trunk Y=20% -->
+    <span class="px10-fork-dot r" style="left:64%; top:20%;"></span>
+    <span class="px10-fork-v r" style="left:64%; top:8%; height:12%;"></span>
+    <div class="px10-line r" style="left:64%; width:6%; top:8%;"></div>
+    <div class="px10-arrowhead r" style="left:calc(70% - 6px); top:8%;"></div>
+    <div class="px10-powrow" style="left:85%; top:1%;">
+      <img src="assets/images/gen1-mnso4.png" alt="MnSO4">
+      <img src="assets/images/gen1-niso4.png" alt="NiSO4">
+      <img src="assets/images/gen1-coso4.png" alt="CoSO4">
+      <img src="assets/images/gen1-li2co3.png" alt="Li2CO3">
+    </div>
+    <div class="px10-result-label" style="left:85%; top:12%;">재활용 양극재</div>
+
+    <div class="px10-line r" style="left:64%; width:6%; top:32%;"></div>
+    <div class="px10-arrowhead r" style="left:calc(70% - 6px); top:32%;"></div>
+    <img class="px10-mat-icon" style="left:78%; top:32%; height:28px;" src="assets/images/gen1-waste-graphite.jpeg" alt="폐흑연">
+    <div class="px10-result-label" style="left:78%; top:32%; margin-top:22px;">폐흑연</div>
+
+    <!-- ================= 1세대/2세대 구분 점선: Y=47% ================= -->
+    <span class="px10-divider-dashed"></span>
+
+    <!-- ================= 하단 Lane(2세대, Trunk Y=73%, 전부 다크그린) ================= -->
+    <div class="px10-line g" style="left:35%; width:9%; top:73%;"></div>
+    <div class="px10-proc" style="left:44%; top:62%;">
+      <img src="assets/images/gen2-flotation-equip.png" alt="부유선별"><span class="lbl underline">부유선별</span>
+    </div>
+    <div class="px10-line g" style="left:44%; width:8%; top:73%;"></div>
+    <div class="px10-arrowhead g" style="left:calc(52% - 6px); top:73%;"></div>
+
+    <!-- 2세대 내부 재분기(Region Map): X=52% -->
+    <span class="px10-subbracket-v"></span>
+
+    <!-- ---- 재분기 위: 양극재용 블랙매스(Material) → 건식환원(Process) → Sibling(코발트/니켈) ---- -->
+    <div class="px10-line g" style="left:52%; width:6%; top:60%;"></div>
+    <img class="px10-mat-icon" style="left:58%; top:60%;" src="assets/images/gen2-cathode-blackmass.png" alt="양극재용 블랙매스">
+    <div class="px10-mat-label below" style="left:58%; top:60%;">양극재용<br>블랙매스</div>
+    <div class="px10-line g" style="left:58%; width:6%; top:60%;"></div>
+    <div class="px10-proc" style="left:64%; top:49%;">
+      <img src="assets/images/gen2-dryreduction.png" alt="건식환원"><span class="lbl underline">건식환원</span>
+    </div>
+    <div class="px10-line g" style="left:64%; width:6%; top:60%;"></div>
+    <div class="px10-arrowhead g" style="left:calc(70% - 6px); top:60%;"></div>
+
+    <!-- Sibling Outputs 분기점(건식환원 결과물 2종): X=70%, Trunk Y=60% -->
+    <span class="px10-fork-dot g" style="left:70%; top:60%;"></span>
+    <span class="px10-fork-v g" style="left:70%; top:52%; height:12%;"></span>
+    <div class="px10-line g" style="left:70%; width:8%; top:52%;"></div>
+    <div class="px10-arrowhead g" style="left:calc(78% - 6px); top:52%;"></div>
+    <img class="px10-mat-icon" style="left:84%; top:52%;" src="assets/images/gen2-cobalt.png" alt="코발트">
+    <div class="px10-mat-label below" style="left:84%; top:52%;">코발트</div>
+
+    <div class="px10-line g" style="left:70%; width:8%; top:68%;"></div>
+    <div class="px10-arrowhead g" style="left:calc(78% - 6px); top:68%;"></div>
+    <img class="px10-mat-icon" style="left:84%; top:68%;" src="assets/images/gen2-nickel.png" alt="니켈">
+    <div class="px10-mat-label below" style="left:84%; top:68%;">니켈</div>
+
+    <!-- ---- 재분기 아래: 음극재용 블랙매스(Material) → 유도가열(Process) → 고순도 정제흑연(단일 결과물) ---- -->
+    <div class="px10-line g" style="left:52%; width:6%; top:86%;"></div>
+    <img class="px10-mat-icon" style="left:58%; top:86%;" src="assets/images/gen2-anode-blackmass.png" alt="음극재용 블랙매스">
+    <div class="px10-mat-label below" style="left:58%; top:86%;">음극재용<br>블랙매스</div>
+    <div class="px10-line g" style="left:58%; width:6%; top:86%;"></div>
+    <div class="px10-proc" style="left:64%; top:75%;">
+      <img src="assets/images/gen2-induction-heat.png" alt="유도가열"><span class="lbl underline">유도가열</span>
+    </div>
+    <div class="px10-line g" style="left:64%; width:14%; top:86%;"></div>
+    <div class="px10-arrowhead g" style="left:calc(78% - 6px); top:86%;"></div>
+    <img class="px10-mat-icon" style="left:84%; top:86%;" src="assets/images/gen2-graphite-refined.png" alt="고순도 정제흑연">
+    <div class="px10-mat-label below" style="left:84%; top:86%;">고순도<br>정제흑연</div>
+
+  </div>
+
+  <div class="hdr-page-number">15</div>
+</section>
+</div>
+</body>
+</html>

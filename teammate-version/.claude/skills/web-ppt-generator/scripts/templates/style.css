@@ -1,0 +1,78 @@
+/*
+  웹PPT 기본 스타일 템플릿.
+  design-rules.md의 고정/가변 규칙이 확정되면 아래 변수(:root)와 슬라이드 타입별
+  클래스(.slide--cover, .slide--content, .slide--table, .slide--chart, .slide--appendix)를
+  규칙에 맞게 갱신한다. 값 자체는 이 파일이 아니라 design-rules.md를 기준으로 삼는다.
+*/
+
+:root {
+  /* 프레젠테이션 표준 16:9 기준 픽셀 (1280x720) */
+  --slide-width: 1280px;
+  --slide-height: 720px;
+
+  /* 브랜드 컬러 확정 전 임시 팔레트 — design-rules.md 확정 후 교체 */
+  --color-bg: #ffffff;
+  --color-text: #1a1a1a;
+  --color-muted: #6b7280;
+  --color-accent: #2563eb;
+  --color-border: #e5e7eb;
+
+  --font-base: "Pretendard", "Malgun Gothic", "맑은 고딕", sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: #333;
+  font-family: var(--font-base);
+  color: var(--color-text);
+}
+
+#deck { position: relative; }
+
+.slide {
+  width: var(--slide-width);
+  height: var(--slide-height);
+  margin: 24px auto;
+  background: var(--color-bg);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+  padding: 56px;
+  display: none;
+  flex-direction: column;
+}
+
+.slide.is-active { display: flex; }
+
+.slide--cover {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.slide h1 { font-size: 40px; margin: 0 0 12px; }
+.slide .subtitle { color: var(--color-muted); font-size: 18px; }
+
+.slide h2.slide-title { font-size: 28px; margin: 0 0 24px; border-bottom: 2px solid var(--color-accent); padding-bottom: 12px; }
+
+.slide table { border-collapse: collapse; width: 100%; font-size: 14px; }
+.slide table th, .slide table td { border: 1px solid var(--color-border); padding: 8px 12px; text-align: left; }
+.slide table th { background: #f8fafc; }
+
+.slide--appendix .slide-title::after { content: " (부록)"; color: var(--color-muted); font-size: 16px; }
+
+.confirm-needed { color: #b91c1c; font-weight: 600; }
+
+#nav-hint {
+  position: fixed;
+  bottom: 12px;
+  right: 16px;
+  font-size: 12px;
+  color: #999;
+}
+
+@media print {
+  body { background: #fff; }
+  .slide { box-shadow: none; margin: 0; display: flex !important; page-break-after: always; }
+  #nav-hint { display: none; }
+}

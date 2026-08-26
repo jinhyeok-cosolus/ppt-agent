@@ -1,0 +1,969 @@
+{
+  "sources": [
+    {
+      "file": "input\\2026.08.25_사업계획서 ppt 자료_V1.docx",
+      "type": "docx",
+      "structure_signal": "none_detected",
+      "content_groups": [],
+      "unstructured_text_blocks": [
+        {
+          "text": "표지",
+          "order": 1,
+          "style": "List Paragraph"
+        },
+        {
+          "text": "메인제목: 전자잉크 소재 디스플레이를 위한 고기능성 UV경화형 봉지소재 개발",
+          "order": 2,
+          "style": "Normal"
+        },
+        {
+          "text": "- 주관기관: 소니드 주식회사",
+          "order": 3,
+          "style": "Normal"
+        },
+        {
+          "text": "- 공동개발기관: 한국생산기술연구원, 주식회사 코솔러스",
+          "order": 4,
+          "style": "Normal"
+        },
+        {
+          "text": "과제 개요",
+          "order": 5,
+          "style": "List Paragraph"
+        },
+        {
+          "text": "메인 내용: 열경화 공정의 생산성과 기판 변형 문제를 개선하기 위한 ESL용 UV경화형 봉지소재 개발",
+          "order": 6,
+          "style": "Normal"
+        },
+        {
+          "text": "- 개발 목적: 공정 TACT 단축 및 기판 Warpage 개선",
+          "order": 7,
+          "style": "Normal"
+        },
+        {
+          "text": "- 핵심성능: 저투습 고접착 고신뢰성",
+          "order": 8,
+          "style": "Normal"
+        },
+        {
+          "text": "- 적용제품: E-Ink 디스플레이 Edge Glue",
+          "order": 9,
+          "style": "Normal"
+        },
+        {
+          "text": "- 개발체계: 소니드·생산기술연구원·코솔러스 공동개발",
+          "order": 10,
+          "style": "Normal"
+        },
+        {
+          "text": "핵심 키워드: UV경화 · 저 WVTR · 고접착 · 양산화",
+          "order": 11,
+          "style": "Normal"
+        },
+        {
+          "text": "시장 및 산업 배경",
+          "order": 12,
+          "style": "List Paragraph"
+        },
+        {
+          "text": "핵심 내용: 대형 유통매장의 디지털 전환으로 ESL 시장이 빠르게 성장하고 있음",
+          "order": 13,
+          "style": "Normal"
+        },
+        {
+          "text": "- 대형마트에서는 약 10만 개 이상의 상품과 재고를 관리",
+          "order": 14,
+          "style": "Normal"
+        },
+        {
+          "text": "- ESL을 통해 가격 변경 및 재고관리 자동화",
+          "order": 15,
+          "style": "Normal"
+        },
+        {
+          "text": "- POS 시스템과 연동한 실시간 정보관리 가능",
+          "order": 16,
+          "style": "Normal"
+        },
+        {
+          "text": "- 글로벌 ESL 시장 규모:",
+          "order": 17,
+          "style": "Normal"
+        },
+        {
+          "text": "2023년 약 1.6조 원",
+          "order": 18,
+          "style": "Normal"
+        },
+        {
+          "text": "2028년 약 4.3조 원",
+          "order": 19,
+          "style": "Normal"
+        },
+        {
+          "text": "CAGR 15~17%",
+          "order": 20,
+          "style": "Normal"
+        },
+        {
+          "text": "그림 1 대형마트의 리테일러 기술도입 개념",
+          "order": 22,
+          "style": "Caption"
+        },
+        {
+          "text": "그림 2 ESL 글로벌 시장 규모 자료출처 : Research and markets",
+          "order": 24,
+          "style": "Caption"
+        },
+        {
+          "text": "제품 적용 구조",
+          "order": 25,
+          "style": "List Paragraph"
+        },
+        {
+          "text": "핵심 내용: Edge Glue는 E-Ink 표시소자의 가장자리에 적용되어 외부 환경으로부터 내부 소재를 보호함",
+          "order": 26,
+          "style": "Normal"
+        },
+        {
+          "text": "- 적용 위치: E-Ink 표시소자 가장자리",
+          "order": 27,
+          "style": "Normal"
+        },
+        {
+          "text": "- 주요 기판: Glass·PET",
+          "order": 28,
+          "style": "Normal"
+        },
+        {
+          "text": "- 보호 대상: E-Ink 표시소자",
+          "order": 29,
+          "style": "Normal"
+        },
+        {
+          "text": "- 주요 기능:",
+          "order": 30,
+          "style": "Normal"
+        },
+        {
+          "text": "외부 수분 차단",
+          "order": 31,
+          "style": "Normal"
+        },
+        {
+          "text": "먼지·열 노출 방지",
+          "order": 32,
+          "style": "Normal"
+        },
+        {
+          "text": "기판 간 접착 유지",
+          "order": 33,
+          "style": "Normal"
+        },
+        {
+          "text": "그림 3 전자잉크디스플레이 자료출처_소니드주식회사",
+          "order": 34,
+          "style": null,
+          "source_type": "text_box"
+        },
+        {
+          "text": "그림 4 E-ink 단면도",
+          "order": 37,
+          "style": null,
+          "source_type": "text_box"
+        },
+        {
+          "text": "기존 기술의 문제",
+          "order": 38,
+          "style": "List Paragraph"
+        },
+        {
+          "text": "핵심 메시지: 기존 열경화형 봉지소재는 긴 경화시간과 열에 의한 기판 변형으로 생산성과 품질에 한계가 있음",
+          "order": 39,
+          "style": "Normal"
+        },
+        {
+          "text": "- 약 1시간의 열경화 공정 필요",
+          "order": 40,
+          "style": "Normal"
+        },
+        {
+          "text": "- 긴 경화시간으로 공정 TACT 증가",
+          "order": 41,
+          "style": "Normal"
+        },
+        {
+          "text": "- 열에 의한 기판 Warpage 발생",
+          "order": 42,
+          "style": "Normal"
+        },
+        {
+          "text": "- 단일층에서 저투습·고접착 동시 확보 필요",
+          "order": 43,
+          "style": "Normal"
+        },
+        {
+          "text": "- 고객사의 UV경화형 소재 전환 요구",
+          "order": 44,
+          "style": "Normal"
+        },
+        {
+          "text": "개발 필요성",
+          "order": 45,
+          "style": "List Paragraph"
+        },
+        {
+          "text": "핵심 내용: 해외기업 중심의 봉지소재 시장에 대응하고 국내 E-Ink 소재시장 진입 기반을 확보해야 함",
+          "order": 46,
+          "style": "Normal"
+        },
+        {
+          "text": "- ESL 핵심기술은 BOE·JABIL·E-Ink Holdings·Innolux 등 글로벌 기업이 보유",
+          "order": 47,
+          "style": "Normal"
+        },
+        {
+          "text": "- 봉지소재 시장은 중국·독일 기업 중심",
+          "order": 48,
+          "style": "Normal"
+        },
+        {
+          "text": "- Henkel을 비롯한 해외 Edge Sealing 기업의 시장 참여 확대",
+          "order": 49,
+          "style": "Normal"
+        },
+        {
+          "text": "- 국내 디스플레이 소재산업은 대·중견기업 중심으로 진입장벽이 높음",
+          "order": 50,
+          "style": "Normal"
+        },
+        {
+          "text": "- E-Ink 소재는 국내기업의 진출이 적은 신규 기회시장",
+          "order": 51,
+          "style": "Normal"
+        },
+        {
+          "text": "- 관련 선행개발 경험을 기반으로 해외기업과의 경쟁 기반 확보 필요",
+          "order": 52,
+          "style": "Normal"
+        },
+        {
+          "text": "개발 솔루션",
+          "order": 53,
+          "style": "List Paragraph"
+        },
+        {
+          "text": "핵심 내용: 저투습성과 고접착력을 갖춘 단일층 UV경화형 봉지소재로 기존 열경화 공정의 한계를 개선",
+          "order": 54,
+          "style": "Normal"
+        },
+        {
+          "text": "기존 열경화 방식: 약 1시간의 경화공정, 열에 의한 Warpage, 생산효율 저하, 성능 동시 확보 한계",
+          "order": 55,
+          "style": "List Paragraph"
+        },
+        {
+          "text": "개발 UV경화 방식: 경화시간 및 TACT 단축, 기판 변형 개선, UV경화 기반 생산성 향상, 저투습 ·고접착 동시 확보",
+          "order": 56,
+          "style": "List Paragraph"
+        },
+        {
+          "text": "그림 5",
+          "order": 57,
+          "style": null,
+          "source_type": "text_box"
+        },
+        {
+          "text": "핵심 기술 구성",
+          "order": 59,
+          "style": "List Paragraph"
+        },
+        {
+          "text": "핵심 내용: 세 가지 핵심 소재기술을 결합하여 저투습·고접착 UV경화형 봉지소재를 구현",
+          "order": 60,
+          "style": "Normal"
+        },
+        {
+          "text": "- UV경화형 봉지재\n* 봉지재 조성·도포 시스템 구축",
+          "order": 61,
+          "style": "Normal"
+        },
+        {
+          "text": "* 기초물성·신뢰성 평가",
+          "order": 62,
+          "style": "Normal"
+        },
+        {
+          "text": "* 최종 조성 및 저장안정성 최적화",
+          "order": 63,
+          "style": "Normal"
+        },
+        {
+          "text": "- 저투습 하이브리드 고분자\n* PSQ 기반 고분자 설계",
+          "order": 64,
+          "style": "Normal"
+        },
+        {
+          "text": "* Packing·가교밀도 제어",
+          "order": 65,
+          "style": "Normal"
+        },
+        {
+          "text": "* 나노입자를 활용한 Barrier·유연성 개선",
+          "order": 66,
+          "style": "Normal"
+        },
+        {
+          "text": "- 고접착 우레탄 아크릴레이트",
+          "order": 67,
+          "style": "Normal"
+        },
+        {
+          "text": "* Glass·PET용 올리고머 설계",
+          "order": 68,
+          "style": "Normal"
+        },
+        {
+          "text": "* 투습·접착 특성 제어",
+          "order": 69,
+          "style": "Normal"
+        },
+        {
+          "text": "* 가교구조 최적화 및 양산화",
+          "order": 70,
+          "style": "Normal"
+        },
+        {
+          "text": "정량적 개발 목표",
+          "order": 71,
+          "style": "List Paragraph"
+        },
+        {
+          "text": "핵심 내용: 소재 성능부터 신뢰성·양산 재현성까지 객관적인 목표치를 설정",
+          "order": 72,
+          "style": "Normal"
+        },
+        {
+          "text": "- 핵심 성능 목표",
+          "order": 73,
+          "style": "Normal"
+        },
+        {
+          "text": "* WVTR: 5 g/m²·day 이하",
+          "order": 74,
+          "style": "Normal"
+        },
+        {
+          "text": "* 보호필름–Glass 접착력: 10 N/cm 이상",
+          "order": 75,
+          "style": "Normal"
+        },
+        {
+          "text": "* Glass–Glass 접착력: 5 N/cm² 이상",
+          "order": 76,
+          "style": "Normal"
+        },
+        {
+          "text": "* 경화율: 95% 이상",
+          "order": 77,
+          "style": "Normal"
+        },
+        {
+          "text": "* 수축률: 5% 이하",
+          "order": 78,
+          "style": "Normal"
+        },
+        {
+          "text": "* Warpage: 0.3 mm 이하",
+          "order": 79,
+          "style": "Normal"
+        },
+        {
+          "text": "- 신뢰성·양산 목표",
+          "order": 80,
+          "style": "Normal"
+        },
+        {
+          "text": "* 고온·고온고습: 1,000시간",
+          "order": 81,
+          "style": "Normal"
+        },
+        {
+          "text": "* 열충격안정성: 200 Cycle",
+          "order": 82,
+          "style": "Normal"
+        },
+        {
+          "text": "* Batch별 점도·분자량 오차: ±5%",
+          "order": 83,
+          "style": "Normal"
+        },
+        {
+          "text": "* 저장안정성: 6개월",
+          "order": 84,
+          "style": "Normal"
+        },
+        {
+          "text": "- 정량적 성과 목표",
+          "order": 85,
+          "style": "Normal"
+        },
+        {
+          "text": "* 해외특허 출원 3건",
+          "order": 86,
+          "style": "Normal"
+        },
+        {
+          "text": "* 국내특허 출원 10건",
+          "order": 87,
+          "style": "Normal"
+        },
+        {
+          "text": "* SCI 논문 4건",
+          "order": 88,
+          "style": "Normal"
+        },
+        {
+          "text": "(* 청년의무고용 3명)",
+          "order": 89,
+          "style": "Normal"
+        },
+        {
+          "text": "(* 연계고용 5명)",
+          "order": 90,
+          "style": "Normal"
+        },
+        {
+          "text": "선행개발 및 수행역량",
+          "order": 91,
+          "style": "List Paragraph"
+        },
+        {
+          "text": "핵심 내용: 고객사 평가 경험과 세 기관의 소재·합성·양산 역량을 기반으로 상용화 가능성을 확보",
+          "order": 92,
+          "style": "Normal"
+        },
+        {
+          "text": "- 선행개발 실적\n*  대만 고객사의 UV경화형 제품 개발 수요 확인",
+          "order": 93,
+          "style": "Normal"
+        },
+        {
+          "text": "* 개발제품 5종 1차 평가",
+          "order": 94,
+          "style": "Normal"
+        },
+        {
+          "text": "* Edge Mura 개선 후 개발품 6종 추가 발송",
+          "order": 95,
+          "style": "Normal"
+        },
+        {
+          "text": "* 60℃·240시간 평가 완료, 최종 목표 1,000시간",
+          "order": 96,
+          "style": "Normal"
+        },
+        {
+          "text": "* WVTR·접착력 개선을 위한 공동 선행개발 진행",
+          "order": 97,
+          "style": "Normal"
+        },
+        {
+          "text": "- 수행역량",
+          "order": 98,
+          "style": "Normal"
+        },
+        {
+          "text": "* 소니드: 디스플레이 소재 개발·양산·고객평가 경험",
+          "order": 99,
+          "style": "Normal"
+        },
+        {
+          "text": "* 한국생산기술연구원: SCI(E) 논문 44편, 국내특허 26건 이상, 해외특허 보유",
+          "order": 100,
+          "style": "Normal"
+        },
+        {
+          "text": "* 코솔러스: 올리고머 합성, 20~50L 설비 설계, 5톤 합성기 운용 및 기능성 수지 사업화 경험",
+          "order": 101,
+          "style": "Normal"
+        },
+        {
+          "text": "그림 6 소니드 연구개발 및 양산 제조 시설",
+          "order": 103,
+          "style": "Caption"
+        },
+        {
+          "text": "그림 7 소니드 연구개발 및 양산 제조 시설",
+          "order": 104,
+          "style": null,
+          "source_type": "text_box"
+        },
+        {
+          "text": "기관별 역할 및 협력 구조",
+          "order": 106,
+          "style": "List Paragraph"
+        },
+        {
+          "text": "핵심 내용: 소재 개발부터 최종제품 양산·판매까지 기관별 전문역량을 연계",
+          "order": 107,
+          "style": "Normal"
+        },
+        {
+          "text": "한국생산기술연구원",
+          "order": 108,
+          "style": "Normal"
+        },
+        {
+          "text": "저투습 PSQ 하이브리드 고분자 개발",
+          "order": 109,
+          "style": "Normal"
+        },
+        {
+          "text": "Barrier·가교·유연성 특성 최적화",
+          "order": 110,
+          "style": "Normal"
+        },
+        {
+          "text": "코솔러스",
+          "order": 111,
+          "style": "Normal"
+        },
+        {
+          "text": "고접착 우레탄 아크릴레이트 개발",
+          "order": 112,
+          "style": "Normal"
+        },
+        {
+          "text": "공정 스케일업 및 양산기술 확보",
+          "order": 113,
+          "style": "Normal"
+        },
+        {
+          "text": "소니드에 소재 공급",
+          "order": 114,
+          "style": "Normal"
+        },
+        {
+          "text": "소니드",
+          "order": 115,
+          "style": "Normal"
+        },
+        {
+          "text": "UV경화형 봉지재 조성·도포",
+          "order": 116,
+          "style": "Normal"
+        },
+        {
+          "text": "고객사 Cell 및 신뢰성 평가",
+          "order": 117,
+          "style": "Normal"
+        },
+        {
+          "text": "최종제품 양산·판매",
+          "order": 118,
+          "style": "Normal"
+        },
+        {
+          "text": "- 협력 흐름: 한국생산기술연구원·코솔러스 소재 개발 → 소니드 조성 적용·신뢰성 평가 → 평가 결과 피드백 및 소재 최적화",
+          "order": 119,
+          "style": "pdq2pg_selectionanchorcontainer"
+        },
+        {
+          "text": "5개년 개발 로드맵",
+          "order": 120,
+          "style": "List Paragraph"
+        },
+        {
+          "text": "핵심 내용: 기초소재 설계에서 성능 최적화와 신뢰성 검증을 거쳐 최종 양산화까지 단계적으로 추진",
+          "order": 121,
+          "style": "Normal"
+        },
+        {
+          "text": "1차년도 – 기초소재 및 평가기반 구축",
+          "order": 122,
+          "style": "Normal"
+        },
+        {
+          "text": "소니드: UV경화형 봉지재 개발 및 도포 시스템 구축",
+          "order": 123,
+          "style": "Normal"
+        },
+        {
+          "text": "생기원: 고분자량 PSQ 소재 설계·합성",
+          "order": 124,
+          "style": "Normal"
+        },
+        {
+          "text": "코솔러스: 단일 폴리올 기반 고접착 올리고머 개발",
+          "order": 125,
+          "style": "Normal"
+        },
+        {
+          "text": "그림 8 1차년도 계획",
+          "order": 127,
+          "style": "Caption"
+        },
+        {
+          "text": "2차년도 – 가교구조 및 성능 제어",
+          "order": 128,
+          "style": "Normal"
+        },
+        {
+          "text": "소니드: 고객사 ESL Cell 평가 및 조성물 개선",
+          "order": 129,
+          "style": "Normal"
+        },
+        {
+          "text": "생기원: Packing·가교밀도 제어",
+          "order": 130,
+          "style": "Normal"
+        },
+        {
+          "text": "코솔러스: 다관능 아크릴레이트 기반 3차원 가교구조 형성",
+          "order": 131,
+          "style": "Normal"
+        },
+        {
+          "text": "그림 9 2차년도 계획",
+          "order": 133,
+          "style": "Caption"
+        },
+        {
+          "text": "3차년도 – 복합소재 및 적용성 확대",
+          "order": 134,
+          "style": "Normal"
+        },
+        {
+          "text": "소니드: 첨가제 적용·신뢰성 평가",
+          "order": 135,
+          "style": "Normal"
+        },
+        {
+          "text": "생기원: 2D 나노입자 기반 Barrier 성능 개선",
+          "order": 136,
+          "style": "Normal"
+        },
+        {
+          "text": "코솔러스: 복합 폴리올 공중합체를 통한 Glass·PET 접착 개선",
+          "order": 137,
+          "style": "Normal"
+        },
+        {
+          "text": "그림 10 3차년도 계획",
+          "order": 139,
+          "style": "Caption"
+        },
+        {
+          "text": "4차년도 – 유연성·접착·투습 최적화",
+          "order": 140,
+          "style": "Normal"
+        },
+        {
+          "text": "소니드: Flexible E-Paper·Polyimide 기판 적용",
+          "order": 141,
+          "style": "Normal"
+        },
+        {
+          "text": "생기원: 내굴곡·저투습 PSQ 소재 개발",
+          "order": 142,
+          "style": "Normal"
+        },
+        {
+          "text": "코솔러스: 가교밀도 제어를 통한 접착력·투습률 최적화",
+          "order": 143,
+          "style": "Normal"
+        },
+        {
+          "text": "그림 11 4차년도 계획",
+          "order": 145,
+          "style": "Caption"
+        },
+        {
+          "text": "5차년도 – 최종 조성 및 양산화",
+          "order": 146,
+          "style": "Normal"
+        },
+        {
+          "text": "소니드: 200kg 규모 최종 조성물 생산·신뢰성 평가",
+          "order": 147,
+          "style": "Normal"
+        },
+        {
+          "text": "생기원: 하이브리드 소재 합성공정·포뮬레이션 최적화",
+          "order": 148,
+          "style": "Normal"
+        },
+        {
+          "text": "코솔러스: 1L→20L→50L 스케일업 및 양산 합성기 설계",
+          "order": 149,
+          "style": "Normal"
+        },
+        {
+          "text": "그림 12 5년차도 계획",
+          "order": 150,
+          "style": null,
+          "source_type": "text_box"
+        },
+        {
+          "text": "사업화 전략",
+          "order": 152,
+          "style": "List Paragraph"
+        },
+        {
+          "text": "핵심 내용: 글로벌 고객사 평가에서 소재 스케일업·양산·판매까지 단계별 사업화 체계를 구축",
+          "order": 153,
+          "style": "Normal"
+        },
+        {
+          "text": "- 고객사 진입",
+          "order": 154,
+          "style": "Normal"
+        },
+        {
+          "text": "3차년도 고객사 신뢰성 평가 승인",
+          "order": 155,
+          "style": "Normal"
+        },
+        {
+          "text": "대만 글로벌 선두 수요기업 우선 납품",
+          "order": 156,
+          "style": "Normal"
+        },
+        {
+          "text": "기존 열경화 제품 대체 및 신규 모델 적용",
+          "order": 157,
+          "style": "Normal"
+        },
+        {
+          "text": "- 소재 공급체계",
+          "order": 158,
+          "style": "Normal"
+        },
+        {
+          "text": "생기원 개발 소재의 코솔러스 기술이전",
+          "order": 159,
+          "style": "Normal"
+        },
+        {
+          "text": "코솔러스 제품 수준 스케일업",
+          "order": 160,
+          "style": "Normal"
+        },
+        {
+          "text": "소니드에 저투습·고접착 소재 공급",
+          "order": 161,
+          "style": "Normal"
+        },
+        {
+          "text": "- 양산 및 판매",
+          "order": 162,
+          "style": "Normal"
+        },
+        {
+          "text": "소니드 최종 봉지재 양산·판매",
+          "order": 163,
+          "style": "Normal"
+        },
+        {
+          "text": "2028년 매출 발생 추진",
+          "order": 164,
+          "style": "Normal"
+        },
+        {
+          "text": "국내 ESL 생산업체로 공급처 확대",
+          "order": 165,
+          "style": "Normal"
+        },
+        {
+          "text": "그림 13 사업화 전략",
+          "order": 166,
+          "style": null,
+          "source_type": "text_box"
+        },
+        {
+          "text": "시장성 및 기대효과",
+          "order": 168,
+          "style": "List Paragraph"
+        },
+        {
+          "text": "핵심 내용: 글로벌 선두 ESL 고객사 채택을 기반으로 국내외 매출과 시장 경쟁력을 확보",
+          "order": 169,
+          "style": "Normal"
+        },
+        {
+          "text": "-  글로벌 선두기업 적용 시 신규 해외매출 100억 원 이상 기대",
+          "order": 170,
+          "style": "Normal"
+        },
+        {
+          "text": "- 국내 글로벌 2위 기업 대상 프로모션 추진",
+          "order": 171,
+          "style": "Normal"
+        },
+        {
+          "text": "- 2030년 ESL 봉지소재 매출 200억 원 목표",
+          "order": 172,
+          "style": "Normal"
+        },
+        {
+          "text": "- 국내외 ESL 고객사 확대",
+          "order": 173,
+          "style": "Normal"
+        },
+        {
+          "text": "- 해외기업 중심 봉지소재 시장에서 국내기업의 경쟁 기반 확보",
+          "order": 174,
+          "style": "Normal"
+        },
+        {
+          "text": "확장 계획",
+          "order": 175,
+          "style": "List Paragraph"
+        },
+        {
+          "text": "핵심 내용: ESL에서 확보한 봉지소재 기술을 다양한 전자종이 및 디스플레이 분야로 확대",
+          "order": 176,
+          "style": "Normal"
+        },
+        {
+          "text": "- 고객 확대",
+          "order": 177,
+          "style": "Normal"
+        },
+        {
+          "text": "SES-imagotag 외 국내외 ESL 기업으로 판매처 다변화",
+          "order": 178,
+          "style": "Normal"
+        },
+        {
+          "text": "국내 솔루엠·해외 Price 등과 협력 추진",
+          "order": 179,
+          "style": "Normal"
+        },
+        {
+          "text": "- 제품 확대",
+          "order": 180,
+          "style": "Normal"
+        },
+        {
+          "text": "ESL → E-Book·Signage",
+          "order": 181,
+          "style": "Normal"
+        },
+        {
+          "text": "Flexible E-Paper·Polyimide 기판 적용",
+          "order": 182,
+          "style": "Normal"
+        },
+        {
+          "text": "- 시장 확대",
+          "order": 183,
+          "style": "Normal"
+        },
+        {
+          "text": "전자종이 봉지소재",
+          "order": 184,
+          "style": "Normal"
+        },
+        {
+          "text": "OLED 대형 디스플레이용 봉지소재",
+          "order": 185,
+          "style": "Normal"
+        },
+        {
+          "text": "마무리",
+          "order": 186,
+          "style": "List Paragraph"
+        },
+        {
+          "text": "저투습·고접착 UV경화형 봉지소재를 통해\nESL 생산성 향상과 글로벌 소재시장 진입을 추진합니다.",
+          "order": 187,
+          "style": "Normal"
+        },
+        {
+          "text": "Thank You",
+          "order": 188,
+          "style": "Normal"
+        }
+      ],
+      "unstructured_tables": [],
+      "unstructured_images": [
+        {
+          "path": "output\\cosolus-business-plan-2026\\extracted_images\\2026.08.25_사업계획서 ppt 자료_V1_img1.png",
+          "order": 21,
+          "adjacent_text": null
+        },
+        {
+          "path": "output\\cosolus-business-plan-2026\\extracted_images\\2026.08.25_사업계획서 ppt 자료_V1_img2.png",
+          "order": 23,
+          "adjacent_text": null
+        },
+        {
+          "path": "output\\cosolus-business-plan-2026\\extracted_images\\2026.08.25_사업계획서 ppt 자료_V1_img3.png",
+          "order": 35,
+          "adjacent_text": null
+        },
+        {
+          "path": "output\\cosolus-business-plan-2026\\extracted_images\\2026.08.25_사업계획서 ppt 자료_V1_img4.png",
+          "order": 36,
+          "adjacent_text": null
+        },
+        {
+          "path": "output\\cosolus-business-plan-2026\\extracted_images\\2026.08.25_사업계획서 ppt 자료_V1_img5.png",
+          "order": 58,
+          "adjacent_text": null
+        },
+        {
+          "path": "output\\cosolus-business-plan-2026\\extracted_images\\2026.08.25_사업계획서 ppt 자료_V1_img6.png",
+          "order": 102,
+          "adjacent_text": null
+        },
+        {
+          "path": "output\\cosolus-business-plan-2026\\extracted_images\\2026.08.25_사업계획서 ppt 자료_V1_img7.png",
+          "order": 105,
+          "adjacent_text": null
+        },
+        {
+          "path": "output\\cosolus-business-plan-2026\\extracted_images\\2026.08.25_사업계획서 ppt 자료_V1_img8.png",
+          "order": 126,
+          "adjacent_text": null
+        },
+        {
+          "path": "output\\cosolus-business-plan-2026\\extracted_images\\2026.08.25_사업계획서 ppt 자료_V1_img9.png",
+          "order": 132,
+          "adjacent_text": null
+        },
+        {
+          "path": "output\\cosolus-business-plan-2026\\extracted_images\\2026.08.25_사업계획서 ppt 자료_V1_img10.png",
+          "order": 138,
+          "adjacent_text": null
+        },
+        {
+          "path": "output\\cosolus-business-plan-2026\\extracted_images\\2026.08.25_사업계획서 ppt 자료_V1_img11.png",
+          "order": 144,
+          "adjacent_text": null
+        },
+        {
+          "path": "output\\cosolus-business-plan-2026\\extracted_images\\2026.08.25_사업계획서 ppt 자료_V1_img12.png",
+          "order": 151,
+          "adjacent_text": null
+        },
+        {
+          "path": "output\\cosolus-business-plan-2026\\extracted_images\\2026.08.25_사업계획서 ppt 자료_V1_img13.png",
+          "order": 167,
+          "adjacent_text": null
+        }
+      ],
+      "needs_manual_review": false
+    }
+  ],
+  "escalations": [],
+  "needs_confirmation": [
+    {
+      "detail": "이 파일에서 제목/소제목 등 구조 신호를 찾지 못해 Content Group 계층을 만들지 못했습니다. 이후 [3] 단계에서 슬라이드 분할·주제 그룹핑을 수동 판단 근거 없이 진행하게 됩니다.",
+      "source": "input\\2026.08.25_사업계획서 ppt 자료_V1.docx"
+    }
+  ]
+}

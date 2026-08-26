@@ -1,0 +1,3111 @@
+{
+  "project": "cosolus-business-plan-2026",
+  "source_file": "input\\2026.08.25_사업계획서 ppt 자료_V1.docx",
+  "extraction_note": "extract.py는 이 문서에서 'Heading N/제목 N' 패턴의 문단 스타일을 찾지 못해 structure_signal: none_detected로 보고했다(원인: PPT→docx 변환 과정에서 섹션 제목이 표준 Heading 스타일이 아니라 'List Paragraph' 스타일로 저장됨). 그러나 raw 추출 결과를 검토한 결과 'List Paragraph' 스타일 문단이 문서 전체에서 정확히 16회, 항상 섹션 제목 위치(표지/과제 개요/시장 및 산업 배경/.../마무리)에서만 등장하고 그 직후 'Normal' 스타일 본문이 이어지는 일관된 패턴이 확인되어, 이를 실제 원본의 구조 신호로 보고 Content Group 경계로 사용했다. 이 문서에는 Subtopic 레벨(두 번째 깊이의 제목)에 해당하는 신호가 없어 모든 Content Group은 direct_evidence만 사용한다(Subtopic 없음). 표는 원본에 없음(0건). 이미지 13장은 전량 육안 검토(Vision)로 인접 캡션과의 1:1 대응을 확인했다. 핵심 수치(시장규모, 정량적 개발목표, 매출목표, 선행개발 실적)는 모두 원본 텍스트에 명시적으로 존재하여 escalation 대상 없음. 제작 지시문(프롬프트 등)은 원본에서 발견되지 않아 production_directives/visual_placeholders는 전 Content Group에서 빈 배열이다.",
+  "content_groups": [
+    {
+      "id": "CG01",
+      "title": "표지",
+      "structure_signal": {
+        "type": "heading_style_nonstandard",
+        "detail": "List Paragraph 스타일 섹션 제목(1/16), 원본 order=1"
+      },
+      "subtopics": [],
+      "direct_evidence": {
+        "confirmed_text": [
+          "메인제목: 전자잉크 소재 디스플레이를 위한 고기능성 UV경화형 봉지소재 개발",
+          "주관기관: 소니드 주식회사",
+          "공동개발기관: 한국생산기술연구원, 주식회사 코솔러스"
+        ],
+        "text_evidence_metadata": [
+          {
+            "text_index": 1,
+            "source_order": 2,
+            "source_type": "text"
+          },
+          {
+            "text_index": 2,
+            "source_order": 3,
+            "source_type": "text"
+          },
+          {
+            "text_index": 3,
+            "source_order": 4,
+            "source_type": "text"
+          }
+        ],
+        "metrics": [],
+        "tables": [],
+        "images_available": [],
+        "production_directives": [],
+        "visual_placeholders": []
+      },
+      "source_citation": null
+    },
+    {
+      "id": "CG02",
+      "title": "과제 개요",
+      "structure_signal": {
+        "type": "heading_style_nonstandard",
+        "detail": "List Paragraph 스타일 섹션 제목(2/16), 원본 order=5"
+      },
+      "subtopics": [],
+      "direct_evidence": {
+        "confirmed_text": [
+          "메인 내용: 열경화 공정의 생산성과 기판 변형 문제를 개선하기 위한 ESL용 UV경화형 봉지소재 개발",
+          "개발 목적: 공정 TACT 단축 및 기판 Warpage 개선",
+          "핵심성능: 저투습 고접착 고신뢰성",
+          "적용제품: E-Ink 디스플레이 Edge Glue",
+          "개발체계: 소니드·생산기술연구원·코솔러스 공동개발",
+          "핵심 키워드: UV경화 · 저 WVTR · 고접착 · 양산화"
+        ],
+        "text_evidence_metadata": [
+          {
+            "text_index": 1,
+            "source_order": 6,
+            "source_type": "text"
+          },
+          {
+            "text_index": 2,
+            "source_order": 7,
+            "source_type": "text"
+          },
+          {
+            "text_index": 3,
+            "source_order": 8,
+            "source_type": "text"
+          },
+          {
+            "text_index": 4,
+            "source_order": 9,
+            "source_type": "text"
+          },
+          {
+            "text_index": 5,
+            "source_order": 10,
+            "source_type": "text"
+          },
+          {
+            "text_index": 6,
+            "source_order": 11,
+            "source_type": "text"
+          }
+        ],
+        "metrics": [],
+        "tables": [],
+        "images_available": [],
+        "production_directives": [],
+        "visual_placeholders": []
+      },
+      "source_citation": null
+    },
+    {
+      "id": "CG03",
+      "title": "시장 및 산업 배경",
+      "structure_signal": {
+        "type": "heading_style_nonstandard",
+        "detail": "List Paragraph 스타일 섹션 제목(3/16), 원본 order=12"
+      },
+      "subtopics": [],
+      "direct_evidence": {
+        "confirmed_text": [
+          "핵심 내용: 대형 유통매장의 디지털 전환으로 ESL 시장이 빠르게 성장하고 있음",
+          "대형마트에서는 약 10만 개 이상의 상품과 재고를 관리",
+          "ESL을 통해 가격 변경 및 재고관리 자동화",
+          "POS 시스템과 연동한 실시간 정보관리 가능"
+        ],
+        "text_evidence_metadata": [
+          {
+            "text_index": 1,
+            "source_order": 13,
+            "source_type": "text"
+          },
+          {
+            "text_index": 2,
+            "source_order": 14,
+            "source_type": "text"
+          },
+          {
+            "text_index": 3,
+            "source_order": 15,
+            "source_type": "text"
+          },
+          {
+            "text_index": 4,
+            "source_order": 16,
+            "source_type": "text"
+          }
+        ],
+        "metrics": [
+          {
+            "label": "글로벌 ESL 시장 규모 (2023년)",
+            "value": "약 1.6조 원",
+            "source_citation": "그림2 캡션: Research and markets"
+          },
+          {
+            "label": "글로벌 ESL 시장 규모 (2028년 전망)",
+            "value": "약 4.3조 원",
+            "source_citation": "그림2 캡션: Research and markets"
+          },
+          {
+            "label": "글로벌 ESL 시장 CAGR",
+            "value": "15~17%",
+            "source_citation": "그림2 캡션: Research and markets"
+          }
+        ],
+        "tables": [],
+        "images_available": [
+          {
+            "ref": "img1",
+            "path": "output\\cosolus-business-plan-2026\\extracted_images\\2026.08.25_사업계획서 ppt 자료_V1_img1.png",
+            "description": "그림 1 대형마트의 리테일러 기술도입 개념 — 본사(클라우드 서버) → 매장 Controller/Access Point → ESL 태그(예시 가격 98원/108원) 연동 구조를 보여주는 개념도. 캡션과 이미지가 문서 순서상 정확히 인접(캡션 order22 직전 이미지 order21)해 1:1 대응.",
+            "relation_confidence": "structural",
+            "content_match_confidence": "confirmed",
+            "cross_group_ref": null
+          },
+          {
+            "ref": "img2",
+            "path": "output\\cosolus-business-plan-2026\\extracted_images\\2026.08.25_사업계획서 ppt 자료_V1_img2.png",
+            "description": "그림 2 ESL 글로벌 시장 규모 차트(Research and Markets) — 'Global Electronic Shelf Label Market', CAGR 16.9%, 2023년 USD 1.29 Billion → 2028년 USD 3.29 Billion 막대그래프. 원문 텍스트의 '2023년 약 1.6조 원 / 2028년 약 4.3조 원 / CAGR 15~17%'는 이 USD 수치를 원화로 환산·반올림한 값으로 서로 일치하며 상충 없음(예: 3.29B USD ≈ 4.3조 원). 차트이므로 육안(Vision) 검토로 confirmed 처리, 원본 수치는 임의로 재계산하지 않고 그대로 사용.",
+            "relation_confidence": "structural",
+            "content_match_confidence": "confirmed",
+            "cross_group_ref": null
+          }
+        ],
+        "production_directives": [],
+        "visual_placeholders": []
+      },
+      "source_citation": "Research and markets (그림2 캡션 명시)"
+    },
+    {
+      "id": "CG04",
+      "title": "제품 적용 구조",
+      "structure_signal": {
+        "type": "heading_style_nonstandard",
+        "detail": "List Paragraph 스타일 섹션 제목(4/16), 원본 order=25"
+      },
+      "subtopics": [],
+      "direct_evidence": {
+        "confirmed_text": [
+          "핵심 내용: Edge Glue는 E-Ink 표시소자의 가장자리에 적용되어 외부 환경으로부터 내부 소재를 보호함",
+          "적용 위치: E-Ink 표시소자 가장자리",
+          "주요 기판: Glass·PET",
+          "보호 대상: E-Ink 표시소자",
+          "주요 기능: 외부 수분 차단 / 먼지·열 노출 방지 / 기판 간 접착 유지"
+        ],
+        "text_evidence_metadata": [
+          {
+            "text_index": 1,
+            "source_order": 26,
+            "source_type": "text"
+          },
+          {
+            "text_index": 2,
+            "source_order": 27,
+            "source_type": "text"
+          },
+          {
+            "text_index": 3,
+            "source_order": 28,
+            "source_type": "text"
+          },
+          {
+            "text_index": 4,
+            "source_order": 29,
+            "source_type": "text"
+          },
+          {
+            "text_index": 5,
+            "source_order": 30,
+            "source_type": "text"
+          }
+        ],
+        "metrics": [],
+        "tables": [],
+        "images_available": [
+          {
+            "ref": "img4",
+            "path": "output\\cosolus-business-plan-2026\\extracted_images\\2026.08.25_사업계획서 ppt 자료_V1_img4.png",
+            "description": "그림 3 전자잉크디스플레이(자료출처: 소니드주식회사) — E-Ink 디스플레이 모듈 실물 사진(적색 화면, FPC 연결부). 주의: 문서 순서상 캡션 '그림3'(order34)이 이미지 img3(order35)보다 먼저, 캡션 '그림4'(order37)가 img4(order36)보다 나중에 나와 단순 순서 매칭이 불가능했음 — Vision으로 두 이미지 내용을 직접 대조한 결과 이 이미지(원본 파일 상 img4)가 단순 제품 사진으로 캡션 '그림3 전자잉크디스플레이'와 내용상 일치해 confirmed로 확정.",
+            "relation_confidence": "structural",
+            "content_match_confidence": "confirmed",
+            "cross_group_ref": null
+          },
+          {
+            "ref": "img3",
+            "path": "output\\cosolus-business-plan-2026\\extracted_images\\2026.08.25_사업계획서 ppt 자료_V1_img3.png",
+            "description": "그림 4 E-Ink 단면도 — Edge Glue/Protection Sheet(PET)/FPL(PET·ITO·Microcup)/KA glue/TFT array 적층 구조 단면 다이어그램 + 모듈 실물 사진(적색/보라색) 2장. 위 img4와 동일한 캡션 순서 역전 사례 — Vision 대조 결과 이 이미지(원본 파일 상 img3)가 상세 단면 다이어그램으로 캡션 '그림4 E-Ink 단면도'와 내용상 일치해 confirmed로 확정.",
+            "relation_confidence": "structural",
+            "content_match_confidence": "confirmed",
+            "cross_group_ref": null
+          }
+        ],
+        "production_directives": [],
+        "visual_placeholders": []
+      },
+      "source_citation": null
+    },
+    {
+      "id": "CG05",
+      "title": "기존 기술의 문제",
+      "structure_signal": {
+        "type": "heading_style_nonstandard",
+        "detail": "List Paragraph 스타일 섹션 제목(5/16), 원본 order=38"
+      },
+      "subtopics": [],
+      "direct_evidence": {
+        "confirmed_text": [
+          "핵심 메시지: 기존 열경화형 봉지소재는 긴 경화시간과 열에 의한 기판 변형으로 생산성과 품질에 한계가 있음",
+          "약 1시간의 열경화 공정 필요",
+          "긴 경화시간으로 공정 TACT 증가",
+          "열에 의한 기판 Warpage 발생",
+          "단일층에서 저투습·고접착 동시 확보 필요",
+          "고객사의 UV경화형 소재 전환 요구"
+        ],
+        "text_evidence_metadata": [
+          {
+            "text_index": 1,
+            "source_order": 39,
+            "source_type": "text"
+          },
+          {
+            "text_index": 2,
+            "source_order": 40,
+            "source_type": "text"
+          },
+          {
+            "text_index": 3,
+            "source_order": 41,
+            "source_type": "text"
+          },
+          {
+            "text_index": 4,
+            "source_order": 42,
+            "source_type": "text"
+          },
+          {
+            "text_index": 5,
+            "source_order": 43,
+            "source_type": "text"
+          },
+          {
+            "text_index": 6,
+            "source_order": 44,
+            "source_type": "text"
+          }
+        ],
+        "metrics": [
+          {
+            "label": "기존 열경화 공정 소요시간",
+            "value": "약 1시간",
+            "source_citation": null
+          }
+        ],
+        "tables": [],
+        "images_available": [],
+        "production_directives": [],
+        "visual_placeholders": []
+      },
+      "source_citation": null
+    },
+    {
+      "id": "CG06",
+      "title": "개발 필요성",
+      "structure_signal": {
+        "type": "heading_style_nonstandard",
+        "detail": "List Paragraph 스타일 섹션 제목(6/16), 원본 order=45"
+      },
+      "subtopics": [],
+      "direct_evidence": {
+        "confirmed_text": [
+          "핵심 내용: 해외기업 중심의 봉지소재 시장에 대응하고 국내 E-Ink 소재시장 진입 기반을 확보해야 함",
+          "ESL 핵심기술은 BOE·JABIL·E-Ink Holdings·Innolux 등 글로벌 기업이 보유",
+          "봉지소재 시장은 중국·독일 기업 중심",
+          "Henkel을 비롯한 해외 Edge Sealing 기업의 시장 참여 확대",
+          "국내 디스플레이 소재산업은 대·중견기업 중심으로 진입장벽이 높음",
+          "E-Ink 소재는 국내기업의 진출이 적은 신규 기회시장",
+          "관련 선행개발 경험을 기반으로 해외기업과의 경쟁 기반 확보 필요"
+        ],
+        "text_evidence_metadata": [
+          {
+            "text_index": 1,
+            "source_order": 46,
+            "source_type": "text"
+          },
+          {
+            "text_index": 2,
+            "source_order": 47,
+            "source_type": "text"
+          },
+          {
+            "text_index": 3,
+            "source_order": 48,
+            "source_type": "text"
+          },
+          {
+            "text_index": 4,
+            "source_order": 49,
+            "source_type": "text"
+          },
+          {
+            "text_index": 5,
+            "source_order": 50,
+            "source_type": "text"
+          },
+          {
+            "text_index": 6,
+            "source_order": 51,
+            "source_type": "text"
+          },
+          {
+            "text_index": 7,
+            "source_order": 52,
+            "source_type": "text"
+          }
+        ],
+        "metrics": [],
+        "tables": [],
+        "images_available": [],
+        "production_directives": [],
+        "visual_placeholders": []
+      },
+      "source_citation": null
+    },
+    {
+      "id": "CG07",
+      "title": "개발 솔루션",
+      "structure_signal": {
+        "type": "heading_style_nonstandard",
+        "detail": "List Paragraph 스타일 섹션 제목(7/16), 원본 order=53"
+      },
+      "subtopics": [],
+      "direct_evidence": {
+        "confirmed_text": [
+          "핵심 내용: 저투습성과 고접착력을 갖춘 단일층 UV경화형 봉지소재로 기존 열경화 공정의 한계를 개선",
+          "기존 열경화 방식: 약 1시간의 경화공정, 열에 의한 Warpage, 생산효율 저하, 성능 동시 확보 한계",
+          "개발 UV경화 방식: 경화시간 및 TACT 단축, 기판 변형 개선, UV경화 기반 생산성 향상, 저투습·고접착 동시 확보"
+        ],
+        "text_evidence_metadata": [
+          {
+            "text_index": 1,
+            "source_order": 54,
+            "source_type": "text"
+          },
+          {
+            "text_index": 2,
+            "source_order": 55,
+            "source_type": "text"
+          },
+          {
+            "text_index": 3,
+            "source_order": 56,
+            "source_type": "text"
+          }
+        ],
+        "metrics": [],
+        "tables": [],
+        "images_available": [
+          {
+            "ref": "img5",
+            "path": "output\\cosolus-business-plan-2026\\extracted_images\\2026.08.25_사업계획서 ppt 자료_V1_img5.png",
+            "description": "그림 5 (캡션 텍스트 없음, '그림 5'만 표기) — Edge Glue 봉지구조 단면 개념도: Protection Sheet / E-ink Film / TFT substrate 적층, Edge Glue 폭 0.5~1.5mm, 전체 두께 200μm. 인접 텍스트(기존/개발 방식 비교) 바로 다음에 위치, 캡션-이미지 1:1 대응 확인.",
+            "relation_confidence": "structural",
+            "content_match_confidence": "confirmed",
+            "cross_group_ref": null
+          }
+        ],
+        "production_directives": [],
+        "visual_placeholders": []
+      },
+      "source_citation": null
+    },
+    {
+      "id": "CG08",
+      "title": "핵심 기술 구성",
+      "structure_signal": {
+        "type": "heading_style_nonstandard",
+        "detail": "List Paragraph 스타일 섹션 제목(8/16), 원본 order=59"
+      },
+      "subtopics": [],
+      "direct_evidence": {
+        "confirmed_text": [
+          "핵심 내용: 세 가지 핵심 소재기술을 결합하여 저투습·고접착 UV경화형 봉지소재를 구현",
+          "UV경화형 봉지재: 봉지재 조성·도포 시스템 구축 / 기초물성·신뢰성 평가 / 최종 조성 및 저장안정성 최적화",
+          "저투습 하이브리드 고분자: PSQ 기반 고분자 설계 / Packing·가교밀도 제어 / 나노입자를 활용한 Barrier·유연성 개선",
+          "고접착 우레탄 아크릴레이트: Glass·PET용 올리고머 설계 / 투습·접착 특성 제어 / 가교구조 최적화 및 양산화"
+        ],
+        "text_evidence_metadata": [
+          {
+            "text_index": 1,
+            "source_order": 60,
+            "source_type": "text"
+          },
+          {
+            "text_index": 2,
+            "source_order": 61,
+            "source_type": "text"
+          },
+          {
+            "text_index": 3,
+            "source_order": 64,
+            "source_type": "text"
+          },
+          {
+            "text_index": 4,
+            "source_order": 67,
+            "source_type": "text"
+          }
+        ],
+        "metrics": [],
+        "tables": [],
+        "images_available": [],
+        "production_directives": [],
+        "visual_placeholders": []
+      },
+      "source_citation": null
+    },
+    {
+      "id": "CG09",
+      "title": "정량적 개발 목표",
+      "structure_signal": {
+        "type": "heading_style_nonstandard",
+        "detail": "List Paragraph 스타일 섹션 제목(9/16), 원본 order=71"
+      },
+      "subtopics": [],
+      "direct_evidence": {
+        "confirmed_text": [
+          "핵심 내용: 소재 성능부터 신뢰성·양산 재현성까지 객관적인 목표치를 설정",
+          "핵심 성능 목표",
+          "신뢰성·양산 목표",
+          "정량적 성과 목표",
+          "(청년의무고용 3명)",
+          "(연계고용 5명)"
+        ],
+        "text_evidence_metadata": [
+          {
+            "text_index": 1,
+            "source_order": 72,
+            "source_type": "text"
+          },
+          {
+            "text_index": 2,
+            "source_order": 73,
+            "source_type": "text"
+          },
+          {
+            "text_index": 3,
+            "source_order": 80,
+            "source_type": "text"
+          },
+          {
+            "text_index": 4,
+            "source_order": 85,
+            "source_type": "text"
+          },
+          {
+            "text_index": 5,
+            "source_order": 89,
+            "source_type": "text"
+          },
+          {
+            "text_index": 6,
+            "source_order": 90,
+            "source_type": "text"
+          }
+        ],
+        "metrics": [
+          {
+            "label": "WVTR(수분투과율)",
+            "value": "5 g/m²·day 이하",
+            "source_citation": null
+          },
+          {
+            "label": "보호필름–Glass 접착력",
+            "value": "10 N/cm 이상",
+            "source_citation": null
+          },
+          {
+            "label": "Glass–Glass 접착력",
+            "value": "5 N/cm² 이상",
+            "source_citation": null
+          },
+          {
+            "label": "경화율",
+            "value": "95% 이상",
+            "source_citation": null
+          },
+          {
+            "label": "수축률",
+            "value": "5% 이하",
+            "source_citation": null
+          },
+          {
+            "label": "Warpage",
+            "value": "0.3 mm 이하",
+            "source_citation": null
+          },
+          {
+            "label": "고온·고온고습 신뢰성",
+            "value": "1,000시간",
+            "source_citation": null
+          },
+          {
+            "label": "열충격안정성",
+            "value": "200 Cycle",
+            "source_citation": null
+          },
+          {
+            "label": "Batch별 점도·분자량 오차",
+            "value": "±5%",
+            "source_citation": null
+          },
+          {
+            "label": "저장안정성",
+            "value": "6개월",
+            "source_citation": null
+          },
+          {
+            "label": "해외특허 출원",
+            "value": "3건",
+            "source_citation": null
+          },
+          {
+            "label": "국내특허 출원",
+            "value": "10건",
+            "source_citation": null
+          },
+          {
+            "label": "SCI 논문",
+            "value": "4건",
+            "source_citation": null
+          },
+          {
+            "label": "청년의무고용",
+            "value": "3명",
+            "source_citation": null
+          },
+          {
+            "label": "연계고용",
+            "value": "5명",
+            "source_citation": null
+          }
+        ],
+        "tables": [],
+        "images_available": [],
+        "production_directives": [],
+        "visual_placeholders": []
+      },
+      "source_citation": null
+    },
+    {
+      "id": "CG10",
+      "title": "선행개발 및 수행역량",
+      "structure_signal": {
+        "type": "heading_style_nonstandard",
+        "detail": "List Paragraph 스타일 섹션 제목(10/16), 원본 order=91"
+      },
+      "subtopics": [],
+      "direct_evidence": {
+        "confirmed_text": [
+          "핵심 내용: 고객사 평가 경험과 세 기관의 소재·합성·양산 역량을 기반으로 상용화 가능성을 확보",
+          "선행개발 실적: 대만 고객사의 UV경화형 제품 개발 수요 확인 / 개발제품 5종 1차 평가 / Edge Mura 개선 후 개발품 6종 추가 발송 / 60℃·240시간 평가 완료(최종 목표 1,000시간) / WVTR·접착력 개선을 위한 공동 선행개발 진행",
+          "수행역량 — 소니드: 디스플레이 소재 개발·양산·고객평가 경험",
+          "수행역량 — 한국생산기술연구원: SCI(E) 논문 44편, 국내특허 26건 이상, 해외특허 보유",
+          "수행역량 — 코솔러스: 올리고머 합성, 20~50L 설비 설계, 5톤 합성기 운용 및 기능성 수지 사업화 경험"
+        ],
+        "text_evidence_metadata": [
+          {
+            "text_index": 1,
+            "source_order": 92,
+            "source_type": "text"
+          },
+          {
+            "text_index": 2,
+            "source_order": 93,
+            "source_type": "text"
+          },
+          {
+            "text_index": 3,
+            "source_order": 99,
+            "source_type": "text"
+          },
+          {
+            "text_index": 4,
+            "source_order": 100,
+            "source_type": "text"
+          },
+          {
+            "text_index": 5,
+            "source_order": 101,
+            "source_type": "text"
+          }
+        ],
+        "metrics": [
+          {
+            "label": "1차 선행평가 조건",
+            "value": "60℃·240시간 평가 완료 (최종 신뢰성 목표 1,000시간)",
+            "source_citation": null
+          },
+          {
+            "label": "1차 개발제품 평가 수량",
+            "value": "5종",
+            "source_citation": null
+          },
+          {
+            "label": "Edge Mura 개선 후 추가 발송 수량",
+            "value": "6종",
+            "source_citation": null
+          },
+          {
+            "label": "한국생산기술연구원 SCI(E) 논문",
+            "value": "44편",
+            "source_citation": null
+          },
+          {
+            "label": "한국생산기술연구원 국내특허",
+            "value": "26건 이상",
+            "source_citation": null
+          }
+        ],
+        "tables": [],
+        "images_available": [
+          {
+            "ref": "img6",
+            "path": "output\\cosolus-business-plan-2026\\extracted_images\\2026.08.25_사업계획서 ppt 자료_V1_img6.png",
+            "description": "그림 6 소니드 연구개발 및 양산 제조 시설 — UV재료 실험실(80평), 분석실(100평, 분석설비 20여종), 기능성 재료 실험실(20평·50평), 필름 재료 실험실(20평), 공정 케미칼 실험실(40평), 분석 장비(30여종: ICP-AES/ICP-Mass/GC/SEM/FT-IR 등) 사진 콜라주. 캡션이 이미지 바로 직전(order103)에 위치해 1:1 대응.",
+            "relation_confidence": "structural",
+            "content_match_confidence": "confirmed",
+            "cross_group_ref": null
+          },
+          {
+            "ref": "img7",
+            "path": "output\\cosolus-business-plan-2026\\extracted_images\\2026.08.25_사업계획서 ppt 자료_V1_img7.png",
+            "description": "그림 7 소니드 연구개발 및 양산 제조 시설 — 반응기 설비, 공정 배관 설비, Clean Room(1,000 class / 캐니스터 포장 <10 class), Clean Booth(1,000 class) 사진 콜라주. 그림6과 동일 캡션 문구가 반복되며(둘 다 '소니드 연구개발 및 양산 제조시설'), 내용상 그림6은 실험/분석실, 그림7은 생산/클린룸 설비로 서로 다른 영역을 보여줘 별개 이미지로 확인.",
+            "relation_confidence": "structural",
+            "content_match_confidence": "confirmed",
+            "cross_group_ref": null
+          }
+        ],
+        "production_directives": [],
+        "visual_placeholders": []
+      },
+      "source_citation": null
+    },
+    {
+      "id": "CG11",
+      "title": "기관별 역할 및 협력 구조",
+      "structure_signal": {
+        "type": "heading_style_nonstandard",
+        "detail": "List Paragraph 스타일 섹션 제목(11/16), 원본 order=106"
+      },
+      "subtopics": [],
+      "direct_evidence": {
+        "confirmed_text": [
+          "핵심 내용: 소재 개발부터 최종제품 양산·판매까지 기관별 전문역량을 연계",
+          "한국생산기술연구원: 저투습 PSQ 하이브리드 고분자 개발 / Barrier·가교·유연성 특성 최적화",
+          "코솔러스: 고접착 우레탄 아크릴레이트 개발 / 공정 스케일업 및 양산기술 확보 / 소니드에 소재 공급",
+          "소니드: UV경화형 봉지재 조성·도포 / 고객사 Cell 및 신뢰성 평가 / 최종제품 양산·판매",
+          "협력 흐름: 한국생산기술연구원·코솔러스 소재 개발 → 소니드 조성 적용·신뢰성 평가 → 평가 결과 피드백 및 소재 최적화"
+        ],
+        "text_evidence_metadata": [
+          {
+            "text_index": 1,
+            "source_order": 107,
+            "source_type": "text"
+          },
+          {
+            "text_index": 2,
+            "source_order": 108,
+            "source_type": "text"
+          },
+          {
+            "text_index": 3,
+            "source_order": 111,
+            "source_type": "text"
+          },
+          {
+            "text_index": 4,
+            "source_order": 115,
+            "source_type": "text"
+          },
+          {
+            "text_index": 5,
+            "source_order": 119,
+            "source_type": "text"
+          }
+        ],
+        "metrics": [],
+        "tables": [],
+        "images_available": [],
+        "production_directives": [],
+        "visual_placeholders": []
+      },
+      "source_citation": null
+    },
+    {
+      "id": "CG12",
+      "title": "5개년 개발 로드맵",
+      "structure_signal": {
+        "type": "heading_style_nonstandard",
+        "detail": "List Paragraph 스타일 섹션 제목(12/16), 원본 order=120"
+      },
+      "subtopics": [],
+      "direct_evidence": {
+        "confirmed_text": [
+          "핵심 내용: 기초소재 설계에서 성능 최적화와 신뢰성 검증을 거쳐 최종 양산화까지 단계적으로 추진",
+          "1차년도 – 기초소재 및 평가기반 구축: 소니드(UV경화형 봉지재 개발 및 도포 시스템 구축) / 생기원(고분자량 PSQ 소재 설계·합성) / 코솔러스(단일 폴리올 기반 고접착 올리고머 개발)",
+          "2차년도 – 가교구조 및 성능 제어: 소니드(고객사 ESL Cell 평가 및 조성물 개선) / 생기원(Packing·가교밀도 제어) / 코솔러스(다관능 아크릴레이트 기반 3차원 가교구조 형성)",
+          "3차년도 – 복합소재 및 적용성 확대: 소니드(첨가제 적용·신뢰성 평가) / 생기원(2D 나노입자 기반 Barrier 성능 개선) / 코솔러스(복합 폴리올 공중합체를 통한 Glass·PET 접착 개선)",
+          "4차년도 – 유연성·접착·투습 최적화: 소니드(Flexible E-Paper·Polyimide 기판 적용) / 생기원(내굴곡·저투습 PSQ 소재 개발) / 코솔러스(가교밀도 제어를 통한 접착력·투습률 최적화)",
+          "5차년도 – 최종 조성 및 양산화: 소니드(200kg 규모 최종 조성물 생산·신뢰성 평가) / 생기원(하이브리드 소재 합성공정·포뮬레이션 최적화) / 코솔러스(1L→20L→50L 스케일업 및 양산 합성기 설계)"
+        ],
+        "text_evidence_metadata": [
+          {
+            "text_index": 1,
+            "source_order": 121,
+            "source_type": "text"
+          },
+          {
+            "text_index": 2,
+            "source_order": 122,
+            "source_type": "text"
+          },
+          {
+            "text_index": 3,
+            "source_order": 128,
+            "source_type": "text"
+          },
+          {
+            "text_index": 4,
+            "source_order": 134,
+            "source_type": "text"
+          },
+          {
+            "text_index": 5,
+            "source_order": 140,
+            "source_type": "text"
+          },
+          {
+            "text_index": 6,
+            "source_order": 146,
+            "source_type": "text"
+          }
+        ],
+        "metrics": [
+          {
+            "label": "5차년도 최종 조성물 생산 규모",
+            "value": "200kg",
+            "source_citation": null
+          },
+          {
+            "label": "코솔러스 스케일업 경로",
+            "value": "1L → 20L → 50L",
+            "source_citation": null
+          }
+        ],
+        "tables": [],
+        "images_available": [
+          {
+            "ref": "img8",
+            "path": "output\\cosolus-business-plan-2026\\extracted_images\\2026.08.25_사업계획서 ppt 자료_V1_img8.png",
+            "description": "그림 8 1차년도 계획 — 'UV경화형 E-link 봉지 재료 개발 및 제품화' 다이어그램: Composition Control(Photo Initiator/Oligomer/Monomer/Additive 4요소), SONID의 ESL 봉지재 도포 시스템 사진, KITECH(저WVTR 구현 소재)·COSOLUS(고부착력 소재) 분자구조 개념도. 캡션-이미지 1:1 대응 확인.",
+            "relation_confidence": "structural",
+            "content_match_confidence": "confirmed",
+            "cross_group_ref": null
+          },
+          {
+            "ref": "img9",
+            "path": "output\\cosolus-business-plan-2026\\extracted_images\\2026.08.25_사업계획서 ppt 자료_V1_img9.png",
+            "description": "그림 9 2차년도 계획 — 1차년도와 동일 템플릿(Composition Control), SONID 분자식, KITECH(UV/Thermal curing 비교, Packing density 개념도), COSOLUS(접착력 개선 분자구조) 반영. 캡션-이미지 1:1 대응 확인.",
+            "relation_confidence": "structural",
+            "content_match_confidence": "confirmed",
+            "cross_group_ref": null
+          },
+          {
+            "ref": "img10",
+            "path": "output\\cosolus-business-plan-2026\\extracted_images\\2026.08.25_사업계획서 ppt 자료_V1_img10.png",
+            "description": "그림 10 3차년도 계획 — 동일 템플릿, SONID(Phase separated/Intercalated/Exfoliated silicate 나노복합체 개념도), KITECH(2D 나노시트: Graphene Oxide/hBN/MMT, High gas barrier), COSOLUS(PET·Glass 접착력 개선) 반영. 캡션-이미지 1:1 대응 확인.",
+            "relation_confidence": "structural",
+            "content_match_confidence": "confirmed",
+            "cross_group_ref": null
+          },
+          {
+            "ref": "img11",
+            "path": "output\\cosolus-business-plan-2026\\extracted_images\\2026.08.25_사업계획서 ppt 자료_V1_img11.png",
+            "description": "그림 11 4차년도 계획 — 동일 템플릿, SONID(Modulus·Creep Test 그래프, Flexible E-Paper/Wearable 응용 사진), KITECH(Molecular modeling: TEOS/MTMS/DMDMS hydrolysis, Cross linking↑/Flexibility↑), COSOLUS(접착력 개선 분자구조) 반영. 캡션-이미지 1:1 대응 확인.",
+            "relation_confidence": "structural",
+            "content_match_confidence": "confirmed",
+            "cross_group_ref": null
+          },
+          {
+            "ref": "img12",
+            "path": "output\\cosolus-business-plan-2026\\extracted_images\\2026.08.25_사업계획서 ppt 자료_V1_img12.png",
+            "description": "그림 12 5년차도 계획 — 1~4차년도와 달리 '5차년도' 배너 및 SONID/KITECH/COSOLUS 3분할 템플릿이 아니라, 실록산 축합반응 화학식(a/b/c)과 'Scale up 최적화' 개념도(1mL→100mL→1L→10L→100L→1,000L)로 구성됨. 인접 텍스트의 '코솔러스: 1L→20L→50L 스케일업 및 양산 합성기 설계'와 주제상 부합하나, 시각적 템플릿이 1~4차년도와 다르다는 점은 사실로 확인됨(디자인 단계에서 레이아웃 통일성 판단 시 참고 필요).",
+            "relation_confidence": "structural",
+            "content_match_confidence": "confirmed",
+            "cross_group_ref": null
+          }
+        ],
+        "production_directives": [],
+        "visual_placeholders": []
+      },
+      "source_citation": null
+    },
+    {
+      "id": "CG13",
+      "title": "사업화 전략",
+      "structure_signal": {
+        "type": "heading_style_nonstandard",
+        "detail": "List Paragraph 스타일 섹션 제목(13/16), 원본 order=152"
+      },
+      "subtopics": [],
+      "direct_evidence": {
+        "confirmed_text": [
+          "핵심 내용: 글로벌 고객사 평가에서 소재 스케일업·양산·판매까지 단계별 사업화 체계를 구축",
+          "고객사 진입: 3차년도 고객사 신뢰성 평가 승인 / 대만 글로벌 선두 수요기업 우선 납품 / 기존 열경화 제품 대체 및 신규 모델 적용",
+          "소재 공급체계: 생기원 개발 소재의 코솔러스 기술이전 / 코솔러스 제품 수준 스케일업 / 소니드에 저투습·고접착 소재 공급",
+          "양산 및 판매: 소니드 최종 봉지재 양산·판매 / 2028년 매출 발생 추진 / 국내 ESL 생산업체로 공급처 확대"
+        ],
+        "text_evidence_metadata": [
+          {
+            "text_index": 1,
+            "source_order": 153,
+            "source_type": "text"
+          },
+          {
+            "text_index": 2,
+            "source_order": 154,
+            "source_type": "text"
+          },
+          {
+            "text_index": 3,
+            "source_order": 158,
+            "source_type": "text"
+          },
+          {
+            "text_index": 4,
+            "source_order": 162,
+            "source_type": "text"
+          }
+        ],
+        "metrics": [
+          {
+            "label": "매출 발생 목표 연도",
+            "value": "2028년",
+            "source_citation": null
+          }
+        ],
+        "tables": [],
+        "images_available": [
+          {
+            "ref": "img13",
+            "path": "output\\cosolus-business-plan-2026\\extracted_images\\2026.08.25_사업계획서 ppt 자료_V1_img13.png",
+            "description": "그림 13 사업화 전략 — '개발기초소재상용화'(COSOLUS·KITECH) → 기술이전 → 판매 → 'ESL용 봉지 소재 사업화'(SONID, 전자잉크디스플레이 봉지 소재 국산화) → 판매 → '수요처'(BOE / VusionGroup / SOLUM 로고) 3단계 플로우 다이어그램. 이미지에만 등장하는 구체적 수요처 로고(BOE·VusionGroup·SOLUM)는 인접 텍스트에는 '글로벌 선두기업'/'국내 글로벌 2위 기업'으로만 표현되어 있어, 실제 사명은 이미지 원본에서만 확인 가능 — 슬라이드 제작 시 이미지 그대로 활용 권장.",
+            "relation_confidence": "structural",
+            "content_match_confidence": "confirmed",
+            "cross_group_ref": null
+          }
+        ],
+        "production_directives": [],
+        "visual_placeholders": []
+      },
+      "source_citation": null
+    },
+    {
+      "id": "CG14",
+      "title": "시장성 및 기대효과",
+      "structure_signal": {
+        "type": "heading_style_nonstandard",
+        "detail": "List Paragraph 스타일 섹션 제목(14/16), 원본 order=168"
+      },
+      "subtopics": [],
+      "direct_evidence": {
+        "confirmed_text": [
+          "핵심 내용: 글로벌 선두 ESL 고객사 채택을 기반으로 국내외 매출과 시장 경쟁력을 확보",
+          "글로벌 선두기업 적용 시 신규 해외매출 100억 원 이상 기대",
+          "국내 글로벌 2위 기업 대상 프로모션 추진",
+          "2030년 ESL 봉지소재 매출 200억 원 목표",
+          "국내외 ESL 고객사 확대",
+          "해외기업 중심 봉지소재 시장에서 국내기업의 경쟁 기반 확보"
+        ],
+        "text_evidence_metadata": [
+          {
+            "text_index": 1,
+            "source_order": 169,
+            "source_type": "text"
+          },
+          {
+            "text_index": 2,
+            "source_order": 170,
+            "source_type": "text"
+          },
+          {
+            "text_index": 3,
+            "source_order": 171,
+            "source_type": "text"
+          },
+          {
+            "text_index": 4,
+            "source_order": 172,
+            "source_type": "text"
+          },
+          {
+            "text_index": 5,
+            "source_order": 173,
+            "source_type": "text"
+          },
+          {
+            "text_index": 6,
+            "source_order": 174,
+            "source_type": "text"
+          }
+        ],
+        "metrics": [
+          {
+            "label": "신규 해외매출 기대치",
+            "value": "100억 원 이상",
+            "source_citation": null
+          },
+          {
+            "label": "2030년 ESL 봉지소재 매출 목표",
+            "value": "200억 원",
+            "source_citation": null
+          }
+        ],
+        "tables": [],
+        "images_available": [],
+        "production_directives": [],
+        "visual_placeholders": []
+      },
+      "source_citation": null
+    },
+    {
+      "id": "CG15",
+      "title": "확장 계획",
+      "structure_signal": {
+        "type": "heading_style_nonstandard",
+        "detail": "List Paragraph 스타일 섹션 제목(15/16), 원본 order=175"
+      },
+      "subtopics": [],
+      "direct_evidence": {
+        "confirmed_text": [
+          "핵심 내용: ESL에서 확보한 봉지소재 기술을 다양한 전자종이 및 디스플레이 분야로 확대",
+          "고객 확대: SES-imagotag 외 국내외 ESL 기업으로 판매처 다변화 / 국내 솔루엠·해외 Price 등과 협력 추진",
+          "제품 확대: ESL → E-Book·Signage / Flexible E-Paper·Polyimide 기판 적용",
+          "시장 확대: 전자종이 봉지소재 / OLED 대형 디스플레이용 봉지소재"
+        ],
+        "text_evidence_metadata": [
+          {
+            "text_index": 1,
+            "source_order": 176,
+            "source_type": "text"
+          },
+          {
+            "text_index": 2,
+            "source_order": 177,
+            "source_type": "text"
+          },
+          {
+            "text_index": 3,
+            "source_order": 180,
+            "source_type": "text"
+          },
+          {
+            "text_index": 4,
+            "source_order": 183,
+            "source_type": "text"
+          }
+        ],
+        "metrics": [],
+        "tables": [],
+        "images_available": [],
+        "production_directives": [],
+        "visual_placeholders": []
+      },
+      "source_citation": null
+    },
+    {
+      "id": "CG16",
+      "title": "마무리",
+      "structure_signal": {
+        "type": "heading_style_nonstandard",
+        "detail": "List Paragraph 스타일 섹션 제목(16/16), 원본 order=186"
+      },
+      "subtopics": [],
+      "direct_evidence": {
+        "confirmed_text": [
+          "저투습·고접착 UV경화형 봉지소재를 통해 ESL 생산성 향상과 글로벌 소재시장 진입을 추진합니다.",
+          "Thank You"
+        ],
+        "text_evidence_metadata": [
+          {
+            "text_index": 1,
+            "source_order": 187,
+            "source_type": "text"
+          },
+          {
+            "text_index": 2,
+            "source_order": 188,
+            "source_type": "text"
+          }
+        ],
+        "metrics": [],
+        "tables": [],
+        "images_available": [],
+        "production_directives": [],
+        "visual_placeholders": []
+      },
+      "source_citation": null
+    }
+  ],
+  "unassigned_or_dropped_content": [],
+  "escalations": [],
+  "needs_confirmation": [
+    {
+      "id": "NC-01",
+      "detail": "원본 문서는 표준 Heading 스타일이 아니라 'List Paragraph' 스타일을 섹션 제목으로 사용해(PPT→docx 변환 특성으로 추정) extract.py가 structure_signal: none_detected로 보고했다. content-designer가 raw 추출 결과를 직접 검토해 이 비표준 스타일 패턴(16회 반복)을 근거로 16개 Content Group 경계를 수동 재구성했다(구조_signal.type: heading_style_nonstandard로 명시). 이는 추정이 아니라 문서에 실제로 존재하는 일관된 패턴에 근거하나, 표준 신호가 아니므로 참고용으로 남김.",
+      "source": "전체 문서"
+    },
+    {
+      "id": "NC-02",
+      "detail": "그림3/그림4(CG04) 캡션과 이미지의 문서상 순서가 서로 엇갈려 있었음(캡션3→이미지 순서35,36→캡션4). Vision으로 이미지 내용을 직접 대조해 img4=그림3(전자잉크디스플레이 제품사진), img3=그림4(E-Ink 단면도)로 확정했다. 슬라이드 제작 시에도 이 대응관계를 그대로 적용할 것.",
+      "source": "CG04"
+    },
+    {
+      "id": "NC-03",
+      "detail": "그림12(5차년도 계획, CG12)는 1~4차년도 이미지와 달리 'N차년도' 배너 및 SONID/KITECH/COSOLUS 3분할 템플릿이 없고 화학식+스케일업 개념도로만 구성되어 시각적 일관성이 낮다. 내용상 인접 텍스트(코솔러스 1L→20L→50L 스케일업)와는 부합하므로 부가적 사안으로만 기록 — [3] 단계에서 5차년도 슬라이드를 다른 연차와 통일된 형식으로 재구성할지, 원본 이미지를 그대로 쓸지 판단 필요.",
+      "source": "CG12"
+    }
+  ],
+  "evidence_manifest": {
+    "manifest_version": "1.0",
+    "canonical_content_sha256": "e7b6991beef3091e56f1fe095c17a04fc17b222d9cb0557f68ea12f13b983584",
+    "non_authoritative": true,
+    "evidence_count": 119,
+    "entries": [
+      {
+        "evidence_id": "CG01-TXT01",
+        "group_id": "CG01",
+        "subtopic_id": null,
+        "source_order": 2,
+        "evidence_type": "text",
+        "summary": "메인제목: 전자잉크 소재 디스플레이를 위한 고기능성 UV경화형 봉지소재 개발",
+        "canonical_ref": "/content_groups/0/direct_evidence/confirmed_text/0",
+        "source_ref": null,
+        "source_type": "text",
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG01-TXT02",
+        "group_id": "CG01",
+        "subtopic_id": null,
+        "source_order": 3,
+        "evidence_type": "text",
+        "summary": "주관기관: 소니드 주식회사",
+        "canonical_ref": "/content_groups/0/direct_evidence/confirmed_text/1",
+        "source_ref": null,
+        "source_type": "text",
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG01-TXT03",
+        "group_id": "CG01",
+        "subtopic_id": null,
+        "source_order": 4,
+        "evidence_type": "text",
+        "summary": "공동개발기관: 한국생산기술연구원, 주식회사 코솔러스",
+        "canonical_ref": "/content_groups/0/direct_evidence/confirmed_text/2",
+        "source_ref": null,
+        "source_type": "text",
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG02-TXT01",
+        "group_id": "CG02",
+        "subtopic_id": null,
+        "source_order": 6,
+        "evidence_type": "text",
+        "summary": "메인 내용: 열경화 공정의 생산성과 기판 변형 문제를 개선하기 위한 ESL용 UV경화형 봉지소재 개발",
+        "canonical_ref": "/content_groups/1/direct_evidence/confirmed_text/0",
+        "source_ref": null,
+        "source_type": "text",
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG02-TXT02",
+        "group_id": "CG02",
+        "subtopic_id": null,
+        "source_order": 7,
+        "evidence_type": "text",
+        "summary": "개발 목적: 공정 TACT 단축 및 기판 Warpage 개선",
+        "canonical_ref": "/content_groups/1/direct_evidence/confirmed_text/1",
+        "source_ref": null,
+        "source_type": "text",
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG02-TXT03",
+        "group_id": "CG02",
+        "subtopic_id": null,
+        "source_order": 8,
+        "evidence_type": "text",
+        "summary": "핵심성능: 저투습 고접착 고신뢰성",
+        "canonical_ref": "/content_groups/1/direct_evidence/confirmed_text/2",
+        "source_ref": null,
+        "source_type": "text",
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG02-TXT04",
+        "group_id": "CG02",
+        "subtopic_id": null,
+        "source_order": 9,
+        "evidence_type": "text",
+        "summary": "적용제품: E-Ink 디스플레이 Edge Glue",
+        "canonical_ref": "/content_groups/1/direct_evidence/confirmed_text/3",
+        "source_ref": null,
+        "source_type": "text",
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG02-TXT05",
+        "group_id": "CG02",
+        "subtopic_id": null,
+        "source_order": 10,
+        "evidence_type": "text",
+        "summary": "개발체계: 소니드·생산기술연구원·코솔러스 공동개발",
+        "canonical_ref": "/content_groups/1/direct_evidence/confirmed_text/4",
+        "source_ref": null,
+        "source_type": "text",
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG02-TXT06",
+        "group_id": "CG02",
+        "subtopic_id": null,
+        "source_order": 11,
+        "evidence_type": "text",
+        "summary": "핵심 키워드: UV경화 · 저 WVTR · 고접착 · 양산화",
+        "canonical_ref": "/content_groups/1/direct_evidence/confirmed_text/5",
+        "source_ref": null,
+        "source_type": "text",
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG03-TXT01",
+        "group_id": "CG03",
+        "subtopic_id": null,
+        "source_order": 13,
+        "evidence_type": "text",
+        "summary": "핵심 내용: 대형 유통매장의 디지털 전환으로 ESL 시장이 빠르게 성장하고 있음",
+        "canonical_ref": "/content_groups/2/direct_evidence/confirmed_text/0",
+        "source_ref": "Research and markets (그림2 캡션 명시)",
+        "source_type": "text",
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG03-TXT02",
+        "group_id": "CG03",
+        "subtopic_id": null,
+        "source_order": 14,
+        "evidence_type": "text",
+        "summary": "대형마트에서는 약 10만 개 이상의 상품과 재고를 관리",
+        "canonical_ref": "/content_groups/2/direct_evidence/confirmed_text/1",
+        "source_ref": "Research and markets (그림2 캡션 명시)",
+        "source_type": "text",
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG03-TXT03",
+        "group_id": "CG03",
+        "subtopic_id": null,
+        "source_order": 15,
+        "evidence_type": "text",
+        "summary": "ESL을 통해 가격 변경 및 재고관리 자동화",
+        "canonical_ref": "/content_groups/2/direct_evidence/confirmed_text/2",
+        "source_ref": "Research and markets (그림2 캡션 명시)",
+        "source_type": "text",
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG03-TXT04",
+        "group_id": "CG03",
+        "subtopic_id": null,
+        "source_order": 16,
+        "evidence_type": "text",
+        "summary": "POS 시스템과 연동한 실시간 정보관리 가능",
+        "canonical_ref": "/content_groups/2/direct_evidence/confirmed_text/3",
+        "source_ref": "Research and markets (그림2 캡션 명시)",
+        "source_type": "text",
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG03-MET01",
+        "group_id": "CG03",
+        "subtopic_id": null,
+        "source_order": 1,
+        "evidence_type": "metric",
+        "summary": "글로벌 ESL 시장 규모 (2023년)",
+        "canonical_ref": "/content_groups/2/direct_evidence/metrics/0",
+        "source_ref": "그림2 캡션: Research and markets",
+        "source_type": null,
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG03-MET02",
+        "group_id": "CG03",
+        "subtopic_id": null,
+        "source_order": 2,
+        "evidence_type": "metric",
+        "summary": "글로벌 ESL 시장 규모 (2028년 전망)",
+        "canonical_ref": "/content_groups/2/direct_evidence/metrics/1",
+        "source_ref": "그림2 캡션: Research and markets",
+        "source_type": null,
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG03-MET03",
+        "group_id": "CG03",
+        "subtopic_id": null,
+        "source_order": 3,
+        "evidence_type": "metric",
+        "summary": "글로벌 ESL 시장 CAGR",
+        "canonical_ref": "/content_groups/2/direct_evidence/metrics/2",
+        "source_ref": "그림2 캡션: Research and markets",
+        "source_type": null,
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG03-IMG01",
+        "group_id": "CG03",
+        "subtopic_id": null,
+        "source_order": 1,
+        "evidence_type": "image",
+        "summary": "그림 1 대형마트의 리테일러 기술도입 개념 — 본사(클라우드 서버) → 매장 Controller/Access Point → ESL 태그(예시 가격 98원/108원) 연동 구조를 보여주는 개념도. 캡션과 이미지가 문서 순서상 정확히 인접(캡션 order22 직전 이미지 order21)해 1:1 대응.",
+        "canonical_ref": "/content_groups/2/direct_evidence/images_available/0",
+        "source_ref": "output\\cosolus-business-plan-2026\\extracted_images\\2026.08.25_사업계획서 ppt 자료_V1_img1.png",
+        "source_type": null,
+        "content_match_confidence": "confirmed",
+        "relation_confidence": "structural",
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG03-IMG02",
+        "group_id": "CG03",
+        "subtopic_id": null,
+        "source_order": 2,
+        "evidence_type": "image",
+        "summary": "그림 2 ESL 글로벌 시장 규모 차트(Research and Markets) — 'Global Electronic Shelf Label Market', CAGR 16.9%, 2023년 USD 1.29 Billion → 2028년 USD 3.29 Billion 막대그래프. 원문 텍스트의 '2023년 약 1.6조 원 / …",
+        "canonical_ref": "/content_groups/2/direct_evidence/images_available/1",
+        "source_ref": "output\\cosolus-business-plan-2026\\extracted_images\\2026.08.25_사업계획서 ppt 자료_V1_img2.png",
+        "source_type": null,
+        "content_match_confidence": "confirmed",
+        "relation_confidence": "structural",
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG03-SRC01",
+        "group_id": "CG03",
+        "subtopic_id": null,
+        "source_order": 1,
+        "evidence_type": "source_reference",
+        "summary": "Research and markets (그림2 캡션 명시)",
+        "canonical_ref": "/content_groups/2/source_citation/0",
+        "source_ref": "Research and markets (그림2 캡션 명시)",
+        "source_type": null,
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG04-TXT01",
+        "group_id": "CG04",
+        "subtopic_id": null,
+        "source_order": 26,
+        "evidence_type": "text",
+        "summary": "핵심 내용: Edge Glue는 E-Ink 표시소자의 가장자리에 적용되어 외부 환경으로부터 내부 소재를 보호함",
+        "canonical_ref": "/content_groups/3/direct_evidence/confirmed_text/0",
+        "source_ref": null,
+        "source_type": "text",
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG04-TXT02",
+        "group_id": "CG04",
+        "subtopic_id": null,
+        "source_order": 27,
+        "evidence_type": "text",
+        "summary": "적용 위치: E-Ink 표시소자 가장자리",
+        "canonical_ref": "/content_groups/3/direct_evidence/confirmed_text/1",
+        "source_ref": null,
+        "source_type": "text",
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG04-TXT03",
+        "group_id": "CG04",
+        "subtopic_id": null,
+        "source_order": 28,
+        "evidence_type": "text",
+        "summary": "주요 기판: Glass·PET",
+        "canonical_ref": "/content_groups/3/direct_evidence/confirmed_text/2",
+        "source_ref": null,
+        "source_type": "text",
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG04-TXT04",
+        "group_id": "CG04",
+        "subtopic_id": null,
+        "source_order": 29,
+        "evidence_type": "text",
+        "summary": "보호 대상: E-Ink 표시소자",
+        "canonical_ref": "/content_groups/3/direct_evidence/confirmed_text/3",
+        "source_ref": null,
+        "source_type": "text",
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG04-TXT05",
+        "group_id": "CG04",
+        "subtopic_id": null,
+        "source_order": 30,
+        "evidence_type": "text",
+        "summary": "주요 기능: 외부 수분 차단 / 먼지·열 노출 방지 / 기판 간 접착 유지",
+        "canonical_ref": "/content_groups/3/direct_evidence/confirmed_text/4",
+        "source_ref": null,
+        "source_type": "text",
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG04-IMG01",
+        "group_id": "CG04",
+        "subtopic_id": null,
+        "source_order": 1,
+        "evidence_type": "image",
+        "summary": "그림 3 전자잉크디스플레이(자료출처: 소니드주식회사) — E-Ink 디스플레이 모듈 실물 사진(적색 화면, FPC 연결부). 주의: 문서 순서상 캡션 '그림3'(order34)이 이미지 img3(order35)보다 먼저, 캡션 '그림4'(order37)가 img4(order36)보다 나중에 나와 단순 순서 매칭이 불가능…",
+        "canonical_ref": "/content_groups/3/direct_evidence/images_available/0",
+        "source_ref": "output\\cosolus-business-plan-2026\\extracted_images\\2026.08.25_사업계획서 ppt 자료_V1_img4.png",
+        "source_type": null,
+        "content_match_confidence": "confirmed",
+        "relation_confidence": "structural",
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG04-IMG02",
+        "group_id": "CG04",
+        "subtopic_id": null,
+        "source_order": 2,
+        "evidence_type": "image",
+        "summary": "그림 4 E-Ink 단면도 — Edge Glue/Protection Sheet(PET)/FPL(PET·ITO·Microcup)/KA glue/TFT array 적층 구조 단면 다이어그램 + 모듈 실물 사진(적색/보라색) 2장. 위 img4와 동일한 캡션 순서 역전 사례 — Vision 대조 결과 이 이미지(원본 파일 상…",
+        "canonical_ref": "/content_groups/3/direct_evidence/images_available/1",
+        "source_ref": "output\\cosolus-business-plan-2026\\extracted_images\\2026.08.25_사업계획서 ppt 자료_V1_img3.png",
+        "source_type": null,
+        "content_match_confidence": "confirmed",
+        "relation_confidence": "structural",
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG05-TXT01",
+        "group_id": "CG05",
+        "subtopic_id": null,
+        "source_order": 39,
+        "evidence_type": "text",
+        "summary": "핵심 메시지: 기존 열경화형 봉지소재는 긴 경화시간과 열에 의한 기판 변형으로 생산성과 품질에 한계가 있음",
+        "canonical_ref": "/content_groups/4/direct_evidence/confirmed_text/0",
+        "source_ref": null,
+        "source_type": "text",
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG05-TXT02",
+        "group_id": "CG05",
+        "subtopic_id": null,
+        "source_order": 40,
+        "evidence_type": "text",
+        "summary": "약 1시간의 열경화 공정 필요",
+        "canonical_ref": "/content_groups/4/direct_evidence/confirmed_text/1",
+        "source_ref": null,
+        "source_type": "text",
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG05-TXT03",
+        "group_id": "CG05",
+        "subtopic_id": null,
+        "source_order": 41,
+        "evidence_type": "text",
+        "summary": "긴 경화시간으로 공정 TACT 증가",
+        "canonical_ref": "/content_groups/4/direct_evidence/confirmed_text/2",
+        "source_ref": null,
+        "source_type": "text",
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG05-TXT04",
+        "group_id": "CG05",
+        "subtopic_id": null,
+        "source_order": 42,
+        "evidence_type": "text",
+        "summary": "열에 의한 기판 Warpage 발생",
+        "canonical_ref": "/content_groups/4/direct_evidence/confirmed_text/3",
+        "source_ref": null,
+        "source_type": "text",
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG05-TXT05",
+        "group_id": "CG05",
+        "subtopic_id": null,
+        "source_order": 43,
+        "evidence_type": "text",
+        "summary": "단일층에서 저투습·고접착 동시 확보 필요",
+        "canonical_ref": "/content_groups/4/direct_evidence/confirmed_text/4",
+        "source_ref": null,
+        "source_type": "text",
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG05-TXT06",
+        "group_id": "CG05",
+        "subtopic_id": null,
+        "source_order": 44,
+        "evidence_type": "text",
+        "summary": "고객사의 UV경화형 소재 전환 요구",
+        "canonical_ref": "/content_groups/4/direct_evidence/confirmed_text/5",
+        "source_ref": null,
+        "source_type": "text",
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG05-MET01",
+        "group_id": "CG05",
+        "subtopic_id": null,
+        "source_order": 1,
+        "evidence_type": "metric",
+        "summary": "기존 열경화 공정 소요시간",
+        "canonical_ref": "/content_groups/4/direct_evidence/metrics/0",
+        "source_ref": null,
+        "source_type": null,
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG06-TXT01",
+        "group_id": "CG06",
+        "subtopic_id": null,
+        "source_order": 46,
+        "evidence_type": "text",
+        "summary": "핵심 내용: 해외기업 중심의 봉지소재 시장에 대응하고 국내 E-Ink 소재시장 진입 기반을 확보해야 함",
+        "canonical_ref": "/content_groups/5/direct_evidence/confirmed_text/0",
+        "source_ref": null,
+        "source_type": "text",
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG06-TXT02",
+        "group_id": "CG06",
+        "subtopic_id": null,
+        "source_order": 47,
+        "evidence_type": "text",
+        "summary": "ESL 핵심기술은 BOE·JABIL·E-Ink Holdings·Innolux 등 글로벌 기업이 보유",
+        "canonical_ref": "/content_groups/5/direct_evidence/confirmed_text/1",
+        "source_ref": null,
+        "source_type": "text",
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG06-TXT03",
+        "group_id": "CG06",
+        "subtopic_id": null,
+        "source_order": 48,
+        "evidence_type": "text",
+        "summary": "봉지소재 시장은 중국·독일 기업 중심",
+        "canonical_ref": "/content_groups/5/direct_evidence/confirmed_text/2",
+        "source_ref": null,
+        "source_type": "text",
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG06-TXT04",
+        "group_id": "CG06",
+        "subtopic_id": null,
+        "source_order": 49,
+        "evidence_type": "text",
+        "summary": "Henkel을 비롯한 해외 Edge Sealing 기업의 시장 참여 확대",
+        "canonical_ref": "/content_groups/5/direct_evidence/confirmed_text/3",
+        "source_ref": null,
+        "source_type": "text",
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG06-TXT05",
+        "group_id": "CG06",
+        "subtopic_id": null,
+        "source_order": 50,
+        "evidence_type": "text",
+        "summary": "국내 디스플레이 소재산업은 대·중견기업 중심으로 진입장벽이 높음",
+        "canonical_ref": "/content_groups/5/direct_evidence/confirmed_text/4",
+        "source_ref": null,
+        "source_type": "text",
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG06-TXT06",
+        "group_id": "CG06",
+        "subtopic_id": null,
+        "source_order": 51,
+        "evidence_type": "text",
+        "summary": "E-Ink 소재는 국내기업의 진출이 적은 신규 기회시장",
+        "canonical_ref": "/content_groups/5/direct_evidence/confirmed_text/5",
+        "source_ref": null,
+        "source_type": "text",
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG06-TXT07",
+        "group_id": "CG06",
+        "subtopic_id": null,
+        "source_order": 52,
+        "evidence_type": "text",
+        "summary": "관련 선행개발 경험을 기반으로 해외기업과의 경쟁 기반 확보 필요",
+        "canonical_ref": "/content_groups/5/direct_evidence/confirmed_text/6",
+        "source_ref": null,
+        "source_type": "text",
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG07-TXT01",
+        "group_id": "CG07",
+        "subtopic_id": null,
+        "source_order": 54,
+        "evidence_type": "text",
+        "summary": "핵심 내용: 저투습성과 고접착력을 갖춘 단일층 UV경화형 봉지소재로 기존 열경화 공정의 한계를 개선",
+        "canonical_ref": "/content_groups/6/direct_evidence/confirmed_text/0",
+        "source_ref": null,
+        "source_type": "text",
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG07-TXT02",
+        "group_id": "CG07",
+        "subtopic_id": null,
+        "source_order": 55,
+        "evidence_type": "text",
+        "summary": "기존 열경화 방식: 약 1시간의 경화공정, 열에 의한 Warpage, 생산효율 저하, 성능 동시 확보 한계",
+        "canonical_ref": "/content_groups/6/direct_evidence/confirmed_text/1",
+        "source_ref": null,
+        "source_type": "text",
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG07-TXT03",
+        "group_id": "CG07",
+        "subtopic_id": null,
+        "source_order": 56,
+        "evidence_type": "text",
+        "summary": "개발 UV경화 방식: 경화시간 및 TACT 단축, 기판 변형 개선, UV경화 기반 생산성 향상, 저투습·고접착 동시 확보",
+        "canonical_ref": "/content_groups/6/direct_evidence/confirmed_text/2",
+        "source_ref": null,
+        "source_type": "text",
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG07-IMG01",
+        "group_id": "CG07",
+        "subtopic_id": null,
+        "source_order": 1,
+        "evidence_type": "image",
+        "summary": "그림 5 (캡션 텍스트 없음, '그림 5'만 표기) — Edge Glue 봉지구조 단면 개념도: Protection Sheet / E-ink Film / TFT substrate 적층, Edge Glue 폭 0.5~1.5mm, 전체 두께 200μm. 인접 텍스트(기존/개발 방식 비교) 바로 다음에 위치, 캡션-이미지 1…",
+        "canonical_ref": "/content_groups/6/direct_evidence/images_available/0",
+        "source_ref": "output\\cosolus-business-plan-2026\\extracted_images\\2026.08.25_사업계획서 ppt 자료_V1_img5.png",
+        "source_type": null,
+        "content_match_confidence": "confirmed",
+        "relation_confidence": "structural",
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG08-TXT01",
+        "group_id": "CG08",
+        "subtopic_id": null,
+        "source_order": 60,
+        "evidence_type": "text",
+        "summary": "핵심 내용: 세 가지 핵심 소재기술을 결합하여 저투습·고접착 UV경화형 봉지소재를 구현",
+        "canonical_ref": "/content_groups/7/direct_evidence/confirmed_text/0",
+        "source_ref": null,
+        "source_type": "text",
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG08-TXT02",
+        "group_id": "CG08",
+        "subtopic_id": null,
+        "source_order": 61,
+        "evidence_type": "text",
+        "summary": "UV경화형 봉지재: 봉지재 조성·도포 시스템 구축 / 기초물성·신뢰성 평가 / 최종 조성 및 저장안정성 최적화",
+        "canonical_ref": "/content_groups/7/direct_evidence/confirmed_text/1",
+        "source_ref": null,
+        "source_type": "text",
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG08-TXT03",
+        "group_id": "CG08",
+        "subtopic_id": null,
+        "source_order": 64,
+        "evidence_type": "text",
+        "summary": "저투습 하이브리드 고분자: PSQ 기반 고분자 설계 / Packing·가교밀도 제어 / 나노입자를 활용한 Barrier·유연성 개선",
+        "canonical_ref": "/content_groups/7/direct_evidence/confirmed_text/2",
+        "source_ref": null,
+        "source_type": "text",
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG08-TXT04",
+        "group_id": "CG08",
+        "subtopic_id": null,
+        "source_order": 67,
+        "evidence_type": "text",
+        "summary": "고접착 우레탄 아크릴레이트: Glass·PET용 올리고머 설계 / 투습·접착 특성 제어 / 가교구조 최적화 및 양산화",
+        "canonical_ref": "/content_groups/7/direct_evidence/confirmed_text/3",
+        "source_ref": null,
+        "source_type": "text",
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG09-TXT01",
+        "group_id": "CG09",
+        "subtopic_id": null,
+        "source_order": 72,
+        "evidence_type": "text",
+        "summary": "핵심 내용: 소재 성능부터 신뢰성·양산 재현성까지 객관적인 목표치를 설정",
+        "canonical_ref": "/content_groups/8/direct_evidence/confirmed_text/0",
+        "source_ref": null,
+        "source_type": "text",
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG09-TXT02",
+        "group_id": "CG09",
+        "subtopic_id": null,
+        "source_order": 73,
+        "evidence_type": "text",
+        "summary": "핵심 성능 목표",
+        "canonical_ref": "/content_groups/8/direct_evidence/confirmed_text/1",
+        "source_ref": null,
+        "source_type": "text",
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG09-TXT03",
+        "group_id": "CG09",
+        "subtopic_id": null,
+        "source_order": 80,
+        "evidence_type": "text",
+        "summary": "신뢰성·양산 목표",
+        "canonical_ref": "/content_groups/8/direct_evidence/confirmed_text/2",
+        "source_ref": null,
+        "source_type": "text",
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG09-TXT04",
+        "group_id": "CG09",
+        "subtopic_id": null,
+        "source_order": 85,
+        "evidence_type": "text",
+        "summary": "정량적 성과 목표",
+        "canonical_ref": "/content_groups/8/direct_evidence/confirmed_text/3",
+        "source_ref": null,
+        "source_type": "text",
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG09-TXT05",
+        "group_id": "CG09",
+        "subtopic_id": null,
+        "source_order": 89,
+        "evidence_type": "text",
+        "summary": "(청년의무고용 3명)",
+        "canonical_ref": "/content_groups/8/direct_evidence/confirmed_text/4",
+        "source_ref": null,
+        "source_type": "text",
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG09-TXT06",
+        "group_id": "CG09",
+        "subtopic_id": null,
+        "source_order": 90,
+        "evidence_type": "text",
+        "summary": "(연계고용 5명)",
+        "canonical_ref": "/content_groups/8/direct_evidence/confirmed_text/5",
+        "source_ref": null,
+        "source_type": "text",
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG09-MET01",
+        "group_id": "CG09",
+        "subtopic_id": null,
+        "source_order": 1,
+        "evidence_type": "metric",
+        "summary": "WVTR(수분투과율)",
+        "canonical_ref": "/content_groups/8/direct_evidence/metrics/0",
+        "source_ref": null,
+        "source_type": null,
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG09-MET02",
+        "group_id": "CG09",
+        "subtopic_id": null,
+        "source_order": 2,
+        "evidence_type": "metric",
+        "summary": "보호필름–Glass 접착력",
+        "canonical_ref": "/content_groups/8/direct_evidence/metrics/1",
+        "source_ref": null,
+        "source_type": null,
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG09-MET03",
+        "group_id": "CG09",
+        "subtopic_id": null,
+        "source_order": 3,
+        "evidence_type": "metric",
+        "summary": "Glass–Glass 접착력",
+        "canonical_ref": "/content_groups/8/direct_evidence/metrics/2",
+        "source_ref": null,
+        "source_type": null,
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG09-MET04",
+        "group_id": "CG09",
+        "subtopic_id": null,
+        "source_order": 4,
+        "evidence_type": "metric",
+        "summary": "경화율",
+        "canonical_ref": "/content_groups/8/direct_evidence/metrics/3",
+        "source_ref": null,
+        "source_type": null,
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG09-MET05",
+        "group_id": "CG09",
+        "subtopic_id": null,
+        "source_order": 5,
+        "evidence_type": "metric",
+        "summary": "수축률",
+        "canonical_ref": "/content_groups/8/direct_evidence/metrics/4",
+        "source_ref": null,
+        "source_type": null,
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG09-MET06",
+        "group_id": "CG09",
+        "subtopic_id": null,
+        "source_order": 6,
+        "evidence_type": "metric",
+        "summary": "Warpage",
+        "canonical_ref": "/content_groups/8/direct_evidence/metrics/5",
+        "source_ref": null,
+        "source_type": null,
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG09-MET07",
+        "group_id": "CG09",
+        "subtopic_id": null,
+        "source_order": 7,
+        "evidence_type": "metric",
+        "summary": "고온·고온고습 신뢰성",
+        "canonical_ref": "/content_groups/8/direct_evidence/metrics/6",
+        "source_ref": null,
+        "source_type": null,
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG09-MET08",
+        "group_id": "CG09",
+        "subtopic_id": null,
+        "source_order": 8,
+        "evidence_type": "metric",
+        "summary": "열충격안정성",
+        "canonical_ref": "/content_groups/8/direct_evidence/metrics/7",
+        "source_ref": null,
+        "source_type": null,
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG09-MET09",
+        "group_id": "CG09",
+        "subtopic_id": null,
+        "source_order": 9,
+        "evidence_type": "metric",
+        "summary": "Batch별 점도·분자량 오차",
+        "canonical_ref": "/content_groups/8/direct_evidence/metrics/8",
+        "source_ref": null,
+        "source_type": null,
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG09-MET10",
+        "group_id": "CG09",
+        "subtopic_id": null,
+        "source_order": 10,
+        "evidence_type": "metric",
+        "summary": "저장안정성",
+        "canonical_ref": "/content_groups/8/direct_evidence/metrics/9",
+        "source_ref": null,
+        "source_type": null,
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG09-MET11",
+        "group_id": "CG09",
+        "subtopic_id": null,
+        "source_order": 11,
+        "evidence_type": "metric",
+        "summary": "해외특허 출원",
+        "canonical_ref": "/content_groups/8/direct_evidence/metrics/10",
+        "source_ref": null,
+        "source_type": null,
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG09-MET12",
+        "group_id": "CG09",
+        "subtopic_id": null,
+        "source_order": 12,
+        "evidence_type": "metric",
+        "summary": "국내특허 출원",
+        "canonical_ref": "/content_groups/8/direct_evidence/metrics/11",
+        "source_ref": null,
+        "source_type": null,
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG09-MET13",
+        "group_id": "CG09",
+        "subtopic_id": null,
+        "source_order": 13,
+        "evidence_type": "metric",
+        "summary": "SCI 논문",
+        "canonical_ref": "/content_groups/8/direct_evidence/metrics/12",
+        "source_ref": null,
+        "source_type": null,
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG09-MET14",
+        "group_id": "CG09",
+        "subtopic_id": null,
+        "source_order": 14,
+        "evidence_type": "metric",
+        "summary": "청년의무고용",
+        "canonical_ref": "/content_groups/8/direct_evidence/metrics/13",
+        "source_ref": null,
+        "source_type": null,
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG09-MET15",
+        "group_id": "CG09",
+        "subtopic_id": null,
+        "source_order": 15,
+        "evidence_type": "metric",
+        "summary": "연계고용",
+        "canonical_ref": "/content_groups/8/direct_evidence/metrics/14",
+        "source_ref": null,
+        "source_type": null,
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG10-TXT01",
+        "group_id": "CG10",
+        "subtopic_id": null,
+        "source_order": 92,
+        "evidence_type": "text",
+        "summary": "핵심 내용: 고객사 평가 경험과 세 기관의 소재·합성·양산 역량을 기반으로 상용화 가능성을 확보",
+        "canonical_ref": "/content_groups/9/direct_evidence/confirmed_text/0",
+        "source_ref": null,
+        "source_type": "text",
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG10-TXT02",
+        "group_id": "CG10",
+        "subtopic_id": null,
+        "source_order": 93,
+        "evidence_type": "text",
+        "summary": "선행개발 실적: 대만 고객사의 UV경화형 제품 개발 수요 확인 / 개발제품 5종 1차 평가 / Edge Mura 개선 후 개발품 6종 추가 발송 / 60℃·240시간 평가 완료(최종 목표 1,000시간) / WVTR·접착력 개선을 위한 공동 선행개발 진행",
+        "canonical_ref": "/content_groups/9/direct_evidence/confirmed_text/1",
+        "source_ref": null,
+        "source_type": "text",
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG10-TXT03",
+        "group_id": "CG10",
+        "subtopic_id": null,
+        "source_order": 99,
+        "evidence_type": "text",
+        "summary": "수행역량 — 소니드: 디스플레이 소재 개발·양산·고객평가 경험",
+        "canonical_ref": "/content_groups/9/direct_evidence/confirmed_text/2",
+        "source_ref": null,
+        "source_type": "text",
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG10-TXT04",
+        "group_id": "CG10",
+        "subtopic_id": null,
+        "source_order": 100,
+        "evidence_type": "text",
+        "summary": "수행역량 — 한국생산기술연구원: SCI(E) 논문 44편, 국내특허 26건 이상, 해외특허 보유",
+        "canonical_ref": "/content_groups/9/direct_evidence/confirmed_text/3",
+        "source_ref": null,
+        "source_type": "text",
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG10-TXT05",
+        "group_id": "CG10",
+        "subtopic_id": null,
+        "source_order": 101,
+        "evidence_type": "text",
+        "summary": "수행역량 — 코솔러스: 올리고머 합성, 20~50L 설비 설계, 5톤 합성기 운용 및 기능성 수지 사업화 경험",
+        "canonical_ref": "/content_groups/9/direct_evidence/confirmed_text/4",
+        "source_ref": null,
+        "source_type": "text",
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG10-MET01",
+        "group_id": "CG10",
+        "subtopic_id": null,
+        "source_order": 1,
+        "evidence_type": "metric",
+        "summary": "1차 선행평가 조건",
+        "canonical_ref": "/content_groups/9/direct_evidence/metrics/0",
+        "source_ref": null,
+        "source_type": null,
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG10-MET02",
+        "group_id": "CG10",
+        "subtopic_id": null,
+        "source_order": 2,
+        "evidence_type": "metric",
+        "summary": "1차 개발제품 평가 수량",
+        "canonical_ref": "/content_groups/9/direct_evidence/metrics/1",
+        "source_ref": null,
+        "source_type": null,
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG10-MET03",
+        "group_id": "CG10",
+        "subtopic_id": null,
+        "source_order": 3,
+        "evidence_type": "metric",
+        "summary": "Edge Mura 개선 후 추가 발송 수량",
+        "canonical_ref": "/content_groups/9/direct_evidence/metrics/2",
+        "source_ref": null,
+        "source_type": null,
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG10-MET04",
+        "group_id": "CG10",
+        "subtopic_id": null,
+        "source_order": 4,
+        "evidence_type": "metric",
+        "summary": "한국생산기술연구원 SCI(E) 논문",
+        "canonical_ref": "/content_groups/9/direct_evidence/metrics/3",
+        "source_ref": null,
+        "source_type": null,
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG10-MET05",
+        "group_id": "CG10",
+        "subtopic_id": null,
+        "source_order": 5,
+        "evidence_type": "metric",
+        "summary": "한국생산기술연구원 국내특허",
+        "canonical_ref": "/content_groups/9/direct_evidence/metrics/4",
+        "source_ref": null,
+        "source_type": null,
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG10-IMG01",
+        "group_id": "CG10",
+        "subtopic_id": null,
+        "source_order": 1,
+        "evidence_type": "image",
+        "summary": "그림 6 소니드 연구개발 및 양산 제조 시설 — UV재료 실험실(80평), 분석실(100평, 분석설비 20여종), 기능성 재료 실험실(20평·50평), 필름 재료 실험실(20평), 공정 케미칼 실험실(40평), 분석 장비(30여종: ICP-AES/ICP-Mass/GC/SEM/FT-IR 등) 사진 콜라주. 캡션이 이미지 …",
+        "canonical_ref": "/content_groups/9/direct_evidence/images_available/0",
+        "source_ref": "output\\cosolus-business-plan-2026\\extracted_images\\2026.08.25_사업계획서 ppt 자료_V1_img6.png",
+        "source_type": null,
+        "content_match_confidence": "confirmed",
+        "relation_confidence": "structural",
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG10-IMG02",
+        "group_id": "CG10",
+        "subtopic_id": null,
+        "source_order": 2,
+        "evidence_type": "image",
+        "summary": "그림 7 소니드 연구개발 및 양산 제조 시설 — 반응기 설비, 공정 배관 설비, Clean Room(1,000 class / 캐니스터 포장 <10 class), Clean Booth(1,000 class) 사진 콜라주. 그림6과 동일 캡션 문구가 반복되며(둘 다 '소니드 연구개발 및 양산 제조시설'), 내용상 그림6은 …",
+        "canonical_ref": "/content_groups/9/direct_evidence/images_available/1",
+        "source_ref": "output\\cosolus-business-plan-2026\\extracted_images\\2026.08.25_사업계획서 ppt 자료_V1_img7.png",
+        "source_type": null,
+        "content_match_confidence": "confirmed",
+        "relation_confidence": "structural",
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG11-TXT01",
+        "group_id": "CG11",
+        "subtopic_id": null,
+        "source_order": 107,
+        "evidence_type": "text",
+        "summary": "핵심 내용: 소재 개발부터 최종제품 양산·판매까지 기관별 전문역량을 연계",
+        "canonical_ref": "/content_groups/10/direct_evidence/confirmed_text/0",
+        "source_ref": null,
+        "source_type": "text",
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG11-TXT02",
+        "group_id": "CG11",
+        "subtopic_id": null,
+        "source_order": 108,
+        "evidence_type": "text",
+        "summary": "한국생산기술연구원: 저투습 PSQ 하이브리드 고분자 개발 / Barrier·가교·유연성 특성 최적화",
+        "canonical_ref": "/content_groups/10/direct_evidence/confirmed_text/1",
+        "source_ref": null,
+        "source_type": "text",
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG11-TXT03",
+        "group_id": "CG11",
+        "subtopic_id": null,
+        "source_order": 111,
+        "evidence_type": "text",
+        "summary": "코솔러스: 고접착 우레탄 아크릴레이트 개발 / 공정 스케일업 및 양산기술 확보 / 소니드에 소재 공급",
+        "canonical_ref": "/content_groups/10/direct_evidence/confirmed_text/2",
+        "source_ref": null,
+        "source_type": "text",
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG11-TXT04",
+        "group_id": "CG11",
+        "subtopic_id": null,
+        "source_order": 115,
+        "evidence_type": "text",
+        "summary": "소니드: UV경화형 봉지재 조성·도포 / 고객사 Cell 및 신뢰성 평가 / 최종제품 양산·판매",
+        "canonical_ref": "/content_groups/10/direct_evidence/confirmed_text/3",
+        "source_ref": null,
+        "source_type": "text",
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG11-TXT05",
+        "group_id": "CG11",
+        "subtopic_id": null,
+        "source_order": 119,
+        "evidence_type": "text",
+        "summary": "협력 흐름: 한국생산기술연구원·코솔러스 소재 개발 → 소니드 조성 적용·신뢰성 평가 → 평가 결과 피드백 및 소재 최적화",
+        "canonical_ref": "/content_groups/10/direct_evidence/confirmed_text/4",
+        "source_ref": null,
+        "source_type": "text",
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG12-TXT01",
+        "group_id": "CG12",
+        "subtopic_id": null,
+        "source_order": 121,
+        "evidence_type": "text",
+        "summary": "핵심 내용: 기초소재 설계에서 성능 최적화와 신뢰성 검증을 거쳐 최종 양산화까지 단계적으로 추진",
+        "canonical_ref": "/content_groups/11/direct_evidence/confirmed_text/0",
+        "source_ref": null,
+        "source_type": "text",
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG12-TXT02",
+        "group_id": "CG12",
+        "subtopic_id": null,
+        "source_order": 122,
+        "evidence_type": "text",
+        "summary": "1차년도 – 기초소재 및 평가기반 구축: 소니드(UV경화형 봉지재 개발 및 도포 시스템 구축) / 생기원(고분자량 PSQ 소재 설계·합성) / 코솔러스(단일 폴리올 기반 고접착 올리고머 개발)",
+        "canonical_ref": "/content_groups/11/direct_evidence/confirmed_text/1",
+        "source_ref": null,
+        "source_type": "text",
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG12-TXT03",
+        "group_id": "CG12",
+        "subtopic_id": null,
+        "source_order": 128,
+        "evidence_type": "text",
+        "summary": "2차년도 – 가교구조 및 성능 제어: 소니드(고객사 ESL Cell 평가 및 조성물 개선) / 생기원(Packing·가교밀도 제어) / 코솔러스(다관능 아크릴레이트 기반 3차원 가교구조 형성)",
+        "canonical_ref": "/content_groups/11/direct_evidence/confirmed_text/2",
+        "source_ref": null,
+        "source_type": "text",
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG12-TXT04",
+        "group_id": "CG12",
+        "subtopic_id": null,
+        "source_order": 134,
+        "evidence_type": "text",
+        "summary": "3차년도 – 복합소재 및 적용성 확대: 소니드(첨가제 적용·신뢰성 평가) / 생기원(2D 나노입자 기반 Barrier 성능 개선) / 코솔러스(복합 폴리올 공중합체를 통한 Glass·PET 접착 개선)",
+        "canonical_ref": "/content_groups/11/direct_evidence/confirmed_text/3",
+        "source_ref": null,
+        "source_type": "text",
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG12-TXT05",
+        "group_id": "CG12",
+        "subtopic_id": null,
+        "source_order": 140,
+        "evidence_type": "text",
+        "summary": "4차년도 – 유연성·접착·투습 최적화: 소니드(Flexible E-Paper·Polyimide 기판 적용) / 생기원(내굴곡·저투습 PSQ 소재 개발) / 코솔러스(가교밀도 제어를 통한 접착력·투습률 최적화)",
+        "canonical_ref": "/content_groups/11/direct_evidence/confirmed_text/4",
+        "source_ref": null,
+        "source_type": "text",
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG12-TXT06",
+        "group_id": "CG12",
+        "subtopic_id": null,
+        "source_order": 146,
+        "evidence_type": "text",
+        "summary": "5차년도 – 최종 조성 및 양산화: 소니드(200kg 규모 최종 조성물 생산·신뢰성 평가) / 생기원(하이브리드 소재 합성공정·포뮬레이션 최적화) / 코솔러스(1L→20L→50L 스케일업 및 양산 합성기 설계)",
+        "canonical_ref": "/content_groups/11/direct_evidence/confirmed_text/5",
+        "source_ref": null,
+        "source_type": "text",
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG12-MET01",
+        "group_id": "CG12",
+        "subtopic_id": null,
+        "source_order": 1,
+        "evidence_type": "metric",
+        "summary": "5차년도 최종 조성물 생산 규모",
+        "canonical_ref": "/content_groups/11/direct_evidence/metrics/0",
+        "source_ref": null,
+        "source_type": null,
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG12-MET02",
+        "group_id": "CG12",
+        "subtopic_id": null,
+        "source_order": 2,
+        "evidence_type": "metric",
+        "summary": "코솔러스 스케일업 경로",
+        "canonical_ref": "/content_groups/11/direct_evidence/metrics/1",
+        "source_ref": null,
+        "source_type": null,
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG12-IMG01",
+        "group_id": "CG12",
+        "subtopic_id": null,
+        "source_order": 1,
+        "evidence_type": "image",
+        "summary": "그림 8 1차년도 계획 — 'UV경화형 E-link 봉지 재료 개발 및 제품화' 다이어그램: Composition Control(Photo Initiator/Oligomer/Monomer/Additive 4요소), SONID의 ESL 봉지재 도포 시스템 사진, KITECH(저WVTR 구현 소재)·COSOLUS(고부착력 …",
+        "canonical_ref": "/content_groups/11/direct_evidence/images_available/0",
+        "source_ref": "output\\cosolus-business-plan-2026\\extracted_images\\2026.08.25_사업계획서 ppt 자료_V1_img8.png",
+        "source_type": null,
+        "content_match_confidence": "confirmed",
+        "relation_confidence": "structural",
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG12-IMG02",
+        "group_id": "CG12",
+        "subtopic_id": null,
+        "source_order": 2,
+        "evidence_type": "image",
+        "summary": "그림 9 2차년도 계획 — 1차년도와 동일 템플릿(Composition Control), SONID 분자식, KITECH(UV/Thermal curing 비교, Packing density 개념도), COSOLUS(접착력 개선 분자구조) 반영. 캡션-이미지 1:1 대응 확인.",
+        "canonical_ref": "/content_groups/11/direct_evidence/images_available/1",
+        "source_ref": "output\\cosolus-business-plan-2026\\extracted_images\\2026.08.25_사업계획서 ppt 자료_V1_img9.png",
+        "source_type": null,
+        "content_match_confidence": "confirmed",
+        "relation_confidence": "structural",
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG12-IMG03",
+        "group_id": "CG12",
+        "subtopic_id": null,
+        "source_order": 3,
+        "evidence_type": "image",
+        "summary": "그림 10 3차년도 계획 — 동일 템플릿, SONID(Phase separated/Intercalated/Exfoliated silicate 나노복합체 개념도), KITECH(2D 나노시트: Graphene Oxide/hBN/MMT, High gas barrier), COSOLUS(PET·Glass 접착력 개선) 반영.…",
+        "canonical_ref": "/content_groups/11/direct_evidence/images_available/2",
+        "source_ref": "output\\cosolus-business-plan-2026\\extracted_images\\2026.08.25_사업계획서 ppt 자료_V1_img10.png",
+        "source_type": null,
+        "content_match_confidence": "confirmed",
+        "relation_confidence": "structural",
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG12-IMG04",
+        "group_id": "CG12",
+        "subtopic_id": null,
+        "source_order": 4,
+        "evidence_type": "image",
+        "summary": "그림 11 4차년도 계획 — 동일 템플릿, SONID(Modulus·Creep Test 그래프, Flexible E-Paper/Wearable 응용 사진), KITECH(Molecular modeling: TEOS/MTMS/DMDMS hydrolysis, Cross linking↑/Flexibility↑), COSOLU…",
+        "canonical_ref": "/content_groups/11/direct_evidence/images_available/3",
+        "source_ref": "output\\cosolus-business-plan-2026\\extracted_images\\2026.08.25_사업계획서 ppt 자료_V1_img11.png",
+        "source_type": null,
+        "content_match_confidence": "confirmed",
+        "relation_confidence": "structural",
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG12-IMG05",
+        "group_id": "CG12",
+        "subtopic_id": null,
+        "source_order": 5,
+        "evidence_type": "image",
+        "summary": "그림 12 5년차도 계획 — 1~4차년도와 달리 '5차년도' 배너 및 SONID/KITECH/COSOLUS 3분할 템플릿이 아니라, 실록산 축합반응 화학식(a/b/c)과 'Scale up 최적화' 개념도(1mL→100mL→1L→10L→100L→1,000L)로 구성됨. 인접 텍스트의 '코솔러스: 1L→20L→50L 스케일…",
+        "canonical_ref": "/content_groups/11/direct_evidence/images_available/4",
+        "source_ref": "output\\cosolus-business-plan-2026\\extracted_images\\2026.08.25_사업계획서 ppt 자료_V1_img12.png",
+        "source_type": null,
+        "content_match_confidence": "confirmed",
+        "relation_confidence": "structural",
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG13-TXT01",
+        "group_id": "CG13",
+        "subtopic_id": null,
+        "source_order": 153,
+        "evidence_type": "text",
+        "summary": "핵심 내용: 글로벌 고객사 평가에서 소재 스케일업·양산·판매까지 단계별 사업화 체계를 구축",
+        "canonical_ref": "/content_groups/12/direct_evidence/confirmed_text/0",
+        "source_ref": null,
+        "source_type": "text",
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG13-TXT02",
+        "group_id": "CG13",
+        "subtopic_id": null,
+        "source_order": 154,
+        "evidence_type": "text",
+        "summary": "고객사 진입: 3차년도 고객사 신뢰성 평가 승인 / 대만 글로벌 선두 수요기업 우선 납품 / 기존 열경화 제품 대체 및 신규 모델 적용",
+        "canonical_ref": "/content_groups/12/direct_evidence/confirmed_text/1",
+        "source_ref": null,
+        "source_type": "text",
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG13-TXT03",
+        "group_id": "CG13",
+        "subtopic_id": null,
+        "source_order": 158,
+        "evidence_type": "text",
+        "summary": "소재 공급체계: 생기원 개발 소재의 코솔러스 기술이전 / 코솔러스 제품 수준 스케일업 / 소니드에 저투습·고접착 소재 공급",
+        "canonical_ref": "/content_groups/12/direct_evidence/confirmed_text/2",
+        "source_ref": null,
+        "source_type": "text",
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG13-TXT04",
+        "group_id": "CG13",
+        "subtopic_id": null,
+        "source_order": 162,
+        "evidence_type": "text",
+        "summary": "양산 및 판매: 소니드 최종 봉지재 양산·판매 / 2028년 매출 발생 추진 / 국내 ESL 생산업체로 공급처 확대",
+        "canonical_ref": "/content_groups/12/direct_evidence/confirmed_text/3",
+        "source_ref": null,
+        "source_type": "text",
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG13-MET01",
+        "group_id": "CG13",
+        "subtopic_id": null,
+        "source_order": 1,
+        "evidence_type": "metric",
+        "summary": "매출 발생 목표 연도",
+        "canonical_ref": "/content_groups/12/direct_evidence/metrics/0",
+        "source_ref": null,
+        "source_type": null,
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG13-IMG01",
+        "group_id": "CG13",
+        "subtopic_id": null,
+        "source_order": 1,
+        "evidence_type": "image",
+        "summary": "그림 13 사업화 전략 — '개발기초소재상용화'(COSOLUS·KITECH) → 기술이전 → 판매 → 'ESL용 봉지 소재 사업화'(SONID, 전자잉크디스플레이 봉지 소재 국산화) → 판매 → '수요처'(BOE / VusionGroup / SOLUM 로고) 3단계 플로우 다이어그램. 이미지에만 등장하는 구체적 수요처 …",
+        "canonical_ref": "/content_groups/12/direct_evidence/images_available/0",
+        "source_ref": "output\\cosolus-business-plan-2026\\extracted_images\\2026.08.25_사업계획서 ppt 자료_V1_img13.png",
+        "source_type": null,
+        "content_match_confidence": "confirmed",
+        "relation_confidence": "structural",
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG14-TXT01",
+        "group_id": "CG14",
+        "subtopic_id": null,
+        "source_order": 169,
+        "evidence_type": "text",
+        "summary": "핵심 내용: 글로벌 선두 ESL 고객사 채택을 기반으로 국내외 매출과 시장 경쟁력을 확보",
+        "canonical_ref": "/content_groups/13/direct_evidence/confirmed_text/0",
+        "source_ref": null,
+        "source_type": "text",
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG14-TXT02",
+        "group_id": "CG14",
+        "subtopic_id": null,
+        "source_order": 170,
+        "evidence_type": "text",
+        "summary": "글로벌 선두기업 적용 시 신규 해외매출 100억 원 이상 기대",
+        "canonical_ref": "/content_groups/13/direct_evidence/confirmed_text/1",
+        "source_ref": null,
+        "source_type": "text",
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG14-TXT03",
+        "group_id": "CG14",
+        "subtopic_id": null,
+        "source_order": 171,
+        "evidence_type": "text",
+        "summary": "국내 글로벌 2위 기업 대상 프로모션 추진",
+        "canonical_ref": "/content_groups/13/direct_evidence/confirmed_text/2",
+        "source_ref": null,
+        "source_type": "text",
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG14-TXT04",
+        "group_id": "CG14",
+        "subtopic_id": null,
+        "source_order": 172,
+        "evidence_type": "text",
+        "summary": "2030년 ESL 봉지소재 매출 200억 원 목표",
+        "canonical_ref": "/content_groups/13/direct_evidence/confirmed_text/3",
+        "source_ref": null,
+        "source_type": "text",
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG14-TXT05",
+        "group_id": "CG14",
+        "subtopic_id": null,
+        "source_order": 173,
+        "evidence_type": "text",
+        "summary": "국내외 ESL 고객사 확대",
+        "canonical_ref": "/content_groups/13/direct_evidence/confirmed_text/4",
+        "source_ref": null,
+        "source_type": "text",
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG14-TXT06",
+        "group_id": "CG14",
+        "subtopic_id": null,
+        "source_order": 174,
+        "evidence_type": "text",
+        "summary": "해외기업 중심 봉지소재 시장에서 국내기업의 경쟁 기반 확보",
+        "canonical_ref": "/content_groups/13/direct_evidence/confirmed_text/5",
+        "source_ref": null,
+        "source_type": "text",
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG14-MET01",
+        "group_id": "CG14",
+        "subtopic_id": null,
+        "source_order": 1,
+        "evidence_type": "metric",
+        "summary": "신규 해외매출 기대치",
+        "canonical_ref": "/content_groups/13/direct_evidence/metrics/0",
+        "source_ref": null,
+        "source_type": null,
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG14-MET02",
+        "group_id": "CG14",
+        "subtopic_id": null,
+        "source_order": 2,
+        "evidence_type": "metric",
+        "summary": "2030년 ESL 봉지소재 매출 목표",
+        "canonical_ref": "/content_groups/13/direct_evidence/metrics/1",
+        "source_ref": null,
+        "source_type": null,
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG15-TXT01",
+        "group_id": "CG15",
+        "subtopic_id": null,
+        "source_order": 176,
+        "evidence_type": "text",
+        "summary": "핵심 내용: ESL에서 확보한 봉지소재 기술을 다양한 전자종이 및 디스플레이 분야로 확대",
+        "canonical_ref": "/content_groups/14/direct_evidence/confirmed_text/0",
+        "source_ref": null,
+        "source_type": "text",
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG15-TXT02",
+        "group_id": "CG15",
+        "subtopic_id": null,
+        "source_order": 177,
+        "evidence_type": "text",
+        "summary": "고객 확대: SES-imagotag 외 국내외 ESL 기업으로 판매처 다변화 / 국내 솔루엠·해외 Price 등과 협력 추진",
+        "canonical_ref": "/content_groups/14/direct_evidence/confirmed_text/1",
+        "source_ref": null,
+        "source_type": "text",
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG15-TXT03",
+        "group_id": "CG15",
+        "subtopic_id": null,
+        "source_order": 180,
+        "evidence_type": "text",
+        "summary": "제품 확대: ESL → E-Book·Signage / Flexible E-Paper·Polyimide 기판 적용",
+        "canonical_ref": "/content_groups/14/direct_evidence/confirmed_text/2",
+        "source_ref": null,
+        "source_type": "text",
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG15-TXT04",
+        "group_id": "CG15",
+        "subtopic_id": null,
+        "source_order": 183,
+        "evidence_type": "text",
+        "summary": "시장 확대: 전자종이 봉지소재 / OLED 대형 디스플레이용 봉지소재",
+        "canonical_ref": "/content_groups/14/direct_evidence/confirmed_text/3",
+        "source_ref": null,
+        "source_type": "text",
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG16-TXT01",
+        "group_id": "CG16",
+        "subtopic_id": null,
+        "source_order": 187,
+        "evidence_type": "text",
+        "summary": "저투습·고접착 UV경화형 봉지소재를 통해 ESL 생산성 향상과 글로벌 소재시장 진입을 추진합니다.",
+        "canonical_ref": "/content_groups/15/direct_evidence/confirmed_text/0",
+        "source_ref": null,
+        "source_type": "text",
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      },
+      {
+        "evidence_id": "CG16-TXT02",
+        "group_id": "CG16",
+        "subtopic_id": null,
+        "source_order": 188,
+        "evidence_type": "text",
+        "summary": "Thank You",
+        "canonical_ref": "/content_groups/15/direct_evidence/confirmed_text/1",
+        "source_ref": null,
+        "source_type": "text",
+        "content_match_confidence": null,
+        "relation_confidence": null,
+        "cross_group_ref": null,
+        "data_pending": false,
+        "production_directive_refs": [],
+        "visual_placeholder_refs": []
+      }
+    ]
+  }
+}

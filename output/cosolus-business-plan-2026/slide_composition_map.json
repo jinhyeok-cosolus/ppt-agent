@@ -1,0 +1,237 @@
+{
+  "project": "cosolus-business-plan-2026",
+  "slides": [
+    {
+      "slide_number": 1,
+      "working_title": "표지",
+      "source_material": [{"id": "CG01", "scope": "entire"}],
+      "decision": "keep",
+      "rationale": "표지는 그 자체로 완결된 단일 의미 단위이며 다른 어떤 Content Group과도 병합 후보 신호(문제-해결/원인-결과/개념-근거 등)가 없다.",
+      "production_directive_applied": [],
+      "cross_group_ref_resolved": [],
+      "uncertain_evidence_carried": [],
+      "data_pending_carried": []
+    },
+    {
+      "slide_number": 2,
+      "working_title": "과제 개요",
+      "source_material": [{"id": "CG02", "scope": "entire"}],
+      "decision": "keep",
+      "rationale": "과제의 목적·성능·적용제품·개발체계·키워드를 하나의 메시지(이 과제가 무엇인가)로 함께 전달하는 완결된 단위. 분리하면 개별 항목이 의미를 잃는다.",
+      "production_directive_applied": [],
+      "cross_group_ref_resolved": [],
+      "uncertain_evidence_carried": [],
+      "data_pending_carried": []
+    },
+    {
+      "slide_number": 3,
+      "working_title": "시장 및 산업 배경",
+      "source_material": [{"id": "CG03", "scope": "entire"}],
+      "decision": "keep",
+      "rationale": "ESL 시장 성장이라는 하나의 상위 메시지를 시장 규모 수치·개념도·시장규모 차트가 공동으로 뒷받침하는 완결 단위. CG04(제품 적용 구조, 기술적 구조 설명)와는 목적이 달라(시장/거시 배경 vs 제품 기술 구조) 병합하지 않음.",
+      "production_directive_applied": [],
+      "cross_group_ref_resolved": [],
+      "uncertain_evidence_carried": [],
+      "data_pending_carried": []
+    },
+    {
+      "slide_number": 4,
+      "working_title": "제품 적용 구조",
+      "source_material": [{"id": "CG04", "scope": "entire"}],
+      "decision": "keep",
+      "rationale": "Edge Glue의 적용 위치·기판·보호대상·기능을 설명하는 기술적 배경 설명으로 완결된 단위. CG05(기존 기술의 문제)와 인접하지만, CG04는 '무엇인가(구조)'를, CG05는 '무엇이 문제인가(한계)'를 다루어 서로 다른 목적의 내용이므로 분리 유지.",
+      "production_directive_applied": [],
+      "cross_group_ref_resolved": [],
+      "uncertain_evidence_carried": [],
+      "data_pending_carried": []
+    },
+    {
+      "slide_number": 5,
+      "working_title": "기존 기술의 문제",
+      "source_material": [{"id": "CG05", "scope": "entire"}],
+      "decision": "keep",
+      "rationale": "기존 열경화 공정의 기술적 한계(TACT·Warpage·저투습고접착 동시확보 불가)를 다루는 독립적 핵심 메시지. CG06(시장·경쟁 관점의 필요성)·CG07(기술적 해결책)과 각각 목적이 달라(기술적 한계 vs 시장경쟁 이유 vs 해결책 제시) 강제 병합하지 않음 — 원본 페이지가 인접하다는 이유만으로 합치지 않는다는 원칙 적용.",
+      "production_directive_applied": [],
+      "cross_group_ref_resolved": [],
+      "uncertain_evidence_carried": [],
+      "data_pending_carried": []
+    },
+    {
+      "slide_number": 6,
+      "working_title": "개발 필요성",
+      "source_material": [{"id": "CG06", "scope": "entire"}],
+      "decision": "keep",
+      "rationale": "해외기업 중심의 시장 구조·국내 진입장벽·신규 기회시장이라는 경쟁/시장 관점의 독자적 논거 7개 항목으로 구성되어 그 자체로 충분한 근거를 갖춘 독립 메시지. CG05(기술적 문제)·CG07(기술적 해결)과는 논거의 층위가 달라 분리 유지.",
+      "production_directive_applied": [],
+      "cross_group_ref_resolved": [],
+      "uncertain_evidence_carried": [],
+      "data_pending_carried": []
+    },
+    {
+      "slide_number": 7,
+      "working_title": "개발 솔루션",
+      "source_material": [{"id": "CG07", "scope": "entire"}],
+      "decision": "keep",
+      "rationale": "기존 열경화 방식과 개발 UV경화 방식의 비교(order55-56)를 이미 자체적으로 포함하고 있어 problem-solution 대비가 이 슬라이드 안에서 완결된다. 별도 CG05를 물리적으로 병합하지 않아도 근거가 유실되지 않음(CG05는 더 상세한 기술적 문제 설명으로 별도 슬라이드에서 이미 다룸). 이미지(그림5, 봉지구조 단면 개념도)는 이 해결책의 구조를 시각적으로 뒷받침해 함께 배치.",
+      "production_directive_applied": [],
+      "cross_group_ref_resolved": [],
+      "uncertain_evidence_carried": [],
+      "data_pending_carried": []
+    },
+    {
+      "slide_number": 8,
+      "working_title": "핵심 기술 구성",
+      "source_material": [{"id": "CG08", "scope": "entire"}],
+      "decision": "keep",
+      "rationale": "세 가지 핵심 소재기술(UV경화형 봉지재/저투습 하이브리드 고분자/고접착 우레탄 아크릴레이트)이 하나의 상위 메시지(기술 구성)를 공동으로 구성하는 완결 단위. 정량적 목표(CG09)와는 정성적 구성요소 설명 vs 정량적 수치 목표로 성격이 달라 분리.",
+      "production_directive_applied": [],
+      "cross_group_ref_resolved": [],
+      "uncertain_evidence_carried": [],
+      "data_pending_carried": []
+    },
+    {
+      "slide_number": 9,
+      "working_title": "정량적 개발 목표",
+      "source_material": [{"id": "CG09", "scope": "entire"}],
+      "decision": "keep",
+      "rationale": "핵심 성능/신뢰성·양산/정량적 성과 3개 하위 목표군이 '이 과제의 성공 기준'이라는 하나의 상위 메시지를 공동 구성하며, 15개 수치 각각이 독립적으로 흩어지면 의미가 약해짐 — 표/그룹형 레이아웃으로 한 슬라이드에 유지.",
+      "production_directive_applied": [],
+      "cross_group_ref_resolved": [],
+      "uncertain_evidence_carried": [],
+      "data_pending_carried": []
+    },
+    {
+      "slide_number": 10,
+      "working_title": "선행개발 실적",
+      "source_material": [
+        {"id": "CG10-TXT01", "scope": "partial", "parent": "CG10"},
+        {"id": "CG10-TXT02", "scope": "partial", "parent": "CG10"},
+        {"id": "CG10-MET01", "scope": "partial", "parent": "CG10"},
+        {"id": "CG10-MET02", "scope": "partial", "parent": "CG10"},
+        {"id": "CG10-MET03", "scope": "partial", "parent": "CG10"}
+      ],
+      "decision": "split",
+      "rationale": "CG10(선행개발 및 수행역량)은 '고객사 평가를 통한 과거 실적 입증'과 '3개 기관의 현재 수행 역량·인프라 제시'라는 독립적인 핵심 메시지 2개가 혼재되어 있고 각각 충분한 근거(실적: 대만 고객사 평가·5종/6종·240시간 평가 수치, 역량: 3개 기관별 서술+시설사진 12장)를 갖추고 있어 한 슬라이드에 합치면 메시지가 불명확해짐. 이에 따라 선행개발 실적(과거 성과 증빙)과 수행역량(현재 인프라·전문성)으로 분할.",
+      "production_directive_applied": [],
+      "cross_group_ref_resolved": [],
+      "uncertain_evidence_carried": [],
+      "data_pending_carried": []
+    },
+    {
+      "slide_number": 11,
+      "working_title": "수행역량",
+      "source_material": [
+        {"id": "CG10-TXT03", "scope": "partial", "parent": "CG10"},
+        {"id": "CG10-TXT04", "scope": "partial", "parent": "CG10"},
+        {"id": "CG10-TXT05", "scope": "partial", "parent": "CG10"},
+        {"id": "CG10-MET04", "scope": "partial", "parent": "CG10"},
+        {"id": "CG10-MET05", "scope": "partial", "parent": "CG10"},
+        {"id": "CG10-IMG01", "scope": "partial", "parent": "CG10"},
+        {"id": "CG10-IMG02", "scope": "partial", "parent": "CG10"}
+      ],
+      "decision": "split",
+      "rationale": "슬라이드10과 동일 분할 근거. 소니드·생기원·코솔러스 3개 기관의 역량 서술과 소니드 실험/생산시설 사진(그림6,7)이 '현재 우리는 이 과제를 수행할 능력이 있다'는 하나의 메시지로 함께 배치됨.",
+      "production_directive_applied": [],
+      "cross_group_ref_resolved": [],
+      "uncertain_evidence_carried": [],
+      "data_pending_carried": []
+    },
+    {
+      "slide_number": 12,
+      "working_title": "기관별 역할 및 협력 구조",
+      "source_material": [{"id": "CG11", "scope": "entire"}],
+      "decision": "keep",
+      "rationale": "3개 기관의 역할 분담과 협력 흐름(생기원·코솔러스 소재개발 → 소니드 적용·평가 → 피드백)이 하나의 조직/협업 구조도 메시지로 완결됨.",
+      "production_directive_applied": [],
+      "cross_group_ref_resolved": [],
+      "uncertain_evidence_carried": [],
+      "data_pending_carried": []
+    },
+    {
+      "slide_number": 13,
+      "working_title": "5개년 개발 로드맵",
+      "source_material": [{"id": "CG12", "scope": "entire"}],
+      "decision": "keep",
+      "rationale": "1~5차년도 계획은 시간 축을 공유하는 하나의 로드맵 메시지이며, 연차별로 분리하면(5개 슬라이드) 전체 진행 흐름이라는 상위 메시지가 파편화되고 15분 발표 시간 제약에도 맞지 않는다. 연차별 3개 기관 역할과 대표 이미지(그림8~12)를 하나의 타임라인 슬라이드 안에 연차별 하위 그룹으로 유지.",
+      "production_directive_applied": [],
+      "cross_group_ref_resolved": [],
+      "uncertain_evidence_carried": [],
+      "data_pending_carried": []
+    },
+    {
+      "slide_number": 14,
+      "working_title": "사업화 전략",
+      "source_material": [{"id": "CG13", "scope": "entire"}],
+      "decision": "keep",
+      "rationale": "고객사 진입→소재 공급체계→양산 및 판매는 순차적으로 이어지는 하나의 사업화 파이프라인이며, 그림13(COSOLUS·KITECH→SONID→수요처 3단계 흐름도)이 이 세 하위 내용을 정확히 하나의 그림으로 통합해 보여줌 — '함께 제시해야 의미가 완성되는 하위 주제' 신호가 강함.",
+      "production_directive_applied": [],
+      "cross_group_ref_resolved": [],
+      "uncertain_evidence_carried": [],
+      "data_pending_carried": []
+    },
+    {
+      "slide_number": 15,
+      "working_title": "시장성 및 기대효과",
+      "source_material": [{"id": "CG14", "scope": "entire"}],
+      "decision": "keep",
+      "rationale": "매출 목표(해외매출 100억원 이상, 2030년 200억원)와 시장 확대 기대효과가 '이 과제의 기대 성과'라는 하나의 메시지로 결합. CG13(사업화 전략=과정)과는 과정 vs 기대효과(결과)로 성격이 달라 분리.",
+      "production_directive_applied": [],
+      "cross_group_ref_resolved": [],
+      "uncertain_evidence_carried": [],
+      "data_pending_carried": []
+    },
+    {
+      "slide_number": 16,
+      "working_title": "확장 계획",
+      "source_material": [{"id": "CG15", "scope": "entire"}],
+      "decision": "keep",
+      "rationale": "고객·제품·시장 확대라는 장기 확장 전략이 하나의 메시지로 결합. CG14(단기 매출 목표)와는 시간축(2028/2030 단기 목표 vs 장기 확장)이 달라 분리.",
+      "production_directive_applied": [],
+      "cross_group_ref_resolved": [],
+      "uncertain_evidence_carried": [],
+      "data_pending_carried": []
+    },
+    {
+      "slide_number": 17,
+      "working_title": "마무리",
+      "source_material": [{"id": "CG16", "scope": "entire"}],
+      "decision": "keep",
+      "rationale": "클로징 메시지와 Thank You는 발표 종료를 알리는 독립적 단위.",
+      "production_directive_applied": [],
+      "cross_group_ref_resolved": [],
+      "uncertain_evidence_carried": [],
+      "data_pending_carried": []
+    }
+  ],
+  "coverage_check": {
+    "unassigned_content_groups": [],
+    "unassigned_subtopics": [],
+    "evidence_reconciliation": [
+      {"source_id": "CG01", "source_count": 3, "mapped_count": 3, "match": true},
+      {"source_id": "CG02", "source_count": 6, "mapped_count": 6, "match": true},
+      {"source_id": "CG03", "source_count": "4 text + 3 metrics + 2 images", "mapped_count": "4 text + 3 metrics + 2 images", "match": true},
+      {"source_id": "CG04", "source_count": "5 text + 2 images", "mapped_count": "5 text + 2 images", "match": true},
+      {"source_id": "CG05", "source_count": "6 text + 1 metric", "mapped_count": "6 text + 1 metric", "match": true},
+      {"source_id": "CG06", "source_count": 7, "mapped_count": 7, "match": true},
+      {"source_id": "CG07", "source_count": "3 text + 1 image", "mapped_count": "3 text + 1 image", "match": true},
+      {"source_id": "CG08", "source_count": 4, "mapped_count": 4, "match": true},
+      {"source_id": "CG09", "source_count": "6 text + 15 metrics", "mapped_count": "6 text + 15 metrics", "match": true},
+      {"source_id": "CG10", "source_count": "5 text + 5 metrics + 2 images", "mapped_count": "5 text + 5 metrics + 2 images (slide10: 2 text/3 metrics, slide11: 3 text/2 metrics/2 images)", "match": true},
+      {"source_id": "CG11", "source_count": 5, "mapped_count": 5, "match": true},
+      {"source_id": "CG12", "source_count": "6 text + 2 metrics + 5 images", "mapped_count": "6 text + 2 metrics + 5 images", "match": true},
+      {"source_id": "CG13", "source_count": "4 text + 1 metric + 1 image", "mapped_count": "4 text + 1 metric + 1 image", "match": true},
+      {"source_id": "CG14", "source_count": "6 text + 2 metrics", "mapped_count": "6 text + 2 metrics", "match": true},
+      {"source_id": "CG15", "source_count": 4, "mapped_count": 4, "match": true},
+      {"source_id": "CG16", "source_count": 2, "mapped_count": 2, "match": true}
+    ],
+    "cross_group_ref_trace_complete": true,
+    "uncertain_evidence_flagged": [],
+    "data_pending_flagged": [],
+    "unresolved_production_directives": [],
+    "issues_found": [
+      "CG04의 그림3/그림4는 material-analysis 단계에서 이미 Vision으로 캡션-이미지 순서 역전을 확정(NC-02)했으므로 이 단계에서는 그 결과를 그대로 슬라이드4에 전달함 — 재판단하지 않음.",
+      "CG12(그림12, 5차년도)는 1~4차년도 이미지와 시각 템플릿이 다르다는 점(NC-03)이 이 단계에서도 해소되지 않음 — 슬라이드13의 레이아웃 설계([slide-content-structuring]/[web-ppt-generator]) 시 참고 필요하도록 이관."
+    ],
+    "status": "pass"
+  }
+}

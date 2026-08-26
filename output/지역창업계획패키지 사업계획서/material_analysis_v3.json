@@ -1,0 +1,850 @@
+{
+  "sources": [
+    {
+      "file": "C:\\Users\\cosol\\OneDrive\\Desktop\\코솔러스_사업계획서_PPT_페이지별_축약안.docx",
+      "type": "docx",
+      "text_blocks": [
+        {
+          "text": "01  표지",
+          "style": "Normal"
+        },
+        {
+          "text": "표지디자인 RULE을 따르면 됩니다.",
+          "style": "Normal"
+        },
+        {
+          "text": "2026년 창업도시 조성 프로젝트 · 지역창업패키지 사업계획서",
+          "style": "Normal"
+        },
+        {
+          "text": "주식회사 코솔러스",
+          "style": "Normal"
+        },
+        {
+          "text": "02  창업기업 정보\n섹션: Company",
+          "style": "Normal"
+        },
+        {
+          "text": "제목: 창업기업 정보",
+          "style": "Normal"
+        },
+        {
+          "text": "프롬프트: 대표자 및 회사에 대한 정보를 왼쪽에 적고, 우측에 asset에 위치한 회사 지도사진 삽입",
+          "style": "Normal"
+        },
+        {
+          "text": "대표자 정보:김성현",
+          "style": "Normal"
+        },
+        {
+          "text": "생년월일:1975.01.02",
+          "style": "Normal"
+        },
+        {
+          "text": "성별: 남",
+          "style": "Normal"
+        },
+        {
+          "text": "연락처:010-9565-5801",
+          "style": "Normal"
+        },
+        {
+          "text": "이메일: shkim@cosolus.com",
+          "style": "Normal"
+        },
+        {
+          "text": "유형: 단독",
+          "style": "Normal"
+        },
+        {
+          "text": "창업기업명: 주식회사 코솔러스",
+          "style": "Normal"
+        },
+        {
+          "text": "개업연월일: 2020.07.02",
+          "style": "Normal"
+        },
+        {
+          "text": "사업자 유형: 법인",
+          "style": "Normal"
+        },
+        {
+          "text": "본사 소재지: 전북특별자치도 전주시",
+          "style": "Normal"
+        },
+        {
+          "text": "사업자등록번호: 467-81-01725",
+          "style": "Normal"
+        },
+        {
+          "text": "법인등록번호: 214911-0062043",
+          "style": "Normal"
+        },
+        {
+          "text": "매출액 (’25년): - ",
+          "style": "Normal"
+        },
+        {
+          "text": "총 고용 (’25년): 22명",
+          "style": "Normal"
+        },
+        {
+          "text": "투자유치 (’25년): -",
+          "style": "Normal"
+        },
+        {
+          "text": "누적투자 (~’25년): -",
+          "style": "Normal"
+        },
+        {
+          "text": "과제명: 사용 후 배터리 유래 흑연 음극재 재활용 및 고부가 소재 사업화",
+          "style": "Normal"
+        },
+        {
+          "text": "03  사업비 집행계획",
+          "style": "Normal"
+        },
+        {
+          "text": "슬라이드 제목: 사업비 집행 계획",
+          "style": "Normal"
+        },
+        {
+          "text": "정부지원금과 자기부담금의 사용 목적을 2개 영역으로 구분. 좌우 헤더 구조로 가면 좋을 듯함. 아이콘 1개씩 삽입",
+          "style": "Normal"
+        },
+        {
+          "text": "헤더: 정부지원사업비",
+          "style": "Normal"
+        },
+        {
+          "text": "재료비: 파일롯 공정 검증 및 시제품 제조",
+          "style": "Normal"
+        },
+        {
+          "text": "외주용역·지급수수료: 설비 설계, 기술이전, 회계감사",
+          "style": "Normal"
+        },
+        {
+          "text": "인건비·교육비·여비: 울산 신규인력과 기술교육",
+          "style": "Normal"
+        },
+        {
+          "text": "헤더: 자기부담사업비",
+          "style": "Normal"
+        },
+        {
+          "text": "- 인건비: 신규인력(울산소재) 채용 인건비 현금 대응",
+          "style": "Normal"
+        },
+        {
+          "text": "- 기계장치: 기술고도화를 위한 활용 기계장치 현물 대응",
+          "style": "Normal"
+        },
+        {
+          "text": "04  ",
+          "style": "Normal"
+        },
+        {
+          "text": "섹션: Backgroud",
+          "style": "Normal"
+        },
+        {
+          "text": "제목: 개발동기·목적",
+          "style": "Normal"
+        },
+        {
+          "text": "헤더: 사용 후 배터리 재활용 시장 유망",
+          "style": "Normal"
+        },
+        {
+          "text": "- 리튬이온 배터리는 일반적으로 양극재, 음극재, 분리막, 전해질로 구성. 재활용 기술은 리튬이온 배터리의 핵심소재를 회수 및 재활용하는 기술",
+          "style": "Normal"
+        },
+        {
+          "text": "- 현재 배터리 재활용은 NCM·NCA계 이차전지 및 양극재 공정 부산물을 중심으로 재자원화가 이루어지고있으나,  음극재의 주요 성분인 흑연은 경제성 낮아 배터리 재활용 대상에서 제외되고 있음",
+          "style": "Normal"
+        },
+        {
+          "text": "<사용 후 배터리 재활용 공정 모식도>",
+          "style": "Normal"
+        },
+        {
+          "text": "사진삽입:019_공정모식도",
+          "style": "Normal"
+        },
+        {
+          "text": "05  ",
+          "style": "Normal"
+        },
+        {
+          "text": "섹션: Background",
+          "style": "Normal"
+        },
+        {
+          "text": "제목: 1-1원천 기술·아이디어의 우수성",
+          "style": "Normal"
+        },
+        {
+          "text": "헤더박스:사용 후 배터리 재활용은 배터리 순환경제의 핵심",
+          "style": "Normal"
+        },
+        {
+          "text": "- 배터리 재활용은 채굴 대비 탄소발자국 및 폐수 발생의 감소가 적어 탄소중립을 실현하는 핵심기술",
+          "style": "Normal"
+        },
+        {
+          "text": "- 미국 관세정책 변화등에 대한 공급망 내재화 전략으로서 순환경제 중요 커짐",
+          "style": "Normal"
+        },
+        {
+          "text": "[그림] 배터리 순환경제 모식도",
+          "style": "Normal"
+        },
+        {
+          "text": "사진삽입: 008_모식도",
+          "style": "Normal"
+        },
+        {
+          "text": "[그림] 채굴, 배터리 재활용 비교",
+          "style": "Normal"
+        },
+        {
+          "text": "사진삽입: 009_채굴비교",
+          "style": "Normal"
+        },
+        {
+          "text": "05 ",
+          "style": "Normal"
+        },
+        {
+          "text": "섹션: Background",
+          "style": "Normal"
+        },
+        {
+          "text": "슬라이드 제목: 전기차 폐배터리 시장 전망",
+          "style": "Normal"
+        },
+        {
+          "text": "3헤더 컬럼 구조로 가자. 각 구조에 대해서 설명아래 사진 삽입",
+          "style": "Normal"
+        },
+        {
+          "text": "[전기차 시장 성장]\n2022년 14% → 2030년 36%\n전기차 보급률 2.6배 확대 전망",
+          "style": "Normal"
+        },
+        {
+          "text": "사진삽입: 020_폐배터리발생전망",
+          "style": "Normal"
+        },
+        {
+          "text": "[폐배터리 발생 확대]\n2030년 338GWh → 2040년 3,339GWh\n사용 후 배터리 약 10배 증가 전망",
+          "style": "Normal"
+        },
+        {
+          "text": "사진삽입: 021_시장규모",
+          "style": "Normal"
+        },
+        {
+          "text": "[ESS 시장 성장]\n2025년 60GWh → 2028년 150GWh",
+          "style": "Normal"
+        },
+        {
+          "text": "AI 데이터센터 구축에 따른 북미 ESS 배터리 시장 2.5배 성장 전망",
+          "style": "Normal"
+        },
+        {
+          "text": "사진삽입: 사진삽입: 022_시장규모2",
+          "style": "Normal"
+        },
+        {
+          "text": "각주:",
+          "style": "Normal"
+        },
+        {
+          "text": "  2023년 6월 21일 산업별 순환 경제 선도 사업(프로젝트) 추진 배포 자료(산업통상부) ",
+          "style": "Normal"
+        },
+        {
+          "text": "  2025년 5월 27일 배터리 순환이용 산업화를 위한 배터리 순환이용 활성화 방안(기후에너지환경부) ",
+          "style": "Normal"
+        },
+        {
+          "text": "  2023년 8월 전기차 및 충전기 보급·이용 현황 분석 보고서(전력거래소)",
+          "style": "Normal"
+        },
+        {
+          "text": "06  흑연 재활용 시장 기회",
+          "style": "Normal"
+        },
+        {
+          "text": "섹션: Background",
+          "style": "Normal"
+        },
+        {
+          "text": "제목: 흑연 음극재 재활용 시장 전망",
+          "style": "Normal"
+        },
+        {
+          "text": "4개 행목에 대해서 4컬럼 형태로 가고, 아이콘 넣어줘",
+          "style": "Normal"
+        },
+        {
+          "text": "흑연 재활용 시장 성장\n2023년 710억 원 → 2033년 1,680억 원\n연평균 9.1% 성장 전망",
+          "style": "Normal"
+        },
+        {
+          "text": "폐기되는 핵심소재\n배터리 중 흑연 비중 28%\n경제성·정제기술 부족으로 대부분 폐기",
+          "style": "Normal"
+        },
+        {
+          "text": "급증하는 흑연 수요\n2040년 글로벌 수요 16,023kt 전망\n전기차·ESS 성장으로 수요 확대",
+          "style": "Normal"
+        },
+        {
+          "text": "국내 재활용 현황\n2024년 흑연 재자원화율 0%\n선별회수·고순도 정제·성능 확보 필요",
+          "style": "Normal"
+        },
+        {
+          "text": "각주:",
+          "style": "Normal"
+        },
+        {
+          "text": "  Graphite Recycling Market (2023–2033) (Allied Market Research) ",
+          "style": "Normal"
+        },
+        {
+          "text": "  The Key Minerals in an EV Battery (2022. Visual Capitalist) ",
+          "style": "Normal"
+        },
+        {
+          "text": "  The Role of Critical Minerals in Clean Energy Transitions (IEA) ",
+          "style": "Normal"
+        },
+        {
+          "text": "  2024년 한국광해광업공단 기반으로 한 2025년 국정감사 자료",
+          "style": "Normal"
+        },
+        {
+          "text": "07",
+          "style": "Normal"
+        },
+        {
+          "text": "섹션: Background",
+          "style": "Normal"
+        },
+        {
+          "text": "슬라이드 제목: 정책 모멘텀",
+          "style": "Normal"
+        },
+        {
+          "text": "3개 컬럼 구조로 작성하고 관련 이미지 웹에서 찾아서 넣어줘",
+          "style": "Normal"
+        },
+        {
+          "text": "국정과제중 “순환경제 생태계 조성”을 통해 음극재 재활용 회수 기술 고도화추진",
+          "style": "Normal"
+        },
+        {
+          "text": "국정과제: 순환경제 생태계 조성과 폐배터리 핵심원료 회수",
+          "style": "Normal"
+        },
+        {
+          "text": "배터리 순환이용 활성화 방안: 소재 재활용과 공정 고도화 지원",
+          "style": "Normal"
+        },
+        {
+          "text": "음극재·분리막의 고부가 재활용 기술이 신규 정책 과제로 부상",
+          "style": "Normal"
+        },
+        {
+          "text": "08  코솔러스 솔루션\n섹션: technology",
+          "style": "Normal"
+        },
+        {
+          "text": "슬라이드 제목: Cosolus 흑연 기술",
+          "style": "Normal"
+        },
+        {
+          "text": "사진이 길기 때문에 텍스트를 그냥 전체 다 넣고, 그림을 아래에서 크게 보여주는 형태로 삽입. ",
+          "style": "Normal"
+        },
+        {
+          "text": "(흑연 음극재 재활용) 사용 후 배터리 블랙매스에서 흑연 음극재를 선택적으로 분리 및 정제하여 고순도 정제흑연을 제조",
+          "style": "Normal"
+        },
+        {
+          "text": "◦(고부가 음극재 재활용 흑연 소재) 고순도 정제흑연을 배터리 음극재용 흑연(실리콘-흑연 복합 음극재의 전구체로 사용 가능), 전도성 첨가제, 방열 첨가제 등 고부가가치 소재로 재자원한 제품 제조",
+          "style": "Normal"
+        },
+        {
+          "text": "사진삽입: 007_흑연소재화모식도",
+          "style": "Normal"
+        },
+        {
+          "text": "09",
+          "style": "Normal"
+        },
+        {
+          "text": "섹션: technology",
+          "style": "Normal"
+        },
+        {
+          "text": "슬라이드 제목: 기술 개발 현황",
+          "style": "Normal"
+        },
+        {
+          "text": "TRL 6 기술과 연 1.5톤 파일롯 기반을 확보",
+          "style": "Normal"
+        },
+        {
+          "text": "-강산(HF)을 사용하지 않는 친환경 고순도화 공정",
+          "style": "Normal"
+        },
+        {
+          "text": "-유도가열로 1분 이내 1,000℃ 도달 · 99% 이상 순도",
+          "style": "Normal"
+        },
+        {
+          "text": "-초고온 공정 대비 에너지 투입량 64% 절감",
+          "style": "Normal"
+        },
+        {
+          "text": "-연 1.5톤 규모 시제품 파일롯 설비 구축 중",
+          "style": "Normal"
+        },
+        {
+          "text": "SEM 결과와 유도가열 설비 사진을 좌우 배치",
+          "style": "Normal"
+        },
+        {
+          "text": "[그림] 흑연 음극재 재활용 기술",
+          "style": "Normal"
+        },
+        {
+          "text": "그림삽입: 023_SEM",
+          "style": "Normal"
+        },
+        {
+          "text": "[그림] 유도가열설비",
+          "style": "Normal"
+        },
+        {
+          "text": "그림삽입: 013_정제설비",
+          "style": "Normal"
+        },
+        {
+          "text": "10  ",
+          "style": "Normal"
+        },
+        {
+          "text": "섹션: technology",
+          "style": "Normal"
+        },
+        {
+          "text": "슬라이드 제목: 기술고도화 로드맵",
+          "style": "Normal"
+        },
+        {
+          "text": "2026: 울산 사업장 구축 및 에너지기술연구원 기술이전, Series A 투차 유치(파일롯 설비 구축 및 기술검증)",
+          "style": "Normal"
+        },
+        {
+          "text": "2026~2027: 고순도 정제흑연 기반 음극재, 전도성/방열 첨가제 시제품 양산 연계 파일롯 제조 기술 확보",
+          "style": "Normal"
+        },
+        {
+          "text": "2027: AX/DX 기반 설비·공정 자동화",
+          "style": "Normal"
+        },
+        {
+          "text": "2028: 고순도 정제흑염 및 기술라이센싱",
+          "style": "Normal"
+        },
+        {
+          "text": "11",
+          "style": "Normal"
+        },
+        {
+          "text": "섹션: technology",
+          "style": "Normal"
+        },
+        {
+          "text": "슬라이드 제목: 기술개발 인력",
+          "style": "Normal"
+        },
+        {
+          "text": "조직도를 보여준다. ",
+          "style": "Normal"
+        },
+        {
+          "text": "사진삽입: 015_조직도",
+          "style": "Normal"
+        },
+        {
+          "text": "12",
+          "style": "Normal"
+        },
+        {
+          "text": "섹션: technology",
+          "style": "Normal"
+        },
+        {
+          "text": "슬라이드 제목: 보유 기술 및 인증 현황",
+          "style": "Normal"
+        },
+        {
+          "text": "좌측에 특허현황 table로 재구성해서 삽입하고, 우측에는 인증현황 넣자",
+          "style": "Normal"
+        },
+        {
+          "text": "001~006 까지 사진 넣으면 돼.",
+          "style": "Normal"
+        },
+        {
+          "text": "13",
+          "style": "Normal"
+        },
+        {
+          "text": "섹션: 임의로 추천",
+          "style": "Normal"
+        },
+        {
+          "text": "슬라이드 제목: 흑연 음극재 시장 성장가능성",
+          "style": "Normal"
+        },
+        {
+          "text": "컬럼1 글로벌 음극재 시장, 컬럼2 나머지 내용들",
+          "style": "Normal"
+        },
+        {
+          "text": "이렇게 한페이지에 담아낼수 있으려나",
+          "style": "Normal"
+        },
+        {
+          "text": "글로벌 음극재 시장: 2024년 50억 달러 → 2035년 115억 달러",
+          "style": "Normal"
+        },
+        {
+          "text": "사진삽입: 024_음극재전망",
+          "style": "Normal"
+        },
+        {
+          "text": "한국의 중국 의존도: 천연흑연 97.6% · 인조흑연 98.8%",
+          "style": "Normal"
+        },
+        {
+          "text": "미국·EU 규제로 역내·우호국 공급망과 재활용 소재 수요 확대",
+          "style": "Normal"
+        },
+        {
+          "text": "사진삽입: 025_글로벌진출강화",
+          "style": "Normal"
+        },
+        {
+          "text": "각주:",
+          "style": "Normal"
+        },
+        {
+          "text": " Lithium-Ion Battery Anode Market (2026–2034) (Fortune Business Insights)",
+          "style": "Normal"
+        },
+        {
+          "text": "  Energy Act of 2020 ",
+          "style": "Normal"
+        },
+        {
+          "text": "  Regulation (EU) 2023/1542, 2023년 8월 17일 시행",
+          "style": "Normal"
+        },
+        {
+          "text": "14",
+          "style": "Normal"
+        },
+        {
+          "text": "슬라이드 제목: 사업화 모델",
+          "style": "Normal"
+        },
+        {
+          "text": "정제흑연 판매에서 고부가 소재로 수익원을 확장합니다",
+          "style": "Normal"
+        },
+        {
+          "text": "화면에 넣을 문장",
+          "style": "Normal"
+        },
+        {
+          "text": "1단계: 고객 요구 정제비용 USD 2/kg 수준의 공정 확보",
+          "style": "Normal"
+        },
+        {
+          "text": "2단계: 배터리용 고순도 정제흑연 판매",
+          "style": "Normal"
+        },
+        {
+          "text": "3단계: 전도성 코팅액·방열레진 등 고부가 제품 확대",
+          "style": "Normal"
+        },
+        {
+          "text": "매출 목표: 2027년 1억 → 2029년 50억 원",
+          "style": "Normal"
+        },
+        {
+          "text": "그림삽입: 016_방열시트,017_사업화전략",
+          "style": "Normal"
+        },
+        {
+          "text": "15 ",
+          "style": "Normal"
+        },
+        {
+          "text": "슬라이드 제목: 고객사 분석",
+          "style": "Normal"
+        },
+        {
+          "text": "국내 배터리 3사와 음극재 기업을 중심으로 약 1조 원 내수시장 추정",
+          "style": "Normal"
+        },
+        {
+          "text": "주요 고객 후보: 포스코퓨처엠·대주전자재료·HS효성 등",
+          "style": "Normal"
+        },
+        {
+          "text": "중국산 대체와 공급망 안정성을 원하는 한국·일본·유럽 수요 공략",
+          "style": "Normal"
+        },
+        {
+          "text": "보충자료: ",
+          "style": "Normal"
+        },
+        {
+          "text": "고객군과 파트너 후보를 밸류체인으로 표시(웹에서 서치)",
+          "style": "Normal"
+        },
+        {
+          "text": "16  ",
+          "style": "Normal"
+        },
+        {
+          "text": "슬라이드 제목: 경쟁사 대비 우수성",
+          "style": "Normal"
+        },
+        {
+          "text": "유도가열 공정은 경쟁사의 초고온 간접가열보다 빠르고 효율적입니다",
+          "style": "Normal"
+        },
+        {
+          "text": "테이블 재구성해서 넣은다음에, 그림 삽입한다. 좌우 배치구조가 나을것같아. ",
+          "style": "Normal"
+        },
+        {
+          "text": "그림삽입: 026_유도가열우수성",
+          "style": "Normal"
+        },
+        {
+          "text": "17  ",
+          "style": "Normal"
+        },
+        {
+          "text": "슬라이드 제목: 시장확대방안",
+          "style": "Normal"
+        },
+        {
+          "text": "음극재 소재로의 활용을 넘어, 전도성 첨가제, 방열 첨가제 등 고부가 업사이클 제품으로 확장 가능",
+          "style": "Normal"
+        },
+        {
+          "text": "전자소매 및 방열 소재 등 신규 시장 진입을 통한 사업 확장 기대(목표 고객사 :S사 1차 벤더 xx하이테크, xx시냅스)",
+          "style": "Normal"
+        },
+        {
+          "text": "고순도 정제흐연 그래핀 제조 원재료 활용성 모색(목표고객사: xx쎄미켐)",
+          "style": "Normal"
+        },
+        {
+          "text": "사진 삽입: 027_방열시트전망, 028_BM전망",
+          "style": "Normal"
+        },
+        {
+          "text": "18",
+          "style": "Normal"
+        },
+        {
+          "text": "슬라이드 제목: 투자 유치 계획",
+          "style": "Normal"
+        },
+        {
+          "text": "2개 컬럼 구조로 생성",
+          "style": "Normal"
+        },
+        {
+          "text": "투차 유치 현황",
+          "style": "Normal"
+        },
+        {
+          "text": "양극재 소재 및 음극재 사업화를 자금 61억원 유치",
+          "style": "Normal"
+        },
+        {
+          "text": "◦2025년(Series A1) 에코프로의 투자사 에코프로 파트너스로부터 투자유치",
+          "style": "Normal"
+        },
+        {
+          "text": "< 외부 투자 유치 실적 >",
+          "style": "Normal"
+        },
+        {
+          "text": "□ 투자유치 계획 :",
+          "style": "Normal"
+        },
+        {
+          "text": "◦2026년 Series A2 글로벌 시장 진출을 위한 해외투자 전략적 유치 (2026년 07월 MYSC로부터 10억원 투자 유치 확정)",
+          "style": "Normal"
+        },
+        {
+          "text": "◦2028년 자체 생산설비 구축을 위한 Series-B 투자금 확보",
+          "style": "Normal"
+        },
+        {
+          "text": "19",
+          "style": "Normal"
+        },
+        {
+          "text": "슬라이드 제목: 울산 기술사업화 계획",
+          "style": "Normal"
+        },
+        {
+          "text": "사업장 구축 및 흑연 음극재 재활용 파일롯 라인 설치",
+          "style": "Normal"
+        },
+        {
+          "text": "연구원 기술이전 + 코솔러스 공정 융합·고도화",
+          "style": "Normal"
+        },
+        {
+          "text": "울산 석·박사급 인력 채용과 공동연구",
+          "style": "Normal"
+        },
+        {
+          "text": "시제품 생산·고객 검증·시장경쟁력 확보",
+          "style": "Normal"
+        },
+        {
+          "text": "사진삽입: 014_흑연파일럿",
+          "style": "Normal"
+        },
+        {
+          "text": "18  ",
+          "style": "Normal"
+        },
+        {
+          "text": "슬라이드 제목: 지역 활성화",
+          "style": "Normal"
+        },
+        {
+          "text": "2개 컬럼 구조로 만들어.",
+          "style": "Normal"
+        },
+        {
+          "text": "지역 내 거래 계획",
+          "style": "Normal"
+        },
+        {
+          "text": "현대중공업 공정용 난연솔루션 소재 납품 추진",
+          "style": "Normal"
+        },
+        {
+          "text": "울산 이차전지 특화단지 내 양극재 재활용 사업 추진 기업과의 협업 모색(고려아연, LS MnM, 코스모화학)",
+          "style": "Normal"
+        },
+        {
+          "text": "현대자동차 폐배터리 신규 공급망 프로젝트 참여 협의",
+          "style": "Normal"
+        },
+        {
+          "text": "지역 내 고용 계획",
+          "style": "Normal"
+        },
+        {
+          "text": "시제품 양산 전환 시 지역 청년 생산인력 우선 채용",
+          "style": "Normal"
+        },
+        {
+          "text": "대학·연구기관·기업이 참여하는 지역 사업화 네트워크 구축",
+          "style": "Normal"
+        },
+        {
+          "text": "권장 시각자료",
+          "style": "Normal"
+        },
+        {
+          "text": "지역 거래·고용·협력의 3개 효과",
+          "style": "Normal"
+        },
+        {
+          "text": "19",
+          "style": "Normal"
+        },
+        {
+          "text": "슬라이드 제목: 지역이전 실행계획",
+          "style": "Normal"
+        },
+        {
+          "text": "좌측에 내용, 우측에 사진 삽입",
+          "style": "Normal"
+        },
+        {
+          "text": "형태: 본사·부설연구소·파일롯 공장",
+          "style": "Normal"
+        },
+        {
+          "text": "지역: 울산 이차전지 특화단지",
+          "style": "Normal"
+        },
+        {
+          "text": "시기: 2026년 말부터 단계적 이전",
+          "style": "Normal"
+        },
+        {
+          "text": "규모: 초기 2명 → 연구·파일롯 인력 10명",
+          "style": "Normal"
+        },
+        {
+          "text": "핵심 목표",
+          "style": "Normal"
+        },
+        {
+          "text": "고순도 정제흑연의 실증·양산 기반을 구축하고 글로벌 음극재 재활용 시장 진출",
+          "style": "Normal"
+        },
+        {
+          "text": "사진삽입: 034_울산",
+          "style": "Normal"
+        }
+      ],
+      "tables": [],
+      "images": [
+        "C:\\Users\\cosol\\OneDrive\\Desktop\\PPT Agent\\VS PPT\\output\\지역창업계획패키지 사업계획서\\extracted_images\\코솔러스_사업계획서_PPT_페이지별_축약안_img1.png",
+        "C:\\Users\\cosol\\OneDrive\\Desktop\\PPT Agent\\VS PPT\\output\\지역창업계획패키지 사업계획서\\extracted_images\\코솔러스_사업계획서_PPT_페이지별_축약안_img2.png"
+      ],
+      "images_content_note": [
+        {
+          "image": "..._img1.png",
+          "content": "Slide 12(원문 12번, 보유 기술 및 인증 현황)에 삽입된 특허 목록 표(순번/특허명/등록·출원번호) — 실제 확인 가능한 7건: (등록)10-2920129 블랙매스 침출액으로부터 리튬을 회수하는 혼합 추출제 및 이를 사용한 리튬 회수방법 / 이하 6건은 (출원) 상태의 LFP 리튬 회수, 폐배터리 흑연 회수, 마이크로웨이브 정제 고순도흑연, 폐양극재/폐음극재 분리, 혼합추출제 코발트 회수 관련 특허. 이 7건은 표 캡처 범위 내 확인된 실제 수치이며, slide_outline_v3.md Slide 13의 등록8/국내출원11/PCT4=총23건 요약수치는 이전 프로젝트(material_analysis.json, slide_outline.md Slide22)에서 이미 사용자 확인을 거쳐 확정된 값을 그대로 재사용한 것으로, 이 표의 7건과 상호 배타적이지 않음(총계의 일부로 포함되는 대표 사례로 처리)."
+        },
+        {
+          "image": "..._img2.png",
+          "content": "Slide 16(원문 16번, 경쟁사 대비 우수성)에 삽입된 COSOLUS/BTR/Vianode 3사 비교 표 원본 — 국가/기술/처리시간/특징 4개 행. 이전 프로젝트 slide_outline.md Slide 16과 완전히 동일한 수치(1분 이내 vs ~24시간 vs ~48시간)로, 동일 원본 출처가 확인됨. v3 Slide 17(경쟁사 대비 우수성)에서 이 실제 원본 표 데이터를 그대로 재사용."
+        }
+      ],
+      "charts_detected": [],
+      "needs_manual_review": false
+    }
+  ],
+  "escalations": [],
+  "needs_confirmation": [
+    {"detail": "사업비 집행계획(원문 03) — 정부지원사업비/자기부담사업비 각 항목의 구체적 금액이 원문에 전혀 없음(항목·용도만 존재). 임의 금액을 생성하지 않고 항목·용도 중심으로만 슬라이드 구성.", "source": "원문 03 사업비 집행계획"},
+    {"detail": "매출액('25년)·투자유치('25년) — 원문 02에 값 없음(이전 프로젝트에서 이미 사용자 확인: 빈칸/[확인필요]로 진행 확정, 재확인 불필요하나 표기 유지)", "source": "원문 02 창업기업 정보"},
+    {"detail": "특허 등록/출원 건수(등록8·국내출원11·PCT4·총23) — 원문 03(v3 brief 13번)에는 구체 건수 명시 없이 '001~006 사진 삽입'만 지시. 이전 프로젝트 material_analysis.json/slide_outline.md Slide22에서 사용자 확인을 거쳐 확정된 수치를 그대로 재사용(신규 생성 아님).", "source": "이전 프로젝트 slide_outline.md Slide 22 (재사용 확정)"},
+    {"detail": "인증 이미지 004_벤처기업확인서.jpg — 문서상 기업명이 '주식회사 앱클러스'로 확인되나, 사용자가 명시적으로 '그냥 넣고 진행해'라고 확정 지시함. 001~006 전체를 그대로 사용하고 슬라이드에는 별도 경고 문구를 넣지 않음(사용자 지시 그대로 반영, 보고서에만 기록).", "source": "사용자 확정 지시 (2026-08-25 브리프)"}
+  ]
+}

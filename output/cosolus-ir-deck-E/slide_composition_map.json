@@ -1,0 +1,523 @@
+{
+  "project": "cosolus-ir-deck-E",
+  "slides": [
+    {
+      "slide_number": 1,
+      "working_title": "표지",
+      "source_material": [
+        {
+          "id": "CG01",
+          "scope": "entire"
+        }
+      ],
+      "decision": "keep",
+      "rationale": "단독 표지 페이지. 병합/분할 신호 해당 없음 — 발표 전체의 도입부로서 독립적 기능을 하는 단일 단위.",
+      "cross_group_ref_resolved": [],
+      "uncertain_evidence_carried": [],
+      "production_directive_applied": [],
+      "data_pending_carried": []
+    },
+    {
+      "slide_number": 2,
+      "working_title": "기업소개",
+      "source_material": [
+        {
+          "id": "CG02",
+          "scope": "entire"
+        }
+      ],
+      "decision": "keep",
+      "rationale": "회사 개요(핵심가치/기업명/대표자/임직원/소재지/비전)라는 하나의 완결된 메시지를 구성하는 단위. 조직구성(CG19, 페이지20)과 같은 'Company' 섹션이지만 스토리라인상 도입부(정체성 소개)와 투자단계 직전(팀 역량 증빙)이라는 서로 다른 목적으로 원본에서도 멀리 떨어져 배치되어 있어 병합 신호 없음.",
+      "cross_group_ref_resolved": [],
+      "uncertain_evidence_carried": [],
+      "production_directive_applied": [],
+      "data_pending_carried": []
+    },
+    {
+      "slide_number": 3,
+      "working_title": "문제제기-환경 및 지정학적 요인",
+      "source_material": [
+        {
+          "id": "CG03",
+          "scope": "entire"
+        }
+      ],
+      "decision": "keep",
+      "rationale": "박스1(환경오염)·박스2(핵심광물고갈)·박스3(공급망편중) 3개 박스는 각각 독립적 메시지라기보다 '배터리 밸류체인의 환경·지정학적 문제가 심각하다'는 하나의 상위 메시지를 공동으로 구성하는 하위 근거들이며, 단일 각주 인용(IEA/Benchmark Mineral Intelligence/Earthworks)을 공유해 페이지 전체가 하나의 근거 단위로 묶여 있음 — 분할 신호(독립적 핵심 메시지 다수, 서로 다른 목적 혼재) 미해당으로 3개 박스를 한 슬라이드로 유지.",
+      "cross_group_ref_resolved": [],
+      "uncertain_evidence_carried": [],
+      "production_directive_applied": [],
+      "data_pending_carried": [
+        "CG03-VP1"
+      ]
+    },
+    {
+      "slide_number": 4,
+      "working_title": "왜 지금인가?-산업적 요인",
+      "source_material": [
+        {
+          "id": "CG04",
+          "scope": "entire"
+        }
+      ],
+      "decision": "keep",
+      "rationale": "CG03(환경·지정학적 문제)과는 구분되는 '산업적 타이밍(시장 성장 시점)'이라는 독립적 핵심 메시지를 다루므로 병합하지 않음. 박스1·2에 해당하는 차트 데이터가 원본에 전혀 없어(material_analysis.json escalations 참조) 현재 근거가 빈약하지만, 이는 원본 데이터 누락의 문제이지 슬라이드 경계 판단(무엇을 병합·분할할지)의 근거가 아니므로 슬라이드 자체는 유지하고 데이터 누락은 별도로 에스컬레이션함.",
+      "cross_group_ref_resolved": [],
+      "uncertain_evidence_carried": [],
+      "production_directive_applied": [],
+      "data_pending_carried": [
+        "CG04-VP1",
+        "CG04-VP2"
+      ]
+    },
+    {
+      "slide_number": 5,
+      "working_title": "비즈니스 모델",
+      "source_material": [
+        {
+          "id": "CG05",
+          "scope": "entire"
+        }
+      ],
+      "decision": "keep",
+      "rationale": "3-BOX 구조(환경오염 저감/도시광산 구축/新공급망 구축)로 이미 완결된 단일 메시지('코솔러스 비즈니스 모델의 3대 축'). 병합·분할 신호 모두 해당 없음.",
+      "cross_group_ref_resolved": [],
+      "uncertain_evidence_carried": [],
+      "production_directive_applied": [],
+      "data_pending_carried": []
+    },
+    {
+      "slide_number": 6,
+      "working_title": "재활용 공정 현황(1세대)",
+      "source_material": [
+        {
+          "id": "CG06",
+          "scope": "entire"
+        }
+      ],
+      "decision": "keep",
+      "rationale": "1세대 공정 흐름 도식(전처리→후처리, 이미지 10개) + 소재의 한계/공정의 한계 2개 박스로 '1세대 공정은 구조적 한계가 있다(문제)'는 하나의 메시지를 구성. CG07(1.5세대 솔루션)과 '문제-해결' 관계에 있어 병합 후보로 검토했으나, 이 페이지만으로도 이미 10개 이미지·2개 박스라는 충분한 독립적 Evidence를 가지고 있고 CG07 역시 별도의 화학구조식 비교라는 독자적 Evidence를 가지고 있어, 병합 시 하나의 슬라이드에 담기는 정보량이 과도해지고 '문제'와 '해결'이라는 각각의 핵심 메시지가 오히려 불명확해질 위험이 커 분리 유지함.",
+      "cross_group_ref_resolved": [],
+      "uncertain_evidence_carried": [],
+      "production_directive_applied": [],
+      "data_pending_carried": []
+    },
+    {
+      "slide_number": 7,
+      "working_title": "[솔루션1] 코솔러스 추출제(1.5세대) 개요",
+      "source_material": [
+        {
+          "id": "CG07",
+          "scope": "entire"
+        }
+      ],
+      "decision": "keep",
+      "rationale": "'1세대의 한계를 코솔러스가 어떻게 해결하는가'라는 솔루션 개요 메시지의 독립 단위. CG06과의 병합을 검토했으나 위와 동일한 사유(각각 충분한 독립 Evidence, 합칠 경우 정보 과밀)로 분리 유지. CG08/CG09(핵심기술 상세)와도 '개요→상세' 관계이나, 이는 CG07(솔루션1) 자체를 페이지07이 '개요' 역할로 먼저 소개하고 CG08/09가 그 기술적 근거를 상세히 뒷받침하는 구조로, 동일한 개요→상세 패턴이 솔루션2(CG14→CG15)에도 일관되게 나타나 원본이 의도한 스토리텔링 구조로 판단, 병합하지 않고 유지.",
+      "cross_group_ref_resolved": [],
+      "uncertain_evidence_carried": [],
+      "production_directive_applied": [],
+      "data_pending_carried": []
+    },
+    {
+      "slide_number": 8,
+      "working_title": "핵심기술-[솔루션1-1] 고성능 추출제: 경쟁사 대비 공정시간·첨가제 사용량",
+      "source_material": [
+        {
+          "id": "CG08",
+          "scope": "entire"
+        }
+      ],
+      "decision": "keep",
+      "rationale": "'벨기에 S사·중국 K사 대비 공정시간/첨가제 사용량에서 우위'라는 대외 경쟁사 비교 메시지를 표+6개 이미지로 뒷받침하는 독립 단위. CG09(페이지09)와 제목이 동일('핵심기술 – [솔루션1-1] 고성능 추출제')하여 병합을 검토했으나, CG08은 '경쟁사 대비 비교'(외부 벤치마크), CG09는 '자체 도입 전후 정량 개선효과'(CAPEX/OPEX 경제성)로 근거의 성격 자체가 다르고 각각 표/이미지 1식씩의 충분한 독립 Evidence를 이미 보유하고 있어 병합 시 두 성격의 근거가 뒤섞여 핵심 메시지가 불명확해질 위험이 있음 — 분리 유지.",
+      "cross_group_ref_resolved": [],
+      "uncertain_evidence_carried": [
+        "CG08 images: img22, img23, img24 (벨기에 S사/중국 K사 열의 '반응 전' 비커 사진이 COSOLUS 열과 동일 이미지 재사용)"
+      ],
+      "production_directive_applied": [],
+      "data_pending_carried": []
+    },
+    {
+      "slide_number": 9,
+      "working_title": "핵심기술-[솔루션1-1] 고성능 추출제: 추출단수·망초 저감 효과",
+      "source_material": [
+        {
+          "id": "CG09",
+          "scope": "entire"
+        }
+      ],
+      "decision": "keep",
+      "rationale": "위 CG08과 병합을 검토했으나 동일 사유로 분리 유지(경쟁사 비교 vs 자체 개선효과라는 서로 다른 근거 성격, 각각 충분한 독립 Evidence).",
+      "cross_group_ref_resolved": [],
+      "uncertain_evidence_carried": [],
+      "production_directive_applied": [],
+      "data_pending_carried": []
+    },
+    {
+      "slide_number": 10,
+      "working_title": "경쟁력-[솔루션1-1] 고성능 추출제 (KopperChem/Solvay 비교)",
+      "source_material": [
+        {
+          "id": "CG10",
+          "scope": "entire"
+        }
+      ],
+      "decision": "keep",
+      "rationale": "CG08(벨기에 S사/중국 K사, 익명 경쟁사, 2개 지표 비교표)과 유사한 '경쟁 비교' 성격이지만, CG10은 실명 경쟁사(KopperChem/Solvay)를 대상으로 5개 지표(가격/추출성능/공정시간/첨가제사용량/탄소중립) 전반을 다루는 별도의 종합 경쟁력 평가표로, 페이지 제목 자체가 '경쟁력'으로 CG08/09('핵심기술')과 이미 다르게 구분되어 있음. 각각 독립적인 표 Evidence가 충분하여 병합하지 않고 유지.",
+      "cross_group_ref_resolved": [],
+      "uncertain_evidence_carried": [],
+      "production_directive_applied": [],
+      "data_pending_carried": []
+    },
+    {
+      "slide_number": 11,
+      "working_title": "[솔루션1-2] DLE 기술 동향",
+      "source_material": [
+        {
+          "id": "CG11",
+          "scope": "entire"
+        }
+      ],
+      "decision": "keep",
+      "rationale": "리튬 직접추출(DLE) 4개 기술유형(흡착제/추출제/분리막/전기화학)의 작동원리·TRL·장단점을 다루는 '시장 기술 지형 개관'이라는 독립 메시지. CG12(코솔러스 고유 강점 비교)와 이어지는 맥락이나, CG11은 중립적 기술 개관, CG12는 코솔러스의 비교우위 주장이라는 목적이 달라 병합하지 않음.",
+      "cross_group_ref_resolved": [],
+      "uncertain_evidence_carried": [],
+      "production_directive_applied": [],
+      "data_pending_carried": []
+    },
+    {
+      "slide_number": 12,
+      "working_title": "핵심기술-[솔루션1-2] Key Advantages of Extractant-Separator for DLE",
+      "source_material": [
+        {
+          "id": "CG12",
+          "scope": "entire"
+        }
+      ],
+      "decision": "keep",
+      "rationale": "추출제-분리막 결합 방식의 4대 장점(①~④)과 이를 뒷받침하는 3개 방사형 차트(흡착제/전기화학/추출제&분리막, 각 6개 지표)가 '함께 제시되어야 의미가 완성되는' 하나의 근거 집합 — 이미 하나의 완결된 단위. CG11(기술동향 개관)과는 목적이 달라 병합하지 않음.",
+      "cross_group_ref_resolved": [],
+      "uncertain_evidence_carried": [],
+      "production_directive_applied": [],
+      "data_pending_carried": []
+    },
+    {
+      "slide_number": 13,
+      "working_title": "핵심기술-[솔루션1-2] COSOLUS DLE 정량 성과",
+      "source_material": [
+        {
+          "id": "CG13",
+          "scope": "entire"
+        }
+      ],
+      "decision": "keep",
+      "rationale": "재자원화율(>90%)·공정비용(<5,500원/kg)이라는 핵심배너와 이를 구성하는 2개 하위 근거(핵심소재 3%→50%, 분리막&THz기술 3%→90%)가 '함께 제시되어야 의미가 완성되는 하위주제' 관계로 하나의 슬라이드. CG11/CG12와는 '기술동향→코솔러스 강점→코솔러스 정량 성과'로 이어지는 서로 다른 단계의 메시지이므로 병합하지 않음.",
+      "cross_group_ref_resolved": [],
+      "uncertain_evidence_carried": [],
+      "production_directive_applied": [],
+      "data_pending_carried": []
+    },
+    {
+      "slide_number": 14,
+      "working_title": "[솔루션2] 개요-친환경 차세대 배터리 재활용 공정기술(2세대)",
+      "source_material": [
+        {
+          "id": "CG14",
+          "scope": "entire"
+        }
+      ],
+      "decision": "keep",
+      "rationale": "2세대 공정 전체 흐름(배터리→블랙매스→부유선별→건식환원/유도가열→산출물)을 하이레벨로 소개하는 '개요' 단위. CG15(핵심기술 상세)와 도식이 유사해 병합을 검토했으나, CG07→CG08/09(솔루션1)에서도 동일하게 '개요 페이지 → 핵심기술 상세 페이지'로 분리되어 있어 원본이 솔루션1/솔루션2 모두에 일관되게 적용한 의도된 스토리텔링 구조로 판단, 동일 패턴 유지 차원에서 분리함.",
+      "cross_group_ref_resolved": [],
+      "uncertain_evidence_carried": [],
+      "production_directive_applied": [],
+      "data_pending_carried": []
+    },
+    {
+      "slide_number": 15,
+      "working_title": "핵심기술-[솔루션2] 친환경 차세대 배터리 재활용 공정기술(2세대) 개요도",
+      "source_material": [
+        {
+          "id": "CG15",
+          "scope": "entire"
+        }
+      ],
+      "decision": "keep",
+      "rationale": "CG14보다 상세한 라벨(COSOLUS 부유선별/건식환원/유도가열 등 고유명 부여)이 포함된 공정도로, CG16(건식환원 상세)·CG17(유도가열 상세)의 상위 요약 역할. '전체 그림'과 '각 부분의 상세'라는 구조로 CG16/17과 겹치지 않는 별도 정보 단위이므로 유지.",
+      "cross_group_ref_resolved": [],
+      "uncertain_evidence_carried": [],
+      "production_directive_applied": [],
+      "data_pending_carried": []
+    },
+    {
+      "slide_number": 16,
+      "working_title": "핵심기술-[솔루션2] 건식환원공정 (COSOLUS Originality)",
+      "source_material": [
+        {
+          "id": "CG16",
+          "scope": "entire"
+        }
+      ],
+      "decision": "keep",
+      "rationale": "건식환원 공정 단독에 대한 독립적 메시지(Co 회수 순도 >95%, PCT 2건 출원)와 전용 이미지 3개를 가진 완결 단위. CG17(유도가열)과는 '서로 다른 독립 기술 각각에 대한 설명'으로 병합 신호 없음(오히려 분할 신호: 독립적 핵심 메시지가 각각 존재).",
+      "cross_group_ref_resolved": [],
+      "uncertain_evidence_carried": [],
+      "production_directive_applied": [],
+      "data_pending_carried": []
+    },
+    {
+      "slide_number": 17,
+      "working_title": "핵심기술-[솔루션2] 유도가열기술 (COSOLUS Originality)",
+      "source_material": [
+        {
+          "id": "CG17",
+          "scope": "entire"
+        }
+      ],
+      "decision": "keep",
+      "rationale": "유도가열 기술의 가격경쟁력·기술경쟁력과 기존 소성로(Pusher Kiln) 대비 비교라는 독립적 메시지를 5개 이미지로 뒷받침하는 완결 단위. CG16과 병합하지 않는 사유는 위와 동일.",
+      "cross_group_ref_resolved": [],
+      "uncertain_evidence_carried": [],
+      "production_directive_applied": [],
+      "data_pending_carried": []
+    },
+    {
+      "slide_number": 18,
+      "working_title": "경쟁력-[솔루션2] 친환경 차세대 배터리 재활용 공정기술(2세대) (BTR/Vianode 비교)",
+      "source_material": [
+        {
+          "id": "CG18",
+          "scope": "entire"
+        }
+      ],
+      "decision": "keep",
+      "rationale": "CG16/17(개별 기술 상세)과 달리 코솔러스 유도가열 공정 전체를 BTR(중국)·Vianode(노르웨이)와 정면 비교하는 별도의 '경쟁력' 성격 슬라이드(CG10과 동일하게 '경쟁력' 타이틀의 독자 패턴) — 독립적 표 Evidence 보유로 유지.",
+      "cross_group_ref_resolved": [],
+      "uncertain_evidence_carried": [],
+      "production_directive_applied": [],
+      "data_pending_carried": []
+    },
+    {
+      "slide_number": 19,
+      "working_title": "조직구성",
+      "source_material": [
+        {
+          "id": "CG19",
+          "scope": "entire"
+        }
+      ],
+      "decision": "keep",
+      "rationale": "경영진 4인 프로필 + 팀 구성 전체를 다루는 완결된 조직도 단위. CG02(기업소개)와 같은 'Company' 섹션이나 스토리라인상 목적(정체성 소개 vs 실행 역량 증빙)이 달라 병합하지 않음(슬라이드2 rationale과 동일 근거).",
+      "cross_group_ref_resolved": [],
+      "uncertain_evidence_carried": [],
+      "production_directive_applied": [],
+      "data_pending_carried": []
+    },
+    {
+      "slide_number": 20,
+      "working_title": "투자포인트",
+      "source_material": [
+        {
+          "id": "CG20",
+          "scope": "entire"
+        }
+      ],
+      "decision": "keep",
+      "rationale": "박스1(기술력 및 사업화 방향)과 박스2(예상 소요자금)를 분리 검토했으나, 페이지 제목 자체가 단수의 '투자포인트'로 되어 있고 두 박스가 각각 '왜 투자할 만한가'와 '얼마나·어떻게 투자할 것인가'로서 함께 제시되어야 하나의 완결된 투자 제안이 되는 상호보완적 하위주제 관계 — 분할하지 않고 하나의 슬라이드로 유지.",
+      "cross_group_ref_resolved": [],
+      "uncertain_evidence_carried": [],
+      "production_directive_applied": [],
+      "data_pending_carried": []
+    },
+    {
+      "slide_number": 21,
+      "working_title": "세계시장 진출",
+      "source_material": [
+        {
+          "id": "CG21",
+          "scope": "entire"
+        }
+      ],
+      "decision": "keep",
+      "rationale": "목표·논의현황·마일스톤·파트너(예정) 로고가 '해외시장 진출 전략'이라는 하나의 메시지를 구성하는 완결 단위. 병합·분할 신호 해당 없음.",
+      "cross_group_ref_resolved": [],
+      "uncertain_evidence_carried": [
+        "CG21 images: img41(SWAP), img42(Panasonic Energy), img43(Iwatani), img44(DNP) — 본문에 회사명 미언급, 매칭 근거 로고 인접성뿐"
+      ],
+      "production_directive_applied": [],
+      "data_pending_carried": []
+    },
+    {
+      "slide_number": 22,
+      "working_title": "마무리 표지",
+      "source_material": [
+        {
+          "id": "CG22",
+          "scope": "entire"
+        }
+      ],
+      "decision": "keep",
+      "rationale": "클로징 메시지 + Thank You + 클로징 비주얼로 구성된 단독 마무리 페이지. 병합·분할 신호 해당 없음.",
+      "cross_group_ref_resolved": [],
+      "uncertain_evidence_carried": [],
+      "production_directive_applied": [],
+      "data_pending_carried": []
+    }
+  ],
+  "coverage_check": {
+    "unassigned_content_groups": [],
+    "unassigned_subtopics": [],
+    "evidence_reconciliation": [
+      {
+        "source_id": "CG01",
+        "source_count": 1,
+        "mapped_count": 1,
+        "match": true
+      },
+      {
+        "source_id": "CG02",
+        "source_count": 11,
+        "mapped_count": 11,
+        "match": true
+      },
+      {
+        "source_id": "CG03",
+        "source_count": 27,
+        "mapped_count": 27,
+        "match": true
+      },
+      {
+        "source_id": "CG04",
+        "source_count": 13,
+        "mapped_count": 13,
+        "match": true
+      },
+      {
+        "source_id": "CG05",
+        "source_count": 9,
+        "mapped_count": 9,
+        "match": true
+      },
+      {
+        "source_id": "CG06",
+        "source_count": 33,
+        "mapped_count": 33,
+        "match": true
+      },
+      {
+        "source_id": "CG07",
+        "source_count": 12,
+        "mapped_count": 12,
+        "match": true
+      },
+      {
+        "source_id": "CG08",
+        "source_count": 17,
+        "mapped_count": 17,
+        "match": true
+      },
+      {
+        "source_id": "CG09",
+        "source_count": 17,
+        "mapped_count": 17,
+        "match": true
+      },
+      {
+        "source_id": "CG10",
+        "source_count": 5,
+        "mapped_count": 5,
+        "match": true
+      },
+      {
+        "source_id": "CG11",
+        "source_count": 8,
+        "mapped_count": 8,
+        "match": true
+      },
+      {
+        "source_id": "CG12",
+        "source_count": 32,
+        "mapped_count": 32,
+        "match": true
+      },
+      {
+        "source_id": "CG13",
+        "source_count": 12,
+        "mapped_count": 12,
+        "match": true
+      },
+      {
+        "source_id": "CG14",
+        "source_count": 5,
+        "mapped_count": 5,
+        "match": true
+      },
+      {
+        "source_id": "CG15",
+        "source_count": 15,
+        "mapped_count": 15,
+        "match": true
+      },
+      {
+        "source_id": "CG16",
+        "source_count": 12,
+        "mapped_count": 12,
+        "match": true
+      },
+      {
+        "source_id": "CG17",
+        "source_count": 34,
+        "mapped_count": 34,
+        "match": true
+      },
+      {
+        "source_id": "CG18",
+        "source_count": 10,
+        "mapped_count": 10,
+        "match": true
+      },
+      {
+        "source_id": "CG19",
+        "source_count": 51,
+        "mapped_count": 51,
+        "match": true
+      },
+      {
+        "source_id": "CG20",
+        "source_count": 19,
+        "mapped_count": 19,
+        "match": true
+      },
+      {
+        "source_id": "CG21",
+        "source_count": 24,
+        "mapped_count": 24,
+        "match": true
+      },
+      {
+        "source_id": "CG22",
+        "source_count": 5,
+        "mapped_count": 5,
+        "match": true
+      }
+    ],
+    "cross_group_ref_trace_complete": true,
+    "uncertain_evidence_flagged": [
+      "CG04 img7 (5 YEARS 스톡 그래픽) — content_match_confidence: uncertain, 슬라이드4에 배정된 채 uncertain 유지",
+      "CG07 img19 (COSOLUS 1.5세대 추출제 구조식, img18과 동일) — uncertain 유지, 슬라이드7",
+      "CG08 img22/img23/img24 (벨기에 S사·중국 K사 열 비커 사진, COSOLUS 열과 동일 이미지 재사용) — uncertain 유지, 슬라이드8",
+      "CG21 img41/img42/img43/img44 (SWAP/Panasonic Energy/Iwatani/DNP 로고, 본문에 회사명 미언급) — uncertain 유지, 슬라이드21"
+    ],
+    "issues_found": [
+      "CG04(슬라이드4)의 핵심 근거 차트 2건(글로벌 전기차 폐배터리 발생 전망/북미 ESS 시장 성장 전망)이 원본에 전혀 없어(material_analysis.json escalations 항목) 이 슬라이드는 현재 시각적 근거 없이 박스 타이틀만으로 구성됨 — 슬라이드 경계 자체는 유효하나 콘텐츠 완성도 문제이므로 메인 에이전트를 통해 사용자 확인 필요 (이미 material_analysis.json.escalations에 기록됨, 여기서는 추적만 남김).",
+      "CG10(슬라이드10) 표에서 '국가' 행 레이블과 실제 값(제품군명)의 불일치, '가격'·'추출성능' 항목의 3사 동일 평가(◎) — 슬라이드 경계 판단에는 영향 없으나 [3] 이후 단계에서 표를 그대로 사용할 경우 참고 필요 (material_analysis.json NC-07 참조).",
+      "2026-08-20 규칙보완 통합 반영: production_directives[]/visual_placeholders[] 필드 보완 후 재검토 결과, 문서 전체 15개 Content Group에서 production_directives 25건(visualization 16/placement 8/emphasis 1)을 확인했으나 merge/split/order 유형은 0건이라 22개 슬라이드의 decision(전부 keep, 1:1)에는 영향 없음(검증 세션 결과, 재분석 없이 반영)."
+    ],
+    "status": "issues_resolved",
+    "data_pending_flagged": [
+      "CG03-VP1 (슬라이드3, 글로벌 양극재(리튬) 수요-공급 전망)",
+      "CG04-VP1 (슬라이드4, 글로벌 전기차 폐배터리 발생 전망)",
+      "CG04-VP2 (슬라이드4, 북미 ESS 시장 성장 전망)"
+    ],
+    "unresolved_production_directives": []
+  }
+}

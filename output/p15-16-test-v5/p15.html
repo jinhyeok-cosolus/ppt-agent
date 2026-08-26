@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>15p 5차 재테스트(v5) — [솔루션2] 개요 (라벨 인라인 배치·대칭 간격)</title>
+<!--
+  input/15, 16p 테스트용_5.docx 15페이지 제작 지시서만을 기준으로 독립적으로
+  새로 구성한 5차 테스트(정식 [1]~[9] 워크플로우 아님, Subagent 미사용,
+  Material Analysis/전체 QA 생략, 이전 차수 HTML/CSS 미참조·미재사용 —
+  클래스명도 전부 새로 작성: px5- 접두사).
+
+  _5 지시서가 이전 차수 대비 명시적으로 바꾼 항목만 반영(그 외 언급 없는
+  세부 규칙은 임의로 이전 차수에서 이어받지 않고, _5 본문에 실제로 쓰인
+  내용만 기준으로 판단):
+  1) 이미지-단계 매칭표 제공 — image1.png=전기차, image2.png=배터리팩이
+     별개 이미지로 명시되어 있어 시작 구간을 "전기차 → 배터리팩 → 전처리 →
+     블랙매스" 2단계로 확장(이전 차수는 image2.png만 사용).
+  2) 라벨 박스 배치 변경 — "기존공정(1세대)"/"COSOLUS(2세대)" 박스를
+     블랙매스 아래 세로 스택으로 두지 말고, 각자 설명하는 분기 라인(1세대/
+     2세대 Lane)과 정확히 같은 높이로 그 Lane 시작 지점에 인라인 배치.
+  3) 블랙매스를 중심으로 위(1세대)/아래(2세대) Lane이 대칭 간격을 갖도록
+     — 두 Lane 모두 flex:1로 동일 높이를 부여해 중심이 블랙매스와 일치.
+  4) 제목과 도식 사이 여백 확보 — 본문 상단 padding으로 Header Safe Area와
+     명확히 분리.
+  색상 최우선 규칙(1세대 전부 #C0392B, 2세대 전부 #005151, 분기 브래킷 상/하
+  절반 색 분할)과 밀도·크기 규칙(아이콘 확대, 라벨 Bold, 폭 채움)은 _5 본문에
+  동일하게 명시되어 있어 유지. _5에 언급 없는 이전 차수의 세부 규칙(꺾인
+  화살표, 테두리 제거 등)은 이번 독립 테스트에 임의로 반영하지 않았다.
+  이미지는 _5.docx에서 새로 추출한 원본을 그대로 사용(신규 생성 없음).
+  Header는 Hard Rule §9 그대로 유지.
+-->
+<style>
+  :root {
+    --c-dark: #034443;
+    --c-ink: #162B1F;
+    --c-slate: #5A6664;
+    --c-gray: #8C9694;
+    --c-submessage: #478689;
+    --c-white: #FFFFFF;
+    --c-r: #C0392B;
+    --c-g: #005151;
+    --font-base: "Pretendard", "Malgun Gothic", "맑은 고딕", sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #555; font-family: var(--font-base); color: var(--c-ink); word-break: keep-all; }
+  #deck { display: flex; padding: 24px; }
+  .slide { position: relative; width: 1280px; height: 720px; background: var(--c-white); overflow: hidden; }
+
+  /* ---------- 공통 Header System (Hard Rule §9, 그대로 유지) ---------- */
+  .hdr-ci { position: absolute; left: 64px; top: 25px; height: 20px; }
+  .hdr-ci img { height: 20px; width: auto; display: block; }
+  .hdr-submessage { position: absolute; right: 64px; top: 25px; font: 500 14pt/20px var(--font-base); color: var(--c-submessage); white-space: nowrap; }
+  .hdr-divider { position: absolute; left: 64px; top: 56px; width: 1152px; height: 1px; background: var(--c-submessage); }
+  .hdr-section-label { position: absolute; left: 68px; top: 62px; font: 300 12pt var(--font-base); color: var(--c-gray); letter-spacing: 0.06em; text-transform: uppercase; }
+  .hdr-main-title { position: absolute; left: 64px; top: 83px; width: 1152px; font: 800 28pt/1.25 var(--font-base); color: var(--c-dark); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .hdr-page-number { position: absolute; right: 44px; bottom: 24px; font: 300 14pt var(--font-base); color: var(--c-gray); }
+
+  /* Body Box — 제목/도식 사이 여백 확보를 위해 상단 padding 부여 */
+  .body-box { position: absolute; left: 64px; top: 135px; width: 1152px; height: 521px; padding-top: 20px; }
+
+  /* ================= px5 Flow ================= */
+  .px5-stage { display: flex; width: 100%; height: 100%; gap: 6px; }
+
+  .px5-left { flex: 0 0 226px; display: flex; align-items: center; justify-content: center; }
+  .px5-intake { display: flex; align-items: center; width: 100%; }
+  .px5-node { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .px5-node.label-top { flex-direction: column-reverse; }
+  .px5-node img { height: 38px; width: auto; max-width: 56px; object-fit: contain; }
+  .px5-node .lbl { font: 800 9.6pt/1.15 var(--font-base); text-align: center; color: var(--c-ink); }
+  .lbl.underline { text-decoration: underline; }
+  .px5-mini-conn { flex: 1 1 auto; height: 2px; background: var(--c-slate); margin: 0 2px; min-width: 6px; }
+
+  /* -------- 분기 브래킷: 상단 절반 빨강 / 하단 절반 다크그린 -------- */
+  .px5-right { position: relative; flex: 1; display: flex; flex-direction: column; padding-left: 22px; }
+  .px5-bracket-v {
+    position: absolute; left: 0; top: 25%; height: 50%; width: 3px;
+    background: linear-gradient(to bottom, var(--c-r) 0%, var(--c-r) 50%, var(--c-g) 50%, var(--c-g) 100%);
+  }
+  .px5-bracket-h { position: absolute; left: 0; width: 18px; height: 3px; }
+  .px5-bracket-h.r { top: 25%; background: var(--c-r); }
+  .px5-bracket-h.g { top: 75%; background: var(--c-g); }
+
+  /* 각 Lane은 동일 flex:1 높이 → 블랙매스(좌측 전체 중앙) 기준 대칭 */
+  .px5-lane { flex: 1; display: flex; align-items: center; padding-left: 20px; gap: 10px; }
+  .px5-divider-dashed { height: 0; border-top: 2px dashed var(--c-slate); margin: 0 30px; }
+
+  /* -------- 세대 라벨: 각 Lane 시작 지점에 인라인 배치(수평 정렬) -------- */
+  .px5-tag-wrap { display: flex; flex-direction: column; align-items: center; gap: 4px; flex: 0 0 auto; }
+  .px5-tag { text-align: center; padding: 7px 10px; border-radius: 2px; font: 800 11pt var(--font-base); color: #fff; white-space: nowrap; }
+  .px5-tag.r { background: var(--c-r); }
+  .px5-tag.g { background: var(--c-g); }
+  .px5-emph { text-align: center; font: 800 8.6pt/1.4 var(--font-base); color: var(--c-g); text-decoration: underline; }
+
+  /* 폭을 채우는 연결 화살표 */
+  .px5-conn { flex: 1 1 auto; min-width: 20px; height: 3px; position: relative; }
+  .px5-conn.r { background: var(--c-r); }
+  .px5-conn.g { background: var(--c-g); }
+  .px5-conn::after {
+    content: ""; position: absolute; right: -1px; top: 50%; transform: translateY(-50%);
+    border-top: 6px solid transparent; border-bottom: 6px solid transparent; border-left: 9px solid;
+  }
+  .px5-conn.r::after { border-left-color: var(--c-r); }
+  .px5-conn.g::after { border-left-color: var(--c-g); }
+
+  /* -------- 1세대 결과물 -------- */
+  .px5-result-block { display: flex; flex-direction: column; align-items: center; gap: 4px; flex: 0 0 auto; }
+  .px5-powrow { display: flex; gap: 7px; }
+  .px5-powrow img { width: 38px; height: 32px; object-fit: contain; border: 1px solid var(--c-r); }
+  .px5-result-label { font: 800 11pt var(--font-base); color: var(--c-ink); }
+  .px5-bend { color: var(--c-r); font-size: 15px; line-height: 1; font-weight: 800; margin-top: 2px; }
+  .px5-byproduct { display: flex; align-items: center; gap: 7px; margin-top: 2px; }
+  .px5-byproduct img { height: 28px; width: auto; object-fit: contain; }
+  .px5-byproduct span { font: 700 10pt var(--font-base); color: var(--c-slate); }
+
+  /* -------- 2세대 재분기 -------- */
+  .px5-subbranch { position: relative; flex: 1; display: flex; flex-direction: column; gap: 8px; padding-left: 18px; }
+  .px5-subbranch-v { position: absolute; left: 0; top: 18%; height: 64%; width: 2.5px; background: var(--c-g); }
+  .px5-subrow { position: relative; display: flex; align-items: center; gap: 10px; padding-left: 16px; }
+  .px5-subrow::before { content: ""; position: absolute; left: 0; top: 50%; width: 14px; height: 2.5px; background: var(--c-g); }
+
+  .px5-resultpair { display: flex; flex-direction: column; align-items: center; gap: 4px; flex: 0 0 auto; }
+  .px5-resultpair .imgs { display: flex; gap: 10px; }
+  .px5-resultpair img { height: 40px; width: auto; object-fit: contain; }
+</style>
+</head>
+<body>
+<div id="deck">
+<section class="slide">
+  <div class="hdr-ci"><img src="assets/images/ci-color.png" alt="COSOLUS"></div>
+  <div class="hdr-submessage">We promise tomorrow</div>
+  <div class="hdr-divider"></div>
+  <div class="hdr-section-label">TECHNOLOGY</div>
+  <div class="hdr-main-title">[솔루션2] 개요 – 친환경 차세대 배터리 재활용 공정기술 (2세대)</div>
+
+  <div class="body-box">
+    <div class="px5-stage">
+
+      <!-- 좌측: 공유 Intake (전기차 → 배터리팩 → 전처리 → 블랙매스), 세대 라벨은 여기 없음 -->
+      <div class="px5-left">
+        <div class="px5-intake">
+          <div class="px5-node"><img src="assets/images/start-ev.png" alt="전기차"><span class="lbl">전기차</span></div>
+          <div class="px5-mini-conn"></div>
+          <div class="px5-node"><img src="assets/images/start-battery.png" alt="배터리팩"><span class="lbl">배터리팩</span></div>
+          <div class="px5-mini-conn"></div>
+          <div class="px5-node"><img src="assets/images/pretreat-icon.png" alt="전처리"><span class="lbl">전처리</span></div>
+          <div class="px5-mini-conn"></div>
+          <div class="px5-node"><img src="assets/images/blackmass.png" alt="블랙매스"><span class="lbl">블랙매스</span></div>
+        </div>
+      </div>
+
+      <!-- 우측: 상/하 대칭 브래킷 + 두 세대 Lane(각 Lane 시작에 인라인 라벨) -->
+      <div class="px5-right">
+        <span class="px5-bracket-v"></span>
+        <span class="px5-bracket-h r"></span>
+        <span class="px5-bracket-h g"></span>
+
+        <!-- 1세대 Lane (위, 전부 빨강) — 라벨이 이 Lane과 같은 높이로 인라인 배치 -->
+        <div class="px5-lane">
+          <div class="px5-tag-wrap"><div class="px5-tag r">기존공정 (1세대)</div></div>
+          <div class="px5-conn r"></div>
+          <div class="px5-node label-top"><span class="lbl">용매추출</span><img src="assets/images/gen1-extraction-equip.png" alt="용매추출"></div>
+          <div class="px5-conn r"></div>
+          <div class="px5-result-block">
+            <div class="px5-powrow">
+              <img src="assets/images/gen1-mnso4.png" alt="MnSO4">
+              <img src="assets/images/gen1-niso4.png" alt="NiSO4">
+              <img src="assets/images/gen1-coso4.png" alt="CoSO4">
+              <img src="assets/images/gen1-li2co3.png" alt="Li2CO3">
+            </div>
+            <div class="px5-result-label">재활용 양극재</div>
+            <div class="px5-bend">↓</div>
+            <div class="px5-byproduct"><img src="assets/images/gen1-waste-graphite.jpeg" alt="폐흑연"><span>폐흑연</span></div>
+          </div>
+        </div>
+
+        <div class="px5-divider-dashed"></div>
+
+        <!-- 2세대 Lane (아래, 전부 다크그린) — 라벨이 이 Lane과 같은 높이로 인라인 배치 -->
+        <div class="px5-lane">
+          <div class="px5-tag-wrap">
+            <div class="px5-tag g">COSOLUS (2세대)</div>
+            <div class="px5-emph">경제성 · 친환경성 · 양산성 확보</div>
+          </div>
+          <div class="px5-conn g"></div>
+          <div class="px5-node label-top"><span class="lbl underline">부유선별</span><img src="assets/images/gen2-flotation-equip.png" alt="부유선별"></div>
+          <div class="px5-conn g"></div>
+
+          <div class="px5-subbranch">
+            <span class="px5-subbranch-v"></span>
+
+            <div class="px5-subrow">
+              <div class="px5-node"><img src="assets/images/gen2-cathode-blackmass.png" alt="양극재용 블랙매스"><span class="lbl">양극재용<br>블랙매스</span></div>
+              <div class="px5-conn g"></div>
+              <div class="px5-node label-top"><span class="lbl underline">건식환원</span><img src="assets/images/gen2-dryreduction.png" alt="건식환원"></div>
+              <div class="px5-conn g"></div>
+              <div class="px5-resultpair">
+                <div class="imgs">
+                  <img src="assets/images/gen2-cobalt.png" alt="코발트">
+                  <img src="assets/images/gen2-nickel.png" alt="니켈">
+                </div>
+                <div class="px5-result-label">재활용 양극재</div>
+              </div>
+            </div>
+
+            <div class="px5-subrow">
+              <div class="px5-node"><img src="assets/images/gen2-anode-blackmass.png" alt="음극재용 블랙매스"><span class="lbl">음극재용<br>블랙매스</span></div>
+              <div class="px5-conn g"></div>
+              <div class="px5-node label-top"><span class="lbl underline">유도가열</span><img src="assets/images/gen2-induction-heat.png" alt="유도가열"></div>
+              <div class="px5-conn g"></div>
+              <div class="px5-node"><img src="assets/images/gen2-graphite-refined.png" alt="고순도 정제흑연"><span class="lbl">고순도<br>정제흑연</span></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="hdr-page-number">15</div>
+</section>
+</div>
+</body>
+</html>

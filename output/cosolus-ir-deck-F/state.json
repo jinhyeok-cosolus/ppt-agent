@@ -1,0 +1,43 @@
+{
+  "project_name": "cosolus-ir-deck-F",
+  "stage": "6",
+  "audience": "고객사/외부 청중",
+  "language": "ko",
+  "presentation_time_min": null,
+  "target_slide_count": null,
+  "slide_count_policy": "입력 자료에 기재된 슬라이드별 구성과 내용을 우선 기준으로 사용 (시간 제약 없음)",
+  "source_material": "input/2026.08.20 코솔러스_IR_내용 추출&프롬프트_V2.docx",
+  "reference_policy": "기존 프로젝트에 구축된 Design/Layout Reference 재사용 (docs/design-hard-rules, docs/design-system, docs/layout-reference, docs/slide-design-rules, docs/brand-assets, docs/cover-reference) — 별도 레퍼런스 분석 불필요",
+  "web_ppt_version": "v1",
+  "pptx_generated": false,
+  "shared_urls": {},
+  "shared_html": {},
+  "notes": "Field Test — 기존 cosolus-ir-deck-A~E의 산출물/state.json 재사용 금지, 최신 Agent/Skill/MD/Hard Rule 기준으로 처음부터 진행. 문제 발견 시 공통 규칙 파일 임의 수정 금지, 문제점으로 기록만 할 것.",
+  "history": [
+    {
+      "stage": "1",
+      "action": "프로젝트 생성 및 입력 확정",
+      "detail": "원본 자료·레퍼런스 정책·청중·언어·슬라이드 구성 방침 확정"
+    },
+    {
+      "stage": "2-3",
+      "action": "자료 분석 및 구성 설계 완료 (content-designer)",
+      "detail": "material_analysis.json(24 Content Groups), slide_composition_map.json, slide_outline.md(23슬라이드) 생성. 에스컬레이션 0건, needs_confirmation 8건(NC-01~NC-08). Field Test 문제점 8건 별도 기록(공통 규칙 파일 미수정)."
+    },
+    {
+      "stage": "4",
+      "action": "F 재개 준비 — material_analysis.json에 evidence_manifest 생성(4-1 적용)",
+      "detail": "build_evidence_manifest.py를 기존 material_analysis.json에 적용. content_groups 등 기존 정본 내용은 바이트 단위로 불변(diff 확인), evidence_manifest만 추가. evidence_count=315(수동 집계와 일치), entries=315, ID 315개 전부 고유, canonical_content_sha256 재계산값과 일치(최신). uncertain 11건/data_pending 0건/cross_group_ref 0건. slide_composition_map.json·slide_outline.md는 mtime 불변으로 미수정 확인. Layout/HTML 생성은 착수하지 않음."
+    },
+    {
+      "stage": "4→5",
+      "action": "Human Review ① 승인 → [5] 웹PPT v1 생성 착수 (content-designer, 백그라운드)",
+      "detail": "사용자가 23슬라이드 구성 승인. [1]~[4] 재실행 금지 지시, 기존 material_analysis.json(evidence_manifest 포함)·slide_composition_map.json·slide_outline.md를 그대로 입력으로 사용해 web_ppt/v1/ HTML 생성 + 자동 QA만 지시(Manifest 우선·필요 Evidence만 원문 조회 원칙 명시, pptx 변환·공통 규칙 파일 수정 금지). 이전 content-designer 세션은 트랜스크립트 유실로 재개 불가해 신규 호출."
+    },
+    {
+      "stage": "5",
+      "action": "web_ppt/v1 생성 및 자동 QA 완료 (content-designer)",
+      "detail": "23슬라이드 전부 생성. Layout Compliance/Typography 최종 0건 위반(초기 발견분은 그 자리에서 수정 후 재검증). Visual Quality 23장 전수 육안 검토 후 밀도 불균형 등 수정. Content Fidelity QA 초기 58건 flag는 전수 대조 결과 실제 누락 0건(스크립트 오탐, 원문표기 수정 1건만 반영). pptx 변환 미수행, 공통 규칙 파일 미수정. Human Review ②로 이관 필요 항목(NC-01~NC-06 등 slide_outline.md 기재 + 신규 판단사항 3건) 별도 보고됨 — 아직 사용자 검토 전."
+    }
+  ]
+}

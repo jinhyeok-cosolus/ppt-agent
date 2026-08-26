@@ -1,0 +1,365 @@
+<w:p xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:cx="http://schemas.microsoft.com/office/drawing/2014/chartex" xmlns:cx1="http://schemas.microsoft.com/office/drawing/2015/9/8/chartex" xmlns:cx2="http://schemas.microsoft.com/office/drawing/2015/10/21/chartex" xmlns:cx3="http://schemas.microsoft.com/office/drawing/2016/5/9/chartex" xmlns:cx4="http://schemas.microsoft.com/office/drawing/2016/5/10/chartex" xmlns:cx5="http://schemas.microsoft.com/office/drawing/2016/5/11/chartex" xmlns:cx6="http://schemas.microsoft.com/office/drawing/2016/5/12/chartex" xmlns:cx7="http://schemas.microsoft.com/office/drawing/2016/5/13/chartex" xmlns:cx8="http://schemas.microsoft.com/office/drawing/2016/5/14/chartex" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:aink="http://schemas.microsoft.com/office/drawing/2016/ink" xmlns:am3d="http://schemas.microsoft.com/office/drawing/2017/model3d" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:oel="http://schemas.microsoft.com/office/2019/extlst" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:w16cex="http://schemas.microsoft.com/office/word/2018/wordml/cex" xmlns:w16cid="http://schemas.microsoft.com/office/word/2016/wordml/cid" xmlns:w16="http://schemas.microsoft.com/office/word/2018/wordml" xmlns:w16du="http://schemas.microsoft.com/office/word/2023/wordml/word16du" xmlns:w16sdtdh="http://schemas.microsoft.com/office/word/2020/wordml/sdtdatahash" xmlns:w16sdtfl="http://schemas.microsoft.com/office/word/2024/wordml/sdtformatlock" xmlns:w16se="http://schemas.microsoft.com/office/word/2015/wordml/symex" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape" w14:paraId="361B7625" w14:textId="77777777" w:rsidR="00093D73" w:rsidRDefault="00093D73" w:rsidP="00093D73">
+  <w:pPr>
+    <w:keepNext/>
+    <w:spacing w:after="80"/>
+  </w:pPr>
+  <w:r w:rsidRPr="00093D73">
+    <w:rPr>
+      <w:rFonts w:cs="맑은 고딕"/>
+      <w:noProof/>
+      <w:lang w:eastAsia="ko-KR"/>
+    </w:rPr>
+    <mc:AlternateContent>
+      <mc:Choice Requires="wpg">
+        <w:drawing>
+          <wp:inline distT="0" distB="0" distL="0" distR="0" wp14:anchorId="02FD0651" wp14:editId="5AA4F27F">
+            <wp:extent cx="3983356" cy="3413166"/>
+            <wp:effectExtent l="0" t="0" r="0" b="0"/>
+            <wp:docPr id="526" name="그룹 525">
+              <a:extLst xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main">
+                <a:ext uri="{FF2B5EF4-FFF2-40B4-BE49-F238E27FC236}">
+                  <a16:creationId xmlns:a16="http://schemas.microsoft.com/office/drawing/2014/main" id="{5F2DE320-22F4-EA0C-2B4B-CA9DD4E372C9}"/>
+                </a:ext>
+              </a:extLst>
+            </wp:docPr>
+            <wp:cNvGraphicFramePr/>
+            <a:graphic xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main">
+              <a:graphicData uri="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup">
+                <wpg:wgp>
+                  <wpg:cNvGrpSpPr/>
+                  <wpg:grpSpPr>
+                    <a:xfrm>
+                      <a:off x="0" y="0"/>
+                      <a:ext cx="3983356" cy="3413166"/>
+                      <a:chOff x="13131" y="0"/>
+                      <a:chExt cx="3983356" cy="3413166"/>
+                    </a:xfrm>
+                  </wpg:grpSpPr>
+                  <wps:wsp>
+                    <wps:cNvPr id="482337340" name="양극재 배터리 수요">
+                      <a:extLst>
+                        <a:ext uri="{FF2B5EF4-FFF2-40B4-BE49-F238E27FC236}">
+                          <a16:creationId xmlns:a16="http://schemas.microsoft.com/office/drawing/2014/main" id="{09736D63-43A2-966D-1A3A-40F12DB91EAE}"/>
+                        </a:ext>
+                      </a:extLst>
+                    </wps:cNvPr>
+                    <wps:cNvSpPr txBox="1"/>
+                    <wps:spPr>
+                      <a:xfrm>
+                        <a:off x="100129" y="0"/>
+                        <a:ext cx="3896358" cy="2695573"/>
+                      </a:xfrm>
+                      <a:prstGeom prst="rect">
+                        <a:avLst/>
+                      </a:prstGeom>
+                      <a:noFill/>
+                      <a:ln w="12700" cap="flat">
+                        <a:noFill/>
+                        <a:miter lim="400000"/>
+                      </a:ln>
+                      <a:effectLst/>
+                      <a:extLst>
+                        <a:ext uri="{C572A759-6A51-4108-AA02-DFA0A04FC94B}">
+                          <ma14:wrappingTextBoxFlag xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main" xmlns="" xmlns:a14="http://schemas.microsoft.com/office/drawing/2010/main" xmlns:ma14="http://schemas.microsoft.com/office/mac/drawingml/2011/main" xmlns:lc="http://schemas.openxmlformats.org/drawingml/2006/lockedCanvas" val="1"/>
+                        </a:ext>
+                      </a:extLst>
+                    </wps:spPr>
+                    <wps:txbx>
+                      <w:txbxContent>
+                        <w:p w14:paraId="7F11F074" w14:textId="77777777" w:rsidR="00093D73" w:rsidRDefault="00093D73" w:rsidP="00093D73">
+                          <w:pPr>
+                            <w:wordWrap w:val="0"/>
+                            <w:spacing w:line="360" w:lineRule="auto"/>
+                            <w:jc w:val="center"/>
+                            <w:rPr>
+                              <w:rFonts w:ascii="Pretendard SemiBold" w:eastAsia="Pretendard SemiBold" w:hAnsi="Pretendard SemiBold" w:cs="Pretendard SemiBold"/>
+                              <w:color w:val="000000" w:themeColor="text1"/>
+                              <w:kern w:val="24"/>
+                              <w:sz w:val="40"/>
+                              <w:szCs w:val="40"/>
+                            </w:rPr>
+                          </w:pPr>
+                          <w:r>
+                            <w:rPr>
+                              <w:rFonts w:ascii="Pretendard SemiBold" w:eastAsia="Pretendard SemiBold" w:hAnsi="Pretendard SemiBold" w:cs="Pretendard SemiBold" w:hint="eastAsia"/>
+                              <w:color w:val="000000" w:themeColor="text1"/>
+                              <w:kern w:val="24"/>
+                              <w:sz w:val="40"/>
+                              <w:szCs w:val="40"/>
+                            </w:rPr>
+                            <w:t xml:space="preserve">“Historically, it typically </w:t>
+                          </w:r>
+                        </w:p>
+                        <w:p w14:paraId="6E4283A8" w14:textId="77777777" w:rsidR="00093D73" w:rsidRDefault="00093D73" w:rsidP="00093D73">
+                          <w:pPr>
+                            <w:wordWrap w:val="0"/>
+                            <w:spacing w:line="360" w:lineRule="auto"/>
+                            <w:jc w:val="center"/>
+                            <w:rPr>
+                              <w:rFonts w:ascii="Pretendard SemiBold" w:eastAsia="Pretendard SemiBold" w:hAnsi="Pretendard SemiBold" w:cs="Pretendard SemiBold"/>
+                              <w:color w:val="000000" w:themeColor="text1"/>
+                              <w:kern w:val="24"/>
+                              <w:sz w:val="40"/>
+                              <w:szCs w:val="40"/>
+                            </w:rPr>
+                          </w:pPr>
+                          <w:r>
+                            <w:rPr>
+                              <w:rFonts w:ascii="Pretendard SemiBold" w:eastAsia="Pretendard SemiBold" w:hAnsi="Pretendard SemiBold" w:cs="Pretendard SemiBold" w:hint="eastAsia"/>
+                              <w:color w:val="000000" w:themeColor="text1"/>
+                              <w:kern w:val="24"/>
+                              <w:sz w:val="40"/>
+                              <w:szCs w:val="40"/>
+                            </w:rPr>
+                            <w:t xml:space="preserve">takes 10 to 20 years to move </w:t>
+                          </w:r>
+                        </w:p>
+                        <w:p w14:paraId="08C1A511" w14:textId="77777777" w:rsidR="00093D73" w:rsidRDefault="00093D73" w:rsidP="00093D73">
+                          <w:pPr>
+                            <w:wordWrap w:val="0"/>
+                            <w:spacing w:line="360" w:lineRule="auto"/>
+                            <w:jc w:val="center"/>
+                            <w:rPr>
+                              <w:rFonts w:ascii="Pretendard SemiBold" w:eastAsia="Pretendard SemiBold" w:hAnsi="Pretendard SemiBold" w:cs="Pretendard SemiBold"/>
+                              <w:color w:val="000000" w:themeColor="text1"/>
+                              <w:kern w:val="24"/>
+                              <w:sz w:val="40"/>
+                              <w:szCs w:val="40"/>
+                            </w:rPr>
+                          </w:pPr>
+                          <w:r>
+                            <w:rPr>
+                              <w:rFonts w:ascii="Pretendard SemiBold" w:eastAsia="Pretendard SemiBold" w:hAnsi="Pretendard SemiBold" w:cs="Pretendard SemiBold" w:hint="eastAsia"/>
+                              <w:color w:val="000000" w:themeColor="text1"/>
+                              <w:kern w:val="24"/>
+                              <w:sz w:val="40"/>
+                              <w:szCs w:val="40"/>
+                            </w:rPr>
+                            <w:t xml:space="preserve">a material from initial discovery to market.” </w:t>
+                          </w:r>
+                        </w:p>
+                      </w:txbxContent>
+                    </wps:txbx>
+                    <wps:bodyPr wrap="square" lIns="45719" tIns="45719" rIns="45719" bIns="45719" numCol="1" anchor="ctr">
+                      <a:spAutoFit/>
+                    </wps:bodyPr>
+                  </wps:wsp>
+                  <wps:wsp>
+                    <wps:cNvPr id="667493522" name="TextBox 527">
+                      <a:extLst>
+                        <a:ext uri="{FF2B5EF4-FFF2-40B4-BE49-F238E27FC236}">
+                          <a16:creationId xmlns:a16="http://schemas.microsoft.com/office/drawing/2014/main" id="{9C39A981-766A-BCE9-1EAD-A5B8A9BE73C6}"/>
+                        </a:ext>
+                      </a:extLst>
+                    </wps:cNvPr>
+                    <wps:cNvSpPr txBox="1"/>
+                    <wps:spPr>
+                      <a:xfrm>
+                        <a:off x="13131" y="2359701"/>
+                        <a:ext cx="3983355" cy="1053465"/>
+                      </a:xfrm>
+                      <a:prstGeom prst="rect">
+                        <a:avLst/>
+                      </a:prstGeom>
+                      <a:noFill/>
+                    </wps:spPr>
+                    <wps:txbx>
+                      <w:txbxContent>
+                        <w:p w14:paraId="07E63959" w14:textId="77777777" w:rsidR="00093D73" w:rsidRDefault="00093D73" w:rsidP="00093D73">
+                          <w:pPr>
+                            <w:wordWrap w:val="0"/>
+                            <w:jc w:val="center"/>
+                            <w:rPr>
+                              <w:rFonts w:ascii="Pretendard Light" w:eastAsia="Pretendard Light" w:hAnsi="Pretendard Light" w:cs="Pretendard Light"/>
+                              <w:i/>
+                              <w:iCs/>
+                              <w:color w:val="000000" w:themeColor="text1"/>
+                              <w:kern w:val="24"/>
+                              <w:sz w:val="36"/>
+                              <w:szCs w:val="36"/>
+                              <w14:textOutline w14:w="9525" w14:cap="flat" w14:cmpd="sng" w14:algn="ctr">
+                                <w14:solidFill>
+                                  <w14:schemeClr w14:val="accent1">
+                                    <w14:alpha w14:val="100000"/>
+                                  </w14:schemeClr>
+                                </w14:solidFill>
+                                <w14:prstDash w14:val="solid"/>
+                                <w14:round/>
+                              </w14:textOutline>
+                            </w:rPr>
+                          </w:pPr>
+                          <w:r>
+                            <w:rPr>
+                              <w:rFonts w:ascii="Pretendard Light" w:eastAsia="Pretendard Light" w:hAnsi="Pretendard Light" w:cs="Pretendard Light" w:hint="eastAsia"/>
+                              <w:i/>
+                              <w:iCs/>
+                              <w:color w:val="000000" w:themeColor="text1"/>
+                              <w:kern w:val="24"/>
+                              <w:sz w:val="36"/>
+                              <w:szCs w:val="36"/>
+                              <w14:textOutline w14:w="9525" w14:cap="flat" w14:cmpd="sng" w14:algn="ctr">
+                                <w14:solidFill>
+                                  <w14:schemeClr w14:val="accent1">
+                                    <w14:alpha w14:val="100000"/>
+                                  </w14:schemeClr>
+                                </w14:solidFill>
+                                <w14:prstDash w14:val="solid"/>
+                                <w14:round/>
+                              </w14:textOutline>
+                            </w:rPr>
+                            <w:t>White House Office of Science and Technology Policy</w:t>
+                          </w:r>
+                        </w:p>
+                      </w:txbxContent>
+                    </wps:txbx>
+                    <wps:bodyPr wrap="square">
+                      <a:spAutoFit/>
+                    </wps:bodyPr>
+                  </wps:wsp>
+                </wpg:wgp>
+              </a:graphicData>
+            </a:graphic>
+          </wp:inline>
+        </w:drawing>
+      </mc:Choice>
+      <mc:Fallback>
+        <w:pict>
+          <v:group w14:anchorId="02FD0651" id="그룹 525" o:spid="_x0000_s1027" style="width:313.65pt;height:268.75pt;mso-position-horizontal-relative:char;mso-position-vertical-relative:line" coordorigin="131" coordsize="39833,34131" o:gfxdata="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&#10;">
+            <v:shape id="양극재 배터리 수요" o:spid="_x0000_s1028" type="#_x0000_t202" style="position:absolute;left:1001;width:38963;height:26955;visibility:visible;mso-wrap-style:square;v-text-anchor:middle" o:gfxdata="UEsDBBQABgAIAAAAIQDb4fbL7gAAAIUBAAATAAAAW0NvbnRlbnRfVHlwZXNdLnhtbHyQz07DMAyH&#10;70i8Q+QralM4IITa7kDhCAiNB7ASt43WOlEcyvb2pNu4IODoPz9/n1xv9vOkForiPDdwXVagiI23&#10;jocG3rdPxR0oScgWJ8/UwIEENu3lRb09BBKV0ywNjCmFe63FjDSjlD4Q50nv44wpl3HQAc0OB9I3&#10;VXWrjedEnIq03oC27qjHjympx31un0wiTQLq4bS4shrAECZnMGVTvbD9QSnOhDInjzsyuiBXWQP0&#10;r4R18jfgnHvJr4nOknrFmJ5xzhraRtHWf3Kkpfz/yGo5S+H73hkquyhdjr3R8m2lj09svwAAAP//&#10;AwBQSwMEFAAGAAgAAAAhAFr0LFu/AAAAFQEAAAsAAABfcmVscy8ucmVsc2zPwWrDMAwG4Ptg72B0&#10;X5TuUMaI01uh19I+gLGVxCy2jGSy9e1nemrHjpL4P0nD4SetZiPRyNnCruvBUPYcYp4tXC/Htw8w&#10;Wl0ObuVMFm6kcBhfX4Yzra62kC6xqGlKVgtLreUTUf1CyWnHhXKbTCzJ1VbKjMX5LzcTvvf9HuXR&#10;gPHJNKdgQU5hB+ZyK23zHztFL6w81c5zQp6m6P9TMfB3PtPWFCczVQtB9N4U2rp2HOA44NMz4y8A&#10;AAD//wMAUEsDBBQABgAIAAAAIQCIZ8IuxgAAAOIAAAAPAAAAZHJzL2Rvd25yZXYueG1sRI/NSsQw&#10;FIX3gu8QruBGnGTaokOdzCCCMFujC5e3zbUpNjclyXTq25uF4PJw/vj2x9VPYqGYxsAathsFgrgP&#10;duRBw8f76/0ORMrIFqfApOGHEhwP11d7bG248BstJg+ijHBqUYPLeW6lTL0jj2kTZuLifYXoMRcZ&#10;B2kjXsq4n2Sl1IP0OHJ5cDjTi6P+25y9hm7bqeXufFKTqczQOdlEIz+1vr1Zn59AZFrzf/ivfbIa&#10;ml1V1491UyAKUsEBefgFAAD//wMAUEsBAi0AFAAGAAgAAAAhANvh9svuAAAAhQEAABMAAAAAAAAA&#10;AAAAAAAAAAAAAFtDb250ZW50X1R5cGVzXS54bWxQSwECLQAUAAYACAAAACEAWvQsW78AAAAVAQAA&#10;CwAAAAAAAAAAAAAAAAAfAQAAX3JlbHMvLnJlbHNQSwECLQAUAAYACAAAACEAiGfCLsYAAADiAAAA&#10;DwAAAAAAAAAAAAAAAAAHAgAAZHJzL2Rvd25yZXYueG1sUEsFBgAAAAADAAMAtwAAAPoCAAAAAA==&#10;" filled="f" stroked="f" strokeweight="1pt">
+              <v:stroke miterlimit="4"/>
+              <v:textbox style="mso-fit-shape-to-text:t" inset="1.27mm,1.27mm,1.27mm,1.27mm">
+                <w:txbxContent>
+                  <w:p w14:paraId="7F11F074" w14:textId="77777777" w:rsidR="00093D73" w:rsidRDefault="00093D73" w:rsidP="00093D73">
+                    <w:pPr>
+                      <w:wordWrap w:val="0"/>
+                      <w:spacing w:line="360" w:lineRule="auto"/>
+                      <w:jc w:val="center"/>
+                      <w:rPr>
+                        <w:rFonts w:ascii="Pretendard SemiBold" w:eastAsia="Pretendard SemiBold" w:hAnsi="Pretendard SemiBold" w:cs="Pretendard SemiBold"/>
+                        <w:color w:val="000000" w:themeColor="text1"/>
+                        <w:kern w:val="24"/>
+                        <w:sz w:val="40"/>
+                        <w:szCs w:val="40"/>
+                      </w:rPr>
+                    </w:pPr>
+                    <w:r>
+                      <w:rPr>
+                        <w:rFonts w:ascii="Pretendard SemiBold" w:eastAsia="Pretendard SemiBold" w:hAnsi="Pretendard SemiBold" w:cs="Pretendard SemiBold" w:hint="eastAsia"/>
+                        <w:color w:val="000000" w:themeColor="text1"/>
+                        <w:kern w:val="24"/>
+                        <w:sz w:val="40"/>
+                        <w:szCs w:val="40"/>
+                      </w:rPr>
+                      <w:t xml:space="preserve">“Historically, it typically </w:t>
+                    </w:r>
+                  </w:p>
+                  <w:p w14:paraId="6E4283A8" w14:textId="77777777" w:rsidR="00093D73" w:rsidRDefault="00093D73" w:rsidP="00093D73">
+                    <w:pPr>
+                      <w:wordWrap w:val="0"/>
+                      <w:spacing w:line="360" w:lineRule="auto"/>
+                      <w:jc w:val="center"/>
+                      <w:rPr>
+                        <w:rFonts w:ascii="Pretendard SemiBold" w:eastAsia="Pretendard SemiBold" w:hAnsi="Pretendard SemiBold" w:cs="Pretendard SemiBold"/>
+                        <w:color w:val="000000" w:themeColor="text1"/>
+                        <w:kern w:val="24"/>
+                        <w:sz w:val="40"/>
+                        <w:szCs w:val="40"/>
+                      </w:rPr>
+                    </w:pPr>
+                    <w:r>
+                      <w:rPr>
+                        <w:rFonts w:ascii="Pretendard SemiBold" w:eastAsia="Pretendard SemiBold" w:hAnsi="Pretendard SemiBold" w:cs="Pretendard SemiBold" w:hint="eastAsia"/>
+                        <w:color w:val="000000" w:themeColor="text1"/>
+                        <w:kern w:val="24"/>
+                        <w:sz w:val="40"/>
+                        <w:szCs w:val="40"/>
+                      </w:rPr>
+                      <w:t xml:space="preserve">takes 10 to 20 years to move </w:t>
+                    </w:r>
+                  </w:p>
+                  <w:p w14:paraId="08C1A511" w14:textId="77777777" w:rsidR="00093D73" w:rsidRDefault="00093D73" w:rsidP="00093D73">
+                    <w:pPr>
+                      <w:wordWrap w:val="0"/>
+                      <w:spacing w:line="360" w:lineRule="auto"/>
+                      <w:jc w:val="center"/>
+                      <w:rPr>
+                        <w:rFonts w:ascii="Pretendard SemiBold" w:eastAsia="Pretendard SemiBold" w:hAnsi="Pretendard SemiBold" w:cs="Pretendard SemiBold"/>
+                        <w:color w:val="000000" w:themeColor="text1"/>
+                        <w:kern w:val="24"/>
+                        <w:sz w:val="40"/>
+                        <w:szCs w:val="40"/>
+                      </w:rPr>
+                    </w:pPr>
+                    <w:r>
+                      <w:rPr>
+                        <w:rFonts w:ascii="Pretendard SemiBold" w:eastAsia="Pretendard SemiBold" w:hAnsi="Pretendard SemiBold" w:cs="Pretendard SemiBold" w:hint="eastAsia"/>
+                        <w:color w:val="000000" w:themeColor="text1"/>
+                        <w:kern w:val="24"/>
+                        <w:sz w:val="40"/>
+                        <w:szCs w:val="40"/>
+                      </w:rPr>
+                      <w:t xml:space="preserve">a material from initial discovery to market.” </w:t>
+                    </w:r>
+                  </w:p>
+                </w:txbxContent>
+              </v:textbox>
+            </v:shape>
+            <v:shape id="TextBox 527" o:spid="_x0000_s1029" type="#_x0000_t202" style="position:absolute;left:131;top:23597;width:39833;height:10534;visibility:visible;mso-wrap-style:square;v-text-anchor:top" o:gfxdata="UEsDBBQABgAIAAAAIQDb4fbL7gAAAIUBAAATAAAAW0NvbnRlbnRfVHlwZXNdLnhtbHyQz07DMAyH&#10;70i8Q+QralM4IITa7kDhCAiNB7ASt43WOlEcyvb2pNu4IODoPz9/n1xv9vOkForiPDdwXVagiI23&#10;jocG3rdPxR0oScgWJ8/UwIEENu3lRb09BBKV0ywNjCmFe63FjDSjlD4Q50nv44wpl3HQAc0OB9I3&#10;VXWrjedEnIq03oC27qjHjympx31un0wiTQLq4bS4shrAECZnMGVTvbD9QSnOhDInjzsyuiBXWQP0&#10;r4R18jfgnHvJr4nOknrFmJ5xzhraRtHWf3Kkpfz/yGo5S+H73hkquyhdjr3R8m2lj09svwAAAP//&#10;AwBQSwMEFAAGAAgAAAAhAFr0LFu/AAAAFQEAAAsAAABfcmVscy8ucmVsc2zPwWrDMAwG4Ptg72B0&#10;X5TuUMaI01uh19I+gLGVxCy2jGSy9e1nemrHjpL4P0nD4SetZiPRyNnCruvBUPYcYp4tXC/Htw8w&#10;Wl0ObuVMFm6kcBhfX4Yzra62kC6xqGlKVgtLreUTUf1CyWnHhXKbTCzJ1VbKjMX5LzcTvvf9HuXR&#10;gPHJNKdgQU5hB+ZyK23zHztFL6w81c5zQp6m6P9TMfB3PtPWFCczVQtB9N4U2rp2HOA44NMz4y8A&#10;AAD//wMAUEsDBBQABgAIAAAAIQA4A7afyAAAAOIAAAAPAAAAZHJzL2Rvd25yZXYueG1sRI9BS8NA&#10;FITvQv/D8gre7KbRRo3dlqIWevBijfdH9pkNZt+G7LNJ/71bEDwOM/MNs95OvlMnGmIb2MBykYEi&#10;roNtuTFQfexvHkBFQbbYBSYDZ4qw3cyu1ljaMPI7nY7SqAThWKIBJ9KXWsfakce4CD1x8r7C4FGS&#10;HBptBxwT3Hc6z7JCe2w5LTjs6dlR/X388QZE7G55rl59PHxOby+jy+oVVsZcz6fdEyihSf7Df+2D&#10;NVAU93ePt6s8h8uldAf05hcAAP//AwBQSwECLQAUAAYACAAAACEA2+H2y+4AAACFAQAAEwAAAAAA&#10;AAAAAAAAAAAAAAAAW0NvbnRlbnRfVHlwZXNdLnhtbFBLAQItABQABgAIAAAAIQBa9CxbvwAAABUB&#10;AAALAAAAAAAAAAAAAAAAAB8BAABfcmVscy8ucmVsc1BLAQItABQABgAIAAAAIQA4A7afyAAAAOIA&#10;AAAPAAAAAAAAAAAAAAAAAAcCAABkcnMvZG93bnJldi54bWxQSwUGAAAAAAMAAwC3AAAA/AIAAAAA&#10;" filled="f" stroked="f">
+              <v:textbox style="mso-fit-shape-to-text:t">
+                <w:txbxContent>
+                  <w:p w14:paraId="07E63959" w14:textId="77777777" w:rsidR="00093D73" w:rsidRDefault="00093D73" w:rsidP="00093D73">
+                    <w:pPr>
+                      <w:wordWrap w:val="0"/>
+                      <w:jc w:val="center"/>
+                      <w:rPr>
+                        <w:rFonts w:ascii="Pretendard Light" w:eastAsia="Pretendard Light" w:hAnsi="Pretendard Light" w:cs="Pretendard Light"/>
+                        <w:i/>
+                        <w:iCs/>
+                        <w:color w:val="000000" w:themeColor="text1"/>
+                        <w:kern w:val="24"/>
+                        <w:sz w:val="36"/>
+                        <w:szCs w:val="36"/>
+                        <w14:textOutline w14:w="9525" w14:cap="flat" w14:cmpd="sng" w14:algn="ctr">
+                          <w14:solidFill>
+                            <w14:schemeClr w14:val="accent1">
+                              <w14:alpha w14:val="100000"/>
+                            </w14:schemeClr>
+                          </w14:solidFill>
+                          <w14:prstDash w14:val="solid"/>
+                          <w14:round/>
+                        </w14:textOutline>
+                      </w:rPr>
+                    </w:pPr>
+                    <w:r>
+                      <w:rPr>
+                        <w:rFonts w:ascii="Pretendard Light" w:eastAsia="Pretendard Light" w:hAnsi="Pretendard Light" w:cs="Pretendard Light" w:hint="eastAsia"/>
+                        <w:i/>
+                        <w:iCs/>
+                        <w:color w:val="000000" w:themeColor="text1"/>
+                        <w:kern w:val="24"/>
+                        <w:sz w:val="36"/>
+                        <w:szCs w:val="36"/>
+                        <w14:textOutline w14:w="9525" w14:cap="flat" w14:cmpd="sng" w14:algn="ctr">
+                          <w14:solidFill>
+                            <w14:schemeClr w14:val="accent1">
+                              <w14:alpha w14:val="100000"/>
+                            </w14:schemeClr>
+                          </w14:solidFill>
+                          <w14:prstDash w14:val="solid"/>
+                          <w14:round/>
+                        </w14:textOutline>
+                      </w:rPr>
+                      <w:t>White House Office of Science and Technology Policy</w:t>
+                    </w:r>
+                  </w:p>
+                </w:txbxContent>
+              </v:textbox>
+            </v:shape>
+            <w10:anchorlock/>
+          </v:group>
+        </w:pict>
+      </mc:Fallback>
+    </mc:AlternateContent>
+  </w:r>
+</w:p>
+

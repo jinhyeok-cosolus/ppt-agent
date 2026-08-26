@@ -1,0 +1,2211 @@
+{
+  "sources": [
+    {
+      "file": "input\\코솔러스_IR_필드테스트용_콘텐츠자료_V2.docx",
+      "type": "docx",
+      "structure_signal": "heading_style",
+      "content_groups": [
+        {
+          "group_index": 1,
+          "title": "콘텐츠 묶음 01",
+          "signal_detail": "Heading 1",
+          "subtopics": [
+            {
+              "subtopic_index": 1,
+              "title": "제공 텍스트",
+              "signal_detail": "Heading 2",
+              "text_blocks": [
+                {
+                  "text": "Small actions, BIG DIFFERENCE",
+                  "order": 5,
+                  "style": "Normal"
+                },
+                {
+                  "text": "지속가능한 배터리 재활용을 위한 \n화학소재 및 친환경 차세대 공정기술",
+                  "order": 6,
+                  "style": "Normal"
+                }
+              ],
+              "tables": [],
+              "images": []
+            },
+            {
+              "subtopic_index": 2,
+              "title": "관련 이미지 자료 (1개)",
+              "signal_detail": "Heading 2",
+              "text_blocks": [],
+              "tables": [],
+              "images": [
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img1.png",
+                  "order": 8,
+                  "adjacent_text": null
+                }
+              ]
+            }
+          ],
+          "direct_text_blocks": [],
+          "direct_tables": [],
+          "direct_images": []
+        },
+        {
+          "group_index": 2,
+          "title": "콘텐츠 묶음 02",
+          "signal_detail": "Heading 1",
+          "subtopics": [
+            {
+              "subtopic_index": 1,
+              "title": "제공 텍스트",
+              "signal_detail": "Heading 2",
+              "text_blocks": [
+                {
+                  "text": "첨단 화학 소재와 차세대 친환경 공정으로 \n 폐배터리 순환경제 선도",
+                  "order": 11,
+                  "style": "Normal"
+                },
+                {
+                  "text": "기업소개",
+                  "order": 12,
+                  "style": "Normal"
+                },
+                {
+                  "text": "Company",
+                  "order": 13,
+                  "style": "Normal"
+                }
+              ],
+              "tables": [],
+              "images": []
+            },
+            {
+              "subtopic_index": 2,
+              "title": "제공 표 데이터",
+              "signal_detail": "Heading 2",
+              "text_blocks": [],
+              "tables": [
+                {
+                  "headers": [
+                    "기 업 명",
+                    "주식회사 코솔러스"
+                  ],
+                  "rows": [
+                    [
+                      "대 표 자",
+                      "김성현"
+                    ],
+                    [
+                      "임 직 원",
+                      "27"
+                    ],
+                    [
+                      "소 재  지",
+                      "대한민국 전주, 익산, 완주, 군산"
+                    ],
+                    [
+                      "비     전",
+                      "사용 후 배터리 핵심광물 회수를 위한 혁신 화학소재와 친환경 공정 기술을 통해,\n인류의 지속가능한 미래를 선도하는 글로벌 리더로 도약"
+                    ]
+                  ],
+                  "row_count": 4,
+                  "needs_appendix": false,
+                  "order": 15
+                }
+              ],
+              "images": []
+            },
+            {
+              "subtopic_index": 3,
+              "title": "관련 이미지 자료 (1개)",
+              "signal_detail": "Heading 2",
+              "text_blocks": [],
+              "tables": [],
+              "images": [
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img2.png",
+                  "order": 17,
+                  "adjacent_text": null
+                }
+              ]
+            }
+          ],
+          "direct_text_blocks": [],
+          "direct_tables": [],
+          "direct_images": []
+        },
+        {
+          "group_index": 3,
+          "title": "콘텐츠 묶음 03",
+          "signal_detail": "Heading 1",
+          "subtopics": [
+            {
+              "subtopic_index": 1,
+              "title": "제공 텍스트",
+              "signal_detail": "Heading 2",
+              "text_blocks": [
+                {
+                  "text": "Background",
+                  "order": 20,
+                  "style": "Normal"
+                },
+                {
+                  "text": "Source: IEA, Global Critical Minerals Outlook 2025; Benchmark Mineral Intelligence, China’s Battery Recycling Dominance, 2025; Earthworks, Filtered Tailing in Indonesia, 2026",
+                  "order": 21,
+                  "style": "Normal"
+                },
+                {
+                  "text": "문제제기-환경 및 지정학적 요인",
+                  "order": 22,
+                  "style": "Normal"
+                },
+                {
+                  "text": "3",
+                  "order": 23,
+                  "style": "Normal"
+                },
+                {
+                  "text": "배터리 밸류체인 전반의 \n환경부하 및 사회적 비용",
+                  "order": 24,
+                  "style": "Normal"
+                },
+                {
+                  "text": "광산채굴 기준\n수요-공급 미스매치 발생",
+                  "order": 25,
+                  "style": "Normal"
+                },
+                {
+                  "text": "중국이 장악한 \n글로벌 배터리 핵심광물 공급망",
+                  "order": 26,
+                  "style": "Normal"
+                },
+                {
+                  "text": "전략광물 20개 중 19개 정제 1위\n전략광물 정제 평균 점유율 70%\n글로벌 블랙매스 처리 비중 89%",
+                  "order": 27,
+                  "style": "Normal"
+                },
+                {
+                  "text": "니켈 1톤당 133톤 폐기물 발생\n채굴 산업의 노동 및 인권문제",
+                  "order": 28,
+                  "style": "Normal"
+                }
+              ],
+              "tables": [],
+              "images": []
+            },
+            {
+              "subtopic_index": 2,
+              "title": "관련 이미지 자료 (1개)",
+              "signal_detail": "Heading 2",
+              "text_blocks": [],
+              "tables": [],
+              "images": [
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img3.png",
+                  "order": 30,
+                  "adjacent_text": null
+                }
+              ]
+            }
+          ],
+          "direct_text_blocks": [],
+          "direct_tables": [],
+          "direct_images": []
+        },
+        {
+          "group_index": 4,
+          "title": "콘텐츠 묶음 04",
+          "signal_detail": "Heading 1",
+          "subtopics": [
+            {
+              "subtopic_index": 1,
+              "title": "제공 텍스트",
+              "signal_detail": "Heading 2",
+              "text_blocks": [
+                {
+                  "text": "Background",
+                  "order": 33,
+                  "style": "Normal"
+                },
+                {
+                  "text": "Sorece:  SNE Research (2023); Mirae Asset Securities Research Center (Jan. 2026); Korea Automotive Technology Institute (KATECH), Mobility Insight (Apr. 2024; citing SNE Research).",
+                  "order": 34,
+                  "style": "Normal"
+                },
+                {
+                  "text": "왜 지금인가?-산업적 요인",
+                  "order": 35,
+                  "style": "Normal"
+                },
+                {
+                  "text": "4",
+                  "order": 36,
+                  "style": "Normal"
+                },
+                {
+                  "text": "에너지 용량 (GWh)",
+                  "order": 37,
+                  "style": "Normal"
+                },
+                {
+                  "text": "CAGR: 31.6%",
+                  "order": 38,
+                  "style": "Normal"
+                },
+                {
+                  "text": "[북미 ESS 시장 성장 전망]",
+                  "order": 39,
+                  "style": "Normal"
+                }
+              ],
+              "tables": [],
+              "images": []
+            },
+            {
+              "subtopic_index": 2,
+              "title": "관련 이미지 자료 (1개)",
+              "signal_detail": "Heading 2",
+              "text_blocks": [],
+              "tables": [],
+              "images": [
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img4.png",
+                  "order": 41,
+                  "adjacent_text": null
+                }
+              ]
+            }
+          ],
+          "direct_text_blocks": [],
+          "direct_tables": [],
+          "direct_images": []
+        },
+        {
+          "group_index": 5,
+          "title": "콘텐츠 묶음 05",
+          "signal_detail": "Heading 1",
+          "subtopics": [
+            {
+              "subtopic_index": 1,
+              "title": "제공 텍스트",
+              "signal_detail": "Heading 2",
+              "text_blocks": [
+                {
+                  "text": "Background",
+                  "order": 44,
+                  "style": "Normal"
+                },
+                {
+                  "text": "비즈니스 모델",
+                  "order": 45,
+                  "style": "Normal"
+                },
+                {
+                  "text": "5",
+                  "order": 46,
+                  "style": "Normal"
+                },
+                {
+                  "text": "폐자원으로부터 핵심 광물 확보로 배터리 원재료 수요부족 해결",
+                  "order": 47,
+                  "style": "Normal"
+                },
+                {
+                  "text": "유해물질 억제 및 온실가스 감축으로 환경 오염 저감",
+                  "order": 48,
+                  "style": "Normal"
+                },
+                {
+                  "text": "제조  재활용  제조로 이어지는 재활용 기반 新공급망 구축",
+                  "order": 49,
+                  "style": "Normal"
+                }
+              ],
+              "tables": [],
+              "images": []
+            }
+          ],
+          "direct_text_blocks": [],
+          "direct_tables": [],
+          "direct_images": []
+        },
+        {
+          "group_index": 6,
+          "title": "콘텐츠 묶음 06",
+          "signal_detail": "Heading 1",
+          "subtopics": [
+            {
+              "subtopic_index": 1,
+              "title": "제공 텍스트",
+              "signal_detail": "Heading 2",
+              "text_blocks": [
+                {
+                  "text": "재활용 공정 현황 (1세대)",
+                  "order": 52,
+                  "style": "Normal"
+                },
+                {
+                  "text": "Background",
+                  "order": 53,
+                  "style": "Normal"
+                },
+                {
+                  "text": "6",
+                  "order": 54,
+                  "style": "Normal"
+                },
+                {
+                  "text": "소재 및 공정 \n개선 필요",
+                  "order": 55,
+                  "style": "Normal"
+                },
+                {
+                  "text": "낮은 선택성\n제한된 동작 환경 (pH 등)\n상분리 불안정\n부산물 과다발생 (망초 등)",
+                  "order": 56,
+                  "style": "Normal"
+                },
+                {
+                  "text": "1세대 공정",
+                  "order": 57,
+                  "style": "Normal"
+                }
+              ],
+              "tables": [],
+              "images": []
+            },
+            {
+              "subtopic_index": 2,
+              "title": "관련 이미지 자료 (1개)",
+              "signal_detail": "Heading 2",
+              "text_blocks": [],
+              "tables": [],
+              "images": [
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img5.png",
+                  "order": 59,
+                  "adjacent_text": null
+                }
+              ]
+            }
+          ],
+          "direct_text_blocks": [],
+          "direct_tables": [],
+          "direct_images": []
+        },
+        {
+          "group_index": 7,
+          "title": "콘텐츠 묶음 07",
+          "signal_detail": "Heading 1",
+          "subtopics": [
+            {
+              "subtopic_index": 1,
+              "title": "제공 텍스트",
+              "signal_detail": "Heading 2",
+              "text_blocks": [
+                {
+                  "text": "Background",
+                  "order": 62,
+                  "style": "Normal"
+                },
+                {
+                  "text": "7",
+                  "order": 63,
+                  "style": "Normal"
+                },
+                {
+                  "text": "[솔루션1] 개요 – 고성능 추출제 (1.5세대 화학소재)",
+                  "order": 64,
+                  "style": "Normal"
+                },
+                {
+                  "text": "기존 추출제 (1세대)",
+                  "order": 65,
+                  "style": "Normal"
+                },
+                {
+                  "text": "[솔루션1] 코솔러스 추출제 (1.5세대)",
+                  "order": 66,
+                  "style": "Normal"
+                },
+                {
+                  "text": "재활용 효율 개선",
+                  "order": 67,
+                  "style": "Normal"
+                },
+                {
+                  "text": "RECYION Series",
+                  "order": 68,
+                  "style": "Normal"
+                },
+                {
+                  "text": "추출제",
+                  "order": 69,
+                  "style": "Normal"
+                },
+                {
+                  "text": "D2EHPA",
+                  "order": 70,
+                  "style": "Normal"
+                },
+                {
+                  "text": "광산, 염호 기반 금속 회수용 추출제",
+                  "order": 71,
+                  "style": "Normal"
+                }
+              ],
+              "tables": [],
+              "images": []
+            },
+            {
+              "subtopic_index": 2,
+              "title": "관련 이미지 자료 (2개)",
+              "signal_detail": "Heading 2",
+              "text_blocks": [],
+              "tables": [],
+              "images": [
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img6.png",
+                  "order": 73,
+                  "adjacent_text": null
+                },
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img7.png",
+                  "order": 74,
+                  "adjacent_text": null
+                }
+              ]
+            }
+          ],
+          "direct_text_blocks": [],
+          "direct_tables": [],
+          "direct_images": []
+        },
+        {
+          "group_index": 8,
+          "title": "콘텐츠 묶음 08",
+          "signal_detail": "Heading 1",
+          "subtopics": [
+            {
+              "subtopic_index": 1,
+              "title": "제공 텍스트",
+              "signal_detail": "Heading 2",
+              "text_blocks": [
+                {
+                  "text": "Technology",
+                  "order": 77,
+                  "style": "Normal"
+                },
+                {
+                  "text": "핵심기술 – [솔루션1-1] 고성능 추출제 (1.5세대 화학소재)",
+                  "order": 78,
+                  "style": "Normal"
+                },
+                {
+                  "text": "8",
+                  "order": 79,
+                  "style": "Normal"
+                },
+                {
+                  "text": "*블랙매스 1톤당 첨가제 사용량",
+                  "order": 80,
+                  "style": "Normal"
+                },
+                {
+                  "text": "COSOLUS 대비 \n공정시간 100% 증가",
+                  "order": 81,
+                  "style": "Normal"
+                },
+                {
+                  "text": "COSOLUS 대비 \n공정시간 50% 증가",
+                  "order": 82,
+                  "style": "Normal"
+                }
+              ],
+              "tables": [],
+              "images": []
+            },
+            {
+              "subtopic_index": 2,
+              "title": "제공 표 데이터",
+              "signal_detail": "Heading 2",
+              "text_blocks": [],
+              "tables": [
+                {
+                  "headers": [
+                    "구분",
+                    "COSOLUS",
+                    "벨기에 S사",
+                    "중국 K사"
+                  ],
+                  "rows": [
+                    [
+                      "공정시간",
+                      "",
+                      "",
+                      ""
+                    ],
+                    [
+                      "첨가제 사용량*",
+                      "-",
+                      "COSOLUS 대비\n10% 이상 추가 첨가제 필요",
+                      "COSOLUS 대비\n5% 이상 추가 첨가제 필요"
+                    ]
+                  ],
+                  "row_count": 2,
+                  "needs_appendix": false,
+                  "order": 84
+                }
+              ],
+              "images": []
+            }
+          ],
+          "direct_text_blocks": [],
+          "direct_tables": [],
+          "direct_images": []
+        },
+        {
+          "group_index": 9,
+          "title": "콘텐츠 묶음 09",
+          "signal_detail": "Heading 1",
+          "subtopics": [
+            {
+              "subtopic_index": 1,
+              "title": "제공 텍스트",
+              "signal_detail": "Heading 2",
+              "text_blocks": [
+                {
+                  "text": "Technology",
+                  "order": 87,
+                  "style": "Normal"
+                },
+                {
+                  "text": "핵심기술 – [솔루션1-1] 고성능 추출제 (1.5세대 화학소재)",
+                  "order": 88,
+                  "style": "Normal"
+                },
+                {
+                  "text": "9",
+                  "order": 89,
+                  "style": "Normal"
+                },
+                {
+                  "text": "COSOLUS 추출제\n이론단수: 4단 (20% 감소)",
+                  "order": 90,
+                  "style": "Normal"
+                },
+                {
+                  "text": "기존 추출제\n이론단수: 5단",
+                  "order": 91,
+                  "style": "Normal"
+                },
+                {
+                  "text": "수상 내 금속 농도 (kg/kg)",
+                  "order": 92,
+                  "style": "Normal"
+                },
+                {
+                  "text": "유기상 내 금속 농도 (kg/kg)",
+                  "order": 93,
+                  "style": "Normal"
+                },
+                {
+                  "text": "[추출 효율 2~5% 개선  추출 단수 1단 저감] \n(CAPEX 경제성 확보)",
+                  "order": 94,
+                  "style": "Normal"
+                },
+                {
+                  "text": "[추출단수 1단 저감  망초 > 5% 저감]\n(OPEX 경제성 확보)",
+                  "order": 95,
+                  "style": "Normal"
+                },
+                {
+                  "text": "대한민국 배터리 재활용 업체 1년 간 니켈 16,000 톤 생산\n  COSOLUS 추출제로 4,800 톤 망초 저감 가능",
+                  "order": 96,
+                  "style": "Normal"
+                },
+                {
+                  "text": "*대한민국 배터리 재활용 업체들의 블랙매스 연간 처리량 기준",
+                  "order": 97,
+                  "style": "Normal"
+                }
+              ],
+              "tables": [],
+              "images": []
+            },
+            {
+              "subtopic_index": 2,
+              "title": "제공 표 데이터",
+              "signal_detail": "Heading 2",
+              "text_blocks": [],
+              "tables": [
+                {
+                  "headers": [
+                    "항목",
+                    "추출\n단수",
+                    "니켈 1 톤 당 \n발생하는 망초 양"
+                  ],
+                  "rows": [
+                    [
+                      "기존 추출제",
+                      "5",
+                      "3.6 톤"
+                    ],
+                    [
+                      "COSOLUS 추출제",
+                      "4",
+                      "3.3 톤"
+                    ]
+                  ],
+                  "row_count": 2,
+                  "needs_appendix": false,
+                  "order": 99
+                }
+              ],
+              "images": []
+            },
+            {
+              "subtopic_index": 3,
+              "title": "관련 이미지 자료 (1개)",
+              "signal_detail": "Heading 2",
+              "text_blocks": [],
+              "tables": [],
+              "images": [
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img8.png",
+                  "order": 101,
+                  "adjacent_text": null
+                }
+              ]
+            }
+          ],
+          "direct_text_blocks": [],
+          "direct_tables": [],
+          "direct_images": []
+        },
+        {
+          "group_index": 10,
+          "title": "콘텐츠 묶음 10",
+          "signal_detail": "Heading 1",
+          "subtopics": [
+            {
+              "subtopic_index": 1,
+              "title": "제공 텍스트",
+              "signal_detail": "Heading 2",
+              "text_blocks": [
+                {
+                  "text": "기업명",
+                  "order": 104,
+                  "style": "Normal"
+                },
+                {
+                  "text": "Country",
+                  "order": 105,
+                  "style": "Normal"
+                },
+                {
+                  "text": "국가",
+                  "order": 106,
+                  "style": "Normal"
+                },
+                {
+                  "text": "추출성능",
+                  "order": 107,
+                  "style": "Normal"
+                },
+                {
+                  "text": "Mextral series",
+                  "order": 108,
+                  "style": "Normal"
+                },
+                {
+                  "text": "CYANEX series",
+                  "order": 109,
+                  "style": "Normal"
+                },
+                {
+                  "text": "Belgium",
+                  "order": 110,
+                  "style": "Normal"
+                },
+                {
+                  "text": "China",
+                  "order": 111,
+                  "style": "Normal"
+                },
+                {
+                  "text": "KOREA",
+                  "order": 112,
+                  "style": "Normal"
+                },
+                {
+                  "text": "RECYION series",
+                  "order": 113,
+                  "style": "Normal"
+                },
+                {
+                  "text": "◉",
+                  "order": 114,
+                  "style": "Normal"
+                },
+                {
+                  "text": "공정시간",
+                  "order": 115,
+                  "style": "Normal"
+                },
+                {
+                  "text": "△",
+                  "order": 116,
+                  "style": "Normal"
+                },
+                {
+                  "text": "첨가제\n사용량",
+                  "order": 117,
+                  "style": "Normal"
+                },
+                {
+                  "text": "○",
+                  "order": 118,
+                  "style": "Normal"
+                },
+                {
+                  "text": "10",
+                  "order": 119,
+                  "style": "Normal"
+                },
+                {
+                  "text": "탄소중립",
+                  "order": 120,
+                  "style": "Normal"
+                },
+                {
+                  "text": "◉: 매우 좋음 ○: 좋음 △: 보통",
+                  "order": 121,
+                  "style": "Normal"
+                },
+                {
+                  "text": "가격",
+                  "order": 122,
+                  "style": "Normal"
+                },
+                {
+                  "text": "Technology",
+                  "order": 123,
+                  "style": "Normal"
+                },
+                {
+                  "text": "경쟁력 – [솔루션1-1] 고성능 추출제 (1.5세대 화학소재)",
+                  "order": 124,
+                  "style": "Normal"
+                },
+                {
+                  "text": "KopperChem",
+                  "order": 125,
+                  "style": "Normal"
+                },
+                {
+                  "text": "Solvay",
+                  "order": 126,
+                  "style": "Normal"
+                }
+              ],
+              "tables": [],
+              "images": []
+            },
+            {
+              "subtopic_index": 2,
+              "title": "관련 이미지 자료 (2개)",
+              "signal_detail": "Heading 2",
+              "text_blocks": [],
+              "tables": [
+                {
+                  "headers": [
+                    "",
+                    "[이미지 추출 불가]"
+                  ],
+                  "rows": [],
+                  "row_count": 0,
+                  "needs_appendix": false,
+                  "order": 128
+                }
+              ],
+              "images": [
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img9.png",
+                  "order": 129,
+                  "adjacent_text": null
+                }
+              ]
+            }
+          ],
+          "direct_text_blocks": [],
+          "direct_tables": [],
+          "direct_images": []
+        },
+        {
+          "group_index": 11,
+          "title": "콘텐츠 묶음 11",
+          "signal_detail": "Heading 1",
+          "subtopics": [
+            {
+              "subtopic_index": 1,
+              "title": "제공 텍스트",
+              "signal_detail": "Heading 2",
+              "text_blocks": [
+                {
+                  "text": "Technology",
+                  "order": 132,
+                  "style": "Normal"
+                },
+                {
+                  "text": "[솔루션1-2] 직접 리튬 추출 (DLE, Direct Lithium Extraction)",
+                  "order": 133,
+                  "style": "Normal"
+                },
+                {
+                  "text": "11",
+                  "order": 134,
+                  "style": "Normal"
+                },
+                {
+                  "text": "NCM 스크랩",
+                  "order": 135,
+                  "style": "Normal"
+                },
+                {
+                  "text": "침출",
+                  "order": 136,
+                  "style": "Normal"
+                },
+                {
+                  "text": "불순물 제거",
+                  "order": 137,
+                  "style": "Normal"
+                },
+                {
+                  "text": "1",
+                  "order": 138,
+                  "style": "Normal"
+                },
+                {
+                  "text": "Mn 추출",
+                  "order": 139,
+                  "style": "Normal"
+                },
+                {
+                  "text": "2",
+                  "order": 140,
+                  "style": "Normal"
+                },
+                {
+                  "text": "Co 추출",
+                  "order": 141,
+                  "style": "Normal"
+                },
+                {
+                  "text": "3",
+                  "order": 142,
+                  "style": "Normal"
+                },
+                {
+                  "text": "Ni 추출",
+                  "order": 143,
+                  "style": "Normal"
+                },
+                {
+                  "text": "4",
+                  "order": 144,
+                  "style": "Normal"
+                },
+                {
+                  "text": "역추출",
+                  "order": 145,
+                  "style": "Normal"
+                },
+                {
+                  "text": "4단계",
+                  "order": 146,
+                  "style": "Normal"
+                },
+                {
+                  "text": "증발 농축 기반\n Li 회수 (3.12%)",
+                  "order": 147,
+                  "style": "Normal"
+                },
+                {
+                  "text": "Source: 한국광해광업공단(2024), 오세희 의원실 2025 국정감사 분석; John Moore/Getty Images, Chile Mines Lithium From Salt Flats of Atacama Desert (2022); Controlled Thermal Resources, via Chemical & Engineering News (2024)",
+                  "order": 148,
+                  "style": "Normal"
+                },
+                {
+                  "text": "기존 DLE (증발법)",
+                  "order": 149,
+                  "style": "Normal"
+                },
+                {
+                  "text": "추출 후 재활용",
+                  "order": 150,
+                  "style": "Normal"
+                },
+                {
+                  "text": "1단계",
+                  "order": 151,
+                  "style": "Normal"
+                }
+              ],
+              "tables": [],
+              "images": []
+            },
+            {
+              "subtopic_index": 2,
+              "title": "관련 이미지 자료 (2개)",
+              "signal_detail": "Heading 2",
+              "text_blocks": [],
+              "tables": [],
+              "images": [
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img10.jpeg",
+                  "order": 153,
+                  "adjacent_text": null
+                },
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img11.jpeg",
+                  "order": 154,
+                  "adjacent_text": null
+                }
+              ]
+            }
+          ],
+          "direct_text_blocks": [],
+          "direct_tables": [],
+          "direct_images": []
+        },
+        {
+          "group_index": 12,
+          "title": "콘텐츠 묶음 12",
+          "signal_detail": "Heading 1",
+          "subtopics": [
+            {
+              "subtopic_index": 1,
+              "title": "제공 텍스트",
+              "signal_detail": "Heading 2",
+              "text_blocks": [
+                {
+                  "text": "12",
+                  "order": 157,
+                  "style": "Normal"
+                },
+                {
+                  "text": "Technology",
+                  "order": 158,
+                  "style": "Normal"
+                },
+                {
+                  "text": "[솔루션1-2] DLE 기술 동향",
+                  "order": 159,
+                  "style": "Normal"
+                },
+                {
+                  "text": "COSOLUS",
+                  "order": 160,
+                  "style": "Normal"
+                },
+                {
+                  "text": "Li",
+                  "order": 161,
+                  "style": "Normal"
+                },
+                {
+                  "text": "Cl-",
+                  "order": 162,
+                  "style": "Normal"
+                },
+                {
+                  "text": "e-",
+                  "order": 163,
+                  "style": "Normal"
+                },
+                {
+                  "text": "Source: Desalination, 2024,575, 117249)",
+                  "order": 164,
+                  "style": "Normal"
+                }
+              ],
+              "tables": [],
+              "images": []
+            },
+            {
+              "subtopic_index": 2,
+              "title": "제공 표 데이터",
+              "signal_detail": "Heading 2",
+              "text_blocks": [],
+              "tables": [
+                {
+                  "headers": [
+                    "구분",
+                    "흡착제",
+                    "추출제",
+                    "분리막",
+                    "전기화학"
+                  ],
+                  "rows": [
+                    [
+                      "작동원리",
+                      "Li⁺(액상)과 흡착제(고상)간 선택적 상호작용",
+                      "Li⁺(액상)과 추출제(액상)간 선택적 상호작용",
+                      "Li⁺(액상)의 분리막(고상)\n을 통한 선택적 이동",
+                      "Li⁺(액상)과 전극(고상)간\n선택적 상호작용"
+                    ],
+                    [
+                      "기술성숙도\n(TRL)",
+                      "TRL 9\n(상용화 단계)",
+                      "TRL 4-5\n(실험실 검증 단계)",
+                      "TRL 4-5\n(실험실 검증 단계)",
+                      "TRL 3-4\n(실험실 검증 단계)"
+                    ],
+                    [
+                      "장점",
+                      "선택성 우수\n공정 단순",
+                      "높은 회수 효율\n재사용 가능\n기존 공정 적용 가능",
+                      "우수한 효율\n공정 단순\n낮은 화학약품 사용량",
+                      "우수한 효율\n낮은 화학약품 사용량"
+                    ],
+                    [
+                      "단점",
+                      "재사용성 제한\n높은 운영비용",
+                      "높은 운영비용",
+                      "높은 운영비용",
+                      "복잡한 시스템\n대규모 양산 적용에 한계"
+                    ]
+                  ],
+                  "row_count": 4,
+                  "needs_appendix": false,
+                  "order": 166
+                }
+              ],
+              "images": []
+            },
+            {
+              "subtopic_index": 3,
+              "title": "관련 이미지 자료 (1개)",
+              "signal_detail": "Heading 2",
+              "text_blocks": [],
+              "tables": [],
+              "images": [
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img12.png",
+                  "order": 168,
+                  "adjacent_text": null
+                }
+              ]
+            }
+          ],
+          "direct_text_blocks": [],
+          "direct_tables": [],
+          "direct_images": []
+        },
+        {
+          "group_index": 13,
+          "title": "콘텐츠 묶음 13",
+          "signal_detail": "Heading 1",
+          "subtopics": [
+            {
+              "subtopic_index": 1,
+              "title": "제공 텍스트",
+              "signal_detail": "Heading 2",
+              "text_blocks": [
+                {
+                  "text": "핵심기술 – [솔루션1-2] Key Advantages of Extractant–Separator for DLE",
+                  "order": 171,
+                  "style": "Normal"
+                },
+                {
+                  "text": "Technology",
+                  "order": 172,
+                  "style": "Normal"
+                },
+                {
+                  "text": "13",
+                  "order": 173,
+                  "style": "Normal"
+                },
+                {
+                  "text": "① 추출제와 리튬 이온(Li⁺) 간의 액-액 접촉을 통한 빠른 물질 전달\n② 추출제에 의한 화학적 결합 및 분리막에 의한 공간적 분리를 통한 우수한 재활용 효율\n③ 액상 공정을 통한 용이한 연속 운전\n④ 분리막 기반 농축을 통한 첨가제 소모량 감소",
+                  "order": 174,
+                  "style": "Normal"
+                }
+              ],
+              "tables": [],
+              "images": []
+            }
+          ],
+          "direct_text_blocks": [],
+          "direct_tables": [],
+          "direct_images": []
+        },
+        {
+          "group_index": 14,
+          "title": "콘텐츠 묶음 14",
+          "signal_detail": "Heading 1",
+          "subtopics": [
+            {
+              "subtopic_index": 1,
+              "title": "제공 텍스트",
+              "signal_detail": "Heading 2",
+              "text_blocks": [
+                {
+                  "text": "Technology",
+                  "order": 177,
+                  "style": "Normal"
+                },
+                {
+                  "text": "핵심기술 – [솔루션1-2] COSOLUS DLE",
+                  "order": 178,
+                  "style": "Normal"
+                },
+                {
+                  "text": "14",
+                  "order": 179,
+                  "style": "Normal"
+                },
+                {
+                  "text": "*리튬선물 가격이 약 44,100 천원/ton 수준의 재활용 목표",
+                  "order": 180,
+                  "style": "Normal"
+                },
+                {
+                  "text": "분리막 & THz 기술 (리튬 재자원화율 3% → 90%)",
+                  "order": 181,
+                  "style": "Normal"
+                },
+                {
+                  "text": "핵심소재 (재자원화율 3% → 50%)",
+                  "order": 182,
+                  "style": "Normal"
+                },
+                {
+                  "text": "Sorece:  KOMIS, Conventional vs. direct vs. electrochemical lithium extraction: a holistic TEA–LCA of lithium carbonate production from spodumene (Green Chem., 2026, 28, 1144",
+                  "order": 183,
+                  "style": "Normal"
+                },
+                {
+                  "text": "COSOLUS 화학구조 설계, 정제, 공정 기술   재자원화율(>90%*), 공정비용(<5,500원/kg)",
+                  "order": 184,
+                  "style": "Normal"
+                }
+              ],
+              "tables": [],
+              "images": []
+            },
+            {
+              "subtopic_index": 2,
+              "title": "제공 표 데이터",
+              "signal_detail": "Heading 2",
+              "text_blocks": [],
+              "tables": [
+                {
+                  "headers": [
+                    "구분",
+                    "RECYION501 (실험실 수준 개발 단계, 2027 1Q 출시)"
+                  ],
+                  "rows": [
+                    [
+                      "회수 효율",
+                      ""
+                    ]
+                  ],
+                  "row_count": 1,
+                  "needs_appendix": false,
+                  "order": 186
+                }
+              ],
+              "images": []
+            },
+            {
+              "subtopic_index": 3,
+              "title": "관련 이미지 자료 (1개)",
+              "signal_detail": "Heading 2",
+              "text_blocks": [],
+              "tables": [],
+              "images": [
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img13.png",
+                  "order": 188,
+                  "adjacent_text": null
+                }
+              ]
+            }
+          ],
+          "direct_text_blocks": [],
+          "direct_tables": [],
+          "direct_images": []
+        },
+        {
+          "group_index": 15,
+          "title": "콘텐츠 묶음 15",
+          "signal_detail": "Heading 1",
+          "subtopics": [
+            {
+              "subtopic_index": 1,
+              "title": "제공 텍스트",
+              "signal_detail": "Heading 2",
+              "text_blocks": [
+                {
+                  "text": "15",
+                  "order": 191,
+                  "style": "Normal"
+                },
+                {
+                  "text": "Technology",
+                  "order": 192,
+                  "style": "Normal"
+                },
+                {
+                  "text": "[솔루션2] 개요 - 친환경 차세대 배터리 재활용 공정기술 (2세대)",
+                  "order": 193,
+                  "style": "Normal"
+                },
+                {
+                  "text": "기존공정\n(1세대)",
+                  "order": 194,
+                  "style": "Normal"
+                },
+                {
+                  "text": "유도가열",
+                  "order": 195,
+                  "style": "Normal"
+                },
+                {
+                  "text": "부유선별",
+                  "order": 196,
+                  "style": "Normal"
+                },
+                {
+                  "text": "건식환원",
+                  "order": 197,
+                  "style": "Normal"
+                },
+                {
+                  "text": "양극재용 블랙매스",
+                  "order": 198,
+                  "style": "Normal"
+                },
+                {
+                  "text": "재활용 양극재",
+                  "order": 199,
+                  "style": "Normal"
+                },
+                {
+                  "text": "음극재용 블랙매스",
+                  "order": 200,
+                  "style": "Normal"
+                },
+                {
+                  "text": "고순도 정제흑연",
+                  "order": 201,
+                  "style": "Normal"
+                },
+                {
+                  "text": "코발트",
+                  "order": 202,
+                  "style": "Normal"
+                },
+                {
+                  "text": "니켈",
+                  "order": 203,
+                  "style": "Normal"
+                },
+                {
+                  "text": "COSOLUS\n(2세대)",
+                  "order": 204,
+                  "style": "Normal"
+                },
+                {
+                  "text": "경제성\n친환경성\n양산성 확보",
+                  "order": 205,
+                  "style": "Normal"
+                },
+                {
+                  "text": "폐흑연",
+                  "order": 206,
+                  "style": "Normal"
+                }
+              ],
+              "tables": [],
+              "images": []
+            },
+            {
+              "subtopic_index": 2,
+              "title": "관련 이미지 자료 (7개)",
+              "signal_detail": "Heading 2",
+              "text_blocks": [],
+              "tables": [],
+              "images": [
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img14.png",
+                  "order": 208,
+                  "adjacent_text": null
+                },
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img15.png",
+                  "order": 209,
+                  "adjacent_text": null
+                },
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img16.png",
+                  "order": 210,
+                  "adjacent_text": null
+                },
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img17.png",
+                  "order": 211,
+                  "adjacent_text": null
+                },
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img18.png",
+                  "order": 212,
+                  "adjacent_text": null
+                },
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img19.png",
+                  "order": 213,
+                  "adjacent_text": null
+                },
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img20.jpeg",
+                  "order": 214,
+                  "adjacent_text": null
+                }
+              ]
+            }
+          ],
+          "direct_text_blocks": [],
+          "direct_tables": [],
+          "direct_images": []
+        },
+        {
+          "group_index": 16,
+          "title": "콘텐츠 묶음 16",
+          "signal_detail": "Heading 1",
+          "subtopics": [
+            {
+              "subtopic_index": 1,
+              "title": "제공 텍스트",
+              "signal_detail": "Heading 2",
+              "text_blocks": [
+                {
+                  "text": "16",
+                  "order": 217,
+                  "style": "Normal"
+                },
+                {
+                  "text": "COSOLUS\n유도가열",
+                  "order": 218,
+                  "style": "Normal"
+                },
+                {
+                  "text": "전처리 공정",
+                  "order": 219,
+                  "style": "Normal"
+                },
+                {
+                  "text": "블랙매스",
+                  "order": 220,
+                  "style": "Normal"
+                },
+                {
+                  "text": "양극재용 블랙매스",
+                  "order": 221,
+                  "style": "Normal"
+                },
+                {
+                  "text": "음극재용 블랙매스",
+                  "order": 222,
+                  "style": "Normal"
+                },
+                {
+                  "text": "고순도 정제흑연",
+                  "order": 223,
+                  "style": "Normal"
+                },
+                {
+                  "text": "COSOLUS\n부유선별",
+                  "order": 224,
+                  "style": "Normal"
+                },
+                {
+                  "text": "Technology",
+                  "order": 225,
+                  "style": "Normal"
+                },
+                {
+                  "text": "코발트",
+                  "order": 226,
+                  "style": "Normal"
+                },
+                {
+                  "text": "니켈",
+                  "order": 227,
+                  "style": "Normal"
+                },
+                {
+                  "text": "핵심기술 – [솔루션2] 친환경 차세대 배터리 재활용 공정기술 (2세대)",
+                  "order": 228,
+                  "style": "Normal"
+                }
+              ],
+              "tables": [],
+              "images": []
+            },
+            {
+              "subtopic_index": 2,
+              "title": "관련 이미지 자료 (9개)",
+              "signal_detail": "Heading 2",
+              "text_blocks": [],
+              "tables": [],
+              "images": [
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img21.png",
+                  "order": 230,
+                  "adjacent_text": null
+                },
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img22.png",
+                  "order": 231,
+                  "adjacent_text": null
+                },
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img23.png",
+                  "order": 232,
+                  "adjacent_text": null
+                },
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img24.png",
+                  "order": 233,
+                  "adjacent_text": null
+                },
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img25.png",
+                  "order": 234,
+                  "adjacent_text": null
+                },
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img26.png",
+                  "order": 235,
+                  "adjacent_text": null
+                },
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img27.png",
+                  "order": 236,
+                  "adjacent_text": null
+                },
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img28.png",
+                  "order": 237,
+                  "adjacent_text": null
+                },
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img29.png",
+                  "order": 238,
+                  "adjacent_text": null
+                }
+              ]
+            }
+          ],
+          "direct_text_blocks": [],
+          "direct_tables": [],
+          "direct_images": []
+        },
+        {
+          "group_index": 17,
+          "title": "콘텐츠 묶음 17",
+          "signal_detail": "Heading 1",
+          "subtopics": [
+            {
+              "subtopic_index": 1,
+              "title": "제공 텍스트",
+              "signal_detail": "Heading 2",
+              "text_blocks": [
+                {
+                  "text": "17",
+                  "order": 241,
+                  "style": "Normal"
+                },
+                {
+                  "text": "Technology",
+                  "order": 242,
+                  "style": "Normal"
+                },
+                {
+                  "text": "양극재용 블랙매스",
+                  "order": 243,
+                  "style": "Normal"
+                },
+                {
+                  "text": "핵심기술 – [솔루션2] 친환경 차세대 배터리 재활용 공정기술 (2세대)",
+                  "order": 244,
+                  "style": "Normal"
+                },
+                {
+                  "text": "건식환원에 의한 코발트 (or 니켈) 회수",
+                  "order": 245,
+                  "style": "Normal"
+                },
+                {
+                  "text": "Co 회수\n(순도 > 95%)",
+                  "order": 246,
+                  "style": "Normal"
+                },
+                {
+                  "text": "*PCT 2건 출원",
+                  "order": 247,
+                  "style": "Normal"
+                }
+              ],
+              "tables": [],
+              "images": []
+            },
+            {
+              "subtopic_index": 2,
+              "title": "관련 이미지 자료 (4개)",
+              "signal_detail": "Heading 2",
+              "text_blocks": [],
+              "tables": [],
+              "images": [
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img30.png",
+                  "order": 249,
+                  "adjacent_text": null
+                },
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img31.png",
+                  "order": 250,
+                  "adjacent_text": null
+                },
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img32.png",
+                  "order": 251,
+                  "adjacent_text": null
+                },
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img33.png",
+                  "order": 252,
+                  "adjacent_text": null
+                }
+              ]
+            }
+          ],
+          "direct_text_blocks": [],
+          "direct_tables": [],
+          "direct_images": []
+        },
+        {
+          "group_index": 18,
+          "title": "콘텐츠 묶음 18",
+          "signal_detail": "Heading 1",
+          "subtopics": [
+            {
+              "subtopic_index": 1,
+              "title": "제공 텍스트",
+              "signal_detail": "Heading 2",
+              "text_blocks": [
+                {
+                  "text": "Technology",
+                  "order": 255,
+                  "style": "Normal"
+                },
+                {
+                  "text": "[가격경쟁력] 경쟁사 대비 저렴한 가격\n - 짧은 공정 시간 (1분 이내, 200배 빠른 승온 속도)\n - 적은 에너지 투입 (432 Wh/kg, 64% 에너지 절감)\n [기술경쟁력] 경쟁사 대비 고순도 재생흑연 (순도 99% 이상)\n - 균일한 온도 분포 구현\n - 낮은 부반응 발생\n   *PCT 2건 출원",
+                  "order": 256,
+                  "style": "Normal"
+                },
+                {
+                  "text": "※ 기존 소성로 (Pusher Kiln) \n - 10시간 이상 장시간 소요\n - 낮은 온도 정밀도\n - 높은 시설 투자비용",
+                  "order": 257,
+                  "style": "Normal"
+                },
+                {
+                  "text": "18",
+                  "order": 258,
+                  "style": "Normal"
+                },
+                {
+                  "text": "핵심기술 – [솔루션2] 친환경 차세대 배터리 재활용 공정기술 (2세대)",
+                  "order": 259,
+                  "style": "Normal"
+                }
+              ],
+              "tables": [],
+              "images": []
+            },
+            {
+              "subtopic_index": 2,
+              "title": "관련 이미지 자료 (2개)",
+              "signal_detail": "Heading 2",
+              "text_blocks": [],
+              "tables": [],
+              "images": [
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img34.png",
+                  "order": 261,
+                  "adjacent_text": null
+                },
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img35.jpeg",
+                  "order": 262,
+                  "adjacent_text": null
+                }
+              ]
+            }
+          ],
+          "direct_text_blocks": [],
+          "direct_tables": [],
+          "direct_images": []
+        },
+        {
+          "group_index": 19,
+          "title": "콘텐츠 묶음 19",
+          "signal_detail": "Heading 1",
+          "subtopics": [
+            {
+              "subtopic_index": 1,
+              "title": "제공 텍스트",
+              "signal_detail": "Heading 2",
+              "text_blocks": [
+                {
+                  "text": "19",
+                  "order": 265,
+                  "style": "Normal"
+                },
+                {
+                  "text": "Technology",
+                  "order": 266,
+                  "style": "Normal"
+                },
+                {
+                  "text": "경쟁력 – [솔루션2] 친환경 차세대 배터리 재활용 공정기술(2세대)",
+                  "order": 267,
+                  "style": "Normal"
+                }
+              ],
+              "tables": [],
+              "images": []
+            }
+          ],
+          "direct_text_blocks": [],
+          "direct_tables": [],
+          "direct_images": []
+        },
+        {
+          "group_index": 20,
+          "title": "콘텐츠 묶음 20",
+          "signal_detail": "Heading 1",
+          "subtopics": [
+            {
+              "subtopic_index": 1,
+              "title": "제공 텍스트",
+              "signal_detail": "Heading 2",
+              "text_blocks": [
+                {
+                  "text": "조직구성",
+                  "order": 270,
+                  "style": "Normal"
+                },
+                {
+                  "text": "Company",
+                  "order": 271,
+                  "style": "Normal"
+                },
+                {
+                  "text": "20",
+                  "order": 272,
+                  "style": "Normal"
+                }
+              ],
+              "tables": [],
+              "images": []
+            }
+          ],
+          "direct_text_blocks": [],
+          "direct_tables": [],
+          "direct_images": []
+        },
+        {
+          "group_index": 21,
+          "title": "콘텐츠 묶음 21",
+          "signal_detail": "Heading 1",
+          "subtopics": [
+            {
+              "subtopic_index": 1,
+              "title": "제공 텍스트",
+              "signal_detail": "Heading 2",
+              "text_blocks": [
+                {
+                  "text": "투자포인트",
+                  "order": 275,
+                  "style": "Normal"
+                },
+                {
+                  "text": "Executive Summary",
+                  "order": 276,
+                  "style": "Normal"
+                },
+                {
+                  "text": "[기술력]\n〮 추출제 최상위 수준의 합성 및 정제 기술\n〮 친환경 공정 기술 (건식환원 및 유도가열 기술)\n〮 Closed-loop system 합성/공정 기술로 환경부담 최소화 \n\n[사업화 방향]\n〮 (1.5 세대-RECYION Series) XX하이텍, XX코 등 현장적용을 \n  고려한 PoC 진행 중\n〮 (2세대- 친환경 공정기술) XX자동차 연계 신공급망 구축,    \n   일본 및 인도네시아 시장 진출 (파일롯 기술검증 후 JV 설립)",
+                  "order": 277,
+                  "style": "Normal"
+                },
+                {
+                  "text": "21",
+                  "order": 278,
+                  "style": "Normal"
+                },
+                {
+                  "text": "[투자라운드]\n〮 Series A2\n〮 목표 투자유치 금액 = 80억원\n\n\n[투자금 사용 계획]\n· 글로벌 진출을 위한 국외법인 설립 및 운영\n· 공장 건설을 위한 토지 구매 및 건축 비용   -  추출제CAPA, 공정파일롯",
+                  "order": 279,
+                  "style": "Normal"
+                }
+              ],
+              "tables": [],
+              "images": []
+            }
+          ],
+          "direct_text_blocks": [],
+          "direct_tables": [],
+          "direct_images": []
+        },
+        {
+          "group_index": 22,
+          "title": "콘텐츠 묶음 22",
+          "signal_detail": "Heading 1",
+          "subtopics": [
+            {
+              "subtopic_index": 1,
+              "title": "제공 텍스트",
+              "signal_detail": "Heading 2",
+              "text_blocks": [
+                {
+                  "text": "세계시장 진출",
+                  "order": 282,
+                  "style": "Normal"
+                },
+                {
+                  "text": "Milestone",
+                  "order": 283,
+                  "style": "Normal"
+                },
+                {
+                  "text": "[목표]\n〮 일본과 인도네시아를 전략적 거점으로 5억 명 이상의 아시아 경제권에서 성장\n [일본 및 인도네시아 진출을 위한 논의 현황]\n〮 인도네시아 전기자전거 업체 1대주주와 투자논의 중\n〮 일본 현지투자사, 재료업체 등과 투자논의 중",
+                  "order": 284,
+                  "style": "Normal"
+                },
+                {
+                  "text": "22",
+                  "order": 285,
+                  "style": "Normal"
+                }
+              ],
+              "tables": [],
+              "images": []
+            },
+            {
+              "subtopic_index": 2,
+              "title": "관련 이미지 자료 (4개)",
+              "signal_detail": "Heading 2",
+              "text_blocks": [],
+              "tables": [],
+              "images": [
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img36.png",
+                  "order": 287,
+                  "adjacent_text": null
+                },
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img37.png",
+                  "order": 288,
+                  "adjacent_text": null
+                },
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img38.png",
+                  "order": 289,
+                  "adjacent_text": null
+                },
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img39.png",
+                  "order": 290,
+                  "adjacent_text": null
+                }
+              ]
+            }
+          ],
+          "direct_text_blocks": [],
+          "direct_tables": [],
+          "direct_images": []
+        },
+        {
+          "group_index": 23,
+          "title": "CIIC2026 보조 이미지 자료",
+          "signal_detail": "Heading 1",
+          "subtopics": [
+            {
+              "subtopic_index": 1,
+              "title": "CIIC p.1 관련 이미지 (2개)",
+              "signal_detail": "Heading 2",
+              "text_blocks": [],
+              "tables": [],
+              "images": [
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img40.jpeg",
+                  "order": 294,
+                  "adjacent_text": null
+                },
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img41.png",
+                  "order": 295,
+                  "adjacent_text": null
+                }
+              ]
+            },
+            {
+              "subtopic_index": 2,
+              "title": "CIIC p.2 관련 이미지 (1개)",
+              "signal_detail": "Heading 2",
+              "text_blocks": [],
+              "tables": [],
+              "images": [
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img42.jpeg",
+                  "order": 297,
+                  "adjacent_text": null
+                }
+              ]
+            },
+            {
+              "subtopic_index": 3,
+              "title": "CIIC p.3 관련 이미지 (4개)",
+              "signal_detail": "Heading 2",
+              "text_blocks": [],
+              "tables": [],
+              "images": [
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img43.jpeg",
+                  "order": 299,
+                  "adjacent_text": null
+                },
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img44.jpeg",
+                  "order": 300,
+                  "adjacent_text": null
+                },
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img45.jpeg",
+                  "order": 301,
+                  "adjacent_text": null
+                },
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img46.jpeg",
+                  "order": 302,
+                  "adjacent_text": null
+                }
+              ]
+            },
+            {
+              "subtopic_index": 4,
+              "title": "CIIC p.4 관련 이미지 (5개)",
+              "signal_detail": "Heading 2",
+              "text_blocks": [],
+              "tables": [],
+              "images": [
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img47.png",
+                  "order": 304,
+                  "adjacent_text": null
+                },
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img48.jpeg",
+                  "order": 305,
+                  "adjacent_text": null
+                },
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img49.png",
+                  "order": 306,
+                  "adjacent_text": null
+                },
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img50.jpeg",
+                  "order": 307,
+                  "adjacent_text": null
+                },
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img51.jpeg",
+                  "order": 308,
+                  "adjacent_text": null
+                }
+              ]
+            },
+            {
+              "subtopic_index": 5,
+              "title": "CIIC p.5 관련 이미지 (5개)",
+              "signal_detail": "Heading 2",
+              "text_blocks": [],
+              "tables": [
+                {
+                  "headers": [
+                    "[이미지 추출 불가]",
+                    ""
+                  ],
+                  "rows": [
+                    [
+                      "",
+                      ""
+                    ],
+                    [
+                      "",
+                      ""
+                    ]
+                  ],
+                  "row_count": 2,
+                  "needs_appendix": false,
+                  "order": 310
+                }
+              ],
+              "images": [
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img52.jpeg",
+                  "order": 311,
+                  "adjacent_text": null
+                },
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img53.jpeg",
+                  "order": 312,
+                  "adjacent_text": null
+                },
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img54.jpeg",
+                  "order": 313,
+                  "adjacent_text": null
+                },
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img55.png",
+                  "order": 314,
+                  "adjacent_text": null
+                }
+              ]
+            },
+            {
+              "subtopic_index": 6,
+              "title": "CIIC p.6 관련 이미지 (11개)",
+              "signal_detail": "Heading 2",
+              "text_blocks": [],
+              "tables": [
+                {
+                  "headers": [
+                    "",
+                    ""
+                  ],
+                  "rows": [
+                    [
+                      "",
+                      ""
+                    ],
+                    [
+                      "[이미지 추출 불가]",
+                      ""
+                    ],
+                    [
+                      "",
+                      ""
+                    ],
+                    [
+                      "",
+                      ""
+                    ],
+                    [
+                      "",
+                      ""
+                    ]
+                  ],
+                  "row_count": 5,
+                  "needs_appendix": false,
+                  "order": 316
+                }
+              ],
+              "images": [
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img56.jpeg",
+                  "order": 317,
+                  "adjacent_text": null
+                },
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img57.png",
+                  "order": 318,
+                  "adjacent_text": null
+                },
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img58.png",
+                  "order": 319,
+                  "adjacent_text": null
+                },
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img59.png",
+                  "order": 320,
+                  "adjacent_text": null
+                },
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img60.jpeg",
+                  "order": 321,
+                  "adjacent_text": null
+                },
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img61.jpeg",
+                  "order": 322,
+                  "adjacent_text": null
+                },
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img62.jpeg",
+                  "order": 323,
+                  "adjacent_text": null
+                },
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img63.jpeg",
+                  "order": 324,
+                  "adjacent_text": null
+                },
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img64.jpeg",
+                  "order": 325,
+                  "adjacent_text": null
+                },
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img65.jpeg",
+                  "order": 326,
+                  "adjacent_text": null
+                }
+              ]
+            },
+            {
+              "subtopic_index": 7,
+              "title": "CIIC p.7 관련 이미지 (5개)",
+              "signal_detail": "Heading 2",
+              "text_blocks": [],
+              "tables": [],
+              "images": [
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img66.jpeg",
+                  "order": 328,
+                  "adjacent_text": null
+                },
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img67.jpeg",
+                  "order": 329,
+                  "adjacent_text": null
+                },
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img68.jpeg",
+                  "order": 330,
+                  "adjacent_text": null
+                },
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img69.jpeg",
+                  "order": 331,
+                  "adjacent_text": null
+                },
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img70.jpeg",
+                  "order": 332,
+                  "adjacent_text": null
+                }
+              ]
+            },
+            {
+              "subtopic_index": 8,
+              "title": "CIIC p.9 관련 이미지 (9개)",
+              "signal_detail": "Heading 2",
+              "text_blocks": [],
+              "tables": [],
+              "images": [
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img71.png",
+                  "order": 334,
+                  "adjacent_text": null
+                },
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img72.png",
+                  "order": 335,
+                  "adjacent_text": null
+                },
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img73.png",
+                  "order": 336,
+                  "adjacent_text": null
+                },
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img74.png",
+                  "order": 337,
+                  "adjacent_text": null
+                },
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img75.jpeg",
+                  "order": 338,
+                  "adjacent_text": null
+                },
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img76.jpeg",
+                  "order": 339,
+                  "adjacent_text": null
+                },
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img77.jpeg",
+                  "order": 340,
+                  "adjacent_text": null
+                },
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img78.png",
+                  "order": 341,
+                  "adjacent_text": null
+                },
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img79.jpeg",
+                  "order": 342,
+                  "adjacent_text": null
+                }
+              ]
+            },
+            {
+              "subtopic_index": 9,
+              "title": "CIIC p.11 관련 이미지 (1개)",
+              "signal_detail": "Heading 2",
+              "text_blocks": [],
+              "tables": [],
+              "images": [
+                {
+                  "path": "output\\_material-analysis-regression\\cosolus-ir-deck-D\\extracted_images\\코솔러스_IR_필드테스트용_콘텐츠자료_V2_img80.jpeg",
+                  "order": 344,
+                  "adjacent_text": null
+                }
+              ]
+            }
+          ],
+          "direct_text_blocks": [
+            {
+              "text": "국문 IR에서 누락될 수 있는 사진·설비·인물·기술 시각자료를 보완하기 위한 자료입니다.",
+              "order": 292,
+              "style": "Normal"
+            }
+          ],
+          "direct_tables": [],
+          "direct_images": []
+        }
+      ],
+      "unstructured_text_blocks": [
+        {
+          "text": "원본 슬라이드 전체 캡처·레이아웃 지시는 제외하고, 국문 IR의 텍스트·표·개별 삽입 이미지를 슬라이드별로 정리했습니다. 기존 정리본보다 이미지 필터를 완화했으며, CIIC2026 자료의 개별 이미지도 보조 자료로 추가했습니다. 이미지는 내용 확인이 가능한 범위에서 작게 배치해 여백을 줄였습니다.",
+          "order": 2,
+          "style": "Normal"
+        }
+      ],
+      "unstructured_tables": [],
+      "unstructured_images": [],
+      "needs_manual_review": false
+    }
+  ],
+  "escalations": [],
+  "needs_confirmation": []
+}

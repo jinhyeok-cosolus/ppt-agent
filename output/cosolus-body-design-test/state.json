@@ -1,0 +1,18 @@
+{
+  "project_name": "cosolus-body-design-test",
+  "stage": "6",
+  "audience": "고객사/외부 청중",
+  "language": "ko",
+  "presentation_time_min": null,
+  "target_slide_count": 3,
+  "web_ppt_version": "v3",
+  "pptx_generated": false,
+  "note": "테스트용 본문 슬라이드 3장 제작 (정식 [1]~[9] 워크플로우 아님, material-analysis/slide_outline 생략). 목적은 등록된 Hard Rule(docs/design-hard-rules/2026.08.12_design_hard-rules_V2.md)과 Claude_PPT_Design_System.md가 서로 다른 성격의 본문 슬라이드에서 일관되게 적용되는지 확인하는 디자인 QA 테스트. 실제 사업 정보 정확성 검증 목적 아님 — 콘텐츠는 테스트용 최소/가상 정보. 새로운 디자인 규칙/가변 규칙 제안 없음, Layout Reference(L01~L33)·레퍼런스 자료 분석도 속도 우선 원칙에 따라 생략.",
+  "history": [
+    {"stage": "5", "note": "본문 성격이 다른 3개 슬라이드(회사소개-텍스트 중심, 제품소개-이미지 중심, 핵심경쟁력-3~4요소 비교) 테스트 웹PPT v1 생성. Hard Rule + Claude_PPT_Design_System.md만 근거로 사용, 공통 Deck Element(좌상단 로고/우상단 태그라인/우하단 페이지 번호) 3장 동일 적용.", "at": "2026-08-13"},
+    {"stage": "7", "note": "사용자 지시로 Hard Rule §9(공통 Deck Element) 갱신(CI 18pt·원본비율, 상단 브랜드 문구 14pt+로고 동일색상, 상단 구분선 신규 추가, 페이지 번호를 '1/20' 형식에서 '1' 단독 숫자 형식으로 변경) 및 design-rules.md §9 동기화 완료 후, 동일 조건으로 v1 -> v2 재생성. 로고 실제 픽셀 색상을 측정해 #478689 확정, 태그라인·구분선에 적용(Hard Rule §5 팔레트 외 예외값). Claude_PPT_Design_System.md 및 3장의 콘텐츠·타이포·컬러·카드·이미지 처리 등 Design System 유래 스타일은 변경 없이 유지, 공통 Deck Element 4개 요소와 --safe-top(92px->96px)만 수정.", "at": "2026-08-13"},
+    {"stage": "9", "note": "사용자가 현재 시점의 Hard Rule(2026.08.12_design_hard-rules_V2.md, §9 갱신 반영)과 Claude_PPT_Design_System.md(변경 없음)를 PPT 제작 에이전트의 기본 디자인 기준으로 확정 지시. design-rules.md 허브 문서 전체(고정 규칙 §1~9, Design System/Content Visualization Freedom/Layout Reference 참조 링크)를 원본과 재대조해 드리프트 없음을 확인함. 이번 지시에 따라 임의의 신규 규칙 추가·변경 없음 — 두 원본 문서와 design-rules.md는 이미 일치 상태이므로 추가 파일 수정 불필요.", "at": "2026-08-13"},
+    {"stage": "9", "note": "Hard Rule §9를 '공통 Deck Element'에서 '공통 Header System'으로 확장: Section Label(신규) + Main Title을 CI/Sub Message/구분선/페이지 번호와 함께 6개 고정 요소로 통합하고, 모든 요소에 구체적 X/Y/크기/간격 픽셀 수치를 부여. design-rules.md 동기화 완료.", "at": "2026-08-13"},
+    {"stage": "7", "note": "동일 콘텐츠로 v2 -> v3 재생성: 3개 슬라이드에 Section Label 신규 추가(COMPANY/PRODUCT/COMPETENCE) + Header System 좌표 반영. 1차 작업에서 §9 좌표를 1920x1080 캔버스 기준으로 잘못 계산해 실제 생성기 표준 캔버스(1280x720)에 그대로 대입하는 오류 발생 — 즉시 발견해 Hard Rule/design-rules.md의 캔버스 기준을 1280x720으로 정정(폰트 pt->px 96dpi 환산은 1280x720과 정확히 일치해 문제 없었음, 여백/좌표 값만 재계산: CI Y=28, 구분선 Y=56, Section Label Y=76, Main Title Y=102, Header Safe Area Y=182, 우측 여백 기준 X=1216)한 뒤 같은 v3 폴더에 정정 반영. Header Safe Area(Y=182px) 침범 없음, 헤드리스 브라우저 렌더링 확인 완료. 본문 콘텐츠·Design System 유래 스타일은 v2와 동일 유지.", "at": "2026-08-13"}
+  ]
+}

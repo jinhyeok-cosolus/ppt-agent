@@ -1,0 +1,20 @@
+# 기술 발표용 PPT 자동 제작 에이전트 - Python 의존성
+# 설치: pip install -r requirements.txt
+
+# 자료 분석 (material-analysis)
+python-docx>=1.1.0        # docx 텍스트/표 추출
+pdfplumber>=0.11.0        # pdf 텍스트/표 추출
+openpyxl>=3.1.0           # xlsx 데이터/차트 추출
+Pillow>=10.0.0             # 이미지 처리(크롭/색보정)
+
+# 웹PPT 생성 (web-ppt-generator)
+Jinja2>=3.1.0              # HTML 슬라이드 템플릿 렌더링
+
+# pptx 변환 (pptx-exporter) — v3: Chromium 렌더링 기반
+python-pptx>=1.0.2         # 편집 가능한 네이티브 pptx 재구성
+lxml>=5.0.0                # gradFill 등 OOXML 요소 직접 조작
+playwright>=1.40.0         # Chromium으로 웹PPT를 실제 렌더링해 위치/스타일 추출
+# playwright 설치 후 최초 1회 브라우저 바이너리 설치 필요: playwright install chromium
+
+# 공통
+Pygments>=2.17.0           # (선택) 코드 블록 신택스 하이라이트가 필요한 경우

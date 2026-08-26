@@ -1,0 +1,236 @@
+{
+  "slide_1": [
+    {
+      "tag": "div",
+      "class": "header-submessage",
+      "text": "We promise tomorrow",
+      "font_weight": "400",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "header-section-label",
+      "text": "TECHNOLOGY",
+      "font_weight": "300",
+      "font_size_px": 16,
+      "font_size_pt": 12.0
+    },
+    {
+      "tag": "h2",
+      "class": "header-main-title",
+      "text": "친환경 차세대 배터리 재활용 공정기술 (2세대)",
+      "font_weight": "800",
+      "font_size_px": 37.33,
+      "font_size_pt": 28.0
+    },
+    {
+      "tag": "div",
+      "class": "page-number",
+      "text": "1",
+      "font_weight": "500",
+      "font_size_px": 16,
+      "font_size_pt": 12.0
+    },
+    {
+      "tag": "span",
+      "class": "ch-label",
+      "text": "COSOLUS 2세대 공정",
+      "font_weight": "600",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "span",
+      "class": "ch-sep",
+      "text": ":",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "span",
+      "class": "ch-term",
+      "text": "경제성",
+      "font_weight": "800",
+      "font_size_px": 26.67,
+      "font_size_pt": 20.0
+    },
+    {
+      "tag": "span",
+      "class": "ch-sep",
+      "text": "/",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "span",
+      "class": "ch-term",
+      "text": "친환경성",
+      "font_weight": "800",
+      "font_size_px": 26.67,
+      "font_size_pt": 20.0
+    },
+    {
+      "tag": "span",
+      "class": "ch-sep",
+      "text": "/",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "span",
+      "class": "ch-term",
+      "text": "양산성",
+      "font_weight": "800",
+      "font_size_px": 26.67,
+      "font_size_pt": 20.0
+    },
+    {
+      "tag": "span",
+      "class": "ch-label",
+      "text": "확보",
+      "font_weight": "600",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "span",
+      "class": "flow-node-label",
+      "text": "전기차 배터리팩",
+      "font_weight": "600",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "span",
+      "class": "flow-process-label",
+      "text": "전처리 공정",
+      "font_weight": "700",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "span",
+      "class": "flow-node-label",
+      "text": "블랙매스",
+      "font_weight": "600",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "flow-category-label flow-category-label--gen1",
+      "text": "기존공정(1세대)",
+      "font_weight": "700",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "flow-category-label flow-category-label--gen2",
+      "text": "COSOLUS(2세대)",
+      "font_weight": "700",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "span",
+      "class": "flow-process-label",
+      "text": "용매추출",
+      "font_weight": "700",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "span",
+      "class": "flow-node-label",
+      "text": "회수 화합물 4종MnSO4·NiSO4·CoSO4·Li2CO3",
+      "font_weight": "600",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "span",
+      "class": "sub",
+      "text": "MnSO4·NiSO4·CoSO4·Li2CO3",
+      "font_weight": "400",
+      "font_size_px": 16,
+      "font_size_pt": 12.0
+    },
+    {
+      "tag": "span",
+      "class": "flow-node-label",
+      "text": "폐흑연(1세대 부산물)",
+      "font_weight": "600",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "span",
+      "class": "sub",
+      "text": "(1세대 부산물)",
+      "font_weight": "400",
+      "font_size_px": 16,
+      "font_size_pt": 12.0
+    },
+    {
+      "tag": "span",
+      "class": "flow-process-label",
+      "text": "부유선별",
+      "font_weight": "700",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "span",
+      "class": "flow-node-label",
+      "text": "양극재용 블랙매스",
+      "font_weight": "600",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "span",
+      "class": "flow-process-label",
+      "text": "건식환원",
+      "font_weight": "700",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "span",
+      "class": "flow-node-label",
+      "text": "코발트 · 니켈",
+      "font_weight": "600",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "span",
+      "class": "flow-node-label",
+      "text": "음극재용 블랙매스",
+      "font_weight": "600",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "span",
+      "class": "flow-process-label",
+      "text": "유도가열",
+      "font_weight": "700",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "span",
+      "class": "flow-node-label",
+      "text": "고순도 정제흑연",
+      "font_weight": "600",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    }
+  ]
+}

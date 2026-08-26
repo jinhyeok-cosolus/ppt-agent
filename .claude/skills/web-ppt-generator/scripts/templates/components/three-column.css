@@ -1,0 +1,93 @@
+/*
+  Three-Column Insight Layout 재사용 구현 골격 — CSS (web-ppt-generator, 2026-08-25)
+
+  이 파일은 새 디자인 값을 정의하지 않는다. Hard Rule §10(Content Region Header)·
+  §11(Vertical Content Divider)이 이미 정한 색상·두께·Gap 원칙과 three-column.md의
+  구조 규칙을, 여러 프로젝트에서 반복 작성돼 온 CSS 구조로 한 번만 정리해 재사용
+  가능하게 만든 것뿐이다.
+
+  신설 배경(2026-08-25, cosolus-business-plan-2026 v1 Human Review ②): Header Bar와
+  Body를 같은 `.col` 안에 하나의 flex gap으로 묶어 구현하면, Header Gap(§10)과 Body
+  Column 사이 Gap이 같은 값 하나를 공유하게 되어 Body 쪽에 있어야 할 Vertical
+  Divider(§11)를 넣을 자리 자체가 생기지 않는 구조적 결함이 발생한다. 이 골격은
+  Header 행과 Body 행을 처음부터 분리된 두 트랙으로 구성해 이 결함을 원천적으로
+  방지한다.
+
+  사용 방법:
+  1. Three-Column Layout이 선택되면, 이 파일 전체를 프로젝트 `web_ppt/v{N}/style.css`에
+     그대로 복사해 붙여넣는다(값 수정 없이 구조만 가져온다).
+  2. 색상 토큰(--c-primary, --c-dark 등)은 프로젝트 `:root`에 이미 Hard Rule §5 기준으로
+     정의돼 있어야 한다 — 이 파일은 새 토큰을 만들지 않고 기존 토큰만 참조한다.
+     프로젝트 토큰 이름이 다르면 아래 var() 참조만 프로젝트 토큰명에 맞게 바꾼다.
+  3. `.comp-header`/`.comp-header--parallel`은 Hard Rule §10 공통 Header 컴포넌트를
+     그대로 재사용한다(이 파일이 새로 정의하지 않음) — 프로젝트 style.css에 이미 있어야
+     한다. Three-Column은 §10의 Parallel Variant를 모든 Header Bar에 동일하게 적용한다.
+  4. `.v-divider`(Hard Rule §11 스펙: 0.5pt, 중앙 핵심색 #034443, 수직 Gradient 중심점
+     약 53%, 양끝 Fade-out)도 프로젝트 style.css에 이미 정의돼 있어야 한다 — 이 파일은
+     그 정의를 재사용하는 override(.tc-divider)만 제공한다.
+  5. Column 개수가 3개가 아니면(이 Layout은 정의상 3개 고정이지만, 유사 구조를 다른
+     개수로 응용할 경우) `.tc-header-row`/`.tc-body-row`의 자식 개수와 divider 개수만
+     늘리거나 줄인다 — 구조 자체(Header 행/Body 행 분리, edge-to-edge Body, Divider를
+     Gap 중앙에 배치)는 그대로 유지한다.
+  6. Column 내부(Key Message/Main Visual/Supporting Evidence)의 구체적 구성은 이 골격이
+     정하지 않는다 — three-column.md §4~§8에 따라 콘텐츠 판단 영역에서 채운다.
+*/
+
+/* 전체 컨테이너 — Header 행 + Body 행을 세로로 쌓는다 */
+.tc-grid {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* ============ Header 행 (고정 구조) ============ */
+/* 3개 Header Bar를 Hard Rule §10 Header Gap으로만 분리한다. Body 행과는 완전히 다른
+   트랙이므로 이 Gap 값이 Body Divider 배치에 영향을 주지 않는다. Gap 수치 자체는
+   §10이 "동일 Gap 유지 + Content Region Grid 기준 자연 배치"만 요구할 뿐 고정 px를
+   강제하지 않으므로, 프로젝트에서 이미 쓰는 Header Gap 값을 그대로 재사용한다
+   (신규 프로젝트는 24px을 기본값으로 시작해도 무방하다). */
+.tc-header-row {
+  display: flex;
+  gap: 24px; /* 프로젝트의 기존 Header Gap 값과 동일하게 맞출 것 */
+  flex: 0 0 auto;
+}
+.tc-header-row .comp-header {
+  flex: 1;
+}
+
+/* ============ Body 행 (고정 구조) ============ */
+/* Header Bar와 비접촉 — margin-top으로 분리한다. three-column.md §4는 Header Bar와
+   Key Message 사이 간격을 "Header Bar 높이의 약 1/3 수준"으로 규정하므로, Header Bar
+   Height(Hard Rule §10 = 0.561in ≈ 54px)의 1/3인 약 18px을 기본값으로 둔다. */
+.tc-body-row {
+  display: flex;
+  align-items: stretch; /* Divider가 Body 행 전체 높이만큼 자연스럽게 늘어나도록 */
+  flex: 1;
+  margin-top: 18px;
+  min-height: 0;
+}
+
+/* Body Column: gutter 없이 edge-to-edge로 배치한다(three-column.md §7) — Column 사이
+   여백은 Divider 자체가 대신하며 별도 gap을 추가하지 않는다. */
+.tc-col-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 0 16px; /* 좌우 내부 padding만 — 상단은 .tc-body-row의 margin-top이 담당 */
+  gap: 12px;
+  min-width: 0;
+}
+
+/* Vertical Divider — 프로젝트에 이미 정의된 .v-divider(Hard Rule §11)를 Body 행의 flex
+   흐름 안에서 상하단 여백을 둔 채 자연스럽게 늘어나도록 override한다. Header 행과는
+   완전히 분리된 트랙에 있으므로 Header Bar에 닿을 수 없는 구조다. margin: 10px 0은
+   Divider가 Content 영역 경계(Key Message 등)에 바로 닿지 않는 최소 여백이며, Hard
+   Rule §11이 고정 px를 강제하지 않으므로 실제 콘텐츠 배치에 맞춰 조정 가능하다. */
+.tc-divider {
+  position: relative;
+  left: auto;
+  align-self: stretch;
+  height: auto;
+  flex: 0 0 1px;
+  margin: 10px 0;
+}

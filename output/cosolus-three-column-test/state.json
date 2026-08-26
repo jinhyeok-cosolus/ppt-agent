@@ -1,0 +1,33 @@
+{
+  "project_name": "cosolus-three-column-test",
+  "stage": "6",
+  "audience": "고객사/외부 청중",
+  "language": "ko",
+  "presentation_time_min": null,
+  "target_slide_count": 1,
+  "web_ppt_version": "v3",
+  "pptx_generated": false,
+  "note": "테스트 목적, 정식 워크플로우 아님. 신규 등록된 Layout Reference docs/slide-design-rules/three-column.md가 실제 슬라이드 생성 시 올바르게 선택·적용되는지 확인하는 1장짜리 디자인 QA 테스트(material-analysis/slide_outline 등 정식 [1]~[9] 자료 분석 단계 생략). Hard Rule(docs/design-hard-rules/2026.08.12_design_hard-rules_V2.md)과 Claude_PPT_Design_System.md는 재검토 없이 현재 확정치를 그대로 적용. 콘텐츠는 브리핑에서 제공된 테스트용 정보(가상 수치 포함)이며 실제 사업 정보 정확성 검증 목적 아님, 새로운 디자인 규칙/가변 규칙 제안 없음.",
+  "history": [
+    {
+      "stage": "3",
+      "note": "슬라이드 1장(Section Label: BACKGROUND, Main Title: 친환경 소재 산업의 주요 변화) 콘텐츠 구조 판단: 환경 규제 강화 / 친환경 소재 시장 성장 / 공급망 다변화 3개 요인이 동일 위계로 독립적·병렬 제시되는 구조로 판단, docs/slide-design-rules/three-column.md의 Use When 조건(산업적 요인 3가지, 시장·기술·환경 변화 요인 3가지)에 해당하여 채택. 순차 프로세스/시간흐름/단일 항목 우위/2자 비교가 아니므로 Do Not Use When에는 해당하지 않음을 확인. L01~L33 일반 카탈로그는 검토하지 않음(design-rules.md 절차상 특수 Layout Reference 우선 검토 규칙에 따름).",
+      "at": "2026-08-13"
+    },
+    {
+      "stage": "5",
+      "note": "web-ppt-generator/scripts/new_version.py --scaffold로 web_ppt/v1 생성 후 three-column.md 구조(Column Header -> Key Message -> Main Visual -> Supporting Evidence, 3개 Column 통일)로 슬라이드 1장 작성. Column 1(환경 규제 강화)은 KPI 큰 숫자(40%), Column 2(친환경 소재 시장 성장)는 2024/2030 비교 막대(120억->280억 달러, Shape 컴포넌트 기반 커스텀 막대, Chart.js 미사용), Column 3(공급망 다변화)은 인용구로 Main Visual을 구성해 §7 Content Adaptation에 따라 콘텐츠별 표현 방식을 혼합하되 Header/Key Message/Supporting Evidence 순서는 3개 Column 모두 통일해 정렬(§3/§6 Alignment & Balance) 확보. 색상/폰트/장식은 three-column.md 예시가 아니라 Hard Rule §5 Brand Color + §9 공통 Header System 확정 좌표, Claude_PPT_Design_System.md Typography/Shape 기준으로 재해석. 콘텐츠 문구·수치는 브리핑 원문 그대로 사용(재해석·신규 수치 생성 없음). 헤드리스 Chrome 스크린샷으로 렌더링 확인: Header System 6요소(CI/Sub Message/구분선/Section Label/Main Title/페이지 번호) 고정 좌표 정확히 반영, Header Safe Area(Y=182px) 침범 없음, 3개 Column 폭·Header 정렬 균일, 요소 간 겹침·잘림 없음.",
+      "at": "2026-08-13"
+    },
+    {
+      "stage": "7",
+      "note": "사용자 피드백으로 docs/slide-design-rules/three-column.md 개정(Header Bar 명문화 §3, Key Message 신설 §4 - ExtraBold 18pt/회사 Main Color/밑줄 강조, Main Visual 확대 §5, 정보 밀도 §7) 반영해 new_version.py --from-latest로 v1 -> v2 재생성. Hard Rule 공통 Header System(CI/Sub Message/구분선/Section Label/Main Title/페이지 번호) 좌표는 재검토 없이 v1과 완전히 동일하게 유지. Column Header를 옅은 Tint 배경(Claude_PPT_Design_System.md §2 Tint Light #DFF1F1 - Hard Rule에 없는 값이라 충돌 없음, three-column.md §3 지시대로 Design System 쪽 참조)의 Header Bar로 교체, 3개 Column 완전 동일 위치/폭/높이/배경색 확인. Header Bar 아래 Key Message 신설: Pretendard ExtraBold 24px(18pt, Hard Rule §9와 동일한 1pt=1.3333px 환산), 컬러 Cosolus Teal(#0F655B, 회사 Main Color). 각 Column 원본 불릿을 압축한 신규 요약 문구로 작성(사실·수치 변경 없음, 예: 컬럼1 '글로벌 탄소중립 정책 확대' 등 3개 불릿 -> '글로벌 탄소중립 확산'), 키워드 1개에만 동일 색상 밑줄 강조(문장 전체 밑줄 금지 확인). 1차 구현에서 강조 span 때문에 p 전체가 display:flex가 되어 텍스트가 단어 단위로 깨지는 렌더링 버그 발견 -> .col-key-box(정렬용 래퍼)와 .col-key(일반 block 텍스트)를 분리해 즉시 수정, 재스크린샷으로 Key Message가 모두 1~2줄 이내에 정상 줄바꿈됨을 확인. Main Visual(v1과 동일 표현: KPI 큰 숫자/비교 막대/인용구)을 flex:1로 전환해 Header Bar·Key Message를 제외한 Column 내부 공간 대부분을 차지하도록 확대(KPI 64px->104px, 비교막대 최대높이 140px->210px, 인용구 20px->27px). Supporting Evidence는 리스트 2개에서 한 줄 요약으로 축소해 Main Visual 면적을 잠식하지 않도록 조정. 헤드리스 Chrome 스크린샷으로 확인: Header Safe Area(Y=182px) 침범 없음, 3개 Header Bar 위치/높이/배경색 완전 동일, Key Message 전부 2줄 이내, Main Visual이 v1 대비 뚜렷이 확대, 요소 겹침·잘림 없음.",
+      "at": "2026-08-13"
+    },
+    {
+      "stage": "7",
+      "note": "docs/slide-design-rules/three-column.md가 docs/slide-design-rules/three-column/three-column.md로 이동(같은 폴더에 Reference '3 column_reference.pptx' 추가)되고 §3~§7이 해당 pptx 레이아웃 비율 분석 기반으로 보완됨 -> 최신 md를 다시 읽고 new_version.py --from-latest로 v2 -> v3 재생성. 문서 지시대로 Reference pptx 원본은 열어보지 않고 md 텍스트만 근거로 사용했고, 문서가 반영 대상에서 명시적으로 제외한 Reference 고유의 좌측 세로 브랜드 스트라이프는 추가하지 않음. Hard Rule 공통 Header System 좌표는 재검토 없이 v1부터 동일하게 유지. v2의 Key Message 문구/밑줄 강조, Main Visual 표현(KPI/비교막대/인용구)은 그대로 유지하고 레이아웃 비율/간격만 재작업: (1) Header Bar를 .col 자체에 배치해 padding 없이 Column 경계까지 edge-to-edge로 채우고 높이를 Column 콘텐츠 전체 높이(~474px)의 약 10%인 48px로 슬림화, 텍스트를 Design System H2 위계(20px)로 확대, 3개 Header Bar가 이음매 없이 하나의 연속된 띠처럼 보이도록(개별 gutter 없음, §7 지시대로) 구현. (2) Header Bar 아래 새 .col-body 래퍼를 도입해 padding-top 16px(48px의 1/3)로 Key Message와의 간격을 좁힘. (3) Key Message를 width:78%(Column 폭의 70~85%) + margin auto로 좌우 여백을 둔 좁은 헤드라인 형태로 변경, margin-bottom을 12px->4px로 줄여 Main Visual과 거의 붙게 함. (4) Main Visual은 flex:1 유지(Key Message·1줄 Evidence를 제외한 절대다수 차지, §5의 55~65% 요건은 Evidence가 짧아 자연히 충족됨을 확인). (5) Vertical Divider를 .col이 아닌 .col-body에만 적용해 Header Bar 구간(연속된 띠, 구분선 없음)과 하단 여백 구간을 제외하고 Header Bar 바로 아래부터 Evidence 마지막 줄까지만 표시. 헤드리스 Chrome 스크린샷(+ 상단/디바이더 경계/하단 여백 확대 크롭)으로 확인: Header Safe Area(Y=182px) 침범 없음, 3개 Header Bar 완전 동일 위치/높이/배경색(연속된 단일 띠로 렌더링), Divider가 Header Bar 구간을 침범하지 않고 정확히 그 경계에서 시작해 Evidence 하단에서 끝남, Column 콘텐츠 하단과 슬라이드 하단 사이 여백 확보, 요소 겹침·잘림 없음.",
+      "at": "2026-08-13"
+    }
+  ]
+}

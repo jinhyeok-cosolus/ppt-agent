@@ -1,0 +1,20 @@
+{
+  "project_name": "cosolus-ir-deck",
+  "stage": "8",
+  "audience": "고객사/외부 청중",
+  "language": "ko",
+  "presentation_time_min": 20,
+  "target_slide_count": 15,
+  "web_ppt_version": "v1",
+  "pptx_generated": true,
+  "source_material": "input/코솔러스_IR_필드테스트용_콘텐츠자료_V2.docx",
+  "reference_material": null,
+  "human_review_mode": "skip_intermediate_confirmation",
+  "history": [
+    {"stage": "1", "note": "자료 입력 완료: docx 원본(텍스트+이미지 전체 반영), 청중=고객사/외부 청중, 언어=한국어, 발표시간=20분, 목표 슬라이드 수=15장, 레퍼런스 없음, 사용자가 중간 확인(Human Review [4]/[6]) 생략을 명시적으로 요청함", "at": "2026-08-18"},
+    {"stage": "2", "note": "material-analysis 스킬로 docx 텍스트 256블록·표 30개·이미지 75개 추출 및 검토. material_analysis.json 작성. 에스컬레이션(작업 중단) 대상 핵심 수치 확인 불가 사례 없음 — needs_confirmation 4건(NC-01~NC-04)만 기록.", "at": "2026-08-18"},
+    {"stage": "3", "note": "slide-content-structuring 스킬로 22개 콘텐츠 묶음(B01~B22, B19/B20은 본문 없어 흡수)을 15장으로 재구성한 slide_outline.md 작성. Human Review [4] 생략 지시에 따라 사용자 승인 없이 바로 [5]로 진행.", "at": "2026-08-18"},
+    {"stage": "5", "note": "web-ppt-generator 스킬로 web_ppt/v1/ 생성 완료(index.html 15슬라이드 + style.css + assets/images). Human Review [6] 생략 지시에 따라 pptx 변환([8])은 메인의 별도 지시를 기다림.", "at": "2026-08-18"},
+    {"stage": "8", "note": "pptx-exporter 스킬로 web_ppt/v1 → final.pptx 변환 완료(15슬라이드/29이미지/3표 모두 원본과 일치, 457 shape). 변환 중 pptx-exporter 공용 스크립트(export_pptx.py)가 SPA형 웹PPT에서 활성 슬라이드 1장만 캡처하는 렌더링 버그를 발견해 page.emulate_media(media='print') 누락을 수정(스킬 스크립트 자체 버그 수정, 이 프로젝트 콘텐츠는 변경 없음). 재실행 후 15장 전체 정상 변환 검증 완료.", "at": "2026-08-18"}
+  ]
+}

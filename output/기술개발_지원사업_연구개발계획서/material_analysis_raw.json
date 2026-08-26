@@ -1,0 +1,2029 @@
+{
+  "sources": [
+    {
+      "file": "c:\\Users\\cosol\\OneDrive\\Desktop\\2026.08.25_ 기술개발_지원사업_연구개발계획서_ 프롬프트_V1.docx",
+      "type": "docx",
+      "text_blocks": [
+        {
+          "text": "과제개요",
+          "style": "List Paragraph"
+        },
+        {
+          "text": "* 과제명: 전자잉크소재디스플레이를 위한 고기능성 UV경화형 봉지소재 개발",
+          "style": "Normal"
+        },
+        {
+          "text": "개발 대상: E-Ink 표시소자 가장자리에 적용되는 단일층 UV경화형 봉지소재",
+          "style": "List Bullet"
+        },
+        {
+          "text": "개발 목적: 공정 TACT 단축과 열에 의한 기판 Warpage 개선",
+          "style": "List Bullet"
+        },
+        {
+          "text": "핵심 성능: 저투습, 고접착, 저수축, 높은 경화율, 장기 신뢰성",
+          "style": "List Bullet"
+        },
+        {
+          "text": "최종 단계: 200 kg 규모 양산 검증과 고객사 적용",
+          "style": "List Bullet"
+        },
+        {
+          "text": "주관기관: 소니드 주식회사",
+          "style": "List Bullet"
+        },
+        {
+          "text": "공동 연구역량: 한국생산기술연구원, 코솔러스",
+          "style": "List Bullet"
+        },
+        {
+          "text": "□ 소니드주식회사 ",
+          "style": "Normal"
+        },
+        {
+          "text": "- 디스플레이 전문 소재 기업이며 국내외 디스플레이 제조업체의 협력업체로 등록되어 있고 제품판매 및 공동개발을 수행하고 있으며, 본과제의 총괄책임자는 디스플레이 소재 개발 분야에서 LCD부터 OLED, Micro-LED 20년이상의 개발경력과 관련특허 100편이상 보유 ",
+          "style": "Normal"
+        },
+        {
+          "text": "□ 한국생산기술연구원 ",
+          "style": "Normal"
+        },
+        {
+          "text": "- 유무기 하이브리드소재 분야 SCI(E) 논문 44편 (총 인용횟수 562회, h-index 15), 26건 이상의 국내 특허등록실적 및 2건의 실록산코팅소재관련 해외특허등록/출원을 보유.",
+          "style": "Normal"
+        },
+        {
+          "text": "- 한국공업화학회 국제협력이사 (2019-2023), 한국공업화학회 산학연협력이사(2024~현재)",
+          "style": "Normal"
+        },
+        {
+          "text": "□ ㈜코솔러스 ",
+          "style": "Normal"
+        },
+        {
+          "text": "- 올리고머 합성, 화학구조 기반 배합물 설계 및 제조 기술 전문 기업",
+          "style": "Normal"
+        },
+        {
+          "text": "시장 및 산업 배경",
+          "style": "List Paragraph"
+        },
+        {
+          "text": "헤더: 글로벌 ESL 시장의 가파른 성장",
+          "style": "바탕글"
+        },
+        {
+          "text": "좌우 2개 컬럼 구조로 만들어. ",
+          "style": "바탕글"
+        },
+        {
+          "text": "좌측",
+          "style": "바탕글"
+        },
+        {
+          "text": "소제목: ESL 확대 배경",
+          "style": "바탕글"
+        },
+        {
+          "text": "- 대규모 상품·재고 관리",
+          "style": "바탕글"
+        },
+        {
+          "text": "- 가격 변경 및 재고관리 자동화",
+          "style": "바탕글"
+        },
+        {
+          "text": "- POS 연동 기반 실시간 운영",
+          "style": "바탕글"
+        },
+        {
+          "text": "- 매장 효율성과 경쟁력 강화",
+          "style": "바탕글"
+        },
+        {
+          "text": "그림1 삽입",
+          "style": "바탕글"
+        },
+        {
+          "text": "그림  <대형마트의 리테일러 기술도입 개념>",
+          "style": "Caption"
+        },
+        {
+          "text": "우측",
+          "style": "Normal"
+        },
+        {
+          "text": "소제목:  글로벌 시장 전망",
+          "style": "Normal"
+        },
+        {
+          "text": "- 대형 유통시장 확대와 매장 자동화 수요 증가에 따라 ESL 시장도 성장하고 있음. ",
+          "style": "바탕글"
+        },
+        {
+          "text": "- 글로벌 ESL 시장: ",
+          "style": "바탕글"
+        },
+        {
+          "text": "2023년 약 1조 6천억 원 시장 규모",
+          "style": "바탕글"
+        },
+        {
+          "text": "2028년 약 4조 3천억 원 전망 ",
+          "style": "바탕글"
+        },
+        {
+          "text": "연평균성장률 15~17%",
+          "style": "바탕글"
+        },
+        {
+          "text": "그림2 삽입",
+          "style": "바탕글"
+        },
+        {
+          "text": "오른쪽｜글로벌 ESL 시장 전망",
+          "style": "바탕글"
+        },
+        {
+          "text": "대형 유통시장 확대와 매장 자동화 수요 증가에 따라 가파른 성장세를 이어갈 전망",
+          "style": "바탕글"
+        },
+        {
+          "text": "2023년 약 1.6조 원 5년간 약 2.7배 성장\n2028년 약 4.3조 원 전망",
+          "style": "바탕글"
+        },
+        {
+          "text": "연평균 성장률 15~17%",
+          "style": "바탕글"
+        },
+        {
+          "text": "대형마트를 중심으로 ESL 도입 본격화",
+          "style": "바탕글"
+        },
+        {
+          "text": "가격·재고관리 자동화 수요 지속 확대",
+          "style": "바탕글"
+        },
+        {
+          "text": "그림2 삽입",
+          "style": "바탕글"
+        },
+        {
+          "text": "그림  <ESL 글로벌 시장 규모 자료출처 : Research and markets>",
+          "style": "Caption"
+        },
+        {
+          "text": "아래쪽에 좌우 연결문구로 인사이트 문장 삽입: \n클라우드 기반 매장 운영 자동화 → 글로벌 ESL 수요 확대",
+          "style": "Normal"
+        },
+        {
+          "text": "제품 적용 구조",
+          "style": "List Paragraph"
+        },
+        {
+          "text": "헤더: 가장자리에 적용되어 수분·열·먼지로부터 내부 소재 보호",
+          "style": "Normal"
+        },
+        {
+          "text": "- 개발제품: E-Ink 디스플레이용 봉지소재 ",
+          "style": "Normal"
+        },
+        {
+          "text": "- 적용 위치: E-Ink 표시소자의 가장자리 Edge Glue ",
+          "style": "Normal"
+        },
+        {
+          "text": "- 주요 기판: Glass·PET ",
+          "style": "Normal"
+        },
+        {
+          "text": "- 보호대상: E-Ink 표시소자 ",
+          "style": "Normal"
+        },
+        {
+          "text": "- 보호기능: ",
+          "style": "Normal"
+        },
+        {
+          "text": "외부 수분 차단 ",
+          "style": "Normal"
+        },
+        {
+          "text": "먼지 및 열 노출 방지 ",
+          "style": "Normal"
+        },
+        {
+          "text": "기판과 봉지재 사이의 접착 유지 ",
+          "style": "Normal"
+        },
+        {
+          "text": "- 단일층으로 E-Ink를 보호해야 하므로 고기능성이 요구됨.",
+          "style": "Normal"
+        },
+        {
+          "text": "그림  전자잉크디스플레이 자료출처_소니드주식회사>",
+          "style": "Caption"
+        },
+        {
+          "text": "기존 기술의 문제",
+          "style": "List Paragraph"
+        },
+        {
+          "text": "부제목: E-Ink는 수분·먼지·열에 쉽게 노출 -> 봉지소재 필수 ",
+          "style": "Normal"
+        },
+        {
+          "text": "헤더1: 긴 경화시간",
+          "style": "Normal"
+        },
+        {
+          "text": "- E-Ink는 수분·먼지·열에 쉽게 노출 -> 봉지소재 필수 ",
+          "style": "Normal"
+        },
+        {
+          "text": "- 기존 봉지소재는 일정 온도와 압력에서 약 1시간의 열경화 필요",
+          "style": "Normal"
+        },
+        {
+          "text": "->긴 경화시간으로 공정 TACT가 증가하고 생산효율이 저하됨. ",
+          "style": "Normal"
+        },
+        {
+          "text": "헤더2: Warpage 발생",
+          "style": "Normal"
+        },
+        {
+          "text": "- 열경화 과정에서 기판 Warpage가 발생할 수 있음",
+          "style": "Normal"
+        },
+        {
+          "text": "- 단일층 구조에서 E-Ink를 보호해야 하기때문에 높은 수분차단성과 접착력을 동시에 요구됨",
+          "style": "Normal"
+        },
+        {
+          "text": "개발 필요성",
+          "style": "List Paragraph"
+        },
+        {
+          "text": "부제목: 국내 E-Ink 소재시장 진입 기반 확보 -> 해외기업 중심의 ESL 봉지소재 시장 대응",
+          "style": "Normal"
+        },
+        {
+          "text": "- ESL 제조 핵심기술은 BOE, JABIL, E-Ink Holdings, Innolux 등 글로벌 기업이 보유하고 있음. ",
+          "style": "바탕글"
+        },
+        {
+          "text": "- 봉지소재 시장은 중국과 독일 기업이 주도하고 있음. ",
+          "style": "바탕글"
+        },
+        {
+          "text": "-",
+          "style": "바탕글"
+        },
+        {
+          "text": "- 독일 Henkel(기존 열경화 방습씰 소재 공급 업체)을 비롯한 일본·중국·대만의 접착·Edge Sealing 소재기업이 시장에 진입하면서 경쟁이 심화되고 있음. ",
+          "style": "바탕글"
+        },
+        {
+          "text": "- 국내 디스플레이 산업은 OLED·LCD·Micro-LED 분야에 기술과 투자가 집중되어 있음.( 국내외 대·중견기업 중심 개발 및 양산이 집중됨, 국가기반기술의 양극화는 심화) ",
+          "style": "바탕글"
+        },
+        {
+          "text": "- 기술 난이도와 개발비용 증가로 중소기업의 진입장벽이 높아지고 있음. ",
+          "style": "바탕글"
+        },
+        {
+          "text": "- E-Ink 디스플레이 소재는 국내기업의 진출이 적은 미개척 분야로, 중소기업이 진입할 수 있는 신규 기회시장임. ",
+          "style": "바탕글"
+        },
+        {
+          "text": "- 소니드는 국내기업 중 관련 선행개발 실적을 바탕으로 해외기업과의 경쟁우위 확보를 추진하고 있음.",
+          "style": "바탕글"
+        },
+        {
+          "text": "개발 솔루션",
+          "style": "List Paragraph"
+        },
+        {
+          "text": "부제목: 열경화 -> UV경화형 소재로 전환하여 기존 공정의 한계를 개선",
+          "style": "Normal"
+        },
+        {
+          "text": "헤더1: UV경화 소재로 전환",
+          "style": "Normal"
+        },
+        {
+          "text": "- 적용 위치: E-Ink 표시소자의 가장자리 Edge Glue",
+          "style": "List Bullet"
+        },
+        {
+          "text": "- 적용 기판: Glass, PET 및 향후 Polyimide",
+          "style": "List Bullet"
+        },
+        {
+          "text": "- 보호 기능: 수분 차단, 먼지·열 노출 방지, 기판과 봉지재 사이의 접착 유지",
+          "style": "List Bullet"
+        },
+        {
+          "text": "- 개발 방향: UV경화 전환, 저 WVTR 소재, 난부착 기판용 고접착 소재, 공정조건 최적화",
+          "style": "List Bullet"
+        },
+        {
+          "text": "핵심 기술 구성",
+          "style": "List Paragraph"
+        },
+        {
+          "text": "UV경화형 봉지재 기술(소니드 주식회사)",
+          "style": "Normal"
+        },
+        {
+          "text": "UV경화형 봉지재 개발(조성물의 전방위적 평가) 및 고객사 유사 ESL 봉지 씰 도포 시스템 구축 ",
+          "style": "Normal"
+        },
+        {
+          "text": "조성물의 기초물성·신뢰성 평가 ",
+          "style": "Normal"
+        },
+        {
+          "text": "ESL Damage 및 저장안정성 검증 ",
+          "style": "Normal"
+        },
+        {
+          "text": "최종 봉지재 조성 최적화 (점도 안정성, 보관 안정성 확보)",
+          "style": "Normal"
+        },
+        {
+          "text": "저투습 하이브리드 고분자 기술(한국생산기술연구원)",
+          "style": "Normal"
+        },
+        {
+          "text": "Polysilsesquioxane 기반 고분자 설계(높은 수분차단 특성을 가짐) ",
+          "style": "Normal"
+        },
+        {
+          "text": "분자량·PDI·Packing·가교밀도 제어 -> WVTR/접착 특성 제어 ",
+          "style": "Normal"
+        },
+        {
+          "text": "2D 무기 나노입자 기반 코팅 소재 개발, 2차원 판상 구조 filler 소재 개발 -> 광경화 특성, Barrier 특성 및 용액 공정성 개선 /\nresin 개질, additive 기술 개발 -> filler의 resion에 대한 분산성 확보(filler와의 혼용성 증대) 및 adhesion 개선",
+          "style": "Normal"
+        },
+        {
+          "text": "내굴곡성과 저투습 특성 동시 확보(한 코팅 소재 개발) => 수분 차단 특성의 hybrid 소재 합성 공정 및 특성 최적화",
+          "style": "Normal"
+        },
+        {
+          "text": "고접착 우레탄 아크릴레이트 기술(주식회사 코솔러스)",
+          "style": "Normal"
+        },
+        {
+          "text": "Glass·PET 기판용 저투습/고접착 우레탄 아크릴레이트 올리고머 설계 및 합성 (이차결합력이 우수한 소수성 특성을 가진 폴리올 활용 ->접착력 제어) ",
+          "style": "Normal"
+        },
+        {
+          "text": "소수성 폴리올을 활용한 투습 및 접착 특성 제어(2가지 폴리올을 하나의 올리고머에 도입한 우레탄 아크릴레이트 공중합체 합성) ",
+          "style": "Normal"
+        },
+        {
+          "text": "다관능 아크릴레이트 단량체와 우레탄 아크릴레이트 당량 제어를 통한 가교구조 형성 및 가교 밀도 조절 -> 가교첨가제 도입하여 3차원 가교 구조 형성",
+          "style": "Normal"
+        },
+        {
+          "text": "접착력·투습률 최적화 및 양산화(점도 및 분자량 안정성 확보)",
+          "style": "Normal"
+        },
+        {
+          "text": "정량적 개발 목표",
+          "style": "List Paragraph"
+        },
+        {
+          "text": "부제목: 성능뿐아니라 양산 재현성과 저장 안정성까지 확보",
+          "style": "바탕글"
+        },
+        {
+          "text": "3컬럼 구조. ",
+          "style": "바탕글"
+        },
+        {
+          "text": "헤더1: 성능 목표",
+          "style": "바탕글"
+        },
+        {
+          "text": "* WVTR = 5g/m2.day ",
+          "style": "바탕글"
+        },
+        {
+          "text": "* 부착력 = 고객사 보호필름 to Glass : 10N/cm 이상 ",
+          "style": "바탕글"
+        },
+        {
+          "text": "= Glass to Glass : 5N/cm2 이상 ",
+          "style": "바탕글"
+        },
+        {
+          "text": "* 저온/고온 모듈러스 비율 = 10^2이내 ",
+          "style": "바탕글"
+        },
+        {
+          "text": "* 수축률 = 5%이하 ",
+          "style": "바탕글"
+        },
+        {
+          "text": "* 경화율 = 95%이상",
+          "style": "바탕글"
+        },
+        {
+          "text": "헤더2: 신뢰성 · 양산 목표",
+          "style": "바탕글"
+        },
+        {
+          "text": "- EPD module warpage (2.66“ 기준) = 0.3mm 이하",
+          "style": "바탕글"
+        },
+        {
+          "text": "- 고온(60℃)/ 고온고습 (60℃/40%) /고온고습(60℃/80%) = 1000hr pass",
+          "style": "바탕글"
+        },
+        {
+          "text": "- 열충격안정성(`-25℃/30min~70℃/30min) = 200cycle pass\n* 양산성 평가 (소재) = Batch별 점도 및 분자량 오차 = ±5%",
+          "style": "바탕글"
+        },
+        {
+          "text": "* 양산성 평가 (제품) = Batch별 점도 오차 = ±5%, 보관안정성 = 6개월",
+          "style": "바탕글"
+        },
+        {
+          "text": "헤더3: 정량적 성과 목표",
+          "style": "Normal"
+        },
+        {
+          "text": "- 해외특허 출원 3건 ",
+          "style": "Normal"
+        },
+        {
+          "text": "- 국내특허 출원 10건 ",
+          "style": "Normal"
+        },
+        {
+          "text": "- SCI 논문 4건 ",
+          "style": "Normal"
+        },
+        {
+          "text": "- 청년의무고용 3명 ",
+          "style": "Normal"
+        },
+        {
+          "text": "- 연계고용 5명",
+          "style": "Normal"
+        },
+        {
+          "text": "기관별 역할",
+          "style": "List Paragraph"
+        },
+        {
+          "text": "세 기관이 소재 개발부터 제품화·양산까지 단계별 역할을 분담함.",
+          "style": "Normal"
+        },
+        {
+          "text": "기관 간 연결 관계",
+          "style": "Normal"
+        },
+        {
+          "text": "생기원·코솔러스 소재 개발 → 소니드 조성물 적용 및 신뢰성 평가 → 코솔러스 스케일업·공급 → 소니드 최종제품 양산·판매",
+          "style": "Normal"
+        },
+        {
+          "text": "12. 5개년 개발 로드맵",
+          "style": "Normal"
+        },
+        {
+          "text": "기초소재 설계에서 성능 고도화·신뢰성 검증을 거쳐 최종 양산화까지 단계적으로 추진함.",
+          "style": "Normal"
+        },
+        {
+          "text": "□ 1차년도 ",
+          "style": "바탕글"
+        },
+        {
+          "text": "○ 소니드 주식회사 ",
+          "style": "바탕글"
+        },
+        {
+          "text": "※ ESL (Electronic Shelf Label)용 고기능성 UV경화형 봉지소재 개발",
+          "style": "바탕글"
+        },
+        {
+          "text": "- 선행개발을 이용한 UV경화형 봉지재 개발(조성물의 전방위적 평가)및 신뢰성 평가 ",
+          "style": "바탕글"
+        },
+        {
+          "text": "- 소니드 보유 장비 개조를 통한 고객사 유사 ESL 봉지 씰 도포 시스템 구축 ",
+          "style": "바탕글"
+        },
+        {
+          "text": "- 공동개발 기관 개발 재료 평가",
+          "style": "바탕글"
+        },
+        {
+          "text": "- 해외특허 확보를 IP-R&D 수행 (핵심요소 기술의 경쟁기술 대비 차별화 방안 도출)",
+          "style": "바탕글"
+        },
+        {
+          "text": "○ 한국생산기술연구원 ",
+          "style": "바탕글"
+        },
+        {
+          "text": "※ 수분차단특성을 가진 하이브리드 고분자소재 기술 개발",
+          "style": "바탕글"
+        },
+        {
+          "text": "- 아크릴레이트 구조 기반에 long double-stranded backbone 형성을 통해 높은 수분차단 특성을 가지는 PSQ 고분자소재 분자 설계 및 합성 ",
+          "style": "바탕글"
+        },
+        {
+          "text": "- Acrylate 실란구조와 다른 기능성 실란구조를 다양한 몰비의 copolymer 타입으로 중합하여 분자량/PDI 조절 및 WVTR/접착 특성 제어",
+          "style": "바탕글"
+        },
+        {
+          "text": "○ ㈜코솔러스 ",
+          "style": "바탕글"
+        },
+        {
+          "text": "※ 고접착 우레탄 아크릴레이트 올리고머 개발 ",
+          "style": "바탕글"
+        },
+        {
+          "text": "- 단일 폴리올 골격 기반의 저투습/고접착 우레탄 아크릴레이트 올리고머 개발 ",
+          "style": "바탕글"
+        },
+        {
+          "text": "- Glass, PET 기판과의 결합력 및 투습 특성을 고려한 폴리올(Polyols), 이소시아네이트(Iso-cyanates), 아크릴레이트 단량체(acrylate monomers)로 구성된 우레탄 아크릴레이트 올리고머 설계 및 합성",
+          "style": "바탕글"
+        },
+        {
+          "text": "- 접착력 제어: PET, glass와 이차결합력이 우수한 소수성 특성을 가지는 폴리올 활용",
+          "style": "바탕글"
+        },
+        {
+          "text": "그림  1년차도 계획",
+          "style": "Caption"
+        },
+        {
+          "text": "□ 2차년도 ",
+          "style": "Normal"
+        },
+        {
+          "text": "○ 소니드 주식회사 ",
+          "style": "Normal"
+        },
+        {
+          "text": "※ ESL용 고기능성 UV경화형 봉지소재 개발",
+          "style": "Normal"
+        },
+        {
+          "text": "- 1차년도 구축된 UV경화형 봉지재 도포 장비를 활용한 UV경화형 봉지 씰 개발(조성물의 전방위적 평가) 및 신뢰성 평가 ",
+          "style": "Normal"
+        },
+        {
+          "text": "- 고객사 ESL셀을 사용하여 UV경화형 재료 별 ESL Damage 경향성 확인 ",
+          "style": "Normal"
+        },
+        {
+          "text": "- 공동개발기관 재료를 기본으로 한 고부착력 저WVTR 조성물 개발 ",
+          "style": "Normal"
+        },
+        {
+          "text": "- 신뢰성, 저장안정성 재현성 평가 및 결과 분석을 통한 개선 방향 수립",
+          "style": "Normal"
+        },
+        {
+          "text": "- 1차년도 검토된 신규특허 확보를 위한 핵심기술 차별화 방안의 검증 평가",
+          "style": "Normal"
+        },
+        {
+          "text": "○ 한국생산기술연구원",
+          "style": "Normal"
+        },
+        {
+          "text": "※ 수분차단특성을 가진 하이브리드 고분자소재 기술 개발",
+          "style": "Normal"
+        },
+        {
+          "text": "- 저투습 Packing/crosslinking 특성을 가진 polysilsesquioxane 기반 코팅 소재 개발",
+          "style": "Normal"
+        },
+        {
+          "text": "- 1차 결합인 crosslinking 이외에 수소결합과 같은 2차 결합을 추가해 사슬간 packing crosslinking density 제어 (1차결합 + 2차결합을 이용한 packing density 향상)",
+          "style": "Normal"
+        },
+        {
+          "text": "- Dual-activity sioxane monomer (acrylate, epoxy)를 이용하여 dual-curing system",
+          "style": "Normal"
+        },
+        {
+          "text": "　 (UV 및 열경화)을 도입해 crosslinking 특성 제어",
+          "style": "Normal"
+        },
+        {
+          "text": "○ ㈜코솔러스 ",
+          "style": "Normal"
+        },
+        {
+          "text": "※ 고접착 우레탄 아크릴레이트 올리고머 개발 ",
+          "style": "Normal"
+        },
+        {
+          "text": "- 다관능기의 아크릴레이트 단량체를 1차년도 개발 우레탄 아크릴레이트에 도입하여 3차원 가교 구조 형성: 합성 및 배합 2가지 방향으로 개발",
+          "style": "Normal"
+        },
+        {
+          "text": "- 다관능기 아크릴레이트 단량체와 우레탄 아크릴레이트 당량 제어를 통한 가교 밀도를 조절, 이에 따른 투습율 및 부착력(Glass, PET 기판 대상) 변화 관측",
+          "style": "Normal"
+        },
+        {
+          "text": "- 평가 결과를 바탕으로 소니드(주)에게 우레탄 아크릴레이트 올리고머 제시",
+          "style": "Normal"
+        },
+        {
+          "text": "그림  2년차도 계획",
+          "style": "Caption"
+        },
+        {
+          "text": "□ 3차년도 ",
+          "style": "Normal"
+        },
+        {
+          "text": "○ 소니드 주식회사 ",
+          "style": "Normal"
+        },
+        {
+          "text": "※ ESL용 고기능성 UV경화형 봉지소재 개발",
+          "style": "Normal"
+        },
+        {
+          "text": "- 1차년도 구축된 UV경화형 봉지재 도포 장비를 활용한 UV경화형 봉지 씰 개발(조성물의 전방위적 평가) 및 신뢰성 평가",
+          "style": "Normal"
+        },
+        {
+          "text": "- 무기입자, 왁스 등의 첨가제 적용 및 평가 ",
+          "style": "Normal"
+        },
+        {
+          "text": "- 신뢰성, 저장안정성 재현성 평가 및 결과 분석을 통한 개선 방향 수립",
+          "style": "Normal"
+        },
+        {
+          "text": "- 공동개발기관 재료를 1회/2월 간격으로 공급 받아 소니드에서 최적화 한 조성물에 도입하여 기초 물성 및 신뢰성평가",
+          "style": "Normal"
+        },
+        {
+          "text": "- 1차년도 검토된 신규특허 확보를 위한 핵심기술 차별화 방안의 검증 평가",
+          "style": "Normal"
+        },
+        {
+          "text": "○ 한국생산기술연구원 ",
+          "style": "Normal"
+        },
+        {
+          "text": "※ 수분차단특성을 가진 하이브리드 고분자소재 기술 개발",
+          "style": "Normal"
+        },
+        {
+          "text": "- 2D 나노 평면 구조 특성을 가진 무기 나노 입자 기반 코팅 소재 개발",
+          "style": "Normal"
+        },
+        {
+          "text": "- Polysilsesquioxane에 판상형 filler 도입, 광경화 특성, barrier 특성 및 용액 공정성 평가",
+          "style": "Normal"
+        },
+        {
+          "text": "를 통한 filler 소재 개발",
+          "style": "Normal"
+        },
+        {
+          "text": "- 2차원 판상 구조 filler의 resin에 대한 분산성 확보를 위한 표면 개질 Filler와의 혼용성 증대 및 adhesion 개선을 위한 resin 개질/additive 첨가 기술 개발",
+          "style": "Normal"
+        },
+        {
+          "text": "○ ㈜코솔러스",
+          "style": "Normal"
+        },
+        {
+          "text": "※ 고접착 우레탄 아크릴레이트 올리고머 개발 ",
+          "style": "Normal"
+        },
+        {
+          "text": "- 1차년도 개발한 우레탄 아크릴레이트의 접착력과 투습도 결과를 고려하여 2가지 폴리올을 하나의 올리고머에 도입한 우레탄 아크릴레이트 공중합체 설계",
+          "style": "Normal"
+        },
+        {
+          "text": "- 단일 (혹은 다단계) 반응을 통하여 우레탄 아크릴레이트 공중합체를 합성",
+          "style": "Normal"
+        },
+        {
+          "text": "- 광개시제와 합성한 올리고머 배합물 제작 후 투습율 및 부착력(Glass, PET 기판 대상) 평가 및 소니드(주)에게 올리고머 제시",
+          "style": "Normal"
+        },
+        {
+          "text": "그림  3년차도 계획",
+          "style": "Caption"
+        },
+        {
+          "text": "□ 4차년도 ",
+          "style": "Normal"
+        },
+        {
+          "text": "○ 소니드 주식회사",
+          "style": "Normal"
+        },
+        {
+          "text": "※ ESL용 고기능성 UV경화형 봉지소재 개발",
+          "style": "Normal"
+        },
+        {
+          "text": "- 1~3차년도 구축된 UV경화형 봉지재 도포 장비를 활용한 UV경화형 봉지재 개발(조성물의 전방위적 평가) 및 신뢰성 평가",
+          "style": "Normal"
+        },
+        {
+          "text": "- E-paper Flexible 시장을 위한 UV 경화형 봉지재 개발. Substrate 폴리이미드소재를 적용한 UV경화형 부착력 증진 평가 ",
+          "style": "Normal"
+        },
+        {
+          "text": "- 1차년도 검토된 신규특허 확보를 위한 핵심기술 차별화 방안의 검증 평가",
+          "style": "Normal"
+        },
+        {
+          "text": "○ 한국생산기술연구원 ",
+          "style": "Normal"
+        },
+        {
+          "text": "※ 수분차단특성을 가진 하이브리드 고분자소재 기술 개발",
+          "style": "Normal"
+        },
+        {
+          "text": "- “내굴곡/저투습 특성을 가진” polysilsesquioxane 기반 코팅 소재 개발",
+          "style": "Normal"
+        },
+        {
+          "text": "- Dimethoxydimethylsilane을 도입하여 cross-linking density와 chain mobility의 trade-off ",
+          "style": "Normal"
+        },
+        {
+          "text": "제어를 통해 WVTR 및 유연성 특성 제어",
+          "style": "Normal"
+        },
+        {
+          "text": "○ ㈜코솔러스",
+          "style": "Normal"
+        },
+        {
+          "text": "※ 고접착 우레탄 아크릴레이트 올리고머 개발 ",
+          "style": "Normal"
+        },
+        {
+          "text": "- 3차년도 개발한 우레탄 아크릴레이트 공중합체에 가교첨가제를 도입하여 3차원 가교 구조를 형성",
+          "style": "Normal"
+        },
+        {
+          "text": "- 우레탄 아크릴레이트 공중합체와 가교첨가제 당량 제어를 하여 가교 구조를 제어로 접착력과 투습도 최적화 수행",
+          "style": "Normal"
+        },
+        {
+          "text": "그림  4년차도 계획",
+          "style": "Caption"
+        },
+        {
+          "text": "□ 5차년도 ",
+          "style": "Normal"
+        },
+        {
+          "text": "○ 소니드 주식회사 ",
+          "style": "Normal"
+        },
+        {
+          "text": "- 최종 조성물 선정 및 200kg 양산 규모의 신뢰성 평가 ",
+          "style": "Normal"
+        },
+        {
+          "text": "(점도 안정성, 보관 안정성 확보)",
+          "style": "Normal"
+        },
+        {
+          "text": "○ 한국생산기술연구원 ",
+          "style": "Normal"
+        },
+        {
+          "text": "- 수분차단 특성의 “hybrid 소재 합성 공정 및 특성 최적화”",
+          "style": "Normal"
+        },
+        {
+          "text": "- 주관기관 소니드 UV 경화 공정에 적합한 경화제/점도 포뮬레이션 최적화",
+          "style": "Normal"
+        },
+        {
+          "text": "- Lab 스케일 1~2Kg 배치 최적화 후, 양산 스케일의 코솔러스 기술이전/최적화 진행",
+          "style": "Normal"
+        },
+        {
+          "text": "○ ㈜코솔러스",
+          "style": "Normal"
+        },
+        {
+          "text": "- 고접착 우레탄 아크릴레이트 올리고머 양산화 기술 확보 (점도 및 분자량 안정성 확보)",
+          "style": "Normal"
+        },
+        {
+          "text": "- 양산을 위한 파일럿 및 양산 합성기 설계 및 제작",
+          "style": "Normal"
+        },
+        {
+          "text": "11.선행개발 및 경쟁력",
+          "style": "Normal"
+        },
+        {
+          "text": "고객사 평가 경험과 세 기관의 소재·합성·양산 역량을 기반으로 상용화 가능성을 확보함",
+          "style": "Normal"
+        },
+        {
+          "text": "선행개발 실적",
+          "style": "Normal"
+        },
+        {
+          "text": "2023년 대만 고객사를 통해 기존 열경화 제품의 문제와 UV경화형 제품 개발 수요 확인 ",
+          "style": "Normal"
+        },
+        {
+          "text": "1차 평가용 개발제품 5종 평가 ",
+          "style": "Normal"
+        },
+        {
+          "text": "Edge Mura 발생 후 개선제품 6종을 대만 고객사에 추가 발송 ",
+          "style": "Normal"
+        },
+        {
+          "text": "소니드 및 경쟁업체를 함께 60℃·240시간 수준까지 평가했으나 목표인 1,000시간에는 아직 미달 (신뢰성 평가 미달)",
+          "style": "Normal"
+        },
+        {
+          "text": "평가 수준은 일본 제품과 소니드 제품 간 차이가 크지 않은 것으로 확인 ",
+          "style": "Normal"
+        },
+        {
+          "text": "한국생산기술연구원 및 코솔러스와 WVTR·접착력 개선 소재를 선행개발했으나 최종 최적화에는 도달하지 못함",
+          "style": "Normal"
+        },
+        {
+          "text": "보유 경쟁력",
+          "style": "Normal"
+        },
+        {
+          "text": "소니드: \n- 디스플레이 전자재료 개발·양산 및 고객사 평가 경험 \n- UV경화형 디스플레이 재료를 중점적으로 공동연구개발 수행 중",
+          "style": "Normal"
+        },
+        {
+          "text": "한국생산기술연구원: \n- 하이브리드 소재 분야 SCI(E) 논문 44편 \n- 국내 특허 26건 이상 \n- 실록산 코팅소재 관련 해외특허 보유 \n- 대표수행과제 : (소재부품기술개발사업) 50% 연신회복 가능한 폴리우레탄 기반 스트레처블 디스플레이용 커버윈도우 소재 개발 (중기부) 차량용 display 적용을 위한 높은 신뢰성 조건에서 기포 발생 Zero화를 만족하는 Glass &PC/PMMA用 OCA 개발, (산업핵심) 50만회 내굴곡성과 120℃ 고내열성 특성의 플렉시블 전장 및 전자 모듈용 고기능성 점접착소재 개발",
+          "style": "Normal"
+        },
+        {
+          "text": "코솔러스: \n- 올리고머·시럽·기능성 첨가제 설계 및 합성기술 보유\n- 20~50L 합성기 설계·제작 노하우 \n- 5톤/Batch 합성기 운용 경험 \n- 기능성 수지 사업화 및 2023년 매출 5.2억 원 달성",
+          "style": "Normal"
+        },
+        {
+          "text": "그림  <소니드 연구개발 및 양산 제조 시설>",
+          "style": "Caption"
+        },
+        {
+          "text": "12. 사업화 전략\n대만 글로벌 고객사 검증을 시작으로 소재 기술이전·스케일업·양산 공급체계를 구축",
+          "style": "Normal"
+        },
+        {
+          "text": "- 소니드에서는 대만 수요기업과의 NDA를 체결하여 UV경화형 봉지재을 개발하고 있으며 24년 1월 경 7종에 대한 제품평가에 대한 결과를 공유받았으며 2024년 3월 초 평가를 위해 6종의 샘플을 대만으로 발송함 ",
+          "style": "바탕글"
+        },
+        {
+          "text": "- 소니드는 현재 대만 수요기업과의 공동개발을 ESL UV경화형 봉지재를 제외하고도 다른 사업화 아이템을 개발하며 사업영역 확장을 위해 노력 중 ",
+          "style": "바탕글"
+        },
+        {
+          "text": "- 3차년도(2026년)에 고객사 신뢰성 평가 승인을 목표로 설정 ",
+          "style": "바탕글"
+        },
+        {
+          "text": "- 과제 종료 시점인 2028년부터 매출 발생 추진 ",
+          "style": "바탕글"
+        },
+        {
+          "text": "- 1차: 현재 평가 중인 대만 글로벌 선두 수요기업에 우선 납품 ",
+          "style": "바탕글"
+        },
+        {
+          "text": "- 2차: 기존 열경화 봉지재 대체 또는 신규 모델 적용 납품 ",
+          "style": "바탕글"
+        },
+        {
+          "text": "- 3차: 이후 국내 ESL 생산업체로 공급처 확대 ",
+          "style": "바탕글"
+        },
+        {
+          "text": "- 개발 성공시, 생기원 개발 소재를 코솔러스에 기술이전 ",
+          "style": "바탕글"
+        },
+        {
+          "text": "- 코솔러스에서 저투습·고접착 소재를 제품 수준으로 스케일업하여 소니드에 안정적으로 공급 ",
+          "style": "바탕글"
+        },
+        {
+          "text": "- 소니드에서 최종 ESL 봉지재를 양산·판매 사업화 진행",
+          "style": "바탕글"
+        },
+        {
+          "text": "- 소니드: 현재 NDA 체결 중인 대만회사 이외의 국내외 ESL 업체의 수요 분석 후 제품 판매처 다양화 추진, ESL 이외의 E-book 및 Signage에도 소재 접목을 위한 마케팅 활동 추진 ",
+          "style": "바탕글"
+        },
+        {
+          "text": "- 특허법무법인과 정기적인 협의를 통해 IP 확보 및 핵심기술 차별화 추진",
+          "style": "바탕글"
+        },
+        {
+          "text": "13. 기대효과\n글로벌 ESL 고객사 채택을 기반으로 신규 해외 매출과 국내시장 진입을 추진함.",
+          "style": "Normal"
+        },
+        {
+          "text": "사업화로 얻을 매출·판매 성과",
+          "style": "Normal"
+        },
+        {
+          "text": "기대효과",
+          "style": "바탕글"
+        },
+        {
+          "text": "개발의 성공 및 양산화 채택 시, 글로벌 선두기업 적용될 예정 -> 100억 원 이상의 신규 해외매출액 발생 기대 ",
+          "style": "바탕글"
+        },
+        {
+          "text": "국내 글로벌 2위 기업 대상 프로모션을 통해 국내매출 확대 추진 ",
+          "style": "바탕글"
+        },
+        {
+          "text": "2030년경 ESL 봉지소재 국내외 매출 200억 원 목표 ",
+          "style": "바탕글"
+        },
+        {
+          "text": "매장 자동화·재고관리 효율화를 지원하는 소재 공급 _> 소매 판매업에서 인건비 절감을 통한 수익 개선 ",
+          "style": "바탕글"
+        },
+        {
+          "text": "해외기업 중심의 ESL 봉지소재 시장에서 국내기업의 경쟁 기반 확보",
+          "style": "바탕글"
+        },
+        {
+          "text": "14. 확장 계획\nESL에서 확보한 봉지소재 기술을 다양한 전자종이와 디스플레이 분야로 확대",
+          "style": "Normal"
+        },
+        {
+          "text": "- 대만 SES-imagotag 외 국내외 ESL 기업으로 판매처 다변화 ",
+          "style": "Normal"
+        },
+        {
+          "text": "- 국내 솔루엠, 해외 Price 등과 협력 추진 ",
+          "style": "Normal"
+        },
+        {
+          "text": "- ESL 이외 전자종이 응용제품으로 소재 적용 확대: E-Book, Signage ",
+          "style": "Normal"
+        },
+        {
+          "text": "- E-Ink 원천기술 기업, Protection Film 제조기업, 국내 신규 전자종이 소재기업과 협력 추진 ",
+          "style": "Normal"
+        },
+        {
+          "text": "- Flexible E-Paper용 Polyimide 기판 적용기술 확보 ",
+          "style": "Normal"
+        },
+        {
+          "text": "- 개발과정에서 확보한 기술을 OLED 대형 디스플레이용 봉지소재로 확장",
+          "style": "Normal"
+        }
+      ],
+      "tables": [
+        {
+          "headers": [
+            "기관",
+            "주요 역할"
+          ],
+          "rows": [
+            [
+              "소니드",
+              "UV경화형 ESL 봉지재 조성·도포, 공동개발 소재 평가, 신뢰성 검증, 최종제품 양산 및 판매"
+            ],
+            [
+              "한국생산기술연구원",
+              "저투습 PSQ 기반 하이브리드 고분자 설계·합성, Barrier·유연성·가교 특성 최적화"
+            ],
+            [
+              "코솔러스",
+              "Glass·PET용 고접착 우레탄 아크릴레이트 올리고머 개발, 스케일업 및 양산기술 확보"
+            ]
+          ],
+          "row_count": 3,
+          "needs_appendix": false
+        }
+      ],
+      "images": [
+        "output\\기술개발_지원사업_연구개발계획서\\extracted_images\\2026.08.25_ 기술개발_지원사업_연구개발계획서_ 프롬프트_V1_img1.png",
+        "output\\기술개발_지원사업_연구개발계획서\\extracted_images\\2026.08.25_ 기술개발_지원사업_연구개발계획서_ 프롬프트_V1_img2.png",
+        "output\\기술개발_지원사업_연구개발계획서\\extracted_images\\2026.08.25_ 기술개발_지원사업_연구개발계획서_ 프롬프트_V1_img3.png",
+        "output\\기술개발_지원사업_연구개발계획서\\extracted_images\\2026.08.25_ 기술개발_지원사업_연구개발계획서_ 프롬프트_V1_img4.png",
+        "output\\기술개발_지원사업_연구개발계획서\\extracted_images\\2026.08.25_ 기술개발_지원사업_연구개발계획서_ 프롬프트_V1_img5.png",
+        "output\\기술개발_지원사업_연구개발계획서\\extracted_images\\2026.08.25_ 기술개발_지원사업_연구개발계획서_ 프롬프트_V1_img6.png",
+        "output\\기술개발_지원사업_연구개발계획서\\extracted_images\\2026.08.25_ 기술개발_지원사업_연구개발계획서_ 프롬프트_V1_img7.png",
+        "output\\기술개발_지원사업_연구개발계획서\\extracted_images\\2026.08.25_ 기술개발_지원사업_연구개발계획서_ 프롬프트_V1_img8.png",
+        "output\\기술개발_지원사업_연구개발계획서\\extracted_images\\2026.08.25_ 기술개발_지원사업_연구개발계획서_ 프롬프트_V1_img9.png",
+        "output\\기술개발_지원사업_연구개발계획서\\extracted_images\\2026.08.25_ 기술개발_지원사업_연구개발계획서_ 프롬프트_V1_img10.png",
+        "output\\기술개발_지원사업_연구개발계획서\\extracted_images\\2026.08.25_ 기술개발_지원사업_연구개발계획서_ 프롬프트_V1_img11.png",
+        "output\\기술개발_지원사업_연구개발계획서\\extracted_images\\2026.08.25_ 기술개발_지원사업_연구개발계획서_ 프롬프트_V1_img12.png",
+        "output\\기술개발_지원사업_연구개발계획서\\extracted_images\\2026.08.25_ 기술개발_지원사업_연구개발계획서_ 프롬프트_V1_img13.png"
+      ],
+      "charts_detected": [],
+      "needs_manual_review": false
+    },
+    {
+      "file": "c:\\Users\\cosol\\OneDrive\\Desktop\\2026.08.25_ 기술개발_지원사업_연구개발계획서_ 내용정리_V1.docx",
+      "type": "docx",
+      "text_blocks": [
+        {
+          "text": "과제개요",
+          "style": "List Paragraph"
+        },
+        {
+          "text": "* 과제명: 전자잉크소재디스플레이를 위한 고기능성 UV경화형 봉지소재 개발",
+          "style": "Normal"
+        },
+        {
+          "text": "* 개발 목표: 전자잉크소재 디스플레이를 위한 고기능성 UV경화형 밀폐소재 개발",
+          "style": "Normal"
+        },
+        {
+          "text": "* 개발 목적: 기존 열경화 소재를 UV경화 소재로 변경하여 공정 TACT를 줄이고 열에 의한 기판 Warpage를 개선",
+          "style": "Normal"
+        },
+        {
+          "text": "- 단일층에서의 UV경화형 봉지소재 개발 ",
+          "style": "Normal"
+        },
+        {
+          "text": "- 저 WVTR 구현 기초소재 개발 ",
+          "style": "Normal"
+        },
+        {
+          "text": "- 난 부착소재의 고접착력 기초소재 개발",
+          "style": "Normal"
+        },
+        {
+          "text": "* 연구팀 구성",
+          "style": "Normal"
+        },
+        {
+          "text": "□ 소니드주식회사 ",
+          "style": "Normal"
+        },
+        {
+          "text": "- 디스플레이 전문 소재 기업이며 국내외 디스플레이 제조업체의 협력업체로 등록되어 있고 제품판매 및 공동개발을 수행하고 있으며, 본과제의 총괄책임자는 디스플레이 소재 개발 분야에서 LCD부터 OLED, Micro-LED 20년이상의 개발경력과 관련특허 100편이상 보유 ",
+          "style": "Normal"
+        },
+        {
+          "text": "□ 한국생산기술연구원 ",
+          "style": "Normal"
+        },
+        {
+          "text": "- 유무기 하이브리드소재 분야 SCI(E) 논문 44편 (총 인용횟수 562회, h-index 15), 26건 이상의 국내 특허등록실적 및 2건의 실록산코팅소재관련 해외특허등록/출원을 보유.",
+          "style": "Normal"
+        },
+        {
+          "text": "- 한국공업화학회 국제협력이사 (2019-2023), 한국공업화학회 산학연협력이사(2024~현재)",
+          "style": "Normal"
+        },
+        {
+          "text": "□ ㈜코솔러스 ",
+          "style": "Normal"
+        },
+        {
+          "text": "- 올리고머 합성, 화학구조 기반 배합물 설계 및 제조 기술 전문 기업",
+          "style": "Normal"
+        },
+        {
+          "text": "시장 및 산업 배경",
+          "style": "List Paragraph"
+        },
+        {
+          "text": "핵심 내용: 대형 유통매장의 리테일 기술 도입이 확대되면서 핵심 부품인 ESL 시장도 빠르게 성장하고 있음.",
+          "style": "Normal"
+        },
+        {
+          "text": "- 대형마트에서는 약 10만 개 이상의 상품과 재고를 관리하기 위해 리테일 기술을 도입하고 있음. -> 효과적인 시장경쟁력을 확보 ",
+          "style": "바탕글"
+        },
+        {
+          "text": "- ESL(E-잉크디스플레이)은 상품 가격 변경과 재고관리를 자동화하고 POS 시스템과 연동할 수 있는 리테일 기술의 핵심 부품임. ",
+          "style": "바탕글"
+        },
+        {
+          "text": "- 대형 유통시장 확대와 매장 자동화 수요 증가에 따라 ESL 시장도 성장하고 있음. ",
+          "style": "바탕글"
+        },
+        {
+          "text": "- 글로벌 ESL 시장: ",
+          "style": "바탕글"
+        },
+        {
+          "text": "2023년 약 1조 6천억 원 시장 규모",
+          "style": "바탕글"
+        },
+        {
+          "text": "2028년 약 4조 3천억 원 전망 ",
+          "style": "바탕글"
+        },
+        {
+          "text": "연평균성장률 15~17%",
+          "style": "바탕글"
+        },
+        {
+          "text": "그림 1 <대형마트의 리테일러 기술도입 개념>",
+          "style": "Caption"
+        },
+        {
+          "text": "그림 2 <ESL 글로벌 시장 규모 자료출처 : Research and markets>",
+          "style": "Caption"
+        },
+        {
+          "text": "기존 기술의 문제",
+          "style": "List Paragraph"
+        },
+        {
+          "text": "핵심내용: 기존 열경화형 봉지소재는 긴 경화시간과 열에 의한 기판 변형으로 생산성과 품질에 한계가 있음.",
+          "style": "Normal"
+        },
+        {
+          "text": "- E-Ink는 수분·먼지·열에 쉽게 노출되므로 이를 보호하는 고기능성 봉지소재가 필수적임. ",
+          "style": "Normal"
+        },
+        {
+          "text": "- 기존 봉지소재는 일정 온도와 압력에서 약 1시간의 열경화 공정이 필요함. (생산효율이 떨어진다는 단점)",
+          "style": "Normal"
+        },
+        {
+          "text": "- 긴 경화시간으로 공정 TACT가 증가하고 생산효율이 저하됨. ",
+          "style": "Normal"
+        },
+        {
+          "text": "- 열경화 과정에서 기판 Warpage가 발생할 수 있음. ",
+          "style": "Normal"
+        },
+        {
+          "text": "- 단일층 구조에서 E-Ink를 보호해야 하므로 높은 수분차단성과 접착력을 동시에 확보해야 함. ",
+          "style": "Normal"
+        },
+        {
+          "text": "- 고객사에서도 열경화 소재를 UV경화 소재로 변경해달라는 요구가 있음.",
+          "style": "Normal"
+        },
+        {
+          "text": "개발 필요성",
+          "style": "List Paragraph"
+        },
+        {
+          "text": "핵심 내용: 해외기업 중심의 ESL 봉지소재 시장에 대응하고 국내기업의 E-Ink 소재시장 진입 기반을 확보해야 함.",
+          "style": "Normal"
+        },
+        {
+          "text": "- ESL 제조 핵심기술은 BOE, JABIL, E-Ink Holdings, Innolux 등 글로벌 기업이 보유하고 있음. ",
+          "style": "바탕글"
+        },
+        {
+          "text": "- 봉지소재 시장은 중국과 독일 기업이 주도하고 있음. ",
+          "style": "바탕글"
+        },
+        {
+          "text": "- 글로벌 선두 ESL 제조사 SES-imagotag의 최대주주는 중국 BOE이며, BOE가 지분 32%를 보유하고 있음. -> 실질적인 글로벌 선두주자는 중국으로 파악됨",
+          "style": "바탕글"
+        },
+        {
+          "text": "- 독일 Henkel(기존 열경화 방습씰 소재 공급 업체)을 비롯한 일본·중국·대만의 접착·Edge Sealing 소재기업이 시장에 진입하면서 경쟁이 심화되고 있음. ",
+          "style": "바탕글"
+        },
+        {
+          "text": "- 국내 디스플레이 산업은 OLED·LCD·Micro-LED 분야에 기술과 투자가 집중되어 있음.( 국내외 대·중견기업 중심 개발 및 양산이 집중됨, 국가기반기술의 양극화는 심화) ",
+          "style": "바탕글"
+        },
+        {
+          "text": "- 기술 난이도와 개발비용 증가로 중소기업의 진입장벽이 높아지고 있음. ",
+          "style": "바탕글"
+        },
+        {
+          "text": "- E-Ink 디스플레이 소재는 국내기업의 진출이 적은 미개척 분야로, 중소기업이 진입할 수 있는 신규 기회시장임. ",
+          "style": "바탕글"
+        },
+        {
+          "text": "- 소니드는 국내기업 중 관련 선행개발 실적을 바탕으로 해외기업과의 경쟁우위 확보를 추진하고 있음.",
+          "style": "바탕글"
+        },
+        {
+          "text": "개발 솔루션",
+          "style": "List Paragraph"
+        },
+        {
+          "text": "핵심 내용: 저투습성과 고접착력을 갖춘 단일층 UV경화형 봉지소재로 기존 열경화 공정의 한계를 개선함.",
+          "style": "Normal"
+        },
+        {
+          "text": "- 기존 열경화 소재를 UV경화 소재로 전환 ",
+          "style": "Normal"
+        },
+        {
+          "text": "- 경화공정 TACT 단축 ",
+          "style": "Normal"
+        },
+        {
+          "text": "- 열에 의한 기판 Warpage 감소 ",
+          "style": "Normal"
+        },
+        {
+          "text": "- 단일층 UV경화형 봉지소재 개발 ",
+          "style": "Normal"
+        },
+        {
+          "text": "- 저 WVTR 구현을 위한 기초소재 개발 ",
+          "style": "Normal"
+        },
+        {
+          "text": "- Glass·PET 등 난부착 기판을 위한 고접착 소재 개발 ",
+          "style": "Normal"
+        },
+        {
+          "text": "- UV경화 공정에 적합한 소재·점도·경화조건 최적화 ",
+          "style": "Normal"
+        },
+        {
+          "text": "- 최종적으로 ESL용 Edge Glue에 적용",
+          "style": "Normal"
+        },
+        {
+          "text": "제품 적용 구조",
+          "style": "List Paragraph"
+        },
+        {
+          "text": "핵심 내용: 개발 봉지소재는 E-Ink 표시소자의 가장자리에 적용되어 수분·열·먼지로부터 내부 소재를 보호함.",
+          "style": "Normal"
+        },
+        {
+          "text": "- 개발제품: E-Ink 디스플레이용 봉지소재 ",
+          "style": "Normal"
+        },
+        {
+          "text": "- 적용 위치: E-Ink 표시소자의 가장자리 Edge Glue ",
+          "style": "Normal"
+        },
+        {
+          "text": "- 주요 기판: Glass·PET ",
+          "style": "Normal"
+        },
+        {
+          "text": "- 보호대상: E-Ink 표시소자 ",
+          "style": "Normal"
+        },
+        {
+          "text": "- 보호기능: ",
+          "style": "Normal"
+        },
+        {
+          "text": "외부 수분 차단 ",
+          "style": "Normal"
+        },
+        {
+          "text": "먼지 및 열 노출 방지 ",
+          "style": "Normal"
+        },
+        {
+          "text": "기판과 봉지재 사이의 접착 유지 ",
+          "style": "Normal"
+        },
+        {
+          "text": "- 단일층으로 E-Ink를 보호해야 하므로 고기능성이 요구됨.",
+          "style": "Normal"
+        },
+        {
+          "text": "핵심 기술 구성",
+          "style": "List Paragraph"
+        },
+        {
+          "text": "UV경화형 봉지재 기술(소니드 주식회사)",
+          "style": "Normal"
+        },
+        {
+          "text": "UV경화형 봉지재 개발(조성물의 전방위적 평가) 및 고객사 유사 ESL 봉지 씰 도포 시스템 구축 ",
+          "style": "Normal"
+        },
+        {
+          "text": "조성물의 기초물성·신뢰성 평가 ",
+          "style": "Normal"
+        },
+        {
+          "text": "ESL Damage 및 저장안정성 검증 ",
+          "style": "Normal"
+        },
+        {
+          "text": "최종 봉지재 조성 최적화 (점도 안정성, 보관 안정성 확보)",
+          "style": "Normal"
+        },
+        {
+          "text": "저투습 하이브리드 고분자 기술(한국생산기술연구원)",
+          "style": "Normal"
+        },
+        {
+          "text": "Polysilsesquioxane 기반 고분자 설계(높은 수분차단 특성을 가짐) ",
+          "style": "Normal"
+        },
+        {
+          "text": "분자량·PDI·Packing·가교밀도 제어 -> WVTR/접착 특성 제어 ",
+          "style": "Normal"
+        },
+        {
+          "text": "2D 무기 나노입자 기반 코팅 소재 개발, 2차원 판상 구조 filler 소재 개발 -> 광경화 특성, Barrier 특성 및 용액 공정성 개선 /\nresin 개질, additive 기술 개발 -> filler의 resion에 대한 분산성 확보(filler와의 혼용성 증대) 및 adhesion 개선",
+          "style": "Normal"
+        },
+        {
+          "text": "내굴곡성과 저투습 특성 동시 확보(한 코팅 소재 개발) => 수분 차단 특성의 hybrid 소재 합성 공정 및 특성 최적화",
+          "style": "Normal"
+        },
+        {
+          "text": "고접착 우레탄 아크릴레이트 기술(주식회사 코솔러스)",
+          "style": "Normal"
+        },
+        {
+          "text": "Glass·PET 기판용 저투습/고접착 우레탄 아크릴레이트 올리고머 설계 및 합성 (이차결합력이 우수한 소수성 특성을 가진 폴리올 활용 ->접착력 제어) ",
+          "style": "Normal"
+        },
+        {
+          "text": "소수성 폴리올을 활용한 투습 및 접착 특성 제어(2가지 폴리올을 하나의 올리고머에 도입한 우레탄 아크릴레이트 공중합체 합성) ",
+          "style": "Normal"
+        },
+        {
+          "text": "다관능 아크릴레이트 단량체와 우레탄 아크릴레이트 당량 제어를 통한 가교구조 형성 및 가교 밀도 조절 -> 가교첨가제 도입하여 3차원 가교 구조 형성",
+          "style": "Normal"
+        },
+        {
+          "text": "접착력·투습률 최적화 및 양산화(점도 및 분자량 안정성 확보)",
+          "style": "Normal"
+        },
+        {
+          "text": "정량적 개발 목표",
+          "style": "List Paragraph"
+        },
+        {
+          "text": "저투습·고접착·고신뢰성뿐 아니라 양산 재현성과 저장 안정성까지 확보",
+          "style": "바탕글"
+        },
+        {
+          "text": "* WVTR = 5g/m2.day ",
+          "style": "바탕글"
+        },
+        {
+          "text": "* 부착력 = 고객사 보호필름 to Glass : 10N/cm 이상 ",
+          "style": "바탕글"
+        },
+        {
+          "text": "= Glass to Glass : 5N/cm2 이상 ",
+          "style": "바탕글"
+        },
+        {
+          "text": "* 저온/고온 모듈러스 비율 = 10^2이내 ",
+          "style": "바탕글"
+        },
+        {
+          "text": "* 수축률 = 5%이하 ",
+          "style": "바탕글"
+        },
+        {
+          "text": "* 경화율 = 95%이상",
+          "style": "바탕글"
+        },
+        {
+          "text": "* 신뢰성 평가",
+          "style": "바탕글"
+        },
+        {
+          "text": "- EPD module warpage (2.66“ 기준) = 0.3mm 이하",
+          "style": "바탕글"
+        },
+        {
+          "text": "- 고온(60℃)/ 고온고습 (60℃/40%) /고온고습(60℃/80%) = 1000hr pass",
+          "style": "바탕글"
+        },
+        {
+          "text": "- 열충격안정성(`-25℃/30min~70℃/30min) = 200cycle pass\n* 양산성 평가 (소재) = Batch별 점도 및 분자량 오차 = ±5%",
+          "style": "바탕글"
+        },
+        {
+          "text": "* 양산성 평가 (제품) = Batch별 점도 오차 = ±5%, 보관안정성 = 6개월",
+          "style": "바탕글"
+        },
+        {
+          "text": "정량적 성과 목표",
+          "style": "Normal"
+        },
+        {
+          "text": "- 해외특허 출원 3건 ",
+          "style": "Normal"
+        },
+        {
+          "text": "- 국내특허 출원 10건 ",
+          "style": "Normal"
+        },
+        {
+          "text": "- SCI 논문 4건 ",
+          "style": "Normal"
+        },
+        {
+          "text": "- 청년의무고용 3명 ",
+          "style": "Normal"
+        },
+        {
+          "text": "- 연계고용 5명",
+          "style": "Normal"
+        },
+        {
+          "text": "기관별 역할",
+          "style": "List Paragraph"
+        },
+        {
+          "text": "세 기관이 소재 개발부터 제품화·양산까지 단계별 역할을 분담함.",
+          "style": "Normal"
+        },
+        {
+          "text": "기관 간 연결 관계",
+          "style": "Normal"
+        },
+        {
+          "text": "생기원·코솔러스 소재 개발 → 소니드 조성물 적용 및 신뢰성 평가 → 코솔러스 스케일업·공급 → 소니드 최종제품 양산·판매",
+          "style": "Normal"
+        },
+        {
+          "text": "5개년 개발 로드맵",
+          "style": "List Paragraph"
+        },
+        {
+          "text": "기초소재 설계에서 성능 고도화·신뢰성 검증을 거쳐 최종 양산화까지 단계적으로 추진함.",
+          "style": "Normal"
+        },
+        {
+          "text": "□ 1차년도 ",
+          "style": "바탕글"
+        },
+        {
+          "text": "○ 소니드 주식회사 ",
+          "style": "바탕글"
+        },
+        {
+          "text": "※ ESL (Electronic Shelf Label)용 고기능성 UV경화형 봉지소재 개발",
+          "style": "바탕글"
+        },
+        {
+          "text": "- 선행개발을 이용한 UV경화형 봉지재 개발(조성물의 전방위적 평가)및 신뢰성 평가 ",
+          "style": "바탕글"
+        },
+        {
+          "text": "- 소니드 보유 장비 개조를 통한 고객사 유사 ESL 봉지 씰 도포 시스템 구축 ",
+          "style": "바탕글"
+        },
+        {
+          "text": "- 공동개발 기관 개발 재료 평가",
+          "style": "바탕글"
+        },
+        {
+          "text": "- 해외특허 확보를 IP-R&D 수행 (핵심요소 기술의 경쟁기술 대비 차별화 방안 도출)",
+          "style": "바탕글"
+        },
+        {
+          "text": "○ 한국생산기술연구원 ",
+          "style": "바탕글"
+        },
+        {
+          "text": "※ 수분차단특성을 가진 하이브리드 고분자소재 기술 개발",
+          "style": "바탕글"
+        },
+        {
+          "text": "- 아크릴레이트 구조 기반에 long double-stranded backbone 형성을 통해 높은 수분차단 특성을 가지는 PSQ 고분자소재 분자 설계 및 합성 ",
+          "style": "바탕글"
+        },
+        {
+          "text": "- Acrylate 실란구조와 다른 기능성 실란구조를 다양한 몰비의 copolymer 타입으로 중합하여 분자량/PDI 조절 및 WVTR/접착 특성 제어",
+          "style": "바탕글"
+        },
+        {
+          "text": "○ ㈜코솔러스 ",
+          "style": "바탕글"
+        },
+        {
+          "text": "※ 고접착 우레탄 아크릴레이트 올리고머 개발 ",
+          "style": "바탕글"
+        },
+        {
+          "text": "- 단일 폴리올 골격 기반의 저투습/고접착 우레탄 아크릴레이트 올리고머 개발 ",
+          "style": "바탕글"
+        },
+        {
+          "text": "- Glass, PET 기판과의 결합력 및 투습 특성을 고려한 폴리올(Polyols), 이소시아네이트(Iso-cyanates), 아크릴레이트 단량체(acrylate monomers)로 구성된 우레탄 아크릴레이트 올리고머 설계 및 합성",
+          "style": "바탕글"
+        },
+        {
+          "text": "- 접착력 제어: PET, glass와 이차결합력이 우수한 소수성 특성을 가지는 폴리올 활용",
+          "style": "바탕글"
+        },
+        {
+          "text": "그림 7 1년차도 계획",
+          "style": "Caption"
+        },
+        {
+          "text": "□ 2차년도 ",
+          "style": "Normal"
+        },
+        {
+          "text": "○ 소니드 주식회사 ",
+          "style": "Normal"
+        },
+        {
+          "text": "※ ESL용 고기능성 UV경화형 봉지소재 개발",
+          "style": "Normal"
+        },
+        {
+          "text": "- 1차년도 구축된 UV경화형 봉지재 도포 장비를 활용한 UV경화형 봉지 씰 개발(조성물의 전방위적 평가) 및 신뢰성 평가 ",
+          "style": "Normal"
+        },
+        {
+          "text": "- 고객사 ESL셀을 사용하여 UV경화형 재료 별 ESL Damage 경향성 확인 ",
+          "style": "Normal"
+        },
+        {
+          "text": "- 공동개발기관 재료를 기본으로 한 고부착력 저WVTR 조성물 개발 ",
+          "style": "Normal"
+        },
+        {
+          "text": "- 신뢰성, 저장안정성 재현성 평가 및 결과 분석을 통한 개선 방향 수립",
+          "style": "Normal"
+        },
+        {
+          "text": "- 1차년도 검토된 신규특허 확보를 위한 핵심기술 차별화 방안의 검증 평가",
+          "style": "Normal"
+        },
+        {
+          "text": "○ 한국생산기술연구원",
+          "style": "Normal"
+        },
+        {
+          "text": "※ 수분차단특성을 가진 하이브리드 고분자소재 기술 개발",
+          "style": "Normal"
+        },
+        {
+          "text": "- 저투습 Packing/crosslinking 특성을 가진 polysilsesquioxane 기반 코팅 소재 개발",
+          "style": "Normal"
+        },
+        {
+          "text": "- 1차 결합인 crosslinking 이외에 수소결합과 같은 2차 결합을 추가해 사슬간 packing crosslinking density 제어 (1차결합 + 2차결합을 이용한 packing density 향상)",
+          "style": "Normal"
+        },
+        {
+          "text": "- Dual-activity sioxane monomer (acrylate, epoxy)를 이용하여 dual-curing system",
+          "style": "Normal"
+        },
+        {
+          "text": "　 (UV 및 열경화)을 도입해 crosslinking 특성 제어",
+          "style": "Normal"
+        },
+        {
+          "text": "○ ㈜코솔러스 ",
+          "style": "Normal"
+        },
+        {
+          "text": "※ 고접착 우레탄 아크릴레이트 올리고머 개발 ",
+          "style": "Normal"
+        },
+        {
+          "text": "- 다관능기의 아크릴레이트 단량체를 1차년도 개발 우레탄 아크릴레이트에 도입하여 3차원 가교 구조 형성: 합성 및 배합 2가지 방향으로 개발",
+          "style": "Normal"
+        },
+        {
+          "text": "- 다관능기 아크릴레이트 단량체와 우레탄 아크릴레이트 당량 제어를 통한 가교 밀도를 조절, 이에 따른 투습율 및 부착력(Glass, PET 기판 대상) 변화 관측",
+          "style": "Normal"
+        },
+        {
+          "text": "- 평가 결과를 바탕으로 소니드(주)에게 우레탄 아크릴레이트 올리고머 제시",
+          "style": "Normal"
+        },
+        {
+          "text": "그림 8 2년차도 계획",
+          "style": "Caption"
+        },
+        {
+          "text": "□ 3차년도 ",
+          "style": "Normal"
+        },
+        {
+          "text": "○ 소니드 주식회사 ",
+          "style": "Normal"
+        },
+        {
+          "text": "※ ESL용 고기능성 UV경화형 봉지소재 개발",
+          "style": "Normal"
+        },
+        {
+          "text": "- 1차년도 구축된 UV경화형 봉지재 도포 장비를 활용한 UV경화형 봉지 씰 개발(조성물의 전방위적 평가) 및 신뢰성 평가",
+          "style": "Normal"
+        },
+        {
+          "text": "- 무기입자, 왁스 등의 첨가제 적용 및 평가 ",
+          "style": "Normal"
+        },
+        {
+          "text": "- 신뢰성, 저장안정성 재현성 평가 및 결과 분석을 통한 개선 방향 수립",
+          "style": "Normal"
+        },
+        {
+          "text": "- 공동개발기관 재료를 1회/2월 간격으로 공급 받아 소니드에서 최적화 한 조성물에 도입하여 기초 물성 및 신뢰성평가",
+          "style": "Normal"
+        },
+        {
+          "text": "- 1차년도 검토된 신규특허 확보를 위한 핵심기술 차별화 방안의 검증 평가",
+          "style": "Normal"
+        },
+        {
+          "text": "○ 한국생산기술연구원 ",
+          "style": "Normal"
+        },
+        {
+          "text": "※ 수분차단특성을 가진 하이브리드 고분자소재 기술 개발",
+          "style": "Normal"
+        },
+        {
+          "text": "- 2D 나노 평면 구조 특성을 가진 무기 나노 입자 기반 코팅 소재 개발",
+          "style": "Normal"
+        },
+        {
+          "text": "- Polysilsesquioxane에 판상형 filler 도입, 광경화 특성, barrier 특성 및 용액 공정성 평가",
+          "style": "Normal"
+        },
+        {
+          "text": "를 통한 filler 소재 개발",
+          "style": "Normal"
+        },
+        {
+          "text": "- 2차원 판상 구조 filler의 resin에 대한 분산성 확보를 위한 표면 개질 Filler와의 혼용성 증대 및 adhesion 개선을 위한 resin 개질/additive 첨가 기술 개발",
+          "style": "Normal"
+        },
+        {
+          "text": "○ ㈜코솔러스",
+          "style": "Normal"
+        },
+        {
+          "text": "※ 고접착 우레탄 아크릴레이트 올리고머 개발 ",
+          "style": "Normal"
+        },
+        {
+          "text": "- 1차년도 개발한 우레탄 아크릴레이트의 접착력과 투습도 결과를 고려하여 2가지 폴리올을 하나의 올리고머에 도입한 우레탄 아크릴레이트 공중합체 설계",
+          "style": "Normal"
+        },
+        {
+          "text": "- 단일 (혹은 다단계) 반응을 통하여 우레탄 아크릴레이트 공중합체를 합성",
+          "style": "Normal"
+        },
+        {
+          "text": "- 광개시제와 합성한 올리고머 배합물 제작 후 투습율 및 부착력(Glass, PET 기판 대상) 평가 및 소니드(주)에게 올리고머 제시",
+          "style": "Normal"
+        },
+        {
+          "text": "그림 9 3년차도 계획",
+          "style": "Caption"
+        },
+        {
+          "text": "□ 4차년도 ",
+          "style": "Normal"
+        },
+        {
+          "text": "○ 소니드 주식회사",
+          "style": "Normal"
+        },
+        {
+          "text": "※ ESL용 고기능성 UV경화형 봉지소재 개발",
+          "style": "Normal"
+        },
+        {
+          "text": "- 1~3차년도 구축된 UV경화형 봉지재 도포 장비를 활용한 UV경화형 봉지재 개발(조성물의 전방위적 평가) 및 신뢰성 평가",
+          "style": "Normal"
+        },
+        {
+          "text": "- E-paper Flexible 시장을 위한 UV 경화형 봉지재 개발. Substrate 폴리이미드소재를 적용한 UV경화형 부착력 증진 평가 ",
+          "style": "Normal"
+        },
+        {
+          "text": "- 1차년도 검토된 신규특허 확보를 위한 핵심기술 차별화 방안의 검증 평가",
+          "style": "Normal"
+        },
+        {
+          "text": "○ 한국생산기술연구원 ",
+          "style": "Normal"
+        },
+        {
+          "text": "※ 수분차단특성을 가진 하이브리드 고분자소재 기술 개발",
+          "style": "Normal"
+        },
+        {
+          "text": "- “내굴곡/저투습 특성을 가진” polysilsesquioxane 기반 코팅 소재 개발",
+          "style": "Normal"
+        },
+        {
+          "text": "- Dimethoxydimethylsilane을 도입하여 cross-linking density와 chain mobility의 trade-off ",
+          "style": "Normal"
+        },
+        {
+          "text": "제어를 통해 WVTR 및 유연성 특성 제어",
+          "style": "Normal"
+        },
+        {
+          "text": "○ ㈜코솔러스",
+          "style": "Normal"
+        },
+        {
+          "text": "※ 고접착 우레탄 아크릴레이트 올리고머 개발 ",
+          "style": "Normal"
+        },
+        {
+          "text": "- 3차년도 개발한 우레탄 아크릴레이트 공중합체에 가교첨가제를 도입하여 3차원 가교 구조를 형성",
+          "style": "Normal"
+        },
+        {
+          "text": "- 우레탄 아크릴레이트 공중합체와 가교첨가제 당량 제어를 하여 가교 구조를 제어로 접착력과 투습도 최적화 수행",
+          "style": "Normal"
+        },
+        {
+          "text": "그림 10 4년차도 계획",
+          "style": "Caption"
+        },
+        {
+          "text": "□ 5차년도 ",
+          "style": "Normal"
+        },
+        {
+          "text": "○ 소니드 주식회사 ",
+          "style": "Normal"
+        },
+        {
+          "text": "- 최종 조성물 선정 및 200kg 양산 규모의 신뢰성 평가 ",
+          "style": "Normal"
+        },
+        {
+          "text": "(점도 안정성, 보관 안정성 확보)",
+          "style": "Normal"
+        },
+        {
+          "text": "○ 한국생산기술연구원 ",
+          "style": "Normal"
+        },
+        {
+          "text": "- 수분차단 특성의 “hybrid 소재 합성 공정 및 특성 최적화”",
+          "style": "Normal"
+        },
+        {
+          "text": "- 주관기관 소니드 UV 경화 공정에 적합한 경화제/점도 포뮬레이션 최적화",
+          "style": "Normal"
+        },
+        {
+          "text": "- Lab 스케일 1~2Kg 배치 최적화 후, 양산 스케일의 코솔러스 기술이전/최적화 진행",
+          "style": "Normal"
+        },
+        {
+          "text": "○ ㈜코솔러스",
+          "style": "Normal"
+        },
+        {
+          "text": "- 고접착 우레탄 아크릴레이트 올리고머 양산화 기술 확보 (점도 및 분자량 안정성 확보)",
+          "style": "Normal"
+        },
+        {
+          "text": "- 양산을 위한 파일럿 및 양산 합성기 설계 및 제작",
+          "style": "Normal"
+        },
+        {
+          "text": "11.선행개발 및 경쟁력",
+          "style": "Normal"
+        },
+        {
+          "text": "고객사 평가 경험과 세 기관의 소재·합성·양산 역량을 기반으로 상용화 가능성을 확보함",
+          "style": "Normal"
+        },
+        {
+          "text": "선행개발 실적",
+          "style": "Normal"
+        },
+        {
+          "text": "2023년 대만 고객사를 통해 기존 열경화 제품의 문제와 UV경화형 제품 개발 수요 확인 ",
+          "style": "Normal"
+        },
+        {
+          "text": "1차 평가용 개발제품 5종 평가 ",
+          "style": "Normal"
+        },
+        {
+          "text": "Edge Mura 발생 후 개선제품 6종을 대만 고객사에 추가 발송 ",
+          "style": "Normal"
+        },
+        {
+          "text": "소니드 및 경쟁업체를 함께 60℃·240시간 수준까지 평가했으나 목표인 1,000시간에는 아직 미달 (신뢰성 평가 미달)",
+          "style": "Normal"
+        },
+        {
+          "text": "평가 수준은 일본 제품과 소니드 제품 간 차이가 크지 않은 것으로 확인 ",
+          "style": "Normal"
+        },
+        {
+          "text": "한국생산기술연구원 및 코솔러스와 WVTR·접착력 개선 소재를 선행개발했으나 최종 최적화에는 도달하지 못함",
+          "style": "Normal"
+        },
+        {
+          "text": "보유 경쟁력",
+          "style": "Normal"
+        },
+        {
+          "text": "소니드: \n- 디스플레이 전자재료 개발·양산 및 고객사 평가 경험 \n- UV경화형 디스플레이 재료를 중점적으로 공동연구개발 수행 중",
+          "style": "Normal"
+        },
+        {
+          "text": "한국생산기술연구원: \n- 하이브리드 소재 분야 SCI(E) 논문 44편 \n- 국내 특허 26건 이상 \n- 실록산 코팅소재 관련 해외특허 보유 \n- 대표수행과제 : (소재부품기술개발사업) 50% 연신회복 가능한 폴리우레탄 기반 스트레처블 디스플레이용 커버윈도우 소재 개발 (중기부) 차량용 display 적용을 위한 높은 신뢰성 조건에서 기포 발생 Zero화를 만족하는 Glass &PC/PMMA用 OCA 개발, (산업핵심) 50만회 내굴곡성과 120℃ 고내열성 특성의 플렉시블 전장 및 전자 모듈용 고기능성 점접착소재 개발",
+          "style": "Normal"
+        },
+        {
+          "text": "코솔러스: \n- 올리고머·시럽·기능성 첨가제 설계 및 합성기술 보유\n- 20~50L 합성기 설계·제작 노하우 \n- 5톤/Batch 합성기 운용 경험 \n- 기능성 수지 사업화 및 2023년 매출 5.2억 원 달성",
+          "style": "Normal"
+        },
+        {
+          "text": "그림 12 <소니드 연구개발 및 양산 제조 시설>",
+          "style": "Caption"
+        },
+        {
+          "text": "12. 사업화 전략\n대만 글로벌 고객사 검증을 시작으로 소재 기술이전·스케일업·양산 공급체계를 구축",
+          "style": "Normal"
+        },
+        {
+          "text": "- 소니드에서는 대만 수요기업과의 NDA를 체결하여 UV경화형 봉지재을 개발하고 있으며 24년 1월 경 7종에 대한 제품평가에 대한 결과를 공유받았으며 2024년 3월 초 평가를 위해 6종의 샘플을 대만으로 발송함 ",
+          "style": "바탕글"
+        },
+        {
+          "text": "- 소니드는 현재 대만 수요기업과의 공동개발을 ESL UV경화형 봉지재를 제외하고도 다른 사업화 아이템을 개발하며 사업영역 확장을 위해 노력 중 ",
+          "style": "바탕글"
+        },
+        {
+          "text": "- 3차년도(2026년)에 고객사 신뢰성 평가 승인을 목표로 설정 ",
+          "style": "바탕글"
+        },
+        {
+          "text": "- 과제 종료 시점인 2028년부터 매출 발생 추진 ",
+          "style": "바탕글"
+        },
+        {
+          "text": "- 1차: 현재 평가 중인 대만 글로벌 선두 수요기업에 우선 납품 ",
+          "style": "바탕글"
+        },
+        {
+          "text": "- 2차: 기존 열경화 봉지재 대체 또는 신규 모델 적용 납품 ",
+          "style": "바탕글"
+        },
+        {
+          "text": "- 3차: 이후 국내 ESL 생산업체로 공급처 확대 ",
+          "style": "바탕글"
+        },
+        {
+          "text": "- 개발 성공시, 생기원 개발 소재를 코솔러스에 기술이전 ",
+          "style": "바탕글"
+        },
+        {
+          "text": "- 코솔러스에서 저투습·고접착 소재를 제품 수준으로 스케일업하여 소니드에 안정적으로 공급 ",
+          "style": "바탕글"
+        },
+        {
+          "text": "- 소니드에서 최종 ESL 봉지재를 양산·판매 사업화 진행",
+          "style": "바탕글"
+        },
+        {
+          "text": "- 소니드: 현재 NDA 체결 중인 대만회사 이외의 국내외 ESL 업체의 수요 분석 후 제품 판매처 다양화 추진, ESL 이외의 E-book 및 Signage에도 소재 접목을 위한 마케팅 활동 추진 ",
+          "style": "바탕글"
+        },
+        {
+          "text": "- 특허법무법인과 정기적인 협의를 통해 IP 확보 및 핵심기술 차별화 추진",
+          "style": "바탕글"
+        },
+        {
+          "text": "13. 기대효과\n글로벌 ESL 고객사 채택을 기반으로 신규 해외 매출과 국내시장 진입을 추진함.",
+          "style": "Normal"
+        },
+        {
+          "text": "사업화로 얻을 매출·판매 성과",
+          "style": "Normal"
+        },
+        {
+          "text": "기대효과",
+          "style": "바탕글"
+        },
+        {
+          "text": "개발의 성공 및 양산화 채택 시, 글로벌 선두기업 적용될 예정 -> 100억 원 이상의 신규 해외매출액 발생 기대 ",
+          "style": "바탕글"
+        },
+        {
+          "text": "국내 글로벌 2위 기업 대상 프로모션을 통해 국내매출 확대 추진 ",
+          "style": "바탕글"
+        },
+        {
+          "text": "2030년경 ESL 봉지소재 국내외 매출 200억 원 목표 ",
+          "style": "바탕글"
+        },
+        {
+          "text": "매장 자동화·재고관리 효율화를 지원하는 소재 공급 _> 소매 판매업에서 인건비 절감을 통한 수익 개선 ",
+          "style": "바탕글"
+        },
+        {
+          "text": "해외기업 중심의 ESL 봉지소재 시장에서 국내기업의 경쟁 기반 확보",
+          "style": "바탕글"
+        },
+        {
+          "text": "14. 확장 계획\nESL에서 확보한 봉지소재 기술을 다양한 전자종이와 디스플레이 분야로 확대",
+          "style": "Normal"
+        },
+        {
+          "text": "- 대만 SES-imagotag 외 국내외 ESL 기업으로 판매처 다변화 ",
+          "style": "Normal"
+        },
+        {
+          "text": "- 국내 솔루엠, 해외 Price 등과 협력 추진 ",
+          "style": "Normal"
+        },
+        {
+          "text": "- ESL 이외 전자종이 응용제품으로 소재 적용 확대: E-Book, Signage ",
+          "style": "Normal"
+        },
+        {
+          "text": "- E-Ink 원천기술 기업, Protection Film 제조기업, 국내 신규 전자종이 소재기업과 협력 추진 ",
+          "style": "Normal"
+        },
+        {
+          "text": "- Flexible E-Paper용 Polyimide 기판 적용기술 확보 ",
+          "style": "Normal"
+        },
+        {
+          "text": "- 개발과정에서 확보한 기술을 OLED 대형 디스플레이용 봉지소재로 확장",
+          "style": "Normal"
+        }
+      ],
+      "tables": [
+        {
+          "headers": [
+            "기관",
+            "주요 역할"
+          ],
+          "rows": [
+            [
+              "소니드",
+              "UV경화형 ESL 봉지재 조성·도포, 공동개발 소재 평가, 신뢰성 검증, 최종제품 양산 및 판매"
+            ],
+            [
+              "한국생산기술연구원",
+              "저투습 PSQ 기반 하이브리드 고분자 설계·합성, Barrier·유연성·가교 특성 최적화"
+            ],
+            [
+              "코솔러스",
+              "Glass·PET용 고접착 우레탄 아크릴레이트 올리고머 개발, 스케일업 및 양산기술 확보"
+            ]
+          ],
+          "row_count": 3,
+          "needs_appendix": false
+        }
+      ],
+      "images": [
+        "output\\기술개발_지원사업_연구개발계획서\\extracted_images\\2026.08.25_ 기술개발_지원사업_연구개발계획서_ 내용정리_V1_img1.png",
+        "output\\기술개발_지원사업_연구개발계획서\\extracted_images\\2026.08.25_ 기술개발_지원사업_연구개발계획서_ 내용정리_V1_img2.png",
+        "output\\기술개발_지원사업_연구개발계획서\\extracted_images\\2026.08.25_ 기술개발_지원사업_연구개발계획서_ 내용정리_V1_img3.png",
+        "output\\기술개발_지원사업_연구개발계획서\\extracted_images\\2026.08.25_ 기술개발_지원사업_연구개발계획서_ 내용정리_V1_img4.png",
+        "output\\기술개발_지원사업_연구개발계획서\\extracted_images\\2026.08.25_ 기술개발_지원사업_연구개발계획서_ 내용정리_V1_img5.png",
+        "output\\기술개발_지원사업_연구개발계획서\\extracted_images\\2026.08.25_ 기술개발_지원사업_연구개발계획서_ 내용정리_V1_img6.png",
+        "output\\기술개발_지원사업_연구개발계획서\\extracted_images\\2026.08.25_ 기술개발_지원사업_연구개발계획서_ 내용정리_V1_img7.png",
+        "output\\기술개발_지원사업_연구개발계획서\\extracted_images\\2026.08.25_ 기술개발_지원사업_연구개발계획서_ 내용정리_V1_img8.png",
+        "output\\기술개발_지원사업_연구개발계획서\\extracted_images\\2026.08.25_ 기술개발_지원사업_연구개발계획서_ 내용정리_V1_img9.png",
+        "output\\기술개발_지원사업_연구개발계획서\\extracted_images\\2026.08.25_ 기술개발_지원사업_연구개발계획서_ 내용정리_V1_img10.png",
+        "output\\기술개발_지원사업_연구개발계획서\\extracted_images\\2026.08.25_ 기술개발_지원사업_연구개발계획서_ 내용정리_V1_img11.png",
+        "output\\기술개발_지원사업_연구개발계획서\\extracted_images\\2026.08.25_ 기술개발_지원사업_연구개발계획서_ 내용정리_V1_img12.png",
+        "output\\기술개발_지원사업_연구개발계획서\\extracted_images\\2026.08.25_ 기술개발_지원사업_연구개발계획서_ 내용정리_V1_img13.png",
+        "output\\기술개발_지원사업_연구개발계획서\\extracted_images\\2026.08.25_ 기술개발_지원사업_연구개발계획서_ 내용정리_V1_img14.png"
+      ],
+      "charts_detected": [],
+      "needs_manual_review": false
+    }
+  ],
+  "escalations": [],
+  "needs_confirmation": []
+}

@@ -1,0 +1,2046 @@
+{
+  "project": "cosolus-ir-deck-E",
+  "source_file": "input/코솔러스_IR_내용 추출_V2.docx",
+  "extraction_note": "원본 문서(코솔러스_IR_내용 추출_V2.docx)는 페이지별로 \"섹션/제목/박스\" 구조와 표·차트·이미지 삽입 지시가 명시적으로 기술된 자료임. 문서 전반에 \"프롬프트: ...\" 형태로 시작하는 문장들은 슬라이드 제작자를 위한 제작/레이아웃 지시문이며 실제 발표 슬라이드에 표시될 콘텐츠가 아님 — confirmed_text에는 원문 보존 원칙에 따라 그대로 남겨두었으나(각 항목에 [제작 지시문] 표시를 추가함), 이후 단계([3] 슬라이드 구성/콘텐츠 구조화)에서 이 문장들을 실제 슬라이드 표시 텍스트로 오인하지 않아야 함. 또한 페이지13/15/16에는 해당 페이지 자체의 완성된 렌더링 결과를 미리 보여주는 \"미리보기\" 스크린샷 이미지가 함께 포함되어 있어(img26/img27/img28), 텍스트만으로는 파악하기 어려운 도식·차트의 실제 형태를 교차 확인하는 데 활용함. | 2026-08-20 규칙보완 통합 반영: production_directives[]/visual_placeholders[] 필드를 정식 반영. 15개 Content Group(CG03,04,05,06,07,08,09,12,13,14,17,18,19,21,22)에서 제작 지시문 25건을 confirmed_text에서 분리해 production_directives[]로 구조화(visualization 16/placement 8/emphasis 1), CG03/CG04에 visual_placeholders[](data_status: data_pending) 3건 추가(escalations는 기존 그대로 유지). 그 외 22개 Content Group의 confirmed_text 본문(지시문 제외)·metrics·tables·images_available·source_citation과 최상위 escalations/needs_confirmation/unassigned_or_dropped_content는 변경 없음(검증 세션 결과 채택, 재분석 없이 병합).",
+  "content_groups": [
+    {
+      "id": "CG01",
+      "title": "페이지 01 — 표지",
+      "structure_signal": {
+        "type": "heading_style",
+        "detail": "Heading 1 (\"페이지 01\")"
+      },
+      "subtopics": [],
+      "direct_evidence": {
+        "confirmed_text": [
+          "표지 제목: \"지속 가능한 배터리 재활용을 위한 화학소재 및 친환경 차세대 공정기술\""
+        ],
+        "metrics": [],
+        "tables": [],
+        "images_available": [],
+        "production_directives": [],
+        "visual_placeholders": []
+      },
+      "source_citation": null
+    },
+    {
+      "id": "CG02",
+      "title": "페이지 02 — 기업소개",
+      "structure_signal": {
+        "type": "heading_style",
+        "detail": "Heading 1 (\"페이지 02\")"
+      },
+      "subtopics": [],
+      "direct_evidence": {
+        "confirmed_text": [
+          "섹션명: Company",
+          "제목: 기업소개",
+          "핵심가치: 첨단 화학 소재와 차세대 친환경 공정으로 폐배터리 순환경제 선도",
+          "기업명: 주식회사 코솔러스",
+          "대표자: 김성현",
+          "임직원: 27",
+          "소재지: 대한민국 전주, 익산, 완주, 군산",
+          "비전: 사용 후 배터리 핵심광물 회수를 위한 혁신 화학소재와 친환경 공정 기술을 통해, 인류의 지속가능한 미래를 선도하는 글로벌 리더로 도약"
+        ],
+        "metrics": [
+          {
+            "label": "임직원 수",
+            "value": "27명",
+            "source_citation": null
+          },
+          {
+            "label": "소재지",
+            "value": "대한민국 전주, 익산, 완주, 군산 (4개 지역)",
+            "source_citation": null
+          }
+        ],
+        "tables": [],
+        "images_available": [
+          {
+            "ref": "img1",
+            "path": "output/cosolus-ir-deck-E/extracted_images/코솔러스_IR_내용 추출_V2_img1.jpeg",
+            "description": "실험실(글로브박스로 추정) 앞에서 방진마스크·보안경·실험복을 착용한 연구원이 장비를 조작하는 흑백 사진. \"기업소개\" 문맥에 부합하는 연구개발 현장 이미지.",
+            "relation_confidence": "structural",
+            "content_match_confidence": "confirmed",
+            "cross_group_ref": null
+          }
+        ],
+        "production_directives": [],
+        "visual_placeholders": []
+      },
+      "source_citation": null
+    },
+    {
+      "id": "CG03",
+      "title": "페이지 03 — 문제제기-환경 및 지정학적 요인",
+      "structure_signal": {
+        "type": "heading_style",
+        "detail": "Heading 1 (\"페이지 03\")"
+      },
+      "subtopics": [],
+      "direct_evidence": {
+        "confirmed_text": [
+          "섹션: Background",
+          "제목: 문제제기-환경 및 지정학적 요인",
+          "박스1: 환경 오염",
+          "배터리 밸류체인 전반의 환경부하 및 사회적 비용",
+          "니켈 1톤당 133톤 폐기물 발생",
+          "채굴 산업의 노동 및 인권문제",
+          "박스2: 핵심광물 고갈",
+          "광산채굴 기준 수요-공급 미스매치 발생",
+          "테이블의 제목: [글로벌 양극재(리튬) 수요-공급 전망]",
+          "박스3: 특정국가에 편중된 공급망",
+          "중국이 장악한 글로벌 배터리 핵심광물 공급망",
+          "하위내용:",
+          "전략광물 정제 평균 점유율 70%",
+          "글로벌 블랙매스 처리 비중 89%",
+          "니켈 1톤당 133톤 폐기물 발생(반복 언급)",
+          "각주: Source: IEA, Global Critical Minerals Outlook 2025; Benchmark Mineral Intelligence, China's Battery Recycling Dominance, 2025; Earthworks, Filtered Tailing in Indonesia, 2026"
+        ],
+        "metrics": [
+          {
+            "label": "니켈 1톤당 폐기물 발생량",
+            "value": "133톤",
+            "source_citation": "IEA, Global Critical Minerals Outlook 2025 / Benchmark Mineral Intelligence, China's Battery Recycling Dominance, 2025 / Earthworks, Filtered Tailing in Indonesia, 2026 (그룹 레벨 각주, 개별 지목 아님)"
+          },
+          {
+            "label": "중국의 전략광물 정제 평균 점유율",
+            "value": "70%",
+            "source_citation": "위 그룹 각주와 동일 (개별 수치 지목 각주 없음)"
+          },
+          {
+            "label": "중국의 글로벌 블랙매스 처리 비중",
+            "value": "89%",
+            "source_citation": "위 그룹 각주와 동일 (개별 수치 지목 각주 없음)"
+          }
+        ],
+        "tables": [],
+        "images_available": [
+          {
+            "ref": "img2",
+            "path": "output/cosolus-ir-deck-E/extracted_images/코솔러스_IR_내용 추출_V2_img2.jpeg",
+            "description": "채굴 현장으로 보이는 오염된 진흙탕 웅덩이 앞에서 한 소년이 광물(코발트로 추정되는 청록빛 광석)을 손으로 담아 내미는 다큐멘터리 성격의 사진. \"채굴 산업의 노동 및 인권문제\" 서술과 내용상 일치.",
+            "relation_confidence": "structural",
+            "content_match_confidence": "confirmed",
+            "note": "실존 인물(아동)이 식별 가능한 형태로 등장하는 민감한 소재의 다큐멘터리류 사진. 고객사 대상 IR 슬라이드에 그대로 사용할지 여부는 자료 톤 조율 단계([3]/[5])에서 별도 판단이 필요할 수 있음.",
+            "cross_group_ref": null
+          },
+          {
+            "ref": "img3",
+            "path": "output/cosolus-ir-deck-E/extracted_images/코솔러스_IR_내용 추출_V2_img3.jpeg",
+            "description": "해안가 인접 채굴/매립 현장 항공사진. 붉은 토사가 바다로 유입되는 모습이 보여 \"환경 오염\"·해양 오염 문맥과 일치.",
+            "relation_confidence": "structural",
+            "content_match_confidence": "confirmed",
+            "cross_group_ref": null
+          },
+          {
+            "ref": "img4",
+            "path": "output/cosolus-ir-deck-E/extracted_images/코솔러스_IR_내용 추출_V2_img4.jpeg",
+            "description": "부식된 폐배터리(1차전지 추정) 더미 클로즈업 사진. \"환경 오염\"·폐배터리 방치 문맥과 일치.",
+            "relation_confidence": "structural",
+            "content_match_confidence": "confirmed",
+            "cross_group_ref": null
+          },
+          {
+            "ref": "img5",
+            "path": "output/cosolus-ir-deck-E/extracted_images/코솔러스_IR_내용 추출_V2_img5.png",
+            "description": "산림이 훼손된 채굴장 항공사진(테일링/토사 유출 형태). \"핵심광물 고갈\"·환경부하 문맥과 일치하나 박스2에는 명시적 이미지 삽입 지시가 없어 정확히 박스1/박스2 중 어디 소속인지는 문서상 인접성(박스1과 박스2 사이)으로만 판단됨.",
+            "relation_confidence": "structural",
+            "content_match_confidence": "confirmed",
+            "cross_group_ref": null
+          },
+          {
+            "ref": "img6",
+            "path": "output/cosolus-ir-deck-E/extracted_images/코솔러스_IR_내용 추출_V2_img6.jpeg",
+            "description": "아시아 지도에서 중국 영토만 붉게 강조 표시한 지도 이미지. \"박스3: 특정국가에 편중된 공급망 - 중국이 장악한 글로벌 배터리 핵심광물 공급망\" 서술과 정확히 일치.",
+            "relation_confidence": "structural",
+            "content_match_confidence": "confirmed",
+            "cross_group_ref": null
+          }
+        ],
+        "production_directives": [
+          {
+            "id": "CG03-PD01",
+            "raw_text": "(아래사진 삽입)",
+            "directive_type": "visualization",
+            "target_scope": "박스1(환경 오염) 하단 사진 삽입 자리",
+            "applicability": "auto_applicable"
+          },
+          {
+            "id": "CG03-PD02",
+            "raw_text": "(테이블 삽입 예정)",
+            "directive_type": "visualization",
+            "target_scope": "박스2(핵심광물 고갈) — [글로벌 양극재(리튬) 수요-공급 전망] 테이블 자리",
+            "applicability": "auto_applicable"
+          },
+          {
+            "id": "CG03-PD03",
+            "raw_text": "(이미지삽입)",
+            "directive_type": "visualization",
+            "target_scope": "박스3(특정국가에 편중된 공급망) 이미지 삽입 자리",
+            "applicability": "auto_applicable"
+          }
+        ],
+        "visual_placeholders": [
+          {
+            "id": "CG03-VP1",
+            "instructed_visual_type": "table",
+            "intended_subject": "글로벌 양극재(리튬) 수요-공급 전망",
+            "data_status": "data_pending",
+            "note": "원본에 테이블 제목만 있고 수치 데이터가 전혀 없음. material_analysis.json escalations(core_claim_data_missing) 대상.",
+            "production_directive_ref": "CG03-PD01"
+          }
+        ]
+      },
+      "source_citation": "IEA, Global Critical Minerals Outlook 2025; Benchmark Mineral Intelligence, China's Battery Recycling Dominance, 2025; Earthworks, Filtered Tailing in Indonesia, 2026"
+    },
+    {
+      "id": "CG04",
+      "title": "페이지 04 — 왜 지금인가?-산업적 요인",
+      "structure_signal": {
+        "type": "heading_style",
+        "detail": "Heading 1 (\"페이지 04\")"
+      },
+      "subtopics": [],
+      "direct_evidence": {
+        "confirmed_text": [
+          "섹션: Background",
+          "제목: 왜 지금인가? – 산업적 요인",
+          "박스1: 2030년 기점 폭발적 증가",
+          "차트 제목: [글로벌 전기차 폐배터리 발생 전망]",
+          "박스2: ESS 시장의 고성장 전환",
+          "차트 제목: [북미 ESS 시장 성장 전망]",
+          "[글로벌 전기차 폐배터리 발생 전망](반복 표기)",
+          "박스3: 시장 개화 전 재료 및 공정 확보 필요",
+          "각주: Sorece[원문 오탈자]: SNE Research (2023); Mirae Asset Securities Research Center (Jan. 2026); Korea Automotive Technology Institute (KATECH), Mobility Insight (Apr. 2024; citing SNE Research)."
+        ],
+        "metrics": [],
+        "tables": [],
+        "images_available": [
+          {
+            "ref": "img7",
+            "path": "output/cosolus-ir-deck-E/extracted_images/코솔러스_IR_내용 추출_V2_img7.jpeg",
+            "description": "\"5 YEARS\"라는 텍스트와 상승 막대그래프·시계 아이콘이 결합된 일반 스톡 그래픽. \"박스3: 시장 개화 전 재료 및 공정 확보 필요\" 문맥에 배치되어 있으나 원문 지시는 \"(사진 삽입 예정)\"으로 실사 사진을 요구한 반면 실제로는 벡터 아이콘 그래픽이 삽입되어 있고, 본문 어디에도 \"5년\"을 직접 뒷받침하는 서술이 없어 이 이미지가 의도한 의미를 정확히 반영하는지 확인이 필요함.",
+            "relation_confidence": "structural",
+            "content_match_confidence": "uncertain",
+            "note": "지시된 콘텐츠 유형(사진)과 실제 삽입물(스톡 아이콘 그래픽)이 다르고, \"5 YEARS\"의 근거가 본문에 명시되지 않음.",
+            "cross_group_ref": null
+          }
+        ],
+        "production_directives": [
+          {
+            "id": "CG04-PD01",
+            "raw_text": "(테이블 삽입 예정)",
+            "directive_type": "visualization",
+            "target_scope": "박스1(2030년 기점 폭발적 증가) — [글로벌 전기차 폐배터리 발생 전망] 자리. 원문은 \"테이블\"로 표기되어 있으나 바로 다음 줄이 \"차트 제목:\"으로 이어져 표기 불일치가 있음(임의 정정하지 않고 원문 표기 그대로 보존)",
+            "applicability": "ambiguous"
+          },
+          {
+            "id": "CG04-PD02",
+            "raw_text": "(차트 삽입 예정)",
+            "directive_type": "visualization",
+            "target_scope": "박스2(ESS 시장의 고성장 전환) — [북미 ESS 시장 성장 전망] 차트 자리",
+            "applicability": "auto_applicable"
+          },
+          {
+            "id": "CG04-PD03",
+            "raw_text": "(사진 삽입 예정)",
+            "directive_type": "visualization",
+            "target_scope": "박스3(시장 개화 전 재료 및 공정 확보 필요) 사진 자리",
+            "applicability": "auto_applicable"
+          }
+        ],
+        "visual_placeholders": [
+          {
+            "id": "CG04-VP1",
+            "instructed_visual_type": "chart",
+            "intended_subject": "글로벌 전기차 폐배터리 발생 전망",
+            "data_status": "data_pending",
+            "note": "원본에 차트 제목만 있고 수치 데이터가 전혀 없음(원문은 \"테이블 삽입 예정\"으로 표기되었으나 바로 다음 줄 \"차트 제목:\"과 불일치 — 원문 표기 그대로 보존, 임의 정정 안 함). escalations(core_claim_data_missing) 대상.",
+            "production_directive_ref": "CG04-PD01"
+          },
+          {
+            "id": "CG04-VP2",
+            "instructed_visual_type": "chart",
+            "intended_subject": "북미 ESS 시장 성장 전망",
+            "data_status": "data_pending",
+            "note": "원본에 차트 제목만 있고 수치 데이터가 전혀 없음. escalations(core_claim_data_missing) 대상.",
+            "production_directive_ref": "CG04-PD02"
+          }
+        ]
+      },
+      "source_citation": "SNE Research (2023); Mirae Asset Securities Research Center (Jan. 2026); Korea Automotive Technology Institute (KATECH), Mobility Insight (Apr. 2024; citing SNE Research)"
+    },
+    {
+      "id": "CG05",
+      "title": "페이지 05 — 비즈니스 모델",
+      "structure_signal": {
+        "type": "heading_style",
+        "detail": "Heading 1 (\"페이지 05\")"
+      },
+      "subtopics": [],
+      "direct_evidence": {
+        "confirmed_text": [
+          "섹션: Background",
+          "제목: 비즈니스 모델",
+          "박스1: 환경오염 저감",
+          "유해물질 억제 및 온실가스 감축으로 환경 오염 저감",
+          "박스2: 도시광산 구축",
+          "폐자원으로부터 핵심 광물 확보로 배터리 원재료 수요부족 해결",
+          "박스3: 新공급망 구축",
+          "제조 → 재활용 → 제조로 이어지는 재활용 기반 新공급망 구축"
+        ],
+        "metrics": [],
+        "tables": [],
+        "images_available": [],
+        "production_directives": [
+          {
+            "id": "CG05-PD01",
+            "raw_text": "프롬프트: 다음 내용을 3 BOX 구조로 만들고, 내용에 맞는 아이콘 삽입",
+            "directive_type": "placement",
+            "target_scope": "페이지 전체 — 환경오염저감/도시광산구축/新공급망구축 3개 박스 구조 + 각 박스 아이콘(visualization 겸함)",
+            "applicability": "auto_applicable"
+          }
+        ],
+        "visual_placeholders": []
+      },
+      "source_citation": null
+    },
+    {
+      "id": "CG06",
+      "title": "페이지 06 — 재활용 공정 현황(1세대)",
+      "structure_signal": {
+        "type": "heading_style",
+        "detail": "Heading 1 (\"페이지 06\")"
+      },
+      "subtopics": [],
+      "direct_evidence": {
+        "confirmed_text": [
+          "섹션: Background",
+          "제목: 재활용 공정 현황 (1세대)",
+          "1세대 공정:",
+          "[전처리공정] 폐배터리(사진삽입) -> 블랙메스(폐배터리 전처리하여 얻어지는 중간재)(사진삽입)",
+          "[후처리공정] 양극재 재활용공정(사진삽입필요) -> MnSO4, CoSO4, NiSO4, Li2CO3(각각 작게 사진 삽입필요) + 폐흑연(사진삽입필요)",
+          "그 아래쪽에 박스 들어감",
+          "박스제목: 소재의 한계",
+          "낮은 선택성, 제한된 동작 환경 (pH 등), 상분리 불안정, 부산물 과다발생 (망초 등)",
+          "제목: 공정의 한계",
+          "1세대 재활용 공정 경제성 확보 실패(작게 사진 삽입 예정)",
+          "[제작 지시문] 삽입 사진 list",
+          "CoSO4",
+          "MnSO4",
+          "NiSO4",
+          "LiCO3",
+          "폐배터리",
+          "블랙매스",
+          "폐흑연",
+          "양극재 재활용 공정",
+          "공정의 한계 예시1",
+          "공정의 한계 예시2"
+        ],
+        "metrics": [],
+        "tables": [],
+        "images_available": [
+          {
+            "ref": "img8",
+            "path": "output/cosolus-ir-deck-E/extracted_images/코솔러스_IR_내용 추출_V2_img8.jpeg",
+            "description": "적갈색/붉은색 분말 더미 사진. 인접 라벨 \"CoSO4\"(황산코발트, 특유의 분홍-적색 계열)와 색상이 부합.",
+            "relation_confidence": "structural",
+            "content_match_confidence": "confirmed",
+            "cross_group_ref": null
+          },
+          {
+            "ref": "img9",
+            "path": "output/cosolus-ir-deck-E/extracted_images/코솔러스_IR_내용 추출_V2_img9.jpeg",
+            "description": "흰색에 가까운 옅은 분말 더미 사진. 인접 라벨 \"MnSO4\"(황산망간, 옅은 분홍-백색 계열)와 대체로 부합.",
+            "relation_confidence": "structural",
+            "content_match_confidence": "confirmed",
+            "cross_group_ref": null
+          },
+          {
+            "ref": "img10",
+            "path": "output/cosolus-ir-deck-E/extracted_images/코솔러스_IR_내용 추출_V2_img10.jpeg",
+            "description": "청록색 분말 더미 사진. 인접 라벨 \"NiSO4\"(황산니켈, 특유의 청록색)와 색상이 정확히 부합.",
+            "relation_confidence": "structural",
+            "content_match_confidence": "confirmed",
+            "cross_group_ref": null
+          },
+          {
+            "ref": "img11",
+            "path": "output/cosolus-ir-deck-E/extracted_images/코솔러스_IR_내용 추출_V2_img11.png",
+            "description": "흰색 분말 더미 사진. 인접 라벨 \"LiCO3\"(탄산리튬, 흰색 분말)와 부합.",
+            "relation_confidence": "structural",
+            "content_match_confidence": "confirmed",
+            "cross_group_ref": null
+          },
+          {
+            "ref": "img12",
+            "path": "output/cosolus-ir-deck-E/extracted_images/코솔러스_IR_내용 추출_V2_img12.jpeg",
+            "description": "전기차용 배터리팩이 장착된 스켈레톤(섀시) 3D 렌더링 이미지. 인접 라벨 \"폐배터리\"에 대응하나, 실제로는 새 상태의 배터리팩을 표현한 일반적 EV 배터리 개념도로 보이며 \"폐(廢)\" 상태를 직접 나타내지는 않음 — 공정 흐름도에서 \"배터리\" 단계를 상징적으로 표현한 것으로 판단됨.",
+            "relation_confidence": "structural",
+            "content_match_confidence": "confirmed",
+            "note": "\"폐배터리\"라는 라벨과 달리 이미지 자체는 신품 상태의 배터리팩 개념도 — 공정 도식에서 흔한 상징적 표현으로 보이나 완전히 새 배터리처럼 보이는 점은 참고 필요.",
+            "cross_group_ref": null
+          },
+          {
+            "ref": "img13",
+            "path": "output/cosolus-ir-deck-E/extracted_images/코솔러스_IR_내용 추출_V2_img13.jpeg",
+            "description": "검은색 분말 더미 사진. 인접 라벨 \"블랙매스\"와 정확히 부합.",
+            "relation_confidence": "structural",
+            "content_match_confidence": "confirmed",
+            "cross_group_ref": null
+          },
+          {
+            "ref": "img14",
+            "path": "output/cosolus-ir-deck-E/extracted_images/코솔러스_IR_내용 추출_V2_img14.jpeg",
+            "description": "녹색 컨테이너(폐기물통)에 담긴 검은 분말/찌꺼기 사진. 인접 라벨 \"폐흑연\"과 부합.",
+            "relation_confidence": "structural",
+            "content_match_confidence": "confirmed",
+            "cross_group_ref": null
+          },
+          {
+            "ref": "img15",
+            "path": "output/cosolus-ir-deck-E/extracted_images/코솔러스_IR_내용 추출_V2_img15.jpeg",
+            "description": "산업용 습식 추출/혼합 공정설비의 절개도(3D 렌더링, 교반조+다단 추출 컨베이어 구조). 인접 라벨 \"양극재 재활용 공정\"과 개념적으로 부합하는 일반 공정설비 일러스트.",
+            "relation_confidence": "structural",
+            "content_match_confidence": "confirmed",
+            "cross_group_ref": null
+          },
+          {
+            "ref": "img16",
+            "path": "output/cosolus-ir-deck-E/extracted_images/코솔러스_IR_내용 추출_V2_img16.jpeg",
+            "description": "\"Li-Cycle\" 로고 이미지. 인접 라벨 \"공정의 한계 예시1\" — 실존 배터리 재활용 기업(Li-Cycle)의 브랜드 로고를 \"1세대 재활용 공정 경제성 확보 실패\"의 부정적 예시로 사용.",
+            "relation_confidence": "structural",
+            "content_match_confidence": "confirmed",
+            "note": "실명 기업 로고를 경제성 확보 \"실패\" 사례로 제시하면서 원문에 출처/근거 인용이 없음. 사실관계·상표 사용 적절성 확인 필요.",
+            "cross_group_ref": null
+          },
+          {
+            "ref": "img17",
+            "path": "output/cosolus-ir-deck-E/extracted_images/코솔러스_IR_내용 추출_V2_img17.jpeg",
+            "description": "\"GLENCORE\" 로고 이미지. 인접 라벨 \"공정의 한계 예시2\" — 실존 대형 광물/원자재 기업(Glencore)의 브랜드 로고를 동일한 부정적 예시로 사용.",
+            "relation_confidence": "structural",
+            "content_match_confidence": "confirmed",
+            "note": "위 Li-Cycle과 동일한 사유로 사실관계·상표 사용 적절성 확인 필요.",
+            "cross_group_ref": null
+          }
+        ],
+        "production_directives": [
+          {
+            "id": "CG06-PD01",
+            "raw_text": "프롬프트: [전처리공정] -> [후처리공정] 도식화하여 보여주는 형태이기 때문에 레이아웃 선정 잘 해야함",
+            "directive_type": "placement",
+            "target_scope": "페이지 전체 — 전처리→후처리 순차 공정 도식 레이아웃",
+            "applicability": "auto_applicable"
+          },
+          {
+            "id": "CG06-PD02",
+            "raw_text": "병렬구조로 박스 한 개 더 삽입",
+            "directive_type": "placement",
+            "target_scope": "\"소재의 한계\" 박스 옆에 \"공정의 한계\" 박스를 병렬 구조로 추가",
+            "applicability": "auto_applicable"
+          }
+        ],
+        "visual_placeholders": []
+      },
+      "source_citation": null
+    },
+    {
+      "id": "CG07",
+      "title": "페이지 07 — [솔루션1] 코솔러스 추출제(1.5세대)",
+      "structure_signal": {
+        "type": "heading_style",
+        "detail": "Heading 1 (\"페이지 07\")"
+      },
+      "subtopics": [],
+      "direct_evidence": {
+        "confirmed_text": [
+          "섹션: Background",
+          "제목: [솔루션1] 코솔러스 추출제 (1.5세대)",
+          "제목: 기존 추출제(1세대)",
+          "광산, 염호 기반 금속 회수용 추출제",
+          "삽입이미지:",
+          "제목: [솔루션1] 코솔러스 추출제(1.5세대)",
+          "재활용 효율 개선",
+          "삽입이미지"
+        ],
+        "metrics": [],
+        "tables": [],
+        "images_available": [
+          {
+            "ref": "img18",
+            "path": "output/cosolus-ir-deck-E/extracted_images/코솔러스_IR_내용 추출_V2_img18.jpeg",
+            "description": "유기인산 화합물(다이알킬 포스포네이트/포스페이트 계열로 보이는 구조식)의 화학구조식 이미지. 인접 라벨 \"기존 추출제(1세대)\"와 위치상 일치.",
+            "relation_confidence": "structural",
+            "content_match_confidence": "confirmed",
+            "cross_group_ref": null
+          },
+          {
+            "ref": "img19",
+            "path": "output/cosolus-ir-deck-E/extracted_images/코솔러스_IR_내용 추출_V2_img19.jpeg",
+            "description": "화학구조식 이미지. 인접 라벨은 \"[솔루션1] 코솔러스 추출제(1.5세대)\"이나, 이 이미지는 img18(기존 추출제 구조식)과 픽셀 단위로 완전히 동일한 이미지임.",
+            "relation_confidence": "structural",
+            "content_match_confidence": "uncertain",
+            "note": "1.5세대 COSOLUS 추출제의 고유 구조를 보여줘야 할 자리에 1세대 기존 추출제와 동일한 이미지가 재사용되어 있음 — COSOLUS의 신규 화학구조 차별화를 시각적으로 실제로 뒷받침하지 못함. 원본 확인/실제 구조식 확보 필요.",
+            "cross_group_ref": null
+          }
+        ],
+        "production_directives": [
+          {
+            "id": "CG07-PD01",
+            "raw_text": "프롬프트: 이전페이지에서 보여주었던 [전처리] -> [후처리] 도식 그대로 삽입해줘",
+            "directive_type": "placement",
+            "target_scope": "이 페이지 상단 — CG06(페이지06)에서 사용한 전처리→후처리 도식을 동일하게 반복 삽입. 병합이 아니라 별도 페이지에서 반복 참조하라는 지시로, CG06과 CG07을 분리된 페이지로 유지하려는 의도와 일치",
+            "applicability": "auto_applicable"
+          },
+          {
+            "id": "CG07-PD02",
+            "raw_text": "그리고 도식 아래에 작게 제목+설명+이미지 구조의 도식 2개 삽입해줘.",
+            "directive_type": "placement",
+            "target_scope": "반복 도식 하단 — 기존 추출제(1세대) vs 코솔러스 추출제(1.5세대) 소형 도식 2개",
+            "applicability": "auto_applicable"
+          }
+        ],
+        "visual_placeholders": []
+      },
+      "source_citation": null
+    },
+    {
+      "id": "CG08",
+      "title": "페이지 08 — 핵심기술-[솔루션1-1] 고성능 추출제(1.5세대 화학소재)",
+      "structure_signal": {
+        "type": "heading_style",
+        "detail": "Heading 1 (\"페이지 08\")"
+      },
+      "subtopics": [],
+      "direct_evidence": {
+        "confirmed_text": [
+          "섹션: Technology",
+          "제목: 핵심기술 – [솔루션1-1] 고성능 추출제 (1.5세대 화학소재)",
+          "핵심 배너: COSOLUS 화학구조 설계 및 정제 기술 -? 공정시간 단축 및 첨가제 사용량 저감",
+          "Cosolus",
+          "벨기에 S사",
+          "중국 k사"
+        ],
+        "metrics": [
+          {
+            "label": "벨기에 S사 첨가제 사용량 (COSOLUS 대비, *블랙메스 1톤당)",
+            "value": "10% 이상 추가 필요",
+            "source_citation": null
+          },
+          {
+            "label": "중국 K사 첨가제 사용량 (COSOLUS 대비, *블랙메스 1톤당)",
+            "value": "5% 이상 추가 필요",
+            "source_citation": null
+          }
+        ],
+        "tables": [
+          {
+            "table_ref": "table_1",
+            "headers": [
+              "구분",
+              "COSOLUS",
+              "벨기에 S사",
+              "중국 K사"
+            ],
+            "rows": [
+              [
+                "공정시간",
+                "",
+                "",
+                ""
+              ],
+              [
+                "첨가제 사용량*",
+                "-",
+                "COSOLUS 대비 10% 이상 추가 첨가제 필요",
+                "COSOLUS 대비 5% 이상 추가 첨가제 필요"
+              ]
+            ],
+            "needs_appendix": false,
+            "relation_confidence": "structural",
+            "note": "\"공정시간\" 행은 값이 비어 있음 — 제작 지시문에 따라 텍스트 대신 이미지(img20~25)로 표현하도록 예정된 셀."
+          }
+        ],
+        "images_available": [
+          {
+            "ref": "img20",
+            "path": "output/cosolus-ir-deck-E/extracted_images/코솔러스_IR_내용 추출_V2_img20.png",
+            "description": "파란색 용액이 담긴 비커 3개를 나란히 촬영한 실험 사진(반응 전/초기 상태로 추정). \"공정시간\" 항목의 COSOLUS 열에 대응하는 이미지로 위치함.",
+            "relation_confidence": "structural",
+            "content_match_confidence": "confirmed",
+            "cross_group_ref": null
+          },
+          {
+            "ref": "img21",
+            "path": "output/cosolus-ir-deck-E/extracted_images/코솔러스_IR_내용 추출_V2_img21.png",
+            "description": "위 3개 비커에서 상단 파란층/하단 녹색층으로 상분리가 진행된 이후 상태의 실험 사진. COSOLUS 열의 \"이후\" 단계 이미지로 추정.",
+            "relation_confidence": "structural",
+            "content_match_confidence": "confirmed",
+            "cross_group_ref": null
+          },
+          {
+            "ref": "img22",
+            "path": "output/cosolus-ir-deck-E/extracted_images/코솔러스_IR_내용 추출_V2_img22.png",
+            "description": "img20과 픽셀 단위로 동일한 비커 사진. \"벨기에 S사\" 열에 대응하는 위치에 배치됨.",
+            "relation_confidence": "structural",
+            "content_match_confidence": "uncertain",
+            "note": "COSOLUS 열의 img20과 완전히 동일한 이미지가 \"벨기에 S사\" 열에도 재사용됨 — 동일한 초기 상태(반응 전) 사진을 공용으로 쓴 것인지, 실제 개별 실험 촬영이 아닌지 원본 확인 필요.",
+            "cross_group_ref": null
+          },
+          {
+            "ref": "img23",
+            "path": "output/cosolus-ir-deck-E/extracted_images/코솔러스_IR_내용 추출_V2_img23.png",
+            "description": "img21과 픽셀 단위로 동일한 비커 사진(상분리 진행 후). \"벨기에 S사\" 열의 \"이후\" 이미지로 배치됨.",
+            "relation_confidence": "structural",
+            "content_match_confidence": "uncertain",
+            "note": "COSOLUS 열의 img21과 완전히 동일 — 위 img22와 같은 사유로 확인 필요.",
+            "cross_group_ref": null
+          },
+          {
+            "ref": "img24",
+            "path": "output/cosolus-ir-deck-E/extracted_images/코솔러스_IR_내용 추출_V2_img24.png",
+            "description": "img20/img22와 동일한 비커 사진(반응 전 상태). \"중국 K사\" 열에 대응하는 위치에 배치됨.",
+            "relation_confidence": "structural",
+            "content_match_confidence": "uncertain",
+            "note": "세 회사 열 모두 동일한 \"반응 전\" 사진을 공유 — 공통 시작점(동일 원액)을 표현한 것이라면 합리적이나 원본 의도 확인 필요.",
+            "cross_group_ref": null
+          },
+          {
+            "ref": "img25",
+            "path": "output/cosolus-ir-deck-E/extracted_images/코솔러스_IR_내용 추출_V2_img25.png",
+            "description": "3개 비커 중 좌측·중앙에서 img21/23보다 상대적으로 얇은 녹색층(=상대적으로 덜 진행된 상분리)을 보이는 사진. \"중국 K사\" 열의 \"이후\" 이미지로, COSOLUS/벨기에 S사 대비 상분리(공정) 진행 정도가 낮게 표현되어 있어 \"공정시간\" 열위 서술과 대체로 부합.",
+            "relation_confidence": "structural",
+            "content_match_confidence": "confirmed",
+            "cross_group_ref": null
+          }
+        ],
+        "production_directives": [
+          {
+            "id": "CG08-PD01",
+            "raw_text": "다음 표 삽입, 공정시간 항목에는 각각 이미지 삽입해줘. 테이블 간격 맞춰야하고",
+            "directive_type": "visualization",
+            "target_scope": "Cosolus/벨기에 S사/중국 K사 비교 표 + 공정시간 항목 이미지",
+            "applicability": "auto_applicable"
+          },
+          {
+            "id": "CG08-PD02",
+            "raw_text": "다음멘트는 표 아래에 각주처럼 넣어줘: *블랙메스 1톤당 첨가제 사용량",
+            "directive_type": "placement",
+            "target_scope": "비교 표 하단 각주 위치",
+            "applicability": "auto_applicable"
+          }
+        ],
+        "visual_placeholders": []
+      },
+      "source_citation": null
+    },
+    {
+      "id": "CG09",
+      "title": "페이지 09 — 핵심기술-[솔루션1-1] 고성능 추출제(1.5세대 화학소재), 효율 비교",
+      "structure_signal": {
+        "type": "heading_style",
+        "detail": "Heading 1 (\"페이지 09\")"
+      },
+      "subtopics": [],
+      "direct_evidence": {
+        "confirmed_text": [
+          "섹션: Technology",
+          "제목: 핵심기술 – [솔루션1-1] 고성능 추출제 (1.5세대 화학소재)",
+          "핵심배너: COSOLUS 화학구조 설계 및 정제 기술 → 공정 단수 감소, 망초 발생 저감",
+          "제목1: [추출 효율 2~5% 개선  추출 단수 1단 저감] (CAPEX 경제성 확보)",
+          "COSOLUS 추출제 이론단수: 4단 (20% 감소)",
+          "기존 추출제 이론단수: 5단",
+          "제목2: [추출단수 1단 저감  망초 > 5% 저감](OPEX 경제성 확보)",
+          "대한민국 배터리 재활용 업체 1년 간 니켈 16,000 톤 생산  COSOLUS 추출제로 4,800 톤 망초 저감 가능"
+        ],
+        "metrics": [
+          {
+            "label": "추출 효율 개선폭",
+            "value": "2~5%",
+            "source_citation": null
+          },
+          {
+            "label": "추출 단수 저감",
+            "value": "1단",
+            "source_citation": null
+          },
+          {
+            "label": "COSOLUS 추출제 이론단수",
+            "value": "4단 (기존 대비 20% 감소)",
+            "source_citation": null
+          },
+          {
+            "label": "기존 추출제 이론단수",
+            "value": "5단",
+            "source_citation": null
+          },
+          {
+            "label": "망초 저감율",
+            "value": "5% 초과",
+            "source_citation": null
+          },
+          {
+            "label": "가정 시나리오: 대한민국 배터리 재활용 업체 연간 니켈 생산량",
+            "value": "16,000톤",
+            "source_citation": null,
+            "note": "이 값을 기준으로 \"COSOLUS 추출제 사용 시 망초 4,800톤 저감 가능\"이 산출됨"
+          },
+          {
+            "label": "COSOLUS 추출제 적용 시 예상 망초 저감량",
+            "value": "4,800톤 (위 16,000톤 생산 가정 기준)",
+            "source_citation": null
+          }
+        ],
+        "tables": [],
+        "images_available": [],
+        "production_directives": [
+          {
+            "id": "CG09-PD01",
+            "raw_text": "프롬프트: 핵심배너 아래에서 각각의 테이블 제목에 해당하는 내용 비교할 것( COSOLUS 추출제 VS 기존 추출제)",
+            "directive_type": "visualization",
+            "target_scope": "핵심배너 하단 — COSOLUS 추출제 vs 기존 추출제 비교 표현",
+            "applicability": "auto_applicable"
+          },
+          {
+            "id": "CG09-PD02",
+            "raw_text": "(표삽입 예정)",
+            "directive_type": "visualization",
+            "target_scope": "추출단수·망초 저감 수치 표 자리",
+            "applicability": "auto_applicable"
+          }
+        ],
+        "visual_placeholders": []
+      },
+      "source_citation": null
+    },
+    {
+      "id": "CG10",
+      "title": "페이지 10 — 경쟁력-[솔루션1-1] 고성능 추출제(1.5세대 화학소재)",
+      "structure_signal": {
+        "type": "heading_style",
+        "detail": "Heading 1 (\"페이지 10\")"
+      },
+      "subtopics": [],
+      "direct_evidence": {
+        "confirmed_text": [
+          "We promise tomorrow",
+          "Technology",
+          "경쟁력 – [솔루션1-1] 고성능 추출제 (1.5세대 화학소재)",
+          "평가기준: ◉: 매우 좋음 ○: 좋음 △: 보통"
+        ],
+        "metrics": [],
+        "tables": [
+          {
+            "table_ref": "table_1",
+            "headers": [
+              "기업명",
+              "COSOLUS",
+              "KopperChem",
+              "Solvay"
+            ],
+            "rows": [
+              [
+                "Country",
+                "KOREA",
+                "China",
+                "Belgium"
+              ],
+              [
+                "국가",
+                "RECYION series",
+                "Mextral series",
+                "CYANEX series"
+              ],
+              [
+                "가격",
+                "◎",
+                "◎",
+                "◎"
+              ],
+              [
+                "추출성능",
+                "◎",
+                "◎",
+                "◎"
+              ],
+              [
+                "공정시간",
+                "◎",
+                "○",
+                "△"
+              ],
+              [
+                "첨가제 사용량*",
+                "◎",
+                "○",
+                "△"
+              ],
+              [
+                "탄소중립",
+                "◎",
+                "△",
+                "○"
+              ]
+            ],
+            "needs_appendix": false,
+            "relation_confidence": "structural",
+            "note": "1) 두 번째 행의 레이블이 \"국가\"인데 실제 값은 국가명이 아니라 제품군명(RECYION/Mextral/CYANEX series)임 — 레이블-데이터 불일치로 판단됨. 2) \"가격\"·\"추출성능\" 두 항목은 3사 모두 동일하게 \"◎\"로 표기되어 있어 실제 차별화된 평가치인지 표 작성 중 미기입/기본값인지 확인 필요. 3) 원문 범례는 \"◉/○/△\"인데 실제 표 기호는 \"◎\"로, 동일 기호의 서체 표기 차이로 추정됨(원문 그대로 보존)."
+          }
+        ],
+        "images_available": [],
+        "production_directives": [],
+        "visual_placeholders": []
+      },
+      "source_citation": null
+    },
+    {
+      "id": "CG11",
+      "title": "페이지 12 — [솔루션1-2] DLE 기술 동향",
+      "structure_signal": {
+        "type": "heading_style",
+        "detail": "Heading 1 (\"페이지 12\")",
+        "note": "원본 문서 자체의 페이지 번호가 10에서 12로 건너뜀 — 페이지 11은 원본에 존재하지 않음(추출 과정의 누락이 아님)."
+      },
+      "subtopics": [],
+      "direct_evidence": {
+        "confirmed_text": [
+          "섹션: Technology",
+          "제목: [솔루션1-2] DLE 기술 동향",
+          "각주: Source: Desalination, 2024,575, 117249)"
+        ],
+        "metrics": [
+          {
+            "label": "흡착제 기술성숙도(TRL)",
+            "value": "TRL 9 (상용화 단계)",
+            "source_citation": "Desalination, 2024, 575, 117249"
+          },
+          {
+            "label": "추출제 기술성숙도(TRL)",
+            "value": "TRL 4-5 (실험실 검증 단계)",
+            "source_citation": "Desalination, 2024, 575, 117249"
+          },
+          {
+            "label": "분리막 기술성숙도(TRL)",
+            "value": "TRL 4-5 (실험실 검증 단계)",
+            "source_citation": "Desalination, 2024, 575, 117249"
+          },
+          {
+            "label": "전기화학 기술성숙도(TRL)",
+            "value": "TRL 3-4 (실험실 검증 단계)",
+            "source_citation": "Desalination, 2024, 575, 117249"
+          }
+        ],
+        "tables": [
+          {
+            "table_ref": "table_1",
+            "headers": [
+              "구분",
+              "흡착제",
+              "추출제",
+              "분리막",
+              "전기화학"
+            ],
+            "rows": [
+              [
+                "작동원리",
+                "Li⁺(액상)과 흡착제(고상)간 선택적 상호작용",
+                "Li⁺(액상)과 추출제(액상)간 선택적 상호작용",
+                "Li⁺(액상)의 분리막(고상)을 통한 선택적 이동",
+                "Li⁺(액상)과 전극(고상)간 선택적 상호작용"
+              ],
+              [
+                "기술성숙도(TRL)",
+                "TRL 9(상용화 단계)",
+                "TRL 4-5(실험실 검증 단계)",
+                "TRL 4-5(실험실 검증 단계)",
+                "TRL 3-4(실험실 검증 단계)"
+              ],
+              [
+                "장점",
+                "선택성 우수, 공정 단순",
+                "높은 회수 효율, 재사용 가능, 기존 공정 적용 가능",
+                "우수한 효율, 공정 단순, 낮은 화학약품 사용량",
+                "우수한 효율, 낮은 화학약품 사용량"
+              ],
+              [
+                "단점",
+                "재사용성 제한, 높은 운영비용",
+                "높은 운영비용",
+                "높은 운영비용",
+                "복잡한 시스템, 대규모 양산 적용에 한계"
+              ]
+            ],
+            "needs_appendix": false,
+            "relation_confidence": "structural"
+          }
+        ],
+        "images_available": [],
+        "production_directives": [],
+        "visual_placeholders": []
+      },
+      "source_citation": "Desalination, 2024, 575, 117249"
+    },
+    {
+      "id": "CG12",
+      "title": "페이지 13 — 핵심기술-[솔루션1-2] Key Advantages of Extractant-Separator for DLE",
+      "structure_signal": {
+        "type": "heading_style",
+        "detail": "Heading 1 (\"페이지 13\")"
+      },
+      "subtopics": [
+        {
+          "id": "CG12-ST01",
+          "title": "차트 데이터 (Adsorbent/흡착제)",
+          "structure_signal": {
+            "type": "heading_style",
+            "detail": "Heading 3 (\"차트 데이터\")"
+          },
+          "confirmed_text": [
+            "계열: Adsorbent"
+          ],
+          "metrics": [
+            {
+              "label": "흡착제 - 재활용 효율(5점 척도)",
+              "value": "4.0",
+              "source_citation": null
+            },
+            {
+              "label": "흡착제 - 공정시간(5점 척도)",
+              "value": "3.0",
+              "source_citation": null
+            },
+            {
+              "label": "흡착제 - 연속공정(5점 척도)",
+              "value": "4.0",
+              "source_citation": null
+            },
+            {
+              "label": "흡착제 - 에너지 효율(5점 척도)",
+              "value": "3.0",
+              "source_citation": null
+            },
+            {
+              "label": "흡착제 - 양산성(5점 척도)",
+              "value": "4.0",
+              "source_citation": null
+            },
+            {
+              "label": "흡착제 - 친환경성(5점 척도)",
+              "value": "3.0",
+              "source_citation": null
+            }
+          ],
+          "tables": [
+            {
+              "table_ref": "table_adsorbent",
+              "headers": [
+                "항목",
+                "값"
+              ],
+              "rows": [
+                [
+                  "재활용 효율",
+                  "4.0"
+                ],
+                [
+                  "공정시간",
+                  "3.0"
+                ],
+                [
+                  "연속공정",
+                  "4.0"
+                ],
+                [
+                  "에너지 효율",
+                  "3.0"
+                ],
+                [
+                  "양산성",
+                  "4.0"
+                ],
+                [
+                  "친환경성",
+                  "3.0"
+                ]
+              ],
+              "needs_appendix": false,
+              "relation_confidence": "structural"
+            }
+          ],
+          "images_available": [],
+          "source_citation": null,
+          "production_directives": [],
+          "visual_placeholders": []
+        },
+        {
+          "id": "CG12-ST02",
+          "title": "차트 데이터 (Electrochemical/전기화학)",
+          "structure_signal": {
+            "type": "heading_style",
+            "detail": "Heading 3 (\"차트 데이터\")"
+          },
+          "confirmed_text": [
+            "계열: Electrochemical"
+          ],
+          "metrics": [
+            {
+              "label": "전기화학 - 재활용 효율(5점 척도)",
+              "value": "4.0",
+              "source_citation": null
+            },
+            {
+              "label": "전기화학 - 공정시간(5점 척도)",
+              "value": "3.0",
+              "source_citation": null
+            },
+            {
+              "label": "전기화학 - 연속공정(5점 척도)",
+              "value": "2.0",
+              "source_citation": null
+            },
+            {
+              "label": "전기화학 - 에너지 효율(5점 척도)",
+              "value": "1.0",
+              "source_citation": null
+            },
+            {
+              "label": "전기화학 - 양산성(5점 척도)",
+              "value": "2.0",
+              "source_citation": null
+            },
+            {
+              "label": "전기화학 - 친환경성(5점 척도)",
+              "value": "5.0",
+              "source_citation": null
+            }
+          ],
+          "tables": [
+            {
+              "table_ref": "table_electrochemical",
+              "headers": [
+                "항목",
+                "값"
+              ],
+              "rows": [
+                [
+                  "재활용 효율",
+                  "4.0"
+                ],
+                [
+                  "공정시간",
+                  "3.0"
+                ],
+                [
+                  "연속공정",
+                  "2.0"
+                ],
+                [
+                  "에너지 효율",
+                  "1.0"
+                ],
+                [
+                  "양산성",
+                  "2.0"
+                ],
+                [
+                  "친환경성",
+                  "5.0"
+                ]
+              ],
+              "needs_appendix": false,
+              "relation_confidence": "structural"
+            }
+          ],
+          "images_available": [],
+          "source_citation": null,
+          "production_directives": [],
+          "visual_placeholders": []
+        },
+        {
+          "id": "CG12-ST03",
+          "title": "차트 데이터 (Extractant & Separator/추출제 & 분리막)",
+          "structure_signal": {
+            "type": "heading_style",
+            "detail": "Heading 3 (\"차트 데이터\")"
+          },
+          "confirmed_text": [
+            "계열: Extractant&Separator"
+          ],
+          "metrics": [
+            {
+              "label": "추출제&분리막 - 재활용 효율(5점 척도)",
+              "value": "5.0",
+              "source_citation": null
+            },
+            {
+              "label": "추출제&분리막 - 공정시간(5점 척도)",
+              "value": "4.0",
+              "source_citation": null
+            },
+            {
+              "label": "추출제&분리막 - 연속공정(5점 척도)",
+              "value": "5.0",
+              "source_citation": null
+            },
+            {
+              "label": "추출제&분리막 - 에너지 효율(5점 척도)",
+              "value": "4.0",
+              "source_citation": null
+            },
+            {
+              "label": "추출제&분리막 - 양산성(5점 척도)",
+              "value": "4.0",
+              "source_citation": null
+            },
+            {
+              "label": "추출제&분리막 - 친환경성(5점 척도)",
+              "value": "4.0",
+              "source_citation": null
+            }
+          ],
+          "tables": [
+            {
+              "table_ref": "table_extractant_separator",
+              "headers": [
+                "항목",
+                "값"
+              ],
+              "rows": [
+                [
+                  "재활용 효율",
+                  "5.0"
+                ],
+                [
+                  "공정시간",
+                  "4.0"
+                ],
+                [
+                  "연속공정",
+                  "5.0"
+                ],
+                [
+                  "에너지 효율",
+                  "4.0"
+                ],
+                [
+                  "양산성",
+                  "4.0"
+                ],
+                [
+                  "친환경성",
+                  "4.0"
+                ]
+              ],
+              "needs_appendix": false,
+              "relation_confidence": "structural"
+            }
+          ],
+          "images_available": [],
+          "source_citation": null,
+          "production_directives": [],
+          "visual_placeholders": []
+        }
+      ],
+      "direct_evidence": {
+        "confirmed_text": [
+          "섹션: Technology",
+          "제목: 핵심기술 – [솔루션1-2] Key Advantages of Extractant–Separator for DLE",
+          "① 추출제와 리튬 이온(Li⁺) 간의 액-액 접촉을 통한 빠른 물질 전달",
+          "② 추출제에 의한 화학적 결합 및 분리막에 의한 공간적 분리를 통한 우수한 재활용 효율",
+          "③ 액상 공정을 통한 용이한 연속 운전",
+          "④ 분리막 기반 농축을 통한 첨가제 소모량 감소"
+        ],
+        "metrics": [],
+        "tables": [],
+        "images_available": [
+          {
+            "ref": "img26",
+            "path": "output/cosolus-ir-deck-E/extracted_images/코솔러스_IR_내용 추출_V2_img26.jpeg",
+            "description": "이 페이지(페이지13) 자체의 완성된 렌더링 미리보기 스크린샷 — \"흡착제\"(노랑)/\"추출제 & 분리막\"(짙은 청록)/\"전기화학\"(파랑) 3개의 육각형 방사형 차트가 나란히 배치된 실제 슬라이드 모습을 담고 있음. 3개 하위주제(ST01~ST03)의 수치 데이터가 실제로 이 형태의 차트로 시각화됨을 확인시켜주는 원본 자료.",
+            "relation_confidence": "structural",
+            "content_match_confidence": "confirmed",
+            "note": "원문 서술 순서(흡착제/전기화학/추출제&분리막)와 이 미리보기 이미지의 표시 순서(흡착제/추출제&분리막/전기화학)가 다르나, 3개 계열의 존재와 각 축(재활용효율/공정시간/연속공정/에너지효율/양산성/친환경성) 자체는 모두 일치함.",
+            "cross_group_ref": null
+          }
+        ],
+        "production_directives": [
+          {
+            "id": "CG12-PD01",
+            "raw_text": "[흡착제][전기화학][추출제 & 분리막] -> 방사형 차트 생성",
+            "directive_type": "visualization",
+            "target_scope": "흡착제/전기화학/추출제&분리막 3개 방식 비교를 방사형(레이더) 차트로 표현",
+            "applicability": "auto_applicable"
+          }
+        ],
+        "visual_placeholders": []
+      },
+      "source_citation": null
+    },
+    {
+      "id": "CG13",
+      "title": "페이지 14 — 핵심기술-[솔루션1-2] COSOLUS DLE",
+      "structure_signal": {
+        "type": "heading_style",
+        "detail": "Heading 1 (\"페이지 14\")"
+      },
+      "subtopics": [],
+      "direct_evidence": {
+        "confirmed_text": [
+          "섹션: Technology",
+          "제목: 핵심기술 – [솔루션1-2] COSOLUS DLE",
+          "핵심배너: COSOLUS 화학구조 설계, 정제, 공정 기술  재자원화율(>90%*), 공정비용(<5,500원/kg)",
+          "제목1: [핵심소재 (재자원화율 3% → 50%)]",
+          "제목2: [분리막 & THz 기술 (리튬 재자원화율 3% → 90%)]",
+          "각주: Sorece[원문 오탈자]: KOMIS, Conventional vs. direct vs. electrochemical lithium extraction: a holistic TEA–LCA of lithium carbonate production from spodumene (Green Chem., 2026, 28, 1144"
+        ],
+        "metrics": [
+          {
+            "label": "COSOLUS DLE 재자원화율",
+            "value": ">90%",
+            "source_citation": "KOMIS, Green Chem., 2026, 28, 1144",
+            "note": "수치 뒤 \"*\" 표기가 있으나 이 각주(\"*\")가 구체적으로 어떤 조건을 지목하는지 별도 설명 텍스트가 원문에서 확인되지 않음."
+          },
+          {
+            "label": "COSOLUS DLE 공정비용",
+            "value": "5,500원/kg 미만",
+            "source_citation": "KOMIS, Green Chem., 2026, 28, 1144"
+          },
+          {
+            "label": "핵심소재 재자원화율 개선",
+            "value": "3% → 50%",
+            "source_citation": "KOMIS, Green Chem., 2026, 28, 1144"
+          },
+          {
+            "label": "분리막 & THz 기술 적용 시 리튬 재자원화율 개선",
+            "value": "3% → 90%",
+            "source_citation": "KOMIS, Green Chem., 2026, 28, 1144"
+          }
+        ],
+        "tables": [],
+        "images_available": [],
+        "production_directives": [
+          {
+            "id": "CG13-PD01",
+            "raw_text": "테이블 삽입 예정",
+            "directive_type": "visualization",
+            "target_scope": "제목1 [핵심소재(재자원화율 3%→50%)] 자리",
+            "applicability": "auto_applicable"
+          },
+          {
+            "id": "CG13-PD02",
+            "raw_text": "도표 삽입 예정",
+            "directive_type": "visualization",
+            "target_scope": "제목2 [분리막&THz 기술(리튬 재자원화율 3%→90%)] 자리",
+            "applicability": "auto_applicable"
+          }
+        ],
+        "visual_placeholders": []
+      },
+      "source_citation": "KOMIS, \"Conventional vs. direct vs. electrochemical lithium extraction: a holistic TEA–LCA of lithium carbonate production from spodumene\" (Green Chem., 2026, 28, 1144)"
+    },
+    {
+      "id": "CG14",
+      "title": "페이지 15 — [솔루션2] 개요-친환경 차세대 배터리 재활용 공정기술(2세대)",
+      "structure_signal": {
+        "type": "heading_style",
+        "detail": "Heading 1 (\"페이지 15\")"
+      },
+      "subtopics": [],
+      "direct_evidence": {
+        "confirmed_text": [
+          "슬라이드 15 미리보기",
+          "섹션: Technology",
+          "제목: [솔루션2] 개요 - 친환경 차세대 배터리 재활용 공정기술 (2세대)"
+        ],
+        "metrics": [],
+        "tables": [],
+        "images_available": [
+          {
+            "ref": "img27",
+            "path": "output/cosolus-ir-deck-E/extracted_images/코솔러스_IR_내용 추출_V2_img27.jpeg",
+            "description": "이 페이지(페이지15)의 완성된 렌더링 미리보기 스크린샷. \"큰 도식 삽입 예정\"이라는 지시에 해당하는 실제 공정 흐름도(전기차 배터리 → 전처리공정 → 블랙매스 → 용매추출/부유선별 분기 → 양극재용/음극재용 블랙매스 → 건식환원/유도가열 → 재활용 양극재(MnSO4/NiSO4/CoSO4/Li2CO3)+폐흑연/고순도 정제흑연)가 그대로 담겨 있음.",
+            "relation_confidence": "structural",
+            "content_match_confidence": "confirmed",
+            "note": "이 미리보기 이미지 안에 빨간색 박스 1개와 짙은 청록색 박스 1개가 있는데, 두 박스 모두 내부에 텍스트/아이콘 없이 비어 있는 상태로 렌더링되어 있음(하단에 \"경제성/친환경성/양산성 확보\" 캡션만 별도로 존재). 원본 자체가 미완성 상태로 보이며, 두 박스가 원래 담으려 했던 내용은 확인 불가.",
+            "cross_group_ref": null
+          }
+        ],
+        "production_directives": [
+          {
+            "id": "CG14-PD01",
+            "raw_text": "큰 도식 삽입 예정",
+            "directive_type": "visualization",
+            "target_scope": "[솔루션2] 2세대 공정 전체 개요도 자리",
+            "applicability": "auto_applicable"
+          }
+        ],
+        "visual_placeholders": []
+      },
+      "source_citation": null
+    },
+    {
+      "id": "CG15",
+      "title": "페이지 16 — 핵심기술-[솔루션2] 친환경 차세대 배터리 재활용 공정기술(2세대)",
+      "structure_signal": {
+        "type": "heading_style",
+        "detail": "Heading 1 (\"페이지 16\")"
+      },
+      "subtopics": [],
+      "direct_evidence": {
+        "confirmed_text": [
+          "슬라이드 16 미리보기",
+          "섹션: Technology",
+          "제목: 핵심기술 – [솔루션2] 친환경 차세대 배터리 재활용 공정기술 (2세대)",
+          "COSOLUS",
+          "건식환원",
+          "부유선별",
+          "니켈",
+          "코발트",
+          "전처리 공정",
+          "양극재용 블랙매스",
+          "유도가열",
+          "블랙매스",
+          "음극재용 블랙매스",
+          "고순도 정제흑연"
+        ],
+        "metrics": [],
+        "tables": [],
+        "images_available": [
+          {
+            "ref": "img28",
+            "path": "output/cosolus-ir-deck-E/extracted_images/코솔러스_IR_내용 추출_V2_img28.jpeg",
+            "description": "이 페이지(페이지16)의 완성된 렌더링 미리보기 스크린샷. 전기차 배터리 → 전처리공정 → 블랙매스 → COSOLUS 부유선별 → (양극재용 블랙매스 → COSOLUS 건식환원 → 코발트/니켈 구체) + (음극재용 블랙매스 → COSOLUS 유도가열 → 고순도 정제흑연) 흐름을 시각화한 원본 공정도.",
+            "relation_confidence": "structural",
+            "content_match_confidence": "confirmed",
+            "cross_group_ref": null
+          }
+        ],
+        "production_directives": [],
+        "visual_placeholders": []
+      },
+      "source_citation": null
+    },
+    {
+      "id": "CG16",
+      "title": "페이지 17 — 핵심기술-[솔루션2] 건식환원공정(COSOLUS Originality)",
+      "structure_signal": {
+        "type": "heading_style",
+        "detail": "Heading 1 (\"페이지 17\")"
+      },
+      "subtopics": [],
+      "direct_evidence": {
+        "confirmed_text": [
+          "섹션: Technology",
+          "제목: 핵심기술 – [솔루션2] 친환경 차세대 배터리 재활용 공정기술 (2세대)",
+          "핵심 배너: 건식환원공정 → COSOLUS Originality",
+          "양극재용 블랙매스 -> 도식(건식환원에 의한 코발트(or니켈)회수 *PCT 2건 출원 -> Co회수(순도 > 95%)",
+          "건식환원 도표",
+          "양극재용 블랙매스",
+          "Co"
+        ],
+        "metrics": [
+          {
+            "label": "건식환원 공정을 통한 Co(코발트) 회수 순도",
+            "value": "95% 초과",
+            "source_citation": null
+          },
+          {
+            "label": "관련 특허 출원 현황",
+            "value": "PCT 2건 출원",
+            "source_citation": null
+          }
+        ],
+        "tables": [],
+        "images_available": [
+          {
+            "ref": "img29",
+            "path": "output/cosolus-ir-deck-E/extracted_images/코솔러스_IR_내용 추출_V2_img29.jpeg",
+            "description": "보라색 광원이 보이는 스테인리스 재질의 실린더형 산업 반응기 3D 렌더링 이미지. \"건식환원 도표\" 위치에 배치되어 건식환원 반응기를 개념적으로 표현.",
+            "relation_confidence": "structural",
+            "content_match_confidence": "confirmed",
+            "cross_group_ref": null
+          },
+          {
+            "ref": "img30",
+            "path": "output/cosolus-ir-deck-E/extracted_images/코솔러스_IR_내용 추출_V2_img30.jpeg",
+            "description": "실험대 위 검은 분말/과립 더미의 실사 사진. 인접 라벨 \"양극재용 블랙매스\"와 위치·내용 일치.",
+            "relation_confidence": "structural",
+            "content_match_confidence": "confirmed",
+            "cross_group_ref": null
+          },
+          {
+            "ref": "img31",
+            "path": "output/cosolus-ir-deck-E/extracted_images/코솔러스_IR_내용 추출_V2_img31.jpeg",
+            "description": "은색 금속 펠릿(원통형 알갱이) 다수가 쌓인 실사 사진. 인접 라벨 \"Co\"(코발트 회수물)와 위치상 대응.",
+            "relation_confidence": "structural",
+            "content_match_confidence": "confirmed",
+            "cross_group_ref": null
+          }
+        ],
+        "production_directives": [],
+        "visual_placeholders": []
+      },
+      "source_citation": null
+    },
+    {
+      "id": "CG17",
+      "title": "페이지 18 — 핵심기술-[솔루션2] 유도가열기술(COSOLUS Originality)",
+      "structure_signal": {
+        "type": "heading_style",
+        "detail": "Heading 1 (\"페이지 18\")"
+      },
+      "subtopics": [],
+      "direct_evidence": {
+        "confirmed_text": [
+          "섹션: Technology",
+          "제목: 핵심기술 – [솔루션2] 친환경 차세대 배터리 재활용 공정기술 (2세대)",
+          "핵심배너: 유도가열기술 → COSOLUS Originality",
+          "박스1",
+          "[가격경쟁력] 경쟁사 대비 저렴한 가격",
+          "- 짧은 공정 시간 (1분 이내, 200배 빠른 승온 속도)",
+          "- 적은 에너지 투입 (432 Wh/kg, 64% 에너지 절감)",
+          "[기술경쟁력] 경쟁사 대비 고순도 재생흑연 (순도 99% 이상)",
+          "- 균일한 온도 분포 구현",
+          "- 낮은 부반응 발생 *PCT 2건 출원",
+          "※ 기존 소성로 (Pusher Kiln)",
+          "- 10시간 이상 장시간 소요",
+          "- 낮은 온도 정밀도",
+          "- 높은 시설 투자비용",
+          "[제작 지시문] 삽입 이미지 list",
+          "고순도 정제흑연 생산 공정",
+          "삽입이미지1",
+          "삽입이미지2",
+          "삽입이미지3",
+          "기존소성로",
+          "기존소성로 도식"
+        ],
+        "metrics": [
+          {
+            "label": "유도가열 공정시간",
+            "value": "1분 이내",
+            "source_citation": null,
+            "note": "원문에 별도 출처 인용 없음 — 자체 실험/공정 데이터로 추정"
+          },
+          {
+            "label": "승온 속도 개선",
+            "value": "기존 대비 200배",
+            "source_citation": null,
+            "note": "원문에 별도 출처 인용 없음"
+          },
+          {
+            "label": "에너지 투입량",
+            "value": "432 Wh/kg",
+            "source_citation": null,
+            "note": "원문에 별도 출처 인용 없음"
+          },
+          {
+            "label": "에너지 절감율",
+            "value": "64%",
+            "source_citation": null,
+            "note": "원문에 별도 출처 인용 없음"
+          },
+          {
+            "label": "재생흑연 순도",
+            "value": "99% 이상",
+            "source_citation": null,
+            "note": "원문에 별도 출처 인용 없음"
+          },
+          {
+            "label": "관련 특허 출원 현황",
+            "value": "PCT 2건 출원",
+            "source_citation": null
+          },
+          {
+            "label": "기존 소성로(Pusher Kiln) 소요시간",
+            "value": "10시간 이상",
+            "source_citation": null,
+            "note": "경쟁 공정 비교 기준값, 출처 인용 없음"
+          }
+        ],
+        "tables": [],
+        "images_available": [
+          {
+            "ref": "img32",
+            "path": "output/cosolus-ir-deck-E/extracted_images/코솔러스_IR_내용 추출_V2_img32.jpeg",
+            "description": "공장/실험동 내부에 설치된 여러 대의 스테인리스 파일럿 규모 산업설비 실사 사진. \"고순도 정제흑연 생산 공정\" 라벨과 위치상 대응하는 실제 설비 사진으로 판단됨.",
+            "relation_confidence": "structural",
+            "content_match_confidence": "confirmed",
+            "cross_group_ref": null
+          },
+          {
+            "ref": "img33",
+            "path": "output/cosolus-ir-deck-E/extracted_images/코솔러스_IR_내용 추출_V2_img33.jpeg",
+            "description": "정사각형 트레이 안에서 붉게 달아오른(적열) 물질을 위에서 촬영한 실사 사진. 유도가열 공정 진행 중 상태로 추정, \"삽입이미지1\" 위치.",
+            "relation_confidence": "structural",
+            "content_match_confidence": "confirmed",
+            "cross_group_ref": null
+          },
+          {
+            "ref": "img34",
+            "path": "output/cosolus-ir-deck-E/extracted_images/코솔러스_IR_내용 추출_V2_img34.jpeg",
+            "description": "위와 유사한 트레이에서 붉은 빛이 점차 옅어지며 국소적으로만 남은 상태의 사진(가열 후속 단계로 추정). \"삽입이미지2\" 위치.",
+            "relation_confidence": "structural",
+            "content_match_confidence": "confirmed",
+            "cross_group_ref": null
+          },
+          {
+            "ref": "img35",
+            "path": "output/cosolus-ir-deck-E/extracted_images/코솔러스_IR_내용 추출_V2_img35.jpeg",
+            "description": "세 개의 트레이를 나란히 놓고 각각 축축한 상태/그림자 진 상태/다공성 표면이 드러난 상태를 비교 촬영한 사진(공정 단계별 비교로 추정). \"삽입이미지3\" 위치.",
+            "relation_confidence": "structural",
+            "content_match_confidence": "confirmed",
+            "cross_group_ref": null
+          },
+          {
+            "ref": "img36",
+            "path": "output/cosolus-ir-deck-E/extracted_images/코솔러스_IR_내용 추출_V2_img36.jpeg",
+            "description": "실내 공장에 설치된 길고 좁은 터널형 산업 소성로(컨베이어 벨트 방식) 실사 사진. \"기존소성로 도식\" 라벨과 대응하며 \"Pusher Kiln\" 서술과 일치.",
+            "relation_confidence": "structural",
+            "content_match_confidence": "confirmed",
+            "cross_group_ref": null
+          }
+        ],
+        "production_directives": [
+          {
+            "id": "CG17-PD01",
+            "raw_text": "프롬프트: 박스2개 위아래 배치(그림이 길기 때문에 좌우가 아닌 위아래 배치)",
+            "directive_type": "placement",
+            "target_scope": "박스1(가격/기술경쟁력)·박스2(기존 소성로 비교) — 좌우가 아닌 상하 배치",
+            "applicability": "auto_applicable"
+          }
+        ],
+        "visual_placeholders": []
+      },
+      "source_citation": null
+    },
+    {
+      "id": "CG18",
+      "title": "페이지 19 — 경쟁력-[솔루션2] 친환경 차세대 배터리 재활용 공정기술(2세대)",
+      "structure_signal": {
+        "type": "heading_style",
+        "detail": "Heading 1 (\"페이지 19\")"
+      },
+      "subtopics": [],
+      "direct_evidence": {
+        "confirmed_text": [
+          "섹션: Technology",
+          "제목: 경쟁력 – [솔루션2] 친환경 차세대 배터리 재활용 공정기술(2세대)"
+        ],
+        "metrics": [
+          {
+            "label": "COSOLUS 유도가열 온도",
+            "value": "약 950℃",
+            "source_citation": null
+          },
+          {
+            "label": "COSOLUS 처리시간",
+            "value": "1분 이내",
+            "source_citation": null
+          },
+          {
+            "label": "BTR(중국) 전기로 온도",
+            "value": "3,000℃",
+            "source_citation": null
+          },
+          {
+            "label": "BTR(중국) 처리시간",
+            "value": "약 24시간",
+            "source_citation": null
+          },
+          {
+            "label": "Vianode(노르웨이) 대류가열 온도",
+            "value": "3,000℃",
+            "source_citation": null
+          },
+          {
+            "label": "Vianode(노르웨이) 처리시간",
+            "value": "약 48시간",
+            "source_citation": null
+          }
+        ],
+        "tables": [
+          {
+            "table_ref": "table_1",
+            "headers": [
+              "구분",
+              "COSOLUS",
+              "BTR",
+              "Vianode"
+            ],
+            "rows": [
+              [
+                "기업명",
+                "COSOLUS",
+                "BTR",
+                "Vianode"
+              ],
+              [
+                "국가",
+                "Korea",
+                "China",
+                "Norway"
+              ],
+              [
+                "기술",
+                "유도가열(약 950℃)",
+                "전기로(3,000℃)",
+                "대류 가열(3,000℃)"
+              ],
+              [
+                "처리시간",
+                "1분 이내",
+                "약 24시간",
+                "약 48시간"
+              ],
+              [
+                "특징",
+                "낮은 에너지 소비량, 연속 공정, 직접 가열",
+                "높은 에너지 소비량, 비연속 공정, 간접 가열",
+                "보통 수준의 에너지 소비량, 비연속 공정, 간접 가열"
+              ]
+            ],
+            "needs_appendix": false,
+            "relation_confidence": "structural"
+          }
+        ],
+        "images_available": [],
+        "production_directives": [
+          {
+            "id": "CG18-PD01",
+            "raw_text": "프롬프트: 표 삽입, Cosolus 우위 강조",
+            "directive_type": "visualization",
+            "target_scope": "COSOLUS/BTR/Vianode 비교 표 삽입",
+            "applicability": "auto_applicable"
+          },
+          {
+            "id": "CG18-PD02",
+            "raw_text": "프롬프트: 표 삽입, Cosolus 우위 강조",
+            "directive_type": "emphasis",
+            "target_scope": "비교 표 내 COSOLUS 열(행) — 경쟁사 대비 우위를 시각적으로 강조",
+            "applicability": "auto_applicable"
+          }
+        ],
+        "visual_placeholders": []
+      },
+      "source_citation": null
+    },
+    {
+      "id": "CG19",
+      "title": "페이지 20 — 조직구성",
+      "structure_signal": {
+        "type": "heading_style",
+        "detail": "Heading 1 (\"페이지 20\")"
+      },
+      "subtopics": [],
+      "direct_evidence": {
+        "confirmed_text": [
+          "섹션: Company",
+          "제목: 조직구성",
+          "기술영업팀 COO",
+          "CEO 김성현",
+          "화학공정기술",
+          "▪ 2008.08 서울대 응용화학부 박사",
+          "▪ 2016.09~ 원광대 탄소융합공학과 교수",
+          "▪ 2020.07~ ㈜코솔러스 CEO",
+          "▪ 논문 71 편, 특허 24 편",
+          "경영지원팀",
+          "(2명)",
+          "기술영업팀",
+          "AI혁신팀",
+          "기업부설연구소",
+          "CTO장재규 유기합성",
+          "▪ 2021.08 서울대 화학부 박사",
+          "▪ 2020.07~ ㈜코솔러스 CTO",
+          "▪ 논문 18 편, 특허 2 편",
+          "개발1팀 (6명) 재활용 소재",
+          "개발2팀 (4명) 플라스틱 첨가제",
+          "개발 3팀(3명) 재활용 공정기술",
+          "공동개발: 임춘우 교수(개발1팀), 김양배 교수(개발2팀)",
+          "CSO 민사훈 분자시뮬레이션",
+          "분자 시뮬레이션",
+          "▪ 2013.02 서울대 화학생물공학부 박사",
+          "▪ 2024.02~ ㈜코솔러스 CSO",
+          "▪ 논문 25 편, 특허 5 편",
+          "AI혁신팀 (4명) AI 기반 차세대 배터리 재활용 공정 기술",
+          "COO오성환 기술영업",
+          "▪ 2012.05 악조노벨(SSCP) 영업매니저",
+          "▪ 2023.11~ ㈜코솔러스 COO",
+          "생산1팀 (1명): 공동개발: 장세건 이사 (생산 1팀)",
+          "[하위 제목] [추출 이미지]",
+          "CEO",
+          "CTO",
+          "CSO",
+          "COO"
+        ],
+        "metrics": [
+          {
+            "label": "CEO 김성현 논문/특허 실적",
+            "value": "논문 71편, 특허 24편",
+            "source_citation": null
+          },
+          {
+            "label": "CTO 장재규 논문/특허 실적",
+            "value": "논문 18편, 특허 2편",
+            "source_citation": null
+          },
+          {
+            "label": "CSO 민사훈 논문/특허 실적",
+            "value": "논문 25편, 특허 5편",
+            "source_citation": null
+          },
+          {
+            "label": "경영지원팀 인원",
+            "value": "2명",
+            "source_citation": null
+          },
+          {
+            "label": "개발1팀(재활용 소재) 인원",
+            "value": "6명",
+            "source_citation": null
+          },
+          {
+            "label": "개발2팀(플라스틱 첨가제) 인원",
+            "value": "4명",
+            "source_citation": null
+          },
+          {
+            "label": "개발3팀(재활용 공정기술) 인원",
+            "value": "3명",
+            "source_citation": null
+          },
+          {
+            "label": "AI혁신팀 인원",
+            "value": "4명",
+            "source_citation": null
+          },
+          {
+            "label": "생산1팀 인원",
+            "value": "1명",
+            "source_citation": null
+          }
+        ],
+        "tables": [],
+        "images_available": [
+          {
+            "ref": "img37",
+            "path": "output/cosolus-ir-deck-E/extracted_images/코솔러스_IR_내용 추출_V2_img37.jpeg",
+            "description": "안경을 쓴 남성의 흑백 정면 프로필 사진. 인접 라벨 \"CEO\"와 위치 일치, \"CEO 김성현\" 서술과 부합.",
+            "relation_confidence": "structural",
+            "content_match_confidence": "confirmed",
+            "cross_group_ref": null
+          },
+          {
+            "ref": "img38",
+            "path": "output/cosolus-ir-deck-E/extracted_images/코솔러스_IR_내용 추출_V2_img38.jpeg",
+            "description": "정장을 입은 남성의 흑백 정면 프로필 사진. 인접 라벨 \"CTO\"와 위치 일치, \"CTO장재규\" 서술과 부합.",
+            "relation_confidence": "structural",
+            "content_match_confidence": "confirmed",
+            "cross_group_ref": null
+          },
+          {
+            "ref": "img39",
+            "path": "output/cosolus-ir-deck-E/extracted_images/코솔러스_IR_내용 추출_V2_img39.jpeg",
+            "description": "안경을 쓴 남성의 흑백 정면 프로필 사진. 인접 라벨 \"CSO\"와 위치 일치, \"CSO 민사훈\" 서술과 부합.",
+            "relation_confidence": "structural",
+            "content_match_confidence": "confirmed",
+            "cross_group_ref": null
+          },
+          {
+            "ref": "img40",
+            "path": "output/cosolus-ir-deck-E/extracted_images/코솔러스_IR_내용 추출_V2_img40.jpeg",
+            "description": "안경을 쓴 남성의 흑백 정면 프로필 사진. 인접 라벨 \"COO\"와 위치 일치, \"COO오성환\" 서술과 부합.",
+            "relation_confidence": "structural",
+            "content_match_confidence": "confirmed",
+            "cross_group_ref": null
+          }
+        ],
+        "production_directives": [
+          {
+            "id": "CG19-PD01",
+            "raw_text": "프롬프트: CEO 바로 아래로 기업부설연구소, 양쪽으로 뻗는 형태, 왼쪽 AI혁신팀 CSO, 오른쪽 경영지원팀은 CEO에서 왼쪽으로 가지 뻗기. 기술영업팀 COO",
+            "directive_type": "placement",
+            "target_scope": "조직도 전체 구조 — CEO 바로 아래 기업부설연구소, 좌우로 가지가 뻗는 형태(왼쪽: AI혁신팀/CSO/경영지원팀, 오른쪽: 기술영업팀/COO)",
+            "applicability": "auto_applicable"
+          }
+        ],
+        "visual_placeholders": []
+      },
+      "source_citation": null
+    },
+    {
+      "id": "CG20",
+      "title": "페이지 21 — 투자포인트",
+      "structure_signal": {
+        "type": "heading_style",
+        "detail": "Heading 1 (\"페이지 21\")"
+      },
+      "subtopics": [],
+      "direct_evidence": {
+        "confirmed_text": [
+          "섹션: Executive Summary",
+          "제목: 투자포인트",
+          "박스1: 기술력 및 사업화",
+          "[기술력]",
+          "〮 추출제 최상위 수준의 합성 및 정제 기술",
+          "〮 친환경 공정 기술 (건식환원 및 유도가열 기술)",
+          "〮 Closed-loop system 합성/공정 기술로 환경부담 최소화",
+          "[사업화 방향]",
+          "〮 (1.5 세대-RECYION Series) XX하이텍, XX코 등 현장적용을 고려한 PoC 진행 중",
+          "〮 (2세대- 친환경 공정기술) XX자동차 연계 신공급망 구축, 일본 및 인도네시아 시장 진출 (파일롯 기술검증 후 JV 설립)",
+          "박스2: 예상 소요자금 (투자금 및 대출)",
+          "[투자라운드]",
+          "〮 Series A2",
+          "〮 목표 투자유치 금액 = 80억원",
+          "[투자금 사용 계획]",
+          "· 글로벌 진출을 위한 국외법인 설립 및 운영",
+          "· 공장 건설을 위한 토지 구매 및 건축 비용",
+          "- 추출제CAPA, 공정파일롯"
+        ],
+        "metrics": [
+          {
+            "label": "목표 투자유치 금액 (Series A2)",
+            "value": "80억원",
+            "source_citation": null
+          }
+        ],
+        "tables": [],
+        "images_available": [],
+        "production_directives": [],
+        "visual_placeholders": []
+      },
+      "source_citation": null,
+      "needs_confirmation_note": "\"XX하이텍\", \"XX코\", \"XX자동차\" 등 사업화 파트너로 언급된 회사명이 원문 자체에서 \"XX\"로 비식별(마스킹) 처리되어 있어 실제 대상 기업을 원본만으로 확인할 수 없음."
+    },
+    {
+      "id": "CG21",
+      "title": "페이지 22 — 세계시장 진출",
+      "structure_signal": {
+        "type": "heading_style",
+        "detail": "Heading 1 (\"페이지 22\")"
+      },
+      "subtopics": [],
+      "direct_evidence": {
+        "confirmed_text": [
+          "섹션:Milestone",
+          "제목: 세계시장 진출",
+          "[목표]",
+          "〮 일본과 인도네시아를 전략적 거점으로 5억 명 이상의 아시아 경제권에서 성장",
+          "[일본 및 인도네시아 진출을 위한 논의 현황]",
+          "〮 인도네시아 전기자전거 업체 1대주주와 투자논의 중",
+          "〮 일본 현지투자사, 재료업체 등과 투자논의 중",
+          "마일스톤",
+          "'29~ 추출제 판매 및 공정 서비스 제공",
+          "'27~28 추출제 및 공정기술 PoC 획득",
+          "'26 일본 및 인도네시아 배터리 재활용 관련 파트너쉽 구축",
+          "이미지 1 | 원본 569 × 403px",
+          "이미지 2 | 원본 450 × 142px",
+          "이미지 3 | 원본 1125 × 589px",
+          "이미지 4 | 원본 876 × 414px[원문 오탈자: 414p]"
+        ],
+        "metrics": [
+          {
+            "label": "목표 시장 규모(아시아 경제권 인구)",
+            "value": "5억 명 이상",
+            "source_citation": null,
+            "note": "원문에 출처 인용 없음"
+          },
+          {
+            "label": "추출제 판매/공정 서비스 개시 목표 시점",
+            "value": "'29년~",
+            "source_citation": null
+          },
+          {
+            "label": "추출제/공정기술 PoC 획득 목표 시점",
+            "value": "'27~'28년",
+            "source_citation": null
+          },
+          {
+            "label": "일본·인도네시아 파트너십 구축 목표 시점",
+            "value": "'26년",
+            "source_citation": null
+          }
+        ],
+        "tables": [],
+        "images_available": [
+          {
+            "ref": "img41",
+            "path": "output/cosolus-ir-deck-E/extracted_images/코솔러스_IR_내용 추출_V2_img41.jpeg",
+            "description": "\"SWAP\" 브랜드 로고 이미지(원본 569×403px). \"논의중인 현지 투자사, 재료업체 이미지\" 위치에 배치되어 있으나 본문 텍스트에는 \"SWAP\"이라는 회사명이 전혀 언급되지 않아, \"인도네시아 전기자전거 업체\" 서술과 일치하는 기업인지는 로고만으로 단정하기 어려움.",
+            "relation_confidence": "structural",
+            "content_match_confidence": "uncertain",
+            "note": "실명 기업 로고이나 본문에 회사명이 명시되지 않아 어느 서술(인니 전기자전거업체/일본 현지투자사/재료업체)과 매칭되는지 원본만으로 확정 불가.",
+            "cross_group_ref": null
+          },
+          {
+            "ref": "img42",
+            "path": "output/cosolus-ir-deck-E/extracted_images/코솔러스_IR_내용 추출_V2_img42.jpeg",
+            "description": "\"Panasonic ENERGY\" 로고 이미지(원본 450×142px). 위와 동일한 위치에 배치되어 있으나 본문에 회사명 언급이 없어 실제 논의 관계·매칭 대상을 원본만으로 확인 불가.",
+            "relation_confidence": "structural",
+            "content_match_confidence": "uncertain",
+            "note": "세계적으로 잘 알려진 대기업의 실명 로고를 \"논의중인 투자사/재료업체\"로 제시 — 실제 논의 관계의 사실 여부 확인이 특히 중요함(대외 공개 시 평판·신뢰성에 직결).",
+            "cross_group_ref": null
+          },
+          {
+            "ref": "img43",
+            "path": "output/cosolus-ir-deck-E/extracted_images/코솔러스_IR_내용 추출_V2_img43.jpeg",
+            "description": "\"Iwatani\" 로고 이미지(원본 1125×589px로 추정). 위와 동일 사유로 확인 필요.",
+            "relation_confidence": "structural",
+            "content_match_confidence": "uncertain",
+            "note": "실명 대기업 로고, 본문에 회사명 언급 없음.",
+            "cross_group_ref": null
+          },
+          {
+            "ref": "img44",
+            "path": "output/cosolus-ir-deck-E/extracted_images/코솔러스_IR_내용 추출_V2_img44.jpeg",
+            "description": "\"DNP / Dai Nippon Printing\" 로고 이미지(원본 876×414px). 위와 동일 사유로 확인 필요.",
+            "relation_confidence": "structural",
+            "content_match_confidence": "uncertain",
+            "note": "실명 대기업 로고, 본문에 회사명 언급 없음.",
+            "cross_group_ref": null
+          }
+        ],
+        "production_directives": [
+          {
+            "id": "CG21-PD01",
+            "raw_text": "논의중인 현지 투자사, 재료업체 이미지 삽입",
+            "directive_type": "visualization",
+            "target_scope": "일본/인도네시아 진출 논의 현황 섹션 이미지 자리",
+            "applicability": "auto_applicable"
+          }
+        ],
+        "visual_placeholders": []
+      },
+      "source_citation": null
+    },
+    {
+      "id": "CG22",
+      "title": "페이지 23 — 마무리 표지",
+      "structure_signal": {
+        "type": "heading_style",
+        "detail": "Heading 1 (\"페이지 23\")"
+      },
+      "subtopics": [],
+      "direct_evidence": {
+        "confirmed_text": [
+          "[마무리표지]",
+          "코솔러스는 책임있는 화학기술을 기반으로 순환경제를 선도하고 탄소배출 저감에 기여하며 지속가능한 미래를 만들어가는 글로벌 기업으로 도약하고자 합니다.",
+          "Thank You"
+        ],
+        "metrics": [],
+        "tables": [],
+        "images_available": [
+          {
+            "ref": "img45",
+            "path": "output/cosolus-ir-deck-E/extracted_images/코솔러스_IR_내용 추출_V2_img45.jpeg",
+            "description": "정장을 입은 사람이 두 손으로 지구본 형상의 디지털 홀로그램(네트워크·그래프 아이콘 포함)을 받쳐 든 흑백 톤의 일반 스톡 이미지. 마무리/Thank You 슬라이드의 전형적인 클로징 비주얼.",
+            "relation_confidence": "structural",
+            "content_match_confidence": "confirmed",
+            "cross_group_ref": null
+          }
+        ],
+        "production_directives": [
+          {
+            "id": "CG22-PD01",
+            "raw_text": "아래 이미지 삽입",
+            "directive_type": "visualization",
+            "target_scope": "마무리 표지 하단 이미지 자리",
+            "applicability": "auto_applicable"
+          }
+        ],
+        "visual_placeholders": []
+      },
+      "source_citation": null
+    }
+  ],
+  "unassigned_or_dropped_content": [],
+  "escalations": [
+    {
+      "type": "core_claim_data_missing",
+      "detail": "CG03(페이지03) \"박스2: 핵심광물 고갈\" 근거로 예정된 [글로벌 양극재(리튬) 수요-공급 전망] 테이블이 원본에 제목만 있고 수치 데이터가 전혀 없음. 이 페이지는 발표의 시장기회(Background/문제제기) 핵심 논거 중 하나(수요-공급 미스매치)를 뒷받침하는 자리이므로, 임의로 수치를 추정하지 않고 원본 데이터 확보가 필요함.",
+      "source": "CG03 / 페이지 03"
+    },
+    {
+      "type": "core_claim_data_missing",
+      "detail": "CG04(페이지04) \"박스1: 2030년 기점 폭발적 증가\"의 근거로 예정된 [글로벌 전기차 폐배터리 발생 전망] 차트가 원본에 제목만 있고 수치 데이터가 전혀 없음. \"왜 지금인가-산업적 요인\"(시장 타이밍 논거)의 핵심 근거이므로 원본 데이터 확보가 필요함.",
+      "source": "CG04 / 페이지 04"
+    },
+    {
+      "type": "core_claim_data_missing",
+      "detail": "CG04(페이지04) \"박스2: ESS 시장의 고성장 전환\"의 근거로 예정된 [북미 ESS 시장 성장 전망] 차트가 원본에 제목만 있고 수치 데이터가 전혀 없음. 동일하게 시장 타이밍 논거의 핵심 근거이므로 원본 데이터 확보가 필요함.",
+      "source": "CG04 / 페이지 04"
+    }
+  ],
+  "needs_confirmation": [
+    {
+      "id": "NC-01",
+      "detail": "원본 문서 자체의 페이지 번호가 10에서 12로 건너뜀 — 페이지 11이 원본에 존재하지 않음(추출 과정에서 누락된 것이 아니라 원본 자체의 번호 공백으로 판단됨).",
+      "source": "전체 문서"
+    },
+    {
+      "id": "NC-02",
+      "detail": "CG06(페이지06)에서 실존 기업 Li-Cycle·Glencore의 브랜드 로고가 \"1세대 재활용 공정 경제성 확보 실패\"의 부정적 예시로 사용되었으나, 출처/근거 인용이 없음. 사실관계 및 실명 기업을 실패 사례로 제시하는 것의 적절성(상표·평판 리스크) 확인 필요.",
+      "source": "CG06 / 페이지 06"
+    },
+    {
+      "id": "NC-03",
+      "detail": "CG07(페이지07)의 \"기존 추출제(1세대)\" 화학구조식 이미지(img18)와 \"[솔루션1] 코솔러스 추출제(1.5세대)\" 화학구조식 이미지(img19)가 픽셀 단위로 완전히 동일함 — COSOLUS 고유 신규 구조를 시각적으로 실제로 차별화하여 보여주지 못하고 있음. 실제 COSOLUS 1.5세대 추출제 구조식 확보 필요.",
+      "source": "CG07 / 페이지 07"
+    },
+    {
+      "id": "NC-04",
+      "detail": "CG08(페이지08) 표의 \"벨기에 S사\" 열에 사용된 전/후 비커 사진(img22, img23)이 \"COSOLUS\" 열의 사진(img20, img21)과 완전히 동일함. 공통 시작원액을 표현한 것인지, 실제 개별 비교 실험 촬영이 아닌지 원본 확인 필요.",
+      "source": "CG08 / 페이지 08"
+    },
+    {
+      "id": "NC-05",
+      "detail": "CG08(페이지08) 핵심배너 텍스트 \"COSOLUS 화학구조 설계 및 정제 기술 -? 공정시간 단축 및 첨가제 사용량 저감\"에서 \"-?\" 부분이 문자 인코딩 손상으로 추정됨(다른 유사 페이지(CG09)에서는 정상적으로 \"→\"가 쓰임). 원문 그대로 보존했으며 의미는 \"→\"로 추정되나 원본 확인 권장.",
+      "source": "CG08 / 페이지 08"
+    },
+    {
+      "id": "NC-06",
+      "detail": "CG09(페이지09)에서 \"(표삽입 예정)\"으로 예고된 표가 원본에 실제로 삽입되지 않음. 다만 이 표가 뒷받침하려던 핵심 수치(추출단수 4단/5단, 니켈 16,000톤, 망초 4,800톤 저감 등)는 본문 텍스트에 이미 명시되어 있어 escalation 대상은 아니며, 세부 검증용 표 자체의 부재만 기록.",
+      "source": "CG09 / 페이지 09"
+    },
+    {
+      "id": "NC-07",
+      "detail": "CG10(페이지10) 경쟁력 비교표에서 (1) 두 번째 행 레이블이 \"국가\"인데 실제 값은 국가명이 아니라 제품군명(RECYION/Mextral/CYANEX series)으로 되어 있어 레이블-데이터 불일치, (2) \"가격\"·\"추출성능\" 두 항목이 COSOLUS·KopperChem·Solvay 3사 모두 동일하게 \"◎(매우 좋음)\"으로 표기되어 실제 차별화 평가치인지 미기입 상태인지 불명확함.",
+      "source": "CG10 / 페이지 10"
+    },
+    {
+      "id": "NC-08",
+      "detail": "CG12(페이지13)의 3개 방사형 차트(흡착제/추출제&분리막/전기화학, 각 6개 항목 1~5점 척도) 수치에 별도 출처 인용이 없음 — COSOLUS 자체 평가치로 추정되며, 제3자 검증 여부는 원본만으로 확인 불가.",
+      "source": "CG12 / 페이지 13"
+    },
+    {
+      "id": "NC-09",
+      "detail": "CG13(페이지14) 핵심배너의 \"재자원화율(>90%*)\"에서 \"*\" 각주 표시가 구체적으로 어떤 조건을 지목하는지 원본에서 별도 설명 텍스트를 찾을 수 없음.",
+      "source": "CG13 / 페이지 14"
+    },
+    {
+      "id": "NC-10",
+      "detail": "CG13(페이지14) \"핵심소재 표삽입예정\", \"분리막&THz 도표삽입예정\" 두 곳 모두 원본에 실제 표/도표가 삽입되지 않음. 다만 헤드라인 수치(3%→50%, 3%→90%)는 본문 텍스트에 이미 명시되어 있음.",
+      "source": "CG13 / 페이지 14"
+    },
+    {
+      "id": "NC-11",
+      "detail": "CG14(페이지15) 미리보기 이미지(img27) 안에 빨간색 박스 1개와 짙은 청록색 박스 1개가 내용 없이 빈 상태로 남아 있음(하단 캡션 \"경제성/친환경성/양산성 확보\"만 존재) — 원본 자체가 해당 부분에서 미완성 상태로 보임.",
+      "source": "CG14 / 페이지 15"
+    },
+    {
+      "id": "NC-12",
+      "detail": "CG17(페이지18)의 공정시간(1분 이내, 200배), 에너지(432Wh/kg, 64%절감), 흑연순도(99%이상) 등 수치들에 별도 출처 인용이 없음 — 자체 실험/공정 데이터로 추정됨.",
+      "source": "CG17 / 페이지 18"
+    },
+    {
+      "id": "NC-13",
+      "detail": "CG20(페이지21) \"사업화 방향\"에서 파트너/고객사로 언급된 \"XX하이텍\", \"XX코\", \"XX자동차\"가 원본 자체에서 \"XX\"로 비식별(마스킹) 처리되어 있어 실제 대상 기업명을 원본만으로 확인할 수 없음.",
+      "source": "CG20 / 페이지 21"
+    },
+    {
+      "id": "NC-14",
+      "detail": "[중요] CG21(페이지22) \"논의중인 현지 투자사, 재료업체 이미지\"로 SWAP·Panasonic Energy·Iwatani·DNP(Dai Nippon Printing) 4개 실명 대기업/기업 로고가 사용되었으나, 본문 텍스트 어디에도 이들 기업명이 직접 언급되지 않아 \"인도네시아 전기자전거 업체 1대주주\"/\"일본 현지투자사, 재료업체\" 서술과의 매칭이 로고 이미지에만 의존함. 해외 파트너십은 이 IR 자료의 핵심 투자 논거(세계시장 진출) 중 하나이며, 특히 Panasonic Energy·Iwatani·DNP처럼 잘 알려진 대기업을 \"논의중\"으로 제시하는 것은 사실관계가 확인되지 않은 채 대외 공개될 경우 평판·상표 리스크가 상당함. 메인 에이전트가 사용자에게 이 부분의 사실관계 확인 필요성을 특별히 안내할 것을 권장.",
+      "source": "CG21 / 페이지 22"
+    }
+  ]
+}

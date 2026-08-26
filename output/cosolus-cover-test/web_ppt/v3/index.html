@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>COSOLUS 표지 테스트 - 난연 마스터배치</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!--
+  테스트용 표지 1장짜리 웹PPT (v3 — 실제 배경 이미지 자산 적용판).
+  레이아웃 근거: docs/slide-design-rules/01_cover_design_V2.md
+  (표지 슬라이드는 4순위 범용 Layout Reference L01~L33보다 이 문서를 우선 적용 —
+  L01 카탈로그는 참고하지 않음)
+
+  v2 -> v3 변경 사항 (docs/brand-assets/cover-images/에 배경 이미지 3장이 정식
+  등록됨에 따른 갱신, 새 디자인 규칙 추가 없음):
+  - 배경: Deep Pine 단색(v2, "적합한 이미지 없음" 예외 적용) →
+    docs/brand-assets/cover-images/이미지_3.png(방진복 착용 연구원이 밀폐
+    반응기/컴파운딩 설비를 다루는 장면)로 교체. docs/brand-assets/README.md의
+    권장 주제("생산·제조 공정, 컴파운딩/마스터배치 제조, 품질관리 등 공정·설비
+    중심 발표")가 이번 발표 주제(난연 마스터배치)와 가장 부합해 선택.
+    (Soft Rules 우선순위 2: cover-images 라이브러리에서 주제 적합 이미지 사용)
+  - Visual Style: 배경 이미지 위에 COSOLUS 브랜드 컬러(Deep Pine/Cosolus Teal)
+    오버레이 추가(Cover Rule Visual Style, Design System §7 Image Treatment의
+    "저투명도 사진 + 브랜드 그라디언트 오버레이" 기준 적용).
+  - 로고: 텍스트 워드마크("COSOLUS") → 등록된 White/Reversed 로고 이미지
+    파일(docs/brand-assets/CI/cosolus CI.png, 다크 배경용)로 교체. Hard Rule §7
+    "COSOLUS 로고를 텍스트로 임의 재현하거나 새로 생성하지 않는다"를 정확히
+    적용하기 위함(v1/v2의 텍스트 워드마크는 이 Hard Rule을 완전히 충족하지
+    못했던 부분을 이번에 바로잡음).
+  - Brand Block: Cover Rule의 "Sub Message(브랜드 모토) 위 + COSOLUS 워드마크
+    아래" 구조를 반영해 Hard Rule §7에 등록된 회사 Motto
+    "COSOLUS, small actions, BIG DIFFERENCE"를 Sub Message로 추가(v2에는 로고
+    텍스트만 있고 Sub Message가 없었음).
+  - Layout 구조(Full Background, Brand Block 좌측 상단, 제목 중앙 정렬, 페이지
+    번호 없음, 비대칭 Composition)는 v2와 동일하게 유지 — 배경/로고 표현 방식만
+    실제 자산으로 교체.
+  - 자산 배치: docs/brand-assets/ 원본은 그대로 두고, 이번 버전 스냅샷을
+    독립적으로 열람/이동 가능하게 하기 위해 assets/images/에 복사본을 둠
+    (cover-background.png ← 이미지_3.png, logo-white.png ← cosolus CI.png).
+-->
+<div id="deck">
+
+  <section class="slide slide--cover" data-index="1">
+    <img class="cover-bg-image" src="assets/images/cover-background.png" alt="" aria-hidden="true">
+    <div class="cover-overlay" aria-hidden="true"></div>
+
+    <div class="cover-brand">
+      <p class="cover-brand-sub">COSOLUS, small actions, BIG DIFFERENCE</p>
+      <img class="cover-brand-logo" src="assets/images/logo-white.png" alt="COSOLUS">
+    </div>
+
+    <div class="cover-title-block">
+      <h1 class="cover-title">난연 마스터배치</h1>
+    </div>
+  </section>
+
+  <!-- SLIDES:INSERT (이번 테스트는 표지 1장만 생성 — 본문 슬라이드 없음) -->
+
+</div>
+
+<div id="nav-hint" aria-hidden="true">← → 키로 슬라이드 이동</div>
+
+<script src="assets/vendor/chart.min.js"></script>
+<script>
+  // 슬라이드 간 이동(브라우저 프레젠테이션 모드 대체용 최소 스크립트)
+  const slides = Array.from(document.querySelectorAll(".slide"));
+  let current = 0;
+  function show(i) {
+    slides.forEach((s, idx) => s.classList.toggle("is-active", idx === i));
+  }
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowRight" && current < slides.length - 1) { current++; show(current); }
+    if (e.key === "ArrowLeft" && current > 0) { current--; show(current); }
+  });
+  if (slides.length <= 1) {
+    const hint = document.getElementById("nav-hint");
+    if (hint) hint.style.display = "none";
+  }
+  show(0);
+</script>
+</body>
+</html>

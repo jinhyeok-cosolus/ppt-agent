@@ -1,0 +1,21 @@
+{
+  "project_name": "기술개발_지원사업_연구개발계획서",
+  "stage": "2",
+  "audience": "정부/심사위원 대상",
+  "language": "ko",
+  "presentation_time_min": 20,
+  "target_slide_count": 20,
+  "web_ppt_version": null,
+  "pptx_generated": false,
+  "shared_urls": {},
+  "source_files": [
+    "c:\\Users\\cosol\\OneDrive\\Desktop\\2026.08.25_ 기술개발_지원사업_연구개발계획서_ 프롬프트_V1.docx"
+  ],
+  "reference_files": [
+    "c:\\Users\\cosol\\OneDrive\\Desktop\\2026.07.10_코솔러스 IR(국문)_V2 (수정).pptx"
+  ],
+  "notes": "5개년 로드맵은 1개년당 1슬라이드로 분리 구성. 텍스트 과다 시 축약 허용. 레이아웃은 코솔러스 IR pptx 레퍼런스를 참고.",
+  "history": [
+    {"stage": "1", "note": "사용자로부터 발표시간(15~20분), 목표 슬라이드수(약20장), 청중(정부/심사위원), 언어(한국어 기본) 확인 완료"}
+  ]
+}

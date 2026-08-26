@@ -1,0 +1,186 @@
+/*
+  Flow Diagram 재사용 구현 골격 — CSS (web-ppt-generator 2단계 최적화, 2026-08-24)
+
+  이 파일은 새 디자인 값을 정의하지 않는다. Hard Rule/Claude PPT Design System이
+  이미 정한 색상·두께·비율과 flow-diagram-rules.md의 표현 규칙을, 여러 프로젝트에서
+  거의 동일하게 반복 작성돼 온 CSS 구조로 한 번만 정리해 재사용 가능하게 만든 것뿐이다
+  (cosolus-ir-deck-F/G에서 각각 독립적으로 새로 작성됐던 flow-* 클래스 블록을 기반으로
+  구조만 추출했다).
+
+  사용 방법:
+  1. Flow Diagram Layout이 선택되면, 이 파일 전체를 프로젝트 `web_ppt/v{N}/style.css`에
+     그대로 복사해 붙여넣는다(값 수정 없이 구조만 가져온다).
+  2. 색상 토큰(--color-primary 등)은 프로젝트 `:root`에 이미 Hard Rule §5 기준으로
+     정의돼 있어야 한다 — 이 파일은 새 토큰을 만들지 않고 기존 토큰만 참조한다.
+     프로젝트 토큰 이름이 다르면(드묾) 아래 var() 참조만 프로젝트 토큰명에 맞게 바꾼다.
+  3. Lane 색상 구분(예: 1세대/2세대, A안/B안 등)에 쓰는 `--lane-a`/`--lane-b`/`--lane-c`
+     modifier는 프로젝트마다 의미가 다르므로, 슬라이드의 실제 카테고리 이름으로 그대로
+     써도 되고(예: --gen1/--gen2), 그대로 --lane-a/--lane-b를 써도 된다 — 클래스 개수·
+     이름 자체는 골격이 아니라 콘텐츠 판단 영역이다(Lane이 3개 이상이면 --lane-c 등을
+     동일 패턴으로 추가한다).
+  4. Node/Process/Output Group의 실제 좌표(left/top, inline style 또는 --x/--y)는
+     flow-diagram-implementation-reference.md의 실측값(Slide 26 단순 분기 / Slide 25
+     2단 분기)을 그대로 적용해 계산한다 — 이 파일은 좌표 값을 정의하지 않는다.
+  5. Body Box 좌우 위치(left/width)는 Hard Rule §9 Body Box 기준으로 고정돼 있다.
+     top/height는 Supporting Message 유무에 따라 Implementation Reference의 두 변형
+     (non-support/with-support) 값으로 override한다.
+*/
+
+.flow-field {
+  position: absolute;
+  left: 64px;
+  width: 1152px;
+  /* 기본값은 non-support 변형(top 135px 기준, height 521px)이다.
+     with-support 변형을 쓰는 슬라이드는 top/height를 Implementation Reference의
+     "Body Box 높이 보정" 절 값(예: top 203px / height 453px)으로 override한다. */
+  top: 135px;
+  height: 521px;
+}
+
+.flow-connectors {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.flow-connector-line {
+  fill: none;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+}
+/* 공통/카테고리별 Connector 색상 — 이름은 예시이며 프로젝트 카테고리 수·명칭에 맞게
+   추가/변경한다(구조가 아니라 색상 매핑만 프로젝트별로 다르다). */
+.flow-connector-line--common { stroke: var(--color-slate); }
+.flow-connector-line--lane-a { stroke: var(--color-gray); }
+.flow-connector-line--lane-b { stroke: var(--color-primary); }
+
+.flow-branch-point {
+  fill: currentColor;
+}
+
+/* Node: Material/Intermediate/Output — 이미지+라벨, Connector 비관통
+   (flow-diagram-rules.md "Node와 Connector 완전 비중첩" 참조) */
+.flow-node {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  text-align: center;
+}
+.flow-node img {
+  display: block;
+  object-fit: contain;
+}
+.flow-node .flow-node-label {
+  font-size: 14pt;
+  font-weight: 600;
+  color: var(--color-ink-900);
+  line-height: 1.2;
+  white-space: nowrap;
+}
+.flow-node .flow-node-label .sub {
+  display: block;
+  font-size: 12pt;
+  font-weight: 400;
+  color: var(--color-gray);
+}
+
+/* 이미지 최대 크기 modifier — 아래 4개는 실측/관행상 자주 쓰이는 역할별 예시 세트일 뿐,
+   슬라이드 구조에 맞게 추가·삭제·이름 변경이 자유롭다. */
+.flow-node--start img { max-height: 72px; max-width: 118px; }
+.flow-node--mid img { max-height: 60px; max-width: 96px; }
+.flow-node--lane img { max-height: 54px; max-width: 84px; }
+.flow-node--output img { max-height: 58px; max-width: 90px; }
+
+/* Process: Connector 위에 뜨는 공정 정보 (공정명 → 이미지 → Connector 순서,
+   flow-diagram-rules.md "공정 라벨·이미지와 Connector의 수직 배치 규칙" 참조) */
+.flow-process {
+  position: absolute;
+  transform: translate(-50%, -100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  text-align: center;
+}
+.flow-process .flow-process-label {
+  font-size: 14pt;
+  font-weight: 700;
+  color: var(--color-ink-900);
+  white-space: nowrap;
+  line-height: 1.2;
+}
+.flow-process img {
+  display: block;
+  object-fit: contain;
+  max-height: 46px;
+  max-width: 72px;
+}
+
+/* Output Group — 동일 카테고리 복수 결과물을 하나의 Node로 묶어 표현
+   (flow-diagram-rules.md "Output Group / Sibling Outputs Branch 판별 규칙" 참조) */
+.flow-output-group {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+.flow-output-group .og-images {
+  display: flex;
+  align-items: flex-end;
+  gap: 5px;
+}
+.flow-output-group .og-images img {
+  display: block;
+  object-fit: contain;
+  border-radius: 4px;
+}
+.flow-output-group .flow-node-label {
+  font-size: 14pt;
+  font-weight: 600;
+  color: var(--color-ink-900);
+  line-height: 1.2;
+  text-align: center;
+}
+.flow-output-group .flow-node-label .sub {
+  display: block;
+  font-size: 12pt;
+  font-weight: 400;
+  color: var(--color-gray);
+}
+/* Output Group 내부 이미지 크기 modifier도 위 Node 크기 modifier와 동일하게
+   예시일 뿐이다 — 그룹 내부 이미지 종류·개수에 맞게 클래스를 추가한다. */
+
+/* 카테고리 라벨 박스 (예: "기존공정(1세대)" 등) */
+.flow-category-label {
+  position: absolute;
+  transform: translate(0, -50%);
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 14pt;
+  font-weight: 700;
+  white-space: nowrap;
+  line-height: 1;
+}
+/* 카테고리별 색 대비는 flow-diagram-rules.md "색상 대비 규칙"을 따른다 —
+   아래 2개는 흔한 예시(무채색 계열 vs 브랜드 Primary)이며 카테고리 수만큼 추가한다. */
+.flow-category-label--lane-a {
+  background: var(--color-mist);
+  color: var(--color-slate);
+  border: 1px solid var(--color-gray);
+}
+.flow-category-label--lane-b {
+  background: var(--color-primary);
+  color: #ffffff;
+}
+
+/* 구간 구분선 — flow-diagram-rules.md "구간 구분선 규칙" 참조 (좌표는 슬라이드별 계산) */
+.flow-section-divider {
+  position: absolute;
+  border-top: 1px dashed var(--color-gray);
+}

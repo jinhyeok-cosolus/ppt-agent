@@ -1,0 +1,387 @@
+/*
+  COSOLUS 웹PPT 스타일 — Three-Column Insight Layout 디자인 QA 테스트 (v2)
+  근거 문서:
+  - Hard Rule (1순위): docs/design-hard-rules/2026.08.12_design_hard-rules_V2.md
+    (§5 Brand Color, §9 공통 Header System — CI/Sub Message/구분선/Section Label/
+    Main Title/페이지 번호 고정 좌표를 현재 확정치 그대로 적용, 재검토 없음)
+  - Claude PPT Design System (2순위): docs/design-system/Claude_PPT_Design_System.md
+    (§2 Color System 중 Tint 계열, §3 Typography 레벨, §5 Grid/Spacing,
+    §6 Shape/Card/Line Style, §8 Chart/Diagram Style)
+  - Layout Reference (4순위, 구조별 특수): docs/slide-design-rules/three-column.md
+    (2026.08.13 개정판 — Header Bar §3, Key Message §4, Main Visual 확대 §5,
+    정보 밀도 §7 반영. 문서 내 색상/폰트/장식 예시 자체는 그대로 쓰지 않고 항상
+    Hard Rule·Claude PPT Design System 값으로 재해석)
+
+  컬러 Hex는 Hard Rule §5 Brand Color 표를 기본값으로 사용한다. Header Bar 배경색만
+  three-column.md §3 지시("Claude PPT Design System의 Tint/Light 계열")에 따라
+  Design System §2 Tint 토큰(Hard Rule에 없는 값이므로 충돌 아님)을 사용한다.
+  폰트는 Pretendard 단일 서체만 사용(Hard Rule §2).
+
+  v1 -> v2 변경 범위: three-column.md 개정 반영만. Hard Rule 공통 Header System
+  (CI/Sub Message/구분선/Section Label/Main Title/페이지 번호) 좌표는 v1과 동일, 변경 없음.
+*/
+
+:root {
+  /* 16:9, 1280x720px 캔버스 (Hard Rule §9 좌표 기준과 동일) */
+  --slide-width: 1280px;
+  --slide-height: 720px;
+
+  /* Hard Rule §5 Primary Colors */
+  --c-teal: #0F655B;       /* Cosolus Teal: 기본 브랜드 컬러 */
+  --c-deep-pine: #06342F;  /* 제목/강한 대비/무게감 */
+  --c-sea-teal: #1AAC82;   /* 데이터/핵심 정보 강조 */
+  --c-mint: #7FC8BE;       /* 보조 데이터/영역 구분/약한 강조 */
+
+  /* Hard Rule §5 Secondary / Neutral Colors */
+  --c-ocean-blue: #1A6A8C;
+  --c-moss: #6E9B3F;
+  --c-amber: #C8801F;      /* Accent, 핵심 수치 등 국소적 사용만 */
+  --c-ink: #162B1F;
+  --c-slate: #5A6664;
+  --c-gray: #8C9694;
+  --c-line: #E1E7E5;
+  --c-mist: #F3F6F5;
+
+  --c-white: #FFFFFF;
+
+  /* Claude PPT Design System §2 Tint 계열 — Header Bar 전용 배경(옅은 브랜드 톤).
+     Hard Rule §5에는 없는 값이므로 충돌 없음(three-column.md §3 지시에 따라 사용). */
+  --c-tint-100: #DFF1F1;
+
+  --font-base: "Pretendard", "Malgun Gothic", "맑은 고딕", sans-serif;
+
+  /* Grid/Spacing (Design System §5, 좌우 최소 64px) */
+  --margin-x: 64px;
+  --header-safe-y: 182px; /* Hard Rule §9 확정: Header Safe Area 하단 경계 */
+  --safe-bottom: 64px;
+  --card-radius: 14px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: #333;
+  font-family: var(--font-base);
+  color: var(--c-ink);
+}
+
+#deck { position: relative; }
+
+/* ---------- 슬라이드 공통 ---------- */
+
+.slide {
+  width: var(--slide-width);
+  height: var(--slide-height);
+  margin: 24px auto;
+  background: var(--c-white);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.25); /* 브라우저 프리뷰용, 슬라이드 내부 요소 아님 */
+  padding: 0 var(--margin-x);
+  display: none;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.slide.is-active { display: flex; }
+
+/* ---------- 공통 Header System (Hard Rule §9, 현재 확정치 그대로 적용) ---------- */
+/* Section Label / Main Title / 좌측 상단 CI / 우측 상단 Sub Message / 상단 구분선 /
+   우측 하단 페이지 번호. 콘텐츠 레이아웃과 무관하게 고정 위치·크기·스타일을 유지한다. */
+
+.deck-logo {
+  /* Hard Rule §9 CI: X=64px, Y=25px, Height=20px, Width는 원본 비율 유지 자동 산출 */
+  position: absolute;
+  top: 25px;
+  left: var(--margin-x);
+  height: 20px;
+  width: auto;
+  object-fit: contain; /* 비율 왜곡 금지 */
+}
+
+.deck-tagline {
+  /* Hard Rule §9 Sub Message: 우측 정렬, 오른쪽 끝 기준선 X=1216px(=1280-64) -> right:64px, Y=25px, 14pt(=18.7px) */
+  position: absolute;
+  top: 25px;
+  right: var(--margin-x);
+  font-family: var(--font-base);
+  font-weight: 500; /* Medium */
+  font-size: 18.7px; /* 14pt = 18.7px */
+  line-height: 20px; /* CI 로고(20px)와 시각적 높이 정렬 */
+  letter-spacing: 0.02em;
+  color: var(--c-teal); /* Hard Rule §9: CI와 동일한 브랜드 컬러 Cosolus Teal */
+}
+
+.deck-divider {
+  /* Hard Rule §9 상단 구분선: Y=56px, X=64px~1216px(길이 1152px), 두께 1px, Cosolus Teal */
+  position: absolute;
+  top: 56px;
+  left: var(--margin-x);
+  right: var(--margin-x);
+  height: 1px;
+  background: var(--c-teal);
+}
+
+.deck-page {
+  /* Hard Rule §9: 페이지 번호 단독 숫자 형식("1/20" 형식 미사용) */
+  position: absolute;
+  bottom: 28px;
+  right: var(--margin-x);
+  font-family: var(--font-base);
+  font-weight: 300; /* Light */
+  font-size: 12px;
+  color: var(--c-gray);
+}
+
+/* ---------- 타이틀 존 / 콘텐츠 존 ---------- */
+
+.slide-title-zone {
+  flex-shrink: 0;
+}
+
+.section-label {
+  /* Hard Rule §9 Section Label: X=68px, Y=62px, Pretendard Light 12pt(=16px), Gray */
+  position: absolute;
+  left: 68px;
+  top: 62px;
+  margin: 0;
+  font-size: 16px;
+  font-weight: 300; /* Light */
+  line-height: 20px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--c-gray);
+}
+
+.slide-title {
+  /* Hard Rule §9 Main Title: Pretendard ExtraBold 24pt(=32px), X=64px, Y=83px */
+  position: absolute;
+  left: var(--margin-x);
+  right: var(--margin-x);
+  top: 83px;
+  margin: 0;
+  font-size: 32px;
+  font-weight: 800; /* ExtraBold */
+  line-height: 1.25; /* 최대 2줄 허용, 늘어나면 아래로만 확장 */
+  color: var(--c-deep-pine);
+}
+
+.slide-content-zone {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding-top: var(--header-safe-y); /* Hard Rule §9: Header Safe Area 하단 경계 Y=182px 이하에서 본문 시작 */
+  padding-bottom: var(--safe-bottom);
+  min-height: 0;
+}
+
+/* ---------- Three-Column Insight Layout (docs/slide-design-rules/three-column.md, 2026.08.13 개정판) ---------- */
+/* 3개 Column: 동일 폭, 동일 간격, Header Bar 위치/폭/높이/배경색 정렬, Main Visual이 Column 내부
+   공간의 대부분을 차지. 색상/타이포는 Hard Rule + Claude PPT Design System 값으로 재해석
+   (문서 예시 미사용). Column 내부 상하 여백을 최소화해 정보 밀도를 높인다(§7). */
+
+.three-col {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  min-height: 0;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 28px;
+  min-width: 0;
+}
+
+.col:not(:first-child) {
+  border-left: 1px solid var(--c-line); /* three-column.md §7: 얇은 Vertical Divider로 Column 구분 */
+}
+
+/* Header Bar — §3: Column 폭 전체를 채우는 가로 바, 3개 X/Y/폭/높이/배경색/텍스트 스타일 완전 동일.
+   배경은 옅은 브랜드 톤(Design System §2 Tint), 텍스트는 중앙 정렬. */
+.col-header-bar {
+  flex: 0 0 40px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+  background: var(--c-tint-100);
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600; /* SemiBold */
+  color: var(--c-deep-pine);
+  text-align: center;
+}
+
+/* Key Message — §4: Header Bar 바로 아래, Pretendard ExtraBold 18pt(=24px), 회사 Main Color
+   (Hard Rule §5 Primary: Cosolus Teal). 1~2줄 이내, 핵심 키워드만 밑줄 강조.
+   래퍼(.col-key-box)는 3개 Column의 Key Message 영역 높이를 통일해 Main Visual 시작선을
+   정렬하는 역할만 하고, 실제 텍스트(.col-key)는 일반 block 흐름으로 두어 자연스럽게 줄바꿈되게 한다
+   (텍스트 노드/강조 span을 flex item으로 쪼개면 단어 단위 줄바꿈이 깨지므로 p 자체는 flex화하지 않음). */
+.col-key-box {
+  flex: 0 0 auto;
+  min-height: 62px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.col-key {
+  margin: 0;
+  font-size: 24px; /* 18pt = 24px, Hard Rule §9와 동일한 1pt=1.3333px 환산 기준 적용 */
+  font-weight: 800; /* ExtraBold */
+  line-height: 1.3;
+  color: var(--c-teal); /* 회사 Main Color = Cosolus Teal */
+  text-align: center;
+}
+
+.km-em {
+  /* §4 밑줄 강조: 핵심 키워드에 한해서만, 색상은 Key Message와 동일한 회사 Main Color */
+  text-decoration: underline;
+  text-decoration-color: var(--c-teal);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+/* Main Visual — §5/§6: Header Bar·Key Message를 제외한 Column 내부 공간의 대부분을 차지하는
+   가장 크고 적극적인 시각 요소. flex:1로 남은 영역을 모두 사용해 3개 Column 모두 동일 규칙 적용. */
+.col-visual {
+  flex: 1;
+  width: 100%;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+/* Column 1: KPI 큰 숫자 (Data 강조는 Sea Teal, Stat Number ExtraBold) — §5: Main Visual을
+   Column 내부에서 가장 넓은 비중으로 확대 */
+.kpi-number {
+  margin: 0;
+  font-size: 104px;
+  font-weight: 800; /* ExtraBold */
+  line-height: 1;
+  color: var(--c-sea-teal);
+}
+
+.kpi-unit {
+  font-size: 48px;
+  font-weight: 700;
+}
+
+.kpi-caption {
+  margin: 16px 0 0;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--c-slate);
+  text-align: center;
+}
+
+/* Column 2: 비교 막대 (2024 -> 2030 시장 규모, Shape 컴포넌트로 재구성한 도식) */
+.bar-chart {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 40px;
+  height: 100%;
+}
+
+.bar-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  height: 100%;
+}
+
+.bar-value {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--c-ink);
+  white-space: nowrap;
+}
+
+.bar {
+  display: block;
+  width: 56px;
+  border-radius: 5px 5px 0 0;
+}
+
+.bar--2024 { background: var(--c-mint); }   /* 보조 데이터: 약한 강조 */
+.bar--2030 { background: var(--c-sea-teal); } /* 핵심 데이터: 강조 */
+
+.bar-axis {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--c-gray);
+}
+
+/* Column 3: 인용구 (Message-focused Main Visual) */
+.col-visual--quote {
+  padding: 0 4px;
+}
+
+.quote-mark {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--c-mint);
+  margin-bottom: 6px;
+}
+
+.quote-text {
+  margin: 0;
+  font-size: 27px;
+  font-weight: 700; /* Bold */
+  line-height: 1.4;
+  color: var(--c-deep-pine);
+  text-align: center;
+}
+
+/* Supporting Evidence — §5/§2: 필요한 경우에만, Main Visual을 보조하는 한 줄 수준으로 제한
+   (Main Visual 면적을 잠식하지 않도록 flex 고정 없이 내용만큼만 차지) */
+.col-evidence {
+  flex: 0 0 auto;
+  margin: 0;
+  padding-left: 13px;
+  position: relative;
+  width: 100%;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--c-slate);
+  text-align: left;
+}
+
+.col-evidence::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--c-mint);
+}
+
+#nav-hint {
+  position: fixed;
+  bottom: 12px;
+  right: 16px;
+  font-size: 12px;
+  color: #999;
+}
+
+@media print {
+  body { background: #fff; }
+  .slide { box-shadow: none; margin: 0; display: flex !important; page-break-after: always; }
+  #nav-hint { display: none; }
+}

@@ -1,0 +1,321 @@
+/*
+  COSOLUS IR Deck (Test D) — web_ppt/v2/style.css
+  기준 문서: Hard Rule(2026.08.12_design_hard-rules_V2.md) > Claude PPT Design System
+  > Content Visualization Freedom > Layout Reference. 값은 이 문서들이 이미 정한
+  것을 그대로 구현한 것이며, 새 디자인 값을 이 파일에서 새로 정의하지 않는다.
+  캔버스 기준: 16:9, 1280x720px. font-size는 pt 단위를 기본으로 사용한다
+  (1pt = 1.3333px, px가 필요한 경우에만 정확히 환산).
+
+  v1 대비 변경: slide-content-structuring 1-b(Claim→Evidence→Relationship) 적용으로
+  Slide 3(Evidence-Claim 그룹 분리), Slide 5(Column 3 순환 다이어그램),
+  Slide 11(구성요소별 기여도 2-bar 시각) 3곳에 신규 컴포넌트 클래스 추가.
+  나머지 컴포넌트(Header System/Table/Divider/Comparison Header 등)는 판단이
+  동일해 기존 공용 클래스를 그대로 유지한다.
+*/
+
+:root {
+  --slide-width: 1280px;
+  --slide-height: 720px;
+
+  /* Hard Rule §5 Brand Color */
+  --c-primary: #067875;      /* Cosolus Teal */
+  --c-dark: #034443;         /* Deep Pine */
+  --c-secondary: #349887;    /* Sea Teal */
+  --c-light: #AFE2E3;        /* Mint */
+  --c-ocean-blue: #1A6A8C;
+  --c-moss: #6E9B3F;
+  --c-amber: #C8801F;
+  --c-ink: #162B1F;
+  --c-slate: #5A6664;
+  --c-gray: #8C9694;
+  --c-line: #E1E7E5;
+  --c-mist: #F3F6F5;
+  --c-white: #FFFFFF;
+  --c-header-line: #478689; /* Sub Message / 상단 구분선 고정색 */
+  --c-tint50: #F4FAFA;
+
+  --font-base: "Pretendard", "Malgun Gothic", "맑은 고딕", sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: #333;
+  font-family: var(--font-base);
+  color: var(--c-ink);
+  word-break: keep-all;
+}
+
+#deck { position: relative; }
+
+.slide {
+  width: var(--slide-width);
+  height: var(--slide-height);
+  margin: 24px auto;
+  background: var(--c-white);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+  position: relative;
+  display: none;
+  overflow: hidden;
+}
+.slide.is-active { display: block; }
+
+/* ===================== 공통 Header System (Hard Rule §9, 표지 제외) ===================== */
+.slide--content { padding: 0; }
+
+.ci-logo { position: absolute; left: 64px; top: 25px; height: 20px; width: auto; }
+.sub-message {
+  position: absolute; right: 64px; top: 25px;
+  font: 14pt/1 var(--font-base); font-weight: 500; color: var(--c-header-line);
+}
+.header-rule {
+  position: absolute; left: 64px; top: 56px; width: 1152px; height: 1px;
+  background: var(--c-header-line);
+}
+.section-label {
+  position: absolute; left: 68px; top: 62px;
+  font: 12pt/1 var(--font-base); font-weight: 300; letter-spacing: 0.5px;
+  color: var(--c-gray); text-transform: uppercase;
+}
+.main-title {
+  position: absolute; left: 64px; top: 83px; right: 64px;
+  font: 28pt/1.25 var(--font-base); font-weight: 800; color: var(--c-ink);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.page-number {
+  position: absolute; right: 64px; bottom: 24px;
+  font: 14pt/1 var(--font-base); font-weight: 500; color: var(--c-gray);
+}
+.support-message {
+  position: absolute; left: 64px; top: 128px; right: 64px;
+  font: 20pt/1.35 var(--font-base); font-weight: 500; color: var(--c-slate);
+}
+.body-box { position: absolute; left: 64px; top: 135px; right: 64px; bottom: 40px; }
+.body-box.with-support { top: 182px; }
+
+/* ===================== Typography 유틸 ===================== */
+.t-content-header { font: 20pt/1.3 var(--font-base); font-weight: 600; color: var(--c-ink); }
+.t-explanation { font: 18pt/1.4 var(--font-base); font-weight: 500; color: var(--c-ink); }
+.t-body { font: 16pt/1.5 var(--font-base); font-weight: 400; color: var(--c-ink); }
+.t-caption { font: 14pt/1.4 var(--font-base); font-weight: 300; color: var(--c-slate); }
+.t-source { font: 12pt/1.4 var(--font-base); font-weight: 300; color: var(--c-gray); }
+.t-stat { font: 26pt/1.1 var(--font-base); font-weight: 800; color: var(--c-primary); }
+
+/* ===================== Hard Rule §10 Content Comparison Header ===================== */
+.cmp-header {
+  height: 0.561in; display: flex; align-items: center; justify-content: center;
+  font: 20pt/1 var(--font-base); font-weight: 600; color: #0F1E1F;
+  letter-spacing: -0.3pt; text-align: center; padding: 0;
+}
+.cmp-header--plain { background: transparent; border-top: 0.75pt solid var(--c-line); border-bottom: 0.5pt solid var(--c-line); }
+.cmp-header--fill  { background: var(--c-tint50); border-top: 0.75pt solid var(--c-primary); border-bottom: 0.5pt solid var(--c-primary); }
+
+/* ===================== Hard Rule §11 Vertical Divider (1px web-render fallback) ===================== */
+.v-divider {
+  position: absolute; width: 1px;
+  background: linear-gradient(to bottom,
+    rgba(3,68,67,0) 0%,
+    rgba(3,68,67,0.85) 53%,
+    rgba(3,68,67,0) 100%);
+}
+
+/* ===================== Table 공통 (Design System §8) ===================== */
+.data-table { border-collapse: collapse; width: 100%; }
+.data-table th, .data-table td {
+  text-align: center; vertical-align: middle;
+  padding: 10px 12px; font: 16pt/1.35 var(--font-base); font-weight: 400; color: var(--c-ink);
+  border-bottom: 1px solid var(--c-line);
+}
+.data-table thead th { background: var(--c-primary); color: var(--c-white); font-weight: 700; border-bottom: none; }
+.data-table td.is-cosolus, .data-table th.is-cosolus { color: var(--c-primary); font-weight: 700; }
+.data-table tbody tr:last-child td { border-bottom: none; }
+
+.pres-table { width: 100%; border-collapse: collapse; }
+.pres-table th, .pres-table td { padding: 12px 14px; font: 16pt/1.4 var(--font-base); text-align: center; vertical-align: middle; }
+.pres-table thead th { font: 20pt/1 var(--font-base); font-weight: 600; color: #0F1E1F; border-bottom: 1.5px solid var(--c-primary); padding: 10px 14px; }
+.pres-table thead th.criteria-head { font-size: 14pt; color: var(--c-gray); font-weight: 400; }
+.pres-table tbody tr td { border-bottom: 1px solid var(--c-line); }
+.pres-table tbody tr:last-child td { border-bottom: none; }
+.pres-table td.criteria-cell { text-align: left; color: var(--c-slate); font-weight: 500; font-size: 14pt; }
+.pres-table td.existing-cell { color: var(--c-ink); }
+.pres-table td.improved-cell { color: var(--c-primary); font-weight: 700; }
+
+/* ===================== 아이콘 렌더링 — 컬러 이모지 억제 ===================== */
+.icon-symbol { font-variant-emoji: text; }
+
+/* ===================== 표지 (01_cover_design_V2.md) ===================== */
+.slide--cover { background: #0b2b2a; }
+.cover-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.cover-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(160deg, rgba(26,106,140,0.55) 0%, rgba(127,200,190,0.30) 50%, rgba(15,101,91,0.50) 100%);
+}
+.cover-brand-block { position: absolute; left: 64px; top: 40px; display: flex; flex-direction: column; gap: 6px; }
+.cover-sub-message { font: 500 16px/1.2 var(--font-base); color: var(--c-white); }
+.cover-logo { height: 36px; width: auto; }
+.cover-title-wrap { position: absolute; left: 50%; top: 56%; transform: translate(-50%, -50%); width: 960px; max-width: 90%; text-align: center; }
+.cover-title { font: 700 48px/1.35 var(--font-base); color: var(--c-white); margin: 0; text-shadow: 0 2px 18px rgba(0,0,0,0.28); }
+
+/* ===================== Company Introduction (02_instruction_design_V1.md) ===================== */
+.company-grid { position: absolute; left: 64px; right: 64px; top: 182px; bottom: 40px; display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 40px; }
+.company-left { display: flex; flex-direction: column; gap: 22px; }
+.company-fact-row { display: flex; gap: 18px; padding: 10px 0; border-bottom: 1px solid var(--c-line); }
+.company-fact-label { width: 96px; flex: none; font: 16pt/1.4 var(--font-base); font-weight: 600; color: var(--c-primary); }
+.company-fact-value { font: 16pt/1.5 var(--font-base); font-weight: 400; color: var(--c-ink); }
+.company-right { position: relative; border-radius: 2px; overflow: hidden; background: var(--c-mist); }
+.company-right img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(35%) saturate(85%); }
+.company-right .img-caption {
+  position: absolute; left: 0; right: 0; bottom: 0; padding: 10px 14px;
+  background: linear-gradient(0deg, rgba(3,68,67,0.72), rgba(3,68,67,0));
+  color: var(--c-white); font: 14pt/1.3 var(--font-base); font-weight: 300;
+}
+
+/* ===================== Visual + Insight Layout (visual-insight.md) ===================== */
+.vi-wrap { display: flex; gap: 40px; height: 100%; }
+.vi-visual { flex: 0 0 56%; display: flex; flex-direction: column; }
+.vi-insight { flex: 1; display: flex; flex-direction: column; justify-content: flex-start; gap: 14px; min-width: 0; }
+.vi-header { font: 14pt/1.2 var(--font-base); font-weight: 600; color: var(--c-gray); text-transform: uppercase; letter-spacing: 0.4px; }
+.vi-explanation { font: 16pt/1.55 var(--font-base); font-weight: 400; color: var(--c-ink); }
+.vi-evidence { font: 14pt/1.5 var(--font-base); font-weight: 400; color: var(--c-slate); }
+.vi-map-frame { position: relative; flex: 1; display: flex; align-items: center; justify-content: center; background: var(--c-mist); }
+.vi-map-frame img { max-width: 78%; max-height: 78%; object-fit: contain; }
+.vi-large-number { font: 30pt/1 var(--font-base); font-weight: 800; color: var(--c-primary); }
+.vi-large-number-label { font: 16pt/1.4 var(--font-base); font-weight: 500; color: var(--c-slate); margin-top: 10px; }
+.vi-message-hero { display: flex; flex-direction: column; align-items: flex-start; justify-content: center; height: 100%; }
+.vi-stat { background: var(--c-tint50); border: 1px solid var(--c-line); padding: 12px 16px; }
+.vi-stat .num { font: 24pt/1.1 var(--font-base); font-weight: 800; color: var(--c-primary); }
+.vi-stat .label { font: 14pt/1.3 var(--font-base); font-weight: 400; color: var(--c-slate); margin-top: 4px; }
+
+/* Slide 3 전용 — Evidence-Claim Group 분리(v2 신규) */
+.vi-evidence-groups { display: flex; flex-direction: column; gap: 12px; }
+.vi-evidence-group { border-left: 3px solid var(--c-primary); padding-left: 12px; }
+.vi-evidence-group.is-secondary { border-left-color: var(--c-gray); }
+.vi-evidence-group-header {
+  font: 14pt/1.2 var(--font-base); font-weight: 700; color: var(--c-primary);
+  text-transform: uppercase; letter-spacing: 0.3px; margin-bottom: 6px;
+}
+.vi-evidence-group.is-secondary .vi-evidence-group-header { color: var(--c-slate); }
+.vi-evidence-group .vi-stat-row { display: flex; gap: 12px; }
+.vi-evidence-group .vi-stat { flex: 1; padding: 10px 14px; }
+.vi-evidence-group .vi-stat .num { font-size: 24pt; }
+.vi-evidence-group-body { display: flex; gap: 12px; align-items: flex-start; }
+.vi-evidence-group-body .vi-stat { flex: 0 0 auto; min-width: 108px; }
+.vi-evidence-group-body .vi-secondary-text { font: 16pt/1.45 var(--font-base); color: var(--c-ink); flex: 1; }
+.vi-evidence-group-body img { width: 96px; height: 68px; object-fit: cover; filter: grayscale(20%); flex: none; }
+
+/* Slide 11 전용 — 구성요소별 기여도(Contribution) 2-bar 시각(v2 신규) */
+.contrib-region { display: flex; flex-direction: column; gap: 10px; }
+.contrib-row { display: flex; flex-direction: column; gap: 4px; }
+.contrib-row .contrib-label { font: 14pt/1.3 var(--font-base); font-weight: 600; color: var(--c-ink); }
+.contrib-bar-track { position: relative; height: 16px; margin-top: 4px; background: var(--c-mist); border: 1px solid var(--c-line); border-radius: 2px; }
+.contrib-bar-fill { position: absolute; left: 0; top: 0; bottom: 0; background: var(--c-primary); border-radius: 2px 0 0 2px; }
+.contrib-bar-baseline {
+  position: absolute; top: 0; bottom: 0; width: 2px; background: var(--c-gray);
+}
+.contrib-bar-baseline::after {
+  content: "기존 3%"; position: absolute; top: 20px; left: 50%; transform: translateX(-50%);
+  font: 12pt/1 var(--font-base); color: var(--c-gray); white-space: nowrap;
+}
+.contrib-row .contrib-values { font: 16pt/1 var(--font-base); font-weight: 800; color: var(--c-primary); margin-top: 20px; }
+
+/* ===================== Three-Column Insight Layout ===================== */
+.tc-wrap { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; height: 100%; }
+.tc-col { display: flex; flex-direction: column; position: relative; }
+.tc-col .cmp-header { width: 100%; }
+.tc-key-message { margin: 12px 8%; font: 18pt/1.35 var(--font-base); font-weight: 800; color: var(--c-primary); }
+.tc-visual { flex: 1; margin: 4px 0 0; display: flex; flex-direction: column; justify-content: flex-start; position: relative; padding: 18px 6% 10px; gap: 14px; }
+.tc-visual .icon-symbol { font-size: 46pt; color: var(--c-primary); }
+.tc-visual .tc-text { font: 16pt/1.55 var(--font-base); color: var(--c-ink); }
+
+/* Slide 5 Column 3 전용 — 순환 관계(Cycle) 다이어그램(v2 신규) */
+.tc-cycle { display: flex; align-items: center; justify-content: center; height: 100px; }
+.tc-cycle svg { width: 220px; height: 96px; }
+.tc-cycle .cycle-node-text { font: 700 18.7px var(--font-base); fill: var(--c-ink); text-anchor: middle; }
+.tc-cycle .cycle-arrow { fill: none; stroke: var(--c-primary); stroke-width: 2.5; }
+.tc-cycle .cycle-node-circle { fill: var(--c-primary); }
+
+/* ===================== Before/After Layout — Variant A ===================== */
+.ba-a-wrap { display: grid; grid-template-columns: 44fr 10fr 44fr; height: 100%; column-gap: 0; }
+.ba-a-col { display: flex; flex-direction: column; }
+.ba-a-col .cmp-header { width: 100%; }
+.ba-a-body { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 14px; padding: 18px 10%; }
+.ba-a-arrow { display: flex; align-items: center; justify-content: center; color: var(--c-primary); }
+.ba-a-arrow svg { width: 40px; height: 40px; stroke: currentColor; }
+.step-box { border: 1px solid var(--c-line); background: var(--c-mist); padding: 12px 10px; text-align: center; }
+.step-box .step-name { font: 16pt/1.3 var(--font-base); font-weight: 600; color: var(--c-ink); }
+.step-box .step-detail { font: 14pt/1.3 var(--font-base); font-weight: 300; color: var(--c-slate); margin-top: 4px; }
+.step-box.is-improved { border-color: var(--c-primary); background: var(--c-tint50); }
+.step-box.is-improved .step-name { color: var(--c-primary); }
+
+/* ===================== Benefit + Impact Layout ===================== */
+.bi-wrap { display: flex; height: 100%; position: relative; }
+.bi-tech { position: absolute; left: 0; right: 0; top: 0; font: 18pt/1.4 var(--font-base); font-weight: 700; color: var(--c-ink); }
+.bi-tech .hi { color: var(--c-primary); }
+.bi-areas { position: absolute; left: 0; right: 0; top: 56px; bottom: 0; display: flex; gap: 0; }
+.bi-area { flex: 1; display: flex; flex-direction: column; }
+.bi-area .cmp-header { width: 100%; }
+.bi-area-body { flex: 1; padding: 16px 22px; display: flex; flex-direction: column; gap: 12px; justify-content: center; }
+.bi-impact-num { font: 30pt/1 var(--font-base); font-weight: 800; color: var(--c-primary); }
+.bi-impact-label { font: 16pt/1.4 var(--font-base); color: var(--c-ink); }
+.bi-evidence { font: 14pt/1.4 var(--font-base); color: var(--c-slate); }
+
+/* ===================== Process + Comparison Layout ===================== */
+.pc-wrap { height: 100%; display: flex; flex-direction: column; gap: 18px; }
+.pc-upper { flex: 0 0 58%; display: flex; flex-direction: column; }
+.pc-upper-title { font: 14pt/1.2 var(--font-base); font-weight: 600; color: var(--c-gray); text-transform: uppercase; margin-bottom: 10px; }
+.pc-flow { flex: 1; display: flex; align-items: stretch; gap: 0; }
+.pc-flow .step-box { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+.pc-arrow-h { display: flex; align-items: center; justify-content: center; width: 30px; color: var(--c-primary); }
+.pc-arrow-h svg { width: 22px; height: 22px; stroke: currentColor; }
+.pc-lower { flex: 1; border-top: 1px solid var(--c-line); padding-top: 14px; display: flex; flex-direction: column; gap: 8px; }
+.pc-lower-title { font: 14pt/1.2 var(--font-base); font-weight: 600; color: var(--c-gray); text-transform: uppercase; }
+.pc-lower-text { font: 16pt/1.5 var(--font-base); color: var(--c-ink); }
+
+/* ===================== Process / System Architecture Layout ===================== */
+.psa-wrap { height: 100%; display: flex; flex-direction: column; }
+.psa-title { font: 20pt/1.3 var(--font-base); font-weight: 600; color: var(--c-ink); margin-bottom: 14px; }
+.psa-components { display: flex; align-items: stretch; gap: 0; }
+.psa-comp { flex: 1; display: flex; flex-direction: column; }
+.psa-comp-box { background: var(--c-tint50); border: 1px solid var(--c-line); padding: 16px 12px; text-align: center; min-height: 30%; display: flex; flex-direction: column; justify-content: center; }
+.psa-comp-box .name { font: 16pt/1.3 var(--font-base); font-weight: 700; color: var(--c-primary); }
+.psa-comp-role { font: 16pt/1.4 var(--font-base); color: var(--c-ink); margin-top: 10px; text-align: center; }
+.psa-comp-detail { font: 14pt/1.35 var(--font-base); color: var(--c-slate); margin-top: 4px; text-align: center; }
+.psa-arrow { display: flex; align-items: flex-start; justify-content: center; width: 32px; padding-top: 30px; color: var(--c-primary); }
+.psa-arrow svg { width: 22px; height: 22px; stroke: currentColor; }
+.psa-insight-box { margin-top: 18px; background: var(--c-tint50); border: 1px solid var(--c-primary); padding: 14px 22px; text-align: center; width: 78%; margin-left: auto; margin-right: auto; }
+.psa-insight-box .txt { font: 18pt/1.4 var(--font-base); font-weight: 500; color: var(--c-ink); }
+.psa-insight-box .txt b { color: var(--c-primary); }
+
+/* ===================== Two-Column Summary (L18) / 4-Region 변형 ===================== */
+.tcs-wrap { height: 100%; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 20px; }
+.tcs-cell { border: 1px solid var(--c-line); padding: 18px 22px; display: flex; flex-direction: column; gap: 8px; }
+.tcs-cell .k { font: 14pt/1.2 var(--font-base); font-weight: 600; color: var(--c-gray); text-transform: uppercase; }
+.tcs-cell .v-title { font: 18pt/1.35 var(--font-base); font-weight: 700; color: var(--c-primary); }
+.tcs-cell .v-body { font: 16pt/1.5 var(--font-base); color: var(--c-ink); }
+.tcs-cell.is-hero { background: var(--c-tint50); border-color: var(--c-primary); justify-content: center; }
+.tcs-cell.is-hero .big-num { font: 30pt/1.15 var(--font-base); font-weight: 800; color: var(--c-primary); }
+
+/* ===================== Symmetric Two-Split (L25) ===================== */
+.sts-wrap { height: 100%; display: flex; flex-direction: column; gap: 16px; }
+.sts-cols { flex: 1; display: flex; gap: 0; position: relative; }
+.sts-col { flex: 1; padding: 18px 28px; display: flex; flex-direction: column; gap: 12px; }
+.sts-col .country { font: 20pt/1.2 var(--font-base); font-weight: 800; color: var(--c-primary); }
+.sts-col .status { font: 16pt/1.5 var(--font-base); color: var(--c-ink); }
+.sts-logos { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; margin-top: 6px; }
+.sts-logos img { height: 30px; width: auto; object-fit: contain; }
+.sts-logos img.tall { height: 40px; }
+.sts-photo { width: 100%; height: 120px; object-fit: cover; margin-top: 6px; filter: grayscale(15%); }
+
+/* ===================== Appendix / misc ===================== */
+.bullet-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+.bullet-list li { display: flex; gap: 10px; align-items: flex-start; font: 16pt/1.5 var(--font-base); color: var(--c-ink); }
+.bullet-list li .marker { flex: none; width: 26px; height: 26px; border-radius: 50%; background: var(--c-tint50); border: 1px solid var(--c-primary); color: var(--c-primary); font: 14pt/26px var(--font-base); font-weight: 700; text-align: center; }
+
+#nav-hint { position: fixed; bottom: 12px; right: 16px; font-size: 12px; color: #999; }
+
+@media print {
+  body { background: #fff; }
+  .slide { box-shadow: none; margin: 0; display: block !important; page-break-after: always; }
+  #nav-hint { display: none; }
+}

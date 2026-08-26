@@ -1,0 +1,2024 @@
+{
+  "slide_1": [
+    {
+      "tag": "div",
+      "class": "cover-sub-message",
+      "text": "Small action, BIG DIFFERENCE",
+      "font_weight": "500",
+      "font_size_px": 16,
+      "font_size_pt": 12.0
+    },
+    {
+      "tag": "h1",
+      "class": "cover-title",
+      "text": "지속가능한 배터리 재활용을 위한화학소재 및 친환경 차세대 공정기술",
+      "font_weight": "700",
+      "font_size_px": 48,
+      "font_size_pt": 36.0
+    }
+  ],
+  "slide_2": [
+    {
+      "tag": "div",
+      "class": "sub-message",
+      "text": "We promise tomorrow",
+      "font_weight": "500",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "section-label",
+      "text": "COMPANY",
+      "font_weight": "300",
+      "font_size_px": 16,
+      "font_size_pt": 12.0
+    },
+    {
+      "tag": "div",
+      "class": "main-title",
+      "text": "기업 소개",
+      "font_weight": "800",
+      "font_size_px": 37.33,
+      "font_size_pt": 28.0
+    },
+    {
+      "tag": "div",
+      "class": "support-message",
+      "text": "첨단 화학 소재와 차세대 친환경 공정으로 폐배터리 순환경제를 선도합니다.",
+      "font_weight": "500",
+      "font_size_px": 26.67,
+      "font_size_pt": 20.0
+    },
+    {
+      "tag": "div",
+      "class": "company-fact-label",
+      "text": "기업명",
+      "font_weight": "600",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "company-fact-value",
+      "text": "주식회사 코솔러스",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "company-fact-label",
+      "text": "대표자",
+      "font_weight": "600",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "company-fact-value",
+      "text": "김성현",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "company-fact-label",
+      "text": "임직원",
+      "font_weight": "600",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "company-fact-value",
+      "text": "27명",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "company-fact-label",
+      "text": "소재지",
+      "font_weight": "600",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "company-fact-value",
+      "text": "대한민국 전주, 익산, 완주, 군산",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "company-fact-label",
+      "text": "비전",
+      "font_weight": "600",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "company-fact-value",
+      "text": "사용 후 배터리 핵심광물 회수를 위한 혁신 화학소재와 친환경 공정 기술을 통해, 인류의 지속가능한 미래를 선",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "img-caption",
+      "text": "COSOLUS 연구 현장",
+      "font_weight": "300",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "page-number",
+      "text": "2",
+      "font_weight": "500",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    }
+  ],
+  "slide_3": [
+    {
+      "tag": "div",
+      "class": "sub-message",
+      "text": "We promise tomorrow",
+      "font_weight": "500",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "section-label",
+      "text": "BACKGROUND",
+      "font_weight": "300",
+      "font_size_px": 16,
+      "font_size_pt": 12.0
+    },
+    {
+      "tag": "div",
+      "class": "main-title",
+      "text": "배터리 밸류체인의 환경·지정학적 리스크",
+      "font_weight": "800",
+      "font_size_px": 37.33,
+      "font_size_pt": 28.0
+    },
+    {
+      "tag": "div",
+      "class": "support-message",
+      "text": "배터리 핵심광물 공급망은 중국에 고도로 집중되어 있으며, 채굴 기반 공급은 환경·사회적 비용을 수반합니다.",
+      "font_weight": "500",
+      "font_size_px": 26.67,
+      "font_size_pt": 20.0
+    },
+    {
+      "tag": "div",
+      "class": "vi-header",
+      "text": "핵심 광물 공급망 집중도",
+      "font_weight": "600",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "num",
+      "text": "19/20",
+      "font_weight": "800",
+      "font_size_px": 32,
+      "font_size_pt": 24.0
+    },
+    {
+      "tag": "div",
+      "class": "label",
+      "text": "전략광물 20개 중정제 1위 품목 수",
+      "font_weight": "400",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "num",
+      "text": "70%",
+      "font_weight": "800",
+      "font_size_px": 32,
+      "font_size_pt": 24.0
+    },
+    {
+      "tag": "div",
+      "class": "label",
+      "text": "전략광물 정제평균 점유율",
+      "font_weight": "400",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "num",
+      "text": "89%",
+      "font_weight": "800",
+      "font_size_px": 32,
+      "font_size_pt": 24.0
+    },
+    {
+      "tag": "div",
+      "class": "label",
+      "text": "글로벌 블랙매스처리 비중",
+      "font_weight": "400",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "num",
+      "text": "133t",
+      "font_weight": "800",
+      "font_size_px": 32,
+      "font_size_pt": 24.0
+    },
+    {
+      "tag": "div",
+      "class": "label",
+      "text": "니켈 1톤당발생 폐기물",
+      "font_weight": "400",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "vi-explanation",
+      "text": "채굴 기반 공급망은 환경부하와 사회적 비용을 동반합니다 — 채굴 산업의 노동·인권 문제도 함께 제기되고 있습",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "t-source",
+      "text": "Source: IEA, Global Critical Minerals Outlook 2025; Benchmar",
+      "font_weight": "300",
+      "font_size_px": 16,
+      "font_size_pt": 12.0
+    },
+    {
+      "tag": "div",
+      "class": "page-number",
+      "text": "3",
+      "font_weight": "500",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    }
+  ],
+  "slide_4": [
+    {
+      "tag": "div",
+      "class": "sub-message",
+      "text": "We promise tomorrow",
+      "font_weight": "500",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "section-label",
+      "text": "BACKGROUND",
+      "font_weight": "300",
+      "font_size_px": 16,
+      "font_size_pt": 12.0
+    },
+    {
+      "tag": "div",
+      "class": "main-title",
+      "text": "북미 ESS 시장, 고성장의 변곡점",
+      "font_weight": "800",
+      "font_size_px": 37.33,
+      "font_size_pt": 28.0
+    },
+    {
+      "tag": "div",
+      "class": "support-message",
+      "text": "에너지 용량(GWh) 기준 북미 ESS(에너지저장장치) 시장은 가파른 성장이 전망됩니다.",
+      "font_weight": "500",
+      "font_size_px": 26.67,
+      "font_size_pt": 20.0
+    },
+    {
+      "tag": "div",
+      "class": "vi-large-number",
+      "text": "CAGR 31.6%",
+      "font_weight": "800",
+      "font_size_px": 40,
+      "font_size_pt": 30.0
+    },
+    {
+      "tag": "div",
+      "class": "vi-large-number-label",
+      "text": "북미 ESS 시장 성장 전망(에너지 용량 GWh 기준)",
+      "font_weight": "500",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "vi-header",
+      "text": "시사점",
+      "font_weight": "600",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "vi-explanation",
+      "text": "에너지저장장치(ESS) 시장의 고속 성장은 배터리 핵심광물 수요를 빠르게 증가시켜, 재활용을 통한 안정적 원",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "t-source",
+      "text": "Source: SNE Research (2023); Mirae Asset Securities Research",
+      "font_weight": "300",
+      "font_size_px": 16,
+      "font_size_pt": 12.0
+    },
+    {
+      "tag": "div",
+      "class": "page-number",
+      "text": "4",
+      "font_weight": "500",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    }
+  ],
+  "slide_5": [
+    {
+      "tag": "div",
+      "class": "sub-message",
+      "text": "We promise tomorrow",
+      "font_weight": "500",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "section-label",
+      "text": "BACKGROUND",
+      "font_weight": "300",
+      "font_size_px": 16,
+      "font_size_pt": 12.0
+    },
+    {
+      "tag": "div",
+      "class": "main-title",
+      "text": "순환경제 비즈니스 모델",
+      "font_weight": "800",
+      "font_size_px": 37.33,
+      "font_size_pt": 28.0
+    },
+    {
+      "tag": "div",
+      "class": "support-message",
+      "text": "폐자원 회수부터 신공급망 구축까지, 세 가지 축으로 순환경제를 실현합니다.",
+      "font_weight": "500",
+      "font_size_px": 26.67,
+      "font_size_pt": 20.0
+    },
+    {
+      "tag": "div",
+      "class": "cmp-header cmp-header--fill",
+      "text": "원재료 수급",
+      "font_weight": "600",
+      "font_size_px": 26.67,
+      "font_size_pt": 20.0
+    },
+    {
+      "tag": "div",
+      "class": "tc-key-message",
+      "text": "폐자원 핵심광물 회수",
+      "font_weight": "800",
+      "font_size_px": 24,
+      "font_size_pt": 18.0
+    },
+    {
+      "tag": "div",
+      "class": "icon-symbol",
+      "text": "♻︎",
+      "font_weight": "400",
+      "font_size_px": 61.33,
+      "font_size_pt": 46.0
+    },
+    {
+      "tag": "div",
+      "class": "tc-text",
+      "text": "폐자원으로부터 핵심 광물을 확보해 배터리 원재료 수요부족 문제를 해결합니다.",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "cmp-header cmp-header--fill",
+      "text": "환경 영향 저감",
+      "font_weight": "600",
+      "font_size_px": 26.67,
+      "font_size_pt": 20.0
+    },
+    {
+      "tag": "div",
+      "class": "tc-key-message",
+      "text": "유해물질·온실가스 저감",
+      "font_weight": "800",
+      "font_size_px": 24,
+      "font_size_pt": 18.0
+    },
+    {
+      "tag": "div",
+      "class": "icon-symbol",
+      "text": "⚖︎",
+      "font_weight": "400",
+      "font_size_px": 61.33,
+      "font_size_pt": 46.0
+    },
+    {
+      "tag": "div",
+      "class": "tc-text",
+      "text": "유해물질 억제와 온실가스 감축을 통해 환경 오염을 저감합니다.",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "cmp-header cmp-header--fill",
+      "text": "신공급망 구축",
+      "font_weight": "600",
+      "font_size_px": 26.67,
+      "font_size_pt": 20.0
+    },
+    {
+      "tag": "div",
+      "class": "tc-key-message",
+      "text": "제조 → 재활용 → 제조",
+      "font_weight": "800",
+      "font_size_px": 24,
+      "font_size_pt": 18.0
+    },
+    {
+      "tag": "div",
+      "class": "icon-symbol",
+      "text": "↻︎",
+      "font_weight": "400",
+      "font_size_px": 61.33,
+      "font_size_pt": 46.0
+    },
+    {
+      "tag": "div",
+      "class": "tc-text",
+      "text": "제조에서 재활용으로, 다시 제조로 이어지는 재활용 기반 신공급망을 구축합니다.",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "page-number",
+      "text": "5",
+      "font_weight": "500",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    }
+  ],
+  "slide_6": [
+    {
+      "tag": "div",
+      "class": "sub-message",
+      "text": "We promise tomorrow",
+      "font_weight": "500",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "section-label",
+      "text": "BACKGROUND",
+      "font_weight": "300",
+      "font_size_px": 16,
+      "font_size_pt": 12.0
+    },
+    {
+      "tag": "div",
+      "class": "main-title",
+      "text": "1세대 공정의 한계와 코솔러스의 솔루션",
+      "font_weight": "800",
+      "font_size_px": 37.33,
+      "font_size_pt": 28.0
+    },
+    {
+      "tag": "div",
+      "class": "support-message",
+      "text": "낮은 선택성과 부산물 과다발생의 한계를, 고성능 추출제(1.5세대 RECYION Series)로 해결합니다.",
+      "font_weight": "500",
+      "font_size_px": 26.67,
+      "font_size_pt": 20.0
+    },
+    {
+      "tag": "div",
+      "class": "cmp-header cmp-header--plain",
+      "text": "1세대 공정의 한계",
+      "font_weight": "600",
+      "font_size_px": 26.67,
+      "font_size_pt": 20.0
+    },
+    {
+      "tag": "span",
+      "class": "marker",
+      "text": "1",
+      "font_weight": "700",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "span",
+      "class": "t-body",
+      "text": "낮은 선택성",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "span",
+      "class": "marker",
+      "text": "2",
+      "font_weight": "700",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "span",
+      "class": "t-body",
+      "text": "상분리 불안정",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "span",
+      "class": "marker",
+      "text": "3",
+      "font_weight": "700",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "span",
+      "class": "t-body",
+      "text": "부산물 과다발생(망초 등)",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "cmp-header cmp-header--fill",
+      "text": "코솔러스 1.5세대 솔루션",
+      "font_weight": "600",
+      "font_size_px": 26.67,
+      "font_size_pt": 20.0
+    },
+    {
+      "tag": "div",
+      "class": "step-name",
+      "text": "고성능 추출제 — RECYION Series",
+      "font_weight": "600",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "step-detail",
+      "text": "기존 추출제(예: D2EHPA) 대비 재활용 효율 개선",
+      "font_weight": "300",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "t-caption",
+      "text": "소재 및 공정 개선을 통해 1세대 공정의 한계를 해결합니다.",
+      "font_weight": "300",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "page-number",
+      "text": "6",
+      "font_weight": "500",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    }
+  ],
+  "slide_7": [
+    {
+      "tag": "div",
+      "class": "sub-message",
+      "text": "We promise tomorrow",
+      "font_weight": "500",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "section-label",
+      "text": "TECHNOLOGY",
+      "font_weight": "300",
+      "font_size_px": 16,
+      "font_size_pt": 12.0
+    },
+    {
+      "tag": "div",
+      "class": "main-title",
+      "text": "고성능 추출제 — 경쟁사 대비 공정 효율",
+      "font_weight": "800",
+      "font_size_px": 37.33,
+      "font_size_pt": 28.0
+    },
+    {
+      "tag": "div",
+      "class": "support-message",
+      "text": "COSOLUS 추출제는 벨기에·중국 경쟁사 대비 공정시간과 첨가제 사용량에서 우위를 갖습니다.",
+      "font_weight": "500",
+      "font_size_px": 26.67,
+      "font_size_pt": 20.0
+    },
+    {
+      "tag": "th",
+      "class": "",
+      "text": "비교 기준",
+      "font_weight": "600",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "th",
+      "class": "is-cosolus",
+      "text": "COSOLUS",
+      "font_weight": "700",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "th",
+      "class": "",
+      "text": "벨기에 S사",
+      "font_weight": "700",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "th",
+      "class": "",
+      "text": "중국 K사",
+      "font_weight": "700",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "td",
+      "class": "",
+      "text": "공정시간",
+      "font_weight": "600",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "td",
+      "class": "is-cosolus",
+      "text": "기준(Baseline)",
+      "font_weight": "700",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "td",
+      "class": "",
+      "text": "COSOLUS 대비 100% ↑",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "td",
+      "class": "",
+      "text": "COSOLUS 대비 50% ↑",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "td",
+      "class": "",
+      "text": "첨가제 사용량*",
+      "font_weight": "600",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "td",
+      "class": "is-cosolus",
+      "text": "기준(Baseline)",
+      "font_weight": "700",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "td",
+      "class": "",
+      "text": "COSOLUS 대비 10% 이상 ↑",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "td",
+      "class": "",
+      "text": "COSOLUS 대비 5% 이상 ↑",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "t-source",
+      "text": "*블랙매스 1톤당 첨가제 사용량 기준. 공정시간 비교값은 원문 인접 문단 서술 및 첨가제 행의 대소 패턴(벨",
+      "font_weight": "300",
+      "font_size_px": 16,
+      "font_size_pt": 12.0
+    },
+    {
+      "tag": "div",
+      "class": "page-number",
+      "text": "7",
+      "font_weight": "500",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    }
+  ],
+  "slide_8": [
+    {
+      "tag": "div",
+      "class": "sub-message",
+      "text": "We promise tomorrow",
+      "font_weight": "500",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "section-label",
+      "text": "TECHNOLOGY",
+      "font_weight": "300",
+      "font_size_px": 16,
+      "font_size_pt": 12.0
+    },
+    {
+      "tag": "div",
+      "class": "main-title",
+      "text": "추출단수 저감이 만드는 CAPEX·OPEX 경제성",
+      "font_weight": "800",
+      "font_size_px": 37.33,
+      "font_size_pt": 28.0
+    },
+    {
+      "tag": "div",
+      "class": "support-message",
+      "text": "COSOLUS 추출제는 이론단수를 5단에서 4단으로 저감해 CAPEX·OPEX 양면의 경제성을 확보합니다.",
+      "font_weight": "500",
+      "font_size_px": 26.67,
+      "font_size_pt": 20.0
+    },
+    {
+      "tag": "div",
+      "class": "bi-tech",
+      "text": "Core Technology  →  추출단수 1단 저감 (COSOLUS 4단 vs 기존 5단, 20% 감소)",
+      "font_weight": "700",
+      "font_size_px": 24,
+      "font_size_pt": 18.0
+    },
+    {
+      "tag": "span",
+      "class": "hi",
+      "text": "추출단수 1단 저감",
+      "font_weight": "700",
+      "font_size_px": 24,
+      "font_size_pt": 18.0
+    },
+    {
+      "tag": "div",
+      "class": "cmp-header cmp-header--fill",
+      "text": "CAPEX 경제성",
+      "font_weight": "600",
+      "font_size_px": 26.67,
+      "font_size_pt": 20.0
+    },
+    {
+      "tag": "div",
+      "class": "bi-impact-num",
+      "text": "2~5%",
+      "font_weight": "800",
+      "font_size_px": 40,
+      "font_size_pt": 30.0
+    },
+    {
+      "tag": "div",
+      "class": "bi-impact-label",
+      "text": "추출 효율 개선",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "bi-evidence",
+      "text": "추출 단수 1단 저감 → CAPEX 경제성 확보",
+      "font_weight": "400",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "cmp-header cmp-header--fill",
+      "text": "OPEX 경제성",
+      "font_weight": "600",
+      "font_size_px": 26.67,
+      "font_size_pt": 20.0
+    },
+    {
+      "tag": "div",
+      "class": "bi-impact-num",
+      "text": "4,800t/년",
+      "font_weight": "800",
+      "font_size_px": 40,
+      "font_size_pt": 30.0
+    },
+    {
+      "tag": "div",
+      "class": "bi-impact-label",
+      "text": "망초 저감 (5% 이상)",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "bi-evidence",
+      "text": "대한민국 배터리 재활용 업체 연간 니켈 16,000톤 생산 기준 — 기존 추출제(5단·3.6t) 대비 COS",
+      "font_weight": "400",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "page-number",
+      "text": "8",
+      "font_weight": "500",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    }
+  ],
+  "slide_9": [
+    {
+      "tag": "div",
+      "class": "sub-message",
+      "text": "We promise tomorrow",
+      "font_weight": "500",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "section-label",
+      "text": "TECHNOLOGY",
+      "font_weight": "300",
+      "font_size_px": 16,
+      "font_size_pt": 12.0
+    },
+    {
+      "tag": "div",
+      "class": "main-title",
+      "text": "직접리튬추출(DLE) — 재활용 공정 안에서 완성",
+      "font_weight": "800",
+      "font_size_px": 37.33,
+      "font_size_pt": 28.0
+    },
+    {
+      "tag": "div",
+      "class": "support-message",
+      "text": "NCM 스크랩에서 Mn·Co·Ni·Li을 순차 회수하는 4단계 공정 안에서 리튬까지 회수합니다.",
+      "font_weight": "500",
+      "font_size_px": 26.67,
+      "font_size_pt": 20.0
+    },
+    {
+      "tag": "div",
+      "class": "pc-upper-title",
+      "text": "COSOLUS 재활용 공정 흐름",
+      "font_weight": "600",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "step-name",
+      "text": "전처리",
+      "font_weight": "600",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "step-detail",
+      "text": "침출 · 불순물 제거",
+      "font_weight": "300",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "step-name",
+      "text": "① Mn 추출",
+      "font_weight": "600",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "step-name",
+      "text": "② Co 추출",
+      "font_weight": "600",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "step-name",
+      "text": "③ Ni 추출",
+      "font_weight": "600",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "step-name",
+      "text": "④ Li 추출",
+      "font_weight": "600",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "step-name",
+      "text": "역추출",
+      "font_weight": "600",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "pc-lower-title",
+      "text": "기존 DLE(증발법)와 비교",
+      "font_weight": "600",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "span",
+      "class": "",
+      "text": "기존 DLE(증발법)는 1단계의 증발 농축 기반 공정으로 리튬만 회수하며 회수율은 3.12%에 그칩니다. C",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "b",
+      "class": "",
+      "text": "1단계",
+      "font_weight": "700",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "b",
+      "class": "",
+      "text": "3.12%",
+      "font_weight": "700",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "page-number",
+      "text": "9",
+      "font_weight": "500",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    }
+  ],
+  "slide_10": [
+    {
+      "tag": "div",
+      "class": "sub-message",
+      "text": "We promise tomorrow",
+      "font_weight": "500",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "section-label",
+      "text": "TECHNOLOGY",
+      "font_weight": "300",
+      "font_size_px": 16,
+      "font_size_pt": 12.0
+    },
+    {
+      "tag": "div",
+      "class": "main-title",
+      "text": "DLE 기술 동향 비교",
+      "font_weight": "800",
+      "font_size_px": 37.33,
+      "font_size_pt": 28.0
+    },
+    {
+      "tag": "div",
+      "class": "support-message",
+      "text": "직접리튬추출(DLE) 기술은 흡착제·추출제·분리막·전기화학 4가지 방식으로 나뉩니다.",
+      "font_weight": "500",
+      "font_size_px": 26.67,
+      "font_size_pt": 20.0
+    },
+    {
+      "tag": "th",
+      "class": "criteria-head",
+      "text": "구분",
+      "font_weight": "400",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "th",
+      "class": "",
+      "text": "흡착제",
+      "font_weight": "600",
+      "font_size_px": 26.67,
+      "font_size_pt": 20.0
+    },
+    {
+      "tag": "th",
+      "class": "",
+      "text": "추출제",
+      "font_weight": "600",
+      "font_size_px": 26.67,
+      "font_size_pt": 20.0
+    },
+    {
+      "tag": "th",
+      "class": "",
+      "text": "분리막",
+      "font_weight": "600",
+      "font_size_px": 26.67,
+      "font_size_pt": 20.0
+    },
+    {
+      "tag": "th",
+      "class": "",
+      "text": "전기화학",
+      "font_weight": "600",
+      "font_size_px": 26.67,
+      "font_size_pt": 20.0
+    },
+    {
+      "tag": "td",
+      "class": "criteria-cell",
+      "text": "작동원리",
+      "font_weight": "500",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "td",
+      "class": "",
+      "text": "이온 흡착·탈착",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "td",
+      "class": "",
+      "text": "액-액 추출",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "td",
+      "class": "",
+      "text": "이온 선택 투과",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "td",
+      "class": "",
+      "text": "전기화학 분리",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "td",
+      "class": "criteria-cell",
+      "text": "기술성숙도(TRL)",
+      "font_weight": "500",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "td",
+      "class": "",
+      "text": "TRL 9 · 상용화",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "b",
+      "class": "",
+      "text": "TRL 9",
+      "font_weight": "700",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "td",
+      "class": "",
+      "text": "TRL 4~5",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "td",
+      "class": "",
+      "text": "TRL 4~5",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "td",
+      "class": "",
+      "text": "TRL 3~4",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "td",
+      "class": "criteria-cell",
+      "text": "장점",
+      "font_weight": "500",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "td",
+      "class": "",
+      "text": "검증된 상용 공정",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "td",
+      "class": "",
+      "text": "선택성·연속운전",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "td",
+      "class": "",
+      "text": "첨가제 소모 적음",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "td",
+      "class": "",
+      "text": "첨가제 최소화",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "td",
+      "class": "criteria-cell",
+      "text": "단점",
+      "font_weight": "500",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "td",
+      "class": "",
+      "text": "낮은 선택성",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "td",
+      "class": "",
+      "text": "추출제 소모",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "td",
+      "class": "",
+      "text": "막 오염·수명 관리",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "td",
+      "class": "",
+      "text": "낮은 성숙도",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "t-source",
+      "text": "Source: Desalination, 2024, 575, 117249",
+      "font_weight": "300",
+      "font_size_px": 16,
+      "font_size_pt": 12.0
+    },
+    {
+      "tag": "div",
+      "class": "page-number",
+      "text": "10",
+      "font_weight": "500",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    }
+  ],
+  "slide_11": [
+    {
+      "tag": "div",
+      "class": "sub-message",
+      "text": "We promise tomorrow",
+      "font_weight": "500",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "section-label",
+      "text": "TECHNOLOGY",
+      "font_weight": "300",
+      "font_size_px": 16,
+      "font_size_pt": 12.0
+    },
+    {
+      "tag": "div",
+      "class": "main-title",
+      "text": "DLE 핵심 경쟁력 — 추출제·분리막 결합 기술",
+      "font_weight": "800",
+      "font_size_px": 37.33,
+      "font_size_pt": 28.0
+    },
+    {
+      "tag": "div",
+      "class": "support-message",
+      "text": "추출제와 분리막의 결합 기술이 재자원화율과 원가 경쟁력을 동시에 끌어올립니다.",
+      "font_weight": "500",
+      "font_size_px": 26.67,
+      "font_size_pt": 20.0
+    },
+    {
+      "tag": "div",
+      "class": "num",
+      "text": "3%→90%↑",
+      "font_weight": "800",
+      "font_size_px": 32,
+      "font_size_pt": 24.0
+    },
+    {
+      "tag": "div",
+      "class": "label",
+      "text": "리튬 재자원화율(분리막 & THz 기술 적용)",
+      "font_weight": "400",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "num",
+      "text": "<5,500원/kg",
+      "font_weight": "800",
+      "font_size_px": 32,
+      "font_size_pt": 24.0
+    },
+    {
+      "tag": "div",
+      "class": "label",
+      "text": "COSOLUS DLE 공정비용*",
+      "font_weight": "400",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "t-source",
+      "text": "*리튬선물 가격이 약 44,100천원/ton 수준일 때 재활용 목표 기준",
+      "font_weight": "300",
+      "font_size_px": 16,
+      "font_size_pt": 12.0
+    },
+    {
+      "tag": "div",
+      "class": "vi-header",
+      "text": "추출제-분리막 결합의 핵심 강점",
+      "font_weight": "600",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "span",
+      "class": "marker",
+      "text": "1",
+      "font_weight": "700",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "span",
+      "class": "",
+      "text": "추출제와 리튬이온(Li⁺) 간 액-액 접촉을 통한 빠른 물질 전달",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "span",
+      "class": "marker",
+      "text": "2",
+      "font_weight": "700",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "span",
+      "class": "",
+      "text": "추출제의 화학적 결합 + 분리막의 공간적 분리로 우수한 재활용 효율",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "span",
+      "class": "marker",
+      "text": "3",
+      "font_weight": "700",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "span",
+      "class": "",
+      "text": "액상 공정을 통한 용이한 연속 운전",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "span",
+      "class": "marker",
+      "text": "4",
+      "font_weight": "700",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "span",
+      "class": "",
+      "text": "분리막 기반 농축을 통한 첨가제 소모량 감소",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "vi-evidence",
+      "text": "분리막 & THz 기술은 재자원화율을 3%→90%까지, 핵심소재만으로는 3%→50%까지 끌어올립니다 — 두 ",
+      "font_weight": "400",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "page-number",
+      "text": "11",
+      "font_weight": "500",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    }
+  ],
+  "slide_12": [
+    {
+      "tag": "div",
+      "class": "sub-message",
+      "text": "We promise tomorrow",
+      "font_weight": "500",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "section-label",
+      "text": "TECHNOLOGY",
+      "font_weight": "300",
+      "font_size_px": 16,
+      "font_size_pt": 12.0
+    },
+    {
+      "tag": "div",
+      "class": "main-title",
+      "text": "친환경 차세대 배터리 재활용 공정(2세대)",
+      "font_weight": "800",
+      "font_size_px": 37.33,
+      "font_size_pt": 28.0
+    },
+    {
+      "tag": "div",
+      "class": "support-message",
+      "text": "유도가열 → 전처리 → 블랙매스 생성 → 부유선별의 흐름으로 고순도 흑연과 코발트·니켈을 회수합니다.",
+      "font_weight": "500",
+      "font_size_px": 26.67,
+      "font_size_pt": 20.0
+    },
+    {
+      "tag": "div",
+      "class": "psa-title",
+      "text": "친환경 차세대 배터리 재활용 공정 (System / Process Title)",
+      "font_weight": "600",
+      "font_size_px": 26.67,
+      "font_size_pt": 20.0
+    },
+    {
+      "tag": "div",
+      "class": "name",
+      "text": "① COSOLUS 유도가열",
+      "font_weight": "700",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "psa-comp-role",
+      "text": "고온 유도가열 처리",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "psa-comp-detail",
+      "text": "균일한 온도 분포로 신속 처리",
+      "font_weight": "400",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "name",
+      "text": "② 전처리 공정",
+      "font_weight": "700",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "psa-comp-role",
+      "text": "투입 소재 전처리",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "psa-comp-detail",
+      "text": "후속 공정 위한 조건 정리",
+      "font_weight": "400",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "name",
+      "text": "③ 블랙매스 생성",
+      "font_weight": "700",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "psa-comp-role",
+      "text": "양극재용 · 음극재용 분리",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "psa-comp-detail",
+      "text": "폐흑연 처리 포함",
+      "font_weight": "400",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "name",
+      "text": "④ COSOLUS 부유선별",
+      "font_weight": "700",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "psa-comp-role",
+      "text": "고순도 소재 분리·회수",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "psa-comp-detail",
+      "text": "경제성·양산성 확보",
+      "font_weight": "400",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "txt",
+      "text": "Output — 고순도 정제흑연 + 코발트·니켈 회수. 경제성·친환경성·양산성을 동시에 확보한 2세대 공정입",
+      "font_weight": "500",
+      "font_size_px": 24,
+      "font_size_pt": 18.0
+    },
+    {
+      "tag": "b",
+      "class": "",
+      "text": "고순도 정제흑연 + 코발트·니켈 회수",
+      "font_weight": "700",
+      "font_size_px": 24,
+      "font_size_pt": 18.0
+    },
+    {
+      "tag": "div",
+      "class": "page-number",
+      "text": "12",
+      "font_weight": "500",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    }
+  ],
+  "slide_13": [
+    {
+      "tag": "div",
+      "class": "sub-message",
+      "text": "We promise tomorrow",
+      "font_weight": "500",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "section-label",
+      "text": "TECHNOLOGY",
+      "font_weight": "300",
+      "font_size_px": 16,
+      "font_size_pt": 12.0
+    },
+    {
+      "tag": "div",
+      "class": "main-title",
+      "text": "2세대 공정의 가격·기술 경쟁력",
+      "font_weight": "800",
+      "font_size_px": 37.33,
+      "font_size_pt": 28.0
+    },
+    {
+      "tag": "div",
+      "class": "support-message",
+      "text": "기존 소성로(Pusher Kiln) 대비 짧은 공정시간과 적은 에너지 투입, 높은 순도를 동시에 확보합니다.",
+      "font_weight": "500",
+      "font_size_px": 26.67,
+      "font_size_pt": 20.0
+    },
+    {
+      "tag": "th",
+      "class": "criteria-head",
+      "text": "비교 기준",
+      "font_weight": "400",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "th",
+      "class": "",
+      "text": "기존 소성로(Pusher Kiln)",
+      "font_weight": "600",
+      "font_size_px": 26.67,
+      "font_size_pt": 20.0
+    },
+    {
+      "tag": "th",
+      "class": "",
+      "text": "COSOLUS(유도가열)",
+      "font_weight": "600",
+      "font_size_px": 26.67,
+      "font_size_pt": 20.0
+    },
+    {
+      "tag": "td",
+      "class": "criteria-cell",
+      "text": "공정시간",
+      "font_weight": "500",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "td",
+      "class": "existing-cell",
+      "text": "10시간 이상",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "td",
+      "class": "improved-cell",
+      "text": "1분 이내",
+      "font_weight": "700",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "td",
+      "class": "criteria-cell",
+      "text": "승온 속도",
+      "font_weight": "500",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "td",
+      "class": "existing-cell",
+      "text": "기준(Baseline)",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "td",
+      "class": "improved-cell",
+      "text": "200배 빠름",
+      "font_weight": "700",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "td",
+      "class": "criteria-cell",
+      "text": "에너지 투입",
+      "font_weight": "500",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "td",
+      "class": "existing-cell",
+      "text": "기준(Baseline)",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "td",
+      "class": "improved-cell",
+      "text": "432 Wh/kg (64% 절감)",
+      "font_weight": "700",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "td",
+      "class": "criteria-cell",
+      "text": "재생흑연 순도",
+      "font_weight": "500",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "td",
+      "class": "existing-cell",
+      "text": "낮은 온도 정밀도",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "td",
+      "class": "improved-cell",
+      "text": "99% 이상, 낮은 부반응",
+      "font_weight": "700",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "td",
+      "class": "criteria-cell",
+      "text": "시설 투자비용",
+      "font_weight": "500",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "td",
+      "class": "existing-cell",
+      "text": "높음",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "td",
+      "class": "improved-cell",
+      "text": "상대적으로 낮음",
+      "font_weight": "700",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "t-caption",
+      "text": "추가 근거: 건식환원에 의한 Co 회수 순도 >95%, PCT 2건 출원",
+      "font_weight": "300",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "page-number",
+      "text": "13",
+      "font_weight": "500",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    }
+  ],
+  "slide_14": [
+    {
+      "tag": "div",
+      "class": "sub-message",
+      "text": "We promise tomorrow",
+      "font_weight": "500",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "section-label",
+      "text": "EXECUTIVE SUMMARY",
+      "font_weight": "300",
+      "font_size_px": 16,
+      "font_size_pt": 12.0
+    },
+    {
+      "tag": "div",
+      "class": "main-title",
+      "text": "투자 포인트",
+      "font_weight": "800",
+      "font_size_px": 37.33,
+      "font_size_pt": 28.0
+    },
+    {
+      "tag": "div",
+      "class": "support-message",
+      "text": "검증된 기술력과 구체적 사업화 방향을 바탕으로 Series A2 투자 유치를 추진합니다.",
+      "font_weight": "500",
+      "font_size_px": 26.67,
+      "font_size_pt": 20.0
+    },
+    {
+      "tag": "div",
+      "class": "k",
+      "text": "기술력",
+      "font_weight": "600",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "v-title",
+      "text": "최상위 수준 기술 경쟁력",
+      "font_weight": "700",
+      "font_size_px": 24,
+      "font_size_pt": 18.0
+    },
+    {
+      "tag": "div",
+      "class": "v-body",
+      "text": "추출제 최상위 수준의 합성·정제 기술 / 친환경 공정 기술(건식환원·유도가열) / Closed-loop sy",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "k",
+      "text": "사업화 방향",
+      "font_weight": "600",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "v-title",
+      "text": "PoC부터 신공급망 구축까지",
+      "font_weight": "700",
+      "font_size_px": 24,
+      "font_size_pt": 18.0
+    },
+    {
+      "tag": "div",
+      "class": "v-body",
+      "text": "(1.5세대 RECYION Series) XX하이텍, XX코 등 현장적용 고려 PoC 진행 중 / (2세대 ",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "k",
+      "text": "투자라운드",
+      "font_weight": "600",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "big-num",
+      "text": "Series A2 · 80억원",
+      "font_weight": "800",
+      "font_size_px": 40,
+      "font_size_pt": 30.0
+    },
+    {
+      "tag": "div",
+      "class": "v-body",
+      "text": "목표 투자유치 금액",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "k",
+      "text": "투자금 사용 계획",
+      "font_weight": "600",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "v-body",
+      "text": "글로벌 진출을 위한 국외법인 설립 및 운영 / 공장 건설을 위한 토지 구매 및 건축 비용(추출제 CAPA, ",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "page-number",
+      "text": "14",
+      "font_weight": "500",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    }
+  ],
+  "slide_15": [
+    {
+      "tag": "div",
+      "class": "sub-message",
+      "text": "We promise tomorrow",
+      "font_weight": "500",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "section-label",
+      "text": "MILESTONE",
+      "font_weight": "300",
+      "font_size_px": 16,
+      "font_size_pt": 12.0
+    },
+    {
+      "tag": "div",
+      "class": "main-title",
+      "text": "일본·인도네시아 시장 진출",
+      "font_weight": "800",
+      "font_size_px": 37.33,
+      "font_size_pt": 28.0
+    },
+    {
+      "tag": "div",
+      "class": "support-message",
+      "text": "5억 명 이상 아시아 경제권을 겨냥해 일본과 인도네시아를 전략 거점으로 삼습니다.",
+      "font_weight": "500",
+      "font_size_px": 26.67,
+      "font_size_pt": 20.0
+    },
+    {
+      "tag": "div",
+      "class": "country",
+      "text": "인도네시아",
+      "font_weight": "800",
+      "font_size_px": 26.67,
+      "font_size_pt": 20.0
+    },
+    {
+      "tag": "div",
+      "class": "status",
+      "text": "전기자전거 업체 1대주주와 투자 논의 진행 중",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "country",
+      "text": "일본",
+      "font_weight": "800",
+      "font_size_px": 26.67,
+      "font_size_pt": 20.0
+    },
+    {
+      "tag": "div",
+      "class": "status",
+      "text": "현지투자사·재료업체 등과 투자 논의 진행 중",
+      "font_weight": "400",
+      "font_size_px": 21.33,
+      "font_size_pt": 16.0
+    },
+    {
+      "tag": "div",
+      "class": "t-caption",
+      "text": "아래 로고는 특정 파트너십을 단정하는 것이 아니라 일본 배터리·소재 생태계 맥락을 보여주기 위한 참고 이미지",
+      "font_weight": "300",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    },
+    {
+      "tag": "div",
+      "class": "page-number",
+      "text": "15",
+      "font_weight": "500",
+      "font_size_px": 18.67,
+      "font_size_pt": 14.0
+    }
+  ]
+}

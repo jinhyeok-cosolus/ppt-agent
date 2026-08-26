@@ -1,0 +1,22 @@
+{
+  "project_name": "cosolus-ir-deck-G",
+  "stage": "6",
+  "audience": "고객사/외부 청중",
+  "language": "ko",
+  "presentation_time_min": null,
+  "target_slide_count": 1,
+  "web_ppt_version": "v1",
+  "pptx_generated": false,
+  "shared_urls": {},
+  "shared_html": {},
+  "input_files": [
+    "input/15p 지시문 최소화 버전.docx"
+  ],
+  "reference_materials": "none — apply existing design-rules.md variable rules as-is",
+  "history": [
+    {"stage": "1", "note": "Field Test 신규 프로젝트. Input: 15p 지시문 최소화 버전.docx. 목표 슬라이드 수 1장, 발표 시간 미지정. 청중: 고객사/외부 청중(기본값). 레퍼런스 없음, 기존 design-rules.md 가변 규칙 그대로 적용. 기존 cosolus-ir-deck-F 및 Slide 15 산출물 재사용 금지 — 새 프로젝트로 처음부터 진행."},
+    {"stage": "2-3", "note": "content-designer 완료. material_analysis.json/slide_composition_map.json/slide_outline.md 생성. Content Group 1개(CG01)를 1장으로 구성, Flow Diagram(L25 Symmetric Two-Split) 레이아웃 선택. 에스컬레이션 없음. 확인필요 3건: img6-9 화합물-이미지 1:1 매칭 uncertain(그룹 표현으로 처리), 결론 헤드라인 정량 근거 없음(정성적 카피만 사용), Content Group 경계 LLM 재구성(원문에 Heading 스타일 없음)."},
+    {"stage": "4", "note": "Human Review ① 승인. 사용자: '구성 확인했습니다. 현재 구성 그대로 진행해주세요.' [5] 웹PPT 초안 생성으로 진행."},
+    {"stage": "5", "note": "web_ppt/v1 생성 완료(Flow Diagram L25). QA(세션 재개 후 이어서 수행): layout-audit 대부분 겹침(text-svg/svg-img ratio=1)은 flow-connectors 오버레이 전체 커버로 인한 false positive로 판정. 실결함 2건 발견·수정(슬라이드 1만, index.html만 변경, style.css/Layout 불변): (1) '전처리 공정' 라벨이 '기존공정(1세대)' 배지에 가려짐, (2) '건식환원'/'폐흑연(1세대 부산물)' 라벨·이미지 상호 겹침(폐흑연 노드 위치 이동+커넥터 재라우팅+서브텍스트 2단 분리). 재검증 1회로 해소 확인. Font Typography 위반 없음. Content Fidelity QA(1-d) 최초 실행 — issue 6건 전부 false positive(고정 Header chrome, [3]에서 이미 결정된 diagram-label 대체 표현, data_pending 해당 없음 확인)로 판정, img2 미사용은 동일 Material 이미지 1장 컨벤션상 의도적 중복 회피로 인정. 미해결/에스컬레이션 없음. Slide 1은 Human Review ② 제시 준비 완료."}
+  ]
+}

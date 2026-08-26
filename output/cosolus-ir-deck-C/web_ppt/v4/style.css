@@ -1,0 +1,685 @@
+/*
+  COSOLUS IR Deck (C) — style.css
+  Hard Rule: docs/design-hard-rules/2026.08.12_design_hard-rules_V2.md
+  Design System: docs/design-system/Claude_PPT_Design_System.md
+  16:9, 1280x720px canvas, Pretendard, Brand Teal palette.
+
+  C 테스트: 생성 후 QA 절차(Layout Compliance Check + qa_render.py 렌더링 + Visual
+  Quality Check)를 거쳐 아래 4개 Layout의 A 프로젝트 결함을 교정 반영함 —
+  1) Three-Column(.tc-visual/.tc-icon-frame) — Main Visual 채움 밀도(§5, 55~65%) 보강
+  2) Table Comparison(.tcmp-*) — Header Row 통일 Fill(§6), Cell 중앙 정렬(§5),
+     Grid~Highlight Band 사이 빈 공간 제거(§3 Overall Region Map)
+  3) Benefit+Impact(.bi-*) — Core Technology 상단 중복 요약 제거(§1),
+     Evidence Visual을 Before/After Bar로 재구성(§7 Avoid: 큰 KPI+여백 금지)
+  4) Before-After Variant B(.bat-table) — Existing 39% : Improved 41% 폭 복원(§5.1)
+*/
+
+@font-face {
+  font-family: "Pretendard";
+  src: local("Pretendard");
+}
+
+:root {
+  --slide-w: 1280px;
+  --slide-h: 720px;
+
+  /* Brand colors (Hard Rule §5) */
+  --c-primary: #067875;      /* Cosolus Teal */
+  --c-dark: #034443;         /* Deep Pine */
+  --c-secondary: #349887;    /* Sea Teal */
+  --c-light: #AFE2E3;        /* Mint */
+  --c-ocean: #1A6A8C;
+  --c-moss: #6E9B3F;
+  --c-amber: #C8801F;
+  --c-ink: #162B1F;
+  --c-slate: #5A6664;
+  --c-gray: #8C9694;
+  --c-line: #E1E7E5;
+  --c-mist: #F3F6F5;
+  --c-header-fixed: #478689; /* Sub Message / top divider fixed color */
+  --c-tint50: #F4FAFA;
+
+  --font: "Pretendard", "Malgun Gothic", "맑은 고딕", sans-serif;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+
+body {
+  background: #4a4a4a;
+  font-family: var(--font);
+  color: var(--c-ink);
+}
+
+#deck { position: relative; }
+
+.slide {
+  width: var(--slide-w);
+  height: var(--slide-h);
+  margin: 28px auto;
+  background: #ffffff;
+  position: relative;
+  overflow: hidden;
+  display: none;
+}
+
+.slide.is-active { display: block; }
+
+/* ============================================================
+   Hard Rule §9 — Common Header System (all non-cover slides)
+   ============================================================ */
+
+.slide-header-ci {
+  position: absolute;
+  left: 64px;
+  top: 25px;
+  height: 20px;
+}
+.slide-header-ci img { height: 20px; width: auto; display: block; }
+
+.slide-header-submsg {
+  position: absolute;
+  right: 64px;
+  top: 25px;
+  font-size: 14pt;
+  font-weight: 500;
+  color: var(--c-header-fixed);
+  letter-spacing: 0;
+}
+
+.slide-header-rule {
+  position: absolute;
+  left: 64px;
+  top: 56px;
+  width: 1152px;
+  height: 1px;
+  background: var(--c-header-fixed);
+}
+
+.section-label {
+  position: absolute;
+  left: 68px;
+  top: 62px;
+  font-size: 12pt;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  color: var(--c-gray);
+  text-transform: uppercase;
+}
+
+.main-title {
+  position: absolute;
+  left: 64px;
+  top: 83px;
+  width: 1152px;
+  font-size: 28pt;
+  font-weight: 800;
+  color: var(--c-ink);
+  margin: 0;
+  line-height: 1.25;
+  white-space: normal;
+}
+
+.supporting-message {
+  /* Hard Rule §12(2026-08-19 확정): Content Header 레벨 20pt — 기존 18pt는
+     확정 이전 값이 남아있던 것(Slide 2 외 아직 이 클래스를 쓰는 슬라이드가
+     없어 미발견 상태였음). */
+  position: absolute;
+  left: 64px;
+  top: 142px;
+  width: 1152px;
+  font-size: 20pt;
+  font-weight: 500;
+  color: var(--c-slate);
+  line-height: 1.4;
+}
+
+.page-number {
+  position: absolute;
+  right: 40px;
+  bottom: 24px;
+  font-size: 12pt;
+  color: var(--c-gray);
+  font-weight: 400;
+}
+
+/* Body safe area: X 64-1216, Y 135-656 (no supporting msg) */
+.body-box {
+  position: absolute;
+  left: 64px;
+  top: 135px;
+  width: 1152px;
+  height: 521px;
+}
+.body-box.with-support {
+  top: 178px;
+  height: 478px;
+}
+
+/* ============================================================
+   Cover (01_cover_design_V2.md)
+   ============================================================ */
+
+.slide--cover {
+  color: #fff;
+}
+.cover-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.cover-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg,
+    rgba(26,106,140,0.55) 0%,
+    rgba(127,200,190,0.30) 50%,
+    rgba(15,101,91,0.50) 100%);
+}
+.cover-brand-block {
+  position: absolute;
+  left: 64px;
+  top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  z-index: 2;
+}
+.cover-brand-block .cover-submsg {
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff;
+}
+.cover-brand-block img { height: 36px; width: auto; display: block; }
+.cover-title-block {
+  position: absolute;
+  left: 50%;
+  top: 56%;
+  transform: translate(-50%, -50%);
+  width: 960px;
+  text-align: center;
+  z-index: 2;
+}
+.cover-title-block h1 {
+  font-size: 48px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+  line-height: 1.35;
+}
+
+/* ============================================================
+   Shared component primitives
+   ============================================================ */
+
+.content-header-bar {
+  height: 0.561in; /* ~54px */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20pt;
+  font-weight: 600;
+  color: #0F1E1F;
+  letter-spacing: -0.3pt;
+  text-align: center;
+}
+.content-header-bar.style-plain {
+  background: transparent;
+  border-top: 0.75pt solid var(--c-line);
+  border-bottom: 0.5pt solid var(--c-line);
+}
+.content-header-bar.style-fill {
+  background: var(--c-tint50);
+  border-top: 0.75pt solid var(--c-primary);
+  border-bottom: 0.5pt solid var(--c-primary);
+}
+
+.v-divider {
+  /* [Mini QA #5] Hard Rule §11 명시값은 0.5pt이지만, flex item으로 실제
+     렌더링해보니(getBoundingClientRect 확인 결과 0.65625px) 서브픽셀 폭이라
+     특정 X좌표에서 안티앨리어싱으로 완전히 사라져 스크린샷에 보이지 않는
+     경우가 발생했다(테스트용 3px 색상으로 교체 시 정상 렌더링 확인). 실제로
+     보이지 않으면 Hard Rule의 "얇은 세로 구분선" 의도 자체가 무력화되므로,
+     안정적으로 렌더링되는 최소 폭인 1px로 조정한다.
+  */
+  width: 1px;
+  background: linear-gradient(to bottom,
+    rgba(3,68,67,0) 0%,
+    rgba(3,68,67,0.55) 53%,
+    rgba(3,68,67,0) 100%);
+}
+
+.stat-number {
+  font-size: 30pt;
+  font-weight: 800;
+  color: var(--c-primary);
+  line-height: 1.1;
+}
+.stat-label {
+  font-size: 14pt;
+  font-weight: 300;
+  color: var(--c-slate);
+}
+.source-note {
+  /* [Typography Mini Test] Source/Footnote/각주 역할 — Design System §3 신규
+     예외 행(12pt 최소)에 맞춰 11pt에서 상향 (공유 클래스, Slide 3/7/8/9/10/13 등
+     전반에 적용됨) */
+  font-size: 12pt;
+  font-weight: 300;
+  color: var(--c-gray);
+  line-height: 1.5;
+}
+.confirm-needed {
+  color: var(--c-amber);
+  font-weight: 600;
+}
+
+/* ============================================================
+   Company Introduction (02_instruction_design_V1.md)
+   ============================================================ */
+
+.company-layout { display: flex; height: 100%; gap: 40px; }
+.company-info { width: 58%; display: flex; flex-direction: column; }
+.company-image { width: 42%; position: relative; border-radius: 0; overflow: hidden; }
+.company-image img { width: 100%; height: 100%; object-fit: cover; }
+.company-facts { margin-top: 24px; display: flex; flex-direction: column; gap: 0; }
+.company-fact-row {
+  display: flex;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--c-line);
+}
+.company-fact-row:first-child { border-top: 1px solid var(--c-line); }
+.company-fact-label {
+  width: 120px;
+  flex-shrink: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--c-primary);
+}
+.company-fact-value {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--c-ink);
+  line-height: 1.5;
+}
+
+/* ============================================================
+   Two-region Background (Slide 3, Market/Problem, L07 general)
+   ============================================================ */
+
+.two-region { display: flex; height: 100%; gap: 32px; }
+.region { flex: 1; display: flex; flex-direction: column; }
+.region-header {
+  font-size: 14pt;
+  font-weight: 700;
+  color: var(--c-primary);
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--c-line);
+}
+.region.region--wide { flex: 1.35; }
+.region.region--narrow { flex: 0.9; }
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 8px;
+}
+.stat-card {
+  padding: 10px 0;
+}
+.stat-card .stat-number { font-size: 22pt; }
+.stat-card .stat-desc { font-size: 13px; color: var(--c-ink); line-height: 1.4; margin-top: 4px; }
+
+.region-visual {
+  margin-top: 10px;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.region-visual img { max-width: 100%; max-height: 100%; object-fit: contain; }
+
+.big-stat-block {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+.big-stat-block .stat-number { font-size: 40pt; }
+.big-stat-block .stat-caption { font-size: 16px; color: var(--c-ink); margin-top: 8px; line-height: 1.5; max-width: 420px; }
+
+/* ============================================================
+   Three-Column Insight Layout (three-column.md)
+   [C-FIX #1] tc-visual 내부에 tc-icon-frame(고정 크기 원형 틴트 타일)을 추가해
+   §5 "Main Visual이 Column 콘텐츠 영역의 55~65%를 차지"를 실제로 채운다.
+   기존(A)에는 54px 아이콘 글리프만 flex:1 컨테이너 중앙에 떠 있어 컨테이너는
+   크지만 실제 시각 밀도가 낮았다(QA Visual Quality Check에서 스크린샷으로 확인).
+   ============================================================ */
+
+/* [Mini QA 2차] three-column.md §7: Divider는 Header Bar를 침범하지 않고
+   Column Content 영역(Key Message~Evidence, Header 제외) 내부에서 상하
+   inset해 배치한다. 기존엔 .tc-visual(Header+Key Message 제외 영역)에만
+   inset을 걸어 Divider 범위가 §7이 말하는 "Column Content 전체"보다 좁았고,
+   0.5pt 서브픽셀 폭이 Slide 10과 동일한 이유로 특정 좌표에서 렌더링되지
+   않는 경우가 있어 공용 .v-divider(1px로 조정됨)를 재사용하는 실제 요소로
+   교체한다. */
+.three-col { display: flex; height: 100%; gap: 14px; position: relative; }
+.three-col .v-divider {
+  position: absolute;
+  top: 20%;
+  bottom: 9%;
+}
+.three-col .v-divider.tc-divider-1 { left: 33.13%; transform: translateX(-50%); }
+.three-col .v-divider.tc-divider-2 { left: 66.87%; transform: translateX(-50%); }
+.tc-col { flex: 1; display: flex; flex-direction: column; }
+.tc-header {
+  height: 0.561in;
+  background: var(--c-tint50);
+  border-top: 0.75pt solid var(--c-primary);
+  border-bottom: 0.5pt solid var(--c-primary);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20pt; font-weight: 600; color: #0F1E1F; text-align: center; padding: 0 10px;
+}
+.tc-key-message {
+  margin: 16px auto 0;
+  width: 80%;
+  text-align: center;
+  font-size: 18pt;
+  font-weight: 800;
+  color: var(--c-primary);
+  line-height: 1.35;
+}
+.tc-visual {
+  flex: 1;
+  margin-top: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 20px;
+  position: relative;
+}
+.tc-visual .tc-icon-frame {
+  width: 210px;
+  height: 210px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: var(--c-tint50);
+  border: 1px solid var(--c-line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+.tc-visual .tc-icon { font-size: 92px; color: var(--c-secondary); line-height: 1; }
+/* [Mini QA #3] max-width를 260px 고정값에서 실제 Column Content Area 폭
+   기준(.tc-visual의 padding을 뺀 나머지 100%)으로 변경 — 260px는 세 컬럼
+   분할(약 335px 사용 가능)보다 좁아 불필요한 줄바꿈을 유발했다.
+   [Mini QA 2차] word-break:keep-all 추가 — 원인은 폭 부족이 아니라(단어
+   자체는 335px 안에 충분히 들어감) 브라우저의 한글 기본 줄바꿈이 어절
+   내부(음절 사이)에서도 끊기는 것이 허용돼 있었기 때문이다. keep-all은
+   한글을 공백(어절) 단위로만 줄바꿈하도록 강제한다 — Font Size는 16pt
+   그대로 유지. */
+.tc-visual .tc-evidence { font-size: 16pt; color: var(--c-slate); line-height: 1.6; max-width: 100%; word-break: keep-all; overflow-wrap: normal; }
+
+/* ============================================================
+   Process + Comparison Layout (process-comparison.md)
+   ============================================================ */
+
+.pc-wrap { display: flex; flex-direction: column; height: 100%; }
+.pc-upper { flex: 0 0 56%; display: flex; flex-direction: column; }
+.pc-flow-label { font-size: 12pt; color: var(--c-gray); font-weight: 600; margin-bottom: 10px; letter-spacing: 0.5px; }
+.pc-flow { flex: 1; display: flex; align-items: center; gap: 0; }
+.pc-stage { flex: 1; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 8px; }
+.pc-stage-visual {
+  width: 100%;
+  height: 120px;
+  display: flex; align-items: center; justify-content: center;
+  border: 1px solid var(--c-line);
+  background: var(--c-mist);
+  overflow: hidden;
+}
+.pc-stage-visual img { width: 100%; height: 100%; object-fit: cover; }
+.pc-stage-name { font-size: 14px; font-weight: 600; color: var(--c-ink); }
+.pc-stage-sub { font-size: 12px; color: var(--c-slate); }
+.pc-arrow { flex: 0 0 28px; display: flex; align-items: center; justify-content: center; color: var(--c-primary); font-size: 20px; }
+.pc-lower {
+  flex: 1;
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid var(--c-line);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.pc-lower-label { font-size: 12pt; color: var(--c-gray); font-weight: 600; letter-spacing: 0.5px; }
+.pc-limitations { display: flex; gap: 20px; }
+.pc-limitation { flex: 1; font-size: 15px; color: var(--c-ink); line-height: 1.5; padding-left: 14px; border-left: 2px solid var(--c-line); }
+.pc-conclusion {
+  margin-top: 4px;
+  font-size: 18pt; font-weight: 800; color: var(--c-primary);
+}
+.pc-result-row { display: flex; gap: 28px; align-items: center; }
+.pc-result-stat { display: flex; flex-direction: column; }
+
+/* ============================================================
+   Before + After — Variant A (Process Transformation)
+   ============================================================ */
+
+.ba-wrap { display: flex; height: 100%; align-items: stretch; }
+.ba-col { width: 44%; display: flex; flex-direction: column; }
+.ba-center { width: 12%; display: flex; align-items: center; justify-content: center; }
+.ba-center .arrow-glyph {
+  font-size: 34px;
+  color: var(--c-primary);
+}
+.ba-header {
+  height: 0.561in;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20pt; font-weight: 600; color: #0F1E1F;
+  letter-spacing: -0.3pt;
+}
+.ba-header.existing { background: transparent; border-top: 0.75pt solid var(--c-line); border-bottom: 0.5pt solid var(--c-line); }
+.ba-header.improved { background: var(--c-tint50); border-top: 0.75pt solid var(--c-primary); border-bottom: 0.5pt solid var(--c-primary); }
+.ba-body { flex: 1; padding-top: 18px; display: flex; flex-direction: column; }
+.ba-visual {
+  flex: 1;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 10px;
+  text-align: center;
+}
+.ba-visual img { max-width: 88%; max-height: 55%; object-fit: contain; }
+.ba-visual .ba-visual-caption { font-size: 13px; color: var(--c-slate); }
+.ba-steps { display: flex; flex-direction: column; gap: 8px; width: 100%; }
+.ba-step {
+  border: 1px solid var(--c-line);
+  padding: 9px 10px;
+  font-size: 13px;
+  text-align: center;
+  color: var(--c-ink);
+  background: #fff;
+}
+.ba-col.improved .ba-step { border-color: var(--c-primary); color: var(--c-dark); font-weight: 600; }
+.ba-connector { height: 10px; display: flex; align-items: center; justify-content: center; color: var(--c-gray); font-size: 11px; }
+.ba-badge {
+  align-self: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--c-primary);
+  margin-top: 6px;
+}
+.ba-stat-row { display: flex; justify-content: center; gap: 24px; margin-top: 14px; }
+
+/* ============================================================
+   Before + After — Variant B (Comparison Table)
+   [C-FIX #4] before-after.md §5.1 기본 폭(Criteria 20% : Existing 39% :
+   Improved 41%)을 colgroup + table-layout:fixed로 명시 적용. A는 existing/
+   improved가 39:39로 동일 폭이었음(§5.1 위반).
+   ============================================================ */
+
+.bat-table { width: 100%; border-collapse: collapse; height: 100%; table-layout: fixed; }
+.bat-table col.criteria-col { width: 20%; }
+.bat-table col.existing-col { width: 39%; }
+.bat-table col.improved-col { width: 41%; }
+.bat-table th, .bat-table td { border-bottom: 1px solid var(--c-line); padding: 10px 14px; text-align: center; vertical-align: middle; }
+.bat-table th { font-size: 16px; font-weight: 600; height: 0.561in; }
+.bat-table thead th.criteria-h { background: transparent; }
+.bat-table thead th.existing-h { background: transparent; color: var(--c-ink); border-bottom: 2px solid var(--c-line); }
+.bat-table thead th.improved-h { background: var(--c-primary); color: #fff; border-bottom: 2px solid var(--c-primary); }
+.bat-table td.criteria { text-align: left; font-size: 14px; font-weight: 600; color: var(--c-gray); }
+.bat-table td.existing { color: var(--c-ink); font-size: 15px; }
+.bat-table td.improved { color: var(--c-primary); font-size: 15px; font-weight: 700; }
+.bat-table tbody tr:last-child td { border-bottom: none; }
+
+/* ============================================================
+   Table Comparison (table-comparison.md)
+   [C-FIX #2] (a) Header Row 전체 통일 Fill(§6) — '구분' 헤더도 다른 헤더와
+   동일한 Main Color Fill 적용(A는 transparent 인라인 예외로 위반).
+   (b) Cell 중앙 정렬 기본(§5) — .crit 셀 left→center로 수정(A 위반).
+   (c) [Mini QA #4 갱신] Grid~Highlight Band를 margin-top:auto로 하단에 붙이지
+   않고 .tcmp-wrap 전체를 중앙 정렬 + 고정 Gap으로 바꿔 하나의 Content Group으로
+   응집시킨다(margin-top:auto도 flex:1/space-between과 같은 "자동 여백 배분"
+   anti-pattern이라 SKILL.md 기준에 따라 제거).
+   (d) [Mini QA #4] §4 "같은 역할 Target Column(COSOLUS/벨기에/중국)은 동일 폭"을
+   table-layout:fixed + colgroup으로 명시 적용 — 기존엔 폭 지정이 없어 브라우저
+   auto layout이 텍스트 길이에 따라 COSOLUS 열만 좁게 배분했다(§4 위반).
+   ============================================================ */
+
+/* [C2-FIX Typography] table-comparison.md §10: Header Row Label 14pt / Body·Data
+   Cell 16pt / Criteria Column Label 14pt / Footnote 14pt — 기존 14px/13px/15px는
+   px/pt 혼동으로 실제 10.5pt/9.75pt/11.25pt로 렌더링되던 문제를 수정. */
+.tcmp-wrap { display: flex; flex-direction: column; height: 100%; justify-content: center; }
+.tcmp-table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+.tcmp-table col.tcmp-criteria-col { width: 18%; }
+.tcmp-table col.tcmp-target-col { width: 27.33%; }
+.tcmp-table th, .tcmp-table td { border: 1px solid var(--c-line); padding: 22px 16px; text-align: center; vertical-align: middle; font-size: 16pt; }
+.tcmp-table thead th { background: var(--c-primary); color: #fff; font-weight: 700; font-size: 14pt; }
+.tcmp-table td.crit { text-align: center; font-weight: 600; color: var(--c-slate); background: var(--c-mist); font-size: 14pt; }
+.tcmp-table td.highlight { color: var(--c-primary); font-weight: 700; }
+.tcmp-table th.highlight-col, .tcmp-table td.highlight-col {
+  border-left: 2px solid var(--c-primary);
+  border-right: 2px solid var(--c-primary);
+}
+.tcmp-table tr:first-child th.highlight-col { border-top: 2px solid var(--c-primary); }
+.tcmp-table tr:last-child td.highlight-col { border-bottom: 2px solid var(--c-primary); }
+.tcmp-source-note { margin-top: 10px; }
+.tcmp-highlight-band {
+  margin-top: 28px;
+  padding: 20px 22px;
+  background: var(--c-tint50);
+  border-left: 3px solid var(--c-primary);
+  font-size: 14pt;
+  color: var(--c-dark);
+  font-weight: 600;
+  line-height: 1.6;
+}
+
+/* ============================================================
+   Benefit + Impact (benefit-impact.md)
+   [C-FIX #3] (a) 상단 '.bi-core-tech' 중복 요약 블록 제거 — §1 "Core
+   Technology는 Main Title에서 이미 전달되므로 본문은 Benefit 증명에 집중"
+   위반(A는 Main Title과 겹치는 KEY ADVANTAGES 블록을 본문 최상단에 다시
+   배치). 4개 강점은 각 Benefit Area의 Supporting Text로 분산 배치.
+   (b) Evidence Visual을 '큰 숫자만 여백에 배치'(§7 Avoid 명시 금지 패턴)
+   에서 Before/After 막대 비교(.evidence-bar-*)로 재구성 — 실제 수치(3%/
+   90%/50%)는 그대로 사용하고 시각화 형식만 변경.
+   ============================================================ */
+
+.bi-wrap { display: flex; flex-direction: column; height: 100%; }
+.bi-headers { display: flex; height: 0.561in; }
+.bi-header { flex: 1; display: flex; align-items: center; justify-content: center; font-size: 20pt; font-weight: 600; color: #0F1E1F; background: var(--c-tint50); border-top: 0.75pt solid var(--c-primary); border-bottom: 0.5pt solid var(--c-primary); }
+.bi-header-gap { width: 1.5%; }
+.bi-body { flex: 1; display: flex; padding-top: 22px; }
+/* [Mini QA #5] Hard Rule §11 + benefit-impact.md §5: Vertical Divider는 공용
+   .v-divider(Gradient·중앙 Main Color·상하 fade-out, 이미 정의돼 있었으나 이
+   슬라이드가 인라인 border-left로 재구현해 스펙이 새어나갔었음)를 그대로
+   재사용하고, Content Area 내부 84%만 커버하도록 상하 inset한다. */
+.bi-v-divider { height: 84%; align-self: center; }
+/* [Mini QA #2] bi-message~bi-evidence~bi-support를 하나의 Content Group으로
+   응집시키기 위해 컬럼 전체를 중앙 정렬한다(Design System §5 "flex:1/
+   justify-content:center로 여백을 배분하는 구현이 Content Group 내부 요소를
+   과도하게 떨어뜨리지 않도록" 원칙) — 기존에는 bi-evidence만 flex:1로 커서
+   메시지-그래프-하단 사이에 방치된 빈 공간이 생겼다. */
+.bi-area { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 0 26px; }
+.bi-message { font-size: 18pt; font-weight: 600; color: var(--c-ink); line-height: 1.4; margin-bottom: 18px; }
+.bi-evidence { width: 100%; max-width: 380px; display: flex; flex-direction: column; gap: 16px; margin: 20px 0; }
+.evidence-bar-row { display: flex; align-items: center; gap: 12px; }
+/* [Typography Mini Test] benefit-impact.md §16: Chart·Table Label 14pt,
+   Body/Supporting Text 16pt. Stat 계열(evidence-bar-value)은 26pt로 통일해
+   "동일 역할 Deck 전체 일관성"을 맞춘다(기존 existing 18px/improved 22px로
+   갈라져 있던 값을 통합 — 강조는 Hard Rule §5 "Font Weight→Main Color" 원칙대로
+   색상으로만 표현하고 크기로는 하지 않는다). */
+.evidence-bar-label { flex: 0 0 68px; font-size: 14pt; color: var(--c-slate); text-align: right; font-weight: 500; }
+/* [Mini QA #5] benefit-impact.md §6 "Evidence Visual은 Benefit Area에서
+   가장 넓은 비중" — Container(응집도)는 이전에 고쳤으나 막대 자체(잉크)가
+   가늘어 여전히 비중이 작아 보였다. 두께를 18px→30px로 키워 실제 시각적
+   무게를 보강(레이아웃 구조·비율은 그대로, Typography 폰트 크기는 불변). */
+.evidence-bar-track { flex: 1; height: 30px; background: var(--c-mist); border-radius: 4px; overflow: hidden; }
+.evidence-bar-fill { height: 100%; border-radius: 4px; }
+.evidence-bar-fill.existing { background: var(--c-gray); }
+.evidence-bar-fill.improved { background: var(--c-primary); }
+.evidence-bar-value { flex: 0 0 60px; font-size: 26pt; font-weight: 800; color: var(--c-ink); text-align: left; }
+.evidence-bar-row.improved-row .evidence-bar-value { color: var(--c-primary); }
+.bi-support { margin-top: 16px; font-size: 16pt; color: var(--c-slate); line-height: 1.6; padding: 0 6px; }
+
+/* ============================================================
+   Two-Column Summary (Executive Summary, L18)
+   ============================================================ */
+
+/* [Mini QA #6] space-between은 Claude PPT Design System §5가 이름으로 지목한
+   anti-pattern("Content Group 내부 요소를 과도하게 떨어뜨리는" 기법)이다.
+   2~3개뿐인 sibling Content Group을 컬럼 상/하단으로 밀어붙여 중앙에 죽은
+   공간을 만들었으므로, 고정 Gap + 응집된 흐름으로 바꾼다.
+   [Mini QA 2차] center는 컬럼마다 총 콘텐츠 높이가 달라(왼쪽 2블록 vs
+   오른쪽 3블록+Highlight) 각자 다른 만큼 위로 밀려 올라가 "기술력"과
+   "투자라운드"의 시작 Y가 서로 달라졌다(Parallel Layout Alignment "동일
+   Top Line" 위반). flex-start로 바꿔 두 컬럼 모두 동일 지점에서 시작하게
+   하고, 컬럼별 총 높이 차이는 하단 여백으로만 흡수한다(Design System §5
+   "Content Difference 처리" — 콘텐츠량 차이는 외곽 정렬이 아니라 내부로
+   흡수). */
+/* [공통 배치 원칙 적용] 병렬 Region Top Line은 Content Area 최상단에
+   붙이지 않고 상단 여백을 확보한 위치에서 함께 시작(padding-top). Group
+   간 기본 Gap(48px)과, "투자라운드~80억원"처럼 같은 의미로 묶이는 요소
+   사이의 좁은 Gap(20px, .summary-highlight의 margin-top으로 조정)을
+   구분한다 — 우연히 인접한 두 Group을 넓은 Gap 하나로 뭉뚱그리지 않는다. */
+.summary-wrap { display: flex; height: 100%; gap: 40px; padding-top: 28px; }
+.summary-col { flex: 1; display: flex; flex-direction: column; justify-content: flex-start; gap: 48px; }
+.summary-block { margin-bottom: 0; }
+.summary-block-title { font-size: 15pt; font-weight: 700; color: var(--c-primary); margin-bottom: 10px; }
+.summary-item { font-size: 16pt; color: var(--c-ink); line-height: 1.6; margin-bottom: 6px; padding-left: 16px; position: relative; }
+.summary-item::before { content: "·"; position: absolute; left: 0; color: var(--c-primary); font-weight: 800; }
+.summary-highlight {
+  margin-top: -28px; /* 48px(Group 간 기본 Gap) - 20px(투자라운드와의 좁은 Gap) */
+  padding: 18px 22px;
+  background: var(--c-dark);
+  color: #fff;
+}
+.summary-highlight .sh-label { font-size: 14pt; color: var(--c-light); letter-spacing: 0.5px; }
+.summary-highlight .sh-value { font-size: 26pt; font-weight: 800; margin-top: 4px; }
+
+/* ============================================================
+   Customer References / Proof (L21, Milestone)
+   ============================================================ */
+
+.mile-wrap { height: 100%; display: flex; flex-direction: column; justify-content: center; gap: 8px; }
+.mile-goal { font-size: 20pt; font-weight: 700; color: var(--c-dark); line-height: 1.5; margin-bottom: 30px; }
+.mile-goal .stat-number { font-size: 24pt; }
+.mile-regions { display: flex; gap: 30px; align-items: flex-start; }
+.mile-region { flex: 1; display: flex; flex-direction: column; border-top: 2px solid var(--c-primary); padding-top: 16px; }
+.mile-region-title { font-size: 16pt; font-weight: 700; color: var(--c-primary); margin-bottom: 12px; }
+.mile-region-desc { font-size: 15px; color: var(--c-ink); line-height: 1.7; margin-bottom: 18px; }
+.mile-logo-row { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; margin-top: 18px; }
+.mile-logo-row img { height: 40px; width: auto; max-width: 110px; object-fit: contain; }
+.mile-photo { width: 100%; height: 220px; overflow: hidden; margin-top: 4px; }
+.mile-photo img { width: 100%; height: 100%; object-fit: cover; }
+
+@media print {
+  body { background: #fff; }
+  .slide { margin: 0; box-shadow: none; page-break-after: always; display: block !important; }
+}

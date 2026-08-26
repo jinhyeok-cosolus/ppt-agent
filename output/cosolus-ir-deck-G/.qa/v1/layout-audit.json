@@ -1,0 +1,474 @@
+{
+  "slide_1": {
+    "overflow": [],
+    "clipped": [],
+    "overlaps": [
+      {
+        "a": {
+          "tag": "span",
+          "class": "flow-node-label",
+          "text": "전기차 배터리팩"
+        },
+        "b": {
+          "tag": "svg",
+          "class": "flow-connectors",
+          "text": ""
+        },
+        "overlap_ratio": 1,
+        "pair_type": "text-svg"
+      },
+      {
+        "a": {
+          "tag": "span",
+          "class": "flow-process-label",
+          "text": "전처리 공정"
+        },
+        "b": {
+          "tag": "svg",
+          "class": "flow-connectors",
+          "text": ""
+        },
+        "overlap_ratio": 1,
+        "pair_type": "text-svg"
+      },
+      {
+        "a": {
+          "tag": "span",
+          "class": "flow-node-label",
+          "text": "블랙매스"
+        },
+        "b": {
+          "tag": "svg",
+          "class": "flow-connectors",
+          "text": ""
+        },
+        "overlap_ratio": 1,
+        "pair_type": "text-svg"
+      },
+      {
+        "a": {
+          "tag": "span",
+          "class": "flow-process-label",
+          "text": "용매추출"
+        },
+        "b": {
+          "tag": "svg",
+          "class": "flow-connectors",
+          "text": ""
+        },
+        "overlap_ratio": 1,
+        "pair_type": "text-svg"
+      },
+      {
+        "a": {
+          "tag": "span",
+          "class": "flow-node-label",
+          "text": "회수 화합물 4종MnSO4·NiSO4·CoSO4·Li2CO3"
+        },
+        "b": {
+          "tag": "svg",
+          "class": "flow-connectors",
+          "text": ""
+        },
+        "overlap_ratio": 1,
+        "pair_type": "text-svg"
+      },
+      {
+        "a": {
+          "tag": "span",
+          "class": "sub",
+          "text": "MnSO4·NiSO4·CoSO4·Li2CO3"
+        },
+        "b": {
+          "tag": "svg",
+          "class": "flow-connectors",
+          "text": ""
+        },
+        "overlap_ratio": 1,
+        "pair_type": "text-svg"
+      },
+      {
+        "a": {
+          "tag": "span",
+          "class": "flow-node-label",
+          "text": "폐흑연(1세대 부산물)"
+        },
+        "b": {
+          "tag": "svg",
+          "class": "flow-connectors",
+          "text": ""
+        },
+        "overlap_ratio": 1,
+        "pair_type": "text-svg"
+      },
+      {
+        "a": {
+          "tag": "span",
+          "class": "sub",
+          "text": "(1세대 부산물)"
+        },
+        "b": {
+          "tag": "svg",
+          "class": "flow-connectors",
+          "text": ""
+        },
+        "overlap_ratio": 1,
+        "pair_type": "text-svg"
+      },
+      {
+        "a": {
+          "tag": "span",
+          "class": "flow-process-label",
+          "text": "부유선별"
+        },
+        "b": {
+          "tag": "svg",
+          "class": "flow-connectors",
+          "text": ""
+        },
+        "overlap_ratio": 1,
+        "pair_type": "text-svg"
+      },
+      {
+        "a": {
+          "tag": "span",
+          "class": "flow-node-label",
+          "text": "양극재용 블랙매스"
+        },
+        "b": {
+          "tag": "svg",
+          "class": "flow-connectors",
+          "text": ""
+        },
+        "overlap_ratio": 1,
+        "pair_type": "text-svg"
+      },
+      {
+        "a": {
+          "tag": "span",
+          "class": "flow-process-label",
+          "text": "건식환원"
+        },
+        "b": {
+          "tag": "svg",
+          "class": "flow-connectors",
+          "text": ""
+        },
+        "overlap_ratio": 1,
+        "pair_type": "text-svg"
+      },
+      {
+        "a": {
+          "tag": "span",
+          "class": "flow-node-label",
+          "text": "코발트 · 니켈"
+        },
+        "b": {
+          "tag": "svg",
+          "class": "flow-connectors",
+          "text": ""
+        },
+        "overlap_ratio": 1,
+        "pair_type": "text-svg"
+      },
+      {
+        "a": {
+          "tag": "span",
+          "class": "flow-node-label",
+          "text": "음극재용 블랙매스"
+        },
+        "b": {
+          "tag": "svg",
+          "class": "flow-connectors",
+          "text": ""
+        },
+        "overlap_ratio": 1,
+        "pair_type": "text-svg"
+      },
+      {
+        "a": {
+          "tag": "span",
+          "class": "flow-process-label",
+          "text": "유도가열"
+        },
+        "b": {
+          "tag": "svg",
+          "class": "flow-connectors",
+          "text": ""
+        },
+        "overlap_ratio": 1,
+        "pair_type": "text-svg"
+      },
+      {
+        "a": {
+          "tag": "span",
+          "class": "flow-node-label",
+          "text": "고순도 정제흑연"
+        },
+        "b": {
+          "tag": "svg",
+          "class": "flow-connectors",
+          "text": ""
+        },
+        "overlap_ratio": 1,
+        "pair_type": "text-svg"
+      },
+      {
+        "a": {
+          "tag": "svg",
+          "class": "flow-connectors",
+          "text": ""
+        },
+        "b": {
+          "tag": "img",
+          "class": "",
+          "text": "",
+          "src": "assets/images/img1.png"
+        },
+        "overlap_ratio": 1,
+        "pair_type": "svg-img"
+      },
+      {
+        "a": {
+          "tag": "svg",
+          "class": "flow-connectors",
+          "text": ""
+        },
+        "b": {
+          "tag": "img",
+          "class": "",
+          "text": "",
+          "src": "assets/images/img3.png"
+        },
+        "overlap_ratio": 1,
+        "pair_type": "svg-img"
+      },
+      {
+        "a": {
+          "tag": "svg",
+          "class": "flow-connectors",
+          "text": ""
+        },
+        "b": {
+          "tag": "img",
+          "class": "",
+          "text": "",
+          "src": "assets/images/img4.png"
+        },
+        "overlap_ratio": 1,
+        "pair_type": "svg-img"
+      },
+      {
+        "a": {
+          "tag": "svg",
+          "class": "flow-connectors",
+          "text": ""
+        },
+        "b": {
+          "tag": "img",
+          "class": "",
+          "text": "",
+          "src": "assets/images/img5.png"
+        },
+        "overlap_ratio": 1,
+        "pair_type": "svg-img"
+      },
+      {
+        "a": {
+          "tag": "svg",
+          "class": "flow-connectors",
+          "text": ""
+        },
+        "b": {
+          "tag": "img",
+          "class": "",
+          "text": "",
+          "src": "assets/images/img6.png"
+        },
+        "overlap_ratio": 1,
+        "pair_type": "svg-img"
+      },
+      {
+        "a": {
+          "tag": "svg",
+          "class": "flow-connectors",
+          "text": ""
+        },
+        "b": {
+          "tag": "img",
+          "class": "",
+          "text": "",
+          "src": "assets/images/img7.png"
+        },
+        "overlap_ratio": 1,
+        "pair_type": "svg-img"
+      },
+      {
+        "a": {
+          "tag": "svg",
+          "class": "flow-connectors",
+          "text": ""
+        },
+        "b": {
+          "tag": "img",
+          "class": "",
+          "text": "",
+          "src": "assets/images/img8.png"
+        },
+        "overlap_ratio": 1,
+        "pair_type": "svg-img"
+      },
+      {
+        "a": {
+          "tag": "svg",
+          "class": "flow-connectors",
+          "text": ""
+        },
+        "b": {
+          "tag": "img",
+          "class": "",
+          "text": "",
+          "src": "assets/images/img9.png"
+        },
+        "overlap_ratio": 0.94,
+        "pair_type": "svg-img"
+      },
+      {
+        "a": {
+          "tag": "svg",
+          "class": "flow-connectors",
+          "text": ""
+        },
+        "b": {
+          "tag": "img",
+          "class": "",
+          "text": "",
+          "src": "assets/images/img10.jpeg"
+        },
+        "overlap_ratio": 1,
+        "pair_type": "svg-img"
+      },
+      {
+        "a": {
+          "tag": "svg",
+          "class": "flow-connectors",
+          "text": ""
+        },
+        "b": {
+          "tag": "img",
+          "class": "",
+          "text": "",
+          "src": "assets/images/img11.png"
+        },
+        "overlap_ratio": 1,
+        "pair_type": "svg-img"
+      },
+      {
+        "a": {
+          "tag": "svg",
+          "class": "flow-connectors",
+          "text": ""
+        },
+        "b": {
+          "tag": "img",
+          "class": "",
+          "text": "",
+          "src": "assets/images/img12.png"
+        },
+        "overlap_ratio": 1,
+        "pair_type": "svg-img"
+      },
+      {
+        "a": {
+          "tag": "svg",
+          "class": "flow-connectors",
+          "text": ""
+        },
+        "b": {
+          "tag": "img",
+          "class": "",
+          "text": "",
+          "src": "assets/images/img14.png"
+        },
+        "overlap_ratio": 1,
+        "pair_type": "svg-img"
+      },
+      {
+        "a": {
+          "tag": "svg",
+          "class": "flow-connectors",
+          "text": ""
+        },
+        "b": {
+          "tag": "img",
+          "class": "",
+          "text": "",
+          "src": "assets/images/img16.png"
+        },
+        "overlap_ratio": 1,
+        "pair_type": "svg-img"
+      },
+      {
+        "a": {
+          "tag": "svg",
+          "class": "flow-connectors",
+          "text": ""
+        },
+        "b": {
+          "tag": "img",
+          "class": "",
+          "text": "",
+          "src": "assets/images/img17.png"
+        },
+        "overlap_ratio": 1,
+        "pair_type": "svg-img"
+      },
+      {
+        "a": {
+          "tag": "svg",
+          "class": "flow-connectors",
+          "text": ""
+        },
+        "b": {
+          "tag": "img",
+          "class": "",
+          "text": "",
+          "src": "assets/images/img13.png"
+        },
+        "overlap_ratio": 1,
+        "pair_type": "svg-img"
+      },
+      {
+        "a": {
+          "tag": "svg",
+          "class": "flow-connectors",
+          "text": ""
+        },
+        "b": {
+          "tag": "img",
+          "class": "",
+          "text": "",
+          "src": "assets/images/img15.png"
+        },
+        "overlap_ratio": 1,
+        "pair_type": "svg-img"
+      },
+      {
+        "a": {
+          "tag": "svg",
+          "class": "flow-connectors",
+          "text": ""
+        },
+        "b": {
+          "tag": "img",
+          "class": "",
+          "text": "",
+          "src": "assets/images/img18.png"
+        },
+        "overlap_ratio": 1,
+        "pair_type": "svg-img"
+      }
+    ],
+    "flagged": true
+  }
+}

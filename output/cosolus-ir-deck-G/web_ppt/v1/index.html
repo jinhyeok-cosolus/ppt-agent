@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>COSOLUS IR Deck G — 웹PPT</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!--
+  슬라이드는 <section class="slide" data-index="N"> 단위로 구성한다.
+  목표 슬라이드 수 1장(cosolus-ir-deck-G) — 별도 표지 없이 본문 슬라이드 1장으로 구성.
+-->
+<div id="deck">
+
+  <section class="slide slide--content is-active" data-index="1">
+
+    <!-- 공통 Header System (Hard Rule §9) -->
+    <div class="header-ci"><img src="assets/ci/cosolus-ci.png" alt="COSOLUS CI"></div>
+    <div class="header-submessage">We promise tomorrow</div>
+    <div class="header-divider"></div>
+    <div class="header-section-label">TECHNOLOGY</div>
+    <h2 class="header-main-title">친환경 차세대 배터리 재활용 공정기술 (2세대)</h2>
+    <div class="page-number">1</div>
+
+    <!-- Region A: 결론 헤드라인 (Integrated Conclusion, 전체 폭 기준) -->
+    <div class="conclusion-headline">
+      <span class="ch-label">COSOLUS 2세대 공정</span>
+      <span class="ch-sep">:</span>
+      <span class="ch-term">경제성</span>
+      <span class="ch-sep">/</span>
+      <span class="ch-term">친환경성</span>
+      <span class="ch-sep">/</span>
+      <span class="ch-term">양산성</span>
+      <span class="ch-label">확보</span>
+    </div>
+
+    <!-- Region B: Flow Diagram 본체 (L25 Symmetric Two-Split) -->
+    <div class="flow-field">
+
+      <svg class="flow-connectors" viewBox="0 0 1152 453" width="1152" height="453">
+        <defs>
+          <marker id="arrow-slate" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse">
+            <path d="M0,0 L9,4 L0,8 Z" fill="#5A6664"/>
+          </marker>
+          <marker id="arrow-gray" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse">
+            <path d="M0,0 L9,4 L0,8 Z" fill="#8C9694"/>
+          </marker>
+          <marker id="arrow-teal" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse">
+            <path d="M0,0 L9,4 L0,8 Z" fill="#067875"/>
+          </marker>
+        </defs>
+
+        <!-- 공통 시작 구간: 배터리팩 → (전처리) → 블랙매스 → 1차 분기점 -->
+        <path d="M138,210 L297,210" class="flow-connector-line flow-connector-line--common" marker-end="url(#arrow-slate)"/>
+        <path d="M394,210 L430,210" class="flow-connector-line flow-connector-line--common" marker-end="url(#arrow-slate)"/>
+
+        <!-- 1차 분기점(브래킷): 위쪽은 1세대(Gray) 절반, 아래쪽은 2세대(Teal) 절반 -->
+        <path d="M438,91 L438,210" class="flow-connector-line flow-connector-line--gen1"/>
+        <path d="M438,210 L438,329" class="flow-connector-line flow-connector-line--gen2"/>
+
+        <!-- Lane A(1세대): 분기점 → (용매추출) → 로컬 분기점 -->
+        <path d="M438,91 L660,91" class="flow-connector-line flow-connector-line--gen1" marker-end="url(#arrow-gray)"/>
+        <!-- Lane A 로컬 분기(Sibling Outputs): 회수 화합물 4종 / 폐흑연 -->
+        <path d="M668,46 L668,136" class="flow-connector-line flow-connector-line--gen1"/>
+        <path d="M668,46 L829,46" class="flow-connector-line flow-connector-line--gen1" marker-end="url(#arrow-gray)"/>
+        <path d="M668,136 L940,136 L940,100 L985,100" class="flow-connector-line flow-connector-line--gen1" marker-end="url(#arrow-gray)"/>
+
+        <!-- Lane B(2세대): 분기점 → (부유선별) → 2차 분기점 -->
+        <path d="M438,329 L684,329" class="flow-connector-line flow-connector-line--gen2" marker-end="url(#arrow-teal)"/>
+        <!-- 2차 분기(재분기): 양극재용 / 음극재용 -->
+        <path d="M691,265 L691,392" class="flow-connector-line flow-connector-line--gen2"/>
+        <path d="M691,265 L712,265" class="flow-connector-line flow-connector-line--gen2" marker-end="url(#arrow-teal)"/>
+        <path d="M691,392 L712,392" class="flow-connector-line flow-connector-line--gen2" marker-end="url(#arrow-teal)"/>
+
+        <!-- Sub-lane B1(양극재용): 블랙매스 → (건식환원) → 코발트·니켈 -->
+        <path d="M802,265 L985,265" class="flow-connector-line flow-connector-line--gen2" marker-end="url(#arrow-teal)"/>
+
+        <!-- Sub-lane B2(음극재용): 블랙매스 → (유도가열) → 고순도 정제흑연 -->
+        <path d="M802,392 L1008,392" class="flow-connector-line flow-connector-line--gen2" marker-end="url(#arrow-teal)"/>
+      </svg>
+
+      <!-- 공통 시작 Node -->
+      <div class="flow-node flow-node--start" style="left:81px; top:210px;">
+        <img src="assets/images/img1.png" alt="전기차 하부에 장착된 배터리팩 실사">
+        <span class="flow-node-label">전기차 배터리팩</span>
+      </div>
+      <div class="flow-process" style="left:219px; top:200px;">
+        <span class="flow-process-label">전처리 공정</span>
+        <img src="assets/images/img3.png" alt="파쇄·소각 아이콘">
+      </div>
+      <div class="flow-node flow-node--mid" style="left:346px; top:210px;">
+        <img src="assets/images/img4.png" alt="블랙매스 분말 실사">
+        <span class="flow-node-label">블랙매스</span>
+      </div>
+
+      <!-- 카테고리 라벨 (Region C) -->
+      <div class="flow-category-label flow-category-label--gen1" style="left:290px; top:55px;">기존공정(1세대)</div>
+      <div class="flow-category-label flow-category-label--gen2" style="left:290px; top:329px;">COSOLUS(2세대)</div>
+
+      <!-- Lane A(1세대) -->
+      <div class="flow-process" style="left:553px; top:81px;">
+        <span class="flow-process-label">용매추출</span>
+        <img src="assets/images/img5.png" alt="용매추출 반응조 설비 도해">
+      </div>
+      <div class="flow-output-group" style="left:922px; top:46px;">
+        <div class="og-images og-compounds">
+          <img src="assets/images/img6.png" alt="회수 화합물 분말 1">
+          <img src="assets/images/img7.png" alt="회수 화합물 분말 2">
+          <img src="assets/images/img8.png" alt="회수 화합물 분말 3">
+          <img src="assets/images/img9.png" alt="회수 화합물 분말 4">
+        </div>
+        <span class="flow-node-label">회수 화합물 4종<span class="sub">MnSO4·NiSO4·<br>CoSO4·Li2CO3</span></span>
+      </div>
+      <div class="flow-node flow-node--output" style="left:1040px; top:100px;">
+        <img src="assets/images/img10.jpeg" alt="폐흑연 실사">
+        <span class="flow-node-label">폐흑연<span class="sub">(1세대 부산물)</span></span>
+      </div>
+
+      <!-- Lane B(2세대) -->
+      <div class="flow-process" style="left:576px; top:319px;">
+        <span class="flow-process-label">부유선별</span>
+        <img src="assets/images/img11.png" alt="부유선별 설비 도해">
+      </div>
+
+      <!-- Sub-lane B1(양극재용) -->
+      <div class="flow-node flow-node--lane" style="left:760px; top:265px;">
+        <img src="assets/images/img12.png" alt="양극재용 블랙매스, NCM 조성 이미지">
+        <span class="flow-node-label">양극재용 블랙매스</span>
+      </div>
+      <div class="flow-process" style="left:899px; top:255px;">
+        <span class="flow-process-label">건식환원</span>
+        <img src="assets/images/img14.png" alt="건식환원 반응 이미지">
+      </div>
+      <div class="flow-output-group" style="left:1060px; top:265px;">
+        <div class="og-images og-metals">
+          <img src="assets/images/img16.png" alt="코발트">
+          <img src="assets/images/img17.png" alt="니켈">
+        </div>
+        <span class="flow-node-label">코발트 · 니켈</span>
+      </div>
+
+      <!-- Sub-lane B2(음극재용) -->
+      <div class="flow-node flow-node--lane" style="left:760px; top:392px;">
+        <img src="assets/images/img13.png" alt="음극재용 블랙매스, 금속 알갱이가 박힌 흑연 이미지">
+        <span class="flow-node-label">음극재용 블랙매스</span>
+      </div>
+      <div class="flow-process" style="left:899px; top:382px;">
+        <span class="flow-process-label">유도가열</span>
+        <img src="assets/images/img15.png" alt="유도가열 3단계 이미지">
+      </div>
+      <div class="flow-node flow-node--output" style="left:1060px; top:392px;">
+        <img src="assets/images/img18.png" alt="고순도 정제흑연 결정 이미지">
+        <span class="flow-node-label">고순도 정제흑연</span>
+      </div>
+
+      <!-- 구간 구분선: 1세대/2세대 사이 -->
+      <div class="flow-section-divider"></div>
+
+    </div>
+
+  </section>
+
+  <!-- SLIDES:INSERT -->
+
+</div>
+
+<div id="nav-hint" aria-hidden="true">← → 키로 슬라이드 이동</div>
+
+<script src="assets/vendor/chart.min.js"></script>
+<script>
+  const slides = Array.from(document.querySelectorAll(".slide"));
+  let current = 0;
+  function show(i) {
+    slides.forEach((s, idx) => s.classList.toggle("is-active", idx === i));
+  }
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowRight" && current < slides.length - 1) { current++; show(current); }
+    if (e.key === "ArrowLeft" && current > 0) { current--; show(current); }
+  });
+  show(0);
+</script>
+</body>
+</html>

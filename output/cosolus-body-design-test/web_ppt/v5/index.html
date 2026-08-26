@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>디자인 QA 테스트 — 본문 슬라이드 3종 (v5, Header 간격 임시 조정 2차)</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!--
+  디자인 QA 테스트용 웹PPT (정식 [1]~[9] 워크플로우 아님, material_analysis/slide_outline 없음).
+  목적: Hard Rule(docs/design-hard-rules/2026.08.12_design_hard-rules_V2.md) +
+  Claude PPT Design System(docs/design-system/Claude_PPT_Design_System.md)이
+  성격이 다른 본문 슬라이드 3장(텍스트 중심 / 이미지 중심 / 카드 비교 중심)에서
+  일관되게 적용되는지 확인. 표지 없음, 본문 슬라이드만 구성.
+  콘텐츠는 전부 테스트용 더미 정보이며 실제 사업 정보가 아니다.
+
+  v3: Hard Rule §9 "공통 Header System" 갱신 반영(Section Label 신규 추가 + Main Title/CI/Sub Message/
+  구분선 확정 좌표 반영). 본문 콘텐츠(텍스트/이미지/카드/데이터/문구)는 v2와 완전히 동일, 변경 없음.
+
+  [2026.08.13 정정] 최초 §9 좌표 반영치가 1920x1080 캔버스 기준으로 산출되어 실제 1280x720 캔버스에
+  그대로 대입되는 오류가 있었음. Hard Rule/design-rules.md §9를 1280x720 기준으로 정정한 뒤 style.css의
+  헤더 절대 좌표(CI/Tagline Y=28, 구분선 Y=56, Section Label Y=76, Main Title Y=102, Header Safe Area
+  하단 경계 Y=182)를 재수정. 본 index.html의 마크업(본문 콘텐츠, Section Label 텍스트)은 변경 없음.
+
+  v4: Hard Rule 미반영, style.css 헤더 좌표만 임시 조정(사용자 요청, 결과물 확인용).
+  CI 축소(24->22px)+CI/Sub Message 상단 여백 확대(top 28->20), Section Label/Main Title을
+  구분선에 더 가깝게 이동(top 76->68 / 102->92) 및 둘 사이 간격 축소(6->4px). 그 외 마크업·본문 디자인 동일.
+
+  v5: Hard Rule 미반영, style.css 헤더 좌표 2차 조정(사용자 요청).
+  CI/Sub Message를 구분선에 더 가깝게(top 20->25), Section Label을 구분선에 더 가깝게(top 68->62),
+  Section Label-Main Title 간격 축소(4->2px, top 92->84). 그 외 마크업·본문 디자인 동일.
+-->
+<div id="deck">
+
+  <!-- 슬라이드 1: 회사 소개 — 텍스트 + 핵심 정보 중심 -->
+  <section class="slide slide--content" data-index="1">
+    <img class="deck-logo" src="assets/images/cosolus-ci-2.png" alt="COSOLUS">
+    <span class="deck-tagline">We promise tomorrow</span>
+    <span class="deck-divider"></span>
+
+    <div class="slide-title-zone">
+      <p class="section-label">COMPANY</p>
+      <h1 class="slide-title">회사 소개</h1>
+    </div>
+
+    <div class="slide-content-zone">
+      <p class="headline">정밀 소재 기술로 산업 현장의 문제를 실질적으로 해결합니다.</p>
+      <p class="body-text">
+        코솔루스는 반도체·디스플레이·이차전지 공정에 특화된 기능성 화학 소재를 개발합니다.
+        고객사의 생산 효율과 품질 안정성을 함께 높이는 것을 목표로, 연구개발부터
+        양산 적용까지 전 과정을 함께 검토하는 파트너십 방식으로 협업합니다.
+      </p>
+
+      <div class="card-grid info-grid">
+        <div class="info-card">
+          <span class="info-value">2016</span>
+          <span class="info-label">설립연도</span>
+        </div>
+        <div class="info-card">
+          <span class="info-value">정밀화학 소재</span>
+          <span class="info-label">사업분야</span>
+        </div>
+        <div class="info-card">
+          <span class="info-value">3개국 5거점</span>
+          <span class="info-label">주요 거점</span>
+        </div>
+        <div class="info-card">
+          <span class="info-value">120명</span>
+          <span class="info-label">임직원 수</span>
+        </div>
+      </div>
+    </div>
+
+    <span class="deck-page">1</span>
+  </section>
+
+  <!-- 슬라이드 2: 제품 소개 — 이미지 + 제품 정보 중심 -->
+  <section class="slide slide--content" data-index="2">
+    <img class="deck-logo" src="assets/images/cosolus-ci-2.png" alt="COSOLUS">
+    <span class="deck-tagline">We promise tomorrow</span>
+    <span class="deck-divider"></span>
+
+    <div class="slide-title-zone">
+      <p class="section-label">PRODUCT</p>
+      <h1 class="slide-title">제품 소개</h1>
+    </div>
+
+    <div class="slide-content-zone">
+      <div class="product-layout">
+        <div class="product-image-col">
+          <div class="product-image">
+            <img src="assets/images/이미지_2.png" alt="제품/설비 이미지 (테스트용 예시)">
+          </div>
+          <span class="caption">생산 현장 설비 이미지 (예시)</span>
+        </div>
+        <div class="product-info-col">
+          <h2 class="product-name">코솔루스 EC-300 세정액</h2>
+          <p class="product-tagline">웨이퍼 표면의 미세 잔류물을 제거하는 고순도 공정용 세정 소재입니다.</p>
+          <div class="spec-list">
+            <div class="spec-row">
+              <span class="spec-label">주성분</span>
+              <span class="spec-value">고순도 불소계 화합물</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">순도</span>
+              <span class="spec-value">99.999%</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">적용 공정</span>
+              <span class="spec-value">웨이퍼 세정 공정</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <span class="deck-page">2</span>
+  </section>
+
+  <!-- 슬라이드 3: 핵심 경쟁력 — 3~4개 요소 비교·강조 -->
+  <section class="slide slide--content" data-index="3">
+    <img class="deck-logo" src="assets/images/cosolus-ci-2.png" alt="COSOLUS">
+    <span class="deck-tagline">We promise tomorrow</span>
+    <span class="deck-divider"></span>
+
+    <div class="slide-title-zone">
+      <p class="section-label">COMPETENCE</p>
+      <h1 class="slide-title">핵심 경쟁력</h1>
+      <p class="slide-subtitle">네 가지 축으로 기술 경쟁력을 확보합니다.</p>
+    </div>
+
+    <div class="slide-content-zone">
+      <div class="card-grid competence-grid">
+        <div class="competence-card">
+          <span class="competence-number">01</span>
+          <h3 class="competence-title">공정 특화 소재 설계</h3>
+          <p class="competence-desc">고객사 공정 조건에 맞춘 맞춤형 소재 포뮬레이션 역량을 보유합니다.</p>
+        </div>
+        <div class="competence-card">
+          <span class="competence-number">02</span>
+          <h3 class="competence-title">품질 안정성</h3>
+          <p class="competence-desc">생산 로트 간 편차를 최소화하는 표준화된 공정 관리 체계를 운영합니다.</p>
+        </div>
+        <div class="competence-card">
+          <span class="competence-number">03</span>
+          <h3 class="competence-title">신속 대응 체계</h3>
+          <p class="competence-desc">현장 이슈 접수 후 48시간 이내 1차 대응을 원칙으로 합니다.</p>
+        </div>
+        <div class="competence-card">
+          <span class="competence-number">04</span>
+          <h3 class="competence-title">지속가능 소재</h3>
+          <p class="competence-desc">저탄소 원료 전환을 통해 친환경 공정 전환을 지원합니다.</p>
+        </div>
+      </div>
+    </div>
+
+    <span class="deck-page">3</span>
+  </section>
+
+</div>
+
+<div id="nav-hint" aria-hidden="true">← → 키로 슬라이드 이동</div>
+
+<script src="assets/vendor/chart.min.js"></script>
+<script>
+  // 슬라이드 간 이동(브라우저 프레젠테이션 모드 대체용 최소 스크립트)
+  const slides = Array.from(document.querySelectorAll(".slide"));
+  let current = 0;
+  function show(i) {
+    slides.forEach((s, idx) => s.classList.toggle("is-active", idx === i));
+  }
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowRight" && current < slides.length - 1) { current++; show(current); }
+    if (e.key === "ArrowLeft" && current > 0) { current--; show(current); }
+  });
+  show(0);
+</script>
+</body>
+</html>

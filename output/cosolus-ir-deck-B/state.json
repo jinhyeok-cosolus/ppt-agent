@@ -1,0 +1,21 @@
+{
+  "project_name": "cosolus-ir-deck-B",
+  "stage": "8",
+  "audience": "고객사/외부 청중",
+  "language": "ko",
+  "presentation_time_min": 20,
+  "target_slide_count": 15,
+  "web_ppt_version": "v1",
+  "pptx_generated": true,
+  "source_material": "input/코솔러스_IR_필드테스트용_콘텐츠자료_V2.docx",
+  "reference_material": null,
+  "human_review_mode": "skip_intermediate_confirmation",
+  "ab_test_note": "output/cosolus-ir-deck(A)와의 A/B 비교용 B 프로젝트. A와 동일 입력자료·동일 조건(청중/언어/발표시간/목표 슬라이드 수)을 유지하되, [3] 단계에서만 slide-content-structuring Skill을 호출하지 않고 teammate-version/.claude/agents/content-designer/AGENT.md의 Skill 도입 이전 판단 흐름을 참고해 재현한다. material_analysis.json/extracted_images는 A의 [2] 산출물을 그대로 복사해 재사용([2]는 A/B 공통 변수가 아니므로 변경 변수를 [3]/Layout 판단 하나로 한정하기 위함).",
+  "history": [
+    {"stage": "1", "note": "A(cosolus-ir-deck)와 동일 조건으로 확인: source=input/코솔러스_IR_필드테스트용_콘텐츠자료_V2.docx, 청중=고객사/외부 청중, 언어=한국어, 발표시간=20분, 목표 슬라이드 수=15장, 레퍼런스 없음, 중간 확인(Human Review [4]/[6]) 생략.", "at": "2026-08-19"},
+    {"stage": "2", "note": "A의 material_analysis.json·extracted_images를 그대로 복사해 재사용 (동일 입력자료·동일 material-analysis 스킬 산출물이므로 재추출하지 않음, [2]는 A/B 공통 조건으로 고정).", "at": "2026-08-19"},
+    {"stage": "3", "note": "A/B 테스트 B 실행: slide-content-structuring Skill을 호출하지 않고 teammate-version/.claude/agents/content-designer/AGENT.md의 Skill 도입 이전 판단 흐름(슬라이드 분할/스토리라인/표현방식을 freeform으로 결정, Content Role/Region/Relationship/Structural Check 스키마 미사용)으로 slide_outline.md(15장) 작성. 레이아웃 선택은 design-rules.md '레이아웃 선택 기준'(4순위 Layout Reference, A/B 공통) 그대로 적용. Human Review [4]는 human_review_mode=skip_intermediate_confirmation에 따라 생략.", "at": "2026-08-19"},
+    {"stage": "5", "note": "web-ppt-generator 스킬로 web_ppt/v1/ 생성(15슬라이드, index.html+style.css). design-rules.md(Hard Rule > Claude PPT Design System > Content Visualization Freedom > Layout Reference) 규칙은 A와 동일하게 적용(A/B 공통 변수 아님). NC-01~04는 원본에 없는 수치/매칭을 생성하지 않는 원칙에 따라 A와 동일하게 처리(CAGR 단일 스탯만 표시, 경쟁력 매트릭스 미생성, 조직도 미생성, 일본 기업 로고 미사용). Human Review [6]는 skip_intermediate_confirmation에 따라 생략. pptx 변환([8])은 이번 작업 범위에 포함하지 않음.", "at": "2026-08-19"},
+    {"stage": "8", "note": "pptx-exporter 스킬(export_pptx.py, Playwright/Chromium 실측 렌더링 기반)로 web_ppt/v1/ → final.pptx 변환. A와 동일 스킬·동일 절차 적용(Human Review [6]는 human_review_mode=skip_intermediate_confirmation에 따라 생략하고 A/B 산출 범위를 stage 8로 맞추기 위해 진행). 검증: web_ppt v1 DOM 기준 슬라이드 15개/이미지 32개/표 3개/차트(canvas·svg) 0개이며, 변환된 final.pptx도 슬라이드 15개/이미지(PICTURE shape) 32개/표 3개로 정확히 일치. python-pptx로 재오픈 성공(파일 손상 없음), 전 슬라이드에 빈 shape 없음 확인. A(29 이미지)와 B(32 이미지)의 이미지 개수 차이는 [3] 단계 freeform 레이아웃 판단 차이에 따른 것으로, 변환 자체의 불일치가 아님. 차트 요소는 없어 이미지 캡처 제한 사항은 해당 없음. 재시도 없이 1회 실행으로 성공.", "at": "2026-08-19"}
+  ]
+}

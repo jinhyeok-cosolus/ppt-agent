@@ -1,0 +1,153 @@
+/*
+  웹PPT 기본 스타일 템플릿.
+  design-rules.md의 고정/가변 규칙이 확정되면 아래 변수(:root)와 슬라이드 타입별
+  클래스(.slide--cover, .slide--content, .slide--table, .slide--chart, .slide--appendix)를
+  규칙에 맞게 갱신한다. 값 자체는 이 파일이 아니라 design-rules.md를 기준으로 삼는다.
+*/
+
+:root {
+  /* 프레젠테이션 표준 16:9 기준 픽셀 (1280x720) */
+  --slide-width: 1280px;
+  --slide-height: 720px;
+
+  /* Hard Rule Brand Color (docs/design-hard-rules/2026.08.12_design_hard-rules_V2.md §5) */
+  --color-cosolus-teal: #0F655B;   /* Primary */
+  --color-deep-pine: #06342F;      /* Primary - 제목/Dark Background */
+  --color-sea-teal: #1AAC82;       /* Primary - 강조 */
+  --color-mint: #7FC8BE;           /* Primary - 보조 강조 */
+  --color-ocean-blue: #1A6A8C;     /* Secondary */
+  --color-moss: #6E9B3F;           /* Secondary */
+  --color-flame-amber: #C8801F;    /* Secondary - Accent(제한적 사용) */
+  --color-ink: #162B1F;            /* Neutral */
+  --color-slate: #5A6664;          /* Neutral */
+  --color-gray: #8C9694;           /* Neutral */
+  --color-line: #E1E7E5;           /* Neutral */
+  --color-mist: #F3F6F5;           /* Neutral */
+
+  /* 기본 슬라이드(밝은 배경) 팔레트 */
+  --color-bg: #ffffff;
+  --color-text: var(--color-ink);
+  --color-muted: var(--color-slate);
+  --color-accent: var(--color-sea-teal);
+  --color-border: var(--color-line);
+
+  /* Pretendard 단일 서체 (Hard Rule §2). 로컬 폰트 파일이 /docs/brand-assets/에
+     아직 등록되어 있지 않아 시스템 설치 폰트 또는 폴백에 의존한다. */
+  --font-base: "Pretendard", "Malgun Gothic", "맑은 고딕", sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: #333;
+  font-family: var(--font-base);
+  color: var(--color-text);
+}
+
+#deck { position: relative; }
+
+.slide {
+  width: var(--slide-width);
+  height: var(--slide-height);
+  margin: 24px auto;
+  background: var(--color-bg);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+  padding: 56px;
+  display: none;
+  flex-direction: column;
+}
+
+.slide.is-active { display: flex; }
+
+/*
+  표지 슬라이드 — Layout Reference L01 (FULL-BLEED IMAGE / BRAND VISUAL /
+  PRESENTATION TITLE, docs/layout-reference/2026.08.13_layout-catalog_V1.md)
+  구조를 참고해, 실제 회사 이미지 자산이 없는 상태이므로 Hard Rule §6이
+  허용하는 Deep Pine Dark Background로 재해석했다. 좌표는 V3 pptx L01
+  와이어프레임(13.333 x 7.5in, 96dpi 환산)을 그대로 따른다.
+*/
+.slide--cover {
+  padding: 0;
+  position: relative;
+  justify-content: flex-start;
+  align-items: flex-start;
+  text-align: left;
+  overflow: hidden;
+  background: var(--color-deep-pine);
+  color: #ffffff;
+}
+
+.slide--cover .cover-title-block {
+  position: absolute;
+  left: 62px;   /* wireframe 0.65in */
+  top: 442px;   /* wireframe 4.6in */
+  width: 624px; /* wireframe 6.5in */
+}
+
+.slide--cover .cover-accent {
+  display: block;
+  width: 64px;
+  height: 4px;
+  margin-bottom: 20px;
+  background: var(--color-sea-teal);
+}
+
+.slide--cover .cover-title {
+  margin: 0;
+  font-family: var(--font-base);
+  font-weight: 700; /* Pretendard Bold */
+  font-size: 48px;  /* 36pt, Hard Rule 제목 크기 상한 */
+  line-height: 1.3;
+  color: #ffffff;
+}
+
+.slide--cover .cover-wordmark {
+  position: absolute;
+  left: 1085px; /* wireframe 11.3in, LOGO 슬롯 */
+  top: 643px;   /* wireframe 6.7in */
+  width: 133px;
+  font-family: var(--font-base);
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 0.08em;
+  text-align: right;
+  color: var(--color-mint);
+}
+
+.slide--cover .cover-page-number {
+  position: absolute;
+  left: 1195px; /* wireframe 12.45in */
+  top: 675px;   /* wireframe 7.03in */
+  font-family: var(--font-base);
+  font-weight: 300; /* Pretendard Light, 각주급 */
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.slide h1 { font-size: 40px; margin: 0 0 12px; }
+.slide .subtitle { color: var(--color-muted); font-size: 18px; }
+
+.slide h2.slide-title { font-size: 28px; margin: 0 0 24px; border-bottom: 2px solid var(--color-accent); padding-bottom: 12px; }
+
+.slide table { border-collapse: collapse; width: 100%; font-size: 14px; }
+.slide table th, .slide table td { border: 1px solid var(--color-border); padding: 8px 12px; text-align: left; }
+.slide table th { background: #f8fafc; }
+
+.slide--appendix .slide-title::after { content: " (부록)"; color: var(--color-muted); font-size: 16px; }
+
+.confirm-needed { color: #b91c1c; font-weight: 600; }
+
+#nav-hint {
+  position: fixed;
+  bottom: 12px;
+  right: 16px;
+  font-size: 12px;
+  color: #999;
+}
+
+@media print {
+  body { background: #fff; }
+  .slide { box-shadow: none; margin: 0; display: flex !important; page-break-after: always; }
+  #nav-hint { display: none; }
+}

@@ -1,0 +1,287 @@
+{
+  "project": "cosolus-ir-deck",
+  "source_file": "input/코솔러스_IR_필드테스트용_콘텐츠자료_V2.docx",
+  "extraction_note": "원본 docx는 '원본 슬라이드 전체 캡처·레이아웃 지시는 제외하고, 텍스트·표·개별 삽입 이미지를 슬라이드별로 정리한' 가공 자료(문서 서두 명시). 즉 원본 PPT의 2차원 배치 정보(어느 아이콘/수치가 어느 칸에 있었는지)는 일부 유실되어 있으며, 아래 분석은 이 유실을 반영해 재구성 근거를 명시한다. 원문은 '콘텐츠 묶음 01~22' + 'CIIC2026 보조 이미지 자료'로 구성되어 있어 슬라이드 단위 매핑이 비교적 명확하다.",
+  "raw_dump_files": {
+    "text_blocks": "output/cosolus-ir-deck/_dump_text.txt",
+    "tables": "output/cosolus-ir-deck/_dump_tables.txt",
+    "extracted_images_dir": "output/cosolus-ir-deck/extracted_images/ (총 75개, img1~img75)"
+  },
+  "content_bundles": [
+    {
+      "id": "B01",
+      "title": "표지",
+      "confirmed_text": [
+        "Small actions, BIG DIFFERENCE",
+        "지속가능한 배터리 재활용을 위한 화학소재 및 친환경 차세대 공정기술"
+      ],
+      "images_available": ["img34 (COSOLUS 워드마크 로고, 흰색)"],
+      "notes": "브랜드 로고는 docs/brand-assets/CI 폴더의 확정 자산을 우선 사용(Hard Rule). img34는 참고용."
+    },
+    {
+      "id": "B02",
+      "title": "기업소개 (Company)",
+      "confirmed_text": [
+        "첨단 화학 소재와 차세대 친환경 공정으로 폐배터리 순환경제 선도",
+        "기업명: 주식회사 코솔러스",
+        "대표자: 김성현",
+        "임직원: 27명",
+        "소재지: 대한민국 전주, 익산, 완주, 군산",
+        "비전: 사용 후 배터리 핵심광물 회수를 위한 혁신 화학소재와 친환경 공정 기술을 통해, 인류의 지속가능한 미래를 선도하는 글로벌 리더로 도약"
+      ],
+      "table_source": "table_1 (기업명/대표자/임직원/소재지/비전, 완전 확인됨)",
+      "images_available": ["img2 (실험실 글러브박스 작업 사진, 실제 COSOLUS 추정 연구 현장)"],
+      "notes": "B20(조직구성)이 본문 텍스트가 title 외 전무하여 이 슬라이드에 통합 검토(design 단계 결정 사항, 아래 escalation/needs_confirmation 참조)."
+    },
+    {
+      "id": "B03",
+      "title": "문제제기 – 환경 및 지정학적 요인 (Background)",
+      "confirmed_text": [
+        "배터리 밸류체인 전반의 환경부하 및 사회적 비용 — 광산채굴 기준 수요-공급 미스매치 발생",
+        "중국이 장악한 글로벌 배터리 핵심광물 공급망",
+        "전략광물 20개 중 19개 정제 1위",
+        "전략광물 정제 평균 점유율 70%",
+        "글로벌 블랙매스 처리 비중 89%",
+        "니켈 1톤당 133톤 폐기물 발생",
+        "채굴 산업의 노동 및 인권문제"
+      ],
+      "source_citation": "Source: IEA, Global Critical Minerals Outlook 2025; Benchmark Mineral Intelligence, China's Battery Recycling Dominance, 2025; Earthworks, Filtered Tailing in Indonesia, 2026",
+      "images_available": ["img3 (중국 강조 세계지도)", "img54/55/56/57 (채굴폐기물·오염 실제 현장 사진)"],
+      "notes": "수치 4종 모두 원문 그대로 확인됨. 출처 각주 반드시 유지."
+    },
+    {
+      "id": "B04",
+      "title": "왜 지금인가? – 산업적 요인 (Background)",
+      "confirmed_text": [
+        "[북미 ESS 시장 성장 전망] 에너지 용량(GWh) 기준 CAGR: 31.6%"
+      ],
+      "source_citation": "Sorece(원문 오탈자 그대로): SNE Research (2023); Mirae Asset Securities Research Center (Jan. 2026); Korea Automotive Technology Institute (KATECH), Mobility Insight (Apr. 2024; citing SNE Research)",
+      "chart_status": "차트 원본 이미지/연도별 수치 계열 없음 — 원문에는 CAGR 31.6% 단일 수치만 텍스트로 존재하고, 연도별 GWh 막대 계열 데이터나 원본 차트 이미지는 75개 추출 이미지 중에 없음(전수 확인).",
+      "handling": "연도별 막대그래프를 임의로 재구성하지 않는다. CAGR 31.6% 단일 확인 수치만 스탯 하이라이트로 제시.",
+      "needs_confirmation_ref": "NC-01"
+    },
+    {
+      "id": "B05",
+      "title": "비즈니스 모델 (Background)",
+      "confirmed_text": [
+        "폐자원으로부터 핵심 광물 확보로 배터리 원재료 수요부족 해결",
+        "유해물질 억제 및 온실가스 감축으로 환경 오염 저감",
+        "제조 → 재활용 → 제조로 이어지는 재활용 기반 新공급망 구축"
+      ],
+      "images_available": []
+    },
+    {
+      "id": "B06",
+      "title": "재활용 공정 현황 (1세대) (Background)",
+      "confirmed_text": [
+        "1세대 공정의 한계: 낮은 선택성, 제한된 동작 환경(pH 등), 상분리 불안정, 부산물 과다발생(망초 등) → 소재 및 공정 개선 필요"
+      ],
+      "images_available": ["img60/61 (1세대 공정 개념도 일러스트 — 반응조/추출 공정 예시 이미지로 추정)"]
+    },
+    {
+      "id": "B07",
+      "title": "[솔루션1] 개요 – 고성능 추출제 (1.5세대 화학소재) (Background)",
+      "confirmed_text": [
+        "기존 추출제(1세대) vs 코솔러스 추출제(1.5세대) RECYION Series — 재활용 효율 개선",
+        "기존 추출제 예시: D2EHPA (광산·염호 기반 금속 회수용 추출제)"
+      ],
+      "images_available": ["img7 (D2EHPA 화학구조식)", "img8 (RECYION류 R기 일반형 추출제 화학구조식)"]
+    },
+    {
+      "id": "B08",
+      "title": "핵심기술 – [솔루션1-1] 고성능 추출제: 공정시간·첨가제 비교 (Technology)",
+      "confirmed_text": [
+        "*블랙매스 1톤당 첨가제 사용량 기준",
+        "공정시간: 벨기에 S사는 COSOLUS 대비 100% 증가, 중국 K사는 COSOLUS 대비 50% 증가",
+        "첨가제 사용량: 벨기에 S사는 COSOLUS 대비 10% 이상 추가 필요, 중국 K사는 COSOLUS 대비 5% 이상 추가 필요"
+      ],
+      "table_source": "table_7 (구분/COSOLUS/벨기에 S사/중국 K사) — 공정시간 행 셀 자체는 그래픽으로 처리되어 텍스트 추출 안 됨. 인접 문단 텍스트([71]~[73])와 첨가제 행의 수치 대소 패턴(벨기에>중국)이 일치하므로 '벨기에 S사=100%↑, 중국 K사=50%↑'로 재구성. 수치 자체(100%, 50%, 10%, 5%)는 원문 그대로이며 변경 없음 — 재구성한 것은 회사↔수치의 배치뿐.",
+      "reconstruction_confidence": "중간-높음 (원문 등장 순서 + 두 행의 대소 패턴 일치로 교차검증)",
+      "images_available": []
+    },
+    {
+      "id": "B09",
+      "title": "핵심기술 – [솔루션1-1] 이론단수·망초 저감 효과 (Technology)",
+      "confirmed_text": [
+        "COSOLUS 추출제 이론단수: 4단 (20% 감소) / 기존 추출제: 5단",
+        "추출 효율 2~5% 개선, 추출 단수 1단 저감 → CAPEX 경제성 확보",
+        "추출단수 1단 저감 → 망초 5% 이상 저감 → OPEX 경제성 확보",
+        "대한민국 배터리 재활용 업체 1년간 니켈 16,000톤 생산 시, COSOLUS 추출제로 4,800톤 망초 저감 가능",
+        "*대한민국 배터리 재활용 업체들의 블랙매스 연간 처리량 기준"
+      ],
+      "table_source": "table_8 (항목/추출단수/니켈 1톤당 망초양) — 기존 추출제: 5단/3.6톤, COSOLUS 추출제: 4단/3.3톤. 완전 확인됨. (16,000톤×3.6톤 - 16,000톤×3.3톤 = 4,800톤으로 본문 수치와 정합 확인)",
+      "images_available": ["img13/14 (COSOLUS 추출제 R기 구조식류)"]
+    },
+    {
+      "id": "B10",
+      "title": "경쟁력 – [솔루션1-1] 고성능 추출제 (Technology)",
+      "confirmed_text": [
+        "비교 대상: Mextral series(Solvay, Belgium), CYANEX series(KopperChem, China), RECYION series(COSOLUS, KOREA)",
+        "비교 기준: 추출성능/공정시간/첨가제 사용량/탄소중립/가격",
+        "범례: ◉ 매우 좋음 / ○ 좋음 / △ 보통"
+      ],
+      "table_source": "원문에 정식 표가 아닌 자유배치 텍스트박스/아이콘 그리드로 존재 (python-docx 표로 미검출). ◉/△/○ 기호가 텍스트로는 각 1회씩만 등장해 3사×5기준=15칸 매트릭스 중 어느 칸에 어느 기호가 있었는지 원문 순서만으로는 확정 불가.",
+      "handling": "임의로 15칸을 채우지 않는다. 이 슬라이드를 별도로 만들지 않고, 이미 수치로 확인된 B08/B09의 정량적 경쟁 우위(공정시간·첨가제·이론단수·망초저감)로 경쟁력 메시지를 대체 구성한다(설계 단계 판단, 아래 needs_confirmation NC-02 참고).",
+      "needs_confirmation_ref": "NC-02"
+    },
+    {
+      "id": "B11",
+      "title": "[솔루션1-2] 직접 리튬 추출 (DLE) (Technology)",
+      "confirmed_text": [
+        "기존 DLE(증발법): 1단계, 증발 농축 기반 Li 회수 (3.12%)",
+        "코솔러스 추출 후 재활용 공정: NCM 스크랩 → 침출 → 불순물 제거 → (1)Mn 추출 → (2)Co 추출 → (3)Ni 추출 → (4)Li 추출 → 역추출, 4단계"
+      ],
+      "source_citation": "Source: 한국광해광업공단(2024), 오세희 의원실 2025 국정감사 분석; John Moore/Getty Images, Chile Mines Lithium From Salt Flats of Atacama Desert (2022); Controlled Thermal Resources, via Chemical & Engineering News (2024)",
+      "images_available": ["img9 (칠레 아타카마 염호 리튬 채굴장 항공사진 — 기존 DLE/증발법 예시)", "img21 (지열발전 연계 리튬 추출 플랜트 실제 사진)"]
+    },
+    {
+      "id": "B12",
+      "title": "[솔루션1-2] DLE 기술 동향 비교 (Technology)",
+      "confirmed_text": [
+        "흡착제/추출제/분리막/전기화학 4개 방식 비교: 작동원리, 기술성숙도(TRL), 장점, 단점"
+      ],
+      "table_source": "table_12 — 완전 확인됨 (흡착제 TRL9 상용화단계/추출제·분리막 TRL4-5/전기화학 TRL3-4, 각 장단점 원문 그대로)",
+      "source_citation": "Source: Desalination, 2024, 575, 117249",
+      "images_available": ["img16 (H+/O/H2O 라벨 전기화학 이온 분리 개념 일러스트)"]
+    },
+    {
+      "id": "B13",
+      "title": "핵심기술 – [솔루션1-2] Key Advantages of Extractant–Separator for DLE (Technology)",
+      "confirmed_text": [
+        "① 추출제와 리튬이온(Li⁺) 간 액-액 접촉을 통한 빠른 물질 전달",
+        "② 추출제에 의한 화학적 결합 및 분리막에 의한 공간적 분리를 통한 우수한 재활용 효율",
+        "③ 액상 공정을 통한 용이한 연속 운전",
+        "④ 분리막 기반 농축을 통한 첨가제 소모량 감소"
+      ],
+      "images_available": []
+    },
+    {
+      "id": "B14",
+      "title": "핵심기술 – [솔루션1-2] COSOLUS DLE (Technology)",
+      "confirmed_text": [
+        "분리막 & THz 기술: 리튬 재자원화율 3% → 90%",
+        "핵심소재: 재자원화율 3% → 50%",
+        "COSOLUS 화학구조 설계·정제·공정 기술 → 재자원화율(>90%*), 공정비용(<5,500원/kg)",
+        "*리튬선물 가격이 약 44,100천원/ton 수준일 때 재활용 목표 기준"
+      ],
+      "source_citation": "Sorece(원문 오탈자 그대로): KOMIS, Conventional vs. direct vs. electrochemical lithium extraction: a holistic TEA–LCA of lithium carbonate production from spodumene (Green Chem., 2026, 28, 1144)",
+      "images_available": []
+    },
+    {
+      "id": "B15",
+      "title": "[솔루션2] 개요 – 친환경 차세대 배터리 재활용 공정기술 (2세대) (Technology)",
+      "confirmed_text": [
+        "기존공정(1세대): 유도가열/부유선별/건식환원 경로로 양극재용·음극재용 블랙매스 → 재활용 양극재/고순도 정제흑연/코발트/니켈",
+        "COSOLUS(2세대) 공정: 경제성·친환경성·양산성 확보",
+        "폐흑연 처리 포함"
+      ],
+      "images_available": ["img62 (COSOLUS 유도가열 실제 설비 사진)", "img63/64 (유도가열 공정 중 실제 촬영, 고온 발광)", "img65 (COSOLUS 파일럿 공정 라인 전경 실사진)"],
+      "notes": "img62/63/64/65는 실제 COSOLUS 설비/공정 사진으로 판단됨(브랜드 진정성 높은 자료) — 원본 그대로 활용 우선."
+    },
+    {
+      "id": "B16",
+      "title": "핵심기술 – [솔루션2] 친환경 차세대 배터리 재활용 공정기술 상세 (Technology)",
+      "confirmed_text": [
+        "COSOLUS 유도가열 → 전처리 공정 → 블랙매스(양극재용/음극재용) → COSOLUS 부유선별 → 고순도 정제흑연 / 코발트·니켈 회수"
+      ],
+      "images_available": ["img62~65 (동일 설비/공정 사진, B15와 공유)"]
+    },
+    {
+      "id": "B17",
+      "title": "핵심기술 – [솔루션2] 건식환원에 의한 코발트(니켈) 회수 (Technology)",
+      "confirmed_text": [
+        "Co 회수 순도 > 95%",
+        "PCT 2건 출원"
+      ],
+      "images_available": []
+    },
+    {
+      "id": "B18",
+      "title": "[가격/기술경쟁력] 경쟁사 대비 우위 – 솔루션2 (Technology)",
+      "confirmed_text": [
+        "[가격경쟁력] 짧은 공정시간(1분 이내, 200배 빠른 승온 속도), 적은 에너지 투입(432 Wh/kg, 64% 에너지 절감)",
+        "[기술경쟁력] 고순도 재생흑연(순도 99% 이상), 균일한 온도 분포, 낮은 부반응 발생, PCT 2건 출원",
+        "※ 기존 소성로(Pusher Kiln) 대비: 10시간 이상 장시간 소요, 낮은 온도 정밀도, 높은 시설 투자비용"
+      ],
+      "images_available": []
+    },
+    {
+      "id": "B19",
+      "title": "경쟁력 – [솔루션2] (Technology)",
+      "confirmed_text": [],
+      "notes": "제목(콘텐츠 묶음 19)만 존재하고 본문 텍스트·표·이미지가 전무함. B18과 주제 중복(둘 다 솔루션2 경쟁력) — B18로 통합 처리."
+    },
+    {
+      "id": "B20",
+      "title": "조직구성 (Company)",
+      "confirmed_text": [],
+      "notes": "제목(조직구성/Company/20)만 존재, 본문 텍스트·표 없음. 관련 헤드샷 사진으로 추정되는 인물 사진 4장(img36~39)이 문서 내 존재하나 이름·직책 캡션이 전혀 없어 특정 인물에 매칭 불가 — 임의로 이름/직책을 채우면 원본에 없는 정보 생성이 되므로 사용하지 않음.",
+      "needs_confirmation_ref": "NC-03"
+    },
+    {
+      "id": "B21",
+      "title": "투자포인트 (Executive Summary)",
+      "confirmed_text": [
+        "[기술력] 추출제 최상위 수준의 합성 및 정제 기술 / 친환경 공정 기술(건식환원 및 유도가열 기술) / Closed-loop system 합성·공정 기술로 환경부담 최소화",
+        "[사업화 방향] (1.5세대-RECYION Series) XX하이텍, XX코 등 현장적용을 고려한 PoC 진행 중 / (2세대-친환경 공정기술) XX자동차 연계 신공급망 구축, 일본 및 인도네시아 시장 진출(파일롯 기술검증 후 JV 설립)",
+        "[투자라운드] Series A2, 목표 투자유치 금액 = 80억원",
+        "[투자금 사용 계획] 글로벌 진출을 위한 국외법인 설립 및 운영 / 공장 건설을 위한 토지 구매 및 건축 비용(추출제 CAPA, 공정파일롯)"
+      ],
+      "notes": "원문에 'XX하이텍', 'XX코', 'XX자동차'로 실명이 마스킹되어 있음 — 임의로 실명을 채우지 않고 원문 마스킹 그대로 유지."
+    },
+    {
+      "id": "B22",
+      "title": "세계시장 진출 (Milestone)",
+      "confirmed_text": [
+        "[목표] 일본과 인도네시아를 전략적 거점으로 5억 명 이상의 아시아 경제권에서 성장",
+        "[일본 및 인도네시아 진출을 위한 논의 현황] 인도네시아 전기자전거 업체 1대주주와 투자논의 중 / 일본 현지투자사·재료업체 등과 투자논의 중"
+      ],
+      "images_available": [
+        "img43 (인도네시아 전기 스쿠터/배달 e-모빌리티 실사진)",
+        "img44 (인도네시아 'Menuju Zero Waste' 행사 실사진)",
+        "img71 (SWAP 로고)",
+        "img72 (MUKTI 로고)",
+        "img73 (eCoNiL/ibattery 로고)",
+        "img74 (IBC, Indonesia Battery Corporation 로고)",
+        "img75 (HLI Green Power 로고)",
+        "img30/31/32 (Panasonic Energy, Iwatani, DNP — 일본 기업 로고)"
+      ],
+      "notes": "SWAP/MUKTI/eCoNiL/IBC/HLI 로고는 인도네시아 '전기자전거·배터리 생태계 논의 대상'과 정합적이며 원문 자료에 함께 포함되어 있어 그대로 활용 가능. Panasonic Energy/Iwatani/DNP는 대형 상장사 로고로, 본문은 '일본 현지투자사·재료업체 등'이라는 익명 표현만 있어 이 로고들을 '논의 중인 특정 상대'로 단정 표기하지 않는다 — 사용한다면 어디까지나 '일본 배터리·소재 생태계' 맥락 이미지로만, 확정적 파트너십 문구 없이 배치.",
+      "needs_confirmation_ref": "NC-04"
+    }
+  ],
+  "ciic_supplementary_images": {
+    "note": "CIIC2026 보조 이미지 자료 — '국문 IR에서 누락될 수 있는 사진·설비·인물·기술 시각자료를 보완'하는 선택적 자료. 필수 아님, 실사 사진 위주.",
+    "pages": {
+      "p1": 2, "p2": 1, "p3": 4, "p4": 5, "p5": 5, "p6": 11, "p7": 5, "p9": 9, "p11": 1
+    },
+    "identified_highlights": [
+      "img26/27 (COSOLUS 파일럿 라인/설비 실사진 — 신뢰도 높은 실제 자산)",
+      "img62~65 (COSOLUS 유도가열·공정라인 실사진)",
+      "img36~39 (인물 헤드샷 4장, 이름/직책 캡션 없음 — 사용 보류)"
+    ]
+  },
+  "escalations": [],
+  "needs_confirmation": [
+    {
+      "id": "NC-01",
+      "detail": "북미 ESS 시장 성장 전망 — 'CAGR 31.6%' 단일 수치는 원문에서 확인되나, 연도별 GWh 값이나 원본 차트 이미지가 없어 막대그래프를 재구성할 근거가 없음. CAGR 단일 스탯으로만 표기.",
+      "source": "콘텐츠 묶음 04 (Background, p.4)"
+    },
+    {
+      "id": "NC-02",
+      "detail": "[솔루션1-1] 경쟁력 매트릭스(Mextral/CYANEX/RECYION × 추출성능/공정시간/첨가제/탄소중립/가격, ◉○△ 등급)의 정확한 칸별 배치는 원본 레이아웃 유실로 재구성 불가. 정량 수치가 확인된 공정시간·첨가제·이론단수·망초저감 데이터로 경쟁력 메시지를 대체.",
+      "source": "콘텐츠 묶음 10 (Technology, p.10)"
+    },
+    {
+      "id": "NC-03",
+      "detail": "조직구성 슬라이드 본문(부서/인원 구성, 리더십 이름·직책)이 원문에 전혀 없음. 인물 사진 4장은 있으나 캡션 없어 매칭 불가. 확인된 사실(임직원 27명, 대표자 김성현, 소재지 4곳)만 기업소개 슬라이드에 반영하고 별도 조직도는 생성하지 않음.",
+      "source": "콘텐츠 묶음 20 (Company, p.20)"
+    },
+    {
+      "id": "NC-04",
+      "detail": "세계시장 진출 슬라이드의 일본 기업 로고(Panasonic Energy/Iwatani/DNP)가 '일본 현지투자사·재료업체 등과 투자논의 중'이라는 익명 표현과 구체적으로 매칭되는지 원문에서 확인 불가. 사용 시 특정 파트너십을 단정하지 않는 문구로만 배치.",
+      "source": "콘텐츠 묶음 22 (Milestone, p.22)"
+    }
+  ]
+}

@@ -1,0 +1,419 @@
+/*
+  코솔러스 기술개발_지원사업_연구개발계획서 — 웹PPT 스타일시트
+  design-rules.md 우선순위: Hard Rule > Claude PPT Design System > Content Visualization
+  Freedom > Layout Reference 를 그대로 구현한다. 색상·타이포그래피·헤더 시스템 수치는
+  docs/design-hard-rules/2026.08.12_design_hard-rules_V2.md 를 그대로 따른다.
+  공통 컴포넌트(Header System/Region Header/Divider/Table/Typography/Cover/Closing 등)는
+  기존 "지역창업계획패키지 사업계획서" 프로젝트(v16, 동일 Hard Rule/Design System, 동일
+  레퍼런스 pptx 기반, QA 통과 완료본)의 검증된 구현을 그대로 재사용한다.
+*/
+
+@font-face {
+  font-family: "Pretendard";
+  src: local("Pretendard");
+}
+
+:root {
+  --slide-width: 1280px;
+  --slide-height: 720px;
+
+  /* Hard Rule §5 Brand Color */
+  --c-primary: #067875;   /* Cosolus Teal */
+  --c-dark: #034443;      /* Deep Pine */
+  --c-secondary: #349887; /* Sea Teal */
+  --c-light: #AFE2E3;     /* Mint */
+  --c-ocean: #1A6A8C;
+  --c-moss: #6E9B3F;
+  --c-amber: #C8801F;
+  --c-ink: #162B1F;
+  --c-slate: #5A6664;
+  --c-gray: #8C9694;
+  --c-line: #E1E7E5;
+  --c-mist: #F3F6F5;
+  --c-submsg: #478689; /* Sub Message / 상단 구분선 고정색 */
+
+  --font-base: "Pretendard", "Malgun Gothic", "맑은 고딕", sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body { margin: 0; padding: 0; }
+
+body {
+  background: #333;
+  font-family: var(--font-base);
+  color: var(--c-ink);
+  word-break: keep-all;
+}
+
+#deck { position: relative; }
+
+/* ============ Slide Shell ============ */
+.slide {
+  position: relative;
+  width: var(--slide-width);
+  height: var(--slide-height);
+  margin: 24px auto;
+  background: #ffffff;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+  overflow: hidden;
+  display: none;
+}
+.slide.is-active { display: block; }
+
+/* ============ 공통 Header System (Hard Rule §9, 표지 제외) ============ */
+.hdr-ci { position: absolute; left: 64px; top: 25px; height: 20px; z-index: 5; }
+.hdr-ci img { height: 20px; width: auto; display: block; }
+
+.hdr-submsg {
+  position: absolute; right: 64px; top: 25px;
+  font: 400 14pt/20px var(--font-base);
+  color: var(--c-submsg);
+  z-index: 5;
+}
+
+.hdr-divider {
+  position: absolute; left: 64px; top: 56px; width: 1152px; height: 1px;
+  background: var(--c-submsg);
+}
+
+.hdr-section-label {
+  position: absolute; left: 68px; top: 62px;
+  font: 300 12pt/20px var(--font-base);
+  letter-spacing: 0.5px;
+  color: var(--c-gray);
+  text-transform: uppercase;
+}
+
+.hdr-title {
+  position: absolute; left: 64px; top: 83px; right: 64px;
+  margin: 0;
+  font: 800 28pt/1.25 var(--font-base);
+  color: var(--c-ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.page-number {
+  position: absolute; right: 64px; bottom: 20px;
+  font: 400 14pt/1 var(--font-base);
+  color: var(--c-gray);
+}
+
+.body-box {
+  position: absolute; left: 64px; top: 135px; width: 1152px; height: 521px;
+}
+
+/* ============ Hard Rule §12: Main Title Supporting Message ============ */
+.support-msg {
+  position: absolute; left: 64px; top: 135px; width: 1152px;
+  font: 600 20pt/1.3 var(--font-base);
+  color: var(--c-ink);
+  margin: 0;
+}
+/* Supporting Message는 최대 2줄까지 허용되므로(20pt/1.3 기준 약 2줄=70px),
+   Body Box 시작 Y를 2줄 기준으로 넉넉히 확보해 실제 콘텐츠와 겹치지 않도록 한다.
+   (지역창업계획패키지 사업계획서 v3에서 검증된 동일 Hard Rule §12 구현값 재사용) */
+.body-box.with-support { top: 210px; height: 446px; }
+
+/* ============ Typography Tiers (Design System §3) ============ */
+.t-content-header { font: 600 20pt/1.3 var(--font-base); color: var(--c-ink); letter-spacing: -0.3pt; }
+.t-explanation { font: 600 18pt/1.4 var(--font-base); color: var(--c-ink); }
+.t-body { font: 400 16pt/1.5 var(--font-base); color: var(--c-ink); }
+.t-caption { font: 300 14pt/1.4 var(--font-base); color: var(--c-slate); }
+.t-source { font: 300 12pt/1.4 var(--font-base); color: var(--c-gray); }
+.t-stat { font: 800 28pt/1.1 var(--font-base); color: var(--c-primary); }
+
+.need-confirm { color: var(--c-amber); font-weight: 600; }
+.need-confirm::after { content: " [확인필요]"; font-size: 0.75em; }
+
+/* ============ Hard Rule §10: Content Region Header ============ */
+.region-header {
+  height: 0.561in;
+  display: flex; align-items: center; justify-content: center;
+  font: 600 20pt/1 var(--font-base);
+  color: #0F1E1F;
+  letter-spacing: -0.3pt;
+  text-align: center;
+  padding: 0;
+  border-radius: 0;
+}
+.region-header.rh-parallel {
+  background: #F4FAFA;
+  border-top: 0.75pt solid var(--c-primary);
+  border-bottom: 0.5pt solid var(--c-primary);
+}
+
+/* ============ Hard Rule §11: Vertical Content Divider ============ */
+.v-divider {
+  position: absolute;
+  width: 1px; /* 웹 렌더링 한정 0.5pt fallback */
+  z-index: 2;
+  background: linear-gradient(to bottom,
+    rgba(3,68,67,0) 0%,
+    rgba(3,68,67,0.9) 53%,
+    rgba(3,68,67,0) 100%);
+}
+
+/* ============ Hard Rule §10B: Table Header Row ============ */
+table.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+table.data-table thead th {
+  background: var(--c-primary);
+  color: #fff;
+  font: 600 14pt/1.3 var(--font-base);
+  text-align: center;
+  vertical-align: middle;
+  padding: 10px 8px;
+  border: 1px solid var(--c-primary);
+}
+table.data-table tbody td {
+  background: #fff;
+  color: var(--c-ink);
+  font: 400 16pt/1.35 var(--font-base);
+  text-align: center;
+  vertical-align: middle;
+  padding: 9px 8px;
+  border: 1px solid var(--c-line);
+}
+table.data-table tbody td.caption-cell { font: 400 14pt/1.35 var(--font-base); }
+table.data-table tbody td.emphasis { color: var(--c-primary); font-weight: 700; }
+table.data-table tbody tr:first-child td { border-top: 1px solid var(--c-line); }
+
+/* ============ 공통 컴포넌트 ============ */
+.kicker {
+  display: inline-block;
+  font: 800 18pt/1.3 var(--font-base);
+  color: var(--c-primary);
+}
+.kicker u { text-decoration-color: var(--c-primary); text-underline-offset: 3px; }
+
+.pill {
+  display: inline-block; padding: 3px 10px; border: 1px solid var(--c-line);
+  font: 400 14pt/1.2 var(--font-base); color: var(--c-slate); border-radius: 3px;
+}
+
+.flow-arrow {
+  display: flex; align-items: center; justify-content: center;
+  color: var(--c-primary); font-size: 22px; font-weight: 700;
+}
+
+/* ============ 표지 (01_cover_design_V2.md) ============ */
+.slide--cover { background: #0b3a38; }
+.cover-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.cover-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(160deg,
+    rgba(26,106,140,0.55) 0%,
+    rgba(127,200,190,0.30) 50%,
+    rgba(15,101,91,0.50) 100%);
+}
+.cover-brand {
+  position: absolute; left: 64px; top: 40px; z-index: 3;
+  display: flex; flex-direction: column; gap: 6px;
+}
+.cover-brand .submsg { font: 500 16px/1 var(--font-base); color: #fff; letter-spacing: normal; }
+.cover-brand img { height: 36px; width: auto; display: block; }
+.cover-title-wrap {
+  position: absolute; left: 50%; top: 54%; transform: translate(-50%, -50%);
+  width: 960px; text-align: center; z-index: 3;
+}
+.cover-title {
+  font: 700 48px/1.35 var(--font-base); color: #fff; margin: 0 0 14px;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.25);
+}
+.cover-sub { font: 400 20px/1.5 var(--font-base); color: #eafffb; margin: 0; }
+
+/* ============ 레이아웃별 컴포넌트 ============ */
+
+/* Company Introduction 스타일 fact row (과제개요·컨소시엄에 재사용) */
+.fact-row { display: flex; border-top: 1px solid var(--c-line); padding: 10px 0; gap: 12px; }
+.fact-row:last-child { border-bottom: 1px solid var(--c-line); }
+.fact-label { width: 150px; flex-shrink: 0; font: 600 16pt/1.4 var(--font-base); color: var(--c-slate); }
+.fact-value { font: 400 16pt/1.4 var(--font-base); color: var(--c-ink); flex: 1 1 auto; min-width: 0; }
+
+/* Visual + Insight generic 2-split / Claim & Proof 공용 */
+.vi-wrap { display: flex; height: 100%; gap: 40px; }
+.vi-visual { flex: 0 0 auto; display: flex; flex-direction: column; }
+.vi-insight { flex: 1 1 auto; display: flex; flex-direction: column; justify-content: center; gap: 10px; }
+.vi-insight .support-header { font: 600 20pt/1.3 var(--font-base); color: var(--c-ink); letter-spacing: -0.3pt; }
+.vi-insight .key-message { font: 600 18pt/1.4 var(--font-base); color: var(--c-ink); }
+.vi-insight .explain { font: 400 16pt/1.6 var(--font-base); color: var(--c-slate); }
+
+/* Stat block for large numbers */
+.stat-block { text-align: left; }
+.stat-block .num { font: 800 30pt/1.1 var(--font-base); color: var(--c-primary); }
+.stat-block .unit { font: 600 16pt/1 var(--font-base); color: var(--c-primary); margin-left: 4px; }
+.stat-block .label { font: 400 14pt/1.4 var(--font-base); color: var(--c-slate); margin-top: 4px; }
+
+/* Three-column */
+.three-col-wrap { display: flex; height: 100%; gap: 20px; }
+.tc-col { flex: 1 1 0; display: flex; flex-direction: column; position: relative; }
+.tc-col .region-header { width: 100%; }
+.tc-col .key-message {
+  font: 800 18pt/1.3 var(--font-base); color: var(--c-primary);
+  text-align: center; width: 92%; margin: 8px auto 0;
+}
+.tc-col .tc-visual { flex: 1 1 auto; margin-top: 12px; display: flex; flex-direction: column; justify-content: flex-start; }
+.tc-col .tc-evidence { font: 400 14pt/1.45 var(--font-base); color: var(--c-slate); text-align: left; }
+.tc-col .tc-visual .cap { font: 300 14pt/1.3 var(--font-base); color: var(--c-gray); margin-top: 4px; text-align:center; }
+.tc-col .tc-body-list, .tc-body-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.tc-col .tc-body-list li, .tc-body-list li {
+  font: 400 16pt/1.4 var(--font-base); color: var(--c-slate); padding-left: 14px; position: relative;
+}
+.tc-col .tc-body-list li::before, .tc-body-list li::before {
+  content: ""; position: absolute; left: 0; top: 0.65em; width: 5px; height: 5px; border-radius: 50%;
+  background: var(--c-secondary);
+}
+
+/* Process / System Architecture (Layout A) */
+.proc-wrap { position: relative; height: 100%; display: flex; flex-direction: column; justify-content: center; gap: 10px; }
+.proc-title { font: 600 20pt/1.3 var(--font-base); color: var(--c-ink); margin: 0 0 14px; }
+.proc-steps { display: flex; align-items: stretch; gap: 6px; }
+.proc-step { flex: 1 1 0; display: flex; flex-direction: column; align-items: center; text-align: center; }
+.proc-box {
+  width: 100%; height: 84px; background: var(--c-mist); border: 1px solid var(--c-line);
+  display: flex; align-items: center; justify-content: center; padding: 6px;
+  font: 600 16pt/1.3 var(--font-base); color: var(--c-ink);
+}
+.proc-func { font: 400 16pt/1.35 var(--font-base); color: var(--c-ink); margin-top: 10px; }
+.proc-detail { font: 400 14pt/1.35 var(--font-base); color: var(--c-slate); margin-top: 4px; }
+.proc-insight {
+  margin-top: 26px; background: var(--c-mist); border: 1px solid var(--c-primary);
+  padding: 14px 20px; text-align: center; width: 76%; margin-left: auto; margin-right: auto;
+  font: 600 18pt/1.4 var(--font-base); color: var(--c-ink);
+}
+.proc-insight b { color: var(--c-primary); }
+
+/* KPI Summary */
+.kpi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px 18px; }
+.kpi-card { border: 1px solid var(--c-line); padding: 14px 12px; text-align: center; }
+.kpi-card .num { font: 800 20pt/1.1 var(--font-base); color: var(--c-primary); }
+.kpi-card .label { font: 400 14pt/1.35 var(--font-base); color: var(--c-slate); margin-top: 6px; }
+.kpi-card .note { font: 300 12pt/1.3 var(--font-base); color: var(--c-gray); margin-top: 4px; }
+
+/* Symmetric two-split */
+.sym-wrap { display: flex; height: 100%; gap: 0; }
+.sym-col { flex: 1 1 0; padding: 0 24px; display: flex; flex-direction: column; }
+.sym-col:first-child { padding-left: 0; }
+.sym-col:last-child { padding-right: 0; }
+.sym-title { font: 700 18pt var(--font-base); color: var(--c-primary); margin-bottom: 10px; }
+
+/* Claim & Proof (L19) */
+.claim-proof-wrap { height: 100%; display: flex; flex-direction: column; }
+.claim-box {
+  background: #F4FAFA; border-top: 0.75pt solid var(--c-primary); border-bottom: 0.5pt solid var(--c-primary);
+  padding: 12px 20px; text-align: center; flex: 0 0 auto;
+}
+.claim-box .claim-title { font: 600 20pt/1.3 var(--font-base); color: #0F1E1F; letter-spacing: -0.3pt; }
+.proof-grid { flex: 1 1 auto; display: grid; gap: 14px; margin-top: 18px; align-content: center; }
+.proof-grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+.proof-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+.proof-item { display: flex; flex-direction: column; gap: 4px; }
+.proof-item .p-num { font: 800 16pt var(--font-base); color: var(--c-primary); }
+.proof-item .p-ttl { font: 600 16pt/1.3 var(--font-base); color: var(--c-ink); }
+.proof-item .p-desc { font: 400 16pt/1.4 var(--font-base); color: var(--c-slate); }
+.proof-list { list-style: none; margin: 14px 0 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.proof-list li { font: 400 16pt/1.45 var(--font-base); color: var(--c-ink); padding-left: 18px; position: relative; }
+.proof-list li::before {
+  content: ""; position: absolute; left: 0; top: 0.6em; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--c-primary);
+}
+.proof-group-ttl { font: 600 16pt var(--font-base); color: var(--c-primary); margin: 14px 0 6px; }
+.proof-group-ttl:first-child { margin-top: 0; }
+
+/* 목차(Contents/L02) */
+.toc-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px 40px; height: 100%; align-content: center; }
+.toc-item { display: flex; align-items: baseline; gap: 14px; border-bottom: 1px solid var(--c-line); padding-bottom: 14px; }
+.toc-num { font: 800 22pt var(--font-base); color: var(--c-light); flex-shrink: 0; width: 46px; }
+.toc-label { font: 600 18pt/1.35 var(--font-base); color: var(--c-ink); }
+.toc-range { font: 300 13pt var(--font-base); color: var(--c-gray); display: block; margin-top: 2px; }
+
+/* 이미지 evidence / 미니 이미지 행 */
+.img-evidence { display: block; }
+.img-evidence img { display: block; width: 100%; }
+.img-evidence .cap { font: 300 14pt/1.35 var(--font-base); color: var(--c-gray); margin-top: 6px; text-align: center; }
+
+.icon-row { display: flex; align-items: flex-start; gap: 14px; }
+.icon-row .icon-badge { margin: 0; flex-shrink: 0; }
+.icon-row .stat-num { font: 800 22pt/1.15 var(--font-base); color: var(--c-primary); margin-top: 4px; }
+
+.icon-badge {
+  width: 40px; height: 40px; margin: 0 auto 8px; border-radius: 50%;
+  background: var(--c-mist); display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.icon-badge svg { width: 22px; height: 22px; stroke: var(--c-primary); fill: none; stroke-width: 1.8; }
+.icon-badge.dark { background: var(--c-primary); }
+.icon-badge.dark svg { stroke: #fff; }
+
+/* Closing */
+.closing-content {
+  position: absolute; left: 50%; top: 54%; transform: translate(-50%, -50%);
+  width: 960px; text-align: center; z-index: 3;
+}
+.closing-content .motto {
+  font: 700 44px/1.35 var(--font-base); color: #fff; margin: 0 0 20px;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.25);
+}
+.closing-content .msg { font: 400 20px/1.5 var(--font-base); color: #eafffb; margin: 0 0 40px; }
+.closing-content .contact { font: 300 16px/1.6 var(--font-base); color: #cfeceb; }
+
+/* ============ Milestone(circle badge + 연결선) — Slide 18 전용, [7] 피드백 반영 ============ */
+/* 좌측 컬럼 내부의 압축된 이력 요약(Compressed Visual)이며 슬라이드 전체 Main
+   Visual/Process Stage 기본 표현이 아니다 — Claude PPT Design System §6의
+   "Process Stage 기본 시각요소로 원형 Step/숫자 아이콘 미사용" 원칙과 별개로,
+   사용자가 Human Review ②에서 이 시각 언어를 명시적으로 요청한 1회성 예외다. */
+.ms-list { display: flex; flex-direction: column; gap: 28px; }
+.ms-item { display: flex; align-items: flex-start; gap: 12px; }
+.ms-badge {
+  flex: 0 0 auto; width: 27px; height: 27px; border-radius: 50%;
+  background: var(--c-primary); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font: 700 14pt/1 var(--font-base);
+}
+.ms-text { flex: 1 1 auto; font: 400 16pt/1.32 var(--font-base); color: var(--c-ink); padding-top: 1px; }
+.ms-text b { font-weight: 600; }
+/* [7] Round 3: 얇은 세로선(::before width:1px)이 스크린샷에서 일직선으로 또렷하게
+   보이지 않는다는 피드백에 따라 세로선을 제거하고, 배지 사이 흐름을 나타내는
+   다운 화살표(↓)로 복원하되 기존(14pt)보다 눈에 띄게 키운다. 색상은 기존
+   팔레트(--c-primary)를 그대로 유지한다. */
+.ms-connector {
+  width: 27px; height: 24px; margin: 0;
+  display: flex; align-items: center; justify-content: center;
+}
+.ms-connector::before {
+  /* U+FE0E(VS15, text presentation selector): 일부 브라우저/OS 폰트 스택이 이
+     화살표를 컬러 이모지 글리프로 렌더링해 CSS color를 무시하고 원치 않는 색으로
+     표시하는 문제를 막기 위해 강제로 텍스트(단색) 표현을 사용한다. */
+  content: "↓\FE0E";
+  font: 700 20pt/1 var(--font-base);
+  color: var(--c-primary);
+}
+
+/* [7] Round 3: "장기 신뢰성 평가 결과" 텍스트 칸이 부족하다는 피드백에 따라 한 줄
+   요약(.ms-plain-note)을 3줄 문단으로 확장. 박스/카드 없이 순수 텍스트 유지,
+   본문과 동일한 16pt 기준(임의 확대 금지). 핵심 결론 1줄만 Bold+Primary로
+   강조하고(기존 원칙 유지), 나머지 2줄은 일반 본문 톤으로 낮춰 전체 블록이
+   과도하게 진하게 보이지 않도록 한다. */
+.ms-result-block {
+  margin-top: 26px;
+  display: flex; flex-direction: column; gap: 5px;
+}
+.ms-result-block p { margin: 0; font: 400 16pt/1.3 var(--font-base); color: var(--c-ink); }
+.ms-result-block p.ms-result-highlight { font-weight: 600; color: var(--c-primary); }
+
+/* 우측 개선 방향 항목(기존 .proof-item 숫자 컨벤션 재사용, sub-bullet만 추가) */
+.imp-item { margin-bottom: 20px; }
+.imp-item:last-child { margin-bottom: 0; }
+.imp-item .p-num { font: 800 16pt var(--font-base); color: var(--c-primary); }
+.imp-item .p-ttl { font: 600 16pt/1.3 var(--font-base); color: var(--c-ink); margin-top: 2px; }
+.imp-item .tc-body-list { margin-top: 8px; gap: 8px; }
+
+@media print {
+  body { background: #fff; }
+  .slide { box-shadow: none; margin: 0; display: block !important; page-break-after: always; }
+}

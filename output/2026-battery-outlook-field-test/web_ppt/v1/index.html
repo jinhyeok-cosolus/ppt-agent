@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026년 이차전지 전망 — 웹PPT 초안 (Field Test)</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!--
+  Field Test 입력 자료: "2026 이차전지 전망.pdf" (NH투자증권 리서치본부, 2026.5.26, Analyst 주민우)
+  원본 디자인은 참고하지 않고 텍스트·데이터만 재구성. 전체 12페이지 중 핵심 내용만 선별해 7개
+  슬라이드로 구성. 수치는 모두 원본 PDF의 텍스트/표에 명시된 값만 사용(임의 추정·눈대중 수치 없음).
+  차트로 원본 수치를 확인할 수 없는 항목(영업이익 컨센서스 추이, 미국 xEV 판매 추이, 중간선거
+  승리확률 추이 등)은 임의 재현하지 않고 텍스트 서술로 대체했다.
+
+  적용 규칙: docs/design-hard-rules/2026.08.12_design_hard-rules_V2.md(1순위) →
+  docs/design-system/Claude_PPT_Design_System.md(2순위) →
+  docs/design-system/content-visualization-freedom.md(3순위) →
+  docs/layout-reference 및 docs/slide-design-rules/*.md(4순위, three-column.md 사용) /
+  표지는 01_cover_design_V2.md.
+-->
+<div id="deck">
+
+  <!-- ============ Slide 1: Cover ============ -->
+  <section class="slide slide--cover" data-index="1">
+    <img class="cover-bg-image" src="assets/images/cover-background.png" alt="" aria-hidden="true">
+    <div class="cover-overlay" aria-hidden="true"></div>
+
+    <div class="cover-brand">
+      <p class="cover-brand-sub">Small action, BIG DIFFERENCE</p>
+      <img class="cover-brand-logo" src="assets/images/cosolus-ci-white.png" alt="COSOLUS">
+    </div>
+
+    <div class="cover-title-block">
+      <p class="cover-kicker">2차전지 산업전망 · 2026</p>
+      <h1 class="cover-title">새벽녘, 이차전지 업황의 전환점</h1>
+      <p class="cover-sub">실적 다운사이클 종료 · EV 회복 초입 · ESS 공급과잉 우려는 기우</p>
+    </div>
+
+    <p class="cover-meta">자료: NH투자증권 리서치본부(2026.5.26, Analyst 주민우) · Field Test 재구성</p>
+  </section>
+
+  <!-- ============ Slide 2: Executive Summary ============ -->
+  <section class="slide" data-index="2">
+    <img class="deck-logo" src="assets/images/cosolus-ci-2.png" alt="COSOLUS">
+    <span class="deck-tagline">We promise tomorrow</span>
+    <span class="deck-divider"></span>
+    <p class="section-label">OVERVIEW</p>
+    <h1 class="slide-title">2026년 이차전지, 4가지 전환 신호</h1>
+
+    <div class="body-box">
+      <p class="exec-lede"><b>1Q26 실적 설명회를 기점으로 실적 전망치 하향 조정이 종료</b>되며, 2차전지 업황은 저점을 지나 회복 국면에 진입하고 있다.</p>
+
+      <div class="exec-grid">
+        <div class="exec-col">
+          <p class="exec-num">01</p>
+          <p class="exec-title">실적 저점 통과</p>
+          <p class="exec-desc">1Q26 실적 설명회 기점으로 하향 조정 종료, 일부 기업은 상향 조정 시작</p>
+        </div>
+        <div class="exec-col">
+          <p class="exec-num">02</p>
+          <p class="exec-title">EV 회복 초입</p>
+          <p class="exec-desc">유럽은 IAA(산업가속화법)로 국내 배터리 점유율 반등, 미국은 재고 조정 마무리 국면</p>
+        </div>
+        <div class="exec-col">
+          <p class="exec-num">03</p>
+          <p class="exec-title">ESS 공급과잉은 기우</p>
+          <p class="exec-desc">미국 ESS 적격 공급률 2026년 82%, 2027년 90%로 여전히 부족 — 추가 라인 전환 전망</p>
+        </div>
+        <div class="exec-col">
+          <p class="exec-num">04</p>
+          <p class="exec-title">투자유망종목 Buy 유지</p>
+          <p class="exec-desc">LG에너지솔루션·대주전자재료 — 낙수효과와 소재 고성장을 근거로 투자의견 Buy</p>
+        </div>
+        <div class="v-divider" style="left:25%; top:6px; bottom:6px;"></div>
+        <div class="v-divider" style="left:50%; top:6px; bottom:6px;"></div>
+        <div class="v-divider" style="left:75%; top:6px; bottom:6px;"></div>
+      </div>
+
+      <div class="exec-picks">
+        <div class="exec-picks-label">투자유망종목<br>(Buy)</div>
+        <div class="exec-pick-item">
+          <p class="exec-pick-name">LG에너지솔루션 (373220.KS)</p>
+          <p class="exec-pick-note">테슬라 유럽·아시아 판매 회복 낙수효과 + 하반기 ESS 턴어라운드</p>
+          <p class="exec-pick-target">목표주가 610,000원</p>
+        </div>
+        <div class="exec-pick-item">
+          <p class="exec-pick-name">대주전자재료 (078600.KQ)</p>
+          <p class="exec-pick-note">수동부품 호조에 따른 도전재료 고성장 + 하반기 우주 태양광 밸류체인 진입 기대</p>
+          <p class="exec-pick-target">목표주가 200,000원</p>
+        </div>
+      </div>
+    </div>
+
+    <span class="deck-page">2</span>
+  </section>
+
+  <!-- ============ Slide 3: 실적 주요 변수 점검 (Three-Column) ============ -->
+  <section class="slide" data-index="3">
+    <img class="deck-logo" src="assets/images/cosolus-ci-2.png" alt="COSOLUS">
+    <span class="deck-tagline">We promise tomorrow</span>
+    <span class="deck-divider"></span>
+    <p class="section-label">EARNINGS &amp; DEMAND</p>
+    <h1 class="slide-title">실적 저점을 지지하는 3가지 수요 변수</h1>
+
+    <div class="body-box">
+      <div class="tc-grid">
+        <div class="tc-col">
+          <div class="tc-header">미국 EV</div>
+          <div class="tc-body">
+            <p class="tc-key">재고 조정, <u>막바지 국면</u></p>
+            <div class="tc-visual">
+              <p class="tc-stat">-30%대</p>
+              <p class="tc-stat-sub">전년비 역성장 지속이나<br>추가 악화는 없음</p>
+            </div>
+            <p class="tc-support">재고 조정 마무리 이후 하반기 배터리 재고 빌드업 전망</p>
+          </div>
+        </div>
+        <div class="tc-col">
+          <div class="tc-header">유럽 EV</div>
+          <div class="tc-body">
+            <p class="tc-key">IAA로 <u>점유율 반등</u> 기대</p>
+            <div class="tc-visual">
+              <p class="tc-stat">30%</p>
+              <p class="tc-stat-sub">국내 배터리 3사<br>유럽 점유율 저점</p>
+            </div>
+            <p class="tc-support">산업가속화법(IAA) 발의로 신규 수주 선행, 반등 지속 전망</p>
+          </div>
+        </div>
+        <div class="tc-col">
+          <div class="tc-header">미국 ESS</div>
+          <div class="tc-body">
+            <p class="tc-key">컨센서스 <u>웃도는 성장</u></p>
+            <div class="tc-visual">
+              <p class="tc-stat">+72%<span style="font-size:22px;">YTD</span></p>
+              <p class="tc-stat-sub">컨센서스 +40%(y-y)를<br>상회하는 설치 증가</p>
+            </div>
+            <p class="tc-support">적격 ESS 공급 부족으로 추가 라인 전환(EV→ESS) 전망</p>
+          </div>
+        </div>
+        <div class="v-divider" style="left:33.333%; top:calc(0.561in + 56px); bottom:56px;"></div>
+        <div class="v-divider" style="left:66.666%; top:calc(0.561in + 56px); bottom:56px;"></div>
+      </div>
+    </div>
+
+    <p class="qa-footnote">※ 이 외 리튬 가격은 상반기 급등 이후 하반기 완만한 상승 전망 — 짐바브웨·CATL 공급 재개(전체 공급의 13%) 반영</p>
+    <span class="deck-page">3</span>
+  </section>
+
+  <!-- ============ Slide 4: EV 회복 초입 (유럽/미국 2-Panel) ============ -->
+  <section class="slide" data-index="4">
+    <img class="deck-logo" src="assets/images/cosolus-ci-2.png" alt="COSOLUS">
+    <span class="deck-tagline">We promise tomorrow</span>
+    <span class="deck-divider"></span>
+    <p class="section-label">EV RECOVERY</p>
+    <h1 class="slide-title">EV 회복 초입 — 유럽 규제와 미국 재고 정상화</h1>
+
+    <div class="body-box">
+      <div class="ev-grid">
+        <div class="ev-panel">
+          <p class="ev-label">유럽 — <span>IAA로 점유율 회복</span></p>
+          <p class="ev-caption">OEM별 CO2 초과 배출 현황('25.1~'26.3 평균, g/km) — 배출량이 클수록 EV 판매 유인 강함</p>
+          <div class="ev-body">
+            <div class="ev-chart-box"><canvas id="chart-co2" data-chart-mode="native"
+              data-chart-json='{"labels":["Hyundai/Kia","평균","VW","Stellantis","Ford","Benz","Nissan"],"25년 평균":[3,3,8,8,13,17,29],"25.1~26.3 평균":[5,4,8,9,12,17,29],"unit":"g/km","source":"THEICCT, NH투자증권 리서치본부"}'></canvas></div>
+            <p class="ev-note">보조금 조건: 배터리 5대 핵심부품(양·음극재·분리막·전해액·BMS) 역내(EU+FTA) 조달 — 이미 중국 외 지역에서 조달 중인 국내 3사 셀 채택 확대 전망</p>
+          </div>
+        </div>
+        <div class="ev-panel">
+          <p class="ev-label">미국 — <span>재고 정상화 + 정책 모멘텀</span></p>
+          <p class="ev-caption">재고 조정 막바지 국면, 하반기 재가동과 중간선거 정책 변수 대기</p>
+          <div class="ev-body">
+            <ul class="ev-bullets">
+              <li>2025년 10월 보조금 중단 이후 미국 BEV/PHEV 판매 <b>-30%대</b> 역성장 지속, 추가 악화는 없음</li>
+              <li>GM 등 배터리 재고 정상화(<b class="num">2025년 말 9GWh → 2026년 6월 이후 5GWh 이내</b>)에 따라 <b class="num">3Q26중</b> 얼티엄 1공장 재가동 예상</li>
+              <li>2026년 11월 미국 중간선거에서 민주당이 상·하원 모두 승리할 경우 정책 변화에 따른 업황 개선 기대</li>
+            </ul>
+          </div>
+        </div>
+        <div class="v-divider" style="left:50%; top:10px; bottom:10px;"></div>
+      </div>
+    </div>
+
+    <p class="qa-footnote">자료: EU, THEICCT, EV Volumes, NH투자증권 리서치본부</p>
+    <span class="deck-page">4</span>
+  </section>
+
+  <!-- ============ Slide 5: ESS 공급과잉 우려는 기우 ============ -->
+  <section class="slide" data-index="5">
+    <img class="deck-logo" src="assets/images/cosolus-ci-2.png" alt="COSOLUS">
+    <span class="deck-tagline">We promise tomorrow</span>
+    <span class="deck-divider"></span>
+    <p class="section-label">ESS SUPPLY</p>
+    <h1 class="slide-title">ESS 공급과잉 우려는 기우</h1>
+
+    <div class="body-box">
+      <div class="ess-bullets">
+        <ul>
+          <li><b>ITC(투자세액공제)</b> 적격 ESS 확보 시 투자금액의 <b>30~50%</b>(30%+10%+10%) 세액공제</li>
+          <li>적격 공급 부족분(중국산)은 AMPC·ITC·대중관세 고려 시 <b>가격 메리트 없음</b></li>
+          <li>수익성 우려는 다수 사이트 동시 램프업 과정의 <b>일시적 현상</b> — 하반기 병목 해소로 흑자전환 기대</li>
+        </ul>
+      </div>
+
+      <div class="ess-table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr><th style="text-align:left;">미국 ESS 수요 vs 적격 Capa (GWh)</th><th>2025</th><th>2026E</th><th>2027F</th><th>2028F</th></tr>
+          </thead>
+          <tbody>
+            <tr><th>미국 ESS 수요</th><td>85</td><td>115</td><td>149</td><td>186</td></tr>
+            <tr><th>미국 적격 Capa</th><td>34</td><td>94</td><td>134</td><td>183</td></tr>
+            <tr class="hl"><th class="indent" style="padding-left:22px;">└ LG에너지솔루션</th><td>17</td><td>57</td><td>78</td><td>88</td></tr>
+            <tr class="hl"><th>적격 공급률</th><td>40%</td><td>82%</td><td>90%</td><td>98%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="ess-footnote">주: ITC 적격 조건은 재료비 중 Non-PFE 조달 비중·미국산 부품(셀·패널) 비중 단계적 상향 준수 필요 · 자료: NH투자증권 리서치본부 전망</p>
+    </div>
+
+    <span class="deck-page">5</span>
+  </section>
+
+  <!-- ============ Slide 6: 투자유망종목 1 — LG에너지솔루션 ============ -->
+  <section class="slide" data-index="6">
+    <img class="deck-logo" src="assets/images/cosolus-ci-2.png" alt="COSOLUS">
+    <span class="deck-tagline">We promise tomorrow</span>
+    <span class="deck-divider"></span>
+    <p class="section-label">TOP PICK 1</p>
+    <h1 class="slide-title">LG에너지솔루션 (373220.KS)</h1>
+
+    <div class="body-box">
+      <div class="pick-grid">
+        <div class="pick-left">
+          <p class="tbl-title">실적 전망 및 Valuation (IFRS연결)</p>
+          <table class="data-table">
+            <thead><tr><th style="text-align:left;">(십억원)</th><th>2025</th><th>2026E</th><th>2027F</th><th>2028F</th></tr></thead>
+            <tbody>
+              <tr><th>매출액</th><td>23,672</td><td>32,007</td><td>38,934</td><td>49,638</td></tr>
+              <tr><th>영업이익</th><td>1,346</td><td>1,455</td><td>3,732</td><td>7,095</td></tr>
+              <tr><th>영업이익률(%)</th><td>5.7</td><td>4.5</td><td>9.6</td><td>14.3</td></tr>
+              <tr><th>지배지분순이익</th><td>-1,073</td><td>255</td><td>2,492</td><td>4,069</td></tr>
+              <tr><th>PER(배)</th><td>N/A</td><td>368.6</td><td>37.7</td><td>23.1</td></tr>
+              <tr class="hl"><th>ROE(%)</th><td>-5.2</td><td>1.3</td><td>12.2</td><td>17.9</td></tr>
+            </tbody>
+          </table>
+          <p class="qa-footnote" style="position:static; font-size:11px; margin-top:8px; padding:0;">현재가(5/21) 401,000원 · 시가총액 93.8조원 · 외국인지분율 5.2%</p>
+        </div>
+        <div class="pick-right">
+          <p class="tbl-title" style="margin-bottom:2px;">ESS 매출/영업이익 비중 전망</p>
+          <div class="pick-chart-box"><canvas id="chart-lg-ess" data-chart-mode="native"
+            data-chart-json='{"labels":["25","26E","27F","28F"],"매출 비중(%)":[11.3,27.1,32.6,32.5],"영업이익 비중(%)":[-11.0,3.0,17.0,12.5],"source":"LG에너지솔루션, NH투자증권 리서치본부 전망"}'></canvas></div>
+
+          <div class="pick-target">
+            <span class="tp-label">12개월 목표주가</span>
+            <span class="tp-value">610,000원</span>
+            <span class="tp-opinion">Buy</span>
+          </div>
+
+          <div class="pick-thesis">
+            <p class="pick-thesis-title">투자 포인트</p>
+            <ul>
+              <li>GM 재고 정상화에 따라 3Q26중 얼티엄 1공장 재가동 예상</li>
+              <li>미국 ESS 수익성(AMPC 제외), 하반기 병목 해소로 흑자전환 기대</li>
+              <li>테슬라 유럽·아시아 판매 회복, 하반기 FSD 승인 시 가속 기대</li>
+              <li>경쟁사 대비 EV/EBITDA 10% 할인 — 밸류에이션 정상화 여지</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <span class="deck-page">6</span>
+  </section>
+
+  <!-- ============ Slide 7: 투자유망종목 2 — 대주전자재료 ============ -->
+  <section class="slide" data-index="7">
+    <img class="deck-logo" src="assets/images/cosolus-ci-2.png" alt="COSOLUS">
+    <span class="deck-tagline">We promise tomorrow</span>
+    <span class="deck-divider"></span>
+    <p class="section-label">TOP PICK 2</p>
+    <h1 class="slide-title">대주전자재료 (078600.KQ)</h1>
+
+    <div class="body-box">
+      <div class="pick-grid">
+        <div class="pick-left">
+          <p class="tbl-title">실적 전망 및 Valuation (IFRS연결)</p>
+          <table class="data-table">
+            <thead><tr><th style="text-align:left;">(십억원)</th><th>2025</th><th>2026E</th><th>2027F</th><th>2028F</th></tr></thead>
+            <tbody>
+              <tr><th>매출액</th><td>255</td><td>401</td><td>534</td><td>697</td></tr>
+              <tr><th>영업이익</th><td>21</td><td>44</td><td>55</td><td>68</td></tr>
+              <tr><th>영업이익률(%)</th><td>8.1</td><td>10.9</td><td>10.4</td><td>9.7</td></tr>
+              <tr><th>지배지분순이익</th><td>21</td><td>24</td><td>46</td><td>56</td></tr>
+              <tr><th>PER(배)</th><td>47.6</td><td>91.0</td><td>48.6</td><td>39.4</td></tr>
+              <tr class="hl"><th>ROE(%)</th><td>8.6</td><td>9.1</td><td>15.0</td><td>15.8</td></tr>
+            </tbody>
+          </table>
+          <p class="qa-footnote" style="position:static; font-size:11px; margin-top:8px; padding:0;">현재가(5/21) 132,500원 · 시가총액 2.06조원 · 외국인지분율 12.6%</p>
+
+          <p class="pick-scenario-title">우주 태양전지 규모별·점유율별 매출액 시나리오 (십억원)</p>
+          <table class="data-table pick-small-table">
+            <thead><tr><th style="text-align:left;">규모\점유율</th><th>10%</th><th class="hl-col">20%</th><th class="hl-col">30%</th><th>40%</th><th>50%</th></tr></thead>
+            <tbody>
+              <tr><th>20GW</th><td>96</td><td class="hl-col">192</td><td class="hl-col">288</td><td>384</td><td>480</td></tr>
+              <tr><th>60GW</th><td>288</td><td class="hl-col">576</td><td class="hl-col">864</td><td>1,152</td><td>1,440</td></tr>
+              <tr><th>100GW</th><td>480</td><td class="hl-col">960</td><td class="hl-col">1,440</td><td>1,920</td><td>2,400</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="pick-right">
+          <div class="pick-target" style="margin-top:0;">
+            <span class="tp-label">12개월 목표주가</span>
+            <span class="tp-value">200,000원</span>
+            <span class="tp-opinion">Buy</span>
+          </div>
+
+          <div class="pick-thesis">
+            <p class="pick-thesis-title">투자 포인트</p>
+            <ul>
+              <li>수동부품(MLCC·인덕터·저항) 호황 → 도전재료 매출 2026년 <b>2,500억원(+92% y-y)</b>, 2027년 <b>3,501억원(+40% y-y)</b> 전망</li>
+              <li>하반기 스페이스X向 HJT(이종접합) 페이스트 공급 성사 시, 궁극적으로 태양전지 페이스트 매출 연 <b>1.4조원</b>(MS 30% 가정) 전망</li>
+              <li>실리콘 음극재: 파나소닉 미국 점유율 확장, 포르쉐 신차(카이엔), 삼성SDI 전동공구 신규 진입으로 성장 가속</li>
+              <li>중간선거 이후 미국 EV 회복 시 테슬라·현대·기아 판매 회복에 따른 낙수효과 기대</li>
+            </ul>
+          </div>
+          <p class="qa-footnote" style="position:static; padding:0; margin-top:10px;">주: 은 가격 80달러/toz 기준 1GW당 매출 480억원 가정 · 자료: 대주전자재료, NH투자증권 리서치본부 전망</p>
+        </div>
+      </div>
+    </div>
+
+    <span class="deck-page">7</span>
+  </section>
+
+</div>
+
+<div id="nav-hint" aria-hidden="true">← → 키로 슬라이드 이동</div>
+
+<script src="assets/vendor/chart.min.js"></script>
+<script>
+  const slides = Array.from(document.querySelectorAll(".slide"));
+  let current = 0;
+  function show(i) {
+    slides.forEach((s, idx) => s.classList.toggle("is-active", idx === i));
+  }
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowRight" && current < slides.length - 1) { current++; show(current); }
+    if (e.key === "ArrowLeft" && current > 0) { current--; show(current); }
+  });
+  show(0);
+
+  // ---- Chart.js 공통 팔레트 (Hard Rule §5 / Design System Chart Color Usage) ----
+  const C_PRIMARY = "#067875";
+  const C_GRAY = "#8C9694";
+  const C_LINE = "#E1E7E5";
+  const C_INK = "#162B1F";
+
+  function readJson(el) {
+    return JSON.parse(el.getAttribute("data-chart-json"));
+  }
+
+  // Slide 4: 유럽 OEM별 CO2 초과 배출 (수평 막대)
+  const co2El = document.getElementById("chart-co2");
+  if (co2El && window.Chart) {
+    const d = readJson(co2El);
+    new Chart(co2El, {
+      type: "bar",
+      data: {
+        labels: d.labels,
+        datasets: [
+          { label: "25년 평균", data: d["25년 평균"], backgroundColor: C_GRAY, barThickness: 12 },
+          { label: "25.1~26.3 평균", data: d["25.1~26.3 평균"], backgroundColor: C_PRIMARY, barThickness: 12 }
+        ]
+      },
+      options: {
+        indexAxis: "y",
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { position: "top", align: "end", labels: { font: { size: 11, family: "Pretendard" }, color: C_INK, boxWidth: 12 } },
+          tooltip: { callbacks: { label: (ctx) => `${ctx.dataset.label}: ${ctx.parsed.x} g/km` } }
+        },
+        scales: {
+          x: { grid: { color: C_LINE }, ticks: { font: { size: 10 }, color: C_GRAY } },
+          y: { grid: { display: false }, ticks: { font: { size: 12, family: "Pretendard" }, color: C_INK } }
+        }
+      }
+    });
+  }
+
+  // Slide 6: LG에너지솔루션 ESS 매출/영업이익 비중 전망 (라인)
+  const lgEl = document.getElementById("chart-lg-ess");
+  if (lgEl && window.Chart) {
+    const d = readJson(lgEl);
+    new Chart(lgEl, {
+      type: "line",
+      data: {
+        labels: d.labels,
+        datasets: [
+          { label: "매출 비중(%)", data: d["매출 비중(%)"], borderColor: C_PRIMARY, backgroundColor: C_PRIMARY, borderWidth: 3, tension: 0.25, pointRadius: 4 },
+          { label: "영업이익 비중(%)", data: d["영업이익 비중(%)"], borderColor: C_GRAY, backgroundColor: C_GRAY, borderWidth: 2, borderDash: [4,3], tension: 0.25, pointRadius: 4 }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { position: "top", align: "end", labels: { font: { size: 11, family: "Pretendard" }, color: C_INK, boxWidth: 12 } }
+        },
+        scales: {
+          x: { grid: { display: false }, ticks: { font: { size: 11 }, color: C_INK } },
+          y: { grid: { color: C_LINE }, ticks: { font: { size: 10 }, color: C_GRAY, callback: (v) => v + "%" } }
+        }
+      }
+    });
+  }
+</script>
+</body>
+</html>
