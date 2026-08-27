@@ -52,6 +52,7 @@ description: 원본 자료를 분석해 슬라이드 구성안을 설계하고, 
 - 완료 후 메인에게 반환 → Human Review ①([4])로 이관.
 
 ### [5]/[7] 웹PPT 생성·수정
+- Human Review ②에서 들어온 피드백 중 문구 변경·Text/Image X·Y 위치 조정·이미지 크기 조절·교체 등 **구조적으로 정상인 HTML의 최종 미세 수정**은 Human Fine Editing(CLAUDE.md "Human Fine Editing" 절, `web-ppt-generator` 스킬의 `scripts/fine_editor/`)으로 처리되며 content-designer가 재호출되지 않는다 — [7]은 Hard Rule 위반·Layout/Relationship 오류·콘텐츠 누락·겹침·잘림 등 구조적 오류 피드백에만 쓰인다.
 - `slide_outline.md`에 `slide-content-structuring`이 기록한 Content Role·Relationship·Content Region·Selected Layout·Structural Check 결과를 입력으로 그대로 소비한다 — 역할 분류·관계 판단·Region 구성을 이 단계에서 다시 판단하지 않는다.
 - `design-rules.md`(`.claude/skills/web-ppt-generator/references/design-rules.md`)를 항상 먼저 읽는다. 이 문서는 **Hard Rule(1순위) > Claude PPT Design System(2순위) > Content Visualization Freedom(3순위) > Layout Reference(4순위)** 순서로 네 원본 문서(`docs/design-hard-rules/`, `docs/design-system/Claude_PPT_Design_System.md`, `docs/design-system/content-visualization-freedom.md`, `docs/layout-reference/2026.08.13_layout-catalog_V1.md` + 같은 폴더의 `2026.08.13_ppt_layout_set__V3.pptx`)를 링크로 참조한다. 하위 우선순위 판단이 상위 규칙과 충돌하면 상위가 이긴다. (참고: 기존 `docs/design-system/visual-style.md`는 삭제되지 않았으나 2순위 활성 슬롯은 `Claude_PPT_Design_System.md`가 대체한다.)
 - **고정 규칙 = Hard Rule**(로고, 브랜드 요소, 지정 표지 등)은 그대로 준수한다 — 변형·생략 금지.

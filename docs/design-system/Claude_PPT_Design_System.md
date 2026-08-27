@@ -29,7 +29,7 @@
 - 배경 틴트(Tint 100/50)는 섹션 구분 카드·배경에만, 텍스트 배경으로 남용 금지.
 
 ## 3. Typography System
-- 전체 서체(Font Family): **Pretendard 단일 서체** (Thin/Light/Regular/Medium/SemiBold/Bold/ExtraBold/ExtraLight). Hard Rule §2에 따라 표지를 포함한 모든 슬라이드에서 Pretendard 외 서체(과거 G마켓 산스 등)는 사용하지 않는다.
+- 전체 서체(Font Family): **Pretendard 단일 서체** (Thin/Light/Regular/Medium/SemiBold/Bold/ExtraBold/ExtraLight). Font Family 및 타 서체 혼용 금지 규칙은 Hard Rule §2를 따른다.
 - 역할 분리 원칙: 서체가 아닌 **Weight**로 정보 위계·강조 수준을 구분한다. 커버 타이틀·핵심 통계 숫자 등 가장 강한 위계는 Pretendard ExtraBold, 일반 섹션 타이틀은 ExtraBold~Bold, 본문은 Regular/Medium을 기본으로 한다.
 
 | 레벨 | 서체/웨이트 | 크기(pt) | 용도 |
@@ -148,13 +148,7 @@
 - 별도 의미가 없는 경우 Main Color + Gray 중심의 최소 색상 구성을 유지한다.
 
 ### Table Style
-- 직각형(Rectangular) Table 구조를 기본으로 한다. Rounded Corner, Card 그림자를 사용하지 않는다.
-- **Data Comparison Table 기본형**: 비교 대상 개수와 무관하게 첫 Header Row 전체 = Company Main Color 계열(Hard Rule §5 Brand Color 표의 Primary 컬러) Fill + White Bold Text로 통일한다. Header Row를 Column/대상 단위로 나눠 일부만 Fill하는 예외를 두지 않는다.
-- Body Row: White 배경 + Black/Dark Text.
-- Cell 구분은 얇은 직선(Divider)으로만 표현한다.
-- COSOLUS/자사 강조가 필요한 Cell/Text는 Body Fill이 아니라 Company Main Color Text + Bold로 표현한다. 기존/비교 대상의 Body Text는 Black/Dark를 유지한다.
-- COSOLUS 강조를 Row 또는 Column 전체 배경 Fill로 고정하지 않는다 — 강조는 항상 텍스트 색상과 Weight로만 표현한다.
-- **Reference가 있는 경우**, 위 기본 Header/강조 방식보다 Reference가 실제로 사용한 방식을 우선 적용한다.
+- Table Header/Body/강조/Grid 관련 규칙은 Hard Rule §10B를 따른다.
 - 그 외 불필요한 색상·장식(그라디언트, 다색 배색, 과도한 Border 강조 등)을 사용하지 않는다.
 - 모든 Header/Body Cell Text는 가로·세로 모두 Center Align을 기본으로 한다.
 - Table은 배치된 Content Area/Evidence Area를 강제로 꽉 채우지 않는다 — 내용량(Row 수·텍스트 길이)에 맞춰 Table 전체 크기와 Row Height를 조정한다.
@@ -163,7 +157,7 @@
 
 ## 9. 공통적으로 유지해야 하는 디자인 원칙
 - 컬러: 브랜드 틸 계열 + 화이트 + 그레이의 단색 팔레트, 시그널 컬러는 예외적·국소적 사용만.
-- 폰트: Pretendard 단일 서체(Weight로 위계 구분, 강조 숫자/타이틀은 ExtraBold). Hard Rule §2에 따라 다른 서체를 혼용하지 않는다.
+- 폰트: Pretendard 단일 서체(Weight로 위계 구분, 강조 숫자/타이틀은 ExtraBold). Font Family 규칙은 Hard Rule §2를 따른다.
 - 레이아웃 골격: 상단 타이틀 / 하단 콘텐츠, 좌측 정렬 기본.
 - 모든 도식은 정의된 Shape 컴포넌트(Line/RoundRect/Arrow/Connector/Ellipse)로만 구성.
 - 사진은 항상 팔레트에 맞게 톤 처리.

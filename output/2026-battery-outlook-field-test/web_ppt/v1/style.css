@@ -326,9 +326,18 @@ body {
 .pick-small-table th, .pick-small-table td { font-size: 12.5px; padding: 6px 8px; }
 .pick-small-table thead th { font-size: 12.5px; }
 
-.qa-footnote {
-  position: absolute; left: var(--margin-x); right: var(--margin-x); bottom: 18px;
+/* Hard Rule §9: Deck Footnote(Footer, 조건부) — 페이지 번호와 같은 하단 Row를
+   공유하되 우측 128px(X=1152~1280)는 페이지 번호 전용으로 비워 둔다. */
+.deck-footnote {
+  position: absolute; left: var(--margin-x); right: 128px; bottom: 28px; margin: 0;
   font-size: 11px; font-weight: 400; color: var(--c-gray);
+}
+
+/* 표/카드 등 특정 콘텐츠 하나에만 속하는 인라인 각주 — 본문 Content 흐름에 포함되며
+   Bottom Safe Area(Y=678px)가 그대로 적용된다. */
+.content-footnote {
+  position: static; font-size: 11px; font-weight: 400; color: var(--c-gray);
+  margin: 8px 0 0; padding: 0;
 }
 
 #nav-hint { position: fixed; bottom: 12px; right: 16px; font-size: 12px; color: #ccc; }

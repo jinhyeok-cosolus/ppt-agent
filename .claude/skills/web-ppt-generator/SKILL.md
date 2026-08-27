@@ -242,7 +242,7 @@ python .claude/skills/web-ppt-generator/scripts/content_fidelity_qa.py \
 - 컬러 이모지 아이콘의 브랜드 톤 이탈 — 위 "구현 기준 > 아이콘 렌더링" 기준에 따라 VS15 또는 SVG/브랜드 자산으로 교체
 - Selected Layout이 의도한 시각적 구성·Layout Reference와의 유사도가 실제로 구현됐는지
 
-Human Review ②에서 위 항목에 대한 수정 요청이 오면 [7] 피드백 반영 절차를 그대로 따른다 — 이 문서의 자동 QA 재검증 루프에는 포함하지 않는다.
+Human Review ②에서 위 항목에 대한 수정 요청이 오면 [7] 피드백 반영 절차를 그대로 따른다 — 이 문서의 자동 QA 재검증 루프에는 포함하지 않는다. 단, 위 항목 중 문구 변경·Text/Image 좌표(X/Y)·크기·이미지 교체류의 최종 미세 조정은 Human Fine Editing 도구(`scripts/fine_editor/`, CLAUDE.md "Human Fine Editing" 절)로 사람이 직접 처리하며 이 스킬(web-ppt-generator)이 다시 호출되지 않는다 — 응집도·시각적 균형·이미지 의미 적합성 등 구조 판단이 필요한 나머지 피드백만 [7] 경로로 들어온다.
 
 ### 3. 자동 수정 범위
 1·1-b·1-c·1-d·2-a에서 **기계적으로 확정 가능한** 문제가 발견되면 아래 범위 안에서만 수정한다. 2-b로 이관된 정성적 항목(응집도·균형·의미 적합성 등)은 여기서 다루지 않는다 — Human Review ②에서 수정 요청이 오면 그때 [7]로 처리한다.
@@ -267,6 +267,7 @@ Human Review ②에서 위 항목에 대한 수정 요청이 오면 [7] 피드�
 - `scripts/templates/` — 슬라이드 기본 HTML/CSS 템플릿 (표지, 본문, 표, 차트, 부록 레이아웃)
 - `scripts/templates/components/` — Layout별 재사용 HTML/CSS 구현 골격(위 "전용 Layout의 구조 규칙 우선 적용 > 구현 골격 우선 재사용" 참조). 현재 `flow-diagram.css`/`flow-diagram.html`(Flow Diagram Layout, Node/분기/Lane 개수·좌표·콘텐츠는 비워둔 채 구조만 제공)과 `three-column.css`/`three-column.html`(Three-Column Insight Layout, Header 행과 Body 행을 분리된 두 트랙으로 구성해 Header Gap과 Body Vertical Divider가 서로 다른 값을 갖도록 보장하는 구조만 제공)이 등록돼 있다. 다른 Layout으로 확장할 때도 이 폴더에 같은 이름 규칙(`{layout-slug}.css`/`.html`)으로 추가한다.
 - `scripts/vendor/` — 로컬 번들 JS 라이브러리 배치 위치 (Chart.js 등)
+- `scripts/fine_editor/` — Human Fine Editing용 독립 경량 Editor(문구 변경·Text/Image X/Y 이동·Image 크기 조절/교체, 순수 HTML/CSS/JS + 표준 라이브러리 Python 서버, 추가 패키지 없음). Agent가 호출하지 않는 사람 전용 도구이며 [5]/[7] 생성 로직을 재사용하지 않고 완전히 별도로 동작한다. 사용법은 CLAUDE.md "Human Fine Editing" 절 참조.
 
 ## references
 - `references/design-rules.md` — 고정 규칙 + Claude PPT Design System + 콘텐츠 표현 자유도 + 레이아웃 선택 기준 + 가변 규칙 + 검토 대기 후보를 우선순위 순으로 링크하는 허브 문서 (누적 갱신, 가변 규칙 본문 반영은 사용자 명시 승인 후에만)

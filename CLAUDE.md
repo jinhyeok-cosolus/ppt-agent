@@ -65,14 +65,25 @@
 ### [6] Human Review ② — 웹PPT 검토 (메인이 직접 진행)
 로컬 브라우저를 자동으로 열어(`start`/`explorer` 등 OS 명령 또는 파일 경로 안내) `web_ppt/v{N}/index.html`을 보여주고 대화로 피드백을 받는다.
 - **승인** → 해당 `v{N}`이 확정됨. 메인이 직접 `bundle_for_share.py`를 실행해 같은 `web_ppt/v{N}/` 폴더에 `shared.html`을 **기본으로** 생성한다(사용자가 공유를 별도로 요청하지 않아도 항상 수행 — 상세 절차·실패 처리는 아래 "확정 웹PPT 공유용 HTML 자동 생성" 참조). 이후 [8]로 진행(pptx-converter 호출).
-- **수정 요청** → 내용 문제(메시지·데이터 오류)인지 디자인 문제(레이아웃·스타일)인지 구분해서 기록
+- **수정 요청** → 아래 세 유형으로 구분해서 기록
   - 내용 문제이며 슬라이드 구성 자체를 바꿔야 하면 → [3]까지 소급 (content-designer에 재설계 지시)
-  - 그 외 → [7] (content-designer에 피드백 반영 지시, 새 버전 스냅샷 `vN+1/` 생성)
+  - Hard Rule 위반, Layout/Relationship 오류, 콘텐츠 누락, 겹침·잘림 등 **구조적** 오류 → [7] (content-designer에 피드백 반영 지시, 새 버전 스냅샷 `vN+1/` 생성)
+  - 문구 변경, Text/Image의 X·Y 위치 조정, Image 크기 조절·교체 등 **구조적으로 정상인 HTML의 최종 미세 수정** → content-designer를 재호출하지 않고 아래 "Human Fine Editing"으로 이동
 
 세션이 `human_review_mode: skip_intermediate_confirmation`(예: 내부 회귀 테스트)로 설정된 경우 [6] 대화형 승인 자체는 생략하되, `web-ppt-generator`의 QA 절차가 에스컬레이션 없이 통과해 그 버전이 사실상 확정되는 시점을 위 "승인"과 동일하게 취급해 `shared.html` 자동 생성을 수행한다.
 
 ### [7] 피드백 반영 (content-designer 호출)
 수정할 때마다 `web_ppt/vN+1/`로 새 스냅샷 생성 (기존 버전 보존, 롤백 가능). 완료 후 [6]으로 복귀 — 새 `vN+1`이 다시 승인(확정)되면 그 버전의 `shared.html`도 위와 동일하게 새로 생성한다(과거 버전의 `shared.html`은 건드리지 않음).
+
+### Human Fine Editing (구조적으로 정상인 HTML의 최종 미세 수정, [6] 이후 필요 시)
+[6]에서 나온 수정 요청 중 문구 변경, Text/Image의 X·Y 위치 조정, Image 크기 조절·교체처럼 **Hard Rule·Layout·Relationship과 무관한 최종 미세 조정**은 content-designer/web-ppt-generator를 재호출하지 않고 사람이 브라우저에서 직접 처리한다. Layout 재설계, Shape 신규 생성·Connector/분기 구조 수정, Color/Typography System 수정은 이 범위가 아니며 그대로 [7]로 처리한다.
+
+1. 사용자가 `.claude/skills/web-ppt-generator/scripts/fine_editor/server.py --project-dir web_ppt/v{N}`를 실행해 로컬 브라우저에서 확정 `v{N}`을 연다. 도구는 원본 `v{N}/`을 절대 수정하지 않고, 매 실행마다 별도 폴더 `web_ppt/v{N}-fine/`(이미 있으면 `-fine2`, `-fine3`...)를 새로 만들어 그 위에서만 편집한다.
+2. 화면에서 Text/Image를 클릭 선택해 문구·위치(X/Y)·크기(이미지)·이미지를 직접 조정한다(드래그 이동, 이미지 모서리 Resize 핸들 지원). 저장하면 `v{N}-fine/index.html`에만 반영된다.
+3. Editor의 "구조 QA 재검증" 버튼으로 기존 `qa_render.py --audit-layout`을 그 폴더에 대해 실행해, 이번 수정으로 새로 생긴 겹침·overflow·잘림·슬라이드 경계 이탈만 최소 확인한다(육안 검토를 대체하지 않음). 문제가 있으면 Editor에서 계속 고치거나, Layout 자체를 바꿔야 하는 문제로 판단되면 [7]로 이관한다.
+4. Editor의 "공유용 HTML 생성" 버튼(내부적으로 기존 `bundle_for_share.py --project-dir web_ppt/v{N}-fine`를 그대로 호출)으로 그 폴더의 `shared.html`을 만든다.
+5. [8] pptx 변환은 최신 확정본이 Fine Editing을 거쳤다면 `web_ppt/v{N}-fine/`을 `--web-ppt` 대상으로 pptx-converter에 전달한다 — 파일 구조가 기존 `vN` 폴더와 동일하므로 pptx-exporter 스크립트 변경 없이 그대로 동작한다.
+6. Fine Editing은 content-designer의 [3]~[7] 반복 루프를 다시 시작하지 않는다 — 사람이 도구에서 직접 완결하는 별도 절차다.
 
 ### [8] pptx 변환 (pptx-converter 호출)
 [6] 승인 후에만 진입. 최신 확정 `web_ppt/v{N}/` 경로를 pptx-converter에 전달. 결과: `final.pptx`.

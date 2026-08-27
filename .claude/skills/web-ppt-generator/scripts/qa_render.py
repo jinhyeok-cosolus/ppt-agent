@@ -6,10 +6,11 @@ web_ppt/v{N}/index.html을 Playwright/Chromium으로 실제 렌더링해, 지정
 (또는 전체 슬라이드)를 브라우저가 보여주는 그대로 PNG로 캡처한다. `--audit-fonts`를
 같이 주면 각 텍스트 요소의 **실제 computed font-size**(코드의 선언값이 아니라
 브라우저가 최종 계산한 값)를 pt 단위로 함께 추출한다. `--audit-layout`을 같이 주면
-겹침(overlap)/캔버스 이탈(overflow)/텍스트 잘림(clipping)처럼 좌표·CSS 값만으로
-기계적으로 판정 가능한 항목을 함께 감사해 `layout-audit.json`으로 저장한다 — 이
-결과는 어떤 슬라이드를 LLM이 스크린샷으로 직접 봐야 하는지 미리 걸러내기 위한
-것이며, 응집도·시각적 균형·가독성 등 정성적 판단을 대체하지 않는다.
+겹침(overlap)/캔버스 이탈(overflow)/텍스트 잘림(clipping)/Page Number 위치(Hard
+Rule §9)/Bottom Safe Area 침범처럼 좌표·CSS 값만으로 기계적으로 판정 가능한 항목을
+함께 감사해 `layout-audit.json`으로 저장한다 — 이 결과는 어떤 슬라이드를 LLM이
+스크린샷으로 직접 봐야 하는지 미리 걸러내기 위한 것이며, 응집도·시각적 균형·가독성
+등 정성적 판단을 대체하지 않는다.
 
 이 스크립트는 pptx 변환(pptx-exporter/scripts/export_pptx.py)과 역할이 다르다 —
 좌표를 추출해 pptx 네이티브 요소로 재구성하지 않고, content-designer가 눈으로
@@ -215,7 +216,83 @@ LAYOUT_AUDIT_JS = """
     }
   }
 
-  return { overflow, clipped, overlaps };
+  // 4) Page Number / Deck Footnote(Footer) 위치 + Bottom Safe Area
+  //    (Hard Rule §9, 2026-08-27 정량화·역할분리 확정) — Single Source of Truth는
+  //    Hard Rule 문서이며, 아래 상수는 그 문서의 값을 그대로 기계적으로 대조하기 위해
+  //    옮겨온 것일 뿐이다(Hard Rule 값이 바뀌면 이 상수도 함께 바꾼다 — 위 PX_PER_PT와
+  //    동일한 성격). 표지처럼 페이지 번호(`.deck-page`) 자체가 없는 슬라이드는 Hard
+  //    Rule §9 적용 대상이 아니므로 이 검사를 건너뛴다. `.deck-footnote`(Deck 공통
+  //    출처/Footer)는 조건부 요소라 있을 때만 그 허용 영역을 검사하고, `.content-footnote`
+  //    (표/카드 전용 인라인 각주)는 별도 검사 없이 아래 일반 Content 목록에 포함되어
+  //    Bottom Safe Area를 그대로 적용받는다.
+  const PAGE_NUMBER_SELECTOR = '.deck-page';
+  const PAGE_NUMBER_RIGHT_EDGE_X = width - 64;   // Hard Rule §9: X=1216px(=1280-64)
+  const PAGE_NUMBER_BOTTOM_EDGE_Y = height - 28; // Hard Rule §9: Y=692px(=720-28)
+  const DECK_FOOTNOTE_SELECTOR = '.deck-footnote';
+  const DECK_FOOTNOTE_LEFT_X = 64;               // Hard Rule §9: X=64px
+  const DECK_FOOTNOTE_RIGHT_MAX_X = width - 128; // Hard Rule §9: 우측 경계 X=1152px(=1280-128)
+  const DECK_FOOTNOTE_BOTTOM_EDGE_Y = height - 28; // Hard Rule §9: Y=692px, 페이지 번호와 동일 Row
+  const BOTTOM_SAFE_AREA_Y = 678;                // Hard Rule §9: Content 하단 경계
+  const POS_EPS = 2; // px 허용 오차(안티에일리어싱/서브픽셀 반올림 대응)
+
+  const pageNumberIssues = [];
+  const deckFootnoteIssues = [];
+  const bottomSafeAreaViolations = [];
+  const pageNumberEl = slide.querySelector(PAGE_NUMBER_SELECTOR);
+  const deckFootnoteEl = slide.querySelector(DECK_FOOTNOTE_SELECTOR);
+
+  if (pageNumberEl) {
+    const pr = pageNumberEl.getBoundingClientRect();
+    if (Math.abs(pr.right - PAGE_NUMBER_RIGHT_EDGE_X) > POS_EPS) {
+      pageNumberIssues.push({ type: 'x', expected: PAGE_NUMBER_RIGHT_EDGE_X, actual: Math.round(pr.right) });
+    }
+    if (Math.abs(pr.bottom - PAGE_NUMBER_BOTTOM_EDGE_Y) > POS_EPS) {
+      pageNumberIssues.push({ type: 'y', expected: PAGE_NUMBER_BOTTOM_EDGE_Y, actual: Math.round(pr.bottom) });
+    }
+    if (pr.top < BOTTOM_SAFE_AREA_Y - POS_EPS) {
+      pageNumberIssues.push({ type: 'page-number-invades-safe-area', boundary: BOTTOM_SAFE_AREA_Y, actual: Math.round(pr.top) });
+    }
+
+    if (deckFootnoteEl) {
+      const fr = deckFootnoteEl.getBoundingClientRect();
+      if (Math.abs(fr.left - DECK_FOOTNOTE_LEFT_X) > POS_EPS) {
+        deckFootnoteIssues.push({ type: 'x', expected: DECK_FOOTNOTE_LEFT_X, actual: Math.round(fr.left) });
+      }
+      if (fr.right > DECK_FOOTNOTE_RIGHT_MAX_X + POS_EPS) {
+        deckFootnoteIssues.push({ type: 'invades-page-number-zone', boundary: DECK_FOOTNOTE_RIGHT_MAX_X, actual: Math.round(fr.right) });
+      }
+      if (Math.abs(fr.bottom - DECK_FOOTNOTE_BOTTOM_EDGE_Y) > POS_EPS) {
+        deckFootnoteIssues.push({ type: 'y', expected: DECK_FOOTNOTE_BOTTOM_EDGE_Y, actual: Math.round(fr.bottom) });
+      }
+      if (fr.top < BOTTOM_SAFE_AREA_Y - POS_EPS) {
+        deckFootnoteIssues.push({ type: 'deck-footnote-invades-safe-area', boundary: BOTTOM_SAFE_AREA_Y, actual: Math.round(fr.top) });
+      }
+    }
+
+    // 일반 Content(직접 텍스트 leaf + img/svg 그래픽, `.content-footnote` 포함)가
+    // Bottom Safe Area 아래로 내려가는지 확인한다 — 페이지 번호·Deck Footnote 자신은
+    // 이미 위에서 별도로 검사했으므로 이 판정에서 제외한다.
+    for (const el of [...leaves, ...graphics]) {
+      if (el === pageNumberEl || pageNumberEl.contains(el) || el.contains(pageNumberEl)) continue;
+      if (deckFootnoteEl && (el === deckFootnoteEl || deckFootnoteEl.contains(el) || el.contains(deckFootnoteEl))) continue;
+      const r = el.getBoundingClientRect();
+      if (r.height === 0) continue;
+      if (r.bottom > BOTTOM_SAFE_AREA_Y + POS_EPS) {
+        bottomSafeAreaViolations.push({
+          tag: el.tagName.toLowerCase(), class: classOf(el),
+          text: (el.textContent || '').trim().slice(0, 40),
+          bottom: Math.round(r.bottom), boundary: BOTTOM_SAFE_AREA_Y,
+        });
+      }
+    }
+  }
+
+  return {
+    overflow, clipped, overlaps,
+    page_number_issues: pageNumberIssues,
+    deck_footnote_issues: deckFootnoteIssues,
+    bottom_safe_area_violations: bottomSafeAreaViolations,
+  };
 }
 """
 
@@ -308,14 +385,20 @@ def render(
 
             if audit_layout:
                 result = page.evaluate(LAYOUT_AUDIT_JS, {"width": SLIDE_WIDTH_PX, "height": SLIDE_HEIGHT_PX})
-                flagged = bool(result["overflow"] or result["clipped"] or result["overlaps"])
+                flagged = bool(
+                    result["overflow"] or result["clipped"] or result["overlaps"]
+                    or result["page_number_issues"] or result["deck_footnote_issues"]
+                    or result["bottom_safe_area_violations"]
+                )
                 result["flagged"] = flagged
                 layout_audit[f"slide_{idx}"] = result
                 if flagged:
                     print(
                         f"[qa_render] slide {idx}: LAYOUT AUDIT FLAGGED "
                         f"(overflow={len(result['overflow'])}, clipped={len(result['clipped'])}, "
-                        f"overlaps={len(result['overlaps'])})"
+                        f"overlaps={len(result['overlaps'])}, page_number_issues={len(result['page_number_issues'])}, "
+                        f"deck_footnote_issues={len(result['deck_footnote_issues'])}, "
+                        f"bottom_safe_area_violations={len(result['bottom_safe_area_violations'])})"
                     )
                 else:
                     print(f"[qa_render] slide {idx}: layout audit clean")
