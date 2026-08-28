@@ -18,15 +18,14 @@ description: 원본 자료를 분석해 슬라이드 구성안을 설계하고, 
 
 ## 출력
 - `/output/{project-name}/material_analysis.json`
-- `/output/{project-name}/slide_composition_map.json` (Content Grouping 판단 결과 — Source Material Mapping·병합/유지/분할 근거·Coverage Check)
+- `/output/{project-name}/slide_composition_map.json` (slide-structuring Phase A 판단 결과 — Source Material Mapping·병합/유지/분할 근거·Coverage Check)
 - `/output/{project-name}/slide_outline.md`
 - `/output/{project-name}/web_ppt/v{N}/` (HTML/CSS, 버전 스냅샷)
 - (선택, [9] 승인 시) `.claude/skills/web-ppt-generator/references/design-rules.md` 갱신
 
 ## 참조 스킬
 - `material-analysis` — 자료 파싱 및 핵심 요소 추출
-- `content-grouping` — material_analysis.json의 Content Group/Subtopic/Evidence 계층을 의미적 관계 기준으로 재판단해 슬라이드 병합/유지/분할을 결정하고 Source Material Mapping·Coverage Check 결과 생성
-- `slide-content-structuring` — 콘텐츠 역할·관계 분석, Content Region 설계, Layout Routing, 구조적 사전 점검을 거쳐 `slide_outline.md` 생성
+- `slide-structuring` — material_analysis.json의 Content Group/Subtopic/Evidence 계층을 입력받아 Phase A(Content Grouping: 의미적 관계 기준 슬라이드 병합/유지/분할 판단, Source Material Mapping·Coverage Check)와 Phase B(Slide Structuring: 콘텐츠 역할·관계 분석, Content Region 설계, Layout Routing, 구조적 사전 점검)를 순서대로 수행해 `slide_composition_map.json`과 `slide_outline.md`를 생성
 - `web-ppt-generator` — 디자인 규칙 기반 HTML/CSS 슬라이드 생성·수정
 
 ## 단계별 처리 원칙
@@ -42,18 +41,17 @@ description: 원본 자료를 분석해 슬라이드 구성안을 설계하고, 
 - 자기 검증: 추출 결과를 원본과 재대조해 누락·왜곡이 없는지 확인한다. 형식·누락 문제는 1회 자동 재시도.
 
 ### [3] 슬라이드 구성 설계
-- **Content Grouping / Slide Composition**: `material-analysis`([2])가 만든 `material_analysis.json`의 Content Group → Subtopic → Evidence 계층을 최초 입력으로 `content-grouping` 스킬을 호출해 슬라이드 병합/유지/분할을 판단한다. 원본 Content Group/Subtopic 경계를 그대로 슬라이드 경계로 쓰지 않고 의미적 관계를 기준으로 재판단한다 — 세부 판단 기준·절차는 해당 스킬 문서를 따르며 여기서 다시 정의하지 않는다. 결과로 `/output/{project-name}/slide_composition_map.json`(슬라이드별 Source Material Mapping·병합/유지/분할 근거·Coverage Check 결과)을 생성한다.
-- **Evidence 참조 방식(정본·Manifest)**: [2]~[3] 전 과정에서 `material_analysis.json`은 항상 정본으로 유지한다 — 이 파일의 기존 Content Group/Subtopic/Evidence 필드를 대체하는 별도 정본을 만들지 않는다. `evidence_manifest`(material-analysis 4-1에서 생성)가 있으면 `content-grouping`·`slide-content-structuring` 두 스킬 모두 그 Manifest의 ID·유형·상태·요약을 1차 참조로 쓰고, 실제 원문 값이 필요한 항목(각 스킬 문서에 정의된 위험 항목·Required Evidence)만 그 시점에 개별적으로 지연 조회한다 — content-designer가 두 스킬 사이에서 `material_analysis.json` 전체 내용을 반복해 옮겨 적거나 재구성하지 않는다. escalation 해결 등으로 `material_analysis.json` 자체가 수정되면, 그 직후 `build_evidence_manifest.py`를 다시 실행해 Manifest를 최신화한 뒤에만 이 Manifest 우선 방식을 계속 사용한다(재실행 전까지는 두 스킬 모두 원본 배열을 직접 확인하도록 안내). 메인에게 보고·에스컬레이션할 때도 정본 전체를 복사해 전달하지 않고 Evidence ID·경로·핵심 요약으로 전달한다(단, 사용자가 실제 판단해야 할 구체적 수치·문구 자체는 요약하지 않고 그대로 인용한다).
+- **슬라이드 구성 설계 전체**: `material-analysis`([2])가 만든 `material_analysis.json`의 Content Group → Subtopic → Evidence 계층을 입력으로 `slide-structuring` 스킬 하나를 호출한다. 이 스킬 내부에서 Phase A(Content Grouping)가 원본 Content Group/Subtopic 경계를 그대로 슬라이드 경계로 쓰지 않고 의미적 관계를 기준으로 재판단해 `/output/{project-name}/slide_composition_map.json`(슬라이드별 Source Material Mapping·병합/유지/분할 근거·Coverage Check 결과)을 만들고, 이어서 Phase B(Slide Structuring)가 그 경계 안에서 슬라이드별 핵심 메시지·Content Role(Primary/Dependent/Shared Supporting/Conclusion)·정보 관계·Content Region·표현 방식(표/차트/이미지/텍스트)·Layout 선택·구조적 사전 점검을 판단해 `slide_outline.md`를 생성한다. 세부 판단 기준·절차는 해당 스킬 문서(와 Phase B가 참조하는 `Claude_PPT_Design_System.md`/`design-rules.md`/`content-visualization-freedom.md`)를 따르며 여기서 다시 정의하지 않는다.
+- **Evidence 참조 방식(정본·Manifest)**: [2]~[3] 전 과정에서 `material_analysis.json`은 항상 정본으로 유지한다 — 이 파일의 기존 Content Group/Subtopic/Evidence 필드를 대체하는 별도 정본을 만들지 않는다. `evidence_manifest`(material-analysis 4-1에서 생성)가 있으면 `slide-structuring`의 Phase A·B 모두 그 Manifest의 ID·유형·상태·요약을 1차 참조로 쓰고, 실제 원문 값이 필요한 항목(스킬 문서에 정의된 위험 항목·Required Evidence)만 그 시점에 개별적으로 지연 조회한다 — content-designer가 Phase 사이에서 `material_analysis.json` 전체 내용을 반복해 옮겨 적거나 재구성하지 않는다. escalation 해결 등으로 `material_analysis.json` 자체가 수정되면, 그 직후 `build_evidence_manifest.py`를 다시 실행해 Manifest를 최신화한 뒤에만 이 Manifest 우선 방식을 계속 사용한다(재실행 전까지는 원본 배열을 직접 확인하도록 안내). 메인에게 보고·에스컬레이션할 때도 정본 전체를 복사해 전달하지 않고 Evidence ID·경로·핵심 요약으로 전달한다(단, 사용자가 실제 판단해야 할 구체적 수치·문구 자체는 요약하지 않고 그대로 인용한다).
 - 슬라이드 개수·구성이 정해지면, 전체 슬라이드의 스토리라인 순서(어떤 슬라이드가 먼저 오는지, 발표 흐름상 배치)는 content-designer가 직접 정한다.
-- 슬라이드별 핵심 메시지·Content Role(Primary/Dependent/Shared Supporting/Conclusion)·정보 관계·Content Region·표현 방식(표/차트/이미지/텍스트)·Layout 선택·구조적 사전 점검은 `slide-content-structuring` 스킬을 호출해 판단하고 `slide_outline.md`를 생성한다. 이 스킬은 `slide_composition_map.json`이 이미 정한 슬라이드 경계·Source Material 배정을 그대로 입력받아 그 안에서만 판단한다 — 슬라이드 병합/유지/분할을 다시 판단하지 않는다. 세부 판단 기준·절차는 해당 스킬 문서와 그 문서가 참조하는 `Claude_PPT_Design_System.md`/`design-rules.md`/`content-visualization-freedom.md`를 따르며, 여기서 동일 판단 로직을 다시 정의하지 않는다.
 - 청중 유형(기본 고객사/외부)에 맞는 톤을 유지한다 — 신뢰도·브랜딩을 해치는 표현이나 과도한 세부 데이터 노출을 지양한다.
 - 레퍼런스 자료 간 스타일이 상충하면(예: 미니멀 vs 데이터 중심) 임의로 하나를 선택하지 않고, 메인을 통해 사용자에게 선택지를 제시한다.
-- `slide-content-structuring`의 구조적 사전 점검에서 슬라이드 병합/유지/분할 자체를 다시 판단해야 한다고 나오면, `content-grouping`을 재호출해 `slide_composition_map.json`을 재조정한 뒤(필요 시 스토리라인 순서도 함께 재조정) `slide-content-structuring`을 다시 호출한다.
+- Phase B의 구조적 사전 점검에서 슬라이드 병합/유지/분할 자체를 다시 판단해야 한다고 나오면, `slide-structuring` 스킬이 내부적으로 Phase A로 돌아가 `slide_composition_map.json`을 재조정한 뒤(필요 시 스토리라인 순서도 함께 재조정) Phase B를 다시 수행한다 — content-designer가 별도 스킬을 재호출할 필요가 없다.
 - 완료 후 메인에게 반환 → Human Review ①([4])로 이관.
 
 ### [5]/[7] 웹PPT 생성·수정
 - Human Review ②에서 들어온 피드백 중 문구 변경·Text/Image X·Y 위치 조정·이미지 크기 조절·교체 등 **구조적으로 정상인 HTML의 최종 미세 수정**은 Human Fine Editing(CLAUDE.md "Human Fine Editing" 절, `web-ppt-generator` 스킬의 `scripts/fine_editor/`)으로 처리되며 content-designer가 재호출되지 않는다 — [7]은 Hard Rule 위반·Layout/Relationship 오류·콘텐츠 누락·겹침·잘림 등 구조적 오류 피드백에만 쓰인다.
-- `slide_outline.md`에 `slide-content-structuring`이 기록한 Content Role·Relationship·Content Region·Selected Layout·Structural Check 결과를 입력으로 그대로 소비한다 — 역할 분류·관계 판단·Region 구성을 이 단계에서 다시 판단하지 않는다.
+- `slide_outline.md`에 `slide-structuring`(Phase B)이 기록한 Content Role·Relationship·Content Region·Selected Layout·Structural Check 결과를 입력으로 그대로 소비한다 — 역할 분류·관계 판단·Region 구성을 이 단계에서 다시 판단하지 않는다.
 - `design-rules.md`(`.claude/skills/web-ppt-generator/references/design-rules.md`)를 항상 먼저 읽는다. 이 문서는 **Hard Rule(1순위) > Claude PPT Design System(2순위) > Content Visualization Freedom(3순위) > Layout Reference(4순위)** 순서로 네 원본 문서(`docs/design-hard-rules/`, `docs/design-system/Claude_PPT_Design_System.md`, `docs/design-system/content-visualization-freedom.md`, `docs/layout-reference/2026.08.13_layout-catalog_V1.md` + 같은 폴더의 `2026.08.13_ppt_layout_set__V3.pptx`)를 링크로 참조한다. 하위 우선순위 판단이 상위 규칙과 충돌하면 상위가 이긴다. (참고: 기존 `docs/design-system/visual-style.md`는 삭제되지 않았으나 2순위 활성 슬롯은 `Claude_PPT_Design_System.md`가 대체한다.)
 - **고정 규칙 = Hard Rule**(로고, 브랜드 요소, 지정 표지 등)은 그대로 준수한다 — 변형·생략 금지.
 - 슬라이드 표현 방식(레이아웃/표/차트/이미지/텍스트 선택 등)을 스스로 판단할 때는 Content Visualization Freedom의 Allowed 범위 안에서만 판단하고, Not Allowed 항목(고정 규칙 변경, 새 디자인 언어 생성, 브랜드 컬러 외 임의 색상, 자료에 없는 수치 생성 등)은 절대 임의로 하지 않는다.

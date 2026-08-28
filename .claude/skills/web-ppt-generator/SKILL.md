@@ -8,6 +8,9 @@ description: design-rules.md(고정 규칙 + 가변 규칙)를 기반으로 HTML
 ## 언제 사용하는가
 content-designer가 [5] 웹PPT 초안 생성, [7] 피드백 반영, [9] 디자인 규칙 갱신 단계에 진입했을 때.
 
+## 이 문서의 성격
+이 문서 전체는 새 디자인 값·판단 기준을 만들지 않는다 — Hard Rule/Claude PPT Design System/Layout MD/`content-visualization-freedom.md`/`slide-structuring`(Phase B)가 이미 결정한 값·구조가 [5]/[7] 생성 과정에서 새거나 재발명되지 않도록, 그것을 브라우저에서 안정적으로 재현·집행하는 방법만 규정한다(아래 각 섹션에서 이 전제를 반복 서술하지 않는다). 각 규칙이 실제로 어떤 회귀 사례에서 나왔는지는 `references/design-decisions-log.md`에 모아두었다 — 매 호출마다 읽을 필요는 없고, 규칙의 취지가 의심스러울 때만 참조한다.
+
 ## 핵심 산출물
 - `/output/{project-name}/web_ppt/v{N}/index.html` — 슬라이드 전체를 담는 진입점(섹션별 슬라이드 또는 `slides/slide-01.html` 형태로 분리 후 include, 프로젝트 규모에 따라 LLM이 선택)
 - `/output/{project-name}/web_ppt/v{N}/assets/` — 이미지, 차트 데이터, 로고 등 정적 자산
@@ -29,6 +32,10 @@ python .claude/skills/web-ppt-generator/scripts/new_version.py \
 ## 디자인 규칙 적용 원칙
 `references/design-rules.md`를 항상 먼저 읽는다. 이 문서가 Hard Rule/Claude PPT Design System/Content Visualization Freedom/Layout Reference/표지 전용 규칙의 원본 경로와 **적용 우선순위**(충돌 시 이 순서)를 정의하는 단일 기준이다 — 우선순위 설명은 여기서 반복하지 않는다.
 
+> **세션 내 재사용(같은 content-designer 실행 안에서)**: 이번 프로젝트의 [3]에서 `slide-structuring`이 같은 세션 안에서 `design-rules.md`/`Claude_PPT_Design_System.md`/`content-visualization-freedom.md`를 이미 읽었고 그 내용이 지금 컨텍스트에 남아 있다면, [5]/[7] 진입 시 다시 Read하지 않고 그 내용을 그대로 재사용한다(design-rules.md L20 "세션 내 원본 문서 재사용 원칙"과 동일 원칙을 이 진입점에도 적용). 아래 중 하나라도 해당하면 그때만 다시 Read한다.
+> - 해당 원본 파일이 마지막으로 읽은 이후 수정됐을 가능성이 있는 경우(예: [9] 디자인 규칙 갱신을 거쳤거나, 파일 변경이 확인/보고된 경우)
+> - 컨텍스트 압축·요약 등으로 지금 컨텍스트에 그 내용이 실제로 남아 있지 않은 경우(불확실하면 안전하게 다시 Read한다)
+
 - **고정 규칙**(로고, 브랜드 색상, 지정 표지 등, = Hard Rule): 그대로 준수한다. 변형·생략 금지. 자산 파일은 `/docs/brand-assets/`에서 참조(프로젝트 폴더로 복사하지 말고 상대/절대 경로로 참조하거나, 배포 편의를 위해 필요 시 `assets/`로 1회 복사 후 출처를 유지).
 - PPT 전체의 Visual Style, Color, Typography, Grid/Spacing, Component Style, Image Treatment, Chart/Table/Diagram Style은 Claude PPT Design System 기준을 따른다. Hard Rule과 충돌하는 부분은 적용하지 않는다.
 - **Font Size 단위 처리(중요)**: Hard Rule §9/§10/§12와 Claude PPT Design System §3 Typography 표의 모든 크기 값은 **pt** 단위로 정의돼 있다. HTML/CSS로 옮길 때 `font-size`는 **pt 단위 그대로**(`font-size: 16pt` 형태) 작성하는 것을 기본으로 한다. 다른 이유로 px 단위가 꼭 필요한 경우에만 **1pt = 1.3333px** 기준으로 정확히 환산해서 쓴다 — Typography 표의 pt 숫자를 그대로 px 숫자로 옮겨 적지 않는다(예: Body 16pt를 `font-size: 16px`로 쓰는 것은 오류다 — 16px는 12pt에 불과하다. 올바른 px 환산은 16pt→21.3px, 14pt→18.7px, 18pt→24px, 20pt→26.7px). 이 문서 다른 곳(padding/width/gap 등)이 대부분 px 단위라는 이유로 font-size도 습관적으로 px을 쓰지 않도록 특히 주의한다.
@@ -41,7 +48,7 @@ python .claude/skills/web-ppt-generator/scripts/new_version.py \
 - 원본 수치·데이터는 `material_analysis.json`/`slide_outline.md`와 정확히 일치해야 한다. 임의로 반올림·재해석하지 않는다. `[확인필요]` 표시가 있는 값은 슬라이드에도 동일하게 `[확인필요]`로 노출한다.
 
 ## 생성 전 Implementation Contract 확인 (Pre-Generation Contract Check)
-> 새 판단 기준을 만드는 단계가 아니다 — `slide-content-structuring`·`content-visualization-freedom.md`·Layout Routing이 이미 결정한 내용이 [5]/[7] 생성 과정에서 새지 않도록, HTML을 쓰기 전에 슬라이드마다 한 번 확인만 한다.
+> HTML을 쓰기 전에 슬라이드마다 한 번 확인만 한다.
 
 `slide_outline.md`에서 슬라이드마다 아래를 확인한다(이 문서에서 새로 판단하지 않고, 이미 기록된 내용을 그대로 가져온다):
 - Core Claim(들)
@@ -79,14 +86,14 @@ python .claude/skills/web-ppt-generator/scripts/new_version.py \
 - 구현 편의를 위해 모든 Region을 동일한 패턴(예: 전부 Icon+Text, 전부 Number+Text, 전부 Text Card)으로 단순화하지 않는다.
 
 ### 전용 Layout의 구조 규칙 우선 적용 (Dedicated Layout Structure Enforcement)
-> 새 판단 기준이 아니다 — [3]에서 이미 확정된 Selected Layout이 [5]/[7] 구현 단계에서 다른 구조로 새는 것을 막는 절차 규칙이다(2026-08-24, `cosolus-ir-deck-F` Slide 16에서 Selected Layout은 정확히 Flow Diagram(L25)이었으나 실제 HTML은 그 문서의 Region Map·Connector 규칙 대신 다른 Layout용 범용 컴포넌트를 그대로 가져다 쓴 사례를 반영).
+> [3]에서 이미 확정된 Selected Layout이 [5]/[7] 구현 단계에서 다른 구조로 새는 것을 막는 절차 규칙이다(사유: `references/design-decisions-log.md#flow-diagram-region-map-drift`).
 
 - Selected Layout이 `docs/slide-design-rules/`의 전용 Layout Reference 문서(예: `flow-diagram-rules.md`, `before-after/before-after.md`, `020_organization.md` 등 — Reference-Locked 여부와 무관하게 특수 Layout Reference 전체에 적용)를 가리키면, 그 문서가 정의하는 **Region Map(좌표/비율)·방향(가로/세로)·Connector 처리 방식·Branch 구조**는 이번 슬라이드의 구현 명세로 취급한다 — 참고용 예시가 아니라 실제로 재현해야 하는 구조다.
 - **L01~L33 카탈로그 Layout에도 동일 적용**: 이 원칙은 위와 같은 전용 MD가 없는 `layout-catalog_V1.md`(L01~L33) Layout에도 그대로 적용된다 — 전용 Must Preserve 문서가 없더라도, 원본 Reference(`docs/layout-reference/2026.08.13_ppt_layout_set__V3.pptx`의 해당 슬라이드)에서 명확히 확인되는 주요 Region의 역할과 좌우·상하 배치 관계(예: Main Visual Region ↔ Text/Insight Region)는 기본 구조로 그대로 보존한다.
-- **Primary/Optional Visual의 Region 배치**: Required로 확정된 Primary Visual은 원본 Reference가 지정한 Main Visual Region에 우선 배치한다. Optional/Supporting Visual은 원본 Reference에 별도 Supporting Visual Region이 있거나, 기존 Region 구조를 변형하지 않고 배치할 수 있는 경우에만 추가한다 — 이를 위해 Main Region의 좌우 관계를 반전하거나, Primary Visual을 축소하거나, 원본에 없는 새 Column/Region을 임의로 만들지 않는다(2026-08-25, `cosolus-business-plan-2026` Slide 3에서 L07의 좌=Main Visual/우=Text 구조가 반전되고 Optional 보조 이미지를 넣기 위해 Primary Visual까지 축소된 사례를 반영).
+- **Primary/Optional Visual의 Region 배치**: Required로 확정된 Primary Visual은 원본 Reference가 지정한 Main Visual Region에 우선 배치한다. Optional/Supporting Visual은 원본 Reference에 별도 Supporting Visual Region이 있거나, 기존 Region 구조를 변형하지 않고 배치할 수 있는 경우에만 추가한다 — 이를 위해 Main Region의 좌우 관계를 반전하거나, Primary Visual을 축소하거나, 원본에 없는 새 Column/Region을 임의로 만들지 않는다(사유: `references/design-decisions-log.md#l07-primary-visual-reversed`).
 - **Image Legibility(반대 방향의 축소·확대 왜곡 금지)**: Region을 채우기 위해 Primary Visual을 원본 해상도·포함된 텍스트가 깨지는 수준까지 무리하게 확대하지 않는다 — Main Visual Region이라고 해서 반드시 그 공간을 가득 채워야 하는 것은 아니며, 원본 이미지의 실제 해상도와 이미지 안에 포함된 텍스트(도표 라벨 등)가 읽을 수 있는 크기를 유지하는 선에서 배치한다. 판단 기준은 "원본 픽셀 크기보다 확대했는가"라는 수치 비교 하나로 끝내지 않는다 — 실제 렌더링된 화면에서의 체감 화질(확대율이 낮아도 원본 이미지 자체의 정보 밀도가 높으면 체감상 흐려 보일 수 있음), 그리고 슬라이드 전체의 Visual Balance(다른 Region·텍스트와 비교한 상대적 크기가 과도하지 않은지)까지 함께 본다.
 - **Supporting Visual과의 크기·배치 균형**: Primary Visual을 위 기준으로 조정할 때, Optional/Supporting Visual과 텍스트를 포함한 전체 배치 균형을 함께 재검토한다 — Primary와 Supporting의 상대적 중요도 차이(Required vs Optional)가 시각적 크기·비중 차이로도 유지되도록 조정한다.
-- **Visual Region Utilization(과소 활용 금지 — 위 Image Legibility의 반대 방향)**: 이미지가 배치되는 Region은 위 Image Legibility 기준(원본 해상도·내부 텍스트 가독성, Visual Balance)을 지키는 범위 안에서 가용 공간을 최대한 채운다 — Region과 원본 종횡비가 다르다는 이유만으로 불필요한 배경색/회색 박스, 과도한 padding, 빈 wrapper 영역을 만들어 이미지를 실제보다 작게 표시하지 않는다. 이미지 주변을 박스로 채우는 것보다 이미지 자체를 충분히 크게 보여주는 쪽을 우선한다. 여러 이미지가 하나의 Visual Region을 공유할 때는(2026-08-25, `cosolus-business-plan-2026` Slide 11에서 그림6·7을 균등 폭 회색 박스에 강제로 맞춰 실제 이미지가 절반 이하 크기로 줄어든 사례를 반영) 동일한 박스 크기를 기계적으로 강제하지 않는다 — 각 이미지의 원본 비율과 내부 가독성을 유지하면서 전체 Region이 안정적으로 차도록 크기·배치를 조정한다(단, Before/After Variant B 등 Layout MD가 동일 폭 Column을 명시적으로 요구하는 경우는 그 규칙이 우선한다 — 위 "Table 동일 폭 Column" 참조). 이 Region의 Caption/출처 표시는 위 "Caption/Source Annotation Tier의 배치" 기준대로 원본 이해·출처 표기에 실제로 필요한 경우에만 유지하고, 본문에서 이미 설명된 내용을 반복하거나 있음으로써 Visual 영역을 불필요하게 축소시킨다면 생략한다.
+- **Visual Region Utilization(과소 활용 금지 — 위 Image Legibility의 반대 방향)**: 이미지가 배치되는 Region은 위 Image Legibility 기준(원본 해상도·내부 텍스트 가독성, Visual Balance)을 지키는 범위 안에서 가용 공간을 최대한 채운다 — Region과 원본 종횡비가 다르다는 이유만으로 불필요한 배경색/회색 박스, 과도한 padding, 빈 wrapper 영역을 만들어 이미지를 실제보다 작게 표시하지 않는다. 이미지 주변을 박스로 채우는 것보다 이미지 자체를 충분히 크게 보여주는 쪽을 우선한다. 여러 이미지가 하나의 Visual Region을 공유할 때는(사유: `references/design-decisions-log.md#shared-visual-region-uneven-boxes`) 동일한 박스 크기를 기계적으로 강제하지 않는다 — 각 이미지의 원본 비율과 내부 가독성을 유지하면서 전체 Region이 안정적으로 차도록 크기·배치를 조정한다(단, Before/After Variant B 등 Layout MD가 동일 폭 Column을 명시적으로 요구하는 경우는 그 규칙이 우선한다 — 위 "Table 동일 폭 Column" 참조). 이 Region의 Caption/출처 표시는 위 "Caption/Source Annotation Tier의 배치" 기준대로 원본 이해·출처 표기에 실제로 필요한 경우에만 유지하고, 본문에서 이미 설명된 내용을 반복하거나 있음으로써 Visual 영역을 불필요하게 축소시킨다면 생략한다.
 - 콘텐츠와 원본 Reference 구조가 명확히 충돌해 위 두 원칙을 지킬 수 없는 경우, 여기서 임의로 구조를 재설계하지 않는다 — 위 "생성 전 Implementation Contract 확인 > Required Evidence 보존"의 처리 순서(같은 Layout 안에서 재구성 → 안 되면 Layout 재검토 필요성 기록·이관)를 따라 Layout 재선택 대상으로 다룬다.
 - **Must Preserve 체크리스트 사전 발췌(Structure Contract)**: 위 Layout MD(또는 Implementation Reference)에 "Must Preserve/필수 정보/Layout-Specific Hard Rules/필수 Region" 등의 이름으로 명시된 섹션이 있으면, 이 세션에서 해당 Layout을 처음 쓰는 슬라이드의 **HTML 작성 전에** 그 섹션 항목을 원문 그대로(요약·재해석 없이) `<프로젝트>/.qa/v{N}/layout-checklist/{layout-slug}.md`에 발췌해 저장한다 — 아래 "1. Layout Compliance Check > Layout MD 재독 최소화"가 QA에서 쓰는 것과 **동일한 파일**이며, 이 시점에 만든 파일을 QA가 그대로 재사용한다(중복 발췌 없음). 이 체크리스트에 적힌 항목은 이번 슬라이드 HTML의 **필수 구조 조건**이다 — 구현 편의를 위해 일반 Column/Card 구조로 단순화하며 생략하지 않는다. 콘텐츠상 그 항목을 그대로 구현하기 어려운 명확한 이유가 있는 경우에만 예외로 생략할 수 있으며, 이때는 어떤 항목을 왜 생략했는지 `slide_outline.md`의 Structural Check 아래에 기록한다(위 "Required Evidence 보존"의 처리 원칙과 동일). 이런 이름의 섹션이 없는 Layout MD는 기존대로 본문 서술만 참고한다(모든 특수 Layout에 이 체크리스트를 강제하지 않음).
 - **Implementation Reference 우선 참조**: 위 Layout MD와 같은 폴더에 그 MD 전용 Implementation Reference 파일(원본 pptx/디자인 파일에서 실측한 좌표·도형 종류·Connector 형태를 일반화 없이 정리한 문서 — 예: Flow Diagram의 [`flow-diagram-implementation-reference.md`](../../../docs/slide-design-rules/flow-diagram-implementation-reference.md))이 등록되어 있으면, HTML 좌표를 계산할 때 Layout MD 본문의 비율 서술(Region Map 등)이 아니라 **이 Implementation Reference 파일을 1차 소스로 읽는다** — pptx 원본을 매 슬라이드마다 다시 열어 분석하지 않기 위해 이미 1회 추출·정리해 둔 결과물이다. 두 문서의 수치가 다르면 Implementation Reference 값을 따른다. 아직 이런 파일이 없는 Layout은 기존대로 Layout MD 본문만 따른다(모든 특수 Layout에 이 파일을 강제하지 않음).
@@ -95,7 +102,7 @@ python .claude/skills/web-ppt-generator/scripts/new_version.py \
 - 이 확인(Region Map 취급 + 위 Must Preserve 체크리스트 발췌)은 HTML 작성 **전에** 한다(위 "생성 전 Implementation Contract 확인"에서 Selected Layout을 확인하는 시점과 동일한 단계). 작성 후 QA(아래 "1. Layout Compliance Check")는 이 확인이 실제로 지켜졌는지 재검증하는 역할이며, 사전 확인을 대체하지 않는다.
 
 ## 구현 기준 (HTML/CSS Implementation Standards)
-> 새 디자인 값을 정의하지 않는다 — Hard Rule/Claude PPT Design System/Layout MD가 이미 정한 값(색상·두께·비율·Font Size 등)은 그대로 유지하며, 아래는 그 값을 브라우저에서 안정적으로 재현하기 위한 구현 방식만 규정한다(2026-08-19, C 테스트 `cosolus-ir-deck-C`에서 여러 슬라이드·레이아웃에 걸쳐 반복 발생한 구현 결함을 공통 기준으로 반영).
+> Hard Rule/Claude PPT Design System/Layout MD가 이미 정한 값(색상·두께·비율·Font Size 등)은 그대로 유지하며, 아래는 그 값을 브라우저에서 안정적으로 재현하기 위한 구현 방식만 규정한다(사유: `references/design-decisions-log.md#html-css-implementation-defects`).
 
 ### 한글 줄바꿈
 - 한국어 일반 본문(Body/Supporting Text/Evidence/Caption 등 모든 문장형 텍스트)에는 기본적으로 `word-break: keep-all;`을 적용해 단어(어절) 중간에서 부자연스럽게 끊기지 않도록 한다. 기본 템플릿(`scripts/templates/style.css`)의 `body`에 전역 기본값으로 설정돼 있으므로, 개별 컴포넌트 스타일에서 이를 덮어써 끄지 않는다.
@@ -117,7 +124,7 @@ python .claude/skills/web-ppt-generator/scripts/new_version.py \
 - Unicode 심볼을 불가피하게 써야 하면 text presentation 선택자(VS15, `U+FE0E`)를 붙여 컬러 이모지 렌더링을 억제하고 지정된 브랜드 컬러를 그대로 적용한다.
 
 ### 공용 컴포넌트 재사용 (Shared Component Reuse)
-> 새 디자인 값을 정의하지 않는다(위 "구현 기준" 공통 전제와 동일) — 이미 Hard Rule/Claude PPT Design System이 정한 값을 슬라이드마다 따로 재작성하지 않고 재사용하기 위한 구현 방식만 규정한다(2026-08-25, `cosolus-business-plan-2026` Field Test에서 Insight/Conclusion Box가 슬라이드마다 다른 border 방식으로 재발명되고, Body 텍스트가 슬라이드별로 14~15pt로 임의 축소되고, 이미 있는 Stat Number 공용 클래스를 두고도 슬라이드 전용 클래스로 동일 값이 중복 재정의된 사례를 반영).
+> 이미 Hard Rule/Claude PPT Design System이 정한 값을 슬라이드마다 따로 재작성하지 않고 재사용하기 위한 구현 방식만 규정한다(사유: `references/design-decisions-log.md#shared-component-reinvention`).
 
 - **동일 의미 역할 Box는 하나의 공용 클래스로 통합**: Insight Box·Conclusion/Takeaway Box·Key Message Box처럼 여러 슬라이드가 같은 의미 역할(Claude PPT Design System §2 Content Relationship의 Conclusion/Takeaway, Shared Supporting 등)로 쓰는 강조 박스는 슬라이드마다 `.sN-*` 접두사로 새로 스타일링하지 않고, 프로젝트 `style.css`에 공용 클래스(예: `.insight-box`) 하나로 정의해 재사용한다. 스타일 값은 새로 만들지 않고 Claude PPT Design System §6 "RoundRect Card/Tag" 스펙(라운드 radius 소–중, 배경 White 또는 Tint, 테두리 없음 또는 1px Neutral, 좌측 컬러 바 등 장식적 accent border 금지)을 그대로 적용한다.
 - **Caption/Source Annotation Tier의 배치**: Claude PPT Design System §3 Typography Tier가 이미 정의한 "Source/Footnote/각주"(12pt Light, Deck 전체에서 가장 낮은 위계, 프로젝트 공용 클래스가 있으면 그것을 재사용 — 예: `.footnote-block`)에 해당하는 이미지 출처·자료 설명 등은 이미지 바로 아래처럼 Main Content Region 안에 본문처럼 배치하지 않는다 — 슬라이드 하단의 공통 Footnote/Source 영역에 배치하는 것을 우선 검토한다. Chart Axis Label/Legend 등 "Caption/Auxiliary" Tier(14pt)와는 의미가 다르므로 섞어 쓰지 않되, 시각적 위계는 둘 다 Main Content보다 낮은 공통 Annotation Tier로 유지한다.
@@ -138,7 +145,7 @@ python .claude/skills/web-ppt-generator/scripts/new_version.py \
 - pptx 변환 단계에서 네이티브 차트/이미지 중 무엇으로 변환할지 판단할 수 있도록, 차트를 감싸는 요소에 `data-chart-mode="native|image"` 힌트 속성과 원본 데이터(`data-chart-json`)를 함께 남긴다.
 
 ## 생성 후 QA 절차 (Post-Generation QA)
-> 새 디자인 규칙을 만들지 않는다 — Hard Rule/Claude PPT Design System/Content Visualization Freedom/Layout Reference는 항상 원본 경로를 다시 읽어 대조하며, 규칙 본문을 이 문서에 복사하지 않는다. `slide-content-structuring`의 [3] 판단이나 `pptx-exporter`의 [8] 변환 검증(슬라이드 수·요소 일치·파일 무결성)과 역할이 겹치지 않도록, 이 절차는 [5]/[7]에서 HTML/CSS를 생성·수정한 직후에만 적용한다.
+> Hard Rule/Claude PPT Design System/Content Visualization Freedom/Layout Reference는 항상 원본 경로를 다시 읽어 대조하며, 규칙 본문을 이 문서에 복사하지 않는다. `slide-structuring`의 [3] 판단이나 `pptx-exporter`의 [8] 변환 검증(슬라이드 수·요소 일치·파일 무결성)과 역할이 겹치지 않도록, 이 절차는 [5]/[7]에서 HTML/CSS를 생성·수정한 직후에만 적용한다.
 
 > **경량화 원칙(2026-08-24)**: 자동 QA는 **기계적으로 신뢰성 있게 판정 가능한 항목**(canvas overflow, text clipping, 최소 font size 위반, 명확한 object overlap, render/HTML 오류, broken image/resource, Layout MD 대비 수치 불일치)만 다룬다. **AI의 시각적·의미적 재판단이 필요한 항목**(전체 슬라이드 육안 재검토, screenshot 반복 Read, crop→확대→재판단, 디자인 균형/미관 판단, Layout Reference와의 육안 유사도, 이미지 의미 적합성 반복 Vision 검토, Content Fidelity uncertain/ambiguous flag의 추가 조사)은 자동 QA에서 수행하지 않고 Human Review ②([6])로 그대로 넘긴다. 실행 흐름은 **Web PPT 생성 → 기계적 QA 1회 → 확정 오류 수정 → 수정 슬라이드만 부분 QA → Human Review ②**로 고정하며, 부분 QA가 clean이면 그 시점에서 종료한다 — 통과를 재확인하기 위한 Final Full QA(전체 재렌더링·재감사)는 수행하지 않는다.
 
@@ -169,10 +176,8 @@ python .claude/skills/web-ppt-generator/scripts/new_version.py \
 3. 위 대조에서 Hard Rule 또는 Claude PPT Design System(특히 §5 Content Density/Parallel Layout Alignment 원칙, §8 Table Style)과 Layout MD의 세부값이 다르면, `design-rules.md`의 우선순위(Hard Rule > Design System > Content Visualization Freedom > Layout Reference)에 따라 상위 문서 값을 기준으로 판단한다.
 
 #### Layout MD 재독 최소화 (세션 내 1회 원칙)
-> design-rules.md "세션 내 원본 문서 재사용 원칙"을 Layout MD에 적용한 절차다. 같은 Layout Reference를 여러 슬라이드가 공유하는 경우(예: Three-Column, Benefit+Impact, Table Comparison, Process/System Architecture 등), 매 슬라이드 QA마다 같은 Layout MD 원본을 통째로 다시 Read하지 않기 위해 아래 체크리스트 방식을 쓴다.
+> design-rules.md "세션 내 원본 문서 재사용 원칙"을 Layout MD에 적용한 절차다. 매 슬라이드 QA마다 같은 Layout MD 원본을 통째로 다시 Read하지 않기 위해, 위 "전용 Layout의 구조 규칙 우선 적용 > Must Preserve 체크리스트 사전 발췌"에서 만든 `<프로젝트>/.qa/v{N}/layout-checklist/{layout-slug}.md`를 QA도 그대로 재사용해 실제 CSS 값과 대조한다(새로 만들지 않음). 그 파일이 아직 없는 경우(사전 발췌 대상이 아니었거나 도입 이전 슬라이드를 다시 QA하는 경우)에만 최초 대조 시 그 발췌 절차를 동일하게 수행한다.
 
-- 이 체크리스트(`<프로젝트>/.qa/v{N}/layout-checklist/{layout-slug}.md`)는 보통 이미 존재한다 — 위 "전용 Layout의 구조 규칙 우선 적용 > Must Preserve 체크리스트 사전 발췌"에서 해당 Layout을 쓰는 첫 슬라이드의 HTML 작성 전에 만들어졌기 때문이다. QA는 이 파일을 새로 만들지 않고 그대로 재사용해 실제 CSS 값과 대조한다.
-- 아직 파일이 없는 경우(사전 발췌 대상이 아닌 Layout MD였거나, 이 절차 도입 이전에 만들어진 슬라이드를 다시 QA하는 경우)에만 **최초 대조 시** 그 Layout MD에서 QA에 실제로 필요한 수치·Must Preserve 항목(Divider 두께/Gradient/inset%, 동일 역할 Column 폭 비율, Header pt/색상, Alignment, Width/Height 등)을 **원문 그대로(요약·재해석·추정 없이) 발췌**해 같은 경로에 1회 저장한다.
 - 체크리스트에 없는 항목을 새로 확인해야 하면 원본 Layout MD를 다시 연다 — 체크리스트에 없다고 임의로 판단하거나 생략하지 않는다.
 - 체크리스트는 원본 Layout MD의 발췌본일 뿐 새로운 판단 기준이 아니다. 체크리스트 값과 원본이 어긋난다고 의심되면(발췌 누락·오기 가능성) 바로 원본을 다시 읽어 확인하고, 원본이 항상 우선한다.
 - 새 실행 세션(새로운 content-designer 호출)에서는 과거 세션이 남긴 체크리스트를 그대로 신뢰하지 않는다 — 해당 Layout을 다시 쓰는 첫 슬라이드에서(생성 단계든 QA 단계든, 이번 세션에서 먼저 마주치는 시점에) 원본 Layout MD를 1회 다시 읽어 확인한 뒤, 필요하면 체크리스트를 갱신한다(세션 간 캐시 없음).
@@ -270,12 +275,15 @@ Human Review ②에서 위 항목에 대한 수정 요청이 오면 [7] 피드�
 - `scripts/fine_editor/` — Human Fine Editing용 독립 경량 Editor(문구 변경·Text/Image X/Y 이동·Image 크기 조절/교체, 순수 HTML/CSS/JS + 표준 라이브러리 Python 서버, 추가 패키지 없음). Agent가 호출하지 않는 사람 전용 도구이며 [5]/[7] 생성 로직을 재사용하지 않고 완전히 별도로 동작한다. 사용법은 CLAUDE.md "Human Fine Editing" 절 참조.
 
 ## references
-- `references/design-rules.md` — 고정 규칙 + Claude PPT Design System + 콘텐츠 표현 자유도 + 레이아웃 선택 기준 + 가변 규칙 + 검토 대기 후보를 우선순위 순으로 링크하는 허브 문서 (누적 갱신, 가변 규칙 본문 반영은 사용자 명시 승인 후에만)
-- `docs/design-hard-rules/2026.08.12_design_hard-rules_V2.md` — Hard Rule 원본 (1순위, 수정 금지, design-rules.md에서 참조만)
-- `docs/design-system/Claude_PPT_Design_System.md` — Claude PPT Design System 원본 (2순위, 수정 금지, design-rules.md에서 참조만)
-- `docs/design-system/visual-style.md` — 기존 Visual Style 원본 (수정 금지, 참고용 보존). 대체 관계는 design-rules.md "적용 우선순위" 참고 문단이 단일 기준이다.
-- `docs/design-system/content-visualization-freedom.md` — 콘텐츠 표현 자유도 원본 (3순위, 수정 금지, design-rules.md에서 참조만)
-- `docs/layout-reference/2026.08.13_layout-catalog_V1.md` — Layout Reference 선택 인덱스 원본 (4순위, 수정 금지, design-rules.md에서 참조만). 디자인 고정 규칙이 아니라 콘텐츠 유형·정보 구조에 따른 레이아웃 선택 참고 기준.
-- `docs/layout-reference/2026.08.13_ppt_layout_set__V3.pptx` — 위 카탈로그가 가리키는 33종 레이아웃의 시각적 구조 원본(수정 금지). 카탈로그에서 후보를 고른 뒤 실제 요소 배치를 확인할 때만 참고한다.
-- `docs/layout-reference/2026.08.20_special-layout-index_V1.md` — 아래 `docs/slide-design-rules/`의 콘텐츠 구조별 특수 Layout Reference 17종에 대한 경량 선택 인덱스(수정 금지, design-rules.md에서 참조만). Layout명/Category/Use When/Do Not Use When/원본 MD 경로만 정리한 표 — Layout Routing 시 원본 17개 문서를 전부/다수 열지 않고 여기서 먼저 1~2개 후보로 좁힌 뒤 그 후보만 상세 Read하기 위한 것이며, 각 원본 MD의 Use When 절을 그대로 옮긴 것일 뿐 새 판단 기준을 만들지 않는다.
-- `docs/slide-design-rules/` — 콘텐츠 유형·구조별 특수 Layout Reference 원본 폴더 (수정 금지, design-rules.md에서 참조만). 표지 전용 `01_cover_design_V2.md`(5순위, 표지 슬라이드에서만 4번보다 우선)와 구조별 참고 `three-column.md`, `process-comparison.md`, `comparison-matrix.md`, `benefit-impact.md`, `before-after/before-after.md`(Variant A/B 체계), `table-comparison.md`, `013_multi-radar-technology-comparison.md`, `014_left-right-tech-comparison.md`, `019_competitive-advantage-highlight.md`, `020_organization.md`, `021_business-site-map.md`, `02_instruction_design_V1.md`(Company Introduction), `timeline-company-milestone.md`, `process-system-architecture-layout.md`(공정/시스템 구성 요소를 좌→우 선형 구조로 순차 설명, 사진 유무에 따른 Layout A/B), `product-application-layout.md`(대표 제품과 적용 분야를 Card형 또는 방사형 Hub-and-Spoke로 연결), `visual-insight/visual-insight.md`(범용 2분할 Family)를 포함하며(모두 4순위 Layout Reference의 일부, Use When 조건에 맞을 때 L01~L33보다 우선 검토) 계속 추가될 수 있다. **원본 문서 자체를 매번 열지 않고**, 전체 Use When/Do Not Use When/Category 조건은 경량 인덱스 [`docs/layout-reference/2026.08.20_special-layout-index_V1.md`](../../../docs/layout-reference/2026.08.20_special-layout-index_V1.md)에서 먼저 확인해 1~2개 후보로 좁힌 뒤, 그 후보의 원본 MD만 상세 Read한다.
+> 우선순위(Hard Rule > Design System > Content Visualization Freedom > Layout Reference)와 각 문서의 관계는 `references/design-rules.md`가 정의하는 단일 기준이다 — 아래는 경로와 용도만 요약하며, 전부 수정 금지(design-rules.md에서 참조만).
+
+- `references/design-rules.md` — 위 우선순위·가변 규칙·검토 대기 후보를 링크하는 허브 문서(누적 갱신, 가변 규칙 본문 반영은 사용자 명시 승인 후에만)
+- `docs/design-hard-rules/2026.08.12_design_hard-rules_V2.md` — Hard Rule 원본
+- `docs/design-system/Claude_PPT_Design_System.md` — Claude PPT Design System 원본
+- `docs/design-system/visual-style.md` — 기존 Visual Style 원본(참고용 보존, design-rules.md가 대체 관계 정의)
+- `docs/design-system/content-visualization-freedom.md` — 콘텐츠 표현 자유도 원본
+- `docs/layout-reference/2026.08.13_layout-catalog_V1.md` — Layout Reference 선택 인덱스 원본(L01~L33, 콘텐츠 유형·정보 구조 기준)
+- `docs/layout-reference/2026.08.13_ppt_layout_set__V3.pptx` — 위 카탈로그가 가리키는 33종 레이아웃의 시각적 구조 원본. 카탈로그에서 후보를 고른 뒤 실제 요소 배치를 확인할 때만 참고한다.
+- `docs/layout-reference/2026.08.20_special-layout-index_V1.md` — `docs/slide-design-rules/`의 특수 Layout Reference 17종에 대한 경량 선택 인덱스(Layout명/Category/Use When/Do Not Use When/원본 MD 경로)
+- `docs/slide-design-rules/` — 콘텐츠 유형·구조별 특수 Layout Reference 원본 폴더. 표지 전용 `01_cover_design_V2.md`와 구조별 참고 `three-column.md`, `process-comparison.md`, `comparison-matrix.md`, `benefit-impact.md`, `before-after/before-after.md`(Variant A/B 체계), `table-comparison.md`, `013_multi-radar-technology-comparison.md`, `014_left-right-tech-comparison.md`, `019_competitive-advantage-highlight.md`, `020_organization.md`, `021_business-site-map.md`, `02_instruction_design_V1.md`(Company Introduction), `timeline-company-milestone.md`, `process-system-architecture-layout.md`(공정/시스템 구성 요소를 좌→우 선형 구조로 순차 설명, 사진 유무에 따른 Layout A/B), `product-application-layout.md`(대표 제품과 적용 분야를 Card형 또는 방사형 Hub-and-Spoke로 연결), `visual-insight/visual-insight.md`(범용 2분할 Family)를 포함하며 계속 추가될 수 있다. 원본 17개 문서를 전부 열지 않고 위 경량 인덱스로 먼저 1~2개 후보로 좁힌 뒤 그 후보만 상세 Read한다(레이아웃 선택 절차 자체는 위 "디자인 규칙 적용 원칙"에서 이미 정의).
+- `references/design-decisions-log.md` — 위 규칙들의 근거가 된 과거 Field Test 회귀 사례 로그(매 호출마다 읽을 필요 없음, 규칙 취지가 의심스러울 때만 참조)

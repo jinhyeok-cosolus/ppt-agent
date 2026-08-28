@@ -9,11 +9,11 @@ description: 원본 자료(docx/pdf/xlsx/csv/이미지)에서 텍스트·표·�
 content-designer가 [2] 자료 분석 단계에 진입했을 때. 원본 자료 파일 경로 목록을 입력받아 `material_analysis.json`을 만든다.
 
 ## 이 개정의 목적 (2026-08-19)
-이전 버전은 원본의 텍스트·표·이미지를 슬라이드/파일 단위의 flat한 배열(`confirmed_text[]`, `images_available[]`)로만 정리했다. 이 방식은 **원본에 실제로 존재하던 "무엇이 어느 상위 주제 아래에 속하는가"라는 계층 정보를 이 단계에서 이미 지워버린다** — 그 결과 이후 [3] `content-designer`/`slide-content-structuring` 단계는 이미 평평해진 텍스트 뭉치에서 계층을 다시 추측해야 했고, 어떤 근거가 어떤 하위 주제를 뒷받침하는지, 어떤 이미지가 어떤 설명과 실제로 짝지어지는지가 구조적으로 보장되지 않았다(회귀 테스트 cosolus-ir-deck-D에서 이미지 라벨 오류·근거 뭉뚱그림으로 반복 확인됨).
+이전 버전은 원본의 텍스트·표·이미지를 슬라이드/파일 단위의 flat한 배열(`confirmed_text[]`, `images_available[]`)로만 정리했다. 이 방식은 **원본에 실제로 존재하던 "무엇이 어느 상위 주제 아래에 속하는가"라는 계층 정보를 이 단계에서 이미 지워버린다** — 그 결과 이후 [3] `content-designer`/`slide-structuring` 단계는 이미 평평해진 텍스트 뭉치에서 계층을 다시 추측해야 했고, 어떤 근거가 어떤 하위 주제를 뒷받침하는지, 어떤 이미지가 어떤 설명과 실제로 짝지어지는지가 구조적으로 보장되지 않았다(회귀 테스트 cosolus-ir-deck-D에서 이미지 라벨 오류·근거 뭉뚱그림으로 반복 확인됨).
 
 이번 개정은 **원본에서 실제로 확인 가능한 구조 신호가 있을 때만** 그 신호를 그대로 살려 `Content Group → Subtopic → Evidence` 계층으로 추출한다. 확인할 수 없는 계층·관계는 추정해서 만들지 않는다 — 신호가 없으면 `structure_signal: "none_detected"`로 명시하고 flat 구조로 남긴다.
 
-이 개정은 **material-analysis([2])까지만** 적용된다. `content-designer`의 슬라이드 병합/분할 판단([3])과 `slide-content-structuring`의 Claim→Evidence→Relationship 판단(1-b)은 이 문서의 범위가 아니며 수정하지 않았다 — 이 둘은 이제 더 풍부하고 계층이 보존된 입력을 받게 될 뿐, 그 자체의 판단 로직은 그대로다.
+이 개정은 **material-analysis([2])까지만** 적용된다. `slide-structuring`의 Phase A 슬라이드 병합/분할 판단과 Phase B의 Claim→Evidence→Relationship 판단(1-b)은 이 문서의 범위가 아니며 수정하지 않았다 — 이 둘은 이제 더 풍부하고 계층이 보존된 입력을 받게 될 뿐, 그 자체의 판단 로직은 그대로다.
 
 ## 처리 흐름
 
@@ -61,7 +61,7 @@ python .claude/skills/material-analysis/scripts/extract.py \
 - **제작 지시문 식별·분리**: 원본 문서에는 실제 슬라이드 콘텐츠(사실·수치·주장)와 문서 작성자가 남긴 제작/편집 지시문이 섞여 있을 수 있다(예: "프롬프트:", "제작 지시:", "배치:", "표로 구성", "이미지와 함께 배치", "~해줘", "~할 것" 같은 marker나 2인칭 명령형으로 대상 구성·배치·표현 방식을 지시하는 문장). LLM이 이 단계에서 각 문장이 (a) 실제 콘텐츠인지 (b) 콘텐츠의 구성·배치·표현 방식에 대한 지시인지 자동 판별한다 — 사람이 사전 분류할 필요 없다.
   - 지시문으로 판별된 문장은 `confirmed_text`에 섞어 넣지 않고, 해당 Subtopic(또는 `direct_evidence`)의 `production_directives[]`에 원문 그대로 별도 보존한다(삭제 금지, 최종 슬라이드 본문 텍스트로 출력되지 않도록 콘텐츠 배열과 분리만 한다).
   - 판별이 애매한 경우(지시문인지 실제 콘텐츠인지 확신할 수 없는 경우)는 임의로 한쪽으로 단정하지 않고 `confirmed_text`에 남긴 채 `needs_confirmation`에 사유를 기록한다.
-  - 이 필드의 우선 적용(병합/분리/배치 판단에 지시 내용을 우선 반영하는 것)은 이 스킬의 책임이 아니다 — `content-grouping`([3] 전반부)과 `slide-content-structuring`(1-b/4/5)이 소비 주체이며, 각 스킬 문서에 소비 방식이 명시돼 있다. 이 스킬은 지시문을 유실 없이 식별·보존해 넘기는 데까지만 책임진다.
+  - 이 필드의 우선 적용(병합/분리/배치 판단에 지시 내용을 우선 반영하는 것)은 이 스킬의 책임이 아니다 — `slide-structuring`의 Phase A(그룹핑)와 Phase B(1-b/4/5)가 소비 주체이며, 해당 스킬 문서에 소비 방식이 명시돼 있다. 이 스킬은 지시문을 유실 없이 식별·보존해 넘기는 데까지만 책임진다.
 - **Data Pending 처리(차트/표 삽입 지시는 있으나 데이터 자체가 없음)**: 원본에 "차트 삽입 예정", "표 삽입 예정" 같은 지시(위 `production_directives`로 분류됨)만 있고 그 차트/표가 담아야 할 수치 데이터 자체가 원본 어디에도 없는 경우, 그 자리를 삭제하거나 일반 텍스트로 뭉뚱그려 대체하지 않는다 — 나중에 실제 데이터가 채워질 자리로 보고 구조를 유지한다.
   - 해당 Subtopic(또는 `direct_evidence`)의 `visual_placeholders[]`에 `data_status: "data_pending"`으로 명시적으로 기록한다(아래 스키마 참조). 눈대중으로 값을 추정해 채우지 않는다.
   - 이 Data Pending 근거가 핵심 주장(발표 논거)을 뒷받침하는 자리이면 `escalations`에도 함께 기록해 즉시 후속 작업을 중단하고 사용자 확인을 받는다(아래 참조). 부가적인 자리이면 `needs_confirmation`에만 기록하고 계속 진행한다.
@@ -88,7 +88,7 @@ python .claude/skills/material-analysis/scripts/build_evidence_manifest.py \
 ## "원문 그대로 반영" 원칙의 적용 범위
 위 원칙들이 말하는 "원문 그대로"는 **콘텐츠(수치·사실·관계·제작 의도)**에 대한 것이지, **원본 표·도식·그림의 시각적 디자인·배치**를 그대로 복제하라는 뜻이 아니다.
 - 원본의 표/도식/그림(레이아웃, 색상, 셀 배치, 아이콘 형태 등)은 이 단계에서 콘텐츠·데이터·관계·제작 의도를 파악하는 **근거로만** 사용한다.
-- 실제 슬라이드에서 이를 어떻게 시각적으로 표현할지는 이 스킬의 책임이 아니며, 항상 이후 단계가 확정하는 Hard Rule/Claude PPT Design System/Content Visualization Freedom/Layout Reference를 따라 새로 구현된다(`slide-content-structuring`의 Layout Routing, `web-ppt-generator`의 실제 구현).
+- 실제 슬라이드에서 이를 어떻게 시각적으로 표현할지는 이 스킬의 책임이 아니며, 항상 이후 단계가 확정하는 Hard Rule/Claude PPT Design System/Content Visualization Freedom/Layout Reference를 따라 새로 구현된다(`slide-structuring`(Phase B)의 Layout Routing, `web-ppt-generator`의 실제 구현).
 - 원본 자체의 결함(표의 레이블-데이터 불일치, 도식 내 빈 placeholder 등)을 이 단계에서 임의로 추정해 채우지 않는다는 원칙(콘텐츠 보존 원칙)과, 원본의 시각 디자인을 복제하지 않는다는 원칙(표현 방식 원칙)은 서로 다른 층위이며 둘 다 지킨다.
 
 ## 출력 스키마 (`material_analysis.json`)
@@ -178,7 +178,7 @@ python .claude/skills/material-analysis/scripts/build_evidence_manifest.py \
 ```
 
 ### 기존 스키마와의 호환성
-- `confirmed_text`, `images_available`, `source_citation`, `escalations`, `needs_confirmation` **필드 이름은 그대로 유지**한다 — 다만 이전에는 Content Bundle(=슬라이드 후보) 레벨의 flat 배열이었던 것을, 이번에는 **Subtopic 레벨**로 한 단계 더 들어가 배치한다. 기존에 이 필드들을 읽던 판단(content-designer의 슬라이드 분할, slide-content-structuring의 1-b)은 필드 이름이 같으므로 계속 읽을 수 있으며, 이제 그 필드들이 어느 상위 Content Group의 어느 Subtopic에 속하는지도 함께 알 수 있다.
+- `confirmed_text`, `images_available`, `source_citation`, `escalations`, `needs_confirmation` **필드 이름은 그대로 유지**한다 — 다만 이전에는 Content Bundle(=슬라이드 후보) 레벨의 flat 배열이었던 것을, 이번에는 **Subtopic 레벨**로 한 단계 더 들어가 배치한다. 기존에 이 필드들을 읽던 판단(slide-structuring Phase A의 슬라이드 분할, Phase B의 1-b)은 필드 이름이 같으므로 계속 읽을 수 있으며, 이제 그 필드들이 어느 상위 Content Group의 어느 Subtopic에 속하는지도 함께 알 수 있다.
 - Content Group 자체는 기존 "Content Bundle"(B01~B22 형태)과 대응한다 — 다만 이번에는 `structure_signal`로 그 경계가 실제 원본의 어떤 신호에 근거했는지(추정이 아닌지)를 함께 기록한다.
 - `direct_evidence`는 Subtopic 헤딩 없이 Content Group 헤딩 바로 아래에 본문이 오는 경우(원본에 하위 제목이 없는 경우)를 위한 필드다 — 이 경우 억지로 Subtopic을 만들지 않는다.
 - `production_directives`/`visual_placeholders`는 이번 개정에서 새로 추가된 필드다. 지시문이나 Data Pending 자리가 없는 Subtopic은 빈 배열로 둔다 — 기존에 이 필드를 모르는 소비자가 있더라도(빈 배열이므로) 동작에 영향이 없다. `escalations`의 `type`도 이번에 새로 명시했으며, 기존에 `type` 없이 `{id, detail, source}`만 쓰던 방식과도 호환된다(`type`이 없으면 `other`로 간주).
@@ -187,8 +187,8 @@ python .claude/skills/material-analysis/scripts/build_evidence_manifest.py \
 - 원본에 없는 상위 주제-하위 주제 관계를 추정해서 만들지 않는다. 구조 신호가 없으면 `structure_signal: "none_detected"`로 명시하고 flat하게 둔다.
 - Subtopic보다 더 깊은 원본 계층(예: docx의 3번째 헤딩 레벨)은 별도 3번째 구조 레이어로 만들지 않는다 — 해당 Subtopic의 `confirmed_text` 안에 `[하위 제목]` 형태로 유실 없이 남긴다(향후 필요성이 확인되면 계층을 확장할 수 있다).
 - 이미지·표가 "어느 Subtopic에 속하는가"(구조적 소속)는 1번(기계적 추출)이 이미 확정하며, 2번(LLM)이 이를 다시 추정하지 않는다. 이미지는 위 자동 structural 매핑 조건을 모두 만족할 때만 시각 검토 없이 `content_match_confidence: structural`로 보존하고, 그 외에는 Vision으로 내용-설명 일치 여부를 판단한다. 불확실한 이미지를 structural로 격상하지 않는다.
-- 슬라이드 분할·병합, Claim/Evidence/Relationship 분류, Layout 선택은 이 스킬의 범위가 아니다 — 각각 `content-designer`([3]) / `slide-content-structuring`(1-b) / Layout Routing이 담당한다. 이 스킬은 그 판단들이 딛고 설 **계층이 보존된 입력**을 만드는 데까지만 책임진다.
-- `production_directives`에 담긴 배치·구성 의도를 실제로 어떻게 적용할지(병합/분리/좌우 배치 등)는 이 스킬이 판단하지 않는다 — 식별·보존만 하며, 적용은 `content-grouping`/`slide-content-structuring`이 담당한다.
+- 슬라이드 분할·병합, Claim/Evidence/Relationship 분류, Layout 선택은 이 스킬의 범위가 아니다 — 각각 `slide-structuring`의 Phase A / Phase B(1-b) / Phase B Layout Routing이 담당한다. 이 스킬은 그 판단들이 딛고 설 **계층이 보존된 입력**을 만드는 데까지만 책임진다.
+- `production_directives`에 담긴 배치·구성 의도를 실제로 어떻게 적용할지(병합/분리/좌우 배치 등)는 이 스킬이 판단하지 않는다 — 식별·보존만 하며, 적용은 `slide-structuring`(Phase A/Phase B)이 담당한다.
 - `visual_placeholders`(Data Pending)에 눈대중 수치나 가짜 그래프를 채워 넣지 않는다 — 데이터가 실제로 확보되기 전까지는 항상 `data_status: "data_pending"`으로 남긴다.
 
 ## 스크립트 사용법
@@ -207,4 +207,4 @@ python .claude/skills/material-analysis/scripts/extract.py \
 
 ## references
 - `references/` : 형식별 파싱 시 주의사항(병합 셀, 각주, 다단 레이아웃 등)을 프로젝트 경험이 쌓이며 축적하는 공간. 현재는 비어 있음.
-- 이번 개정의 실제 검증 사례: `output/_material-analysis-regression/cosolus-ir-deck-D/`(cosolus-ir-deck-D 원본 docx에 새 extract.py를 재실행한 회귀 테스트, 기존 프로젝트 산출물은 건드리지 않음).
+- 이번 개정은 `cosolus-ir-deck-D` 원본 docx에 새 extract.py를 재실행하는 회귀 테스트로 검증됐다(기존 프로젝트 산출물은 건드리지 않음). 검증에 쓰인 임시 산출물(`output/_material-analysis-regression/`)은 용량 정리 차원에서 삭제됐으며, 이 개정 배경은 위 "이 개정의 목적" 절에 그대로 남아 있다.

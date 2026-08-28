@@ -8,7 +8,7 @@
 
 표준 워크플로우(`CLAUDE.md` §1~§9):
 1. 자료 입력(원본 자료, 레퍼런스, 청중, 언어, 발표시간/슬라이드 수 확인)
-2~3. 자료 분석 · 구성 설계(`content-designer` → material-analysis → content-grouping → slide-content-structuring)
+2~3. 자료 분석 · 구성 설계(`content-designer` → material-analysis → slide-structuring[Phase A: Content Grouping → Phase B: Slide Structuring])
 4. Human Review ① — 구성(`slide_outline.md`) 검토
 5. 웹PPT 초안 생성(`web-ppt-generator`)
 6. Human Review ② — 웹PPT(`web_ppt/v{N}/index.html`) 검토, 확정 시 `shared.html` 자동 생성
@@ -25,7 +25,7 @@
 - **`docs/design-hard-rules/2026.08.12_design_hard-rules_V2.md`**(Hard Rule) — 전체 PPT 공통 디자인 규칙(폰트, Brand Color, 공통 Header System, Content Region Header, Table Header Row, Divider 등). 개별 Layout MD보다 항상 우선.
 - **`docs/design-system/Claude_PPT_Design_System.md`**(Design System) — Typography Tier, Color System, Chart/Table Style 등 세부 디자인 값.
 - **`docs/slide-design-rules/*.md`**(Layout MD, 17개) — 개별 레이아웃(Three-Column, Before-After, Benefit+Impact, Table Comparison, Comparison Matrix, Process+Comparison, Multi-Radar, Organization, Business-Site-Map, Timeline, Process/System Architecture, Product/Application, Visual+Insight, Cover, Company Intro, 14p/19p 레거시 분석 문서 등). 각 Layout의 **구조**(사용 여부·개수·위치·의미)를 정의하며, **디자인 값**은 Hard Rule을 참조.
-- **`.claude/skills/{material-analysis, content-grouping, slide-content-structuring, web-ppt-generator, pptx-exporter}/SKILL.md`** — 각 워크플로우 단계의 실행 로직.
+- **`.claude/skills/{material-analysis, slide-structuring, web-ppt-generator, pptx-exporter}/SKILL.md`** — 각 워크플로우 단계의 실행 로직. `slide-structuring`은 Phase A(Content Grouping)·Phase B(Slide Structuring)를 하나의 SKILL.md 안에서 순서대로 수행한다(2026-08-28, content-grouping·slide-content-structuring 통합).
 - **`/output/{project-name}/state.json`** — 프로젝트별 진행 상태·history 기록.
 
 ## 3. 현재 Field Test E 진행 상태
@@ -45,7 +45,7 @@
 
 ## 4. 완료된 토큰/실행시간 최적화
 
-이번 세션 시작 시점에 사용자가 "Field Test E의 파이프라인 검증과 1·2차 토큰 최적화, 1차 실행시간 최적화까지 완료된 상태"라고 알려왔다. 이 세션에서는 해당 작업을 직접 수행하지 않았으며, 세부 변경 내역도 세션 내에서 확인하지 않았다. 다만 `slide-content-structuring/SKILL.md`, `web-ppt-generator/SKILL.md`가 `state.json`의 마지막 기록 시점 이후에 수정된 흔적(파일 mtime)을 확인했으며, 이 최적화 작업의 결과로 추정된다. **이 최적화 구조는 이번 세션에서 변경하지 않았고, 앞으로도 건드리지 않는다.**
+이번 세션 시작 시점에 사용자가 "Field Test E의 파이프라인 검증과 1·2차 토큰 최적화, 1차 실행시간 최적화까지 완료된 상태"라고 알려왔다. 이 세션에서는 해당 작업을 직접 수행하지 않았으며, 세부 변경 내역도 세션 내에서 확인하지 않았다. 다만 `slide-content-structuring/SKILL.md`(2026-08-28, `slide-structuring/SKILL.md`로 통합됨), `web-ppt-generator/SKILL.md`가 `state.json`의 마지막 기록 시점 이후에 수정된 흔적(파일 mtime)을 확인했으며, 이 최적화 작업의 결과로 추정된다. **이 최적화 구조는 이번 세션에서 변경하지 않았고, 앞으로도 건드리지 않는다.**
 
 ## 5. 방금 완료한 Header / Divider Hard Rule 통합 및 Layout MD 정리
 

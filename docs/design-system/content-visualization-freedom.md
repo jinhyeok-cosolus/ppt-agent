@@ -32,7 +32,7 @@ Content Visualization Freedom은 아래 우선순위에 따라 적용한다.
 원본 Visual의 품질이 사용하기 어려울 정도로 낮거나 사용자가 명시적으로 재디자인을 요청한 경우에만 예외를 허용한다. 예외 적용 여부가 불명확하면 임의로 재생성하지 않는다.
 
 ## Evidence Relationship 기반 Visual 판단 (1차 기준)
-Visual Type은 근거의 **개수**가 아니라 `slide-content-structuring`이 산출한 **Claim → Evidence → Relationship → Required/Optional** 구조의 **Relationship 유형**을 1차 기준으로 판단한다. 값이 여러 개라도 서로 무관한 독립 값이면 단일 독립 근거로, 값이 하나뿐이어도 그 안에 비교·변화 구조가 내포돼 있으면 관계형으로 다룬다.
+Visual Type은 근거의 **개수**가 아니라 `slide-structuring`(Phase B)이 산출한 **Claim → Evidence → Relationship → Required/Optional** 구조의 **Relationship 유형**을 1차 기준으로 판단한다. 값이 여러 개라도 서로 무관한 독립 값이면 단일 독립 근거로, 값이 하나뿐이어도 그 안에 비교·변화 구조가 내포돼 있으면 관계형으로 다룬다.
 
 단, 완성된 원본 Graph/Chart가 존재하면 위 "Graph / Chart / Table 적용 우선순위"가 이 판단보다 우선하며, Relationship 기반 판단은 원본 Visual을 다른 형식으로 재구성하는 근거가 되지 않는다.
 
