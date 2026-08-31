@@ -11,7 +11,7 @@ pptx-converter가 [8] pptx 변환 단계에 진입했을 때. 입력은 확정�
 ## 변환 원칙
 - **편집 가능성 우선, 디자인은 실측 재현.** Playwright/Chromium으로 웹PPT를 실제 렌더링한 뒤 `getBoundingClientRect()`/`getComputedStyle()` 결과(위치·크기·폰트·색상·배경·테두리·정렬 등)를 그대로 읽어 python-pptx 네이티브 요소(텍스트박스/도형/표/이미지)로 재구성한다. 웹페이지를 통째로 이미지로 캡처해서 붙여넣지 않는다 — 그러면 편집이 불가능해진다.
 - **차트(현재 제한, 추후 보완 예정)**: `<canvas>`/`<svg>`는 현재 버전에서 모두 Chromium이 실제 렌더링한 결과를 PNG로 캡처해 삽입한다(`data-chart-mode="native"`여도 동일). `data-chart-json`을 이용한 python-pptx 네이티브 `chart` 객체 재생성은 아직 이식되지 않았다 — 알려진 제한 사항으로 남겨두고, 재구현 전까지는 모든 차트가 이미지로 삽입된다는 점을 변환 결과 확인 시 감안한다.
-- **폰트 매핑**: `references/font_mapping.md`를 참조해 디자인 규칙상의 폰트를 PowerPoint 기본 제공 폰트로 매핑한다. HTML 렌더링에 사용된 폰트가 PowerPoint 실행 PC에 없으면 줄바꿈 오차가 생길 수 있으므로, 매핑표에 없는 폰트가 나오면 안전한 기본값(맑은 고딕/Malgun Gothic)으로 대체한다.
+- **폰트**: `references/font_mapping.md`에 따라 Pretendard로 고정하며 다른 폰트로 대체하지 않는다. `<a:latin>`·`<a:ea>` 모두 "Pretendard"로 기록하고, 실행 PC에 Pretendard가 없어도 파일에 저장되는 폰트명 자체는 항상 Pretendard로 유지한다(별도 임베딩은 하지 않음).
 - **고정 규칙 요소**(로고 등)는 브라우저가 계산한 실제 위치·크기를 그대로 사용하므로 별도 비율 계산 없이 원본과 동일하게 배치된다.
 
 ## 스크립트
@@ -40,4 +40,4 @@ python .claude/skills/pptx-exporter/scripts/export_pptx.py \
 실패 시(렌더링/변환 오류) 최대 2회 자동 재시도. 지속 실패하면 pptx-converter가 메인에게 에스컬레이션한다. **[8] 단계는 판단 영역이 아니므로, 요소 파싱 실패 등 예외 상황 외에는 자체 재해석하지 않는다.**
 
 ## references
-- `references/font_mapping.md` — 웹 폰트 → PowerPoint 표준 폰트 매핑표 (레이아웃 깨짐 방지 우선 정책)
+- `references/font_mapping.md` — Pretendard 고정 정책 (대체 없음, 임베딩 없음)
