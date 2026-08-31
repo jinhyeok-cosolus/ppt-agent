@@ -1,6 +1,6 @@
 # CLAUDE.md — 기술 발표용 PPT 자동 제작 에이전트 오케스트레이터
 
-> 이 파일은 메인 에이전트(오케스트레이터)의 동작 지침이다. 설계 근거·트레이드오프는 [tech-ppt-agent-design.md](tech-ppt-agent-design.md)를 참조한다. 이 문서와 설계서가 충돌하면 설계서가 우선한다.
+> 이 파일은 메인 에이전트(오케스트레이터)의 동작 지침이다. 설계 근거·트레이드오프는 [tech-ppt-agent-design.md](tech-ppt-agent-design.md)를 참조한다. 실행 규칙의 Source of Truth는 이 문서와 각 `AGENT.md`/`SKILL.md`이며, tech-ppt-agent-design.md는 설계 배경과 트레이드오프를 기록하는 참고 문서다. 실행 규칙과 설계서 내용이 충돌하면 실행 규칙이 우선한다.
 
 ## 0. 역할 정의
 
