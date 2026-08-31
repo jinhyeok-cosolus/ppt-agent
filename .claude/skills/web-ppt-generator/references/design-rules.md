@@ -19,8 +19,6 @@
 
 > **세션 내 원본 문서 재사용 원칙(공통)**: 위 우선순위 문서(Hard Rule, Layout MD 등 이 표가 가리키는 모든 원본)를 이번 실행 세션에서 이미 읽고 대조한 적이 있다면, 같은 세션 안에서는 다시 Read하지 않고 그때 확인한 내용을 재사용한다. 여러 슬라이드가 반복 참조하는 문서(대표적으로 Layout MD)는 최초 대조 시 필요한 항목만 발췌해 체크리스트로 남기고 이후에는 그 체크리스트와 대조하는 절차를 쓸 수 있다(구체 절차는 `SKILL.md`의 해당 QA 섹션 참조). 새 세션(새 서브에이전트 호출)에서는 각 문서를 다시 1회 읽는다 — 세션 간 캐시는 없다.
 
-> **참고 — `docs/design-system/visual-style.md`와의 관계**: 기존 2순위였던 `visual-style.md`(Deck 전체 무드·여백·위계 등 정성적 기준)는 삭제하지 않고 그대로 보존한다. 다만 2순위 슬롯은 더 구체적인 `Claude_PPT_Design_System.md`가 대체하며, 두 문서가 겹치거나 충돌하는 부분(무드/일관성/여백/위계/이미지 처리/데이터 시각화 등)은 `Claude_PPT_Design_System.md` 쪽을 기준으로 따른다. `visual-style.md`는 현재 우선순위 체인에서 활성 참조 대상이 아니며, 두 문서의 중복 정리 여부는 별도 검토·승인이 필요하다.
-
 ## 고정 규칙 — 1순위 · Hard Rule
 
 > **Source of Truth**: [`docs/design-hard-rules/2026.08.12_design_hard-rules_V2.md`](../../../../docs/design-hard-rules/2026.08.12_design_hard-rules_V2.md) (사용자 제공, 2026-08-12 등록). 본 Hard Rule은 아래 "가변 규칙" 및 개별 레이아웃 문서보다, 그리고 아래 Claude PPT Design System·Content Visualization Freedom보다 **항상 우선 적용**한다.
@@ -47,7 +45,7 @@
 
 > PPT 전체가 하나의 프레젠테이션처럼 보이도록 하는 공통 Design System(Visual Style/무드, Color, Typography, Grid/Spacing, Component(Shape/Card/Line/Arrow/Connector) Style, Image Treatment, Chart/Table/Diagram Style). Hard Rule을 대체하지 않으며 그 범위 안에서만 적용한다.
 > 원본 문서(항상 이 경로를 직접 참조 — 본 문서에 내용을 복사하지 않음): [`docs/design-system/Claude_PPT_Design_System.md`](../../../../docs/design-system/Claude_PPT_Design_System.md)
-> Hard Rule과 충돌하는 부분은 적용하지 않는다. 아래 "가변 규칙"(레이아웃 선택 등)과 "콘텐츠 표현 자유도"(다음 섹션) 판단은 모두 이 Design System 범위 안에서 이루어져야 한다. 기존 `docs/design-system/visual-style.md`와 중복되는 정성적 기준(무드·일관성·여백·이미지 처리·데이터 시각화 등)은 이 문서를 기준으로 적용한다 — 위 "적용 우선순위"의 참고 문단 참조.
+> Hard Rule과 충돌하는 부분은 적용하지 않는다. 아래 "가변 규칙"(레이아웃 선택 등)과 "콘텐츠 표현 자유도"(다음 섹션) 판단은 모두 이 Design System 범위 안에서 이루어져야 한다.
 
 ## 콘텐츠 표현 자유도 — 3순위 · Hard Rule·Claude PPT Design System 다음 우선 적용
 

@@ -280,7 +280,6 @@ Human Review ②에서 위 항목에 대한 수정 요청이 오면 [7] 피드�
 - `references/design-rules.md` — 위 우선순위·가변 규칙·검토 대기 후보를 링크하는 허브 문서(누적 갱신, 가변 규칙 본문 반영은 사용자 명시 승인 후에만)
 - `docs/design-hard-rules/2026.08.12_design_hard-rules_V2.md` — Hard Rule 원본
 - `docs/design-system/Claude_PPT_Design_System.md` — Claude PPT Design System 원본
-- `docs/design-system/visual-style.md` — 기존 Visual Style 원본(참고용 보존, design-rules.md가 대체 관계 정의)
 - `docs/design-system/content-visualization-freedom.md` — 콘텐츠 표현 자유도 원본
 - `docs/layout-reference/2026.08.13_layout-catalog_V1.md` — Layout Reference 선택 인덱스 원본(L01~L33, 콘텐츠 유형·정보 구조 기준)
 - `docs/layout-reference/2026.08.13_ppt_layout_set__V3.pptx` — 위 카탈로그가 가리키는 33종 레이아웃의 시각적 구조 원본. 카탈로그에서 후보를 고른 뒤 실제 요소 배치를 확인할 때만 참고한다.
