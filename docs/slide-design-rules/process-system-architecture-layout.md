@@ -29,7 +29,7 @@
 ### Do Not Use When
 
 - 두 대상(기존/개선 등)을 공정과 함께 비교해야 하는 경우 → Process +
-  Comparison Layout(`process-comparison/process-comparison.md`)
+  Comparison Layout(`process-comparison.md`)
 - 단계 간 시간 흐름(연혁/로드맵)이 핵심인 경우 →
   `timeline-company-milestone.md`
 - 공정이 아니라 하나의 중심 제품이 여러 적용처로 확장되는 관계를

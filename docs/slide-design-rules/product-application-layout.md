@@ -24,7 +24,7 @@ MD다. 동일한 콘텐츠 유형에 대해 아래 두 가지 레이아웃을 �
 
 - 제품 자체의 세부 성능·스펙 비교가 핵심인 경우 → Table Comparison
   (`table-comparison.md`) 또는 Comparison Matrix
-  (`comparison-matrix/comparison-matrix.md`)
+  (`comparison-matrix.md`)
 - 적용처 사이에 단계·시간 순서·인과관계가 있는 경우 → Process / System
   Architecture Layout(`process-system-architecture-layout.md`) 또는
   `timeline-company-milestone.md`

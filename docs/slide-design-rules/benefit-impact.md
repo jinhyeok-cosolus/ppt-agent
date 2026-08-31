@@ -37,10 +37,10 @@
 
 ## 2. Reference Reproduction Principle
 
-이 Layout Reference에는 실제 Reference PPT(`benefit-impact.pptx`,
-추출제 CAPEX/OPEX 개선 사례)가 함께 등록되어 있다. 이 문서의 수치·비율은
-해당 Reference의 실측 좌표를 근거로 도출한 참고값이며, Reference가
-제공된 경우 다음 우선순위를 지킨다.
+이 Layout Reference의 수치·비율은 실제 Reference PPT(추출제
+CAPEX/OPEX 개선 사례) 실측 좌표를 근거로 도출한 확정값이며, 원본
+pptx는 별도로 보관하지 않고 그 실측 결과가 아래 수치와 다음 우선순위로
+이 문서에 반영되어 있다.
 
 1.  Reference의 공간 분할(좌:우 폭 비율 — 실측 약 **54:46**) — 일반적인
     50:50 Grid, Card Grid 같은 통상적 Web/AI UI 관습보다 우선
@@ -471,10 +471,9 @@ Benefit을 증명하기 위한 하위 표현으로 사용한다.
 1.  Hard Rule (§9 공통 Header System, §10 Content Comparison Header,
     §11 Vertical Content Divider 포함)
 2.  Claude PPT Design System
-3.  Reference PPT(`benefit-impact.pptx`) 실측 비율
-    ([2. Reference Reproduction Principle](#2-reference-reproduction-principle),
-    [3. Overall Region Map](#overall-region-map) 기준)
-4.  Benefit + Impact Layout Reference 서술 규칙
+3.  Benefit + Impact Layout Reference 서술 규칙(실측 근거로 확정된
+    [2. Reference Reproduction Principle](#2-reference-reproduction-principle)·
+    [3. Overall Region Map](#overall-region-map) 수치·비율 포함)
 
 본 Layout Reference는 Hard Rule 및 Design System을 변경하거나 대체하지
 않는다.
@@ -491,11 +490,12 @@ Benefit을 증명하기 위한 하위 표현으로 사용한다.
 1개뿐이거나 3개 이상이면 [Do Not Use When](#do-not-use-when)의 대안
 Layout을 검토한다.
 
-## 16. Typography (Reference PPT 실측 기반)
+## 16. Typography (실측 기반 확정값)
 
-Reference PPT(`benefit-impact.pptx`)의 텍스트 run 단위 실측(`a:rPr
-sz`, Bold 여부 등)을 근거로 이 Layout에서 사용하는 Font Size/Weight
-범위를 아래와 같이 고정한다. 이 범위를 벗어난 임의의 Font Size나
+Reference PPT(추출제 CAPEX/OPEX 개선 사례)의 텍스트 run 단위 실측
+(`a:rPr sz`, Bold 여부 등)을 근거로 이 Layout에서 사용하는 Font
+Size/Weight 범위를 아래와 같이 확정한다(별도 pptx 파일 없이 아래
+값이 최종 기준이다). 이 범위를 벗어난 임의의 Font Size나
 Weight를 이 Layout에서 새로 만들지 않는다. Benefit Message는
 `Claude_PPT_Design_System.md` §3의 Key Message/Explanation 역할에
 해당하므로 Header Bar(Hard Rule §10 고정값)와 같은 행으로 묶지 않고

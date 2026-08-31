@@ -28,7 +28,7 @@
 - **항목 수**: 정확히 3
 - **Visual**: Icon + Message (원문에 세부 이미지 없을 때도 성립)
 - **강조 정보**: 3개 항목이 완전히 동등한 위계라는 것
-- **최종 확정 Layout/Variant**: `three-column/three-column.md` — Header Bar 48px edge-to-edge, Key Message 78% 폭, Divider는 Body 영역에만 적용
+- **최종 확정 Layout/Variant**: `three-column.md` — Header Bar 48px edge-to-edge, Key Message 78% 폭, Divider는 Body 영역에만 적용
 - **Use When**: 병렬 항목이 정확히 3개이고 순차/인과 관계가 아님
 - **Avoid When**: 실제로는 2-Column 비교인데 항목을 억지로 3개로 쪼개거나, 4개 이상을 3개로 합쳐 정보 손실 발생
 - **Field Test 근거**: `cosolus-ir-deck` A/B/C 3개 프로젝트가 같은 슬라이드(비즈니스 모델 3축)에서 독립적으로 동일 선택 수렴 — **높음**. `cosolus-business-plan-2026`에서 Header/Body 간 gap 공유로 Divider가 누락되는 구조적 버그 발견 → Header/Body 행 분리로 재작성 후 공용 컴포넌트화 — **높음**(구현 결함이지 Variant 선택 오류 아님, 참고용).
@@ -44,7 +44,7 @@
 - **항목 수**: 2 Column, 각 Column 내부 단계 수는 자유(비대칭 허용 — 예: 4단계 vs 1단계)
 - **Visual**: Image↔Image(화학구조식 등) 또는 Process/Step Sequence 다이어그램, 중앙 Transformation은 실제 2-layer Chevron 이미지 자산 사용(CSS로 그리지 않음)
 - **강조 정보**: 단계 수/복잡도 차이(Comparison Marker Pair)
-- **최종 확정 Layout/Variant**: `before-after/before-after.md` Variant A
+- **최종 확정 Layout/Variant**: `before-after.md` Variant A
 - **Use When**: 비교 대상이 정확히 2개이고, 메시지의 핵심이 "무엇이 얼마나"가 아니라 "구성 자체가 어떻게 달라졌는가"일 때
 - **Avoid When**: 순수 텍스트 화살표(`→`/`↓`)로 대체하거나 Chevron 이미지 자산을 생략하는 초기 방식 — 이후 Reference 기반 이미지 방식으로 전면 교체됨
 - **Field Test 근거**: `cosolus-ir-deck` A/B/C가 Slide 6(추출제)/8(DLE)/11(2세대 공정)에서 3개 프로젝트 독립 판단 수렴, `final.pptx` 도달 — **높음**. `cosolus-before-after-process-test`(4단계→1단계, 텍스트 화살표)는 최초 시도로, 이후 이미지 기반 방식에 완전히 대체된 초기 실험 — **낮음(추정), 참고용 avoid 사례로만 사용**.
@@ -56,7 +56,7 @@
 - **항목 수**: Existing 4~5단계(단일 흐름) vs Improved 2경로(길이 비대칭, 가장 긴 흐름 기준 Pitch Grid 계산)
 - **Visual**: 텍스트/보더 박스 + 커넥터 라인, 두 경로는 동일 Y 시작점(분기 원점) 공유
 - **강조 정보**: 분기해도 총 복잡도 대비 개선이라는 점, 두 경로가 같은 원점에서 시작한다는 것
-- **최종 확정 Layout/Variant**: `before-after/before-after.md` §4.3(Pitch)/§4.4(분기)
+- **최종 확정 Layout/Variant**: `before-after.md` §4.3(Pitch)/§4.4(분기)
 - **Use When**: 개선안이 조건별로 두 갈래 이상의 대응을 요구할 때(예: 원료 등급별 분리 처리)
 - **Avoid When**: **두 분기의 Comparison Marker(Bracket 등)를 시각적 정렬을 위해 임의로 Y-위치를 맞추지 않는다** — 원본 Reference 측정값(예: 51px 오프셋)이 애초에 정렬을 의도하지 않았다면, 억지 정렬이 "분기 원점 공유" 원칙을 깨뜨림. 실제로 시도했다가 되돌린 사례 있음.
 - **Field Test 근거**: `cosolus-before-after-variant-a-test/quick-test.html`(배터리 금속 회수, COSOLUS 실도메인) — `quick-test-priority-recheck.html`에서 우선순위 규칙 변경 후에도 구조 변경 없이 재검증 통과 — **중간**. `cosolus-before-after-rule-update-test`에서 Bracket 정렬 시도 → 4차 수정에서 명시적으로 되돌림(avoid 사례) — **중간**.
@@ -70,7 +70,7 @@
 - **항목 수**: Criteria Column + Existing/Improved 2 Column = 사실상 3열 Comparison Table. 기준 수 3~6개 권장, 7개는 상한 근접 위험(우선순위 낮은 기준 통합 검토)
 - **Visual**: Table 형태 Comparison Frame, Criteria Row 필수
 - **강조 정보**: "무엇이 얼마나 개선되는가"를 항목별로
-- **최종 확정 Layout/Variant**: `before-after/before-after.md` Variant B
+- **최종 확정 Layout/Variant**: `before-after.md` Variant B
 - **Use When**: 비교 대상이 정확히 2개 + 다수 동일 기준. 대상이 3개 이상이면 §4(Table Comparison/Comparison Matrix)로 분기
 - **Avoid When**:
   - 원문에 없는 경쟁사명/수치를 다른 참고자료의 예시(예: BTR/Vianode)에서 그대로 가져오지 않는다.
@@ -88,7 +88,7 @@
 - **항목 수**: 3~4 대상 × 4~5 기준
 - **Visual**: 이미지/다이어그램 없이 텍스트·KPI·뱃지 중심, 자사 열은 아웃라인+하이라이트 배경(공용 컴포넌트 `019_competitive-advantage-highlight.md`)으로 강조
 - **강조 정보**: 자사 기술의 전 지표 우위 — 단, 열세인 지표(예: 낮은 TRL)도 숨기지 않고 그대로 유지
-- **최종 확정 Layout/Variant**: `comparison-matrix/comparison-matrix.md`
+- **최종 확정 Layout/Variant**: `comparison-matrix.md`
 - **Use When**: 정성 설명·주석이 많아 정확한 문장/수치를 있는 그대로 읽어야 할 때(Multi-Radar 등 시각 압축형 Layout은 이런 경우 Do Not Use)
 - **Avoid When**: 데이터 양이 많다는 이유만으로 자동으로 Matrix/Table을 선택하지 않는다 — **모든 대상이 공유하는 공통 Row/Column 비교축이 실제로 존재할 때만** 이 계열을 선택한다. 비교축이 없는데 표로 강제하면 정보를 왜곡한다.
 - **Field Test 근거**: `cosolus-comparison-matrix-test/quick-test.html`(COSOLUS vs 경쟁사 A/B/C, 5기준×4열, 혼합 셀 타입) — 단일 인스턴스, `state.json` 없음 — **낮음(추정)**. `cosolus-ir-deck` A/B/C Slide 7/9(3사/4방식 비교), 열 폭 불일치 결함 발견 후 `colgroup`+`table-layout:fixed`를 공통 규칙으로 승격, D-test 회귀 검증 완료 — **높음**.
@@ -114,7 +114,7 @@
   - Chart(막대+화살표) ↔ Compare-Bars(가로 이중 바 + delta 라벨, 예: 94%→99% "+5%p 향상") 조합이 실제 검증된 조합
   - 한쪽 효과에 정성 지표(예: 공정 안정성: 보통→우수)가 섞여 있으면 그 쪽만 Compact Table(2~3열)로 교체 가능
 - **강조 정보**: 두 정량 효과 모두 하나의 대표값으로 뭉개지 않고 동일 비중으로 보존
-- **최종 확정 Layout/Variant**: `benefit-impact/benefit-impact.md`
+- **최종 확정 Layout/Variant**: `benefit-impact.md`
 - **Use When**: 하나의 기술이 만드는 정확히 2개의 정량 개선 효과
 - **Avoid When**: **두 기여 요소 중 하나만 대표 Large Number로 강조하고 나머지를 하단 보조 문장 한 줄로 축소하지 않는다** — 실제로 이 실수가 발생했다가(v1) Claim→Evidence→Relationship 구조화 단계 도입 후 두 값 모두 동일 비중의 2-bar Contribution 시각으로 재구성된 사례(v2) 있음.
 - **Field Test 근거**: `cosolus-ir-deck` A/B/C Slide 10, `final.pptx` 도달 — **높음**. `cosolus-ir-deck-D` v1→v2 회귀 비교 문서가 위 avoid 사례를 정확히 기록 — **중간**(회귀 테스트, Human Review 미완료이나 진단 신뢰도 높음). `cosolus-benefit-impact-test`의 Chart+Compare-Bars 조합(`quick-test.html`, priority-recheck에서 재확인) — **중간**. Compact Table 대체(`quick-test-table-evidence.html`)는 병행 탐색 버전으로 우열 미확정 — **낮음(추정)**.
@@ -130,7 +130,7 @@
 - **항목 수**: 상단 단계 수 가변, 하단 결론/비교는 통상 1~2개. 상하 비율 예시: 56:44 또는 60:40
 - **Visual**: 상단 Process Flow(실사진 있으면 우선 사용, 없으면 SVG Icon/Diagram — 원 번호 아이콘보다 Icon/Diagram이 더 검증됨) + 하단 Insight Box(배경·테두리 있는 종합 결론) 또는 Flat/Open 2-Column 비교(Rounded Card 스타일보다 우선)
 - **강조 정보**: 특정 단계(Process Callout — 강조색+밑줄)가 하단 비교/Insight의 직접적 원인임을 시각적으로 연결
-- **최종 확정 Layout/Variant**: `process-comparison/process-comparison.md`, `process-system-architecture-layout.md`
+- **최종 확정 Layout/Variant**: `process-comparison.md`, `process-system-architecture-layout.md`
 - **Use When**: 여러 단계 공정이 하단 핵심 Insight/비교와 직접 연결될 때. 실사진 커버리지가 낮으면(80% 미만) 이미지 없는 변형 채택
 - **Avoid When**:
   - 하단 Insight Box(배경·테두리, Output/Customer Value 종합)를 얇은 텍스트 라벨로 축소하지 않는다 — 실제 이탈 사례 있음(원인: 전용 Layout Must Preserve 체크리스트를 생성 *이후* QA에서야 확인해 조용히 단순화되는 경로가 있었음. → 체크리스트를 생성 *이전*에 사전 발췌하는 규칙으로 보완됨)

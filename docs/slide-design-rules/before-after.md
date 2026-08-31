@@ -598,10 +598,11 @@ Column의 내용을 단순 반복하거나 요약 재진술하지 않는다.
 Comparison Matrix Layout(`comparison-matrix.md`)과 원칙은 유사하되,
 비교 대상이 **Existing / Improved 2개로 고정**된다는 점이 다르다.
 
-> 현재 `before-after.pptx` Reference는 Variant A(Process Transformation)
-> 사례만 포함한다. 아래 수치는 Reference 실측값이 아니라 Hard Rule
+> 과거 참조했던 `before-after.pptx` Reference는 Variant A(Process
+> Transformation) 사례만 포함했다(§2 참조 — 현재는 L28 기준으로
+> 대체됨). 아래 수치는 Reference 실측값이 아니라 Hard Rule
 > Body Box(1152×474px) 및 `comparison-matrix.md`의 Presentation형 표
-> 관습에서 도출한 권장값이다. Variant B의 실제 Reference PPT가 추가로
+> 관습에서 도출한 권장값이다. Variant B의 실제 Reference PPT가 향후
 > 제공되면 그 실측 좌표가 아래 권장값보다 우선한다.
 
 > **Table을 Main Visual로 단독 사용(2026-08-25 추가)**: Variant B는

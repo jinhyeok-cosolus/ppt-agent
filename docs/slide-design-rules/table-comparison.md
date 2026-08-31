@@ -28,7 +28,7 @@
     경우 → Before/After Layout(`before-after.md`)
 -   비교 항목마다 Icon/Diagram/이미지·강조 배지 등을 자유롭게 배치해
     항목별로 다른 시각적 구성을 허용해야 하는 경우 → Comparison
-    Matrix Layout(`comparison-matrix/comparison-matrix.md`). **Table Comparison과
+    Matrix Layout(`comparison-matrix.md`). **Table Comparison과
     Comparison Matrix는 서로 다른 별도 Layout이다** — 둘 다 "여러
     대상을 비교"하지만, Comparison Matrix는 Cell마다 자유로운 시각적
     구성을 허용하는 반면, 본 Layout은 직각형 Grid에 갇힌 정형화된
@@ -36,7 +36,7 @@
     혼용하거나 서로의 규칙을 가져와 섞지 않는다.
 -   사진·실험결과·그래프·Diagram 등 면적 점유형 Visual Evidence가
     핵심 주장을 직접 증명하는 Required Evidence인 경우 → Comparison
-    Matrix Layout(`comparison-matrix/comparison-matrix.md`)
+    Matrix Layout(`comparison-matrix.md`)
 -   하나의 솔루션이 만드는 정확히 2개의 병렬 효과를 보여주는 경우 →
     Benefit + Impact Layout(`benefit-impact.md`)
 
@@ -208,7 +208,7 @@ Header Row Fill 규칙을 그대로 받는다. 대상 이름(예: 기존/COSOLUS
     것)은 그대로 지킨다 — Row마다 Column 경계가 어긋나지 않는다.
 -   비교 대상이 5개를 초과해 Column이 좁아져 판독성이 떨어지면 Column
     수를 줄이거나(핵심 대상만 선별) [Comparison Matrix
-    Layout](comparison-matrix/comparison-matrix.md) 등 다른 구조를 검토한다 — 폰트를
+    Layout](comparison-matrix.md) 등 다른 구조를 검토한다 — 폰트를
     과도하게 축소해 욱여넣지 않는다.
 
 ### Row 구조
@@ -406,7 +406,7 @@ Footnote의 Font Size/Weight는 **Hard Rule §10B Table Header Row**를
 -   2개 이상 Column/Row를 동시에 자사 강조로 처리
 -   Hard Rule §10 Content Region Header(2~3개 병렬 Content Region용
     Header Bar)를 이 Layout의 Header Row에 그대로 적용
--   Comparison Matrix Layout(`comparison-matrix/comparison-matrix.md`)의 자유 배치형
+-   Comparison Matrix Layout(`comparison-matrix.md`)의 자유 배치형
     Cell 규칙을 가져와 섞어 쓰기
 -   Hard Rule 또는 Claude PPT Design System 변경
 
@@ -434,6 +434,6 @@ Footnote의 Font Size/Weight는 **Hard Rule §10B Table Header Row**를
     밀도 있는 정리가 필요함
 2.  대상별로 서로 다른 자유 시각 구성이 아니라, 동일한 행·열 격자
     안에서 정확히 대응되는 비교가 필요함(→ 아니라면
-    `comparison-matrix/comparison-matrix.md` 검토)
+    `comparison-matrix.md` 검토)
 3.  Before/After식 변화·전환이 아니라 다수 대상의 정적 스펙/데이터
     비교가 핵심임(→ 아니라면 `before-after.md` 검토)

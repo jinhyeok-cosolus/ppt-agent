@@ -27,11 +27,11 @@
 ------------------------------------------------------------------------
 
 > **Reference 출처**: 이 문서의 §3~§7에 명시된 영역 비율·간격·정렬
-> 수치는 같은 폴더의 [`3 column_reference.pptx`](./3%20column_reference.pptx)
-> (3분할 Reference 슬라이드 3장) 분석에서 콘텐츠가 아닌 **레이아웃
-> 구조만** 추출해 반영한 것이다. Reference pptx는 이 문서를 보완하는
-> 분석 자료일 뿐이며, 실제 웹PPT/pptx 생성 시에는 pptx 원본을 직접
-> 열어보지 않고 **이 문서(three-column.md)만 기준으로 적용**한다.
+> 수치는 `3 column_reference.pptx`(3분할 Reference 슬라이드 3장) 분석에서
+> 콘텐츠가 아닌 **레이아웃 구조만** 추출해 반영한 것이다(분석 결과는
+> 이 문서에 모두 반영되어 있으며 원본 pptx는 별도로 보관하지 않는다).
+> 실제 웹PPT/pptx 생성 시에는 pptx 원본을 열어볼 필요 없이 **이
+> 문서(three-column.md)만 기준으로 적용**한다.
 > Reference의 좌측 세로 브랜드 스트라이프(다크+옅은 틴트 컬러 바)는
 > 해당 Reference 자체의 고유 표지 요소이며 3분할 구조와 무관한
 > 장식이므로 반영 대상에서 제외했다 — 이미 확정된 Hard Rule 공통
@@ -120,7 +120,7 @@ Key Message 아래에는 해당 내용을 뒷받침하는 **Main Visual**을
 배치한다.
 
 -   Main Visual을 정하기 전, 각 Column의 콘텐츠 성격을
-    [`content-visualization-freedom.md`](../../design-system/content-visualization-freedom.md)의
+    [`content-visualization-freedom.md`](../design-system/content-visualization-freedom.md)의
     "Main Visual 선택 기준"에 따라 먼저 판단한 뒤 Chart / Large
     Number / Icon·Diagram / Map / Photo·Image / Text 중 적합한
     표현을 고른다.
