@@ -140,7 +140,7 @@ python .claude/skills/web-ppt-generator/scripts/new_version.py \
 3. 선별 과정에서 표시되는 수치 자체는 변경하지 않는다.
 
 ## 차트 렌더링
-- 웹PPT에서는 **Chart.js**로 인터랙티브 렌더링한다. `scripts/vendor/chart.min.js`를 로컬에 두고 `<script src="../../assets/vendor/chart.min.js">`로 참조한다 (CDN 미사용 — 오프라인·로컬 처리 원칙 준수). 최초 셋업 시 `scripts/vendor/`에 Chart.js 파일을 1회 내려받아 배치해야 한다(현재 리포지토리에는 포함되어 있지 않음 — README 참고).
+- 웹PPT에서는 **Chart.js**로 인터랙티브 렌더링한다. `scripts/vendor/chart.min.js`를 로컬에 두고 `<script src="../../assets/vendor/chart.min.js">`로 참조한다 (CDN 미사용 — 오프라인·로컬 처리 원칙 준수). 최초 셋업 시 `scripts/vendor/`에 Chart.js 파일을 1회 내려받아 배치해야 한다(현재 리포지토리에는 포함되어 있지 않음 — `scripts/templates/assets/vendor/README.md` 참고).
 - 차트에 쓰이는 수치는 `material_analysis.json`에서 추출된 원본 값을 그대로 사용한다. 원본 수치를 추출할 수 없는 차트(`charts_detected`)는 새 차트를 그리지 않고 원본 이미지를 `<img>`로 삽입한다.
 - pptx 변환 단계에서 네이티브 차트/이미지 중 무엇으로 변환할지 판단할 수 있도록, 차트를 감싸는 요소에 `data-chart-mode="native|image"` 힌트 속성과 원본 데이터(`data-chart-json`)를 함께 남긴다.
 

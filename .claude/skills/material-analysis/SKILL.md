@@ -29,7 +29,7 @@ content-designer가 [2] 자료 분석 단계에 진입했을 때. 원본 자료 
 | csv / 단일 이미지 파일 | 없음 | `structure_signal: "none_detected"` — 계층을 임의로 만들지 않음 |
 
 - docx는 `document.xml` body를 실제 XML 순서 그대로(문단·표가 섞인 원래 순서) 순회한다 — `document.paragraphs`/`document.tables`처럼 종류별로 나뉜 컬렉션을 따로 순회하면 "이 표/이미지가 어느 제목 바로 다음에 있었는가"라는 인접성 정보 자체가 사라지기 때문이다.
-- 이미지 relationship id는 문서 순서대로(`doc.part.rels` 딕셔너리 순서가 아니라 실제로 문단에 등장하는 순서로) 추출한다. **이전 버전은 `doc.part.rels` 순회로 이미지를 뽑아 실제 문서 순서와 어긋날 수 있었고, cosolus-ir-deck-D 회귀 테스트에서 실제로 로고 이미지가 한 칸씩 밀려 매칭되는 결함(SWAP/MUKTI/eCoNiL/IBC/HLI)의 원인이었다.** 이번 개정으로 이 결함 유형은 구조적으로 해소된다.
+- 이미지 relationship id는 문서 순서대로(`doc.part.rels` 딕셔너리 순서가 아니라 실제로 문단에 등장하는 순서로) 추출한다 — `doc.part.rels` 순회 순서는 실제 문서 순서와 어긋날 수 있어 이미지가 잘못된 문단에 매칭될 수 있다.
 - 변환 도구(PPT→docx 등)가 이미지 한 장을 셀 1개짜리 표로 감싸는 경우가 흔하다(cosolus 원본 문서에서 실제로 확인됨). 모든 셀의 텍스트가 비어 있는 표는 "이미지 컨테이너"로 판단해 표가 아니라 이미지로 추출한다 — 그렇지 않으면 이미지가 빈 표로 오분류되어 유실된다.
 - 상세 데이터 표(수십 행 이상, `needs_appendix: true`)는 추출 단계에서 걸러내지 않는다(선별은 [3] 이후 담당).
 - 스캔 PDF(텍스트 레이어 없음) 등 자동 판독 불가 시 OCR을 임의로 시도하지 않고 `needs_manual_review: true`로 표시한다.
@@ -207,4 +207,3 @@ python .claude/skills/material-analysis/scripts/extract.py \
 
 ## references
 - `references/` : 형식별 파싱 시 주의사항(병합 셀, 각주, 다단 레이아웃 등)을 프로젝트 경험이 쌓이며 축적하는 공간. 현재는 비어 있음.
-- 이번 개정은 `cosolus-ir-deck-D` 원본 docx에 새 extract.py를 재실행하는 회귀 테스트로 검증됐다(기존 프로젝트 산출물은 건드리지 않음). 검증에 쓰인 임시 산출물(`output/_material-analysis-regression/`)은 용량 정리 차원에서 삭제됐으며, 이 개정 배경은 위 "이 개정의 목적" 절에 그대로 남아 있다.
