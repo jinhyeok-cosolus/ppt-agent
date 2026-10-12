@@ -17,7 +17,7 @@
 2026-08-25, `cosolus-business-plan-2026` Slide 3에서 L07의 좌=Main Visual/우=Text 구조가 반전되고, Optional 보조 이미지를 넣기 위해 Primary Visual까지 축소된 사례가 있었다. Optional/Supporting Visual을 위해 원본 Reference의 Main Region 좌우 관계를 반전하거나 Primary Visual을 축소하지 않도록 규칙을 강화한 계기다.
 
 ## shared-visual-region-uneven-boxes
-**관련 규칙**: "Visual Region Utilization(과소 활용 금지)"
+**관련 규칙**: "이미지 표시 크기·시각적 위계 > 과소 활용 금지(Visual Region Utilization)"
 
 2026-08-25, `cosolus-business-plan-2026` Slide 11에서 그림6·7을 균등 폭 회색 박스에 강제로 맞춰 실제 이미지가 절반 이하 크기로 줄어든 사례가 있었다. 여러 이미지가 하나의 Visual Region을 공유할 때 동일한 박스 크기를 기계적으로 강제하지 않도록 규칙을 강화한 계기다.
 
@@ -35,3 +35,13 @@
 - 이미 있는 Stat Number 공용 클래스를 두고도 슬라이드 전용 클래스로 동일 값이 중복 재정의됨
 
 이 세 가지 재발명·중복·임의 축소를 막기 위해 "공용 클래스 통합", "Body Text는 Typography Tier 그대로 사용", "이미 있는 공용 클래스 우선 재사용" 규칙이 만들어졌다.
+
+## image-display-size-by-role
+**관련 규칙**: "이미지 표시 크기·시각적 위계(Image Display Size)" 전체, `flow-diagram-rules.md` "구조 정렬과 이미지 표시 크기의 구분", slide-structuring 2단계 "이미지별 시각 역할"
+
+2026-10-08, `cosolus-ir-deck-G` Slide 1(공정 흐름도)에서 Node 종류별 고정 `max-width`×`max-height` 박스(예: Process 72×46px) 때문에 여러 단계가 담긴 가로형 공정 도해(유도가열 3단계 등)가 정사각형 시료 사진과 같은 크기로 축소돼 단계를 식별하기 어려웠다. 규칙상 "동일 위계 Node 유사 체감 크기"가 Node 종류 기준으로 해석됐고, 이미지별 시각 역할·정보 밀도는 [3] 산출물에 기록되지 않아 [5]에서 구분할 근거가 없었다. 같은 조사에서 `object-fit: cover`로 콘텐츠 사진이 최대 47% 잘리고, pptx 변환기가 `object-fit`을 무시해 그 이미지들을 최대 88% 늘려 넣던 사례(`cosolus-ir-deck-B` final.pptx)도 확인됐다. 이미지 중요도를 원본 크기·비율이 아니라 역할·정보 밀도·판독성으로 판단하고, 컨테이너 정렬과 이미지 표시 크기를 분리하며, 원본 비율 유지를 QA·pptx 변환까지 일관되게 적용하도록 정리한 계기다.
+
+## flow-visual-composition
+**관련 규칙**: `flow-diagram-rules.md` "Visual Composition — Lane Band·연결점·구분선", qa_render.py `flow_issues`
+
+2026-10-12, `cosolus-ir-deck-G` Slide 1에서 이미지 크기만 역할별로 조정하자 배치 문제가 드러났다. 폐흑연 화살표의 불필요한 Z자 꺾임, 건식환원 이미지를 가로지르는 구분선, 소속 Lane이 모호한 유도가열 이미지, COSOLUS(2세대) 박스와 분기 브래킷의 겹침, 상단 결론 헤드라인에 가까운 Lane A 콘텐츠, 회수 화합물·폐흑연의 서로 다른 중심축이다. 원인은 다섯 가지였다. (1) Process가 연결선 위로만 쌓이는데 위쪽 공간 한도가 없었다. (2) Material Node는 이미지+라벨 블록 중심을 Lane에 맞춰서 이미지 높이가 바뀌면 연결점이 어긋났다. (3) 구분선이 고정 좌표였다. (4) PNG 투명 여백 때문에 박스 기준 간격과 보이는 간격이 달랐다(유도가열 이미지 하단 26%가 투명). (5) QA가 화살촉 marker 때문에 Connector 오버레이를 장식으로 판정하지 못해 오탐 32건만 내고 실제 충돌은 잡지 못했다. 그래서 가용 공간 → 이미지 크기 → Node 위치 → Connector → 구분선을 한 절차로 계산하도록 정리했다.

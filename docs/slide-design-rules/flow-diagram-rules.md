@@ -33,7 +33,7 @@
 - 상단/하단 Lane은 서로 다른 좌우 시작 X(1차 분기점 X)와 종료 X(결과물 영역 끝)를 동일하게 공유한다 — Lane마다 좌우 시작·종료 위치가 달라지지 않는다.
 - 2세대 내부 재분기의 두 하위 갈래(위/아래)도 같은 원칙으로 좌우 시작·종료 X를 서로 동일하게 맞춘다.
 - 라벨 영역은 자신이 속한 Lane의 세로 영역 범위를 벗어나지 않는다(위 Lane 세로 영역 비율 참조) — 다른 Lane의 세로 영역을 침범하지 않는다.
-- 1세대/2세대 사이 가로 점선 구분선(위 "구간 구분선 규칙")은 1차 분기점의 Y 위치(상/하 Lane 경계)와 같은 높이에 배치한다.
+- 1세대/2세대 사이 가로 점선 구분선(위 "구간 구분선 규칙")의 세로 위치는 1차 분기점 Y에 고정하지 않고, 아래 "Visual Composition" 9번(위·아래 Lane 콘텐츠 사이 중간)으로 정한다. 브래킷의 상/하 색 분할 경계는 그대로 1차 분기점(Trunk) Y에 두므로 두 높이가 서로 다를 수 있다.
 
 ## Use When / Do Not Use When (Layout Routing 참고)
 
@@ -179,7 +179,9 @@
   별도로 띄워서 배치한다.
 - 라벨 박스는 화살표 선 위에 겹치거나 화살표를 관통해서는 안 된다. 화살표는 박스 아래를
   깨끗하게 그대로 지나가야 한다.
-- 각 라벨 박스는 자신이 설명하는 구간/분기와 같은 높이(수평선상)에 배치한다.
+- 각 라벨 박스는 자신이 설명하는 구간/분기와 같은 높이(수평선상)에 배치한다 — 단, 위 두 조건(흐름
+  바깥·비관통)이 우선한다. 같은 높이에 두면 분기 브래킷이나 Lane Connector와 겹치는 경우 박스를 분기 X
+  왼쪽으로 물려 간격을 확보한다(아래 "Visual Composition" 10번).
 
 ## 아이콘 / 이미지 규칙
 - 아이콘·이미지에는 어떠한 테두리나 박스도 넣지 않는다. 이미지만 자연스럽게 배치한다.
@@ -214,21 +216,102 @@
   부족하다는 이유로 이미지를 과도하게 축소하지 않는다. Layout Reference(L25, 위 "0. 역할 구분" 참조)에서
   확인되는 이미지-대비-영역 상대 크기를 기준으로 삼아, 그보다 눈에 띄게 작아져 시각적 존재감이 약해지지
   않도록 한다.
-- 동일 위계의 Node 이미지(예: 같은 Lane 안의 여러 Process 아이콘, 같은 Output Group의 개별 이미지)는
-  서로 유사한 체감 크기를 유지한다 — 같은 위계인데 노드마다 크기가 들쭉날쭉하지 않게 한다.
+- **구조 정렬과 이미지 표시 크기의 구분**: Node의 위치(X 중심·Lane Y)·Connector·Occupied Area·Gap은
+  이 문서의 Region Map·배치 규칙으로 정렬한다. Node 내부 이미지의 표시 크기는 Node 종류(Process/
+  Material/Output)가 같다는 이유만으로 동일한 박스에 맞추지 않고, web-ppt-generator SKILL.md
+  "이미지 표시 크기·시각적 위계" 기준(역할·정보 밀도·판독성, 원본 비율 유지)으로 정한다.
+  - 역할·정보 밀도가 비슷한 이미지가 같은 줄에 나란히 놓이면(예: 같은 Lane의 Process 이미지들,
+    Output Group의 개별 이미지) 높이를 맞추고 너비는 원본 비율대로 둔다 — 같은 위계인데 높이가
+    들쭉날쭉하지 않게 한다.
+  - 여러 단계·라벨이 담긴 도해처럼 정보 밀도가 높은 이미지는 판독 가능한 크기를 우선하며, 같은 줄의
+    단순 사진과 동일 크기로 축소하지 않는다.
+  - 이미지 너비가 원본 비율대로 달라지면 그만큼 그 Node의 Occupied Area가 달라지며, 간격은 아래
+    "공간 부족 시 우선순위"와 Occupied Area 규칙으로 계산한다. 이미지 크기가 바뀌면 Node 위치·Lane Y·
+    Connector 경로·구분선도 Region Map 범위 안에서 아래 "Visual Composition — Lane Band·연결점·구분선"
+    절차로 함께 다시 계산한다.
+  - 공정도에서는 **공정도 전체가 하나의 Main Visual**이고 내부 이미지는 각 Node를 구성하는 시각 요소다 —
+    역할 class(main/dense 등)는 공정도 안에서의 상대적 위계일 뿐이며, 어떤 이미지도 자기 Lane Band(아래
+    절차 2)를 넘어 커지면서 다른 Lane·구분선·상단 콘텐츠와의 간격을 무너뜨리지 않는다.
 - 여러 항목으로 구성된 Output Group은 개별 이미지를 나란히 배치하되, 그룹 전체가 **하나의 Node**로
   인식되도록 항목 간 간격과 정렬을 통일한다(개별 이미지 간 간격이 Node와 Node 사이 간격만큼 벌어지지
   않게 한다 — Output Group 내부 간격은 서로 다른 Node 사이 Gap보다 눈에 띄게 좁아야 그룹으로 인식된다).
-- **공간 부족 시 우선순위**: 공간이 부족한 경우 **이미지 크기를 먼저 줄이지 않는다** — Node 간 X/Y
-  간격 및 사용 가능한 Body 공간(Region Map §0 범위 안에서의 여백 재배분)을 먼저 조정하고, 그래도
-  부족하면 위 "밀도/크기 규칙"의 순서(텍스트 줄바꿈 → 여백 최소화 → 슬라이드 폭 활용)를 따르며, 라벨
-  텍스트를 14pt 미만으로 줄이지 않는 원칙(위 "밀도/크기 규칙" 참조)과 동일하게 이미지도 가독성 최소
-  기준 아래로 줄이지 않는다.
+- **공간 부족 시 우선순위**: 아래 순서를 지킨다(아래 "Visual Composition" 3번과 같은 순서).
+  1. **Lane·Node 재배분** — Region Map(§0) 범위 안에서 Lane Y, Lane 간 간격, Node 간 X 간격, 하단 여유,
+     텍스트 줄바꿈·슬라이드 폭 활용(위 "밀도/크기 규칙")으로 공간을 먼저 확보한다. 이미지 크기를 먼저
+     줄이지 않는다.
+  2. **이미지 크기 조정** — 그래도 부족하면 같은 줄·같은 역할 이미지의 공통 높이를 함께 줄인다. 판독
+     하한(고밀도 이미지는 내부 단계·라벨을 식별할 수 있는 크기) 아래로는 줄이지 않는다.
+  3. **간격 기준값 조정** — 그래도 부족할 때만 해당 슬라이드의 간격 변수(`--flow-clearance` 등)를 낮춘다
+     ("Visual Composition" 1번).
+  4. 그래도 안 되면 줄이지 않고 Structural Check에 기록해 이관한다. 라벨 텍스트는 어느 단계에서도
+     14pt 미만으로 줄이지 않는다(Footnote/Source 제외, 위 "밀도/크기 규칙").
 - 구체적인 이미지 크기는 px 고정값으로 강제하지 않는다 — Region Map(§0)이 정의하는 각 영역의 폭·높이
   대비 이미지가 차지하는 비율을 기준으로 콘텐츠 분량에 맞게 범용적으로 판단한다.
 - **검증 기준**: 최종 렌더링 QA에서는 실제 Bounding Box(Occupied Area 기준)가 겹치는 경우뿐 아니라,
   겹치지는 않아도 서로 다른 Node가 지나치게 가까워 하나의 요소처럼 보이는 경우도 위반으로 판정한다
   (단, 의도적으로 하나의 Node로 묶이는 Output Group 내부는 제외).
+
+## Visual Composition — Lane Band·연결점·구분선 (이미지 크기와 배치를 함께 결정)
+> 이미지 크기·라벨·Node·Connector·구분선은 서로 독립적으로 정하지 않는다. 위 Flow Graph 선해석과
+> Region Map(Implementation Reference 실측값)으로 구조를 확정한 뒤, 아래 순서로 **가용 공간 → 이미지
+> 표시 크기 → Node 위치 → Connector 경로 → 구분선**을 한 번에 계산한다. 공정 순서·분기 구조·이미지
+> 선택·Layout은 이 절차에서 바꾸지 않는다.
+
+1. **기준값(초기값)** — 상단 콘텐츠·구분선과의 최소 간격 20px(`--flow-clearance`), Process 이미지와
+   소속 Lane Connector 간격 8px(`--flow-gap-process`), Node 간 최소 간격 16px(`--flow-node-gap`),
+   공통 축 정렬 허용 오차 4px(`--flow-axis-tolerance`). Flow Diagram 내부에서만 쓰는 시작값이며 다른
+   Layout에 적용하지 않는다. Lane 재배분과 이미지 크기 조정(3번 a·b)으로도 확보할 수 없을 때만 해당
+   슬라이드의 `.flow-field`에서 값을 낮추고(예: 12px), 그 사유를 `slide_outline.md` Structural Check에
+   남긴다 — 낮춘 값은 그 슬라이드에만 쓰는 조정값이며 새 기준값이 아니다(QA가 이 변수를 그대로 읽어
+   판정한다).
+2. **Lane Band(세로 가용 공간)** — Process는 Connector 위에 뜨므로(공정명 → 이미지 → Connector) 각
+   Lane은 위쪽으로 쓸 수 있는 높이가 정해져 있다: `Band = Lane Y − (위 경계 + --flow-clearance)`. 위
+   경계는 그 Lane 바로 위에 있는 것 중 가장 아래 것 — 상단 비-Header 콘텐츠(Supporting Message·결론
+   헤드라인 등)의 하단, 구분선, 위쪽 Lane 콘텐츠(이미지·라벨)의 하단이다. Process 블록 높이(공정명 +
+   라벨 간격 + 이미지 + `--flow-gap-process`)는 Band 안에 들어와야 한다.
+3. **이미지 표시 크기 결정** — 역할·정보 밀도 기준 높이(위 "구조 정렬과 이미지 표시 크기의 구분")에서
+   시작한다. Band를 넘으면 (a) Region Map 범위 안에서 Lane Y·Lane 간 간격·하단 여유를 먼저 재배분하고,
+   (b) 그래도 부족하면 같은 줄·같은 역할 이미지의 공통 높이를 함께 줄이며(특정 이미지만 따로 줄이지
+   않음), (c) 그래도 부족하면 1번 간격 기준값을 슬라이드 단위로 낮추고, (d) 판독 하한 아래로 내려가야
+   하면 줄이지 않고 Structural Check에 기록해 이관한다. 고밀도 이미지는 최종 화면에서 내부 단계·라벨을
+   식별할 수 있는지 확인한다. 반대로 고밀도라는 이유로 공정도 안에서 다른 Node를 압도할 만큼 키우지
+   않는다(공정도 전체가 Main Visual).
+4. **보이는 영역 기준** — 간격·연결점·충돌은 이미지 박스가 아니라 **실제로 보이는 픽셀 영역** 기준이다.
+   PNG 투명 여백이 한 축에서 15% 이상이면 표시 크기가 실제보다 작아 보이고 연결점이 어긋나므로, 투명
+   여백만 잘라낸 사본(`{원본명}-trim.png`, 같은 `assets/images/`, 픽셀 내용 불변·원본 파일 유지)을 만들어
+   사용한다 — 이미지 선택을 바꾸는 것이 아니다. 여백이 15% 미만이거나 배치에 영향이 없으면 원본을 그대로
+   쓴다(필요한 이미지에만 적용).
+   예: `python -c "from PIL import Image; im=Image.open('a.png'); im.crop(im.getchannel('A').point(lambda v:255 if v>16 else 0).getbbox()).save('a-trim.png')"`
+5. **연결점과 Node 위치** — Material/Intermediate/Output Node는 **이미지 세로 중심이 Lane Y**에 오도록
+   두고 라벨은 이미지 아래에 붙인다(블록 전체 중심을 Lane에 맞추지 않음 — 골격 CSS가 처리). Process는
+   `top`에 소속 Lane Y를 그대로 쓰고 Connector와의 간격은 `--flow-gap-process`가 만든다. Connector는
+   Node의 보이는 영역 바로 바깥에서 끝나고 다시 시작한다(위 "Node와 Connector 완전 비중첩").
+6. **Process 소속 명확성** — Process 블록은 소속 Lane Connector에 `--flow-gap-process` 간격으로 붙어
+   있어야 하고, 위쪽의 다른 Lane 요소(라벨·이미지·Connector)와의 거리가 자기 Lane과의 거리보다 멀어야
+   한다. Lane 사이 중간에 떠서 어느 경로의 공정인지 모호하게 보이지 않게 한다.
+7. **분기 팔과 꺾임** — 분기 브래킷의 각 끝 Y(또는 X)는 해당 목적지 Node의 연결점에 맞춘다 — 목적지가
+   브래킷 끝과 어긋나 마지막에 지그(Z자)를 넣지 않는다. 꺾임 개수 자체를 제한하지는 않는다: 분기 구조와
+   장애물 회피에 필요한 꺾임은 허용하고, 장애물이 없는데 위치 불일치 때문에 생긴 꺾임만 불필요한 꺾임으로
+   본다.
+8. **종료 단계 공통 축** — 같은 분기점에서 나온 결과물이 모두 그 경로의 종료 단계(더 이어지는 Connector
+   없음)이면 가능한 한 같은 세로 중심축(X)에 두고, 같은 `data-flow-axis="{id}"`로 표기한다. 결과물의
+   위·아래(또는 좌·우) 순서는 `slide_outline.md`·원본 자료의 순서를 그대로 유지하며, 공간 맞춤을 이유로
+   바꾸지 않는다. 축으로 정렬한 서로 다른 Node끼리는 `data-visual-group`을 공유하지 않는다 —
+   `data-visual-group`은 한 Node(예: Output Group) 안에서 같은 줄·같은 열로 나란한 이미지에만 쓴다. 서로 다른
+   분기점·단계의 결과물까지 하나의 X로 맞추는 규칙은 아니다. 공통 축 때문에 Node 간격(1)이나 Region Map
+   범위를 지킬 수 없으면 축 정렬을 포기하고 간격을 우선한다.
+9. **구간 구분선** — 고정 좌표를 쓰지 않는다. 구분선 가로 범위 안에서 위 Lane 콘텐츠(이미지·라벨·
+   Connector)의 최하단과 아래 Lane 콘텐츠의 최상단 사이 **중간**에 두고, 양쪽 모두
+   `--flow-clearance` 이상을 확보한다. 그 공간 자체가 부족하면 3(a)로 돌아가 Lane Band를 재배분한다.
+10. **카테고리 라벨 박스** — 아래 "라벨 박스 규칙"을 지키면서, 박스 오른쪽 끝은 그 Lane의 분기 X보다
+    `--flow-node-gap` 이상 왼쪽에 두어 분기 브래킷·Lane Connector와 겹치지 않게 한다. 골격의
+    `flow-category-label--anchor-right`를 붙이면 `left`가 박스 오른쪽 끝 좌표가 된다
+    (`left = 분기 X − --flow-node-gap`).
+11. **검증** — `qa_render.py --audit-layout`의 `flow_issues`(`connector-crosses-element`,
+    `unnecessary-bend`, `process-detached`/`process-gap-tight`/`process-lane-ambiguous`/`process-band-overflow`,
+    `divider-crosses-element`/`divider-clearance`/`divider-off-center`, `upper-content-clearance`,
+    `node-overlap`/`node-too-close`, `end-axis-misaligned`)로 기계 판정한다. `flow_advisories`(장애물 회피
+    꺾임, 화살표 간격, 종료 단계 공통 축 후보 등)는 Human Review ② 참고 자료다.
 
 ## 구간 구분선 규칙
 - 카테고리(예: 1세대/2세대) 구간 사이를 가로로 구분해야 하는 경우, 얇고 중립적인 톤(Neutral Gray/Slate 계열)의
@@ -236,6 +319,7 @@
 - Hard Rule §11 Vertical Content Divider는 **세로** Divider 전용 규정이므로, 이 가로 구분선을 §11의
   컴포넌트로 간주하거나 §11이 정의하는 세로 Divider 색상(#034443 Gradient)을 그대로 가져오지 않는다 —
   성격이 다른 별도 요소다. 두께감·절제된 톤이라는 방향성만 §11의 취지와 맞춘다.
+- 세로 위치는 위 "Visual Composition" 9번(위·아래 Lane 콘텐츠 사이 중간, 양쪽 최소 간격)으로 정한다.
 
 ## 분기 구조 대칭 규칙
 - 하나의 공통 시작점에서 여러 갈래로 분기하는 구조라면, 공통 시작점을 기준으로 각 갈래는
@@ -285,7 +369,7 @@
    - Branch: 정확히 하나의 Branch Point 좌표에서 각 Lane으로 향하는 곡선을 각각 그리되, 모든 곡선이 같은 시작점(X/Y)을 공유하게 한다(Branch Point 구조 보존 규칙).
    - Lane 내부: 해당 Lane의 시작 Material Node 오른쪽 끝부터 결과물(Output) Node 왼쪽 끝까지 **하나의 끊기지 않는 선**으로 그린다 — 그 사이에 있는 Process는 이 선을 끊지 않는다(Process 처리 방식).
 2. **Material/Intermediate/Output Node 레이어**: 텍스트 라벨(+이미지가 있으면 이미지)을 절대좌표 `div`로 배치한다. 이 Node의 Bounding Box는 위 Connector 레이어가 지나가지 않는 지점에 위치해야 한다 — Connector 좌표를 계산할 때 이 Node의 좌우 경계를 기준으로 선을 끊는다.
-3. **Process Node 레이어**: 해당 Lane의 Connector Y좌표보다 **위쪽**(Y값이 더 작은 위치)에 절대좌표로 배치한다. Connector 선과 겹치지 않도록 세로 Gap을 확보한다. 이미지가 있으면 라벨 위/아래에 함께 배치하되 순서는 "공정명 → 이미지 → (Connector)"를 따른다.
+3. **Process Node 레이어**: 해당 Lane의 Connector Y좌표보다 **위쪽**(Y값이 더 작은 위치)에 절대좌표로 배치한다. Connector 선과 겹치지 않도록 세로 Gap을 확보한다(골격 CSS에서는 `top`에 Lane Y를 그대로 쓰고 Gap은 `--flow-gap-process`가 만든다). 이미지가 있으면 라벨 위/아래에 함께 배치하되 순서는 "공정명 → 이미지 → (Connector)"를 따른다.
 
 ```html
 <div class="flow-field" style="position:relative;">
@@ -305,7 +389,7 @@
   <div class="flow-node-label" style="position:absolute; left:{laneAMaterialX}%; top:{laneAY}%; transform:translateY(-50%);">라벨</div>
 
   <!-- Process Node: Connector보다 위쪽, 화살표 chip으로 끼워 넣지 않는다 -->
-  <div class="flow-process-box" style="position:absolute; left:{processX}%; top:{laneAY - gap}%; transform:translate(-50%,-100%);">공정명</div>
+  <div class="flow-process-box" style="position:absolute; left:{processX}%; top:{laneAY}%; transform:translate(-50%, calc(-100% - var(--flow-gap-process)));">공정명</div>
 </div>
 ```
 

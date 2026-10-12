@@ -201,6 +201,7 @@ Phase A가 확정한 `slide_composition_map.json`(슬라이드 경계·Source Ma
 2. **Content Role 분류** — 슬라이드 내 각 콘텐츠 요소를 Primary / Dependent / Shared Supporting / Conclusion 중 필요한 역할로 분류한다. 역할 정의는 새로 쓰지 않고 [`Claude_PPT_Design_System.md`](../../../docs/design-system/Claude_PPT_Design_System.md) §5 "Content Relationship / Region Composition 원칙"을 그대로 따른다.
    - 모든 역할을 채울 필요는 없다. 해당 역할의 콘텐츠가 없으면 `N/A`로 표기한다.
    - 단일 콘텐츠 중심 슬라이드나 자유 형식 콘텐츠를 억지로 4개 역할에 끼워 맞추지 않는다.
+   - **이미지별 시각 역할(Main Visual / Supporting Evidence)** — 1-b까지 이미 이 슬라이드에 배정된 이미지마다, 이 슬라이드의 Core Message를 기준으로 시각 역할을 내부적으로 판단한다(이미지 선택·Claim 연결·슬라이드 배정은 바꾸지 않는다). **Main Visual**은 Core Message를 시각적으로 직접 성립시키는 이미지(빼면 핵심 메시지의 시각적 설명이 무너짐 — 대등한 Primary가 병렬이면 여럿일 수 있음), **Supporting Evidence**는 특정 Claim·단계·항목을 확인·보강하는 이미지다. 원본 픽셀 크기·가로세로 비율·이미지 개수·문서 내 순서로 판단하지 않으며, Required/Optional과는 별개다(Required여도 Supporting일 수 있고, Optional은 Main이 되지 않는다). 이미지 내부에 여러 단계·라벨·세부 구조가 담겨 판독에 일정 크기가 필요하면 `고밀도`로 함께 표기한다 — 이 판단 결과는 web-ppt-generator가 표시 크기를 정할 때 그대로 사용한다(SKILL.md "이미지 표시 크기·시각적 위계"). Flow Diagram 슬라이드에서는 공정도 전체가 Main Visual이므로, 내부 공정·물질 이미지는 공정도 안에서의 상대적 위계(Supporting/`고밀도`)로 표기한다(`flow-diagram-rules.md` "Visual Composition").
 
 3. **정보 관계 분석** — 콘텐츠 간 관계를 아래 중 필요한 유형으로 판단한다: 병렬 / 비교 / 순차 / 인과 / 종속 / 전체-부분 / 단일 콘텐츠 / 기타·복합. 판단 기준은 콘텐츠 형식(표/차트/이미지/텍스트)이 아니라 정보의 의미와 관계다.
    - **Dominant Relationship 판단(슬라이드에 Claim이 여러 개이고 그 Relationship이 서로 다를 때)**: 이 항목의 Relationship 값은 슬라이드 전체를 대표하는 **Dominant Relationship**이다 — 여러 Claim 중 하나의 Evidence 내부에만 존재하는 부분적 인과·순차 관계를, 그 이유만으로 슬라이드 전체의 Relationship으로 승격하지 않는다. Core Message가 실제로 요약하는 범위와 각 Claim의 비중(몇 개 Claim이 해당 관계를 공유하는지)을 기준으로 슬라이드 전체에 공통되는 관계를 판단한다. Claim들의 관계 유형이 서로 달라 하나로 대표하기 어려우면 억지로 인과·순차 중 하나를 고르지 않고 **기타·복합**으로 표기한다.
@@ -214,7 +215,7 @@ Phase A가 확정한 `slide_composition_map.json`(슬라이드 경계·Source Ma
    - Conclusion/Takeaway가 필요하면 전체 내용을 종합하는 별도 Region을 고려한다.
    - **Data Pending Region 예약**: `visual_placeholders`(`data_status: "data_pending"`)로 표시된 근거가 배정된 Claim이 있으면, 데이터가 없다는 이유로 그 Region을 생략하거나 일반 텍스트 서술로 대체하지 않는다 — 원래 지시된 표현 방식(표/차트/도식, `instructed_visual_type`)에 맞는 Region 자리를 그대로 설계하고, Region 설명에 "Data Pending" 상태를 명시한다. 이렇게 하면 이후 실제 데이터가 채워질 때 Region 구조 전체를 다시 설계하지 않고 그 Region의 내용만 채울 수 있다. 실제 Data Pending 상태의 시각적 표현(예: "데이터 준비 중" 플레이스홀더 스타일)은 web-ppt-generator 구현 몫이며, 이 단계는 자리와 의도된 Visual Type까지만 확정한다.
    - **제작 지시문 우선 적용**: 이 슬라이드에 딸린 `production_directives` 중 `directive_type`이 `placement`(좌우·상하 배치 등)인 항목은 Region 배치를 정할 때 이 단계 자체 판단보다 우선한다(예: "박스 2개 위아래 배치"는 좌우 병렬이 아니라 상하 배치 Region으로 반영). Content Regions 기술에 어떤 지시(id)를 반영했는지 남긴다.
-   - 각 Region의 콘텐츠 표현 방식(표/차트/이미지/텍스트 등)은 [`content-visualization-freedom.md`](../../../docs/design-system/content-visualization-freedom.md)의 Main Visual 선택 기준을 따라 함께 판단한다(면적 점유형/압축형 Visual 여부는 Region 크기 판단에 영향을 준다). `production_directives`(`visualization` 유형)로 표현 방식이 이미 지시된 경우 그 지시를 우선 적용한다.
+   - 각 Region의 콘텐츠 표현 방식(표/차트/이미지/텍스트 등)은 [`content-visualization-freedom.md`](../../../docs/design-system/content-visualization-freedom.md)의 "Evidence Relationship 기반 Visual 판단"·"콘텐츠 성격에 따른 보조 판단"을 따라 함께 판단하고, 면적 점유형/압축형 Visual 여부는 [`Claude_PPT_Design_System.md`](../../../docs/design-system/Claude_PPT_Design_System.md) §5 "Content Density / Content Group 원칙 > Main Visual 특성에 따른 밀도 기준"을 따라 Region 크기 판단에 반영한다. 이미지가 있는 Region은 2단계의 이미지별 시각 역할(Main Visual / Supporting Evidence, 고밀도 여부)을 함께 기술한다. `production_directives`(`visualization` 유형)로 표현 방식이 이미 지시된 경우 그 지시를 우선 적용한다.
    - Region의 정확한 Alignment/Gap/Typography 등 세부 디자인 규칙은 여기서 정의하지 않는다 — `Claude_PPT_Design_System.md` §5의 Content Density·Parallel Layout Alignment 원칙을 따르며, 실제 적용은 web-ppt-generator 단계에서 이루어진다.
    - Region을 설계할 때 원본 표/도식/이미지의 시각적 레이아웃(셀 배치, 색상, 아이콘 형태 등)을 그대로 옮겨 그리지 않는다 — 원본은 콘텐츠·관계·제작 의도(위 제작 지시문 포함)를 파악하는 근거일 뿐이며, 실제 Region 구성과 표현은 항상 Hard Rule/Claude PPT Design System/Layout Reference를 따라 새로 설계한다(자세한 원칙은 `material-analysis` SKILL.md "'원문 그대로 반영' 원칙의 적용 범위" 참조).
 
@@ -233,6 +234,7 @@ Phase A가 확정한 `slide_composition_map.json`(슬라이드 경계·Source Ma
    - 서로 다른 상위 주장을 뒷받침하는 근거들이 하나의 균질한 그룹으로 뭉뚱그려지지 않았는가
    - Data Pending으로 표시된 Region이 삭제되거나 일반 텍스트로 조용히 대체되지 않고 자리와 의도된 Visual Type을 유지하고 있는가
    - Conclusion이 특정 Region 안에 묻혀 있지 않은가
+   - 배정된 이미지마다 시각 역할(Main Visual / Supporting Evidence)이 Content Regions에 표기돼 있는가
    - 현재 구조로 한 슬라이드에 담기 어려운 콘텐츠량이면 요약 또는 슬라이드 분할이 필요한가(`content-visualization-freedom.md`의 "내용 과다 시 요약/슬라이드 분할 제안" 범위에서 판단)
    - 문제가 발견되면 2~5단계로 돌아가 재조정한다. 슬라이드 병합/유지/분할 자체를 다시 판단해야 하면(Content Region 설계만으로 해결되지 않으면) Phase A로 돌아가 `slide_composition_map.json`을 재조정한다 — 이 단계 자신은 슬라이드 경계를 바꾸지 않는다.
 
@@ -259,7 +261,7 @@ Phase A가 확정한 `slide_composition_map.json`(슬라이드 경계·Source Ma
   - Shared Supporting:
   - Conclusion/Takeaway:
 - **Relationship**: (병렬 / 비교 / 순차 / 인과 / 종속 / 전체-부분 / 단일 콘텐츠 / 기타·복합 중 해당하는 것)
-- **Content Regions**: (설계된 Region 목록과 각 Region이 대응하는 역할·표현 방식, 예: "Region A(병렬 Primary #1, Chart) / Region B(병렬 Primary #2, Chart) / Supporting Region(공통, Text)" — 위 Core Claims & Evidence의 Required 항목이 어느 Region에 반영됐는지 알 수 있게 기술. Data Pending Region이 있으면 "Region B(Primary #2, Chart, Data Pending)"처럼 상태를 함께 표기)
+- **Content Regions**: (설계된 Region 목록과 각 Region이 대응하는 역할·표현 방식, 예: "Region A(병렬 Primary #1, Chart) / Region B(병렬 Primary #2, Chart) / Supporting Region(공통, Text)" — 위 Core Claims & Evidence의 Required 항목이 어느 Region에 반영됐는지 알 수 있게 기술. Data Pending Region이 있으면 "Region B(Primary #2, Chart, Data Pending)"처럼 상태를 함께 표기. 이미지가 있으면 2단계의 이미지별 시각 역할을 "img3[Main] / img5[Supporting, 고밀도]"처럼 이미지 ID 뒤에 표기)
 - **Selected Layout**: (구조별 특수 Layout Reference 문서명 또는 L01~L33 번호)
 - **Layout Selection Reason**: (Use When 조건 충족 여부 등 선택 근거)
 - **Structural Check**: (사전 점검 결과 요약 — 문제 없음 / 발견된 이슈와 조치)

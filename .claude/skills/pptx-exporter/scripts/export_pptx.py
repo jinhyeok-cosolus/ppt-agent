@@ -45,7 +45,7 @@ from lxml import etree
 from pptx import Presentation
 from pptx.dml.color import RGBColor
 from pptx.enum.dml import MSO_LINE_DASH_STYLE
-from pptx.enum.shapes import MSO_SHAPE
+from pptx.enum.shapes import MSO_CONNECTOR, MSO_SHAPE
 from pptx.enum.text import MSO_ANCHOR, MSO_AUTO_SIZE, PP_ALIGN
 from pptx.oxml.ns import qn
 from pptx.util import Emu, Pt
@@ -581,6 +581,8 @@ async () => {
             x: localX, y: localY, w: r.width, h: r.height,
             visible,
             src: el.currentSrc || el.src || '',
+            naturalW: el.naturalWidth || 0,
+            naturalH: el.naturalHeight || 0,
             style: {
               objectFit: cs.objectFit,
               objectPosition: cs.objectPosition,
@@ -783,13 +785,66 @@ def resolve_src_to_path(src: str, web_ppt_dir: Path, temp_dir: Path) -> Path | N
     return (web_ppt_dir / p).resolve()
 
 
+def _object_position_offset(token: str, free: float) -> float:
+    """CSS object-position 한 축 값(%, px, 키워드)을 박스 내 오프셋(px)으로 환산한다."""
+    token = (token or "").strip().lower()
+    keyword = {"left": 0.0, "top": 0.0, "center": 50.0, "right": 100.0, "bottom": 100.0}
+    if token in keyword:
+        return free * keyword[token] / 100.0
+    m = re.match(r"^(-?[\d.]+)%$", token)
+    if m:
+        return free * float(m.group(1)) / 100.0
+    m = re.match(r"^(-?[\d.]+)px$", token)
+    if m:
+        return float(m.group(1))
+    return free / 2.0
+
+
+def fit_image_in_box(w: float, h: float, nat_w: float, nat_h: float, object_fit: str | None,
+                     object_position: str | None):
+    """<img> 박스(w×h) 안에서 브라우저가 실제로 그린 이미지 영역을 object-fit/object-position
+    규칙대로 계산한다. 반환: (보이는 영역 x, y, w, h — 박스 기준 오프셋, crop l, r, t, b).
+    fill(기본값)은 박스 그대로(HTML 자체가 늘어난 상태 — 그대로 재현하고 QA가 따로 경고한다)."""
+    fit = (object_fit or "fill").strip().lower()
+    if fit == "fill" or nat_w <= 0 or nat_h <= 0 or w <= 0 or h <= 0:
+        return 0.0, 0.0, w, h, 0.0, 0.0, 0.0, 0.0
+    if fit == "contain":
+        scale = min(w / nat_w, h / nat_h)
+    elif fit == "cover":
+        scale = max(w / nat_w, h / nat_h)
+    elif fit == "none":
+        scale = 1.0
+    elif fit == "scale-down":
+        scale = min(1.0, w / nat_w, h / nat_h)
+    else:
+        return 0.0, 0.0, w, h, 0.0, 0.0, 0.0, 0.0
+    cw, ch = nat_w * scale, nat_h * scale
+    parts = (object_position or "50% 50%").split()
+    pos_x = parts[0] if parts else "50%"
+    pos_y = parts[1] if len(parts) > 1 else "50%"
+    cx = _object_position_offset(pos_x, w - cw)
+    cy = _object_position_offset(pos_y, h - ch)
+    # 박스 밖으로 나간 부분은 HTML에서 잘려 보이지 않으므로 pptx에서도 crop으로 잘라낸다.
+    vx0, vy0 = max(cx, 0.0), max(cy, 0.0)
+    vx1, vy1 = min(cx + cw, w), min(cy + ch, h)
+    if vx1 <= vx0 or vy1 <= vy0:
+        return 0.0, 0.0, w, h, 0.0, 0.0, 0.0, 0.0
+    crop_l = (vx0 - cx) / cw
+    crop_r = (cx + cw - vx1) / cw
+    crop_t = (vy0 - cy) / ch
+    crop_b = (cy + ch - vy1) / ch
+    return vx0, vy0, vx1 - vx0, vy1 - vy0, crop_l, crop_r, crop_t, crop_b
+
+
 def add_picture_exact(slide, img_path: Path, x: float, y: float, w: float, h: float, warnings: list[str],
-                       oval_crop: bool = False):
+                       oval_crop: bool = False, crop: tuple[float, float, float, float] | None = None):
     if not img_path.exists():
         warnings.append(f"이미지 파일을 찾을 수 없어 건너뜀: {img_path}")
         return None
     try:
         pic = slide.shapes.add_picture(str(img_path), px(x), px(y), width=px(w), height=px(h))
+        if crop and any(c > 1e-4 for c in crop):
+            pic.crop_left, pic.crop_right, pic.crop_top, pic.crop_bottom = crop
         if oval_crop:
             set_picture_geometry_ellipse(pic)
         return pic
@@ -832,22 +887,44 @@ def _thin_line_rect(slide, x: float, y: float, w: float, h: float, css_color: st
         pass
 
 
+def _dashed_side_line(slide, x1: float, y1: float, x2: float, y2: float, width: float,
+                      css_color: str | None, dash) -> None:
+    """dashed/dotted 변은 채운 사각형으로는 점선을 표현할 수 없으므로, 변의 중심선을 지나는
+    직선 연결선에 같은 두께·색·dash 스타일을 적용해 그린다(예: Flow Diagram 구간 구분선)."""
+    if not parse_css_color(css_color):
+        return
+    conn = slide.shapes.add_connector(MSO_CONNECTOR.STRAIGHT, px(x1), px(y1), px(x2), px(y2))
+    set_line(conn, css_color, width)
+    try:
+        conn.line.dash_style = dash
+    except Exception:
+        pass
+
+
 def add_side_borders(slide, x: float, y: float, w: float, h: float, style: dict, sx: float, sy: float) -> None:
     """CSS의 top/right/bottom/left border를 각각 독립된 얇은 선(사각형)으로 그린다
-    (하나의 outline으로 근사하면 없는 변까지 테두리가 생기므로 변마다 따로 그린다)."""
+    (하나의 outline으로 근사하면 없는 변까지 테두리가 생기므로 변마다 따로 그린다).
+    dashed/dotted 변은 점선 연결선으로 그린다."""
     tw = float(style.get("borderTopWidth", 0) or 0) * sy
     rw = float(style.get("borderRightWidth", 0) or 0) * sx
     bw = float(style.get("borderBottomWidth", 0) or 0) * sy
     lw = float(style.get("borderLeftWidth", 0) or 0) * sx
+    dash_of = lambda side: _CSS_DASH_TO_PPT.get((style.get(f"border{side}Style") or "").lower())
 
-    if tw > 0:
-        _thin_line_rect(slide, x, y, w, tw, style.get("borderTopColor"))
-    if bw > 0:
-        _thin_line_rect(slide, x, y + h - bw, w, bw, style.get("borderBottomColor"))
-    if lw > 0:
-        _thin_line_rect(slide, x, y, lw, h, style.get("borderLeftColor"))
-    if rw > 0:
-        _thin_line_rect(slide, x + w - rw, y, rw, h, style.get("borderRightColor"))
+    sides = (
+        ("Top", tw, (x, y, w, tw), (x, y + tw / 2, x + w, y + tw / 2)),
+        ("Bottom", bw, (x, y + h - bw, w, bw), (x, y + h - bw / 2, x + w, y + h - bw / 2)),
+        ("Left", lw, (x, y, lw, h), (x + lw / 2, y, x + lw / 2, y + h)),
+        ("Right", rw, (x + w - rw, y, rw, h), (x + w - rw / 2, y, x + w - rw / 2, y + h)),
+    )
+    for side, width, rect, line in sides:
+        if width <= 0:
+            continue
+        dash = dash_of(side)
+        if dash is not None:
+            _dashed_side_line(slide, *line, width, style.get(f"border{side}Color"), dash)
+        else:
+            _thin_line_rect(slide, *rect, style.get(f"border{side}Color"))
 
 
 def _is_circular(style: dict, w: float, h: float) -> bool:
@@ -1195,15 +1272,23 @@ def build_slide(prs: Presentation, slide_data: dict, web_ppt_dir: Path, temp_dir
                     img_style = item.get("style", {})
                     own_circular = _is_circular({"borderRadius": img_style.get("borderRadius")}, img_w, img_h)
                     parent_circular = _is_circular({"borderRadius": img_style.get("parentBorderRadius")}, img_w, img_h)
+                    # object-fit(contain/cover 등)을 반영해 브라우저가 실제로 그린 영역·crop을 그대로
+                    # 재현한다 — <img> 박스에 그림 전체를 늘려 넣으면 박스 비율≠원본 비율일 때 왜곡된다.
+                    vx, vy, vw, vh, cl, cr, ct, cb = fit_image_in_box(
+                        item["w"], item["h"],
+                        float(item.get("naturalW") or 0), float(item.get("naturalH") or 0),
+                        img_style.get("objectFit"), img_style.get("objectPosition"),
+                    )
                     add_picture_exact(
                         slide,
                         p,
-                        item["x"] * sx,
-                        item["y"] * sy,
-                        img_w,
-                        img_h,
+                        (item["x"] + vx) * sx,
+                        (item["y"] + vy) * sy,
+                        vw * sx,
+                        vh * sy,
                         warnings,
                         oval_crop=own_circular or parent_circular,
+                        crop=(cl, cr, ct, cb),
                     )
                 else:
                     warnings.append(f"이미지 소스를 로컬 파일로 해석하지 못해 건너뜀: {src}")
