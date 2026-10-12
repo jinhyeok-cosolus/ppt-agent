@@ -220,7 +220,7 @@ Phase A가 확정한 `slide_composition_map.json`(슬라이드 경계·Source Ma
    - Region을 설계할 때 원본 표/도식/이미지의 시각적 레이아웃(셀 배치, 색상, 아이콘 형태 등)을 그대로 옮겨 그리지 않는다 — 원본은 콘텐츠·관계·제작 의도(위 제작 지시문 포함)를 파악하는 근거일 뿐이며, 실제 Region 구성과 표현은 항상 Hard Rule/Claude PPT Design System/Layout Reference를 따라 새로 설계한다(자세한 원칙은 `material-analysis` SKILL.md "'원문 그대로 반영' 원칙의 적용 범위" 참조).
 
 5. **Layout Routing** — `.claude/skills/web-ppt-generator/references/design-rules.md`의 "레이아웃 선택 기준"을 그대로 사용해 가장 적합한 Layout을 고른다.
-   - 표지 슬라이드는 `01_cover_design_V2.md`를 우선 적용(L01~L33 미참고).
+   - 표지 슬라이드는 `01_cover_design_V2.md`를 우선 적용(L01~L33 미참고). 덱 마지막의 마무리 표지(Closing)는 같은 문서의 "Closing" 절(구조 고정형)을 적용한다.
    - 표지가 아니면 먼저 [`docs/layout-reference/2026.08.20_special-layout-index_V1.md`](../../../docs/layout-reference/2026.08.20_special-layout-index_V1.md)(콘텐츠 구조별 특수 Layout Reference 17종의 경량 인덱스 — Layout명/Category/Use When/Do Not Use When/원본 경로)에서 이번 슬라이드의 Relationship·콘텐츠 구조에 맞는 Use When 조건에 해당하는 후보가 있는지 확인한다. 이 인덱스만으로 1~2개 후보로 좁혀지면 그 후보의 원본 Layout MD만 상세 Read해 세부 스펙(구조·비율·Variant 등)을 확인하고 우선 적용한다 — 후보가 아닌 나머지 특수 Layout 문서는 열지 않는다.
    - 인덱스의 어떤 Use When에도 해당하지 않으면 `layout-catalog_V1.md`(L01~L33)에서 후보를 고른다.
    - Data Pending Region이 있다는 이유로 Layout 후보에서 제외하지 않는다 — 실제 데이터가 없어도 그 Region이 차지할 자리(표/차트 영역)를 감안해 Layout을 고른다.

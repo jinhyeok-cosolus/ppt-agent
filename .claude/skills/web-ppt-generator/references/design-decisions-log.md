@@ -70,7 +70,7 @@
 **상태(인수인계)**
 - 브랜치 `visual-composition-image-sizing`, 마지막 커밋 `9e7f231`(Visual Composition). Design Consistency 변경은 **아직 커밋하지 않았다** — Skill·MD·템플릿·스크립트, `templates/assets/ci/`, `components/company-overview.*`, `introduction-images/company-overview-photo.png`, `docs/brand-assets/기업개요 Reference.pptx`(커밋 포함 대상).
 - 커밋 제외: `output/cosolus-ir-deck-G/web_ppt/v1-composition-test/`, `output/cosolus-ir-deck-G/.qa/`, 기존 미추적 울산 프로젝트 폴더. 테스트 덱·비교 이미지는 세션 임시 폴더에 있어 다음 세션에서 사라질 수 있다(템플릿으로 재생성 가능).
-- **미완료**: Closing 디자인 — 별도 레퍼런스 제공 후 Cover MD Closing 절에서 확정(현재는 공통 요소 미적용 예외 구조만 있음).
+- ~~미완료: Closing 디자인~~ → 아래 `closing-reference`에서 확정.
 
 **다음 세션 확인 사항**
 1. 사용자 승인 후 커밋(위 포함·제외 목록).
@@ -78,3 +78,25 @@
 3. Section Divider 전용 Layout이 없어 좌측 Brand Line 적용 여부는 미정.
 4. 기존 진행 중 프로젝트는 `new_version.py --from-latest`가 이전 CSS를 그대로 복사하므로 새 Header가 자동 반영되지 않는다(필요 시 마이그레이션).
 5. 카탈로그 L22·L31 번호가 실제 pptx 슬라이드 번호와 어긋나 있다(범위 밖, 미수정).
+
+## closing-reference
+**관련 규칙**: `01_cover_design_V2.md` "Closing" 절, `templates/components/closing.*`, Hard Rule §9 슬라이드 유형별 적용 범위, export_pptx.py `add_box`
+
+2026-10-12, Closing(마지막 표지)을 레퍼런스 `docs/brand-assets/Closing.pptx` 실측값으로 구조 고정형 컴포넌트화했다(기업개요와 같은 방식). 공통 Header·좌측 Brand Line·페이지 번호는 기존 결정대로 미적용. 교체 가능 요소는 마무리 메시지(최대 3줄)와 배경 사진뿐이다.
+
+**재현 과정에서 정한 것**
+- **사진**: 레퍼런스는 원본 우측 23.4% Crop + 좌우 반전. 그 결과물을 `closing-images/closing-photo.png`(925×900, 원본 해상도)로 등록해 CSS 변환 없이 쓴다. CI는 레퍼런스 원본 White CI(728×112)를 `assets/ci/cosolus-ci-white-closing.png`로 추가했다(기존 399px White CI와 비율이 약간 다름).
+- **그라데이션**: PowerPoint는 색·투명도를 따로 보간하고 브라우저는 투명도를 곱한 값으로 보간해, 1.4~24% 구간이 최대 6/255 밝았다. 그 구간에 PowerPoint 방식으로 계산한 중간 stop 7개를 넣어 HTML·PPTX 모두 레퍼런스와 ±1로 맞췄다.
+- **메시지 줄 간격**: 150% 줄 높이를 그대로 주면 PowerPoint는 남는 행간을 글자 위에 몰아 두어 변환 PPTX에서 줄마다 약 15px 아래로 밀렸다. 각 줄을 1.2 줄 높이로 두고 줄 사이 간격(25.6px)으로 띄웠다.
+- **Thank You**: 레퍼런스가 ExtraBold에 굵게(b=1)를 추가 적용해 PowerPoint가 획을 덧입혀 그린다 — 브라우저에서는 900으로 근사(폭 차 9.5px → 2.5px).
+- **변환기 그림자**: python-pptx 도형 기본 스타일(effectRef idx=2)이 테마 그림자를 끌어와, 반투명 오버레이 아래로 그림자가 비쳐 PPTX 전체가 약 14/255 어두웠다. 연결선(이전 수정)처럼 `add_box` 도형에도 그림자 상속을 끊었다 — HTML에 없는 그림자라 일반 본문·기업개요 PPTX에서도 그림자만 사라진다.
+
+**PPTX 글꼴 굵기·줄바꿈(같은 날 후속)**: 변환기가 설치된 Pretendard 굵기별 패밀리 이름(예: "Pretendard SemiBold", b=0)으로 저장하고, 미설치 시 기존 방식("Pretendard" + 굵게)으로 돌아간다(`pptx-exporter/references/font_mapping.md` "굵기 매핑"). PowerPoint는 Pretendard 커닝을 적용하지 않아(한글 혼합 문장 최대 약 1.7% 넓음) 굵기를 정확히 맞추면 줄바꿈이 달라질 수 있어, 여러 줄 텍스트는 브라우저 줄 구성 그대로(`<a:br/>`, 행잉 인덴트는 줄별 상자) 옮긴다. 검증(테스트 덱 + deck-F/G 28장): HTML과 줄 수 불일치 7 → 0, HTML 대비 이미지 차이 합 105.6 → 99.6.
+
+## 2026-10-12 마무리 — Supporting Message·Closing·PPTX 글꼴
+**완료**: Supporting Message 공통 클래스(`.supporting-message`, X=41.6, 기업개요는 `.co-message` 예외 — Hard Rule §12) · Closing 구조 고정형 컴포넌트(위 `closing-reference`) · PPTX 굵기별 글꼴 매핑과 줄바꿈 보존(위 후속) · 변환 도형 테마 그림자 제거.
+
+**남은 차이**
+- **자간 미변환**: CSS letter-spacing이 PPTX로 옮겨지지 않는다 — Closing Motto 끝 +11.5px, Section Label(+0.2pt)·기업개요 핵심 메시지(−0.2pt)도 영향.
+- **Closing 텍스트 폭**: "Thank You"는 HTML에서 900으로 근사해 PPTX에도 Black으로 저장돼 레퍼런스보다 약 11.5px 넓다. 긴 굵은 제목은 미커닝으로 줄 끝이 2~3px 밀린다.
+- **열람 PC 폰트**: 굵기별 패밀리는 PPTX를 여는 PC에도 Pretendard 9개 굵기가 설치돼 있어야 그대로 보인다(미설치 시 해당 굵기가 대체 글꼴로 표시될 수 있음, 임베딩 없음).

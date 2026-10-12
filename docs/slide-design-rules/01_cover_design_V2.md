@@ -146,12 +146,29 @@ PPT의 첫인상을 형성하고, 발표 주제와 COSOLUS의 브랜드 이미�
 -   불필요한 카드, 아이콘, 도형 등의 추가
 -   PPT 주제와 관계없는 장식용 이미지 사용
 
-## Closing (마지막 표지) — 예외 구조만 확정, 디자인 미확정
+## Closing (마지막 표지) — 구조 고정형
 
-> **Status: 디자인 미확정(별도 레퍼런스 제공 예정)**. 배경·로고·문구·배치는 레퍼런스를 받은 뒤
-> 이 절에서 확정한다. 확정 전에는 표지 디자인을 임의로 복제하거나 새로 설계하지 않는다.
+> **Status: 확정(구조 고정형, 2026-10-12)**. 디자인 기준은 COSOLUS Closing 레퍼런스
+> `docs/brand-assets/Closing.pptx`의 도형 실측값이다. 아래 구조·좌표·Typography·오버레이는
+> 프로젝트마다 바꾸지 않으며, **마무리 메시지 문구(최대 3줄)와 배경 사진 파일**만 교체한다.
+> 구현은 골격 `web-ppt-generator/scripts/templates/components/closing.css`/`.html`을 그대로
+> 복사해 교체 가능 영역(`{}`)만 채운다(값의 Single Source of Truth는 `closing.css`).
 
 - **적용 대상**: 덱의 마지막에 두는 마무리 표지 1장(`<section class="slide slide--closing">`). 본문형 연락처 슬라이드(카탈로그 L22 Closing/Contact)와는 별개다 — 마지막 표지형 Closing은 이 절을 따른다.
-- **확정된 예외 구조**(Hard Rule §9 "슬라이드 유형별 적용 범위"): 공통 Header System(CI·Section Label·Main Title·Sub Message·상단 구분선), 좌측 Brand Line, 페이지 번호를 적용하지 않는다. Hard Rule §12 Supporting Message도 쓰지 않는다(§12 예외 ①).
+- **예외 구조**(Hard Rule §9 "슬라이드 유형별 적용 범위"): 공통 Header System(CI·Section Label·Main Title·Sub Message·상단 구분선), 좌측 Brand Line, 페이지 번호를 적용하지 않는다. Hard Rule §12 Supporting Message도 쓰지 않는다(§12 예외 ①).
 - 이 절은 표지 절(위)과 별도로 관리하며, 표지 규칙이 Closing에 자동으로 적용되지 않는다.
 
+### Layout (1280×720px, 레퍼런스 실측 — 고정)
+| 영역 | 위치·크기 | 스타일 |
+|---|---|---|
+| 배경 사진 | X=0~739.8, Y=0~720 | 흑백 사진, 레퍼런스 그대로 원본 우측 23.4% Crop + 좌우 반전(등록 파일이 이미 그 결과물). 기본값 `docs/brand-assets/closing-images/closing-photo.png` |
+| 그라데이션 오버레이 | 슬라이드 전체 | 오른쪽→왼쪽: 0% White 87% / 1.4% `#FBFCFC` / 24% `#84A3A5` 82% / 100% `#36696C` 74% |
+| Motto | 좌상단 X≈49, Y≈40 | "Small actions, BIG DIFFERENCE" — Pretendard Light 14pt, White, 자간 -0.3pt(고정 문구) |
+| CI | X=42.8, Y=68.1, 255.3×39.4 | White CI(`assets/ci/cosolus-ci-white-closing.png`, 레퍼런스 원본) |
+| 마무리 메시지 | 텍스트 X=52.4, 줄 간격 76.8px(150%), 첫 줄 글자 상단 Y≈204 | Pretendard SemiBold 32pt, White, 좌측 정렬, **최대 3줄**(한 줄 1160px 이내) |
+| Thank You | X=42.8, Y=514.7 | Pretendard ExtraBold 60pt(레퍼런스는 굵게 추가 적용), White, 자간 -0.3pt(고정 문구) |
+| Thank You 옆 선 | X=464.1~675.0, Y=597.9 | 1.25pt White, 오른쪽 끝 원형 마커(지름 약 7.5) |
+
+- 카드·패널·추가 아이콘·장식선을 넣지 않는다. 메시지가 3줄보다 짧아도 위치를 옮기거나 글자 크기를 키우지 않는다.
+- 마무리 메시지는 원본 자료에 근거한 회사의 비전·다짐 문장만 쓴다. 자료에 없으면 레퍼런스 문구(코솔러스 비전)를 기본값으로 쓰되, 다른 문구가 필요하면 사용자에게 확인한다.
+- 배경 사진을 바꿀 때는 흑백·약 1.03:1 비율 이미지를 쓴다(CSS filter로 흑백 처리하지 않는다).

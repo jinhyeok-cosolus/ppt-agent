@@ -320,6 +320,12 @@ LAYOUT_AUDIT_JS = """
       commonElementIssues.push({ type: 'common-element-color', element: '.header-divider', expected: want.divider, actual: divColor });
     }
   }
+  // Hard Rule §12 Supporting Message(선택 요소) — 일반 본문에 있으면 Main Title과 같은 X=41.6 좌측 정렬
+  const supportEl = slideType === 'body' ? slide.querySelector('.supporting-message') : null;
+  if (supportEl && visible(supportEl) && Math.abs(supportEl.getBoundingClientRect().left - 41.6) > POS_EPS) {
+    commonElementIssues.push({ type: 'common-element-position', element: '.supporting-message',
+      mismatch: { left: { expected: 41.6, actual: Math.round(supportEl.getBoundingClientRect().left * 10) / 10 } } });
+  }
 
   // 4-4) Deck Footnote(조건부) — 있을 때만 허용 영역 검사
   if (deckFootnoteEl && visible(deckFootnoteEl)) {

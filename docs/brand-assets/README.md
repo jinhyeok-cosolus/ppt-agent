@@ -15,6 +15,8 @@
 - `화살표 이미지.png` — 화살표 이미지 자산
 - `기업개요 Reference.pptx` — COSOLUS IR 디자인 레퍼런스(공통 Header System·좌측 Brand Line·기업개요 Layout 실측 원본, Hard Rule §9 / `docs/slide-design-rules/02_instruction_design_V1.md`)
 - `introduction-images/company-overview-photo.png` — 기업개요 우측 사진 기본값(레퍼런스에서 추출한 흑백 회사 사진)
+- `Closing.pptx` — COSOLUS Closing(마지막 표지) 디자인 레퍼런스(실측 원본, `docs/slide-design-rules/01_cover_design_V2.md` "Closing" 절)
+- `closing-images/closing-photo.png` — Closing 배경 사진 기본값(레퍼런스 원본 사진을 레퍼런스와 같이 Crop·좌우 반전한 흑백 사진)
 
 적용 규칙(사용 우선순위, 반복 배치 등)은 [`.claude/skills/web-ppt-generator/references/design-rules.md`](../../.claude/skills/web-ppt-generator/references/design-rules.md)의 "고정 규칙 > 회사 로고 및 Motto" / "공통 Deck Element" 섹션 참고.
 

@@ -304,6 +304,84 @@ def css_weight_is_bold(weight: str | None) -> bool:
         return False
 
 
+# Pretendard 굵기별 Windows(GDI) 패밀리 이름 — references/font_mapping.md "굵기 매핑" 참조.
+# Regular(400)·Bold(700)는 "Pretendard" 한 패밀리의 굵게 off/on이고, 나머지는 굵기마다 별도 패밀리다
+# (폰트 name 테이블 ID 1 실측). 별도 패밀리에 굵게를 켜면 PowerPoint가 획을 덧입혀 그리므로 b=0으로 쓴다.
+PRETENDARD_WEIGHT_FACES = {
+    100: "Pretendard Thin", 200: "Pretendard ExtraLight", 300: "Pretendard Light",
+    500: "Pretendard Medium", 600: "Pretendard SemiBold", 800: "Pretendard ExtraBold",
+    900: "Pretendard Black",
+}
+_installed_families: set[str] | None = None
+
+
+def _font_family_name(path: Path) -> str | None:
+    """OTF/TTF name 테이블에서 Windows 영어 패밀리 이름(name ID 1)을 읽는다(추가 패키지 없이)."""
+    try:
+        d = path.read_bytes()
+        num = int.from_bytes(d[4:6], "big")
+        for i in range(num):
+            rec = d[12 + 16 * i: 28 + 16 * i]
+            if rec[:4] != b"name":
+                continue
+            off = int.from_bytes(rec[8:12], "big")
+            count = int.from_bytes(d[off + 2: off + 4], "big")
+            str_off = off + int.from_bytes(d[off + 4: off + 6], "big")
+            for j in range(count):
+                r = d[off + 6 + 12 * j: off + 18 + 12 * j]
+                pid, lid, nid = (int.from_bytes(r[k:k + 2], "big") for k in (0, 4, 6))
+                if pid == 3 and lid == 0x409 and nid == 1:
+                    ln, o = int.from_bytes(r[8:10], "big"), int.from_bytes(r[10:12], "big")
+                    return d[str_off + o: str_off + o + ln].decode("utf-16-be")
+    except Exception:
+        return None
+    return None
+
+
+def installed_pretendard_families() -> set[str]:
+    """변환 PC에 실제 설치된 Pretendard 계열 패밀리 이름 집합(시스템·사용자 폰트 폴더의 파일을 직접 읽음)."""
+    global _installed_families
+    if _installed_families is None:
+        import os
+        dirs = [Path(os.environ.get("WINDIR", "C:/Windows")) / "Fonts",
+                Path(os.environ.get("LOCALAPPDATA", "")) / "Microsoft/Windows/Fonts",
+                Path("/Library/Fonts"), Path.home() / "Library/Fonts",
+                Path("/usr/share/fonts"), Path("/usr/local/share/fonts"),
+                Path.home() / ".fonts", Path.home() / ".local/share/fonts"]
+        found: set[str] = set()
+        for d in dirs:
+            if not str(d) or not d.is_dir():
+                continue
+            for f in d.rglob("*"):
+                if f.suffix.lower() in (".otf", ".ttf") and "pretendard" in f.name.lower():
+                    name = _font_family_name(f)
+                    if name:
+                        found.add(name)
+        _installed_families = found
+    return _installed_families
+
+
+def pptx_font_for(font_family: str | None, weight: str | None, force_bold: bool = False) -> tuple[str, bool]:
+    """CSS font-family/font-weight → PPTX (typeface, bold).
+    Pretendard의 400·700 외 굵기는 설치된 굵기별 패밀리 이름(b=0)으로 저장해 PowerPoint에서 같은 굵기로
+    보이게 한다. 그 패밀리가 변환 PC에 없으면 다른 글꼴로 대체되지 않도록 기존 방식
+    ("Pretendard" + 600 이상 굵게)으로 저장한다."""
+    name = css_font_name(font_family)
+    bold = css_weight_is_bold(weight) or force_bold
+    if name != DEFAULT_FONT:
+        return name, bold
+    try:
+        w = int(round(float(weight) / 100.0)) * 100
+    except Exception:
+        return name, bold
+    if force_bold and w < 600:
+        w = 700
+    face = PRETENDARD_WEIGHT_FACES.get(w)
+    if face and face in installed_pretendard_families():
+        return face, False
+    return name, bold
+
+
 def parse_px_string(value: str | None, default: float = 0.0) -> float:
     if not value:
         return default
@@ -402,6 +480,39 @@ async () => {
     if (cs.textTransform === 'uppercase') text = text.toUpperCase();
     else if (cs.textTransform === 'lowercase') text = text.toLowerCase();
 
+    // 여러 줄로 렌더링된 텍스트는 브라우저가 실제로 나눈 줄 그대로 PPT에 옮긴다(아래 lines).
+    // Chrome은 Pretendard 커닝을 적용하고 PowerPoint는 적용하지 않아(kern 속성으로도 미적용) 글자 폭이
+    // 최대 약 1.7% 넓어지므로, PowerPoint가 다시 줄바꿈하게 두면 줄이 늘거나 줄어든다.
+    let lines = null;
+    if (rects.length > 1) {
+      const raw = node.nodeValue;
+      const parts = [];
+      let cur = '', box = null;
+      const cr = document.createRange();
+      const flush = () => { if (box) parts.push({ t: cur, ...box }); cur = ''; box = null; };
+      for (let i = 0; i < raw.length; i++) {
+        cr.setStart(node, i); cr.setEnd(node, i + 1);
+        const rr = cr.getClientRects();
+        if (rr.length && rr[0].width > 0) {
+          const r = rr[0];
+          if (box && r.top - box.top > r.height * 0.5) flush();
+          if (!box) box = { left: r.left, top: r.top, right: r.right, bottom: r.bottom };
+          else { box.left = Math.min(box.left, r.left); box.right = Math.max(box.right, r.right); box.bottom = Math.max(box.bottom, r.bottom); }
+        }
+        cur += raw[i];
+      }
+      flush();
+      const norm = (t) => {
+        t = (cs.whiteSpace === 'normal' || cs.whiteSpace === 'nowrap') ? t.replace(/\s+/g, ' ').trim() : t.replace(/\r/g, '').trim();
+        if (cs.textTransform === 'uppercase') t = t.toUpperCase();
+        else if (cs.textTransform === 'lowercase') t = t.toLowerCase();
+        return t;
+      };
+      const ls = parts.map(p => ({ text: norm(p.t), x: p.left - slideRect.left, y: p.top - slideRect.top,
+                                   w: p.right - p.left, h: p.bottom - p.top })).filter(p => p.text);
+      if (ls.length > 1) lines = ls;
+    }
+
     return {
       kind: 'text',
       order,
@@ -415,6 +526,7 @@ async () => {
       // 짧은 라벨(예: 2글자 칩 라벨)이 뜻하지 않게 두 줄로 쪼개져 바로 아래 요소와
       // 겹치는 문제가 생긴다.
       singleLine: rects.length <= 1,
+      lines,
       visible: w > 0 && h > 0 && !!text,
       style: {
         fontFamily: cs.fontFamily,
@@ -1055,12 +1167,16 @@ def add_box(slide, item: dict, sx: float, sy: float, web_ppt_dir: Path, temp_dir
             # background-size/position의 cover/contain을 완벽히 native crop 재현하기보다는
             # 일단 렌더링 bbox에 맞춰 삽입. 배경색 overlay는 아래 사각형으로 같이 유지.
             shape = slide.shapes.add_shape(shape_kind, px(x), px(y), px(w), px(h))
+            shape.shadow.inherit = False
             set_fill(shape, style.get("backgroundColor"))
             set_line(shape, None, 0)
             add_picture_exact(slide, p, x, y, w, h, warnings)
             return
 
     shape = slide.shapes.add_shape(shape_kind, px(x), px(y), px(w), px(h))
+    # python-pptx 도형 기본 스타일(effectRef idx=2)이 테마 그림자를 끌어온다 — CSS에 없는 그림자이고,
+    # 반투명 도형(그라데이션 오버레이 등)에서는 그 그림자가 비쳐 전체가 어두워지므로 효과를 비운다
+    shape.shadow.inherit = False
 
     gradient = parse_linear_gradient(style.get("backgroundImage"))
     if gradient:
@@ -1101,6 +1217,20 @@ def add_text(slide, item: dict, sx: float, sy: float, warnings: list[str]) -> No
     h = max(item["h"] * sy, 2.0)
     style = item.get("style", {})
 
+    # 여러 줄 텍스트: 브라우저 줄 구성을 그대로 쓴다(EXTRACT_JS lines 참조). 왼쪽 정렬인데 줄마다 시작 X가
+    # 다르면(문장 중간에서 시작한 인라인 텍스트가 다음 줄 왼쪽 끝에서 이어지는 행잉 인덴트) 한 상자로는
+    # 위치를 재현할 수 없으므로 줄마다 한 줄 상자로 나눠 그린다.
+    lines = item.get("lines")
+    if lines:
+        align0 = (style.get("textAlign") or "").lower()
+        left_aligned = align0 not in ("center", "-webkit-center", "right", "end")
+        if left_aligned and max(l["x"] for l in lines) - min(l["x"] for l in lines) > 1:
+            for ln in lines:
+                add_text(slide, {**item, "text": ln["text"], "x": ln["x"], "y": ln["y"], "w": ln["w"], "h": ln["h"],
+                                 "singleLine": True, "lines": None}, sx, sy, warnings)
+            return
+        lines = [ln["text"] for ln in lines]
+
     box = slide.shapes.add_textbox(px(x), px(y), px(w), px(h))
     tf = box.text_frame
     tf.clear()
@@ -1108,7 +1238,8 @@ def add_text(slide, item: dict, sx: float, sy: float, warnings: list[str]) -> No
     # 설치된 대체 폰트 기준으로 박스 크기를 재계산(spAutoFit)하게 두면 폰트 차이로
     # 재배치/재렌더링이 불안정해지고 텍스트가 겹쳐 보이는 원인이 될 수 있다.
     tf.auto_size = MSO_AUTO_SIZE.NONE
-    if item.get("singleLine"):
+    if item.get("singleLine") or lines:
+        # 브라우저 줄 구성을 그대로 쓴다(여러 줄이면 아래에서 줄마다 줄바꿈(<a:br/>)을 넣는다)
         tf.word_wrap = False
     else:
         tf.word_wrap = style.get("whiteSpace") != "nowrap"
@@ -1119,7 +1250,7 @@ def add_text(slide, item: dict, sx: float, sy: float, warnings: list[str]) -> No
     tf.vertical_anchor = MSO_ANCHOR.TOP
 
     p = tf.paragraphs[0]
-    p.text = text
+    p.text = "\v".join(lines) if lines else text  # \v = 줄 안 줄바꿈(<a:br/>), 같은 문단·서식 유지
     p.space_before = Pt(0)
     p.space_after = Pt(0)
 
@@ -1143,13 +1274,13 @@ def add_text(slide, item: dict, sx: float, sy: float, warnings: list[str]) -> No
         font = run.font
         fs_px = parse_px_string(style.get("fontSize"), 16.0)
         font.size = Pt(max(1.0, px_to_pt(fs_px * sy)))
-        font.bold = css_weight_is_bold(style.get("fontWeight"))
+        typeface, font.bold = pptx_font_for(style.get("fontFamily"), style.get("fontWeight"))
         font.italic = (style.get("fontStyle") or "").lower() == "italic"
-        font.name = css_font_name(style.get("fontFamily"))
-        # 동아시아(한글) 문자는 <a:latin>이 아니라 <a:ea>를 따르므로, 설치가 보장된
-        # 한글 폰트를 명시적으로 지정한다(요청 폰트가 없을 때 테마 기본 East Asian
+        font.name = typeface
+        # 동아시아(한글) 문자는 <a:latin>이 아니라 <a:ea>를 따르므로, 같은 Pretendard 굵기
+        # 패밀리를 명시적으로 지정한다(요청 폰트가 없을 때 테마 기본 East Asian
         # 폰트로 대체되며 한글 자모 합성이 깨지는 렌더링 오류를 방지).
-        set_east_asian_font(run, DEFAULT_FONT)
+        set_east_asian_font(run, typeface)
 
         color = parse_css_color(style.get("color"))
         if color:
@@ -1290,9 +1421,10 @@ def add_table_exact(slide, item: dict, sx: float, sy: float, warnings: list[str]
                 font = run.font
                 fs_px = parse_px_string(style.get("fontSize"), 14.0)
                 font.size = Pt(max(1.0, px_to_pt(fs_px * sy)))
-                font.bold = css_weight_is_bold(style.get("fontWeight")) or bool(cell_data.get("isHeader"))
-                font.name = css_font_name(style.get("fontFamily"))
-                set_east_asian_font(run, DEFAULT_FONT)
+                typeface, font.bold = pptx_font_for(style.get("fontFamily"), style.get("fontWeight"),
+                                                    force_bold=bool(cell_data.get("isHeader")))
+                font.name = typeface
+                set_east_asian_font(run, typeface)
                 color = parse_css_color(style.get("color"))
                 if color:
                     cr, cg, cb, _ = color
