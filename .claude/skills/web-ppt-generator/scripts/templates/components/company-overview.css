@@ -1,0 +1,77 @@
+/*
+  기업개요(Company Introduction) 구조 고정형 골격 — CSS
+  규칙: docs/slide-design-rules/02_instruction_design_V1.md (Status: 확정)
+  값: docs/brand-assets/기업개요 Reference.pptx 도형 실측(1280×720px, 2026-10-12)
+
+  사용 방법: 이 파일 전체를 프로젝트 style.css 끝에 그대로 붙인다(값 수정 없음).
+  공통 Header·좌측 Brand Line은 style.css(Hard Rule §9) 클래스를 그대로 쓰며,
+  아래는 기업개요 전용 예외 색과 본문 구조만 정의한다 — 모든 선택자를
+  .slide--company-overview로 한정해 다른 Layout에 적용되지 않게 한다.
+*/
+
+/* ---- 기업개요 전용 예외(Hard Rule §9 "슬라이드 유형별 적용 범위") ---- */
+.slide--company-overview .header-submessage { color: #FFFFFF; }          /* 글자색만 White */
+.slide--company-overview .header-divider {                                /* 색상만 #96A4A5, 사진 위로 */
+  --pptx-line-color: #96A4A5; z-index: 4;
+}
+.slide--company-overview .header-section-label {                          /* 레퍼런스 그대로 "Company", #808080 70% */
+  text-transform: none; color: rgba(128, 128, 128, 0.7);
+}
+/* 페이지 번호 미표시는 style.css의 .slide--company-overview .deck-page 규칙이 처리한다. */
+
+/* ---- 우측 사진 패널: X=963.1~1280, Y=0~720, 높이 채움 + 좌우 Crop(좌17%·우14% → 가로 위치 약 55%),
+        투명도 60%(레퍼런스 그림 효과 alphaModFix 60% — 흰 배경 위에서 연한 배경 사진으로 보임) ---- */
+.slide--company-overview .co-photo {
+  position: absolute; left: 963.1px; top: 0; width: 316.9px; height: 720px;
+  object-fit: cover; object-position: 55% 50%; display: block; z-index: 1;
+  opacity: 0.6;
+}
+
+/* ---- 핵심 메시지: 박스 X=41.6, Y=139.8, 폭 885.7, 내부 여백 4.8/9.6, 28pt ExtraBold #073E41, 가운데 ---- */
+.slide--company-overview .co-message {
+  position: absolute; left: 41.6px; top: 139.8px; width: 885.7px; margin: 0;
+  padding: 4.8px 9.6px;
+  font-size: 28pt; font-weight: 800; line-height: 1.2; letter-spacing: -0.2pt;
+  text-align: center; color: #073E41;
+}
+
+/* ---- Company Facts: X=62.1, Y=257.5, 폭 852.7, 2열(154.7/698.0) × 행 71.1, 최대 5행(위에서부터) ---- */
+.slide--company-overview .co-facts {
+  position: absolute; left: 62.1px; top: 257.5px; width: 852.7px; margin: 0; padding: 0;
+  list-style: none;
+}
+.slide--company-overview .co-fact {
+  position: relative;
+  display: grid; grid-template-columns: 154.7px 698px; align-items: center;
+  height: 71.1px; border-bottom: 0.25pt solid transparent;
+  --pptx-line: 0.25pt;              /* 정확한 선 두께 요소 — style.css .header-divider 주석 참조 */
+  --pptx-line-color: #808080;       /* 행 사이·마지막 행 아래 */
+}
+.slide--company-overview .co-fact:first-child {
+  border-top: 0.25pt solid transparent;
+  --pptx-line-color-top: #034443;   /* 첫 행 위만 */
+}
+.slide--company-overview .co-fact::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 1px;
+  background: var(--pptx-line-color); transform: scaleY(0.5); transform-origin: bottom;
+}
+.slide--company-overview .co-fact:first-child::before {
+  content: ""; position: absolute; left: 0; right: 0; top: -1px; height: 1px;
+  background: var(--pptx-line-color-top); transform: scaleY(0.5); transform-origin: top;
+}
+.slide--company-overview .co-fact:nth-child(n+6) { display: none; } /* 최대 5행 */
+.slide--company-overview .co-fact-label {
+  padding: 0 9.6px; text-align: center;
+  font-size: 16pt; font-weight: 600; line-height: 1.2; color: var(--color-ink-900);
+}
+/* 항목명은 같은 폭(약 67px)에 글자를 고르게 벌린다 — 글자마다 <i>로 감싸 양끝 정렬한다
+   (CSS justify는 공백 없는 한글을 벌리지 않고, 문자열에 공백을 넣으면 내용이 바뀌므로).
+   4글자 이상으로 67px를 넘으면 글자 간격 없이 자연 폭으로 표시된다. */
+.slide--company-overview .co-fact-label > span {
+  display: inline-flex; justify-content: space-between; min-width: 67px;
+}
+.slide--company-overview .co-fact-label i { font-style: normal; }
+.slide--company-overview .co-fact-value {
+  padding: 0 9.6px;
+  font-size: 14pt; font-weight: 300; line-height: 1.2; color: var(--color-ink-900);
+}

@@ -1,0 +1,39 @@
+<!--
+  기업개요(Company Introduction) 구조 고정형 골격 — HTML
+  같은 폴더 company-overview.css와 함께 사용한다.
+  규칙: docs/slide-design-rules/02_instruction_design_V1.md (Status: 확정)
+
+  교체 가능한 것은 {} 표시 3곳뿐이다:
+    1) 핵심 메시지(1~2줄, 두 줄이면 <br>로 의미 단위 줄바꿈)
+    2) Company Facts 행(최대 5행 — 적으면 행을 지우면 위에서부터 채워진다).
+       항목명은 글자마다 <i>로 감싼다(예: <i>기</i><i>업</i><i>명</i>) — 같은 폭으로 양끝 정렬된다.
+    3) 우측 사진 파일(흑백 이미지 파일. 컬러면 -gray 사본을 만들어 쓴다 — CSS filter 금지)
+  그 외 구조·클래스·순서는 바꾸지 않는다. 페이지 번호(.deck-page)는 넣지 않는다.
+-->
+<section class="slide slide--company-overview" data-index="{N}">
+
+  <!-- 우측 사진 패널(의도된 프레임 Crop — data-visual-frame="panel") -->
+  <img class="co-photo" src="assets/images/{company-photo}.png" alt="{사진 설명}"
+       data-visual-role="main" data-visual-frame="panel">
+
+  <!-- 공통 Header System(Hard Rule §9 — 위치·크기는 일반 본문과 동일) -->
+  <div class="deck-left-line"><div class="deck-left-line__top"></div><div class="deck-left-line__bottom"></div></div>
+  <img class="header-ci" src="assets/ci/cosolus-ci.png" alt="COSOLUS">
+  <p class="header-submessage">We promise tomorrow</p>
+  <div class="header-divider"></div>
+  <p class="header-section-label">Company</p>
+  <h2 class="header-main-title">기업소개</h2>
+
+  <!-- 핵심 메시지 -->
+  <p class="co-message">{핵심 메시지 1줄}<br>{핵심 메시지 2줄}</p>
+
+  <!-- Company Facts(데이터 표가 아님 — Hard Rule §10B 비적용) -->
+  <ul class="co-facts">
+    <li class="co-fact"><span class="co-fact-label"><span><i>{글}</i><i>{자}</i><i>{…}</i></span></span><span class="co-fact-value">{값}</span></li>
+    <li class="co-fact"><span class="co-fact-label"><span><i>{글}</i><i>{자}</i><i>{…}</i></span></span><span class="co-fact-value">{값}</span></li>
+    <li class="co-fact"><span class="co-fact-label"><span><i>{글}</i><i>{자}</i><i>{…}</i></span></span><span class="co-fact-value">{값}</span></li>
+    <li class="co-fact"><span class="co-fact-label"><span><i>{글}</i><i>{자}</i><i>{…}</i></span></span><span class="co-fact-value">{값}</span></li>
+    <li class="co-fact"><span class="co-fact-label"><span><i>{글}</i><i>{자}</i><i>{…}</i></span></span><span class="co-fact-value">{값}</span></li>
+  </ul>
+
+</section>

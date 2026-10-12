@@ -33,10 +33,10 @@
 > 실제 웹PPT/pptx 생성 시에는 pptx 원본을 열어볼 필요 없이 **이
 > 문서(three-column.md)만 기준으로 적용**한다.
 > Reference의 좌측 세로 브랜드 스트라이프(다크+옅은 틴트 컬러 바)는
-> 해당 Reference 자체의 고유 표지 요소이며 3분할 구조와 무관한
-> 장식이므로 반영 대상에서 제외했다 — 이미 확정된 Hard Rule 공통
-> Header System(CI/Sub Message/구분선/Section Label/Main Title/페이지
-> 번호)과 별개로 새로운 브랜드 장식을 추가하지 않는다.
+> 3분할 구조와 무관한 슬라이드 공통 요소이므로 이 문서에서 별도로
+> 정의하지 않는다 — Hard Rule §9 공통 Header System의 "좌측 Brand
+> Line"이 모든 본문 슬라이드에 공통 적용한다(이 Layout 전용 장식을
+> 따로 추가하지 않는다).
 
 ## 2. Basic Structure
 

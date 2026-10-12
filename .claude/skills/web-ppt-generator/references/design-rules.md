@@ -13,7 +13,7 @@
 | 2 | Claude PPT Design System | [`docs/design-system/Claude_PPT_Design_System.md`](../../../../docs/design-system/Claude_PPT_Design_System.md) | Hard Rule 범위 내에서 PPT 전체의 Visual Style, Color, Typography, Grid/Spacing, Component(Shape/Card/Line) Style, Image Treatment, Chart/Table/Diagram Style을 결정하는 공통 Design System |
 | 3 | Content Visualization Freedom | [`docs/design-system/content-visualization-freedom.md`](../../../../docs/design-system/content-visualization-freedom.md) | 위 두 규칙을 준수하는 범위에서, 콘텐츠별 표현 방식(레이아웃·표/차트/이미지 선택 등)에 대한 AI 판단 허용/금지 경계 |
 | 4 | Layout Reference | [`docs/layout-reference/2026.08.13_layout-catalog_V1.md`](../../../../docs/layout-reference/2026.08.13_layout-catalog_V1.md)(선택 인덱스) + [`docs/layout-reference/2026.08.13_ppt_layout_set__V3.pptx`](../../../../docs/layout-reference/2026.08.13_ppt_layout_set__V3.pptx)(시각적 구조 원본) + `docs/slide-design-rules/`의 콘텐츠 구조별 특수 Layout Reference(예: [`three-column.md`](../../../../docs/slide-design-rules/three-column.md)) | 위 세 규칙을 준수하는 범위에서, 콘텐츠 유형·정보 구조에 따라 적합한 레이아웃(L01~L33, 또는 조건에 맞는 구조별 특수 Layout Reference)을 고르기 위한 참고 자료. 디자인 고정 규칙이 아니며 가장 낮은 우선순위 |
-| 표지 전용 | Slide-Type Rule — Cover | [`docs/slide-design-rules/01_cover_design_V2.md`](../../../../docs/slide-design-rules/01_cover_design_V2.md) | **표지(Cover) 슬라이드를 생성할 때만** 적용. Hard Rule·Claude PPT Design System을 준수하는 범위에서 표지의 레이아웃·비주얼 스타일을 구체적으로 지정한 문서. 표지 슬라이드에 한해 4번 범용 Layout Reference(L01~L33)보다 우선 적용하며, 표지 생성 시 L01~L33 카탈로그는 참고하지 않는다 |
+| 표지 전용 | Slide-Type Rule — Cover | [`docs/slide-design-rules/01_cover_design_V2.md`](../../../../docs/slide-design-rules/01_cover_design_V2.md) | **표지(Cover) 슬라이드를 생성할 때만** 적용. Hard Rule·Claude PPT Design System을 준수하는 범위에서 표지의 레이아웃·비주얼 스타일을 구체적으로 지정한 문서. 표지 슬라이드에 한해 4번 범용 Layout Reference(L01~L33)보다 우선 적용하며, 표지 생성 시 L01~L33 카탈로그는 참고하지 않는다. 같은 문서의 "Closing" 절은 마지막 표지형 Closing 슬라이드에만 적용한다(현재는 예외 구조만 확정, 디자인은 레퍼런스 제공 후 확정) |
 
 상위 우선순위 문서와 충돌하는 내용은 하위 문서에서 적용하지 않는다. 아래 "고정 규칙" 섹션은 1번 문서를, "가변 규칙" 섹션은 레이아웃 등 프로젝트별 판단 대상을 다루며, 그 판단은 2번·3번·4번 문서의 기준을 따른다. "표지 전용" 문서는 슬라이드 유형이 표지일 때만 적용되는 예외이며, 그 외 슬라이드 유형에는 영향을 주지 않는다.
 
@@ -36,8 +36,9 @@
 | §6 | 전체 디자인 분위기 |
 | §7 | 회사 로고 및 Motto(로고 파일 경로 포함) |
 | §8 | 기본 디자인 품질(겹침·overflow·텍스트 초과·비율 왜곡 금지 체크리스트) |
-| §9 | 공통 Header System(Section Label/Main Title/CI/Sub Message/구분선/페이지 번호의 정확한 좌표·색상) |
+| §9 | 공통 Header System(Section Label/Main Title/CI/Sub Message/구분선/좌측 Brand Line/페이지 번호의 정확한 좌표·색상, 슬라이드 유형별 적용 범위 — 기업개요·표지·Closing 예외) |
 | §10 | Content Comparison Header(Before/After·Three-Column류 Header Bar 스타일) |
+| §10B | Table Header Row(N-Column Data Table) |
 | §11 | Vertical Content Divider |
 | §12 | Main Title Supporting Message |
 
@@ -55,7 +56,7 @@
 
 ## 표지(Cover) 전용 규칙 — 표지 슬라이드에서만 적용, Layout Reference보다 우선
 
-> 표지 슬라이드를 생성·수정할 때 **항상 자동으로 참조**한다(별도 지시나 `@` 지정 없이도 적용). Hard Rule·Claude PPT Design System·Content Visualization Freedom을 준수하는 범위 안에서만 적용되며, 상위 규칙과 충돌하는 부분은 적용하지 않는다. 표지가 아닌 슬라이드(본문, Section Divider, Closing 등)에는 적용하지 않는다.
+> 표지 슬라이드를 생성·수정할 때 **항상 자동으로 참조**한다(별도 지시나 `@` 지정 없이도 적용). Hard Rule·Claude PPT Design System·Content Visualization Freedom을 준수하는 범위 안에서만 적용되며, 상위 규칙과 충돌하는 부분은 적용하지 않는다. 표지가 아닌 슬라이드(본문, Section Divider 등)에는 적용하지 않는다. Closing은 같은 문서의 "Closing" 절만 적용하며 표지 절이 자동으로 적용되지 않는다.
 > 원본 문서(항상 이 경로를 직접 참조 — 본 문서에 내용을 복사하지 않음): [`docs/slide-design-rules/01_cover_design_V2.md`](../../../../docs/slide-design-rules/01_cover_design_V2.md) (사용자 제공, 2026-08-13 등록)
 > 표지 생성 시 이 문서가 4순위 범용 Layout Reference(L01~L33)를 대체한다 — 표지에는 L01 등 카탈로그를 참고하지 않고 이 문서의 Layout/Visual Style/Soft Rules/Additional Rules/Avoid를 따른다.
 

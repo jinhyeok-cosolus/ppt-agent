@@ -117,7 +117,7 @@
 ## 6. Shape / Card / Line Style
 네이티브 표/차트 대신 아래 컴포넌트 조합으로 모든 도식을 구성한다.
 - **Line**: 얇은(1px 상당) 구분선/연결선. 색상은 Neutral Gray 또는 Brand Mid.
-- **RoundRect Card/Tag**: 라운드렉트, 코너 radius 소–중. 카드 배경은 화이트 또는 Tint 배경, 테두리 없음 또는 1px Neutral 테두리. 좌측 컬러 바 등 장식적 accent border는 사용하지 않음. Card는 콘텐츠를 감싸는 기본 표현 방식이 아니다 — 짧은 Tag/Label 또는 그룹 구분이 명확히 필요한 경우에만 제한적으로 사용하고, 일반 콘텐츠는 카드로 감싸지 않는 직선적·평면적(Flat/Open) Presentation Layout을 우선한다.
+- **RoundRect Card/Tag**: 라운드렉트, 코너 radius 소–중. 카드 배경은 화이트 또는 Tint 배경, 테두리 없음 또는 1px Neutral 테두리. 카드·박스에 붙이는 좌측 컬러 바 등 장식적 accent border는 사용하지 않음(슬라이드 왼쪽 가장자리의 공통 요소 "좌측 Brand Line"은 Hard Rule §9가 정의한 고정 요소이므로 이 금지 대상이 아니다). Card는 콘텐츠를 감싸는 기본 표현 방식이 아니다 — 짧은 Tag/Label 또는 그룹 구분이 명확히 필요한 경우에만 제한적으로 사용하고, 일반 콘텐츠는 카드로 감싸지 않는 직선적·평면적(Flat/Open) Presentation Layout을 우선한다.
 - **Arrow**: rightArrow 도형으로 프로세스/흐름 표시. 색은 Brand 계열.
 - **Connector**: 커넥터 라인으로 플로우차트·조직도 연결.
 - **Ellipse/Arc**: 아이콘성 포인트, 원형 프레임(인물 사진 등)에 제한적으로 사용. Process Stage의 기본 시각 요소로 원형 Step/숫자 아이콘을 사용하지 않으며, Process Stage는 실제 이미지·다이어그램 등 콘텐츠 기반 Visual을 우선한다.

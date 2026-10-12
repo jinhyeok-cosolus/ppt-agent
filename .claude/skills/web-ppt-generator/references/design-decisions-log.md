@@ -45,3 +45,36 @@
 **관련 규칙**: `flow-diagram-rules.md` "Visual Composition — Lane Band·연결점·구분선", qa_render.py `flow_issues`
 
 2026-10-12, `cosolus-ir-deck-G` Slide 1에서 이미지 크기만 역할별로 조정하자 배치 문제가 드러났다. 폐흑연 화살표의 불필요한 Z자 꺾임, 건식환원 이미지를 가로지르는 구분선, 소속 Lane이 모호한 유도가열 이미지, COSOLUS(2세대) 박스와 분기 브래킷의 겹침, 상단 결론 헤드라인에 가까운 Lane A 콘텐츠, 회수 화합물·폐흑연의 서로 다른 중심축이다. 원인은 다섯 가지였다. (1) Process가 연결선 위로만 쌓이는데 위쪽 공간 한도가 없었다. (2) Material Node는 이미지+라벨 블록 중심을 Lane에 맞춰서 이미지 높이가 바뀌면 연결점이 어긋났다. (3) 구분선이 고정 좌표였다. (4) PNG 투명 여백 때문에 박스 기준 간격과 보이는 간격이 달랐다(유도가열 이미지 하단 26%가 투명). (5) QA가 화살촉 marker 때문에 Connector 오버레이를 장식으로 판정하지 못해 오탐 32건만 내고 실제 충돌은 잡지 못했다. 그래서 가용 공간 → 이미지 크기 → Node 위치 → Connector → 구분선을 한 절차로 계산하도록 정리했다.
+
+## common-header-ir-reference
+**관련 규칙**: Hard Rule §9(공통 Header·좌측 Brand Line·페이지 번호·슬라이드 유형별 적용 범위)·§12 예외, `02_instruction_design_V1.md`(기업개요 구조 고정형), `01_cover_design_V2.md` Closing 절, `templates/style.css`·`components/company-overview.*`
+
+2026-10-12, Design Consistency 개선. **목적**: 공통 디자인 요소를 실제 COSOLUS IR 레퍼런스(`docs/brand-assets/기업개요 Reference.pptx`)에 맞춰 통일하고 기업개요에만 최소 예외를 둔다. **원인**: 기본 템플릿 `style.css`가 브랜드 확정 전 임시 스타일이라 프로젝트마다 Header CSS를 새로 써서, 페이지 번호 클래스가 `.deck-page`/`.page-number`/`.header-page-number`로 섞이고 위치도 제각각이었다. QA는 `.deck-page`만 검사해 deck-F·G의 페이지 번호가 검사에서 빠져 있었다.
+
+**주요 결정**
+- **공통 Header**: 레퍼런스 실측값으로 재정비했다 — CI (46.5, 31) 높이 17.5 / Section Label (46.9, 64.7) / Main Title (41.6, 83.2) / Sub Message 우측 끝 1262.2·상단 28.5 / 상단 구분선 Y=57.6, X=41.6~오른쪽 끝, 0.5pt. 기업개요도 위치·크기는 동일하다.
+- **좌측 Brand Line**: 레퍼런스의 2단 세로 띠(X=0, 폭 13.9 — Y 0~137 `#294F51` / 137~720 `#DFF1F1`)를 공통 요소로 추가했다. 일반 본문·기업개요에 적용, 표지·Closing에는 미적용.
+- **페이지 번호**: 우측 끝 X=1248, 하단 Y=704, `.deck-page`로 통일. 표지·기업개요·Closing은 미표시. Bottom Safe Area(678)와 Footnote 영역은 유지.
+- **기업개요**: 구조 고정형이며 핵심 메시지·Company Facts(최대 5행)·우측 사진만 교체한다. 전용 예외는 Sub Message White, 구분선 `#96A4A5`, Section Label `Company`(`#808080` 70%), 페이지 번호 없음. 우측 사진은 레퍼런스 그림 효과 그대로 투명도 60%.
+- **정확한 선 두께 요소**: 브라우저는 1px 미만 테두리를 1px로 그린다. 그래서 투명 테두리 + `--pptx-line`/`--pptx-line-color` + `::after` 표시선(scaleY 0.5)으로 구현했다. 대상은 상단 구분선 0.5pt, Facts 행선 0.25pt이며, 이 변수를 선언한 요소에만 적용한다.
+- **변환기(export_pptx.py)**: 이미지 opacity → 그림 투명도(alphaModFix), 텍스트 rgba → 글자 투명도, `text-transform` 반영, 정확한 선 두께를 연결선으로 변환(빈 컨테이너 도형 미생성), 연결선 테마 그림자 제거.
+- **템플릿 버그 수정**: `templates/index.html` 상단 주석의 `<!-- SLIDES:INSERT -->` 문구가 주석을 일찍 닫아, 템플릿 주석을 둔 덱은 슬라이드가 표시되지 않았다.
+
+**검증(4장 테스트 덱: 표지·일반 본문·기업개요·Closing 골격)**: QA 4장 모두 clean(겹침·잘림·Body Box·공통 요소·폰트). 기업개요 레퍼런스 대비 결과:
+- 사진 평균 밝기: ref 163 / HTML 163 / PPTX 163
+- 선 누적 진하기: ref 95·208·128 / HTML 95·207·127 / PPTX 95·207·127
+- 변환 PPTX 좌표는 레퍼런스와 ±1px 일치
+
+남은 차이: CI 폭 111.9 vs 114.8(레퍼런스는 벡터, 등록 PNG와 비율 차이), 텍스트 1~2px 렌더링 차, HTML 스크린샷에만 브라우저 안내 문구. 기존 deck-F·G 산출물은 변경하지 않았으며, 새 QA로 다시 검사하면 구 Header 위치·비표준 클래스로 지적된다(의도된 결과).
+
+**상태(인수인계)**
+- 브랜치 `visual-composition-image-sizing`, 마지막 커밋 `9e7f231`(Visual Composition). Design Consistency 변경은 **아직 커밋하지 않았다** — Skill·MD·템플릿·스크립트, `templates/assets/ci/`, `components/company-overview.*`, `introduction-images/company-overview-photo.png`, `docs/brand-assets/기업개요 Reference.pptx`(커밋 포함 대상).
+- 커밋 제외: `output/cosolus-ir-deck-G/web_ppt/v1-composition-test/`, `output/cosolus-ir-deck-G/.qa/`, 기존 미추적 울산 프로젝트 폴더. 테스트 덱·비교 이미지는 세션 임시 폴더에 있어 다음 세션에서 사라질 수 있다(템플릿으로 재생성 가능).
+- **미완료**: Closing 디자인 — 별도 레퍼런스 제공 후 Cover MD Closing 절에서 확정(현재는 공통 요소 미적용 예외 구조만 있음).
+
+**다음 세션 확인 사항**
+1. 사용자 승인 후 커밋(위 포함·제외 목록).
+2. Supporting Message(Hard Rule §12)의 공통 클래스·X 위치가 템플릿에 없다(프로젝트마다 `.supporting-message`/`.conclusion-headline` 제각각) — Main Title(41.6) 또는 본문(64) 중 정렬 기준 결정 필요.
+3. Section Divider 전용 Layout이 없어 좌측 Brand Line 적용 여부는 미정.
+4. 기존 진행 중 프로젝트는 `new_version.py --from-latest`가 이전 CSS를 그대로 복사하므로 새 Header가 자동 반영되지 않는다(필요 시 마이그레이션).
+5. 카탈로그 L22·L31 번호가 실제 pptx 슬라이드 번호와 어긋나 있다(범위 밖, 미수정).

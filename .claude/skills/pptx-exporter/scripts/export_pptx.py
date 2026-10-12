@@ -398,6 +398,9 @@ async () => {
     } else {
       text = text.replace(/\r/g, '').trim();
     }
+    // CSS text-transform은 화면 표시만 바꾸므로 PPT 텍스트에 직접 반영한다(예: Section Label 대문자).
+    if (cs.textTransform === 'uppercase') text = text.toUpperCase();
+    else if (cs.textTransform === 'lowercase') text = text.toLowerCase();
 
     return {
       kind: 'text',
@@ -565,7 +568,16 @@ async () => {
               borderBottomStyle: cs.borderBottomStyle,
               borderLeftStyle: cs.borderLeftStyle,
               borderRadius: cs.borderRadius,
-              opacity: cs.opacity
+              opacity: cs.opacity,
+              // 0.5pt·0.25pt 같은 1px 미만 테두리는 브라우저 computed style에서 1px로 반올림되므로,
+              // 정확한 두께가 필요한 요소는 CSS 변수 --pptx-line(예: 0.5pt)으로 원래 두께를 선언한다.
+              pptxLine: cs.getPropertyValue('--pptx-line').trim(),
+              // 정확한 선 두께 요소는 테두리를 투명하게 두고(화면 표시선은 ::after) 선 색을 변수로 선언한다
+              pptxLineColor: cs.getPropertyValue('--pptx-line-color').trim(),
+              pptxLineColorTop: cs.getPropertyValue('--pptx-line-color-top').trim(),
+              pptxLineColorRight: cs.getPropertyValue('--pptx-line-color-right').trim(),
+              pptxLineColorBottom: cs.getPropertyValue('--pptx-line-color-bottom').trim(),
+              pptxLineColorLeft: cs.getPropertyValue('--pptx-line-color-left').trim()
             }
           });
         }
@@ -836,8 +848,19 @@ def fit_image_in_box(w: float, h: float, nat_w: float, nat_h: float, object_fit:
     return vx0, vy0, vx1 - vx0, vy1 - vy0, crop_l, crop_r, crop_t, crop_b
 
 
+def set_picture_alpha(pic, opacity: float) -> None:
+    """CSS opacity(<1)를 PowerPoint 그림 투명도(a:alphaModFix)로 옮긴다 — 흰 배경 위에서
+    HTML과 같은 밝기로 보이게 한다(예: 기업개요 우측 사진 60%, 레퍼런스와 동일한 설정)."""
+    blip = pic._element.find(qn("p:blipFill")).find(qn("a:blip"))
+    for old in blip.findall(qn("a:alphaModFix")):
+        blip.remove(old)
+    amf = blip.makeelement(qn("a:alphaModFix"), {"amt": str(int(round(max(0.0, min(1.0, opacity)) * 100000)))})
+    blip.insert(0, amf)
+
+
 def add_picture_exact(slide, img_path: Path, x: float, y: float, w: float, h: float, warnings: list[str],
-                       oval_crop: bool = False, crop: tuple[float, float, float, float] | None = None):
+                       oval_crop: bool = False, crop: tuple[float, float, float, float] | None = None,
+                       opacity: float = 1.0):
     if not img_path.exists():
         warnings.append(f"이미지 파일을 찾을 수 없어 건너뜀: {img_path}")
         return None
@@ -847,6 +870,8 @@ def add_picture_exact(slide, img_path: Path, x: float, y: float, w: float, h: fl
             pic.crop_left, pic.crop_right, pic.crop_top, pic.crop_bottom = crop
         if oval_crop:
             set_picture_geometry_ellipse(pic)
+        if opacity < 0.999:
+            set_picture_alpha(pic, opacity)
         return pic
     except Exception as e:
         warnings.append(f"이미지 삽입 실패: {img_path} ({e})")
@@ -887,21 +912,36 @@ def _thin_line_rect(slide, x: float, y: float, w: float, h: float, css_color: st
         pass
 
 
-def _dashed_side_line(slide, x1: float, y1: float, x2: float, y2: float, width: float,
-                      css_color: str | None, dash) -> None:
-    """dashed/dotted 변은 채운 사각형으로는 점선을 표현할 수 없으므로, 변의 중심선을 지나는
-    직선 연결선에 같은 두께·색·dash 스타일을 적용해 그린다(예: Flow Diagram 구간 구분선)."""
+def _side_line(slide, x1: float, y1: float, x2: float, y2: float, width: float,
+               css_color: str | None, dash=None) -> None:
+    """변의 중심선을 지나는 직선 연결선으로 테두리 한 변을 그린다. 채운 사각형으로는 점선(dashed/
+    dotted)이나 1px 미만 두께를 표현할 수 없을 때 쓴다(예: Flow 구간 구분선, 0.5pt 상단 구분선)."""
     if not parse_css_color(css_color):
         return
     conn = slide.shapes.add_connector(MSO_CONNECTOR.STRAIGHT, px(x1), px(y1), px(x2), px(y2))
     set_line(conn, css_color, width)
-    try:
-        conn.line.dash_style = dash
-    except Exception:
-        pass
+    # python-pptx 연결선 기본 스타일(effectRef idx=1)이 테마 그림자를 끌어오므로 효과를 명시적으로 비운다
+    sp_pr = conn._element.spPr
+    if sp_pr.find(qn("a:effectLst")) is None:
+        sp_pr.append(sp_pr.makeelement(qn("a:effectLst"), {}))
+    if dash is not None:
+        try:
+            conn.line.dash_style = dash
+        except Exception:
+            pass
 
 
-def add_side_borders(slide, x: float, y: float, w: float, h: float, style: dict, sx: float, sy: float) -> None:
+def _exact_line_px(style: dict) -> float | None:
+    """CSS 변수 --pptx-line(예: '0.5pt', '0.33px')로 선언된 정확한 선 두께(px). 없으면 None."""
+    m = re.match(r"^\s*([\d.]+)\s*(pt|px)\s*$", style.get("pptxLine") or "")
+    if not m:
+        return None
+    v = float(m.group(1))
+    return v / PX_TO_PT if m.group(2) == "pt" else v
+
+
+def add_side_borders(slide, x: float, y: float, w: float, h: float, style: dict, sx: float, sy: float,
+                     exact_px: float | None = None) -> None:
     """CSS의 top/right/bottom/left border를 각각 독립된 얇은 선(사각형)으로 그린다
     (하나의 outline으로 근사하면 없는 변까지 테두리가 생기므로 변마다 따로 그린다).
     dashed/dotted 변은 점선 연결선으로 그린다."""
@@ -921,10 +961,22 @@ def add_side_borders(slide, x: float, y: float, w: float, h: float, style: dict,
         if width <= 0:
             continue
         dash = dash_of(side)
-        if dash is not None:
-            _dashed_side_line(slide, *line, width, style.get(f"border{side}Color"), dash)
+        color = style.get(f"border{side}Color")
+        if exact_px is not None:
+            color = style.get(f"pptxLineColor{side}") or style.get("pptxLineColor") or color
+            # --pptx-line 선언 요소: 반올림된 computed 두께 대신 선언된 실제 두께로, 변의 안쪽 가장자리에 맞춰 그린다
+            lx1, ly1, lx2, ly2 = line
+            if side in ("Top", "Bottom"):
+                edge = y if side == "Top" else y + h
+                ly1 = ly2 = edge + (exact_px / 2 if side == "Top" else -exact_px / 2)
+            else:
+                edge = x if side == "Left" else x + w
+                lx1 = lx2 = edge + (exact_px / 2 if side == "Left" else -exact_px / 2)
+            _side_line(slide, lx1, ly1, lx2, ly2, exact_px, color, dash)
+        elif dash is not None:
+            _side_line(slide, *line, width, color, dash)
         else:
-            _thin_line_rect(slide, *rect, style.get(f"border{side}Color"))
+            _thin_line_rect(slide, *rect, color)
 
 
 def _is_circular(style: dict, w: float, h: float) -> bool:
@@ -986,6 +1038,15 @@ def add_box(slide, item: dict, sx: float, sy: float, web_ppt_dir: Path, temp_dir
 
     shape_kind = MSO_SHAPE.OVAL if _is_circular(style, w, h) else MSO_SHAPE.RECTANGLE
 
+    exact_px = _exact_line_px(style)
+    if exact_px is not None and shape_kind is MSO_SHAPE.RECTANGLE:
+        bg = parse_css_color(style.get("backgroundColor"))
+        has_fill = bool(bg and bg[3] > 0) or bool(css_url(style.get("backgroundImage"))) \
+            or bool(parse_linear_gradient(style.get("backgroundImage")))
+        if not has_fill:
+            add_side_borders(slide, x, y, w, h, style, sx, sy, exact_px=exact_px)
+            return
+
     # CSS background-image가 단순 url()이면 이미지로 우선 처리
     bg_src = css_url(style.get("backgroundImage"))
     if bg_src:
@@ -1026,7 +1087,7 @@ def add_box(slide, item: dict, sx: float, sy: float, web_ppt_dir: Path, temp_dir
         # 사각형은 하나의 outline으로 근사하면 없는 변까지 테두리가 생기므로,
         # 실제로 두께가 있는 변만 그 위치에 얇은 선(사각형)으로 개별 렌더링한다.
         shape.line.fill.background()
-        add_side_borders(slide, x, y, w, h, style, sx, sy)
+        add_side_borders(slide, x, y, w, h, style, sx, sy, exact_px=exact_px)
 
 
 def add_text(slide, item: dict, sx: float, sy: float, warnings: list[str]) -> None:
@@ -1094,7 +1155,12 @@ def add_text(slide, item: dict, sx: float, sy: float, warnings: list[str]) -> No
         if color:
             r, g, b, a = color
             font.color.rgb = RGBColor(r, g, b)
-            # font transparency는 python-pptx public API에서 직접 지원하지 않음
+            if a < 0.999:
+                # 반투명 글자색(rgba)은 python-pptx API에 없으므로 <a:alpha>를 직접 넣는다
+                clr = run._r.find(qn("a:rPr")).find(qn("a:solidFill")).find(qn("a:srgbClr"))
+                for old in clr.findall(qn("a:alpha")):
+                    clr.remove(old)
+                clr.append(clr.makeelement(qn("a:alpha"), {"val": str(int(round(a * 100000)))}))
 
         deco = (style.get("textDecorationLine") or "").lower()
         if "underline" in deco:
@@ -1289,6 +1355,7 @@ def build_slide(prs: Presentation, slide_data: dict, web_ppt_dir: Path, temp_dir
                         warnings,
                         oval_crop=own_circular or parent_circular,
                         crop=(cl, cr, ct, cb),
+                        opacity=float(img_style.get("opacity") or 1),
                     )
                 else:
                     warnings.append(f"이미지 소스를 로컬 파일로 해석하지 못해 건너뜀: {src}")

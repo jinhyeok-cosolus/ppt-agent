@@ -149,11 +149,15 @@ LAYOUT_AUDIT_JS = """
     }
     return true;
   };
+  // data-visual-frame="panel": Layout이 명시한 Full-Bleed 사진 패널(예: 기업개요 우측 사진).
+  // 공통 Header(Sub Message·구분선)가 의도적으로 위에 겹치고 슬라이드 끝까지 닿으므로
+  // 겹침·Bottom Safe Area 판정에서 제외한다(비율·Crop은 아래 6)에서 참고 기록으로 검사).
+  const isPanel = (el) => el.getAttribute && el.getAttribute('data-visual-frame') === 'panel';
   const graphics = [];
   for (const el of all) {
     const tag = el.tagName.toLowerCase();
     if (tag === 'img') {
-      if (isBackgroundImage(el)) continue;
+      if (isBackgroundImage(el) || isPanel(el)) continue;
       graphics.push(el);
     } else if (tag === 'svg') {
       if (isDecorativeSvg(el)) continue;
@@ -221,65 +225,126 @@ LAYOUT_AUDIT_JS = """
     }
   }
 
-  // 4) Page Number / Deck Footnote(Footer) 위치 + Bottom Safe Area
-  //    (Hard Rule §9, 2026-08-27 정량화·역할분리 확정) — Single Source of Truth는
-  //    Hard Rule 문서이며, 아래 상수는 그 문서의 값을 그대로 기계적으로 대조하기 위해
-  //    옮겨온 것일 뿐이다(Hard Rule 값이 바뀌면 이 상수도 함께 바꾼다 — 위 PX_PER_PT와
-  //    동일한 성격). 표지처럼 페이지 번호(`.deck-page`) 자체가 없는 슬라이드는 Hard
-  //    Rule §9 적용 대상이 아니므로 이 검사를 건너뛴다. `.deck-footnote`(Deck 공통
-  //    출처/Footer)는 조건부 요소라 있을 때만 그 허용 영역을 검사하고, `.content-footnote`
-  //    (표/카드 전용 인라인 각주)는 별도 검사 없이 아래 일반 Content 목록에 포함되어
-  //    Bottom Safe Area를 그대로 적용받는다.
+  // 4) 공통 Header System·좌측 Brand Line·페이지 번호·Deck Footnote·Bottom Safe Area
+  //    (Hard Rule §9) — Single Source of Truth는 Hard Rule 문서와 templates/style.css이며,
+  //    아래 상수는 그 값을 기계적으로 대조하기 위해 옮겨온 것이다(값이 바뀌면 함께 바꾼다).
+  //    슬라이드 유형(class)별 적용 범위: 일반 본문은 전부 적용, 기업개요(slide--company-overview)는
+  //    페이지 번호 미표시 + Sub Message White·구분선 #96A4A5, 표지·Closing은 공통 요소 미적용.
+  const slideType = slide.classList.contains('slide--cover') ? 'cover'
+    : slide.classList.contains('slide--closing') ? 'closing'
+    : slide.classList.contains('slide--company-overview') ? 'company-overview' : 'body';
+  const usesCommonHeader = slideType === 'body' || slideType === 'company-overview';
   const PAGE_NUMBER_SELECTOR = '.deck-page';
-  const PAGE_NUMBER_RIGHT_EDGE_X = width - 64;   // Hard Rule §9: X=1216px(=1280-64)
-  const PAGE_NUMBER_BOTTOM_EDGE_Y = height - 28; // Hard Rule §9: Y=692px(=720-28)
+  const PAGE_NUMBER_RIGHT_EDGE_X = width - 32;   // Hard Rule §9: X=1248px(=1280-32)
+  const PAGE_NUMBER_BOTTOM_EDGE_Y = height - 16; // Hard Rule §9: Y=704px(=720-16)
   const DECK_FOOTNOTE_SELECTOR = '.deck-footnote';
   const DECK_FOOTNOTE_LEFT_X = 64;               // Hard Rule §9: X=64px
   const DECK_FOOTNOTE_RIGHT_MAX_X = width - 128; // Hard Rule §9: 우측 경계 X=1152px(=1280-128)
-  const DECK_FOOTNOTE_BOTTOM_EDGE_Y = height - 28; // Hard Rule §9: Y=692px, 페이지 번호와 동일 Row
+  const DECK_FOOTNOTE_BOTTOM_EDGE_Y = height - 28; // Hard Rule §9: Y=692px(Footnote 영역 유지)
   const BOTTOM_SAFE_AREA_Y = 678;                // Hard Rule §9: Content 하단 경계
   const POS_EPS = 2; // px 허용 오차(안티에일리어싱/서브픽셀 반올림 대응)
+  // Hard Rule §9 공통 Header 실측값(기업개요 Reference.pptx) — 요소 박스 기준
+  const HEADER_SPEC = [
+    { sel: '.header-ci', left: 46.5, top: 31.0, height: 17.5 },
+    { sel: '.header-section-label', left: 46.9, top: 64.7 },
+    { sel: '.header-main-title', left: 41.6, top: 83.2 },
+    { sel: '.header-submessage', right: 1262.2, top: 28.5 },
+    { sel: '.header-divider', left: 41.6, top: 57.6, right: width },
+    { sel: '.deck-left-line', left: 0, top: 0, width: 13.9, height: height },
+  ];
+  const HEADER_COLORS = {
+    body: { submessage: 'rgb(71, 134, 137)', divider: 'rgb(71, 134, 137)' },               // #478689
+    'company-overview': { submessage: 'rgb(255, 255, 255)', divider: 'rgb(150, 164, 165)' }, // White / #96A4A5
+  };
+  const visible = (el) => { const r = el.getBoundingClientRect(); return r.width > 0 && r.height > 0; };
 
   const pageNumberIssues = [];
   const deckFootnoteIssues = [];
   const bottomSafeAreaViolations = [];
+  const commonElementIssues = [];
   const pageNumberEl = slide.querySelector(PAGE_NUMBER_SELECTOR);
   const deckFootnoteEl = slide.querySelector(DECK_FOOTNOTE_SELECTOR);
 
-  if (pageNumberEl) {
-    const pr = pageNumberEl.getBoundingClientRect();
-    if (Math.abs(pr.right - PAGE_NUMBER_RIGHT_EDGE_X) > POS_EPS) {
-      pageNumberIssues.push({ type: 'x', expected: PAGE_NUMBER_RIGHT_EDGE_X, actual: Math.round(pr.right) });
-    }
-    if (Math.abs(pr.bottom - PAGE_NUMBER_BOTTOM_EDGE_Y) > POS_EPS) {
-      pageNumberIssues.push({ type: 'y', expected: PAGE_NUMBER_BOTTOM_EDGE_Y, actual: Math.round(pr.bottom) });
-    }
-    if (pr.top < BOTTOM_SAFE_AREA_Y - POS_EPS) {
-      pageNumberIssues.push({ type: 'page-number-invades-safe-area', boundary: BOTTOM_SAFE_AREA_Y, actual: Math.round(pr.top) });
-    }
+  // 4-1) 혼용된 페이지 번호 클래스 — `.deck-page` 하나로 통일
+  for (const el of slide.querySelectorAll('.page-number, .header-page-number')) {
+    pageNumberIssues.push({ type: 'page-number-class-nonstandard', class: classOf(el), expected: 'deck-page' });
+  }
 
-    if (deckFootnoteEl) {
-      const fr = deckFootnoteEl.getBoundingClientRect();
-      if (Math.abs(fr.left - DECK_FOOTNOTE_LEFT_X) > POS_EPS) {
-        deckFootnoteIssues.push({ type: 'x', expected: DECK_FOOTNOTE_LEFT_X, actual: Math.round(fr.left) });
+  // 4-2) 페이지 번호 — 일반 본문만 표시·위치 검사, 그 외 유형은 표시되면 오류
+  if (slideType === 'body') {
+    if (!pageNumberEl || !visible(pageNumberEl)) {
+      pageNumberIssues.push({ type: 'page-number-missing', expected: PAGE_NUMBER_SELECTOR });
+    } else {
+      const pr = pageNumberEl.getBoundingClientRect();
+      if (Math.abs(pr.right - PAGE_NUMBER_RIGHT_EDGE_X) > POS_EPS) {
+        pageNumberIssues.push({ type: 'x', expected: PAGE_NUMBER_RIGHT_EDGE_X, actual: Math.round(pr.right) });
       }
-      if (fr.right > DECK_FOOTNOTE_RIGHT_MAX_X + POS_EPS) {
-        deckFootnoteIssues.push({ type: 'invades-page-number-zone', boundary: DECK_FOOTNOTE_RIGHT_MAX_X, actual: Math.round(fr.right) });
+      if (Math.abs(pr.bottom - PAGE_NUMBER_BOTTOM_EDGE_Y) > POS_EPS) {
+        pageNumberIssues.push({ type: 'y', expected: PAGE_NUMBER_BOTTOM_EDGE_Y, actual: Math.round(pr.bottom) });
       }
-      if (Math.abs(fr.bottom - DECK_FOOTNOTE_BOTTOM_EDGE_Y) > POS_EPS) {
-        deckFootnoteIssues.push({ type: 'y', expected: DECK_FOOTNOTE_BOTTOM_EDGE_Y, actual: Math.round(fr.bottom) });
-      }
-      if (fr.top < BOTTOM_SAFE_AREA_Y - POS_EPS) {
-        deckFootnoteIssues.push({ type: 'deck-footnote-invades-safe-area', boundary: BOTTOM_SAFE_AREA_Y, actual: Math.round(fr.top) });
+      if (pr.top < BOTTOM_SAFE_AREA_Y - POS_EPS) {
+        pageNumberIssues.push({ type: 'page-number-invades-safe-area', boundary: BOTTOM_SAFE_AREA_Y, actual: Math.round(pr.top) });
       }
     }
+  } else if (pageNumberEl && visible(pageNumberEl)) {
+    pageNumberIssues.push({ type: 'page-number-not-allowed', slide_type: slideType });
+  }
 
-    // 일반 Content(직접 텍스트 leaf + img/svg 그래픽, `.content-footnote` 포함)가
-    // Bottom Safe Area 아래로 내려가는지 확인한다 — 페이지 번호·Deck Footnote 자신은
-    // 이미 위에서 별도로 검사했으므로 이 판정에서 제외한다.
+  // 4-3) 공통 Header·좌측 Brand Line — 적용 유형은 존재·위치·색, 미적용 유형은 표시되면 오류
+  for (const spec of HEADER_SPEC) {
+    const el = slide.querySelector(spec.sel);
+    const shown = el && visible(el);
+    if (!usesCommonHeader) {
+      if (shown) commonElementIssues.push({ type: 'common-element-not-allowed', element: spec.sel, slide_type: slideType });
+      continue;
+    }
+    if (!el || window.getComputedStyle(el).display === 'none') { commonElementIssues.push({ type: 'common-element-missing', element: spec.sel }); continue; }
+    const r = el.getBoundingClientRect();
+    const off = {};
+    for (const k of ['left', 'top', 'right', 'width', 'height']) {
+      if (spec[k] === undefined) continue;
+      if (Math.abs(r[k] - spec[k]) > POS_EPS) off[k] = { expected: spec[k], actual: Math.round(r[k] * 10) / 10 };
+    }
+    if (Object.keys(off).length) commonElementIssues.push({ type: 'common-element-position', element: spec.sel, mismatch: off });
+  }
+  if (usesCommonHeader) {
+    const want = HEADER_COLORS[slideType];
+    const sub = slide.querySelector('.header-submessage');
+    const div = slide.querySelector('.header-divider');
+    if (sub && window.getComputedStyle(sub).color !== want.submessage) {
+      commonElementIssues.push({ type: 'common-element-color', element: '.header-submessage', expected: want.submessage, actual: window.getComputedStyle(sub).color });
+    }
+    // 구분선 색은 화면 표시선(::after, 정확한 선 두께 요소) 기준 — 테두리는 변환용으로 투명하다
+    const divColor = div ? window.getComputedStyle(div, '::after').backgroundColor : null;
+    if (div && divColor !== want.divider) {
+      commonElementIssues.push({ type: 'common-element-color', element: '.header-divider', expected: want.divider, actual: divColor });
+    }
+  }
+
+  // 4-4) Deck Footnote(조건부) — 있을 때만 허용 영역 검사
+  if (deckFootnoteEl && visible(deckFootnoteEl)) {
+    const fr = deckFootnoteEl.getBoundingClientRect();
+    if (Math.abs(fr.left - DECK_FOOTNOTE_LEFT_X) > POS_EPS) {
+      deckFootnoteIssues.push({ type: 'x', expected: DECK_FOOTNOTE_LEFT_X, actual: Math.round(fr.left) });
+    }
+    if (fr.right > DECK_FOOTNOTE_RIGHT_MAX_X + POS_EPS) {
+      deckFootnoteIssues.push({ type: 'invades-page-number-zone', boundary: DECK_FOOTNOTE_RIGHT_MAX_X, actual: Math.round(fr.right) });
+    }
+    if (Math.abs(fr.bottom - DECK_FOOTNOTE_BOTTOM_EDGE_Y) > POS_EPS) {
+      deckFootnoteIssues.push({ type: 'y', expected: DECK_FOOTNOTE_BOTTOM_EDGE_Y, actual: Math.round(fr.bottom) });
+    }
+    if (fr.top < BOTTOM_SAFE_AREA_Y - POS_EPS) {
+      deckFootnoteIssues.push({ type: 'deck-footnote-invades-safe-area', boundary: BOTTOM_SAFE_AREA_Y, actual: Math.round(fr.top) });
+    }
+  }
+
+  // 4-5) Bottom Safe Area — 공통 Header 적용 유형(일반 본문·기업개요) 전체에 적용.
+  //      페이지 번호·Deck Footnote·좌측 Brand Line·Full-Bleed 사진 패널은 고정 영역이라 제외한다.
+  if (usesCommonHeader) {
     for (const el of [...leaves, ...graphics]) {
-      if (el === pageNumberEl || pageNumberEl.contains(el) || el.contains(pageNumberEl)) continue;
+      if (pageNumberEl && (el === pageNumberEl || pageNumberEl.contains(el) || el.contains(pageNumberEl))) continue;
       if (deckFootnoteEl && (el === deckFootnoteEl || deckFootnoteEl.contains(el) || el.contains(deckFootnoteEl))) continue;
+      if (el.closest('.deck-left-line') || isPanel(el)) continue;
       const r = el.getBoundingClientRect();
       if (r.height === 0) continue;
       if (r.bottom > BOTTOM_SAFE_AREA_Y + POS_EPS) {
@@ -360,7 +425,10 @@ LAYOUT_AUDIT_JS = """
       return v > 0 && v >= 0.42 * Math.min(nr.width, nr.height) && Math.abs(nr.width - nr.height) <= 0.15 * Math.max(nr.width, nr.height);
     };
     if (!decorative && visibleFraction < 1 - CROP_EPS) {
-      if (isCircular(el) || isCircular(el.parentElement)) {
+      if (isPanel(el)) {
+        imageAdvisories.push({ type: 'panel-frame-crop', src, class: classOf(el),
+          visible_ratio: Math.round(visibleFraction * 100) / 100, note: 'Layout이 정한 Full-Bleed 사진 패널의 의도된 Crop — 핵심 피사체가 잘리지 않았는지 육안 확인' });
+      } else if (isCircular(el) || isCircular(el.parentElement)) {
         imageAdvisories.push({ type: 'circular-frame-crop', src, class: classOf(el),
           visible_ratio: Math.round(visibleFraction * 100) / 100, note: '원형 프레임 — 인물 등 핵심 대상이 잘리지 않았는지 육안 확인' });
       } else {
@@ -815,6 +883,8 @@ LAYOUT_AUDIT_JS = """
     page_number_issues: pageNumberIssues,
     deck_footnote_issues: deckFootnoteIssues,
     bottom_safe_area_violations: bottomSafeAreaViolations,
+    common_element_issues: commonElementIssues,
+    slide_type: slideType,
     image_issues: imageIssues,
     image_advisories: imageAdvisories,
     image_sizes: imageSizes,
@@ -918,6 +988,7 @@ def render(
                     result["overflow"] or result["clipped"] or result["overlaps"]
                     or result["page_number_issues"] or result["deck_footnote_issues"]
                     or result["bottom_safe_area_violations"] or result["image_issues"]
+                    or result["common_element_issues"]
                     or result["flow_issues"]
                 )
                 result["flagged"] = flagged
@@ -929,6 +1000,7 @@ def render(
                         f"overlaps={len(result['overlaps'])}, page_number_issues={len(result['page_number_issues'])}, "
                         f"deck_footnote_issues={len(result['deck_footnote_issues'])}, "
                         f"bottom_safe_area_violations={len(result['bottom_safe_area_violations'])}, "
+                        f"common_element_issues={len(result['common_element_issues'])}, "
                         f"image_issues={len(result['image_issues'])}, "
                         f"flow_issues={len(result['flow_issues'])})"
                     )
