@@ -65,9 +65,10 @@
 ### [6] Human Review ② — 웹PPT 검토 (메인이 직접 진행)
 로컬 브라우저를 자동으로 열어(`start`/`explorer` 등 OS 명령 또는 파일 경로 안내) `web_ppt/v{N}/index.html`을 보여주고 대화로 피드백을 받는다.
 - **승인** → 해당 `v{N}`이 확정됨. 메인이 직접 `bundle_for_share.py`를 실행해 같은 `web_ppt/v{N}/` 폴더에 `shared.html`을 **기본으로** 생성한다(사용자가 공유를 별도로 요청하지 않아도 항상 수행 — 상세 절차·실패 처리는 아래 "확정 웹PPT 공유용 HTML 자동 생성" 참조). 이후 [8]로 진행(pptx-converter 호출).
-- **수정 요청** → 아래 세 유형으로 구분해서 기록
+- **수정 요청** → 아래 네 유형으로 구분해서 기록
   - 내용 문제이며 슬라이드 구성 자체를 바꿔야 하면 → [3]까지 소급 (content-designer에 재설계 지시)
   - Hard Rule 위반, Layout/Relationship 오류, 콘텐츠 누락, 겹침·잘림 등 **구조적** 오류 → [7] (content-designer에 피드백 반영 지시, 새 버전 스냅샷 `vN+1/` 생성)
+  - 특정 슬라이드의 레이아웃·시각적 구성 자체를 바꿔 달라는 **디자인·구성 재설계** 요청 → [7]. content-designer에 대상 슬라이드를 "디자인·구성 재설계"로 명시해 전달한다 — 그 슬라이드에 한해 Layout 재선택(slide-structuring Phase B 4~6단계 재수행)이 허용되며, 같은 Layout 안의 미세 조정으로 축소되지 않는다
   - 문구 변경, Text/Image의 X·Y 위치 조정, Image 크기 조절·교체 등 **구조적으로 정상인 HTML의 최종 미세 수정** → content-designer를 재호출하지 않고 아래 "Human Fine Editing"으로 이동
 
 세션이 `human_review_mode: skip_intermediate_confirmation`(예: 내부 회귀 테스트)로 설정된 경우 [6] 대화형 승인 자체는 생략하되, `web-ppt-generator`의 QA 절차가 에스컬레이션 없이 통과해 그 버전이 사실상 확정되는 시점을 위 "승인"과 동일하게 취급해 `shared.html` 자동 생성을 수행한다.

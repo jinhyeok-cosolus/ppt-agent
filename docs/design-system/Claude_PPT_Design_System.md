@@ -46,6 +46,7 @@
 ### Font Size 적용 원칙
 - 텍스트의 크기는 공간이 아니라 **정보 위계와 역할**을 기준으로 결정한다.
 - 공간이 부족한 경우 Font Size를 임의로 축소하지 않는다. 문장 압축 → 불필요한 내용 제거 → 줄 수 조정 → Gap 조정 → Visual 크기 조정 → Layout 재검토 순으로 해결한다.
+  - 이 순서의 "Visual 크기 조정"은 Supporting Visual·압축형 Visual에 적용한다. 슬라이드 Core Message를 직접 성립시키는 **Main Visual**(특히 내부 단계·라벨이 많은 고밀도 이미지)은 판독 가능한 크기 아래로 줄여 공간을 만들지 않는다 — Main Visual이 작아지는 상황이면 텍스트 쪽(문장 압축·Optional 근거 생략·중복 표현 제거)을 먼저 조정하고, 그래도 부족하면 Layout 재검토 또는 슬라이드 분할로 해결한다.
 - 동일한 역할의 텍스트는 슬라이드마다 일관된 Font Size를 적용한다.
 - **최소 크기**: Source/Footnote/각주를 제외한 모든 텍스트는 14pt 미만으로 내려가지 않는다. Source/Footnote/각주에 한해서만 최소 12pt까지 허용한다(위 표의 "Source / Footnote / 각주" 행 참조). 공간이 부족하다는 이유로 이 최소값 아래로 축소하지 않는다 — 위 문장 압축~Layout 재검토 순서로 해결한다.
 - **단위(pt/px)**: 위 표의 크기는 모두 **pt** 단위다. 웹PPT(HTML/CSS) 구현 시 `font-size`는 pt 단위로 그대로 작성하는 것을 기본으로 한다. px 단위가 반드시 필요한 경우에만 **1pt = 1.3333px** 기준으로 정확히 환산한다 — pt 숫자를 그대로 px 숫자로 옮기지 않는다(예: Body 16pt를 `font-size: 16px`로 적는 것은 오류다. 16pt의 올바른 px 환산은 21.3px이며, 16px는 12pt에 불과하다).
@@ -90,7 +91,7 @@
 - 슬라이드에 남는 공간을 채우기 위해 의미적으로 연결된 요소 사이를 인위적으로 벌리지 않는다. `flex:1`, `space-between`, `justify-content:center` 등으로 여백을 배분하는 구현이 Content Group 내부 요소를 과도하게 떨어뜨리지 않도록 한다.
 - 콘텐츠가 적은 경우에도 화면 전체를 억지로 채우기보다 Content Group 자체의 응집성을 우선한다. 반대로 콘텐츠를 한쪽에 과도하게 압축하지 않고, 전체 Content Area 안에서 시각적으로 균형 있게 배치한다.
 - **Main Visual 특성에 따른 밀도 기준**:
-  - **면적 점유형 Visual**(Chart / Photo / Image / Map / 복합 Diagram / Table 등): 필요한 시각적 면적을 충분히 확보하되, 연결된 제목·설명·Evidence와 관계가 끊겨 보이지 않도록 같은 Content Group 안에 배치한다.
+  - **면적 점유형 Visual**(Chart / Photo / Image / Map / 복합 Diagram / Table 등): 필요한 시각적 면적을 충분히 확보하되, 연결된 제목·설명·Evidence와 관계가 끊겨 보이지 않도록 같은 Content Group 안에 배치한다. 이 Visual이 슬라이드의 Main Visual이면 Region을 나눌 때 텍스트 Region보다 먼저 필요한 면적을 배정하고, 텍스트 분량을 남은 공간에 맞춘다(필요 면적은 고정 비율이 아니라 이미지 비율·내부 정보 밀도·Core Message 기여도로 판단).
   - **압축형 Visual**(Large Number / Icon / Symbol / 짧은 Quote / 짧은 Text 등): 넓은 고정 영역을 억지로 차지하게 하지 않고, Supporting Text/Evidence와 하나의 응집된 Content Group으로 밀착 배치한다.
   - Visual 유형과 실제 콘텐츠 양에 따라 높이·간격을 유동적으로 판단하며, 모든 Visual에 동일한 점유율이나 세로 배치 방식을 기계적으로 적용하지 않는다.
 - 위 원칙은 상대적 밀도·그룹화 기준이며, 이 문서는 새로운 고정 px 간격 값을 정의하지 않는다 — 구체적인 여백 수치가 필요한 경우 해당 Layout Reference 또는 Hard Rule의 기존 수치를 따른다.

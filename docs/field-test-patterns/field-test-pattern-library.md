@@ -128,7 +128,7 @@
 - **Content Relationship**: 순차(공정 흐름) + 인과(공정→성과)
 - **Content Density**: 상단 다단계 프로세스(3~7단계, 각 단계 아이콘/다이어그램 + 이름 + 짧은 보조 라벨) + 하단 1~2개 핵심 성과 수치 또는 2-Side 비교
 - **항목 수**: 상단 단계 수 가변, 하단 결론/비교는 통상 1~2개. 상하 비율 예시: 56:44 또는 60:40
-- **Visual**: 상단 Process Flow(실사진 있으면 우선 사용, 없으면 SVG Icon/Diagram — 원 번호 아이콘보다 Icon/Diagram이 더 검증됨) + 하단 Insight Box(배경·테두리 있는 종합 결론) 또는 Flat/Open 2-Column 비교(Rounded Card 스타일보다 우선)
+- **Visual**: 상단 Process Flow(실사진·원본 공정 이미지가 있으면 우선 사용하고 Main Visual로 충분한 면적을 먼저 배정, 없으면 단순 Step Box/Diagram — 아이콘은 단계 의미를 실제로 보강할 때만 쓰고, 원 번호 아이콘보다 Diagram 방식이 더 검증됨) + 하단 Insight Box(배경·테두리 있는 종합 결론) 또는 Flat/Open 2-Column 비교(Rounded Card 스타일보다 우선)
 - **강조 정보**: 특정 단계(Process Callout — 강조색+밑줄)가 하단 비교/Insight의 직접적 원인임을 시각적으로 연결
 - **최종 확정 Layout/Variant**: `process-comparison.md`, `process-system-architecture-layout.md`
 - **Use When**: 여러 단계 공정이 하단 핵심 Insight/비교와 직접 연결될 때. 실사진 커버리지가 낮으면(80% 미만) 이미지 없는 변형 채택
@@ -136,7 +136,8 @@
   - 하단 Insight Box(배경·테두리, Output/Customer Value 종합)를 얇은 텍스트 라벨로 축소하지 않는다 — 실제 이탈 사례 있음(원인: 전용 Layout Must Preserve 체크리스트를 생성 *이후* QA에서야 확인해 조용히 단순화되는 경로가 있었음. → 체크리스트를 생성 *이전*에 사전 발췌하는 규칙으로 보완됨)
   - 의미가 불명확한 장식적 화살표/역방향 피드백 커넥터는 정보 전달에 기여하지 않으면 제거한다
   - 하단 비교를 Rounded Card로 감싸는 "일반적 웹 UI"식 처리보다 Flat/Open(중앙 divider) 스타일이 더 검증됨 — 상단 원 번호 아이콘도 Icon/Diagram 방식으로 대체된 이력 있음
-- **Field Test 근거**: `cosolus-ir-deck` A/B/C Slide 5, 12, `final.pptx` 도달 — **높음**. `cosolus-business-plan-2026` Slide 12 Insight Box 이탈→수정 사례 — **중간**. `cosolus-process-comparison-test/quick-test.html`(4단계 흐름 + 강조 단계 + 하단 2-Side 비교, v1→v2 파일 내 주석으로 리비전 기록) — **중간**(단일 파일이나 개선 근거가 명확히 문서화됨).
+  - 하단 개발내용(3열/2×2) 텍스트 분량 때문에 상단 원본 공정 이미지(Main Visual)를 줄이지 않는다 — 하단을 항목당 핵심 1~2줄로 축약해 공간을 만든다. 이미지 안에 이미 있는 단계명·캡션을 하단 제목이나 HTML 캡션으로 반복하지 않는다(실제 이탈·수정 사례 있음, 아래 근거)
+- **Field Test 근거**: `cosolus-ir-deck` A/B/C Slide 5, 12, `final.pptx` 도달 — **높음**. `cosolus-business-plan-2026` Slide 12 Insight Box 이탈→수정 사례 — **중간**. `cosolus-process-comparison-test/quick-test.html`(4단계 흐름 + 강조 단계 + 하단 2-Side 비교, v1→v2 파일 내 주석으로 리비전 기록) — **중간**(단일 파일이나 개선 근거가 명확히 문서화됨). `연구개발과제-평가발표`(2026-10-13, 핵심기술 슬라이드 5종: 상단 원본 공정 이미지 + 하단 3열/2×2 개발내용) — 하단 텍스트 과밀로 이미지가 176~304px로 축소되고 이미지 캡션이 하단에 반복된 사례를 Main Visual 우선 배정·중복 제거로 수정해 승인 — **중간**.
 
 ---
 

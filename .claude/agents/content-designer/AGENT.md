@@ -52,6 +52,7 @@ description: 원본 자료를 분석해 슬라이드 구성안을 설계하고, 
 ### [5]/[7] 웹PPT 생성·수정
 - Human Review ②에서 들어온 피드백 중 문구 변경·Text/Image X·Y 위치 조정·이미지 크기 조절·교체 등 **구조적으로 정상인 HTML의 최종 미세 수정**은 Human Fine Editing(CLAUDE.md "Human Fine Editing" 절, `web-ppt-generator` 스킬의 `scripts/fine_editor/`)으로 처리되며 content-designer가 재호출되지 않는다 — [7]은 Hard Rule 위반·Layout/Relationship 오류·콘텐츠 누락·겹침·잘림 등 구조적 오류 피드백에만 쓰인다.
 - `slide_outline.md`에 `slide-structuring`(Phase B)이 기록한 Content Role·Relationship·Content Region·Selected Layout·Structural Check 결과를 입력으로 그대로 소비한다 — 역할 분류·관계 판단·Region 구성을 이 단계에서 다시 판단하지 않는다.
+  - **예외 — 디자인·구성 재설계 요청**: [7]에서 메인이 특정 슬라이드를 "디자인·구성 재설계"(레이아웃·시각적 구성 자체를 바꿔 달라는 요청)로 전달하면, 그 슬라이드에 한해 `slide-structuring` Phase B 4~6단계(Content Region 설계·Layout Routing·구조적 사전 점검)를 다시 수행해 `slide_outline.md`의 해당 슬라이드 항목을 갱신한 뒤 생성한다. 슬라이드 병합·분할이 필요하면 Phase A부터 다시 수행한다. 같은 Layout 안의 미세 조정으로 축소해 처리하지 않으며, 나머지 슬라이드는 다시 판단하지 않는다.
 - `design-rules.md`(`.claude/skills/web-ppt-generator/references/design-rules.md`)를 항상 먼저 읽는다. 이 문서는 **Hard Rule(1순위) > Claude PPT Design System(2순위) > Content Visualization Freedom(3순위) > Layout Reference(4순위)** 순서로 네 원본 문서(`docs/design-hard-rules/`, `docs/design-system/Claude_PPT_Design_System.md`, `docs/design-system/content-visualization-freedom.md`, `docs/layout-reference/2026.08.13_layout-catalog_V1.md` + 같은 폴더의 `2026.08.13_ppt_layout_set__V3.pptx`)를 링크로 참조한다. 하위 우선순위 판단이 상위 규칙과 충돌하면 상위가 이긴다.
 - **고정 규칙 = Hard Rule**(로고, 브랜드 요소, 지정 표지 등)은 그대로 준수한다 — 변형·생략 금지.
 - 슬라이드 표현 방식(레이아웃/표/차트/이미지/텍스트 선택 등)을 스스로 판단할 때는 Content Visualization Freedom의 Allowed 범위 안에서만 판단하고, Not Allowed 항목(고정 규칙 변경, 새 디자인 언어 생성, 브랜드 컬러 외 임의 색상, 자료에 없는 수치 생성 등)은 절대 임의로 하지 않는다.
@@ -59,7 +60,7 @@ description: 원본 자료를 분석해 슬라이드 구성안을 설계하고, 
 - **가변 규칙**(레이아웃, 표/차트 스타일, 정보 시각화, 강조 방식)은 레퍼런스에서 파악한 장점을 슬라이드 맥락에 맞게 해석·적용하되, Claude PPT Design System이 정의하는 PPT 전체의 시각적 일관성(Visual Style·Color·Typography·Grid/Spacing·Component Style·Image Treatment·Chart/Table/Diagram Style) 범위를 벗어나지 않는다. 아직 가변 규칙이 없는 신규 프로젝트라면, 레퍼런스 자료를 분석해 초안을 제안하고 메인을 통해 사용자 확인을 받는다.
 - 원본 이미지는 그대로 사용하는 것이 원칙이며, 디자인 통일성을 위한 크롭·색보정만 허용한다. 합성·수치 변형 등 내용을 왜곡하는 보정은 금지한다.
 - 수정할 때마다 새 버전 스냅샷 `web_ppt/v{N+1}/`을 만든다(기존 스냅샷은 보존).
-- 자기 검증: 고정 규칙 체크리스트 대조 + `web-ppt-generator`의 "생성 후 QA 절차"(Layout Compliance Check, Visual Quality Check — 스크린샷을 직접 보고 판단, 최대 2회 자동 수정·재검증)를 그때 생성·수정된 슬라이드에 대해 수행한다. 렌더링 오류는 최대 2회 자동 재시도, 고정 규칙 위반은 재생성, QA 절차가 2회 후에도 해결하지 못한 문제(또는 Layout 자체를 바꿔야 하는 문제)는 슬라이드 번호와 함께 기록해 메인을 통해 Human Review ②로 이관.
+- 자기 검증: 고정 규칙 체크리스트 대조 + `web-ppt-generator`의 "생성 후 QA 절차"(Layout Compliance Check, 기계적 Visual Quality Check(2-a), 슬라이드당 1회 시각 자체 검토(2-c), 기계적 재검증 최대 2회)를 그때 생성·수정된 슬라이드에 대해 수행한다. 렌더링 오류는 최대 2회 자동 재시도, 고정 규칙 위반은 재생성, QA 절차가 2회 후에도 해결하지 못한 문제(또는 Layout 자체를 바꿔야 하는 문제)는 슬라이드 번호와 함께 기록해 메인을 통해 Human Review ②로 이관.
 
 ### [9] 디자인 규칙 갱신 (선택적, 메인이 명시적으로 지시할 때만)
 - 이번 피드백이 "일반화 가능한 규칙"인지 "1회성 예외"인지 판단한다.

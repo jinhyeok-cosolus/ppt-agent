@@ -100,3 +100,8 @@
 - **자간 미변환**: CSS letter-spacing이 PPTX로 옮겨지지 않는다 — Closing Motto 끝 +11.5px, Section Label(+0.2pt)·기업개요 핵심 메시지(−0.2pt)도 영향.
 - **Closing 텍스트 폭**: "Thank You"는 HTML에서 900으로 근사해 PPTX에도 Black으로 저장돼 레퍼런스보다 약 11.5px 넓다. 긴 굵은 제목은 미커닝으로 줄 끝이 2~3px 밀린다.
 - **열람 PC 폰트**: 굵기별 패밀리는 PPTX를 여는 PC에도 Pretendard 9개 굵기가 설치돼 있어야 그대로 보인다(미설치 시 해당 굵기가 대체 글꼴로 표시될 수 있음, 임베딩 없음).
+
+## content-retention-and-visual-shrink
+**관련 규칙**: SKILL.md "Required Evidence 보존"(Main Visual 축소보다 Optional 생략 우선), "Must Preserve 체크리스트 사전 발췌"(생략 전 콘텐츠 조정), "2-c. 시각 자체 검토", `slide-structuring` 1-b Required 기준·1-c 범주 4-b·4단계 "Main Visual 면적 선배정"/"중복 표현 사전 판정"·Phase A "원본 구조 1:1 매핑 점검", `Claude_PPT_Design_System.md` §3 Font Size 적용 원칙의 Main Visual 예외
+
+2026-10-13, `연구개발과제-평가발표`에서 v1이 원본 Subtopic 22개를 그대로 22장으로 옮겼고(모든 슬라이드 `entire` 1:1), 슬라이드마다 원문 문장 대부분이 Required로 분류됐다. Required는 축약할 수 없고 Font Size도 줄일 수 없어서, 공간 부족은 §3 해결 순서의 "Visual 크기 조정"으로만 풀렸다 — 그 결과 Main Visual로 표기된 공정 이미지가 176px까지 작아졌다. 사용자가 이후 3~4건의 병합·축약·이미지 확대를 직접 지시했다. 같은 프로젝트에서 디자인 재설계 요청이 "Selected Layout은 바꾸지 않는다" 원칙 때문에 같은 Layout 안 미세 조정으로 축소됐고, 3컬럼 Header Bar는 제목이 길다는 이유로 Must Preserve 예외로 생략됐으며, 기계 QA를 통과한 v2·v3에서 열 불균형·제목 중복·상자 밖 텍스트가 사람 검토에서야 발견됐다(당시 경량화 원칙이 시각 검토를 전부 Human Review로 넘겼다). 그래서 Required 기준을 좁히고 의도적 축약 범주를 두었으며, Main Visual 면적을 먼저 배정하고, 재설계 요청에는 해당 슬라이드의 Layout 재선택을 허용하고, 필수 구조는 콘텐츠를 줄여서라도 살리며, 슬라이드당 1회 시각 자체 검토를 복원했다.

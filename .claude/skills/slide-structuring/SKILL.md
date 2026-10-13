@@ -52,6 +52,7 @@ Hard Rule / Claude PPT Design System / Content Visualization Freedom / Layout Re
      - 기술과 그 효과
      - 동일 대상의 서로 다른 측면
      - 함께 제시해야 의미가 완성되는 하위 주제
+     - 서로 다른 이미지 파일·Subtopic으로 제공됐지만 하나의 연속 공정·단계 흐름을 이루는 경우(이미지의 단계 번호·화살표·전후 상태·앞뒤 단계명이 이어지거나, 원문이 같은 공정의 연속 단계로 서술) — 원본 구획이 나뉘어 있다는 이유로 공정을 여러 슬라이드에 쪼개지 않고 한 슬라이드 통합을 우선 검토한다. 판단 근거는 `material_analysis.json`의 이미지 `description`을 사용하고, `structural` 라우팅이라 내용 기록이 없어 연속 여부를 판단할 수 없는 후보 이미지에 한해 1회 Vision으로 확인한다 — 이 확인 결과는 Phase B 2단계 "Main Visual 내용 분석"에서 그대로 재사용하며 같은 이미지를 다시 확인하지 않는다. 통합하면 단계 수·이미지 수가 많아 판독성이 크게 떨어질 때만 의미 있는 단계 경계(예: 전처리 / 정제 / 재생)에서 나누고, 나눈 슬라이드 사이의 연결(앞 단계 출력 → 다음 단계 입력)을 Source Material Mapping 근거와 각 슬라이드 흐름 표현에 남긴다
    - **분리할 후보** (아래 중 하나 이상 해당하면 분할을 검토한다):
      - 독립적인 핵심 메시지가 여러 개 존재
      - 서로 다른 목적의 내용이 혼재
@@ -59,6 +60,8 @@ Hard Rule / Claude PPT Design System / Content Visualization Freedom / Layout Re
      - 한 슬라이드에 합치면 핵심 메시지가 불명확해짐
    - **항상 원문을 확인하는 경우(위험 항목)**: `cross_group_ref`가 있는 항목, `content_match_confidence: "uncertain"`인 항목, `production_directives`가 딸린 항목, `visual_placeholders`(Data Pending)가 딸린 항목은 Manifest summary만으로 병합/분할을 확정하지 않고 해당 항목의 원문을 반드시 `canonical_ref`로 확인한 뒤 판단한다.
    - **금지**: 원본 페이지가 같음 / Content Group이 같음 / 항목 수가 적음 / 공간이 남음 — 이런 이유만으로 병합하지 않는다. 반대로 하나의 Content Group이라는 이유만으로 반드시 한 슬라이드로 유지하지도 않는다.
+   - **원본 구조 1:1 매핑 점검(발표 목적 기준)**: 원본 Subtopic/Content Group 하나를 그대로 슬라이드 하나로 옮기는 결정(`scope: entire` 1:1)은 기본값이 아니다. 같은 상위 주제(예: 같은 기술 항목·같은 기관 구성) 아래 Subtopic들이 각각 독립 메시지·독립 Evidence가 충분하지 않거나, 따로 두면 같은 설명이 슬라이드마다 반복되면 위 "하나의 상위 메시지를 공동으로 구성"·"동일 대상의 서로 다른 측면" 신호로 병합을 먼저 검토한다. 1:1을 유지하면 그 근거(분리 후보 신호 중 무엇에 해당하는지)를 4단계 근거에 남긴다 — "원본에서 따로 구분돼 있었다"는 근거가 되지 않는다.
+   - **스토리라인 순서**: 슬라이드 순서도 원본 문서 순서를 기본값으로 삼지 않는다. 청중·발표 목적(예: 평가 발표라면 목표 → 필요성 → 전체 구성 → 핵심기술 → 실증·성과)에 맞는 흐름을 content-designer가 정하며, 재배치해도 원본 사실·수치는 바꾸지 않는다.
    - 발표 시간·목표 슬라이드 수는 제약 조건으로 고려하되 위 의미적 판단보다 우선하지 않는다. 슬라이드 수가 부족하면 콘텐츠 요약·부록 이관을 먼저 검토하고, 의미적으로 분리해야 하는 내용을 억지로 합치지 않는다. 요약·부록 이관으로도 목표를 맞출 수 없으면 content-designer가 메인을 통해 사용자에게 알린다 — 임의로 강행하지 않는다.
    - `cross_group_ref`가 있는 항목(다른 Content Group, 예: 부록 성격의 보조 자료 섹션에서 가져오는 근거)은 이 단계에서 실제로 어느 슬라이드가 그 근거를 사용할지 확정한다.
    - `content_match_confidence: "uncertain"`인 이미지·근거는 슬라이드에 배정하더라도 uncertain 표시를 그대로 유지해 Phase B(1-b)에 전달한다 — 이 단계에서 임의로 confirmed로 격상하지 않는다.
@@ -77,6 +80,7 @@ Hard Rule / Claude PPT Design System / Content Visualization Freedom / Layout Re
    - `content_match_confidence: "uncertain"` Evidence가 확정 Evidence처럼 취급되지 않았는지
    - `visual_placeholders`(Data Pending)가 슬라이드 배정 과정에서 삭제되거나 조용히 누락되지 않았는지
    - 제작 지시문(`production_directives`) 중 병합/분리/순서 지시가 있었다면 실제 결정에 반영됐는지, 반영하지 못했다면(충돌·모순·판단 불가) `needs_confirmation`으로 남아있는지
+   - 대부분의 슬라이드가 원본 Subtopic/Content Group과 1:1(`entire`)로 매핑됐다면, 각 1:1 결정에 위 "원본 구조 1:1 매핑 점검"의 근거가 남아 있는지(근거 없이 원본 구조를 그대로 옮긴 슬라이드는 3단계에서 병합을 재검토)
    - 문제가 발견되면 3단계로 돌아가 재조정한다(자동 1회). 재조정 후에도 해결되지 않으면 CLAUDE.md §4 "실패/에스컬레이션 처리 원칙"을 따른다 — 핵심 메시지의 근거가 유실된 경우는 즉시 작업을 멈추고 메인을 통해 사용자에게 확인을 요청하고, 부가적인 문제는 `coverage_check.issues_found[]`에 남긴 채 Phase B로 진행한다.
    - 결과는 `slide_composition_map.json`의 `coverage_check` 항목에 기록한다.
 
@@ -156,7 +160,7 @@ Phase A가 확정한 `slide_composition_map.json`(슬라이드 경계·Source Ma
      - 위 어디에도 해당하지 않는 기타 관계
 
      관계형(단일 독립 근거가 아닌 모든 유형)이면 그중 대표값(예: 최종 결과 수치)만 남기지 않고 관계를 이루는 **값 전체**(예: 이전 상태·중간 상태·이후 상태, 또는 단계별 값)를 근거로 유지한다. 병렬 동등 항목은 값 사이에 순서·인과가 없으므로 "관계를 이루는 값 전체" 대신 나열된 개별 항목 전체를 근거로 유지한다(일부만 대표로 골라 축약하지 않는다). 어떤 값을 남길지는 그때그때 입력 자료의 실제 관계 구조를 따르며, 여기서 특정 산업·특정 수치를 규칙으로 고정하지 않는다.
-   - **Required/Optional 구분**: 그 근거 없이는 핵심 주장이 성립하지 않거나 신뢰도가 크게 떨어지면 Required, 있으면 이해를 돕지만 없어도 주장이 성립하면 Optional로 표시한다. `content_match_confidence: uncertain`으로 표시된 근거(주로 이미지)는 그 중요도와 무관하게 Required로 표시하지 않는다(Optional 상한) — 정체가 불확실한 근거를 핵심 주장의 필수 근거로 올리지 않는다.
+   - **Required/Optional 구분**: 그 근거가 빠지면 Core Claim 자체가 성립하지 않거나 검증할 수 없게 되는 경우에만 Required로 표시한다 — 핵심 정량 목표·성과 수치, 관계형 Evidence를 이루는 값 전체, Claim의 대상·범위를 정하는 조건, 기관 역할처럼 사실 관계를 정하는 근거가 여기에 해당한다. 있으면 이해를 돕지만 없어도 주장이 성립하는 근거는 Optional이다 — 방법·조건의 세부 나열, 같은 Claim을 다른 표현으로 반복하는 문장, 이미지가 이미 보여주는 단계 설명, 수식어·목적 서술은 기본적으로 Optional로 본다. 단, 위 관계 유형에서 **병렬 동등 항목**으로 판정된 개별 항목 자체(예: 기관별 역할, 핵심기술 목록)는 위 규칙대로 전체를 유지하고, 각 항목 아래의 세부 설명만 이 기준으로 Optional 여부를 판단한다. 원본에 있다는 이유만으로, 또는 "없으면 덜 구체적이다"라는 이유만으로 Required로 올리지 않는다. 한 슬라이드에서 배정된 원본 문장 대부분이 Required로 분류됐다면 이 기준으로 다시 판정한다. `content_match_confidence: uncertain`으로 표시된 근거(주로 이미지)는 그 중요도와 무관하게 Required로 표시하지 않는다(Optional 상한) — 정체가 불확실한 근거를 핵심 주장의 필수 근거로 올리지 않는다.
    - **Data Pending 근거의 Required/Optional**: `visual_placeholders`(`data_status: "data_pending"`)로 표시된 근거는 데이터가 아직 없다는 이유로 자동으로 Optional 처리하거나 슬라이드에서 제외하지 않는다 — 원래 그 자리가 뒷받침하려던 주장이 핵심 주장이면 그대로 Required로 표시하고 Evidence 칸에 "Data Pending(원본에 데이터 미제공, material_analysis.json 참조)"처럼 상태를 명시한다. 대표 수치가 없다고 해서 주장 자체를 삭제하거나 근거 없는 서술로 조용히 대체하지 않는다.
    - **근거-주장 매핑(Evidence-Claim 구조 확인)**: 아래 두 경우를 구분한다.
      - 상위 주장 하나를 뒷받침하는 복수 Evidence — 여러 근거가 같은 주장 하나를 함께 뒷받침하면 하나의 근거 그룹으로 묶는다.
@@ -171,22 +175,23 @@ Phase A가 확정한 `slide_composition_map.json`(슬라이드 경계·Source Ma
      2. Evidence의 개수와 유형(일반 텍스트 / 수치 / 표 / 차트 / 이미지)이 배정 결과와 일치하는지
      3. `content_match_confidence: uncertain` 및 `data_status: data_pending` 상태가 유실·격상·삭제되지 않았는지
      - ID·개수·유형·상태에 불일치가 하나라도 있으면 경량 체크를 통과로 처리하지 않고, 그 슬라이드(또는 불일치 항목)를 아래 **상세 의미 검증** 대상으로 즉시 승격한다.
-   - **상세 의미 검증 대상** — 아래 중 하나라도 있으면, 해당 위험 항목과 그 항목이 속한 Source Material 범위에 대해 `canonical_ref`로 원문을 지연 조회해 기존 수준의 원문 대조·6분류를 수행한다.
+   - **상세 의미 검증 대상** — 아래 중 하나라도 있으면, 해당 위험 항목과 그 항목이 속한 Source Material 범위에 대해 `canonical_ref`로 원문을 지연 조회해 기존 수준의 원문 대조·상세 분류(아래 범주)를 수행한다.
      - `uncertain` 근거 또는 Data Pending 근거
      - 병합/분할된 Source Material, 여러 Source Material이 한 슬라이드에 배정된 경우, 또는 `cross_group_ref`
      - Phase A의 Coverage Check에 기록된 제외/미배정 처리의 사유·상태가 없거나 불일치해, 원래 배정 범위의 재구성이 필요한 경우
      - 표·차트 또는 복수 비교, 단계·순차, 인과, 종속 등 관계형 Evidence
      - 핵심 수치가 요약·선별·대표값화되어 원래 범위·조건·비교 관계의 손실 가능성이 있는 경우
      - 프레이밍/목표/조건 문장처럼 evidence_cluster 밖에 남아 1-b의 Claim/Evidence에 흡수·누락될 가능성이 있는 경우
-   - **미배정 항목 처리** — 슬라이드별 BCC에서 미배정 원본 전체를 다시 읽거나 6분류하지 않는다. Phase A의 `coverage_check`에서 해당 항목의 명시적 제외/미배정 사유와 추적 상태가 존재하는지만 확인한다. 사유·상태가 없거나 불일치하면 해당 항목을 Phase A로 되돌려 재조정한다.
-   - **상세 분류** — 상세 의미 검증 대상으로 승격된 원본 항목 하나하나를 아래 6개 범주 중 정확히 하나로 분류한다:
+   - **미배정 항목 처리** — 슬라이드별 BCC에서 미배정 원본 전체를 다시 읽거나 상세 분류하지 않는다. Phase A의 `coverage_check`에서 해당 항목의 명시적 제외/미배정 사유와 추적 상태가 존재하는지만 확인한다. 사유·상태가 없거나 불일치하면 해당 항목을 Phase A로 되돌려 재조정한다.
+   - **상세 분류** — 상세 의미 검증 대상으로 승격된 원본 항목 하나하나를 아래 범주 중 정확히 하나로 분류한다:
      1. Claim/Evidence에 명시적으로 반영됨
      2. Core Message/Supporting Message에 반영됨(개별 Evidence로 남지 않고 요약문에 흡수됨)
      3. 다른 Evidence와 중복되어 의도적으로 통합됨
      4. 정보량 없는 제목/라벨이라 의도적으로 제외됨(그 자체로 새로운 사실을 담지 않는 헤딩·구획 텍스트 등)
+     4-b. 발표 목적상 의도적으로 축약됨 — 1-b 기준으로 Optional인 세부 조건·방법 나열·중복 표현·Main Visual이 이미 보여주는 설명을 슬라이드에서 생략함(원본 정본 `material_analysis.json`에는 그대로 남는다). 핵심 정량 목표·관계형 Evidence 값·기관 역할 등 Required 근거는 이 범주로 분류하지 않는다
      5. `content_match_confidence: uncertain`이라 보류됨(1-b의 Required 승격 금지 규칙을 그대로 따름)
      6. 중요 내용인데 미반영됨 → 재구성 필요
-     - 판단 기준: 그 항목이 새로운 사실(수치·관계·범위·조건·대상·근거)을 담고 있는데 위 1~5 어디에도 해당하지 않으면 6으로 분류한다. 단순 재진술이나 라벨이면 4로 분류하고 6으로 넘기지 않는다.
+     - 판단 기준: 그 항목이 Required에 해당하는 새로운 사실(수치·관계·범위·조건·대상·근거)을 담고 있는데 위 1~5(4-b 포함) 어디에도 해당하지 않으면 6으로 분류한다. 단순 재진술이나 라벨이면 4로, Optional 세부 내용을 발표 목적상 생략했으면 4-b로 분류하고 6으로 넘기지 않는다.
    - **상세 검증에서 반드시 점검할 두 패턴** (반복적으로 유실이 확인된 유형):
      - 특정 evidence_cluster에 속하지 않고 Subtopic 최상위에 남아있는 프레이밍/목표/조건 문장 — 여러 Claim에 공통되지만 어느 한 Claim의 typed relationship 틀에도 깔끔히 안 들어가 Core Message 요약에만 흡수되고 Evidence에서 빠지기 쉽다.
      - 여러 Content Group을 병합한 경우, 이미 완결된 서사를 가진 한쪽 소스가 대표 텍스트로 채택되면서 병합 상대 쪽의 세부 내용(범위·산출물·조건 등)이 반영 여부 확인 없이 조용히 빠지기 쉽다.
@@ -202,6 +207,7 @@ Phase A가 확정한 `slide_composition_map.json`(슬라이드 경계·Source Ma
    - 모든 역할을 채울 필요는 없다. 해당 역할의 콘텐츠가 없으면 `N/A`로 표기한다.
    - 단일 콘텐츠 중심 슬라이드나 자유 형식 콘텐츠를 억지로 4개 역할에 끼워 맞추지 않는다.
    - **이미지별 시각 역할(Main Visual / Supporting Evidence)** — 1-b까지 이미 이 슬라이드에 배정된 이미지마다, 이 슬라이드의 Core Message를 기준으로 시각 역할을 내부적으로 판단한다(이미지 선택·Claim 연결·슬라이드 배정은 바꾸지 않는다). **Main Visual**은 Core Message를 시각적으로 직접 성립시키는 이미지(빼면 핵심 메시지의 시각적 설명이 무너짐 — 대등한 Primary가 병렬이면 여럿일 수 있음), **Supporting Evidence**는 특정 Claim·단계·항목을 확인·보강하는 이미지다. 원본 픽셀 크기·가로세로 비율·이미지 개수·문서 내 순서로 판단하지 않으며, Required/Optional과는 별개다(Required여도 Supporting일 수 있고, Optional은 Main이 되지 않는다). 이미지 내부에 여러 단계·라벨·세부 구조가 담겨 판독에 일정 크기가 필요하면 `고밀도`로 함께 표기한다 — 이 판단 결과는 web-ppt-generator가 표시 크기를 정할 때 그대로 사용한다(SKILL.md "이미지 표시 크기·시각적 위계"). Flow Diagram 슬라이드에서는 공정도 전체가 Main Visual이므로, 내부 공정·물질 이미지는 공정도 안에서의 상대적 위계(Supporting/`고밀도`)로 표기한다(`flow-diagram-rules.md` "Visual Composition").
+   - **Main Visual 내용 분석과 텍스트 연결** — Main Visual로 판단한 이미지마다 그 이미지가 표현하는 기술·공정·단계 구성·전후 관계와 내부 텍스트(라벨·단계명·캡션)를 확인해 Content Regions에 짧게 기록한다(예: "img4[Main, 고밀도] — 전해액 제거→분리→탈리·선별→블랙파우더 4단계, 단계별 캡션 포함"). 먼저 `material_analysis.json`의 그 이미지 `description`을 사용하고, 그 기록이 단계·관계·내부 텍스트를 이미 담고 있으면 Vision을 다시 호출하지 않는다. `structural` 라우팅으로 이미지를 열어 보지 않아 기록이 소속 정보뿐이고 Phase A에서도 확인하지 않았을 때만 그 이미지에 한해 1회 Vision으로 확인한다(Supporting Evidence 이미지는 기존 보수적 라우팅 유지). 이 확인은 내용 기술용이며 이미지의 슬라이드 배정이나 `content_match_confidence` 상태를 바꾸지 않는다 — Claim과 어긋나 보이면 임의로 확정하지 않고 Structural Check에 기록한다. 이 분석 결과로 이미지의 각 단계·구성요소를 설명하는 텍스트(Claim/Evidence)를 그 이미지의 Dependent Content로 연결해 같은 Content Group으로 묶고(Design System §5 역할 분류), 이미지가 이미 보여주는 내용은 4단계 "중복 표현 사전 판정"의 근거로 쓴다.
 
 3. **정보 관계 분석** — 콘텐츠 간 관계를 아래 중 필요한 유형으로 판단한다: 병렬 / 비교 / 순차 / 인과 / 종속 / 전체-부분 / 단일 콘텐츠 / 기타·복합. 판단 기준은 콘텐츠 형식(표/차트/이미지/텍스트)이 아니라 정보의 의미와 관계다.
    - **Dominant Relationship 판단(슬라이드에 Claim이 여러 개이고 그 Relationship이 서로 다를 때)**: 이 항목의 Relationship 값은 슬라이드 전체를 대표하는 **Dominant Relationship**이다 — 여러 Claim 중 하나의 Evidence 내부에만 존재하는 부분적 인과·순차 관계를, 그 이유만으로 슬라이드 전체의 Relationship으로 승격하지 않는다. Core Message가 실제로 요약하는 범위와 각 Claim의 비중(몇 개 Claim이 해당 관계를 공유하는지)을 기준으로 슬라이드 전체에 공통되는 관계를 판단한다. Claim들의 관계 유형이 서로 달라 하나로 대표하기 어려우면 억지로 인과·순차 중 하나를 고르지 않고 **기타·복합**으로 표기한다.
@@ -209,10 +215,14 @@ Phase A가 확정한 `slide_composition_map.json`(슬라이드 경계·Source Ma
 
 4. **Content Region 설계** — 좌표·세부 디자인을 정하기 전에 큰 Content Region부터 설계한다(위 §5 원칙의 Region 구성 절차를 따름).
    - 대등한 Primary Content가 여러 개면 병렬 Region으로 묶는 것을 고려한다.
+   - **동일 위계 항목의 일관 배치**: 원문 번호(①~④ 등)·같은 형식·같은 상위 항목으로 같은 위계가 확인되는 항목은 기본적으로 같은 병렬 Region에 같은 구조·시각적 비중으로 배치한다. 그중 일부만 다른 Region(예: 상단 이미지 옆)이나 다른 역할(Shared Supporting 등)로 분리하려면 의미적 근거(예: 그 항목만 Main Visual이 직접 보여주는 단계, 다른 항목의 전제 조건)와 시각적 근거를 Structural Check에 기록한다. 남는 공간을 채우기 위한 분리는 허용하지 않으며, 근거가 있는 의도적 비대칭(강조·전제·결론 구조)은 허용한다.
+   - **연속 공정 Flow Region**: Phase A에서 연속 공정으로 통합된 이미지·단계는 개별 Region에 흩지 않고 공정 순서와 연결 관계(화살표·분기)를 유지한 하나의 Flow Region으로 설계한다(구체 구조는 Layout Routing에서 `process-system-architecture-layout.md` Layout B 등 기존 Layout을 따른다). 단계별 개발 내용은 각 단계의 Dependent Content로 그 Flow 아래·옆에 대응시킨다.
    - Dependent Content는 대응하는 Primary Content와 같은 Region(Group)에 둔다.
    - Shared Supporting Content는 특정 Column/Region에 임의로 귀속시키지 않고, 공통 Supporting Region을 우선 검토한다.
    - 1-b에서 서로 다른 상위 주장에 매핑된 근거들이 있으면, 그 근거들을 하나의 균질한 Region/그룹으로 뭉뚱그리지 않고 매핑된 주장 단위로 구분한다(예: 근거 A·B·C가 주장①을, 근거 D가 주장②를 뒷받침하면 최소한 서로 다른 근거 그룹으로 인지되도록 Region을 나누거나 구획한다 — 구체적 시각적 표현은 이후 단계 몫).
    - Conclusion/Takeaway가 필요하면 전체 내용을 종합하는 별도 Region을 고려한다.
+   - **Main Visual 면적 선배정**: 2단계에서 Main Visual(특히 `고밀도`)로 판단된 이미지·도식이 있으면, 텍스트 Region보다 먼저 그 Visual이 판독 가능하고 슬라이드의 시각적 중심이 될 만큼의 Region 면적을 배정한 뒤, 나머지 Region의 텍스트 분량을 남은 공간에 맞춘다(1-b의 Optional 근거 생략·문장 압축을 우선 적용 — `Claude_PPT_Design_System.md` §3 "Font Size 적용 원칙"의 Main Visual 예외와 같은 기준). 필요한 면적은 고정 비율로 정하지 않고 이미지 비율·내부 정보 밀도·Core Message 기여도로 판단한다(예: 가로로 긴 공정도는 폭, 정사각형에 가까운 개요도는 높이 확보가 관건). 남은 공간에 Required Evidence가 도저히 들어가지 않으면 Main Visual을 줄이지 않고 6단계에서 분할 또는 Layout 재검토 대상으로 표시한다.
+   - **중복 표현 사전 판정**: 제목·Supporting Message(Hard Rule §12)·Conclusion·Main Visual 내부 텍스트(라벨·단계명·캡션)가 같은 내용을 반복하는지 이 단계에서 확인한다. Supporting Message가 제목·Conclusion·Main Visual이 이미 전달하는 내용을 되풀이하면 Hard Rule §12 예외 ②(실질적으로 불필요)로 판정해 생략을 Structural Check에 기록한다. Main Visual 안에 이미 있는 단계명·라벨은 본문 Region의 제목·캡션으로 다시 쓰지 않는다 — 다만 이미지에 없는 구체적 개발방법·조건·목표는 핵심 용어가 일부 겹쳐도 유지한다.
    - **Data Pending Region 예약**: `visual_placeholders`(`data_status: "data_pending"`)로 표시된 근거가 배정된 Claim이 있으면, 데이터가 없다는 이유로 그 Region을 생략하거나 일반 텍스트 서술로 대체하지 않는다 — 원래 지시된 표현 방식(표/차트/도식, `instructed_visual_type`)에 맞는 Region 자리를 그대로 설계하고, Region 설명에 "Data Pending" 상태를 명시한다. 이렇게 하면 이후 실제 데이터가 채워질 때 Region 구조 전체를 다시 설계하지 않고 그 Region의 내용만 채울 수 있다. 실제 Data Pending 상태의 시각적 표현(예: "데이터 준비 중" 플레이스홀더 스타일)은 web-ppt-generator 구현 몫이며, 이 단계는 자리와 의도된 Visual Type까지만 확정한다.
    - **제작 지시문 우선 적용**: 이 슬라이드에 딸린 `production_directives` 중 `directive_type`이 `placement`(좌우·상하 배치 등)인 항목은 Region 배치를 정할 때 이 단계 자체 판단보다 우선한다(예: "박스 2개 위아래 배치"는 좌우 병렬이 아니라 상하 배치 Region으로 반영). Content Regions 기술에 어떤 지시(id)를 반영했는지 남긴다.
    - 각 Region의 콘텐츠 표현 방식(표/차트/이미지/텍스트 등)은 [`content-visualization-freedom.md`](../../../docs/design-system/content-visualization-freedom.md)의 "Evidence Relationship 기반 Visual 판단"·"콘텐츠 성격에 따른 보조 판단"을 따라 함께 판단하고, 면적 점유형/압축형 Visual 여부는 [`Claude_PPT_Design_System.md`](../../../docs/design-system/Claude_PPT_Design_System.md) §5 "Content Density / Content Group 원칙 > Main Visual 특성에 따른 밀도 기준"을 따라 Region 크기 판단에 반영한다. 이미지가 있는 Region은 2단계의 이미지별 시각 역할(Main Visual / Supporting Evidence, 고밀도 여부)을 함께 기술한다. `production_directives`(`visualization` 유형)로 표현 방식이 이미 지시된 경우 그 지시를 우선 적용한다.
@@ -234,7 +244,11 @@ Phase A가 확정한 `slide_composition_map.json`(슬라이드 경계·Source Ma
    - 서로 다른 상위 주장을 뒷받침하는 근거들이 하나의 균질한 그룹으로 뭉뚱그려지지 않았는가
    - Data Pending으로 표시된 Region이 삭제되거나 일반 텍스트로 조용히 대체되지 않고 자리와 의도된 Visual Type을 유지하고 있는가
    - Conclusion이 특정 Region 안에 묻혀 있지 않은가
+   - 동일 위계 항목 중 일부만 근거 없이 다른 Region·위치·크기로 분리돼 고립되지 않았는가(4단계 "동일 위계 항목의 일관 배치")
+   - 연속 공정으로 통합한 이미지·단계가 순서·연결 관계를 잃고 흩어지지 않았는가, 분할했다면 슬라이드 간 연결이 표현됐는가
    - 배정된 이미지마다 시각 역할(Main Visual / Supporting Evidence)이 Content Regions에 표기돼 있는가
+   - Main Visual이 텍스트 분량 때문에 판독 하한 근처로 밀려나는 구조가 아닌가(4단계 "Main Visual 면적 선배정"이 지켜졌는가)
+   - 제목·Supporting Message·Conclusion·이미지 내부 문구 사이의 중복이 남아 있지 않은가(4단계 "중복 표현 사전 판정")
    - 현재 구조로 한 슬라이드에 담기 어려운 콘텐츠량이면 요약 또는 슬라이드 분할이 필요한가(`content-visualization-freedom.md`의 "내용 과다 시 요약/슬라이드 분할 제안" 범위에서 판단)
    - 문제가 발견되면 2~5단계로 돌아가 재조정한다. 슬라이드 병합/유지/분할 자체를 다시 판단해야 하면(Content Region 설계만으로 해결되지 않으면) Phase A로 돌아가 `slide_composition_map.json`을 재조정한다 — 이 단계 자신은 슬라이드 경계를 바꾸지 않는다.
 
@@ -254,7 +268,7 @@ Phase A가 확정한 `slide_composition_map.json`(슬라이드 경계·Source Ma
     - Relationship: (단일 독립 근거 / 복수 비교 근거 / Before-After / 시간에 따른 변화·추세 / 단계별 변화 / 구성요소별 기여도 / 원인→결과 / 순환 관계 / 순차 공정·프로세스 / 병렬 동등 항목(Parallel/Peer Items) / 기타 중 해당하는 것 — 관계형이면 대표값 하나가 아니라 관계를 이루는 값 전체(이전 상태·중간 상태·이후 상태, 또는 단계별 값)를 기재한다. 병렬 동등 항목이면 나열된 개별 항목 전체를 기재한다. 아래는 형식 예시일 뿐 특정 자료의 실제 값이 아니다: "이전 상태 A → 이후 상태 B", "1단계 X / 2단계 Y / 3단계 Z", "항목 a / 항목 b / 항목 c(비교 아닌 나열)")
     - Required/Optional:
   - Claim: (두 번째 주장이 있으면 반복, 서로 다른 근거 그룹을 여기서 분리)
-- **Backward Completeness Check**: (1-c의 결과 — 모든 슬라이드에 `경량` 또는 `상세` 모드를 명시한다. 경량이면 Source Material/Evidence ID 보존 여부, 유형별 개수, uncertain/Data Pending 개수, 불일치 여부를 기록한다. 상세이면 추가로 범주별 개수(예: "명시반영 6 / Core Message반영 2 / 중복통합 1 / 라벨제외 3 / uncertain보류 2 / 미반영 0")와 재구성된 미반영 항목의 처리 결과(편입/Supporting Evidence로 유지/제외 사유)를 기록한다. 미반영 항목이 없었으면 "미반영 항목 없음"으로 명시한다.)
+- **Backward Completeness Check**: (1-c의 결과 — 모든 슬라이드에 `경량` 또는 `상세` 모드를 명시한다. 경량이면 Source Material/Evidence ID 보존 여부, 유형별 개수, uncertain/Data Pending 개수, 불일치 여부를 기록한다. 상세이면 추가로 범주별 개수(예: "명시반영 6 / Core Message반영 2 / 중복통합 1 / 라벨제외 3 / 의도적축약 2 / uncertain보류 2 / 미반영 0")와 재구성된 미반영 항목의 처리 결과(편입/Supporting Evidence로 유지/제외 사유)를 기록한다. 미반영 항목이 없었으면 "미반영 항목 없음"으로 명시한다.)
 - **Content Roles**:
   - Primary:
   - Dependent:

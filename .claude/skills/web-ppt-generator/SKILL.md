@@ -63,7 +63,8 @@ python .claude/skills/web-ppt-generator/scripts/new_version.py \
 ### Required Evidence 보존
 - Required로 표시된 Evidence는 생성 과정에서 임의로 삭제·축약하지 않는다.
 - 관계형 Evidence는 관계를 이루는 값 전체(예: 이전 상태·중간 상태·이후 상태, 또는 단계별/구성요소별 값)를 실제 HTML에 반영한다 — 대표값 하나만 남기는 것으로 대체하지 않는다.
-- 공간이 부족해 Required Evidence를 모두 구현하기 어려우면 아래 순서로 처리하고, 임의로 생략하지 않는다.
+- 공간이 부족하면 Optional Evidence 생략·문장 압축·중복 표현 제거를 Main Visual 축소보다 먼저 적용한다 — `slide_outline.md`가 Main Visual로 표기한 이미지·도식은 공간을 만들기 위해 판독 하한 근처로 줄이지 않는다(`Claude_PPT_Design_System.md` §3 "Font Size 적용 원칙"의 Main Visual 예외).
+- 그래도 Required Evidence를 모두 구현하기 어려우면 아래 순서로 처리하고, 임의로 생략하지 않는다.
   1. 같은 Selected Layout 안에서 배치·크기·밀도를 재구성해 공간을 확보한다(Layout 자체는 바꾸지 않음).
   2. 그래도 안 되면 Layout 자체가 이 Evidence를 수용하기 어렵다고 판단한 것이므로, 여기서 임의로 다른 Layout으로 바꾸지 않는다 — 아래 "생성 후 QA 절차"의 재검증·에스컬레이션 경로를 따라 Layout 재검토가 필요하다는 사실을 기록해 메인/사용자에게 이관한다.
   3. 그래도 처리되지 못한 경우 어떤 Required Evidence를 왜 구현하지 못했는지 `slide_outline.md`의 Structural Check 아래에 기록한다.
@@ -101,9 +102,9 @@ python .claude/skills/web-ppt-generator/scripts/new_version.py \
   - **외부 구조와 내부 이미지 크기의 구분**: Column/Card/Region의 외곽 폭·높이·Top Line 정렬(Claude PPT Design System §5 Parallel Layout Alignment, 위 "Table 동일 폭 Column", Layout MD의 동일 폭 Column·Region Map·Node 위치)은 그대로 지킨다. 이 규칙들은 **컨테이너**의 정렬이며, 그 안에 놓이는 이미지의 표시 크기를 하나의 동일 박스로 고정하라는 뜻이 아니다 — 컨테이너 정렬을 유지한 채 내부 이미지 크기는 이 항목 기준으로 정한다.
   - **과소 활용 금지(Visual Region Utilization — 위 Image Legibility의 반대 방향)**: 이미지가 배치되는 Region은 Image Legibility 기준을 지키는 범위 안에서 가용 공간을 최대한 채운다 — Region과 원본 종횡비가 다르다는 이유만으로 불필요한 배경색/회색 박스, 과도한 padding, 빈 wrapper 영역을 만들어 이미지를 실제보다 작게 표시하지 않는다. 이미지 주변을 박스로 채우는 것보다 이미지 자체를 충분히 크게 보여주는 쪽을 우선한다(사유: `references/design-decisions-log.md#shared-visual-region-uneven-boxes`).
   - **QA 표기**: 같은 정렬 그룹으로 맞춘 이미지에는 같은 `data-visual-group="{그룹 id}"`를, 모든 콘텐츠 이미지에는 `data-visual-role="main|supporting"`을 붙인다 — 아래 2-a의 `qa_render.py --audit-layout`이 비율 유지·그룹 정렬을 이 표기로 검사한다.
-  - 이 Region의 Caption/출처 표시는 위 "Caption/Source Annotation Tier의 배치" 기준대로 원본 이해·출처 표기에 실제로 필요한 경우에만 유지하고, 본문에서 이미 설명된 내용을 반복하거나 있음으로써 Visual 영역을 불필요하게 축소시킨다면 생략한다.
+  - 이 Region의 Caption/출처 표시는 위 "Caption/Source Annotation Tier의 배치" 기준대로 원본 이해·출처 표기에 실제로 필요한 경우에만 유지하고, 본문에서 이미 설명된 내용을 반복하거나 있음으로써 Visual 영역을 불필요하게 축소시킨다면 생략한다. 이미지 안에 이미 들어 있는 단계명·라벨·제목을 HTML 캡션이나 단계 라벨로 다시 붙이지 않는다.
 - 콘텐츠와 원본 Reference 구조가 명확히 충돌해 위 두 원칙을 지킬 수 없는 경우, 여기서 임의로 구조를 재설계하지 않는다 — 위 "생성 전 Implementation Contract 확인 > Required Evidence 보존"의 처리 순서(같은 Layout 안에서 재구성 → 안 되면 Layout 재검토 필요성 기록·이관)를 따라 Layout 재선택 대상으로 다룬다.
-- **Must Preserve 체크리스트 사전 발췌(Structure Contract)**: 위 Layout MD(또는 Implementation Reference)에 "Must Preserve/필수 정보/Layout-Specific Hard Rules/필수 Region" 등의 이름으로 명시된 섹션이 있으면, 이 세션에서 해당 Layout을 처음 쓰는 슬라이드의 **HTML 작성 전에** 그 섹션 항목을 원문 그대로(요약·재해석 없이) `<프로젝트>/.qa/v{N}/layout-checklist/{layout-slug}.md`에 발췌해 저장한다 — 아래 "1. Layout Compliance Check > Layout MD 재독 최소화"가 QA에서 쓰는 것과 **동일한 파일**이며, 이 시점에 만든 파일을 QA가 그대로 재사용한다(중복 발췌 없음). 이 체크리스트에 적힌 항목은 이번 슬라이드 HTML의 **필수 구조 조건**이다 — 구현 편의를 위해 일반 Column/Card 구조로 단순화하며 생략하지 않는다. 콘텐츠상 그 항목을 그대로 구현하기 어려운 명확한 이유가 있는 경우에만 예외로 생략할 수 있으며, 이때는 어떤 항목을 왜 생략했는지 `slide_outline.md`의 Structural Check 아래에 기록한다(위 "Required Evidence 보존"의 처리 원칙과 동일). 이런 이름의 섹션이 없는 Layout MD는 기존대로 본문 서술만 참고한다(모든 특수 Layout에 이 체크리스트를 강제하지 않음).
+- **Must Preserve 체크리스트 사전 발췌(Structure Contract)**: 위 Layout MD(또는 Implementation Reference)에 "Must Preserve/필수 정보/Layout-Specific Hard Rules/필수 Region" 등의 이름으로 명시된 섹션이 있으면, 이 세션에서 해당 Layout을 처음 쓰는 슬라이드의 **HTML 작성 전에** 그 섹션 항목을 원문 그대로(요약·재해석 없이) `<프로젝트>/.qa/v{N}/layout-checklist/{layout-slug}.md`에 발췌해 저장한다 — 아래 "1. Layout Compliance Check > Layout MD 재독 최소화"가 QA에서 쓰는 것과 **동일한 파일**이며, 이 시점에 만든 파일을 QA가 그대로 재사용한다(중복 발췌 없음). 이 체크리스트에 적힌 항목은 이번 슬라이드 HTML의 **필수 구조 조건**이다 — 구현 편의를 위해 일반 Column/Card 구조로 단순화하며 생략하지 않는다. 항목을 구현하기 어려우면 먼저 콘텐츠 쪽을 조정해 그 항목을 살린다(예: Header 라벨이 Hard Rule §10의 1줄 규격에 들어가지 않으면 Header를 없애지 않고 라벨을 핵심어로 축약하고, 긴 제목은 본문 쪽으로 옮긴다) — 텍스트·제목이 길다는 사실만으로는 생략 사유가 되지 않는다. 콘텐츠 조정으로도 그 항목을 그대로 구현할 수 없는 명확한 이유가 있는 경우에만 예외로 생략할 수 있으며, 이때는 어떤 항목을 왜 생략했는지 `slide_outline.md`의 Structural Check 아래에 기록한다(위 "Required Evidence 보존"의 처리 원칙과 동일). 이런 이름의 섹션이 없는 Layout MD는 기존대로 본문 서술만 참고한다(모든 특수 Layout에 이 체크리스트를 강제하지 않음).
 - **Implementation Reference 우선 참조**: 위 Layout MD와 같은 폴더에 그 MD 전용 Implementation Reference 파일(원본 pptx/디자인 파일에서 실측한 좌표·도형 종류·Connector 형태를 일반화 없이 정리한 문서 — 예: Flow Diagram의 [`flow-diagram-implementation-reference.md`](../../../docs/slide-design-rules/flow-diagram-implementation-reference.md))이 등록되어 있으면, HTML 좌표를 계산할 때 Layout MD 본문의 비율 서술(Region Map 등)이 아니라 **이 Implementation Reference 파일을 1차 소스로 읽는다** — pptx 원본을 매 슬라이드마다 다시 열어 분석하지 않기 위해 이미 1회 추출·정리해 둔 결과물이다. 두 문서의 수치가 다르면 Implementation Reference 값을 따른다. 아직 이런 파일이 없는 Layout은 기존대로 Layout MD 본문만 따른다(모든 특수 Layout에 이 파일을 강제하지 않음).
 - **구현 골격(Component Skeleton) 우선 재사용**: 같은 폴더(`scripts/templates/components/`)에 그 Layout 전용 HTML/CSS 골격 파일이 등록되어 있으면(예: Flow Diagram의 [`flow-diagram.css`](scripts/templates/components/flow-diagram.css) + [`flow-diagram.html`](scripts/templates/components/flow-diagram.html), Three-Column의 [`three-column.css`](scripts/templates/components/three-column.css) + [`three-column.html`](scripts/templates/components/three-column.html)), 반복되는 CSS 클래스·SVG/DOM 구조를 매번 새로 타이핑하지 않고 이 파일 내용을 그대로 복사해 시작한다 — Node/분기/Lane 개수, 실제 좌표(Implementation Reference 값), 콘텐츠·이미지는 이 골격이 정하지 않으므로 그대로 채워 넣는다. 골격이 커버하지 못하는 구조(예: 이 골격에 없는 새로운 Connector 패턴)는 위 Layout MD·Implementation Reference의 규칙에 따라 필요한 부분만 확장한다 — 골격에 맞추기 위해 Layout MD의 구조 규칙을 임의로 바꾸지 않는다. 아직 골격 파일이 없는 Layout은 기존대로 Layout MD/Implementation Reference만 보고 HTML/CSS를 작성한다.
 - 다른 슬라이드/다른 Layout을 위해 이미 만들어 둔 공용 컴포넌트(예: Process+Comparison의 가로 Step Box+화살표, Before-After의 Step Box+Connector 시퀀스)를 겉모습이 비슷하다는 이유로 그대로 가져와 이번 Layout MD의 구조를 대신하지 않는다. 기존 컴포넌트를 재사용하려면, 그 컴포넌트의 방향·Connector 분절/연속 규칙·Branch 처리 방식이 이번에 적용할 Layout MD의 요구사항과 실제로 일치하는지 먼저 대조하고, 일치하지 않으면 재사용하지 않고 그 Layout MD의 규칙대로 새로 구현한다.
@@ -119,7 +120,7 @@ python .claude/skills/web-ppt-generator/scripts/new_version.py \
 ### Divider 서브픽셀 렌더링
 - Hard Rule §10/§11이 정의한 Divider 두께 값(예: §11 Vertical Content Divider 0.5pt)은 변경하지 않는다.
 - 브라우저는 1px 미만 서브픽셀 두께를 안티앨리어싱으로 완전히 지워버리는 경우가 있다(예: 0.5pt ≈ 0.66px). **웹 렌더링(HTML/CSS)에 한해서만** 실제 스크린샷에서 보이지 않으면 최소 1px로 fallback한다 — 색상·Gradient·위치 등 그 외 스펙은 원래 값을 그대로 유지한다. pptx 변환은 벡터 기반이라 이 fallback을 적용하지 않고 Hard Rule 원래 pt 값을 그대로 사용한다.
-- 아래 "생성 후 QA 절차"의 Visual Quality Check에서 Divider·구분선의 실제 가시성을 스크린샷으로 확인한다.
+- 아래 "생성 후 QA 절차"의 Visual Quality Check(2-c 시각 자체 검토)에서 Divider·구분선의 실제 가시성을 스크린샷으로 확인한다.
 
 ### Table 동일 폭 Column
 - 동일 역할의 Target Column(예: Table Comparison의 여러 대상 Column, Before/After 표의 Existing/Improved 등 Layout MD가 "동일 폭"을 요구하는 Column)은 브라우저의 auto table layout에 맡기지 않는다.
@@ -155,12 +156,12 @@ python .claude/skills/web-ppt-generator/scripts/new_version.py \
 ## 생성 후 QA 절차 (Post-Generation QA)
 > Hard Rule/Claude PPT Design System/Content Visualization Freedom/Layout Reference는 항상 원본 경로를 다시 읽어 대조하며, 규칙 본문을 이 문서에 복사하지 않는다. `slide-structuring`의 [3] 판단이나 `pptx-exporter`의 [8] 변환 검증(슬라이드 수·요소 일치·파일 무결성)과 역할이 겹치지 않도록, 이 절차는 [5]/[7]에서 HTML/CSS를 생성·수정한 직후에만 적용한다.
 
-> **경량화 원칙(2026-08-24)**: 자동 QA는 **기계적으로 신뢰성 있게 판정 가능한 항목**(canvas overflow, text clipping, 최소 font size 위반, 명확한 object overlap, render/HTML 오류, broken image/resource, Layout MD 대비 수치 불일치)만 다룬다. **AI의 시각적·의미적 재판단이 필요한 항목**(전체 슬라이드 육안 재검토, screenshot 반복 Read, crop→확대→재판단, 디자인 균형/미관 판단, Layout Reference와의 육안 유사도, 이미지 의미 적합성 반복 Vision 검토, Content Fidelity uncertain/ambiguous flag의 추가 조사)은 자동 QA에서 수행하지 않고 Human Review ②([6])로 그대로 넘긴다. 실행 흐름은 **Web PPT 생성 → 기계적 QA 1회 → 확정 오류 수정 → 수정 슬라이드만 부분 QA → Human Review ②**로 고정하며, 부분 QA가 clean이면 그 시점에서 종료한다 — 통과를 재확인하기 위한 Final Full QA(전체 재렌더링·재감사)는 수행하지 않는다.
+> **경량화 원칙(2026-08-24, 2026-10-14 보완)**: 자동 QA는 **기계적으로 신뢰성 있게 판정 가능한 항목**(canvas overflow, text clipping, 최소 font size 위반, 명확한 object overlap, render/HTML 오류, broken image/resource, Layout MD 대비 수치 불일치)을 다룬다. 여기에 더해 생성·수정된 슬라이드마다 **1회만** 스크린샷을 보고 고정 체크리스트로 판단하는 시각 자체 검토(아래 "2-c")를 수행한다 — 반복 Read, crop→확대→재판단, 같은 슬라이드의 시각 검토 재수행은 하지 않는다. 그 밖의 정성적 판단(미관·취향, Layout Reference와의 육안 유사도, 이미지 의미 적합성의 반복 Vision 검토, Content Fidelity uncertain/ambiguous flag의 추가 조사)은 Human Review ②([6])로 넘긴다. 실행 흐름은 **Web PPT 생성 → 기계적 QA 1회 + 슬라이드당 시각 자체 검토 1회 → 확정 오류 수정 → 수정 슬라이드만 기계적 부분 QA → Human Review ②**로 고정하며, 부분 QA가 clean이면 그 시점에서 종료한다 — 통과를 재확인하기 위한 Final Full QA(전체 재렌더링·재감사)나 시각 검토 재수행은 하지 않는다.
 
 `v{N}`을 새로 만들거나 수정했으면, **그때 생성·수정된 슬라이드마다** 아래 순서로 QA를 수행한다. 단, [5] 최초 웹PPT 생성이 전체 슬라이드에 대해 처음 완료된 시점(v1)에는 아래 "0. 최초 생성 후 전체 QA"를 먼저 1회 수행한 뒤 슬라이드별 절차로 들어간다. [7] 이후의 수정 라운드에서는 이 전체 QA를 반복하지 않고 그때 변경된 슬라이드만 재검증하는 것이 기본이며, "0-b. 전체 QA 재실행이 필요한 경우"(공통 CSS/Template 등 전체 슬라이드에 영향을 주는 요소 변경)에 해당할 때만 예외적으로 전체 QA를 다시 수행한다.
 
 ### 0. 최초 생성 후 전체 기계적 QA (1회, [5] 최초 생성 직후에만)
-> 아래 검출 항목(Layout/Overflow/Clipping/Typography/Overlap/Content Fidelity) 자체는 줄이지 않는다 — 이 절은 그 항목들을 **언제·몇 번** 전체 범위로 도는지만 규정하며, 전부 기계적 검사다(스크린샷 육안 검토 없음).
+> 아래 검출 항목(Layout/Overflow/Clipping/Typography/Overlap/Content Fidelity) 자체는 줄이지 않는다 — 이 절은 그 항목들을 **언제·몇 번** 전체 범위로 도는지만 규정하며, 전부 기계적 검사다. 시각 자체 검토는 이 전체 패스와 별도로 아래 "2-c" 기준에 따라 슬라이드당 1회만 수행한다.
 
 - `python scripts/qa_render.py --web-ppt <web_ppt/v1> --out <프로젝트>/.qa/v1 --audit-fonts --audit-layout`(`--slides` 생략 시 전체 슬라이드 대상)로 전체 슬라이드의 Typography(1-b)와 Layout/Overflow/Clipping/Overlap(2-a)을 한 번의 배치 호출로 함께 감사한다.
 - `content_fidelity_qa.py`도 `--slides` 없이(전체 슬라이드 대상) 1회 실행해 Content Fidelity(1-d)를 함께 확인한다.
@@ -235,7 +236,7 @@ python .claude/skills/web-ppt-generator/scripts/content_fidelity_qa.py \
 - Relationship Fidelity, Chart Series/Axis/Legend 비교, 세밀한 Claim 의미 검증, HTML→PPTX parity는 이 단계에서 검사하지 않는다.
 
 ### 2. Visual Quality Check
-> 겹침·overflow·캔버스 이탈·Font Size처럼 좌표·CSS 값으로 기계적으로 판정 가능한 항목만 이 단계에서 자동 검사한다(2-a). 응집도·시각적 균형·가독성·이미지-캡션 의미 일치·Layout Reference와의 육안 유사도 등 **코드로 판정할 수 없는 정성적 기준은 삭제되지 않지만, 자동 QA의 책임이 아니다** — 스크린샷을 반복 Read하거나 crop해 확대·재판단하는 과정 없이, 아래 2-a만 수행하고 나머지 정성적 판단은 전부 Human Review ②([6])로 이관한다. 사용자가 브라우저로 직접 열어 이 항목들을 판단한다.
+> 겹침·overflow·캔버스 이탈·Font Size처럼 좌표·CSS 값으로 기계적으로 판정 가능한 항목은 2-a에서 자동 검사한다. 이미지·텍스트 비중, 큰 여백, 정렬, 중복 요소처럼 화면을 한 번 보면 판정할 수 있는 항목은 2-c의 고정 체크리스트로 슬라이드당 1회 확인한다. 그 밖의 정성적 판단은 Human Review ②([6])로 이관한다(2-b) — 스크린샷을 반복 Read하거나 crop해 확대·재판단하는 과정은 두지 않는다.
 
 #### 2-a. 자동 검사
 1. `scripts/qa_render.py`로 대상 슬라이드를 렌더링하면서 Font Size와 겹침/overflow/텍스트 잘림, render/HTML 오류, broken image/resource를 함께 감사한다(1-b와 한 번에 실행 가능): `python scripts/qa_render.py --web-ppt <web_ppt/vN> --out <프로젝트>/.qa/vN --slides <이번에 만든/고친 슬라이드 번호> --audit-fonts --audit-layout`.
@@ -243,22 +244,32 @@ python .claude/skills/web-ppt-generator/scripts/content_fidelity_qa.py \
      1. 한 슬라이드의 수정 결과가 다른 슬라이드의 수정 여부·내용에 영향을 줘서 순서대로 처리해야 하는 경우(순서 의존성이 실제로 있는 경우만 — 단지 같은 라운드에서 발견됐다는 이유만으로는 해당하지 않는다)
      2. 특정 슬라이드 하나만 별도로 재검증해야 하는 경우(예: 다른 슬라이드는 이미 통과했고 이 슬라이드만 추가 수정·재확인이 필요할 때)
 2. `<프로젝트>/.qa/vN/layout-audit.json`(겹침/overflow/clipping, `common_element_issues` — 슬라이드 유형별 공통 Header·좌측 Brand Line·페이지 번호의 누락·위치·색·비표준 클래스(기업개요 우측 사진처럼 `data-visual-frame="panel"`인 Full-Bleed 사진의 Crop은 `image_advisories`의 참고 기록), `image_issues` — 이미지 늘림 `aspect-distorted`·콘텐츠 이미지 잘림 `content-cropped`·같은 `data-visual-group` 안의 가로 높이/세로 너비 불일치, Flow Diagram 슬라이드의 `flow_issues` — Connector와 이미지·라벨·박스 충돌, 불필요한 꺾임, Process 소속 Lane 간격·Lane Band, 구분선·상단 콘텐츠 간격, Node 간격, Flow 영역(Body Box) 이탈, 종료 단계 공통 축. 판정 기준은 `flow-diagram-rules.md` "Visual Composition — Lane Band·연결점·구분선")과 `font-audit.json`(Typography 위반)을 읽고 어떤 슬라이드에서 위반이 탐지됐는지 확인한다 — 이 두 파일의 판정은 스크린샷을 열지 않아도 코드 결과로 확정할 수 있다.
-3. 2-a에서 이상이 탐지되지 않으면 이 슬라이드의 Visual Quality Check는 그것으로 종료한다 — 스크린샷을 열어 육안으로 재확인하지 않는다.
+3. 2-a의 기계적 판정은 이것으로 끝난다. 이어서 같은 렌더링에서 남은 스크린샷으로 아래 2-c를 슬라이드당 1회 수행한다.
 
 #### 2-b. Human Review ②로 이관되는 항목 (자동 QA 미수행)
-아래는 자동 QA에서 판단하지 않는다. QA 스크립트가 스크린샷을 남기더라도 그것을 열어 아래 항목을 재판단하는 절차는 수행하지 않으며, 그대로 [6] Human Review ②에서 사람이 확인한다.
-- Content Area 여백·쏠림·응집도, 병렬 Region 간 시각적 비중 균형, sibling Content Group 간 시각적 무게 균형
-- Container 대비 실제 Visual/텍스트 크기, Main Visual/Evidence/Table/Image의 콘텐츠량 대비 크기, Main/Supporting 이미지 간 시각적 위계(Supporting이 더 크다는 사실만으로 위반 처리하지 않음 — `layout-audit.json`의 `image_sizes`·`image_advisories`(letterboxed)는 이 판단의 참고 자료일 뿐이다)
-- 아이콘/도형/이미지의 의미 전달 적합성, 이미지·캡션 의미 일치
-- 고정 `max-width`/폭 값으로 인한 부자연스러운 줄바꿈
-- Divider/구분선의 실제 가시성(서브픽셀 렌더링으로 사라져 보이는지) — 보이지 않는다고 확인되면 위 "구현 기준 > Divider 서브픽셀 렌더링" 기준에 따라 1px fallback 적용
-- 컬러 이모지 아이콘의 브랜드 톤 이탈 — 위 "구현 기준 > 아이콘 렌더링" 기준에 따라 VS15 또는 SVG/브랜드 자산으로 교체
-- Selected Layout이 의도한 시각적 구성·Layout Reference와의 유사도가 실제로 구현됐는지
+아래는 자동 QA·2-c에서 판단하지 않고 그대로 [6] Human Review ②에서 사람이 확인한다.
+- 아이콘/도형/이미지의 의미 전달 적합성, 이미지·캡션 의미 일치(이미지 선택 자체의 적절성)
+- Selected Layout이 의도한 시각적 구성·Layout Reference와의 육안 유사도
+- 미관·톤·취향 수준의 판단(2-c 체크리스트에 해당하지 않는 디자인 완성도)
+- 2-c에서 발견했지만 Layout 변경이 필요해 자동 수정 범위를 넘는 문제
+
+#### 2-c. 시각 자체 검토 (슬라이드당 1회)
+> 기계 검사(2-a)가 통과해도 남는 시각적 완성도 문제를 Human Review ② 전에 한 번 거르기 위한 절차다(사유: `references/design-decisions-log.md#content-retention-and-visual-shrink`). 생성·수정된 슬라이드마다 2-a가 남긴 스크린샷을 **1회만** 열어 아래 고정 체크리스트로 판정한다. 체크리스트 밖의 새 기준을 만들지 않고, 확대·재판단·재검토를 반복하지 않는다.
+
+- **Main Visual 비중**: `slide_outline.md`가 Main Visual로 표기한 이미지·도식이 슬라이드의 시각적 중심으로 보이는가, 텍스트 분량 때문에 작게 밀려나 있지 않은가(위 "이미지 표시 크기·시각적 위계"·"과소 활용 금지" 기준)
+- **여백·쏠림**: Content Area에 의미 없는 큰 빈 영역이 남거나, 콘텐츠가 한쪽(상단·한 Column)에 몰려 있지 않은가(Design System §5 Content Density)
+- **병렬 균형·정렬**: 대등한 Column/Region의 정보량·시각적 비중이 크게 어긋나지 않는가, 같은 역할 요소(제목·번호·첫 줄)의 기준선이 맞는가, 동일 위계 항목 중 일부만 근거 없이 다른 위치·크기·스타일로 고립되지 않았는가(Design System §5 Parallel Layout Alignment, `slide-structuring` 4단계 "동일 위계 항목의 일관 배치" — Structural Check에 근거가 기록된 의도적 비대칭은 위반이 아니다)
+- **중복 요소**: 제목·Supporting Message·Conclusion·이미지 내부 문구·캡션이 같은 내용을 반복하지 않는가(`slide-structuring` 4단계 "중복 표현 사전 판정")
+- **불필요한 요소**: 의미 보강 없이 들어간 아이콘·강조 박스·캡션·출처 문구가 핵심 메시지보다 눈에 띄지 않는가(`content-visualization-freedom.md` Not Allowed·이미지 자산 활용 기준)
+- **박스 경계·가독성**: 테두리·배경이 있는 상자 밖으로 텍스트가 나가 있지 않은가(2-a가 `overflow: visible` 상자의 넘침을 잡지 못하는 경우 보완), 부자연스러운 줄바꿈이나 보이지 않는 Divider가 없는가
+
+판정 결과는 슬라이드별로 `qa_report.md`에 "2-c: 이상 없음" 또는 발견 항목으로 기록한다. 발견 항목은 아래 "3. 자동 수정 범위" 안에서 수정하고, Layout 변경이 필요하면 2-b로 이관한다.
 
 Human Review ②에서 위 항목에 대한 수정 요청이 오면 [7] 피드백 반영 절차를 그대로 따른다 — 이 문서의 자동 QA 재검증 루프에는 포함하지 않는다. 단, 위 항목 중 문구 변경·Text/Image 좌표(X/Y)·크기·이미지 교체류의 최종 미세 조정은 Human Fine Editing 도구(`scripts/fine_editor/`, CLAUDE.md "Human Fine Editing" 절)로 사람이 직접 처리하며 이 스킬(web-ppt-generator)이 다시 호출되지 않는다 — 응집도·시각적 균형·이미지 의미 적합성 등 구조 판단이 필요한 나머지 피드백만 [7] 경로로 들어온다.
 
 ### 3. 자동 수정 범위
-1·1-b·1-c·1-d·2-a에서 **기계적으로 확정 가능한** 문제가 발견되면 아래 범위 안에서만 수정한다. 2-b로 이관된 정성적 항목(응집도·균형·의미 적합성 등)은 여기서 다루지 않는다 — Human Review ②에서 수정 요청이 오면 그때 [7]로 처리한다.
+1·1-b·1-c·1-d·2-a에서 **기계적으로 확정 가능한** 문제와 2-c 체크리스트에서 발견된 문제가 있으면 아래 범위 안에서만 수정한다. 2-b로 이관된 정성적 항목은 여기서 다루지 않는다 — Human Review ②에서 수정 요청이 오면 그때 [7]로 처리한다.
+- (2-c 발견 시) Optional 텍스트 생략·문장 압축으로 Main Visual 면적 확보, 같은 Region 안에서 Main Visual 확대(Image Legibility·원본 비율 유지), 중복된 Supporting Message(§12 예외 ②)·캡션·이미지 내부 문구 반복 제거, 의미 보강 없는 아이콘·강조 박스 제거, 병렬 Region 내부 Gap·세로 배분·기준선 정렬 조정, 상자 밖 텍스트를 상자 크기·줄바꿈 조정으로 해소
 - Visual/Image/Table/Chart의 크기 조정(overflow/clipping 해소 목적)
 - 내부 Gap 조정(overlap 해소 목적)
 - `flow_issues` 해소 — `flow-diagram-rules.md` "Visual Composition" 절차대로 Region Map 범위 안에서 Lane Y·Node 위치·Connector 경로·분기 브래킷 끝점·구분선 위치·같은 역할 이미지의 공통 높이를 다시 계산한다(공정 순서·분기 구조·이미지 선택·Layout은 바꾸지 않음)
@@ -272,11 +283,11 @@ Human Review ②에서 위 항목에 대한 수정 요청이 오면 [7] 피드�
 슬라이드의 핵심 메시지나 `slide_outline.md`의 **Selected Layout 자체는 변경하지 않는다.** Layout을 바꿔야 해결되는 문제로 판단되면(1-c에서 Required Evidence가 같은 Layout 안에서 도저히 수용되지 않는 경우 포함) 자동 수정하지 않고 아래 4번의 에스컬레이션 경로를 따른다.
 
 ### 4. 재검증
-수정한 슬라이드만 대상으로 1·1-b·1-c·1-d·2-a를 다시 실행한다(동일한 `--slides` 범위, 배치 호출 원칙 동일 — 여러 슬라이드를 동시에 고쳤다면 한 번의 `--slides` 콤마 리스트로 묶어 재렌더링한다). 스크린샷을 다시 열어 확인하는 절차는 없다 — 2-a 결과(`layout-audit.json`/`font-audit.json`)와 1-d 결과(`content-fidelity-report.json`)가 clean이면 그 슬라이드의 재검증은 통과다. **최대 2회까지만** 반복한다. 2회 후에도 기계적 QA가 clean하게 통과하지 않으면(또는 애초에 Layout 변경이 필요하다고 판단되면) 슬라이드 번호와 미해결 문제를 `<프로젝트>/.qa/vN/qa_report.md`에 기록하고, content-designer는 이를 메인에게 보고해 Human Review ②([6]) 대상으로 표시한다.
+수정한 슬라이드만 대상으로 1·1-b·1-c·1-d·2-a를 다시 실행한다(동일한 `--slides` 범위, 배치 호출 원칙 동일 — 여러 슬라이드를 동시에 고쳤다면 한 번의 `--slides` 콤마 리스트로 묶어 재렌더링한다). 2-c 시각 자체 검토는 재수행하지 않는다(슬라이드당 1회) — 2-a 결과(`layout-audit.json`/`font-audit.json`)와 1-d 결과(`content-fidelity-report.json`)가 clean이면 그 슬라이드의 재검증은 통과다. **최대 2회까지만** 반복한다. 2회 후에도 기계적 QA가 clean하게 통과하지 않으면(또는 애초에 Layout 변경이 필요하다고 판단되면) 슬라이드 번호와 미해결 문제를 `<프로젝트>/.qa/vN/qa_report.md`에 기록하고, content-designer는 이를 메인에게 보고해 Human Review ②([6]) 대상으로 표시한다.
 
 ## 스크립트
 - `scripts/new_version.py` — 버전 스냅샷 생성/롤백
-- `scripts/qa_render.py` — 생성 후 QA용 슬라이드 스크린샷 렌더링(Playwright, [5]/[7] 직후 사용). `--audit-fonts`는 Typography 위반을, `--audit-layout`은 겹침/캔버스 이탈(overflow)/텍스트 잘림과 이미지 비율 유지·그룹 정렬(`image_issues`), Flow Diagram 기하(`flow_issues`/`flow_advisories`), 슬라이드 유형별 공통 요소(`common_element_issues` — Header 위치·색, 좌측 Brand Line, 페이지 번호 표시 여부·위치·클래스)를 좌표·computed style로 감사해 각각 `font-audit.json`/`layout-audit.json`으로 저장한다 — "2. Visual Quality Check > 2-a"의 기계적 판정에 그대로 사용하며, 이 결과가 clean이면 스크린샷을 열어 육안으로 재확인하지 않는다. 응집도 등 정성적 판단은 2-b에 따라 자동 QA 범위 밖이며 Human Review ②로 이관된다.
+- `scripts/qa_render.py` — 생성 후 QA용 슬라이드 스크린샷 렌더링(Playwright, [5]/[7] 직후 사용). `--audit-fonts`는 Typography 위반을, `--audit-layout`은 겹침/캔버스 이탈(overflow)/텍스트 잘림과 이미지 비율 유지·그룹 정렬(`image_issues`), Flow Diagram 기하(`flow_issues`/`flow_advisories`), 슬라이드 유형별 공통 요소(`common_element_issues` — Header 위치·색, 좌측 Brand Line, 페이지 번호 표시 여부·위치·클래스)를 좌표·computed style로 감사해 각각 `font-audit.json`/`layout-audit.json`으로 저장한다 — "2. Visual Quality Check > 2-a"의 기계적 판정에 그대로 사용한다. 같은 실행이 남긴 스크린샷은 2-c 시각 자체 검토(슬라이드당 1회)에만 쓰고, 2-c 밖의 정성적 판단은 2-b에 따라 Human Review ②로 이관된다.
 - `scripts/content_fidelity_qa.py` — 기존 분석 산출물과 HTML을 한 번씩 읽어 명시적 사실 추가, Required Evidence atom 누락, uncertainty marker 유실만 검사하는 비-LLM 경량 QA. 최초 생성 또는 변경 슬라이드에만 실행한다.
 - `scripts/bundle_for_share.py` — 확정된 `vN/` 버전을 외부 공유용 단일 self-contained HTML(`shared.html`)로 번들링(CSS·이미지·로컬 스크립트 인라인, 원본 `index.html`/`style.css`/`assets/`는 읽기 전용). 메인 에이전트가 CLAUDE.md [6] "확정 웹PPT 공유용 HTML 자동 생성" 절차에 따라 **모든 `v{N}` 확정 시 기본으로** 직접 실행하는 LLM 판단 불필요 스크립트이며(사용자의 별도 공유 요청과 무관), [5]/[7] 생성·수정이나 위 QA 절차와 무관한 별도 후처리 단계다. 인라인 처리 후에도 로컬 파일 참조가 남아 있으면(예: 찾을 수 없는 이미지, `file:///` 절대경로) 스크립트가 종료 코드 1로 실패하고 `shared.html`을 쓰지 않는다 — 원본 파일은 이 스크립트가 애초에 읽기만 하므로 실패해도 훼손되지 않는다. content-designer가 직접 호출할 일은 없다.
 - `scripts/templates/` — 슬라이드 기본 HTML/CSS 템플릿. `style.css`는 브랜드 토큰과 Hard Rule §9 공통 클래스의 Single Source of Truth이고, `index.html` 주석에 본문 공통 마크업이 있다. CI 이미지는 `assets/ci/`(Color/White, Closing 전용 White 고해상도본)에 포함돼 scaffold 시 함께 복사된다.
