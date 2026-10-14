@@ -127,6 +127,11 @@ python .claude/skills/web-ppt-generator/scripts/new_version.py \
 - `<colgroup>` + `table-layout: fixed`로 각 Column에 명시적 `width`(%)를 지정해 콘텐츠 길이와 무관하게 폭이 고정되도록 구현한다.
 - 구체적인 Column 비율(예: Criteria 20% : Target 39% : Target 41%)은 이 문서가 정의하지 않으며, 해당 Layout MD(`table-comparison.md`, `before-after.md` §5.1 등)의 값을 그대로 따른다.
 
+### Data Table 공통 구현 (Hard Rule §10B)
+- 비교표는 `templates/style.css`의 공통 클래스로만 구현한다 — 프로젝트별로 표 Header·Grid·강조 CSS를 새로 만들지 않는다. `<div class="tbl-wrap">` 안에 `<table class="data-table">`(+`<colgroup>`)을 두고, Criteria 칸은 `<th class="crit">`, 캡션은 `.cap`을 쓴다. 019 Solid Card 표는 `.data-table.style-019`, Before–After Variant B 표는 `.data-table.style-ba`를 붙인다(Hard Rule §10B 적용 범위 예외).
+- `slide_outline.md`의 **Layout Options**를 `<table>`의 `data-table-mode` / `data-emphasis` / `data-emphasis-cols` / `data-emphasis-label`에 그대로 옮긴다(값 정의: `table-comparison.md` §8).
+- 강조 요소는 같은 `.tbl-wrap` 안에 둔다 — Text: 대상 Cell에 `.emph-text` / Outline: `<div class="emph-outline">`(+ 그룹 Label이면 `<div class="emph-label">`, `.tbl-wrap`에 `.has-label`) / Solid Card: `<div class="emph-card">` + 카드 위 Cell에 `.on-card`. 위치는 JS로 계산하지 않고(비활성 슬라이드는 `display:none`이라 측정 불가) `style="--emph-left:{대상 앞 Column 폭 합}%; --emph-width:{대상 Column 폭 합}%"`로 `colgroup` 비율에서 지정한다. pptx 겹침 순서는 DOM 순서를 따르므로 `.emph-card`는 `<table>` **앞**에, `.emph-outline`·`.emph-label`은 `<table>` **뒤**에 둔다.
+
 ### 아이콘 렌더링
 - PPT용 아이콘에 Unicode 이모지 문자를 사용할 때, 브라우저가 컬러 이모지(예: 광택 있는 3D 구체)로 렌더링해 Design System의 Flat/브랜드 컬러 아이콘 톤과 어긋나는 경우가 있다.
 - 적절한 SVG 아이콘 또는 브랜드 자산(`/docs/brand-assets/`)이 있으면 그것을 우선 사용한다.
@@ -183,6 +188,12 @@ python .claude/skills/web-ppt-generator/scripts/new_version.py \
 1. `slide_outline.md`에서 해당 슬라이드의 **Selected Layout**을 확인하고, 실제 HTML의 구조(클래스명·요소 구성)가 그 Layout과 일치하는지 대조한다.
 2. Selected Layout이 가리키는 Layout MD 원본(`docs/slide-design-rules/...` 또는 `layout-catalog_V1.md`)을 확인하고, 그 문서가 Must Preserve/Avoid로 명시한 핵심 규칙과 Divider·Column/Target 폭 비율·Alignment·Width/Height·Header·Visual 비중 관련 수치를 실제 CSS 값과 하나씩 대조한다 — **이번 세션에서 이미 이 Layout MD를 읽고 대조한 적이 있다면 다시 Read하지 않고, 아래 "Layout MD 재독 최소화" 절차에 따라 재사용한다.** **"이 요소가 존재하는가"가 아니라 "명시된 세부 스펙(예: Divider의 Gradient·inset%, 동일 역할 Column의 동일 폭, Header의 정확한 pt/색상)대로 구현됐는가"까지 확인한다** — 이미 규칙에 맞는 공용 CSS 클래스(예: `.v-divider`, `.content-header-bar`)가 파일에 정의돼 있다면, 슬라이드가 그 클래스를 실제로 참조하는지, 아니면 별도 인라인 스타일로 재구현해 스펙이 새어나가지 않았는지도 확인한다. 문서 전체를 옮겨 적지 않고, 이 슬라이드에 실제로 적용된 값(Fill 여부, 정렬, 폭 비율, Gap 등)만 확인한다.
 3. 위 대조에서 Hard Rule 또는 Claude PPT Design System(특히 §5 Content Density/Parallel Layout Alignment 원칙, §8 Table Style)과 Layout MD의 세부값이 다르면, `design-rules.md`의 우선순위(Hard Rule > Design System > Content Visualization Freedom > Layout Reference)에 따라 상위 문서 값을 기준으로 판단한다.
+4. **표 계열(`table-comparison.md`) 추가 확인** — 아래 중 하나라도 해당하면 위반이다.
+   - `data-*` 속성 값이 `slide_outline.md` Layout Options와 다르다(Variant·옵션이 outline에 없으면 outline 누락으로 메인에 보고).
+   - 공통 `.data-table` 대신 별도 표 CSS를 썼거나, Header Row 틴팅·전체 Grid·Primary 마감선(Hard Rule §10B)이 일부 Cell/Row에서 빠졌거나 행·열 틴팅을 임의로 바꿨다(019 `style-019` 표는 §10B 예외대로 가로선만).
+   - `visual-evidence`인데 Visual Evidence Row의 Target Cell 중 Visual이 없는 Cell이 있다(데이터 없음 `-`이 Structural Check에 기록된 경우 제외), 또는 Visual을 표 밖에 따로 배치했다.
+   - 금지 조합(`table-comparison.md` §8): `solid-card` + `visual-evidence`, `solid-card` 여러 Column, 떨어진 Column을 묶은 `outline`, 강조 2종 이상, 대상이 Row 축인데 `outline`/`solid-card`.
+   - Outline이 대상 Column(Group)의 Header 상단~마지막 Row 하단을 한 박스로 감싸지 않거나, Header·Cell 텍스트·이미지를 가린다.
 
 #### Layout MD 재독 최소화 (세션 내 1회 원칙)
 > design-rules.md "세션 내 원본 문서 재사용 원칙"을 Layout MD에 적용한 절차다. 매 슬라이드 QA마다 같은 Layout MD 원본을 통째로 다시 Read하지 않기 위해, 위 "전용 Layout의 구조 규칙 우선 적용 > Must Preserve 체크리스트 사전 발췌"에서 만든 `<프로젝트>/.qa/v{N}/layout-checklist/{layout-slug}.md`를 QA도 그대로 재사용해 실제 CSS 값과 대조한다(새로 만들지 않음). 그 파일이 아직 없는 경우(사전 발췌 대상이 아니었거나 도입 이전 슬라이드를 다시 QA하는 경우)에만 최초 대조 시 그 발췌 절차를 동일하게 수행한다.

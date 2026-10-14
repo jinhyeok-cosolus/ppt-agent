@@ -82,7 +82,7 @@
 1. **Relationship/Visual Strategy 확인** — `slide-structuring`(Phase B)이 식별한 Relationship 유형(단일 독립 근거 / 복수 비교 근거 / Before-After / 시간에 따른 변화·추세 / 단계별 변화 / 구성요소별 기여도 / 원인→결과 / 순환 관계 / 순차 공정·프로세스 / 기타)과, `content-visualization-freedom.md`가 그에 대해 제시한 Visual Strategy 방향을 확인한다.
 2. **Relationship에 맞는 Layout 계열 우선 검토** — 아래는 Relationship이 어떤 Layout 계열을 우선 검토 대상으로 만드는지의 **방향**이며, 특정 Relationship을 특정 Layout 하나에 고정 매핑하지 않는다. 아래 목록에 없는 Relationship이나 계열은 위 "콘텐츠 구조별 특수 Layout Reference" 인덱스(`special-layout-index_V1.md`)와 `layout-catalog_V1.md`(L01~L33) 전체에서 실제 Use When 조건을 대조해 판단한다.
    - 독립·대등 항목(단일 독립 근거가 여러 개 병렬) → Column/Card 계열 검토 가능
-   - 복수 비교 근거 → **모든 대상이 공유하는 동일한 Row/Column 비교축(공통 평가 기준)이 실제로 존재할 때만** Comparison 계열(표/매트릭스 등) 우선 검토한다. 그룹마다 항목 구성(종류·개수)이 달라 공통 비교축이 없으면 비교 관계가 아니라 독립·대등 항목 병렬 관계에 가까우므로 Column/Card 계열을 우선 검토한다 — 정량 데이터·수치 항목이 많다는 이유만으로 Table/Matrix를 선택하지 않는다
+   - 복수 비교 근거 → **모든 대상이 공유하는 동일한 Row/Column 비교축(공통 평가 기준)이 실제로 존재할 때만** Table Comparison(`table-comparison.md` — 표 계열 단일 Layout, 구성·강조는 그 문서 §7·§8에서 선택)을 우선 검토한다. 그룹마다 항목 구성(종류·개수)이 달라 공통 비교축이 없으면 비교 관계가 아니라 독립·대등 항목 병렬 관계에 가까우므로 Column/Card 계열을 우선 검토한다 — 정량 데이터·수치 항목이 많다는 이유만으로 Table/Matrix를 선택하지 않는다
    - Before/After → Before-After 또는 Comparison 계열 우선 검토
    - 순환 관계 → 순환·되먹임 구조를 보존할 수 있는 Layout 우선 검토
    - 순차 관계/공정 → Process/Flow 계열 우선 검토

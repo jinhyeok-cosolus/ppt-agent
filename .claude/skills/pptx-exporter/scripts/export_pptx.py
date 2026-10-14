@@ -433,6 +433,18 @@ async () => {
   const textInfo = (node, slideRect, order, parentEl) => {
     const range = document.createRange();
     range.selectNodeContents(node);
+    // 앞뒤 공백은 PPT 텍스트에서 잘라내므로(trim) 측정 범위에서도 뺀다 — 공백을 포함한 박스에
+    // 잘린 텍스트를 넣으면 왼쪽 정렬은 앞 공백만큼 왼쪽으로, 가운데 정렬은 공백 절반만큼 밀려
+    // 인접 인라인 요소와 붙거나 띄어쓰기가 사라진 것처럼 보인다(예: "흑연 <b>자체발열</b>").
+    {
+      const csP = getComputedStyle(parentEl);
+      if (csP.whiteSpace === 'normal' || csP.whiteSpace === 'nowrap') {
+        const v = node.nodeValue;
+        const a = v.search(/\S/);
+        const b = v.length - (v.match(/\s*$/)[0].length);
+        if (a >= 0 && b > a) { range.setStart(node, a); range.setEnd(node, b); }
+      }
+    }
 
     // getBoundingClientRect()는 여러 줄로 줄바꿈된 텍스트의 "전체 합집합" 박스를
     // 반환한다. 앞에 인라인 라벨(예: <span>태그</span>본문...)이 붙어 첫 줄만
@@ -614,8 +626,11 @@ async () => {
           return Array.from(tr.children).filter(c => c.tagName === 'TD' || c.tagName === 'TH').map(td => {
             const cr = td.getBoundingClientRect();
             const csTd = getComputedStyle(td);
+            // <br> 줄바꿈은 셀 안 줄바꿈으로 유지한다(innerText는 <br>을 \n으로 돌려준다).
+            const cellText = (td.innerText || td.textContent || '').split('\n')
+              .map(s => s.replace(/\s+/g, ' ').trim()).filter(s => s).join('\n');
             return {
-              text: td.textContent.replace(/\s+/g, ' ').trim(),
+              text: cellText,
               isHeader: td.tagName === 'TH',
               x: cr.left - sr.left, y: cr.top - sr.top, w: cr.width, h: cr.height,
               style: {
@@ -625,11 +640,24 @@ async () => {
                 fontSize: csTd.fontSize,
                 fontWeight: csTd.fontWeight,
                 textAlign: csTd.textAlign,
-                // 표 자체의 top border(첫 행에만), 각 행의 bottom border
-                borderTopWidth: rowIdx === 0 ? num(csTable.borderTopWidth) : 0,
-                borderTopColor: csTable.borderTopColor,
-                borderBottomWidth: num(csTr.borderBottomWidth),
-                borderBottomColor: csTr.borderBottomColor
+                lineHeight: csTd.lineHeight,
+                letterSpacing: csTd.letterSpacing,
+                paddingTop: num(csTd.paddingTop), paddingRight: num(csTd.paddingRight),
+                paddingBottom: num(csTd.paddingBottom), paddingLeft: num(csTd.paddingLeft),
+                // 셀 자신의 border(border-collapse 표는 대개 td/th에 선을 준다)를 우선 쓰고,
+                // 없으면 표 top border(첫 행에만)·행(tr) bottom border로 대체한다
+                borderTopWidth: num(csTd.borderTopWidth) || (rowIdx === 0 ? num(csTable.borderTopWidth) : 0),
+                borderTopColor: num(csTd.borderTopWidth) ? csTd.borderTopColor : csTable.borderTopColor,
+                borderBottomWidth: num(csTd.borderBottomWidth) || num(csTr.borderBottomWidth),
+                borderBottomColor: num(csTd.borderBottomWidth) ? csTd.borderBottomColor : csTr.borderBottomColor,
+                // 세로 구분선(열 사이 Grid)
+                borderLeftWidth: num(csTd.borderLeftWidth), borderLeftColor: csTd.borderLeftColor,
+                borderRightWidth: num(csTd.borderRightWidth), borderRightColor: csTd.borderRightColor,
+                // 정확한 두께가 필요한 변은 CSS 변수 --pptx-line-top/-bottom/-left/-right(예: 1pt)로 선언한다
+                pptxLineTop: csTd.getPropertyValue('--pptx-line-top').trim(),
+                pptxLineBottom: csTd.getPropertyValue('--pptx-line-bottom').trim(),
+                pptxLineLeft: csTd.getPropertyValue('--pptx-line-left').trim(),
+                pptxLineRight: csTd.getPropertyValue('--pptx-line-right').trim()
               }
             };
           });
@@ -720,6 +748,45 @@ async () => {
         // SVG/canvas의 자손 텍스트는 캡처 이미지에 이미 포함되고, table의 자손 텍스트는
         // 위 table 캡처에서 셀 단위로 이미 포함되므로 중복 native text를 만들지 않는다.
         const hasComplexAncestor = !!el.closest('svg,canvas,table');
+
+        // 목록 기호(::marker)는 DOM 텍스트 노드가 아니라 위 순회로는 잡히지 않는다. Chrome은 disc/circle/square를
+        // 글리프가 아니라 도형으로 그리므로(지름 ≈ ascent/3, Pretendard ascent 0.952em), 같은 크기의 도형으로 만든다.
+        // 위치는 Chromium 실측(16~32px)에 맞춘 값: 기호 왼쪽 = 콘텐츠 시작 X − 7px − 지름×2,
+        // 세로 중심 = 첫 글자 범위 top + 높이×0.53 (line-height와 무관).
+        if (!hasComplexAncestor && visible && cs.display === 'list-item'
+            && ['disc', 'circle', 'square'].includes(cs.listStyleType) && cs.listStylePosition === 'outside') {
+          const tw = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+          let firstText = null, n2;
+          while ((n2 = tw.nextNode())) { if (n2.nodeValue.trim()) { firstText = n2; break; } }
+          if (firstText) {
+            const fr = document.createRange();
+            const ai = firstText.nodeValue.search(/\S/);
+            fr.setStart(firstText, ai); fr.setEnd(firstText, ai + 1);
+            const lr = fr.getClientRects()[0];
+            const mcs = getComputedStyle(el, '::marker');
+            const fs = num(mcs.fontSize || cs.fontSize);
+            const d = fs * 0.952 / 3;
+            const contentLeft = r.left + num(cs.borderLeftWidth) + num(cs.paddingLeft);
+            const mColor = mcs.color || cs.color;
+            if (lr && d > 0) {
+              const hollow = cs.listStyleType === 'circle';
+              result.items.push({
+                kind: 'box', order: order++, tag: 'li-marker',
+                x: contentLeft - 7 - 2 * d - sr.left, y: lr.top + lr.height * 0.53 - d / 2 - sr.top, w: d, h: d,
+                visible: true,
+                style: {
+                  backgroundColor: hollow ? 'rgba(0, 0, 0, 0)' : mColor, backgroundImage: null,
+                  borderTopWidth: hollow ? 1 : 0, borderRightWidth: hollow ? 1 : 0,
+                  borderBottomWidth: hollow ? 1 : 0, borderLeftWidth: hollow ? 1 : 0,
+                  borderTopColor: mColor, borderRightColor: mColor, borderBottomColor: mColor, borderLeftColor: mColor,
+                  borderTopStyle: 'solid', borderRightStyle: 'solid', borderBottomStyle: 'solid', borderLeftStyle: 'solid',
+                  borderRadius: cs.listStyleType === 'square' ? '0px' : '50%', opacity: '1'
+                }
+              });
+            }
+          }
+        }
+
         if (!hasComplexAncestor) {
           for (const tn of directTextNodes(el)) {
             const ti = textInfo(tn, sr, order++, el);
@@ -1149,6 +1216,18 @@ def add_box(slide, item: dict, sx: float, sy: float, web_ppt_dir: Path, temp_dir
         return
 
     shape_kind = MSO_SHAPE.OVAL if _is_circular(style, w, h) else MSO_SHAPE.RECTANGLE
+    # 둥근 모서리(border-radius): 네 모서리 같으면 ROUNDED_RECTANGLE, 위쪽 두 모서리만이면
+    # ROUND_2_SAME_RECTANGLE로 그린다(조정값 = 반경 / 짧은 변).
+    round_adj = None
+    if shape_kind is MSO_SHAPE.RECTANGLE:
+        radii = _radii_px(style)
+        if radii and max(radii) > 0.5:
+            tl, tr, br, bl = radii
+            short = min(item["w"], item["h"])
+            if short > 0 and abs(tl - tr) < 0.5 and abs(tl - br) < 0.5 and abs(tl - bl) < 0.5:
+                shape_kind, round_adj = MSO_SHAPE.ROUNDED_RECTANGLE, [min(tl / short, 0.5)]
+            elif short > 0 and abs(tl - tr) < 0.5 and br < 0.5 and bl < 0.5:
+                shape_kind, round_adj = MSO_SHAPE.ROUND_2_SAME_RECTANGLE, [min(tl / short, 0.5), 0.0]
 
     exact_px = _exact_line_px(style)
     if exact_px is not None and shape_kind is MSO_SHAPE.RECTANGLE:
@@ -1174,6 +1253,9 @@ def add_box(slide, item: dict, sx: float, sy: float, web_ppt_dir: Path, temp_dir
             return
 
     shape = slide.shapes.add_shape(shape_kind, px(x), px(y), px(w), px(h))
+    if round_adj:
+        for i, v in enumerate(round_adj):
+            shape.adjustments[i] = v
     # python-pptx 도형 기본 스타일(effectRef idx=2)이 테마 그림자를 끌어온다 — CSS에 없는 그림자이고,
     # 반투명 도형(그라데이션 오버레이 등)에서는 그 그림자가 비쳐 전체가 어두워지므로 효과를 비운다
     shape.shadow.inherit = False
@@ -1199,11 +1281,46 @@ def add_box(slide, item: dict, sx: float, sy: float, web_ppt_dir: Path, temp_dir
                     pass
         else:
             shape.line.fill.background()
+    elif round_adj and _uniform_border(style):
+        # 둥근 사각형의 균일 테두리는 변별 직선이 아니라 도형 외곽선으로 그려야 모서리를 따라간다
+        bw, bcolor, dash = _uniform_border(style)
+        set_line(shape, bcolor, bw * ((sx + sy) / 2))
+        if dash is not None:
+            shape.line.dash_style = dash
     else:
         # 사각형은 하나의 outline으로 근사하면 없는 변까지 테두리가 생기므로,
         # 실제로 두께가 있는 변만 그 위치에 얇은 선(사각형)으로 개별 렌더링한다.
         shape.line.fill.background()
         add_side_borders(slide, x, y, w, h, style, sx, sy, exact_px=exact_px)
+
+
+def apply_letter_spacing(run, letter_spacing: str | None, scale: float = 1.0) -> None:
+    """CSS letter-spacing(px)을 <a:rPr spc>(1/100pt)로 옮긴다. 'normal'·0이면 아무것도 하지 않는다."""
+    ls = (letter_spacing or "").strip().lower()
+    if not ls or ls == "normal":
+        return
+    v = parse_px_string(ls, 0.0)
+    if abs(v) < 0.01:
+        return
+    rPr = run._r.get_or_add_rPr()
+    rPr.set("spc", str(int(round(px_to_pt(v * scale) * 100))))
+
+
+def _radii_px(style: dict) -> list[float] | None:
+    """computed border-radius('6px', '12px 12px 0px 0px')를 [tl, tr, br, bl] px로. 퍼센트·타원 반경은 None."""
+    s = (style.get("borderRadius") or "").strip()
+    if not s or "%" in s or "/" in s:
+        return None
+    vals = [parse_px_string(t, 0.0) for t in s.split()]
+    if not vals:
+        return None
+    if len(vals) == 1:
+        vals = vals * 4
+    elif len(vals) == 2:
+        vals = [vals[0], vals[1], vals[0], vals[1]]
+    elif len(vals) == 3:
+        vals = [vals[0], vals[1], vals[2], vals[1]]
+    return vals[:4]
 
 
 def add_text(slide, item: dict, sx: float, sy: float, warnings: list[str]) -> None:
@@ -1281,6 +1398,7 @@ def add_text(slide, item: dict, sx: float, sy: float, warnings: list[str]) -> No
         # 패밀리를 명시적으로 지정한다(요청 폰트가 없을 때 테마 기본 East Asian
         # 폰트로 대체되며 한글 자모 합성이 깨지는 렌더링 오류를 방지).
         set_east_asian_font(run, typeface)
+        apply_letter_spacing(run, style.get("letterSpacing"), sx)
 
         color = parse_css_color(style.get("color"))
         if color:
@@ -1307,6 +1425,17 @@ _TCPR_CHILD_ORDER = [
 ]
 
 
+def _cell_line_px(style: dict, side: str) -> float:
+    """셀 한 변의 선 두께(px). 그 변에 선이 있고 --pptx-line-{side}(예: '1pt')가 선언돼 있으면
+    반올림된 computed 두께 대신 선언 두께를 쓴다(--pptx-line과 같은 규칙)."""
+    w = float(style.get(f"border{side}Width", 0) or 0)
+    if w > 0:
+        declared = _exact_line_px({"pptxLine": style.get(f"pptxLine{side}")})
+        if declared is not None:
+            return declared
+    return w
+
+
 def set_cell_border(cell, side: str, width_emu, css_color: str | None) -> None:
     """side: 'T'/'B'/'L'/'R'. tcPr 안에서 lnX는 반드시 fill류보다 앞에 와야 하므로
     스키마 순서를 지켜 올바른 위치에 삽입한다."""
@@ -1325,6 +1454,8 @@ def set_cell_border(cell, side: str, width_emu, css_color: str | None) -> None:
     solid_fill = etree.SubElement(ln, qn("a:solidFill"))
     srgb = etree.SubElement(solid_fill, qn("a:srgbClr"))
     srgb.set("val", f"{r:02X}{g:02X}{b:02X}")
+    if a < 0.999:  # 반투명 선색(rgba)
+        etree.SubElement(srgb, qn("a:alpha")).set("val", str(int(round(a * 100000))))
 
     my_idx = _TCPR_CHILD_ORDER.index(tag)
     insert_at = len(list(tcPr))
@@ -1380,20 +1511,38 @@ def add_table_exact(slide, item: dict, sx: float, sy: float, warnings: list[str]
                 continue
             cell_data = row[c_idx]
             cell = table.cell(r_idx, c_idx)
-            cell.margin_left = px(4)
-            cell.margin_right = px(4)
-            cell.margin_top = px(2)
-            cell.margin_bottom = px(2)
+            style = cell_data.get("style", {})
+            # 셀 안쪽 여백은 브라우저 실측 padding을 그대로 쓴다(없으면 기존 기본값)
+            cell.margin_left = px(float(style.get("paddingLeft", 4) or 0) * sx)
+            cell.margin_right = px(float(style.get("paddingRight", 4) or 0) * sx)
+            cell.margin_top = px(float(style.get("paddingTop", 2) or 0) * sy)
+            cell.margin_bottom = px(float(style.get("paddingBottom", 2) or 0) * sy)
             cell.vertical_anchor = MSO_ANCHOR.MIDDLE
 
-            style = cell_data.get("style", {})
-
-            top_w = float(style.get("borderTopWidth", 0) or 0) * sy
+            top_w = _cell_line_px(style, "Top") * sy
             if top_w > 0:
                 set_cell_border(cell, "T", px(top_w), style.get("borderTopColor"))
-            bottom_w = float(style.get("borderBottomWidth", 0) or 0) * sy
+            elif r_idx > 0 and c_idx < len(rows[r_idx - 1]):
+                # PowerPoint는 위 셀 lnB와 아래 셀 lnT를 같은 선으로 다루므로, 위 행의 아래 선을
+                # 아래 행의 위 선에도 같이 적어 표 스타일 기본선이 덮어쓰지 않게 한다
+                prev = rows[r_idx - 1][c_idx].get("style", {})
+                pw = _cell_line_px(prev, "Bottom") * sy
+                if pw > 0:
+                    set_cell_border(cell, "T", px(pw), prev.get("borderBottomColor"))
+            bottom_w = _cell_line_px(style, "Bottom") * sy
             if bottom_w > 0:
                 set_cell_border(cell, "B", px(bottom_w), style.get("borderBottomColor"))
+            # 세로 구분선: 이 셀 lnL과 왼쪽 셀 lnR(같은 선)을 함께 적는다(위 T/B 처리와 같은 이유)
+            left_w = _cell_line_px(style, "Left") * sx
+            if left_w > 0:
+                set_cell_border(cell, "L", px(left_w), style.get("borderLeftColor"))
+                if c_idx > 0:
+                    set_cell_border(table.cell(r_idx, c_idx - 1), "R", px(left_w), style.get("borderLeftColor"))
+            right_w = _cell_line_px(style, "Right") * sx
+            if right_w > 0:
+                set_cell_border(cell, "R", px(right_w), style.get("borderRightColor"))
+                if c_idx + 1 < n_cols:
+                    set_cell_border(table.cell(r_idx, c_idx + 1), "L", px(right_w), style.get("borderRightColor"))
 
             bgcolor = parse_css_color(style.get("backgroundColor"))
             if bgcolor:
@@ -1407,7 +1556,12 @@ def add_table_exact(slide, item: dict, sx: float, sy: float, warnings: list[str]
             tf.clear()
             tf.word_wrap = True
             p = tf.paragraphs[0]
-            p.text = cell_data.get("text", "")
+            p.text = (cell_data.get("text", "") or "").replace("\n", "\v")  # <br> → 셀 안 줄바꿈(<a:br/>)
+            p.space_before = Pt(0)
+            p.space_after = Pt(0)
+            lh_px = parse_px_string(style.get("lineHeight"), 0.0)
+            if lh_px > 0:
+                p.line_spacing = Pt(px_to_pt(lh_px * sy))
 
             align = (style.get("textAlign") or "").lower()
             if align in ("center", "-webkit-center"):
@@ -1425,6 +1579,7 @@ def add_table_exact(slide, item: dict, sx: float, sy: float, warnings: list[str]
                                                     force_bold=bool(cell_data.get("isHeader")))
                 font.name = typeface
                 set_east_asian_font(run, typeface)
+                apply_letter_spacing(run, style.get("letterSpacing"), sx)
                 color = parse_css_color(style.get("color"))
                 if color:
                     cr, cg, cb, _ = color

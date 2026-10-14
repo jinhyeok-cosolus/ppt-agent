@@ -7,7 +7,8 @@ web_ppt/v{N}/index.html을 Playwright/Chromium으로 실제 렌더링해, 지정
 같이 주면 각 텍스트 요소의 **실제 computed font-size**(코드의 선언값이 아니라
 브라우저가 최종 계산한 값)를 pt 단위로 함께 추출한다. `--audit-layout`을 같이 주면
 겹침(overlap)/캔버스 이탈(overflow)/텍스트 잘림(clipping)/Page Number 위치(Hard
-Rule §9)/Bottom Safe Area 침범, 이미지 원본 비율 유지(늘림·콘텐츠 잘림)와 같은
+Rule §9)/Bottom Safe Area 침범, 비교표(Hard Rule §10B — Header 틴팅·전체 Grid·
+강조 방식/대상 Column·Visual Evidence 누락), 이미지 원본 비율 유지(늘림·콘텐츠 잘림)와 같은
 data-visual-group 안의 배치 방향별 정렬(가로=높이, 세로=너비)처럼 좌표·CSS 값만으로
 기계적으로 판정 가능한 항목을 함께 감사해 `layout-audit.json`으로 저장한다 — 이 결과는 어떤 슬라이드를 LLM이
 스크린샷으로 직접 봐야 하는지 미리 걸러내기 위한 것이며, 응집도·시각적 균형·가독성
@@ -884,8 +885,92 @@ LAYOUT_AUDIT_JS = """
     }
   }
 
+  // N) 비교표(Data Table) — Hard Rule §10B·table-comparison.md §7·§8. 표 고유 항목만 본다
+  //    (캔버스 이탈·텍스트 겹침·하단 Safe Area는 위 공통 검사가 담당).
+  const tableIssues = [];
+  {
+    const sr = slide.getBoundingClientRect();
+    const C = { tint: 'rgb(244, 250, 250)', white: 'rgb(255, 255, 255)', primary: 'rgb(6, 120, 117)', emph: 'rgb(0, 81, 81)' };
+    const SAFE_L = 64, SAFE_R = 1216;
+    const has = (el, side) => parseFloat(getComputedStyle(el)['border' + side + 'Width']) > 0;
+    const colorOf = (el, side) => getComputedStyle(el)['border' + side + 'Color'];
+    slide.querySelectorAll('table:not(.data-table)').forEach(t =>
+      tableIssues.push({ type: 'non-standard-table', class: classOf(t), note: '비교표는 templates/style.css의 .data-table 공통 클래스로 구현' }));
+    slide.querySelectorAll('table.data-table').forEach((t, ti) => {
+      const push = (type, extra) => tableIssues.push(Object.assign({ type, table: ti + 1 }, extra || {}));
+      const is019 = t.classList.contains('style-019'), isBA = t.classList.contains('style-ba');
+      const mode = t.dataset.tableMode, emph = t.dataset.emphasis || 'none';
+      if (!['standard', 'visual-evidence'].includes(mode)) push('invalid-table-mode', { value: mode || null });
+      if (!['none', 'text', 'outline', 'solid-card'].includes(emph)) push('invalid-emphasis', { value: emph });
+      const head = t.tHead ? t.tHead.rows[0] : null, body = t.tBodies[0] ? [...t.tBodies[0].rows] : [];
+      if (!head || !body.length) { push('missing-thead-or-tbody'); return; }
+      const hdr = [...head.cells], last = [...body[body.length - 1].cells], nCols = hdr.length;
+      // Header 틴팅·본문 흰색(019 표는 §10B 예외)
+      if (!is019) {
+        hdr.forEach((c, ci) => { const bg = getComputedStyle(c).backgroundColor; if (bg !== C.tint) push('header-tint', { col: ci + 1, value: bg }); });
+        body.forEach((r, ri) => [...r.cells].forEach((c, ci) => { const bg = getComputedStyle(c).backgroundColor; if (bg !== C.white) push('body-not-white', { row: ri + 1, col: ci + 1, value: bg }); }));
+      }
+      // Primary 마감선(표 상단·Header 하단·표 하단) — Solid Card 위 Cell은 019 카드 처리
+      hdr.forEach((c, ci) => { if (c.classList.contains('on-card')) return;
+        if (!has(c, 'Top') || colorOf(c, 'Top') !== C.primary) push('rule-missing', { edge: 'table-top', col: ci + 1 });
+        if (!has(c, 'Bottom') || colorOf(c, 'Bottom') !== C.primary) push('rule-missing', { edge: 'header-bottom', col: ci + 1 }); });
+      last.forEach((c, ci) => { if (!c.classList.contains('on-card') && (!has(c, 'Bottom') || colorOf(c, 'Bottom') !== C.primary)) push('rule-missing', { edge: 'table-bottom', col: ci + 1 }); });
+      // 전체 Grid: 모든 행 사이 가로선, 모든 열 사이 세로선(019는 가로선만, Before–After는 Header Row 세로선 없음)
+      body.forEach((r, ri) => [...r.cells].forEach((c, ci) => {
+        if (ri > 0 && !has(c, 'Top')) push('grid-missing', { dir: 'horizontal', row: ri + 1, col: ci + 1 });
+        if (ci > 0 && !is019 && !has(c, 'Left')) push('grid-missing', { dir: 'vertical', row: ri + 1, col: ci + 1 });
+      }));
+      if (!is019 && !isBA) hdr.forEach((c, ci) => { if (ci > 0 && !has(c, 'Left')) push('grid-missing', { dir: 'vertical', row: 0, col: ci + 1 }); });
+      // 강조 방식·대상 Column·강조 요소
+      const cols = (t.dataset.emphasisCols || '').split('-').map(Number).filter(n => n > 0);
+      const wrap = t.closest('.tbl-wrap');
+      const outlines = wrap ? [...wrap.querySelectorAll('.emph-outline')] : [], cards = wrap ? [...wrap.querySelectorAll('.emph-card')] : [];
+      if (emph === 'outline' || emph === 'solid-card') {
+        if (!cols.length) push('emphasis-cols-missing');
+        else if (cols[0] < 2 || cols[cols.length - 1] > nCols || cols[cols.length - 1] < cols[0]) push('emphasis-cols-invalid', { cols: t.dataset.emphasisCols });
+      }
+      if (emph === 'text' && !t.querySelector('.emph-text')) push('text-emphasis-missing');
+      if (emph === 'outline') { if (outlines.length !== 1) push('outline-element-count', { count: outlines.length }); }
+      else if (outlines.length) push('outline-without-emphasis');
+      if (emph === 'solid-card') {
+        if (cards.length !== 1) push('card-element-count', { count: cards.length });
+        if (!is019) push('solid-card-without-style-019');
+        if (mode === 'visual-evidence') push('forbidden-combo', { reason: 'solid-card + visual-evidence' });
+        if (cols.length > 1 && cols[1] !== cols[0]) push('forbidden-combo', { reason: 'solid-card multiple columns' });
+        if (cards.length && t.compareDocumentPosition(cards[0]) & Node.DOCUMENT_POSITION_FOLLOWING) push('card-after-table', { note: 'pptx에서 카드가 표 텍스트를 덮음 — .emph-card를 <table> 앞에' });
+      } else if (cards.length) push('card-without-solid-card');
+      if (t.dataset.emphasisLabel && emph !== 'outline') push('label-without-outline');
+      // Outline: #005151, 대상 Header 상단~마지막 Row 하단 한 박스, 텍스트·이미지 비침범, 본문 Safe Area(X 64~1216) 안
+      if (emph === 'outline' && outlines.length === 1 && cols.length) {
+        const ol = outlines[0], cs = getComputedStyle(ol), o = ol.getBoundingClientRect(), bw = parseFloat(cs.borderTopWidth);
+        const a = hdr[cols[0] - 1], b = hdr[(cols[1] || cols[0]) - 1];
+        if (!a || !b) return;
+        const ar = a.getBoundingClientRect(), br = b.getBoundingClientRect(), tb = t.getBoundingClientRect(), tol = 2;
+        if (cs.borderTopColor !== C.emph) push('outline-style', { color: cs.borderTopColor });
+        if (o.left > ar.left + tol || o.right < br.right - tol || o.left < ar.left - bw - tol || o.right > br.right + bw + tol) push('outline-not-on-target', { cols: t.dataset.emphasisCols });
+        if (o.top + bw > tb.top + tol || o.bottom - bw < tb.bottom - tol) push('outline-covers-header-or-last-row');
+        const bands = [[o.left, o.top, o.right, o.top + bw], [o.left, o.bottom - bw, o.right, o.bottom], [o.left, o.top, o.left + bw, o.bottom], [o.right - bw, o.top, o.right, o.bottom]];
+        const hit = (q) => bands.some(z => q.left < z[2] && q.right > z[0] && q.top < z[3] && q.bottom > z[1]);
+        const rng = document.createRange(); let covered = 0;
+        t.querySelectorAll('th, td').forEach(c => {
+          const w = document.createTreeWalker(c, NodeFilter.SHOW_TEXT); let n;
+          while ((n = w.nextNode())) { if (!n.textContent.trim()) continue; rng.selectNodeContents(n); for (const q of rng.getClientRects()) if (hit(q)) covered++; }
+          c.querySelectorAll('img').forEach(im => { if (hit(im.getBoundingClientRect())) covered++; });
+        });
+        if (covered) push('outline-covers-content', { count: covered });
+      }
+      [...outlines, ...cards].forEach(e => { const r = e.getBoundingClientRect();
+        if (r.left - sr.left < SAFE_L - 0.5 || r.right - sr.left > SAFE_R + 0.5) push('emphasis-outside-safe-area', { class: classOf(e), left: Math.round(r.left - sr.left), right: Math.round(r.right - sr.left) }); });
+      // Visual Evidence: Header 바로 아래 Evidence Row의 모든 Target Cell에 Visual(데이터 없음은 '-')
+      if (mode === 'visual-evidence') [...body[0].cells].slice(1).forEach((c, ci) => {
+        if (!c.querySelector('img, svg, canvas') && !['-', '–', '—'].includes(c.textContent.trim())) push('visual-evidence-missing', { col: ci + 2 });
+      });
+    });
+  }
+
   return {
     overflow, clipped, overlaps,
+    table_issues: tableIssues,
     page_number_issues: pageNumberIssues,
     deck_footnote_issues: deckFootnoteIssues,
     bottom_safe_area_violations: bottomSafeAreaViolations,
@@ -996,6 +1081,7 @@ def render(
                     or result["bottom_safe_area_violations"] or result["image_issues"]
                     or result["common_element_issues"]
                     or result["flow_issues"]
+                    or result.get("table_issues")
                 )
                 result["flagged"] = flagged
                 layout_audit[f"slide_{idx}"] = result
@@ -1008,7 +1094,8 @@ def render(
                         f"bottom_safe_area_violations={len(result['bottom_safe_area_violations'])}, "
                         f"common_element_issues={len(result['common_element_issues'])}, "
                         f"image_issues={len(result['image_issues'])}, "
-                        f"flow_issues={len(result['flow_issues'])})"
+                        f"flow_issues={len(result['flow_issues'])}, "
+                        f"table_issues={len(result.get('table_issues', []))})"
                     )
                 else:
                     print(f"[qa_render] slide {idx}: layout audit clean")

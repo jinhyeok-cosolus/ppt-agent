@@ -234,6 +234,7 @@ Phase A가 확정한 `slide_composition_map.json`(슬라이드 경계·Source Ma
    - 표지가 아니면 먼저 [`docs/layout-reference/2026.08.20_special-layout-index_V1.md`](../../../docs/layout-reference/2026.08.20_special-layout-index_V1.md)(콘텐츠 구조별 특수 Layout Reference 17종의 경량 인덱스 — Layout명/Category/Use When/Do Not Use When/원본 경로)에서 이번 슬라이드의 Relationship·콘텐츠 구조에 맞는 Use When 조건에 해당하는 후보가 있는지 확인한다. 이 인덱스만으로 1~2개 후보로 좁혀지면 그 후보의 원본 Layout MD만 상세 Read해 세부 스펙(구조·비율·Variant 등)을 확인하고 우선 적용한다 — 후보가 아닌 나머지 특수 Layout 문서는 열지 않는다.
    - 인덱스의 어떤 Use When에도 해당하지 않으면 `layout-catalog_V1.md`(L01~L33)에서 후보를 고른다.
    - Data Pending Region이 있다는 이유로 Layout 후보에서 제외하지 않는다 — 실제 데이터가 없어도 그 Region이 차지할 자리(표/차트 영역)를 감안해 Layout을 고른다.
+   - 선택한 Layout이 Variant·옵션을 정의하면 그 값까지 정해 출력 스키마의 **Layout Options**에 기록한다. 표 계열(`table-comparison.md`)은 구성·강조·강조 대상 Column·그룹 Label을 그 문서 §8 "Layout Options 기록·전달 값" 그대로 기록한다 — 대응 이미지를 표에 자리가 없다는 이유로 버리지 않는다(이미지는 Cell 안에 둔다).
    - 이 단계는 후보 목록이나 개별 Layout의 세부 규칙(색상·서체·정렬 수치 등)을 다시 정의하지 않는다 — design-rules.md와 선택된 Layout Reference 문서를 참조만 한다.
 
 6. **구조적 균형 사전 점검 (Pre-Design Structural Check)** — 실제 HTML 생성 전, 콘텐츠 구조 수준에서만 아래를 점검한다. 좌표·Overflow 등 렌더링 수준 검사는 하지 않는다(web-ppt-generator의 자기 검증이 담당).
@@ -277,6 +278,7 @@ Phase A가 확정한 `slide_composition_map.json`(슬라이드 경계·Source Ma
 - **Relationship**: (병렬 / 비교 / 순차 / 인과 / 종속 / 전체-부분 / 단일 콘텐츠 / 기타·복합 중 해당하는 것)
 - **Content Regions**: (설계된 Region 목록과 각 Region이 대응하는 역할·표현 방식, 예: "Region A(병렬 Primary #1, Chart) / Region B(병렬 Primary #2, Chart) / Supporting Region(공통, Text)" — 위 Core Claims & Evidence의 Required 항목이 어느 Region에 반영됐는지 알 수 있게 기술. Data Pending Region이 있으면 "Region B(Primary #2, Chart, Data Pending)"처럼 상태를 함께 표기. 이미지가 있으면 2단계의 이미지별 시각 역할을 "img3[Main] / img5[Supporting, 고밀도]"처럼 이미지 ID 뒤에 표기)
 - **Selected Layout**: (구조별 특수 Layout Reference 문서명 또는 L01~L33 번호)
+- **Layout Options**: (Variant·옵션이 있는 Layout만, 없으면 `N/A`. 예: `before-after.md` → `Variant B` / `table-comparison.md` → `구성=standard, 강조=outline, 대상=3-4, Label=COSOLUS`)
 - **Layout Selection Reason**: (Use When 조건 충족 여부 등 선택 근거)
 - **Structural Check**: (사전 점검 결과 요약 — 문제 없음 / 발견된 이슈와 조치)
 ```

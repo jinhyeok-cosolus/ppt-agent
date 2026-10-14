@@ -706,20 +706,11 @@ Icon, Mini Chart, Badge/Label, Short Bullet 등.
 
 ### 5.7 Improved / 자사 Column 강조
 
-개선안(Improved) 또는 자사 기술 Column을 강조해야 하는 경우:
-
--   Main Color의 Header 색상 강조
--   Main Color의 굵은 Outline(Column 전체 또는 Header만)
--   핵심 수치에 Main Color 적용
--   다른 Column보다 시각적 대비를 약간 높임
-
-[2026-08-25 추가] "Main Color의 Header 색상 강조"는 §5.2의 Header Row
-전체 동일 Fill(Hard Rule §10B) 기본값 대신, **Existing/Criteria
-Header는 White(Fill 없음) 유지 + Improved Header만 Light Tint 배경
-(`--c-tint-lightest`)·Main Color Text·Main Color Bottom Border**로
-차등 적용하는 형태로 구현해도 된다 — 이 경우 Row/Column Divider는
-5.9와 같이 얇고 연하게(§8 Hard Rule §11 색상), 표 외곽 전체를 두르는
-Border는 사용하지 않는다(§5.6 Excel식 표 금지 원칙과 일관).
+개선안(Improved) 또는 자사 기술 Column을 강조해야 하는 경우, **Hard Rule
+§10B의 Text 강조 또는 Outline 강조** 중 하나를 Improved Column에 적용한다
+(색·두께·배치는 §10B). Header Row는 §10B대로 전체 동일 스타일을 유지하며
+Improved Header만 다르게 채우지 않는다(2026-10-14, 기존 Improved Header 차등
+Tint 방식 폐기).
 
 Rules:
 

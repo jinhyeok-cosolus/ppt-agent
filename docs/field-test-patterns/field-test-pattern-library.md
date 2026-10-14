@@ -71,7 +71,7 @@
 - **Visual**: Table 형태 Comparison Frame, Criteria Row 필수
 - **강조 정보**: "무엇이 얼마나 개선되는가"를 항목별로
 - **최종 확정 Layout/Variant**: `before-after.md` Variant B
-- **Use When**: 비교 대상이 정확히 2개 + 다수 동일 기준. 대상이 3개 이상이면 §4(Table Comparison/Comparison Matrix)로 분기
+- **Use When**: 비교 대상이 정확히 2개 + 다수 동일 기준. 대상이 3개 이상이면 §4(Table Comparison)로 분기
 - **Avoid When**:
   - 원문에 없는 경쟁사명/수치를 다른 참고자료의 예시(예: BTR/Vianode)에서 그대로 가져오지 않는다.
   - Selected Layout 문서에는 Variant B로 기록해놓고 실제 HTML은 Criteria Row 없는 임의 2-Column으로 구현하는 괴리를 만들지 않는다 — 전용 Layout의 Must Preserve 체크리스트는 **HTML 생성 이전에** 발췌해 반영해야 하며, QA 시점에야 발견하면 늦다.
@@ -79,29 +79,24 @@
 
 ---
 
-## 4. Comparison Matrix / Table Comparison — 3개 이상 대상 × 공유 기준
+## 4. Table Comparison — 3개 이상 대상(또는 2개 대상 × 다수 기준) × 공유 기준
 
-### 4-A. Comparison Matrix (Visual/근거 중심, 혼합 셀 타입)
+> 2026-10-14 통합: 기존 4-A(Comparison Matrix)·4-B(Table Comparison)는 원본 Layout MD와 선택 기준이 뒤바뀌어 있었다(Matrix를 "텍스트 중심 + 019 강조"로 기록). 현재는 `table-comparison.md` 하나에서 구성·강조를 고른다.
 
-- **Content Relationship**: 복수 비교 근거, 자사 vs 경쟁사 N개(3~4개 권장)
-- **Content Density**: 기준별로 셀 표현 타입이 다를 수 있음(문단/KPI 수치/뱃지/불릿 등 혼재 가능, 단 같은 Row 안에서는 열 간 타입 일관 유지)
-- **항목 수**: 3~4 대상 × 4~5 기준
-- **Visual**: 이미지/다이어그램 없이 텍스트·KPI·뱃지 중심, 자사 열은 아웃라인+하이라이트 배경(공용 컴포넌트 `019_competitive-advantage-highlight.md`)으로 강조
-- **강조 정보**: 자사 기술의 전 지표 우위 — 단, 열세인 지표(예: 낮은 TRL)도 숨기지 않고 그대로 유지
-- **최종 확정 Layout/Variant**: `comparison-matrix.md`
-- **Use When**: 정성 설명·주석이 많아 정확한 문장/수치를 있는 그대로 읽어야 할 때(Multi-Radar 등 시각 압축형 Layout은 이런 경우 Do Not Use)
-- **Avoid When**: 데이터 양이 많다는 이유만으로 자동으로 Matrix/Table을 선택하지 않는다 — **모든 대상이 공유하는 공통 Row/Column 비교축이 실제로 존재할 때만** 이 계열을 선택한다. 비교축이 없는데 표로 강제하면 정보를 왜곡한다.
-- **Field Test 근거**: `cosolus-comparison-matrix-test/quick-test.html`(COSOLUS vs 경쟁사 A/B/C, 5기준×4열, 혼합 셀 타입) — 단일 인스턴스, `state.json` 없음 — **낮음(추정)**. `cosolus-ir-deck` A/B/C Slide 7/9(3사/4방식 비교), 열 폭 불일치 결함 발견 후 `colgroup`+`table-layout:fixed`를 공통 규칙으로 승격, D-test 회귀 검증 완료 — **높음**.
-
-### 4-B. Table Comparison (값 읽기 중심, Visual 최소)
-
-- **Content Relationship**: 복수 비교 근거지만 Visual이 보조이고 텍스트·수치·평가값을 "읽는 것" 자체가 핵심
-- **Content Density**: 셀당 하나의 짧은 값(문단/이미지 없음)
-- **항목 수**: 3개 대상 × 4개 기준 예시 확인(1px hairline divider, 자사 열은 좌측 보더+미세 틴트+볼드로만 구분, 카드/그림자 없음)
-- **최종 확정 Layout/Variant**: `table-comparison.md`
-- **Use When**: Comparison Matrix와의 경계 — 값 읽기가 핵심이면 Table Comparison, Visual 근거(차트/뱃지 등)가 필요하면 Comparison Matrix
-- **Avoid When**: 세대 비교처럼 비교축이 다른 데이터(예: 기존 5단→COSOLUS 4단)를 억지로 같은 표의 4번째 열로 합치지 않는다 — Highlight Band 등으로 분리
-- **Field Test 근거**: `cosolus-table-comparison-test/quick-test.html` — 단일 인스턴스, `state.json` 없음 — **낮음(추정)**. 경계 판단 규칙 자체는 `cosolus-business-plan-2026` 조사에서 보강 확인 — **중간**.
+- **Content Relationship**: 복수 비교 근거 — 모든 대상이 같은 비교 기준을 공유
+- **Content Density**: Cell은 텍스트·수치·보조 이미지 혼합 가능(같은 Row 안에서는 형식 통일)
+- **항목 수**: 2~4 대상 × 2~5 기준
+- **최종 확정 Layout/Variant**: `table-comparison.md` + Layout Options(구성·강조)
+  - **구성**: 이미지를 빼면 주장이 성립하지 않으면 `visual-evidence`(구 Comparison Matrix — 예: 경쟁사별 비커 실험사진), 아니면 `standard`(이미지가 있어도 — 예: DLE 4방식 작동원리 Diagram)
+  - **강조**: 순수 동향 비교는 `none` / 경쟁사 비교에서 자사 1열 강한 대비는 `solid-card`(019, standard 전용) / 자사가 연속된 여러 열(예: 추출제+분리막)이거나 visual-evidence이면 `outline`(+그룹 Label) / 가벼운 강조는 `text`
+- **강조 정보**: 자사 기술의 우위 — 단, 열세인 지표(예: 낮은 TRL)도 숨기지 않는다
+- **Use When**: 기준별로 대상을 나란히 읽는 것이 핵심일 때(Multi-Radar 등 시각 압축형은 정확한 문장/수치를 읽어야 할 때 Do Not Use)
+- **Avoid When**:
+  - 데이터 양이 많다는 이유만으로 표를 선택하지 않는다 — **모든 대상이 공유하는 공통 비교축이 실제로 존재할 때만** 선택한다
+  - 세대 비교처럼 비교축이 다른 데이터(예: 기존 5단→COSOLUS 4단)를 같은 표의 열로 합치지 않는다 — Highlight Band 등으로 분리
+  - 표에 이미지 슬롯이 없다는 이유로 대응 이미지를 버리지 않는다 — 이미지는 Cell 안에 넣는다(`cosolus-ir-deck-D` Slide 10 사례)
+  - `solid-card`를 Visual Evidence 구성과 결합하지 않는다(`지역창업계획패키지 사업계획서` Slide 16 사례)
+- **Field Test 근거**: `cosolus-ir-deck` A/B/C Slide 7/9(3사/4방식 비교), 열 폭 불일치 결함 후 `colgroup`+`table-layout:fixed` 공통 규칙 승격, D-test 회귀 검증 — **높음**. 같은 DLE 콘텐츠가 D·E(Table)/F(Matrix)로 갈린 선택 불안정 → 2026-10-14 통합의 근거 — **높음**. 디자인(Header 틴팅·전체 Grid·Outline/Solid Card)은 사용자 승인 미리보기 기준이며 실제 Field Test 미검증 — **낮음(추정)**.
 
 ---
 
